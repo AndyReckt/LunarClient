@@ -1,0 +1,1002 @@
+{
+  "language": "Engels",
+  "features": {
+    "scoreboard": {
+      "details": {
+        "name": "Scorebord",
+        "description": "Hiermee kunt u het Minecraft scorebord verbergen, verplaatsen of aanpassen."
+      }
+    },
+    "uhc_overlay": {
+      "details": {
+        "name": "UHC Overlay",
+        "description": "Wijzig de grootte van items die vaak nodig zijn in UHC om ze gemakkelijker te kunnen herkennen."
+      }
+    },
+    "coords": {
+      "details": {
+        "name": "Coördinaten",
+        "description": "Geeft uw coördinaten weer op de HUD."
+      }
+    },
+    "serverAddressMod": {
+      "details": {
+        "name": "Server Adres",
+        "description": "Toont de server waarmee u momenteel bent verbonden op de HUD."
+      }
+    },
+    "directionhud": {
+      "details": {
+        "name": "Directie HUD",
+        "description": "Geef uw hoofdrichting weer op de HUD."
+      }
+    },
+    "range": {
+      "details": {
+        "name": "Reach Display",
+        "description": "Laat zien vanaf hoe ver je een andere speler hebt aangevallen."
+      }
+    },
+    "crosshair": {
+      "details": {
+        "name": "Crosshair",
+        "description": "Vervang het crosshair van Minecraft door een aanpasbaar crosshair."
+      }
+    },
+    "armorstatus": {
+      "details": {
+        "name": "Armor Status",
+        "description": "Geeft informatie weer over het armor dat je aan hebt en het item dat je op de HUD vasthoudt."
+      }
+    },
+    "motionBlur": {
+      "details": {
+        "name": "Motion Blur",
+        "description": "Vervaag uw omgeving tijdens het bewegen."
+      }
+    },
+    "cps": {
+      "details": {
+        "name": "CPS",
+        "description": "Toont uw kliksnelheid op de HUD."
+      }
+    },
+    "memory": {
+      "details": {
+        "name": "Geheugen Gebruik",
+        "description": "Toont uw totaal en vrij geheugengebruik."
+      }
+    },
+    "spark": {
+      "details": {
+        "name": "Vonk",
+        "description": ""
+      }
+    },
+    "itemPhysic": {
+      "details": {
+        "name": "Item Physics",
+        "description": "Vervangt gronditems door items met physics."
+      }
+    },
+    "skyblockAddons": {
+      "details": {
+        "name": "Skyblock Addons",
+        "description": "Een mod gemaakt voor Hypixel Skyblock met meer dan 20 functies die je skyblock ervaring zullen verbeteren (versie: ${sbaVersion})."
+      }
+    },
+    "skyBlockAddonsManaBarChild": {
+      "details": {
+        "name": "Mana Bar",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsManaTextChild": {
+      "details": {
+        "name": "Mana Text",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsHealthBarChild": {
+      "details": {
+        "name": "Gezondheid Bar",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsHealthTextChild": {
+      "details": {
+        "name": "Gezondheid Tekst",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsDefenseIconChild": {
+      "details": {
+        "name": "Defensie Icoon",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsDefenseTextChild": {
+      "details": {
+        "name": "Defensie Tekst",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsDefensePercentageChild": {
+      "details": {
+        "name": "Defensie Percentage",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsSpeedTextChild": {
+      "details": {
+        "name": "Snelheid Tekst",
+        "description": ""
+      }
+    },
+    "skyblockAddonsBirchParkRainmaker": {
+      "details": {
+        "name": "Birch Park Rainmaker",
+        "description": ""
+      }
+    },
+    "skyblockAddonsdarkAuctionoTimer": {
+      "details": {
+        "name": "Donkere Veiling Timer",
+        "description": ""
+      }
+    },
+    "skyblockAddonsEndstoneProtector": {
+      "details": {
+        "name": "Endsteen Beschermer Scherm",
+        "description": ""
+      }
+    },
+    "skyblockAddonsMagmaTimer": {
+      "details": {
+        "name": "Magma Timer",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsPowerOrbStausChild": {
+      "details": {
+        "name": "Kracht Orb Status",
+        "description": ""
+      }
+    },
+    "skyblockAddonsBoneDisplay": {
+      "details": {
+        "name": "Bot Hoed",
+        "description": ""
+      }
+    },
+    "skyblockAddonsSkillDisplay": {
+      "details": {
+        "name": "Vaardigheid Update",
+        "description": ""
+      }
+    },
+    "skyblockAddonsSummoningEyeCounter": {
+      "details": {
+        "name": "Oproepend Oog Teller",
+        "description": ""
+      }
+    },
+    "skyblockAddonsTickerChargesDisplay": {
+      "details": {
+        "name": "Ticket Charges Weergave",
+        "description": ""
+      }
+    },
+    "skyblockAddonsZealotCounter": {
+      "details": {
+        "name": "Zealot Teller",
+        "description": ""
+      }
+    },
+    "skyblockAddonsZealotTotalCounter": {
+      "details": {
+        "name": "Totaal Aantal Zealot",
+        "description": ""
+      }
+    },
+    "skyblockAddonsZealotPerEye": {
+      "details": {
+        "name": "Zealot Per Oog",
+        "description": ""
+      }
+    },
+    "bait_list": {
+      "details": {
+        "name": "Bait Lijst",
+        "description": ""
+      }
+    },
+    "sba_feature_warning": {
+      "details": {
+        "name": "Feature Waarschuwingen",
+        "description": ""
+      }
+    },
+    "textHotKey": {
+      "details": {
+        "name": "Auto Tekst Sneltoets",
+        "description": "Hiermee kunt u een toets of toetsencombinatie instellen waarmee een commando of chatbericht wordt verzonden wanneer erop wordt gedrukt."
+      }
+    },
+    "freelook": {
+      "details": {
+        "name": "Freelook",
+        "description": "Wanneer geactiveerd, kunt u het camera perspectief wijzigen zonder uw speler te roteren."
+      }
+    },
+    "fov_mod": {
+      "details": {
+        "name": "FOV Mod",
+        "description": "Hiermee kunt u uw gezichtsveld aanpassen aan verschillende toverdrank of snelheidsstatussen."
+      }
+    },
+    "time_changer": {
+      "details": {
+        "name": "Tijd Veranderaar",
+        "description": "Pas de huidige tijd van de dag aan naar een vaste positie."
+      }
+    },
+    "waypoints": {
+      "details": {
+        "name": "Waypoints",
+        "description": "Creëer waar dan ook ter wereld een waypoint dat laat zien hoe ver u zich van een locatie bevindt en geef desgewenst de naam en een balk weer."
+      }
+    },
+    "chat": {
+      "details": {
+        "name": "Chat",
+        "description": "Pas je chatopties aan naar je eigen smaak."
+      }
+    },
+    "itemTrackerChild": {
+      "details": {
+        "name": "Item Tracker",
+        "description": "Laat zien wanneer en hoeveel items u ophaalt of laat vallen."
+      }
+    },
+    "keystrokes": {
+      "details": {
+        "name": "Key Strokes",
+        "description": "Wordt weergegeven wanneer uw beweging, muis of spatiebalk wordt ingedrukt."
+      }
+    },
+    "saturation": {
+      "details": {
+        "name": "Saturatie",
+        "description": "Geeft uw huidige saturatie weer op de HUD."
+      }
+    },
+    "hypixel_mod": {
+      "details": {
+        "name": "Hypixel Mods",
+        "description": "Een verzameling van mods die rechtstreeks integreren met het Hypixel server netwerk."
+      }
+    },
+    "fps": {
+      "details": {
+        "name": "FPS",
+        "description": "Toon jouw FPS op de HUD."
+      }
+    },
+    "clock": {
+      "details": {
+        "name": "Klok",
+        "description": "Toon de huidige tijd op de HUD."
+      }
+    },
+    "stopwatch": {
+      "details": {
+        "name": "Stopwatch",
+        "description": "Voegt een stopwatch toe aan de HUD."
+      }
+    },
+    "block_outline": {
+      "details": {
+        "name": "Blok Omtrek",
+        "description": "Hiermee kunt u de omtrek aanpassen of een overlay toevoegen aan het blok waarnaar u kijkt."
+      }
+    },
+    "netgraph": {
+      "details": {
+        "name": "Net Grafiek",
+        "description": "Een grafiek die de huidige TPS weergeeft van de server waarop je speelt."
+      }
+    },
+    "worldedit_cui": {
+      "details": {
+        "name": "WorldEdit CUI",
+        "description": "Een gebruikersinterface aan de clientzijde voor de WorldEdit-plug-in waarmee u uw geselecteerde regio in realtime in de game kunt zien."
+      }
+    },
+    "one_seven_visuals": {
+      "details": {
+        "name": "1.7 Visuals",
+        "description": "Zet bepaalde visuals en animaties terug naar hoe ze zich gedroegen op 1.7."
+      }
+    },
+    "screenshot": {
+      "details": {
+        "name": "Screenshot Uploader",
+        "description": "Werkt je screenshot bij om de afbeelding direct te openen, te uploaden of te tweeten."
+      }
+    },
+    "ping": {
+      "details": {
+        "name": "Ping",
+        "description": "Toont server latentie op de HUD."
+      }
+    },
+    "teamview": {
+      "details": {
+        "name": "Team Weergave",
+        "description": "Laat je zien waar je teamgenoten zijn op de HUD."
+      }
+    },
+    "potion_counter": {
+      "details": {
+        "name": "Drankjes Teller",
+        "description": "Laat zien hoeveel genezende drankjes of soepen momenteel in je inventaris op de HUD zitten."
+      }
+    },
+    "shinyPots": {
+      "details": {
+        "name": "Glimmende Drankjes",
+        "description": "Geeft toverdranken het glimmende effect in het volledige vakje."
+      }
+    },
+    "potioneffects": {
+      "details": {
+        "name": "Toverdrank Effecten",
+        "description": "Geef je momenteel actieve toverdrank effecten weer op de HUD."
+      }
+    },
+    "bossbar": {
+      "details": {
+        "name": "Boss Bar",
+        "description": "Hiermee kunt u de Minecraft boss balk verbergen, verplaatsen of aanpassen."
+      }
+    },
+    "scrollable_tooltips": {
+      "details": {
+        "name": "Schuifbare Tooltips",
+        "description": "Gebruik uw scrollwieltje om te lange item beschrijvingen te lezen."
+      }
+    },
+    "streamerMode": {
+      "details": {
+        "name": "Streamer Modus",
+        "description": ""
+      }
+    },
+    "toggleSneak": {
+      "details": {
+        "name": "Schakel Sneak/Sprint",
+        "description": "Maak de sprinten en sluipen de toetsen schakelbaar in plaats van dat ze moeten worden vastgehouden."
+      }
+    },
+    "mumble-link": {
+      "details": {
+        "name": "Mumble Link",
+        "description": "Gebruikt mumble om positionele audio te maken in de Minecraft wereld."
+      }
+    },
+    "combo": {
+      "details": {
+        "name": "Combo Teller",
+        "description": "Geeft weer hoe vaak je een andere speler hebt geraakt binnen een bepaalde tijd op de HUD."
+      }
+    },
+    "particleMultiplierMod": {
+      "details": {
+        "name": "Deeltjes Vermenigvuldiger",
+        "description": "Verhoog het aantal weergegeven deeltjes als je een andere speler aanvalt."
+      }
+    },
+    "cooldowns": {
+      "details": {
+        "name": "Afkoeltijd",
+        "description": "Sta servers toe om items of vaardigheden weer te geven die op de HUD staan."
+      }
+    }
+  },
+  "settings": {
+    "labels": {
+      "settings": "Instellingen",
+      "general": "Algemeen",
+      "microphone": "Microfoon",
+      "speaker": "Luidspreker",
+      "controls": "Besturing",
+      "generalOptions": "Algemene Opties",
+      "colorOptions": "Kleur opties",
+      "damageOptions": "Schade Opties",
+      "damageDisplay": "Schade Weergave",
+      "renderOptions": "Render Opties",
+      "blinkOptions": "Knipper opties",
+      "hudOptions": "Hud opties",
+      "cosmeticOptions": "Cosmetische opties",
+      "modOptions": "Mod Opties",
+      "miscOptions": "Diverse opties",
+      "texturePackOptions": "Texturepakket opties",
+      "zealotOptions": "Zealot Opties",
+      "safetyOptions": "Veiligheid opties",
+      "indicatorOptions": "Indicator opties",
+      "entityOptions": "Entiteit opties",
+      "locationResourceOptions": "Locatie Bron Opties",
+      "backpackOptions": "Rugzak Opties",
+      "warpTpOptions": "Warp / Teleport Opties",
+      "tooltipOptions": "Tooltip opties",
+      "containerOptions": "Container opties",
+      "enchantedItemsBlacklist": "Betoverde Items Zwarte Lijst",
+      "enchantedItemsBlacklistDescription": "Schakelt het gebruik van betoverde voorwerpen uit",
+      "chatOptions": "Chat Opties",
+      "hideOptions": "Verberg opties",
+      "warningOptions": "Waarschuwing opties",
+      "flyBoostOptions": "Vlieg Boost Opties",
+      "animations": "Animaties",
+      "heldItems": "Vastgehouden items",
+      "mechanics": "Mechanica",
+      "excludePotionEffects": "Drankeffecten uitsluiten",
+      "shortDescription": "Korte omschrijving",
+      "section": "Sectie",
+      "description": "Beschrijving",
+      "submit": "VERZENDEN",
+      "mod": "MOD",
+      "gui": "GUI",
+      "cosmetic": "COSMETIC",
+      "store": "WINKEL",
+      "voice": "STEM",
+      "antiCheat": "ANTI CHEAT",
+      "launcher": "LAUNCHER",
+      "other": "OVERIGE"
+    },
+    "buttons": {
+      "applyToAll": "ALLES TOEPASSEN"
+    },
+    "off": "Uit",
+    "off_van": "Uit (Vanilla)",
+    "inventoryOnly": "Alleen inventaris",
+    "all": "Alle",
+    "high": "Hoog",
+    "highest": "Hoogste (Meeste FPS)",
+    "medium": "Gemiddeld (Meer FPS)",
+    "low": "Laag",
+    "lowest": "Laagste (Minste FPS boost)",
+    "value": "Waarde",
+    "percent": "Procent",
+    "none": "Geen",
+    "vertical": "Verticaal",
+    "horizontal": "Horizontaal",
+    "wave": "Zwaai",
+    "shift": "Shift",
+    "mods": "Mods",
+    "custom": "Gepersonaliseerd",
+    "normal": "Normaal",
+    "cross": "Kruis",
+    "circle": "Cirkel",
+    "thirdPerson": "Derde",
+    "firstPerson": "Eerste",
+    "forward": "Vooruit",
+    "doNothing": "Niets Doen",
+    "showSwing": "Toon Swing",
+    "showSwingParticles": "Toon Swing En Deeltjes",
+    "potion": "Drankje",
+    "soup": "Soep",
+    "regular": "Regelmatig",
+    "compact": "Compact",
+    "free": "Vrij",
+    "three": "Drie",
+    "five": "Vijf",
+    "six": "Zes",
+    "always": "Altijd",
+    "skyBlockOnly": "Alleen SkyBlock",
+    "never": "Nooit",
+    "scale_nr": "Schaal",
+    "shadow_bl": "Tekst Schaduw",
+    "background_bl": "Toon Achtergrond",
+    "backgroundHeight_nr": "Achtergrond Hoogte",
+    "backgroundWidth_nr": "Achtergrond Breedte",
+    "border_bl": "Grens",
+    "border_thickness_nr": "Grens Dikte",
+    "text_clr_nr": "Tekst Kleur",
+    "background_clr_nr": "Achtergrond Kleur",
+    "border_clr_nr": "Grens Kleur",
+    "colored_bl": "Toon Drank Kleur",
+    "renderGlintBehindPotion_bl": "Render Glint Achter Drankje",
+    "spark_start_kblc": "Start Spark",
+    "spark_stop_kblc": "Start Spark",
+    "render_bar_bl": "Render gezondheid",
+    "customBossBar_bl": "Gebruik Aangepaste Boss Bar",
+    "barColor_clr_nr": "BossBar Kleur",
+    "toggle_sprint_bl": "Schakel Sprint in",
+    "toggle_sneak_bl": "Schakel Sneak in",
+    "toggle_sneak_container_bl": "Schakel Sneak in container",
+    "double_tap_bl": "Dubbel Tik",
+    "show_text_bl": "HUD tekst weergeven",
+    "fly_boost_bl": "Vlieg Boost",
+    "boost_amnt_nr": "Vlieg Boost Hoeveelheid",
+    "showHudText_bl": "Toon HUD",
+    "default_fov_nr": "Standaard FOV",
+    "slowness_fov_nr": "Traagheid FOV",
+    "sprinting_fov_nr": "Sprinting FOV",
+    "flying_fov_nr": "Vliegende FOV",
+    "speed_fov_nr": "Snelheid FOV",
+    "mode": "Lijst Modus",
+    "glint_anim": "Glint Rendering",
+    "armor_hit_anim": "Armor hit animatie",
+    "block_hit_anim": "Blokkeer Hitten",
+    "health_anim": "Gezondheid Flashen",
+    "sneak_anim": "Sluipen",
+    "hurt_camera_shake": "Stevige Camera Schud",
+    "potion_drinking": "Drankje drinken",
+    "tp_held_items": "Derde persoon Held Items",
+    "fp_carpet": "Tapijten",
+    "fp_fishing_rod": "Vis hengel",
+    "fp_sword": "Zwaarden",
+    "fp_potion": "Drankjes",
+    "fp_bow": "Boog",
+    "use_item_while_digging": "Gebruik item tijdens graven",
+    "fakeSwingActions": "Mis afkoelgedrag",
+    "hit_armor_color_clr_nr": "Hit Armor Kleur",
+    "stopwatch_kblc": "Start/Stop Toets",
+    "resetEveryStart_bl": "Reset bij start",
+    "potionCounter": "Genees Type",
+    "auto_friend_bl": "Auto Vriend",
+    "auto_tip_bl": "Auto TIP",
+    "auto_gg_bl": "Auto GG",
+    "anti_gg_bl": "Anti GG",
+    "auto_who_bl": "Auto Who",
+    "level_head_bl": "Niveau Hoofd",
+    "level_color_clr_nr": "Niveau Tekst Kleur",
+    "number_color_clr_nr": "Niveau Nummer Kleur",
+    "dot_bl": "Punt",
+    "outline_bl": "Overzicht",
+    "showInF5_bl": "Toon Crosshair In Derde Persoon",
+    "styleOption": "Stijl",
+    "thickness_nr": "Dikte",
+    "size_nr": "Grootte",
+    "gap_nr": "Kloof",
+    "dotSize_nr": "Puntgrootte",
+    "dynamic_colors_bl": "Dynamische Kleuren",
+    "color_clr_nr": "Kleur",
+    "dotColor_clr_nr": "Dot Kleur",
+    "friendly_clr_nr": "Vriendelijke Kleur",
+    "enemy_clr_nr": "Vijandelijke Kleur",
+    "rotationSpeed_nr": "Rotatie Snelheid",
+    "list_mode": "Lijst Modus",
+    "item_name_bl": "Item Naam",
+    "item_count_bl": "Item Aantal",
+    "equipped_item_bl": "Uitgerust Item",
+    "show_while_typing_bl": "Weergeven Tijdens Het Typen",
+    "text_shadow_bl": "Tekst Schaduw",
+    "damage_overlay_bl": "Schade Overlay",
+    "item_dmg_bl": "Toon Item Schade",
+    "armor_dmg_bl": "Toon Armor Schade",
+    "max_dmg_bl": "Toon Maximale Schade",
+    "dmg_display": "Schade Display Type",
+    "dmg_threshold": "Type Schade Drempel",
+    "static_colors_bl": "Statische Schade Kleuren",
+    "name_text_clr_nr": "Kleur Naam",
+    "highest_clr_nr": "Standaard Schade Waarde",
+    "high_clr_nr": "Hoge Schade Waarde",
+    "medium_clr_nr": "Gemiddelde Schade Waarde",
+    "medium_low_clr_nr": "Gemiddelde Schade Waarde",
+    "low_clr_nr": "Lage Schade Waarde",
+    "lowest_clr_nr": "Laagste Schade Waarde",
+    "oldBlur_bl": "Oude Blur",
+    "value_nr": "Waarde",
+    "skyblockOnly_bl": "Alleen SkyBlock",
+    "show_c_bl": "Toon C (Actieve Renderers)",
+    "show_labels_bl": "Toon Axis Labels",
+    "show_biome_bl": "Toon Biome",
+    "biome_coordinates_bl": "Toon Biome Label",
+    "biome_color_bl": "Gebruik Vooraf Ingestelde Biome Kleuren",
+    "direction_bl": "Toon Richting",
+    "directionAffect_bl": "Richting Wijziging Weergeven",
+    "text_coordinates_clr_nr": "Basis Kleur",
+    "x_label_color_clr_nr": "X Label Kleur",
+    "x_axis_color_clr_nr": "X Waarde Kleur",
+    "y_label_color_clr_nr": "Y Label Kleur",
+    "y_axis_color_clr_nr": "Y Waarde Kleur",
+    "z_label_color_clr_nr": "Z Label Kleur",
+    "z_axis_color_clr_nr": "Z Waarde Kleur",
+    "c_label_color_clr_nr": "C Label Kleur",
+    "c_axis_color_clr_nr": "C Waarde Kleur",
+    "direction_color_clr_nr": "Richting Kleur",
+    "direction_affect_color_clr_nr": "Richting Wijziging Kleur",
+    "biomeColor_color_clr_nr": "Biome Kleur",
+    "biomeLabelColor_color_clr_nr": "Biome Label Kleur",
+    "1_hk_hk": "Toets 1",
+    "2_hk_hk": "Toets 2",
+    "3_hk_hk": "Toets 3",
+    "4_hk_hk": "Toets 4",
+    "5_hk_hk": "Toets 5",
+    "6_hk_hk": "Toets 6",
+    "7_hk_hk": "Toets 7",
+    "8_hk_hk": "Toets 8",
+    "9_hk_hk": "Toets 9",
+    "10_hk_hk": "Toets 10",
+    "11_hk_hk": "Toets 11",
+    "12_hk_hk": "Toets 12",
+    "13_hk_hk": "Toets 13",
+    "14_hk_hk": "Toets 14",
+    "15_hk_hk": "Toets 15",
+    "clicks_bl": "Klikken weergeven",
+    "movement_bl": "Toon Movement Keys",
+    "spacebar_bl": "Toon spatiebalk",
+    "arrows_bl": "Vervang Namen met pijlen",
+    "textShadow_bl": "Tekst Schaduw",
+    "box_size_nr": "Vak grootte",
+    "text_pressed_clr_nr": "Tekstkleur (ingedrukt)",
+    "background_pressed_clr_nr": "Achtergrond Kleur",
+    "numbers_bl": "Nummers verbergen",
+    "background_color_clr_nr": "Achtergrond Kleur",
+    "beams_bl": "Toon Beam",
+    "box_border_bl": "Box Borders",
+    "box_padding_nr": "Box Padding",
+    "add_waypoint_kb": "Creëer een waypoint",
+    "hideHealthBar_bl": "Verberg Gezondheids Bar",
+    "hideFoodBar_bl": "Verberg Food and Armor Bar",
+    "hidePetHealthBar_bl": "Verberg Pet Health Bar",
+    "combatTimerDisplay_bl": "Gevecht Timer",
+    "combatTimerDisplay_blDescription": "U moet Cooldowns Mod inschakelen om deze functie te laten werken.",
+    "skeletonHelmetBars_bl": "Skeleton Helm Bars",
+    "zealotColor_clr_nr": "Zealot Kleur",
+    "specialZealotAlert_bl": "Speciaal Zealot Alarm",
+    "zealotColorBoolean_bl": "Verander Zealot Kleur",
+    "zealotCounterExplosiveBowSupport_bl": "Zealot Counter Explosive Bow Support",
+    "dropConfirmation": "Drop Bevestiging",
+    "lockSlots_bl": "Sloten vergrendelen",
+    "minimum_hotbar_item_rarity": "Minimale zeldzaamheid om te stoppen met droppen",
+    "drop_blacklist": "Zet items op de blacklist",
+    "drop_blacklistDescription": "Items die zijn ingevoerd in dit tekstvak zijn niet toegestaan om te laten vallen. Scheid items door een komma.",
+    "drop_whitelist": "Zet items op de whitelist",
+    "drop_whitelistDescription": "Items die zijn ingevoerd in dit tekstvak zijn toegestaan om te laten vallen. Scheid items door een komma.",
+    "stopDroppingSellingRareItems_bl": "Stop met droppen/verkopen van Zeldzame Items",
+    "avoidBreakingStems_bl": "Vermijd het breken van stems",
+    "avoidBlinkingNightVision_bl": "Vermijd knipperend nachtzicht",
+    "dontOpenProfilesWithBow_bl": "Open geen profielen met boog",
+    "freezeKey_kblc": "Freeze Toets",
+    "lockKey_kblc": "Vergrendel Toets",
+    "makeBackpackInventoriesColored_bl": "Maak Rugzak Inventarissen Gekleurd",
+    "slayerIndicator_bl": "Slayer Indicator",
+    "slayerIndicator_blDescription": "Als u deze functie inschakelt, wordt ook Armor Status Mod ingeschakeld.",
+    "turnBowGreenWhenUsingToxicArrowPoison_bl": "Giftige pijlen maken de boog groen",
+    "fishingSoundIndicator_bl": "Visgeluid Indicator",
+    "changeBarColorForPotions_bl": "Verander de balkkleur voor drankjes",
+    "colorEnderChestInEnd_bl": "Color Ender Chest In End",
+    "endEnderChestColor_clr_nr": "Ender Kist Kleur",
+    "hideSvenPupNametags_bl": "Verberg Sven / Pup Naamtags",
+    "hidePlayersNearNPC_bl": "Verberg spelers in de buurt van NPC",
+    "hidePlayersInLobby_bl": "Verberg spelers in de lobby",
+    "ignoreItemFrameClicks_bl": "Negeer Item Frame Kliks",
+    "hideBones_bl": "Verberg Skelet Hoed Botten",
+    "preventMovementOnDeath_bl": "Voorkom Beweging Bij Dood Gaan",
+    "onlyMineOresDeepCaverns_bl": "Mijn Alleen Erts In Diepe Grotten",
+    "onlyMineValuablesNether_bl": "Mijn Alleen Waarden In Nether",
+    "onlyBreakLogsPark_bl": "Breek Alleen Logs In Het Park",
+    "enableMessageWhenBreakingPark_bl": "Bericht inschakelen bij het breken in het park",
+    "jungleAxeCooldown_bl": "Treecapitator Afkoeltijd",
+    "showBackpackPreview_bl": "Rugzak voorbeeld weergeven",
+    "showBackpackHoldingShift_bl": "Toon rugzak bij het vasthouden van shift",
+    "backpackPreviewAh_bl": "Rugzak Voorbeeld (AH)",
+    "cakeBagPreview_bl": "Cake Tas Voorbeeld",
+    "backpackStyle": "Rugzak Stijl",
+    "fancyWarpMenu_bl": "Luxe Warp Menu",
+    "doubleWarp_bl": "Dubbele Warp",
+    "warpAdvancedMode_bl": "Geavanceerde Warp Modus",
+    "disableEndermanTeleportionEffect_bl": "Schakel Enderman Teleport Effect uit",
+    "hideGreyEnchants_bl": "Verberg Grijze Betoveringen",
+    "showItemAnvilUses_bl": "Toon Item Aambeeld Gebruik",
+    "replaceRomanNumeralsWithNumbers_bl": "Vervang Romeinse cijfers door getallen",
+    "organizeEnchants_bl": "Betoveringen Organiseren",
+    "showEnchantmentsReforges_bl": "Toon Betovering Reforges",
+    "showBrokenFragments_bl": "Toon Gebroken Fragmenten",
+    "dontResetCursorInventory_bl": "Cursor Inventaris niet resetten",
+    "craftingPatterns_bl": "Werkbank Patronen",
+    "craftingPattern": "Standaard Werkbank Patroon",
+    "disableEmberRod_bl": "Ember Hengel Uitschakelen",
+    "avoidPlacingEnchantItems_bl": "Vermijd het plaatsen van Betovering Items",
+    "disableTeleportPadMessages_bl": "Teleporteer Pad Berichten Uitschakelen",
+    "disableMagicalSoupMessages_bl": "Magische soep berichten uitschakelen",
+    "manabarColor_clr_nr": "Bar Kleur",
+    "healthbarColor_clr_nr": "Bar Kleur",
+    "useVanillaTextureDefence_bl": "Gebruik Vanilla Textuur",
+    "defensetextColor_clr_nr": "Tekst Kleur",
+    "percentageDefense_bl": "Toon als percentage",
+    "textColor_clr_nr": "Tekst Kleur",
+    "show_on_other_games_bl": "Weergeven op andere games",
+    "detailed_bl": "Gedetailleerde scherm",
+    "bait_list_color_clr_nr": "Tekst Kleur",
+    "warningTime_nr": "Waarschuwing Tijd",
+    "fullInventoryWarning_bl": "Volle Inventaris Waarschuwing",
+    "repeatFullInventoryWarning_bl": "Herhaal Volle Inventaris Waarschuwing",
+    "magmaWarning_bl": "Magma Waarschuwing",
+    "minionStopWarning_bl": "Minion Stop Waarschuwing",
+    "minionFullWarning_bl": "Minion Volledig Waarschuwing",
+    "minionDisableLocationWarning_bl": "Minion Uitschakelen Locatie Waarschuwing",
+    "legendarySeaCreatureWarning_bl": "Legendarische Zee Wezen Waarschuwing",
+    "repeatSlayBossWarning_bl": "Herhaal Slay Eindbaas Waarschuwing",
+    "summonEyeAlert_bl": "Roep Oog Alarm Op",
+    "noArrowsLeftAlert_bl": "Geen pijlen links alert",
+    "bossApproachAlert_bl": "Baas Benader Alarm",
+    "block_outline_color_clr_nr": "Blok Uitlijning Kleur",
+    "block_overlay_color_clr_nr": "Blok Overlay Kleur",
+    "block_outline_width_nr": "Blok Uitlijning Breedte",
+    "block_overlay_bl": "Blok Overlay",
+    "block_outline_bl": "Blok Omtrek",
+    "width_nr": "Breedte",
+    "useLegacyStyle_bl": "Gebruik Legacy Style",
+    "directionColor_clr_nr": "Richting Kleur",
+    "markerColor_clr_nr": "Marker kleur",
+    "invertPitch_bl": "Pitch omkeren (omhoog en omlaag)",
+    "invertYaw_bl": "Yaw omkeren (links en rechts)",
+    "freelook_kb": "Freelook",
+    "particleMultiplier_nr": "Deeltjes Vermenigvuldiger",
+    "showCriticals_bl": "Criticals tonen",
+    "affectCriticals_bl": "Beïnvloed Criticals",
+    "affectEnchantedCrits_bl": "Beïnvloed Scherpte",
+    "alwaysShowEnchantedCrits_bl": "Altijd scherpte tonen",
+    "militaryTime_bl": "24 uur formaat",
+    "point1Color_clr_nr": "Positie Een Kleur",
+    "point2Color_clr_nr": "Positie Twee Kleur",
+    "outlineColor_clr_nr": "Omlijning kleur",
+    "show_in_inventory_bl": "Toon in inventaris",
+    "display_typing_bl": "Weergeven Tijdens Het Typen",
+    "effect_name_bl": "Effect Naam",
+    "blink_bl": "Knipperen",
+    "blink_duration_nr": "Knipper tijd",
+    "color_name_based_on_effect_bl": "Kleur naam gebaseerd op Effect",
+    "duration_clr_nr": "Tijd Kleur",
+    "excludePerm_bl": "Permanente Effecten",
+    "excludeSpeed_bl": "Snelheid",
+    "excludeSlowness_bl": "Traagheid",
+    "excludeStrength_bl": "Kracht",
+    "excludeJumpBoost_bl": "Sprong Boost",
+    "excludeRegen_bl": "Regeneratie",
+    "excludeFireRes_bl": "Vuurbestendigheid",
+    "excludeWaterBreathing_bl": "Wateradems",
+    "excludeNightVision_bl": "Nachtzicht",
+    "excludeWeakness_bl": "Zwakheid",
+    "excludePoison_bl": "Gif",
+    "excludeHaste_bl": "Haast",
+    "excludeInvis_bl": "Onzichtbaarheid",
+    "time_nr": "Tijd",
+    "horizon_y_level_nr": "Horizon Y Niveau",
+    "gold_ingot_scale_nr": "Gouden Staaf Schaal",
+    "gold_nugget_scale_nr": "Golden Nugget Schaal",
+    "gold_ore_scale_nr": "Gold Ore Schaal",
+    "gold_apple_scale_nr": "Gouden appel schaal",
+    "skull_scale_nr": "Schedel Schaal",
+    "rightCLick_bl": "Rechtermuisklik CPS",
+    "showCPSText_bl": "CPS Tekst Weergeven",
+    "lineColor_clr_nr": "Lijn Kleur",
+    "menuBlur_bl": "Toon Menu Blur",
+    "shift_effects_bl": "Shift Effecten in inventaris",
+    "shift_effects_blDescription": "Wijzig de positie van de drankeffecten in je inventaris",
+    "achievements_bl": "Toon Prestaties",
+    "achievements_blDescription": "Een optie om Minecraft achievements popups in te schakelen",
+    "show_hud_in_debug_bl": "HUD in F3 weergeven",
+    "show_hud_in_debug_blDescription": "Kies of je mods wilt zien terwijl je in F3 zit",
+    "show_hud_in_shift_tab_bl": "Toon HUD in Vriend Menu",
+    "show_hud_in_shift_tab_blDescription": "Kies of je mods wilt zien in het Vrienden menu",
+    "friends_menu_disable_bl": "Vriend Menu uitschakelen",
+    "friends_menu_disable_blDescription": "Een optie om de LC Vriend Menu aan/uit te schakelen",
+    "use_minecraft_scale_enum": "Gebruik Minecraft GUI Schaal",
+    "use_minecraft_scale_enumDescription": "Kies of u LC mods en menu's wilt schalen op basis van de GUI schaal van Minecraft\n\n \n §bAl: §fScale Mods en Menus \n §bMODS: §fSchaal Mods Alleen \n §bOFF: §fGebruik Normal LC Schaal ",
+    "nametag_bl": "Naamtag Derde Persoon",
+    "nametag_blDescription": "Een optie om je eigen naamtag te zien in derde persoon",
+    "nametagLogo_bl": "Toon naamtag Icoon",
+    "nametagLogo_blDescription": "Een optie om LC logos aan/uit te doen",
+    "unlimited_chat_bl": "Onbeperkte Chat",
+    "unlimited_chat_blDescription": "Kies of u de berichtgeschiedenis in de chat wilt vergroten of niet",
+    "stackMessages_bl": "Stapel spamberichten op",
+    "stackMessages_blDescription": "Kies of u meerdere van dezelfde berichten in de chat wilt stapelen",
+    "hideBanWave_bl": "Verberg Ban Wave Berichten",
+    "hideBanWave_blDescription": "Kies of je LC ban wave berichten in de chat wilt zien",
+    "sortingOptions": "Sorteer Opties",
+    "sortingOptionsDescription": "Een optie die beslist in wat voor soort je mods zullen zijn\n \n §bDEFAULT: §fStandaard LC Sortering \n §bCUSTOM: §fUw aangepaste sortering",
+    "chatHeight_bl": "Chat Hoogte Fix",
+    "chatHeight_blDescription": "Verplaatst de chat 12 pixels omhoog zodat deze de gezondheidsbalk niet blokkeert",
+    "chatNameColor": "Gemarkeerde naam kleur",
+    "chatNameColorDescription": "Selecteer een kleur waarvan u wilt dat uw naam wordt gemarkeerd in de chat",
+    "searchOptions_bl": "Mods zoeken op opties",
+    "searchOptions_blDescription": "Zoek mods op opties om dingen gemakkelijker te vinden",
+    "lockMods_bl": "Mod sortering uitschakelen",
+    "lockMods_blDescription": "Een optie om je mods in positie te vergrendelen nadat je ze hebt gesorteerd",
+    "borderless_fullscreen_bl": "Randloos volledig scherm",
+    "borderless_fullscreen_blDescription": "Kies of je borderless fullscreen wilt inschakelen",
+    "variable_zoom_bl": "Scrollen om te vergroten",
+    "variable_zoom_blDescription": "Een optie om de verbeterde optimalisatie zoom in te schakelen",
+    "weather_bl": "Weer uitschakelen",
+    "weather_blDescription": "Kies of u alle weersomstandigheden wilt uitschakelen",
+    "trans_res_pack_menu_bg_bl": "Transparante achtergrond",
+    "trans_res_pack_menu_bg_blDescription": "Een optie om transparante achtergrond in te schakelen bij het wijzigen van uw bronpakket",
+    "red_string_bl": "Rood Draad",
+    "red_string_blDescription": "Kies of alle draad rood moeten zijn, ongeacht uw bronpakket",
+    "clear_glass": "Helder glas",
+    "clear_glassDescription": "Kies of u wilt dat glas helder is of niet",
+    "hudLayoutColor_clr_nr": "Branding Kleur",
+    "hudLayoutColor_clr_nrDescription": "Een optie om de hud layout kleur te wijzigen",
+    "mod_menu_kb": "Mod Menu",
+    "mod_menu_kbDescription": "Toont dit menu",
+    "waypoints_kb": "Waypoint Menu",
+    "emote_kb": "Emote Wiel",
+    "dropStack_kblc": "Stapel laten vallen",
+    "dropStack_kblcDescription": "De toets die samen met uw drop key moet worden vastgehouden om een stapel te laten vallen in plaats van één item",
+    "friendMenuKey_kblc": "Vriend Menu",
+    "toggleChat_kblc": "Chat aan/uit",
+    "hide_endportals": "Endportaal Verbergen",
+    "hide_endportalsDescription": "Kies wanneer het endportaal moet worden verborgen \n \n §bALTIJD: §fAltijd Weergeven \n §bSKYBLOCK: §fToon alleen op SkyBlock \n §bNOOIT: §fNooi Weergeven",
+    "skip_lighting_bl": "Volledig Helder",
+    "skip_lighting_blDescription": "Verhoogt gamma, waardoor donkere plaatsen helder worden",
+    "glint": "Toon Betoverings Glint",
+    "glintDescription": "Kies wanneer u het glinsterings effect wilt weergeven\n \n§bAL: §fAltijd weergeven\n §b ALLEEN INVENTARIS: §f Alleen renderen op inventaris items\n§bGEEN: §fNooit weergeven",
+    "lazy_chunk_loading": "Lazy Chunk Loading",
+    "lazy_chunk_loadingDescription": "Verandert hoe snel brokken kunnen worden geladen. Lagere waarden kunnen de FPS verhogen door grote brokken over een langere periode te laten laden",
+    "entity_shadow_bl": "Schaduw",
+    "entity_shadow_blDescription": "Geef schaduwen weer voor entiteiten",
+    "entity_render": "Entiteiten",
+    "entity_renderDescription": "Verandert hoe ver bepaalde entiteiten zullen renderen. Lagere waarden kunnen de FPS verhogen door verafgelegen entiteiten te verbergen",
+    "b_entity_render": "Tegel Entiteiten",
+    "b_entity_renderDescription": "Verandert hoe ver weg bepaalde tegel entiteiten worden weergegeven. Lagere waarden kunnen de FPS verhogen door verafgelegen tegelentiteiten te verbergen",
+    "chat_bg_opacity_nr": "Achtergrond Opacity",
+    "chat_shadow_bl": "Tekst schaduw in chat",
+    "chat_shadow_blDescription": "Toon tekst schaduw op chatregels",
+    "disable_chat_bl": "Inkomende berichten verbergen",
+    "dragon_wings_bl": "Vleugels",
+    "mask_bl": "Maskers",
+    "bandanna_bl": "Bandanas",
+    "hat_bl": "Hoeden",
+    "cloak_bl": "Mantels",
+    "chroma_speed_nr": "Snelheid",
+    "chroma_bl": "Chroma",
+    "chroma_type": "Type",
+    "horizontalScrollingKey_kblc": "Horizontaal scrollende toets",
+    "horizontalScrollingKey_kblcDescription": "Houd deze toets ingedrukt tijdens het scrollen om horizontaal te scrollen (indien mogelijk)",
+    "hideName_bl": "Verberg je naamtag",
+    "hideName_blDescription": "Om deze optie in of uit te schakelen, moet u opnieuw verbinding maken met de server waarop u zich bevindt.",
+    "hideOwnSkin_bl": "Verberg je skin",
+    "hideOthersNames_bl": "Verberg andere namen",
+    "hideOthersNames_blDescription": "Om deze optie in of uit te schakelen, moet u opnieuw verbinding maken met de server waarop u zich bevindt.",
+    "hideOthersSkin_bl": "Verberg andere skins",
+    "1_hk_hk_kblc": "Auto Tekst Sneltoets 1",
+    "2_hk_hk_kblc": "Auto Tekst Sneltoets 2",
+    "3_hk_hk_kblc": "Auto Tekst Sneltoets 3",
+    "4_hk_hk_kblc": "Auto Tekst Sneltoets 4",
+    "5_hk_hk_kblc": "Auto Tekst Sneltoets 5",
+    "6_hk_hk_kblc": "Auto Tekst Sneltoets 6",
+    "7_hk_hk_kblc": "Auto Tekst Sneltoets 7",
+    "8_hk_hk_kblc": "Auto Tekst Sneltoets 8",
+    "9_hk_hk_kblc": "Auto Tekst Sneltoets 9",
+    "10_hk_hk_kblc": "Auto Tekst Sneltoets 10",
+    "11_hk_hk_kblc": "Auto Tekst Sneltoets 11",
+    "12_hk_hk_kblc": "Auto Tekst Sneltoets 12",
+    "13_hk_hk_kblc": "Auto Tekst Sneltoets 13",
+    "14_hk_hk_kblc": "Auto Tekst Sneltoets 14",
+    "15_hk_hk_kblc": "Auto Tekst Sneltoets 15"
+  },
+  "gui": {
+    "components": {
+      "general": "Algemeen",
+      "performance": "Prestatie",
+      "controls": "Besturing",
+      "all": "Alle",
+      "new": "Nieuw",
+      "hud": "Hud",
+      "server": "Server",
+      "mechanic": "Mechanic",
+      "none": "Geen",
+      "profile": "Profiel $0",
+      "mods": "MODS",
+      "settings": "INSTELLINGEN",
+      "waypoints": "WAYPOINTS",
+      "staff": "PERSONEEL",
+      "editHudLayout": "HUD LAYOUT BEWERKEN",
+      "saveNewProfile": "OPSLAAN ALS NIEUW PROFIEL",
+      "resetPosition": "Positie herstellen",
+      "resetToDefaults": "Reset naar standaardinstellingen",
+      "noWaypointsSet": "Je hebt geen waypoints ingesteld voor deze wereld.",
+      "searchPlaceholder": "zoeken...",
+      "namePlaceholder": "naam...",
+      "sendPlaceholder": "Stuur een chatbericht...",
+      "commandPlaceholder": "Typ een opdracht...",
+      "reportABug": "Rapporteer een bug",
+      "profileEditor": "Profiel Editor",
+      "profileName": "Profiel Naam",
+      "loggedInAs": "ingelogd als",
+      "invalidSession": "ongeldige sessie",
+      "clashesWith": "Clashes with: $0",
+      "friends": "$0 VRIENDEN",
+      "requests": "$0 AANVRAGEN",
+      "add": "TOEVOEGEN",
+      "addFriend": "voeg een vriend toe...",
+      "searchFriend": "zoeken naar een vriend...",
+      "friendRequests": "Vrienden verzoeken",
+      "enabled": "Ingeschakeld",
+      "disabled": "Uitgeschakeld",
+      "incorrectUsername": "Onjuiste gebruikersnaam.",
+      "singleplayer": "SINGLEPLAYER",
+      "multiplayer": "MULTIPLAYER",
+      "createAWaypoint": "Maak een waypoint",
+      "save": "BEWAREN",
+      "help": "?",
+      "cancel": "Annuleren",
+      "understood": "IK BEGRIJP HET, GA DOOR",
+      "invalidSessionStatus": "Je hebt een ongeldige sessie gehad",
+      "sendMessage": "Stuur een chatbericht",
+      "removeFriend": "Verwijder vriend"
+    },
+    "competitiveDisconnect": {
+      "warning": "LET OP!",
+      "leavingPenalties": "Het verlaten van competitieve spellen kan leiden tot sancties.",
+      "suspended": "U kunt worden geschorst voor competitieve games als u games blijft verlaten!"
+    },
+    "friends": {
+      "connecting": "Verbinden"
+    },
+    "movement": {
+      "hold": "HOLD",
+      "click": "KLIK",
+      "shortcutsMovement": "Snelkoppelingen & Beweging",
+      "addModsToRegion": "Voeg mods toe aan geselecteerde regio",
+      "selectDragMods": "Selecteer & sleep mods",
+      "resetToClosest": "Reset mod naar dichtstbijzijnde positie",
+      "dontLockDragging": "Blokkeer geen mods tijdens het slepen",
+      "toggleModSelection": "Toggle (multiple) mod selectie",
+      "undoMovements": "Maak mod bewegingen ongedaan",
+      "redoMovements": "Herhaal mod bewegingen",
+      "moveWithPrecision": "Verplaats geselecteerde mod met precisie"
+    },
+    "emotes": {
+      "available": "BESCHIKBAAR",
+      "equipped": "UITGERUST",
+      "equipEmote": "Equip $0",
+      "unequipEmote": "Un-equip $0"
+    },
+    "bug": {
+      "shortDescriptionChars": "Korte beschrijving ($0 tekens over)"
+    },
+    "profile": {
+      "shortDescriptionChars": "Profielnaam ($0 tekens over)",
+      "lblServer": "Profiel automatisch selecteren bij verbinding met server:",
+      "backConfirm": {
+        "warning": "LET OP!",
+        "lineOne": "Je hebt niet-opgeslagen wijzigingen!",
+        "lineTwo": "Als u doorgaat, gaan uw wijzigingen verloren!"
+      },
+      "deleteConfirm": {
+        "warning": "WAARSCHUWING: DEZE ACTIE KAN NIET ONGEDAAN WORDEN!",
+        "lineOne": "U staat op het punt een profiel te verwijderen!",
+        "lineTwo": "Deze actie kan niet ongedaan worden gemaakt, weet u zeker dat u wilt doorgaan?"
+      }
+    },
+    "cosmetics": {
+      "cloaks": "MANTELS",
+      "wings": "VLEUGELS",
+      "hats": "HOEDEN",
+      "back": "TERUG",
+      "shop": "WINKEL",
+      "ownedCosmetics": "$0 eigendom",
+      "failedCosmeticConnection": "Kan geen verbinding maken met Cosmetic Server.",
+      "failedCosmeticConnectionRetry": "Probeer het later opnieuw.",
+      "noActive": "Geen",
+      "hint": "HINT: KLIK OM TE SLEPEN"
+    },
+    "mainmenu": {
+      "addAccount": {
+        "login": "log in",
+        "password": "wachtwoord",
+        "confirm": "BEVESTIGEN",
+        "emptyFields": "Geef beide velden op.",
+        "failedToLogin": "Inloggen mislukt.",
+        "back": "TERUG",
+        "loginRequest": "Log in a. u. b"
+      }
+    }
+  }
+}

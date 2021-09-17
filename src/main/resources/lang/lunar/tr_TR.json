@@ -1,0 +1,1002 @@
+{
+  "language": "Ingilizce",
+  "features": {
+    "scoreboard": {
+      "details": {
+        "name": "Score Tablosu",
+        "description": "Minecraft Score tablosunu gizlemenizi, taşımanızı veya özelleştirmenizi sağlar."
+      }
+    },
+    "uhc_overlay": {
+      "details": {
+        "name": "UHC Overlay",
+        "description": "UHC'de yaygın olarak ihtiyaç duyulan öğeleri tespit etmeyi kolaylaştırmak için yeniden boyutlandırın."
+      }
+    },
+    "coords": {
+      "details": {
+        "name": "Koordinatlar",
+        "description": "Koordinatlarınızı HUD'da görüntüler."
+      }
+    },
+    "serverAddressMod": {
+      "details": {
+        "name": "Sunucu adresi",
+        "description": "HUD'da şu anda bağlı olduğunuz sunucuyu görüntüler."
+      }
+    },
+    "directionhud": {
+      "details": {
+        "name": "Yön Göstergesi",
+        "description": "Ana yönünüzü HUD'da görüntüleyin."
+      }
+    },
+    "range": {
+      "details": {
+        "name": "Erişim Ekranı",
+        "description": "Başka bir oyuncuya ne kadar uzağa saldırdığınızı görüntüleyin."
+      }
+    },
+    "crosshair": {
+      "details": {
+        "name": "Crosshair",
+        "description": "Varsayılan Minecraft crosshair'i özelleştirilebilir bir crosshair'le değiştirin."
+      }
+    },
+    "armorstatus": {
+      "details": {
+        "name": "Zırh Durumu",
+        "description": "Kullandığınız zırh ve elinizde tuttuğunuz eşya hakkındaki bilgileri Gösterge Paneli'nde görüntüler."
+      }
+    },
+    "motionBlur": {
+      "details": {
+        "name": "Hareket bulanıklığı",
+        "description": "Hareket ederken çevrenizi bulanıklaştırın."
+      }
+    },
+    "cps": {
+      "details": {
+        "name": "CPS",
+        "description": "HUD'da tıklama hızınızı gösterir."
+      }
+    },
+    "memory": {
+      "details": {
+        "name": "Hafıza kullanımı",
+        "description": "Toplam ve boş bellek kullanımınızı gösterir."
+      }
+    },
+    "spark": {
+      "details": {
+        "name": "Spark",
+        "description": ""
+      }
+    },
+    "itemPhysic": {
+      "details": {
+        "name": "Item Fizikleri",
+        "description": "Zemin öğelerini fiziği olanlarla değiştirir."
+      }
+    },
+    "skyblockAddons": {
+      "details": {
+        "name": "Skyblock Eklentileri",
+        "description": "Skyblock deneyiminizi geliştirecek 20'den fazla özellikle Hypixel Skyblock için oluşturulmuş bir mod (version: ${sbaVersion})."
+      }
+    },
+    "skyBlockAddonsManaBarChild": {
+      "details": {
+        "name": "Mana Barı",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsManaTextChild": {
+      "details": {
+        "name": "Mana Metni",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsHealthBarChild": {
+      "details": {
+        "name": "Sağlık Barı",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsHealthTextChild": {
+      "details": {
+        "name": "Sağlık Metni",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsDefenseIconChild": {
+      "details": {
+        "name": "Savunma Simgesi",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsDefenseTextChild": {
+      "details": {
+        "name": "Savunma Metni",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsDefensePercentageChild": {
+      "details": {
+        "name": "Savunma Yüzdesi",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsSpeedTextChild": {
+      "details": {
+        "name": "Hız Metini",
+        "description": ""
+      }
+    },
+    "skyblockAddonsBirchParkRainmaker": {
+      "details": {
+        "name": "Huş ağacı Parkı Rainmaker",
+        "description": ""
+      }
+    },
+    "skyblockAddonsdarkAuctionoTimer": {
+      "details": {
+        "name": "Karanlık Müzayede Zamanlayıcısı",
+        "description": ""
+      }
+    },
+    "skyblockAddonsEndstoneProtector": {
+      "details": {
+        "name": "Endstone Koruyucusunu Gösterge Paneli'nde görüntüler",
+        "description": ""
+      }
+    },
+    "skyblockAddonsMagmaTimer": {
+      "details": {
+        "name": "Magma Zamanlayıcı",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsPowerOrbStausChild": {
+      "details": {
+        "name": "Güç Küresi Durumu",
+        "description": ""
+      }
+    },
+    "skyblockAddonsBoneDisplay": {
+      "details": {
+        "name": "Kemik Şapka",
+        "description": ""
+      }
+    },
+    "skyblockAddonsSkillDisplay": {
+      "details": {
+        "name": "Beceri Güncellemesi",
+        "description": ""
+      }
+    },
+    "skyblockAddonsSummoningEyeCounter": {
+      "details": {
+        "name": "Çağırma Göz Sayacı",
+        "description": ""
+      }
+    },
+    "skyblockAddonsTickerChargesDisplay": {
+      "details": {
+        "name": "Ticker Charges Ekranı",
+        "description": ""
+      }
+    },
+    "skyblockAddonsZealotCounter": {
+      "details": {
+        "name": "Zealot Sayacı",
+        "description": ""
+      }
+    },
+    "skyblockAddonsZealotTotalCounter": {
+      "details": {
+        "name": "Toplam Zealot Sayısı",
+        "description": ""
+      }
+    },
+    "skyblockAddonsZealotPerEye": {
+      "details": {
+        "name": "Göz Başına Zealot",
+        "description": ""
+      }
+    },
+    "bait_list": {
+      "details": {
+        "name": "Yem Listesi",
+        "description": ""
+      }
+    },
+    "sba_feature_warning": {
+      "details": {
+        "name": "Özellik Uyarıları",
+        "description": ""
+      }
+    },
+    "textHotKey": {
+      "details": {
+        "name": "Otomatik Metin Kısayol Tuşu",
+        "description": "Basıldığında bir komut veya sohbet mesajı gönderecek bir tuş veya tuş kombinasyonu ayarlamanıza olanak sağlar."
+      }
+    },
+    "freelook": {
+      "details": {
+        "name": "Serbest bakış",
+        "description": "Etkinleştirildiğinde, oynatıcınızı döndürmeden kamera perspektifinizi değiştirmenize olanak tanır."
+      }
+    },
+    "fov_mod": {
+      "details": {
+        "name": "FOV Modu",
+        "description": "Farklı iksir veya hız durumları için görüş alanınızı özelleştirmenizi sağlar."
+      }
+    },
+    "time_changer": {
+      "details": {
+        "name": "Zaman Değiştirici",
+        "description": "Günün mevcut saatini sabit bir konuma göre özelleştirin."
+      }
+    },
+    "waypoints": {
+      "details": {
+        "name": "Yol işaretleri",
+        "description": "Dünyanın herhangi bir yerinde, bir konumdan ne kadar uzakta olduğunuzu gösterecek ve isteğe bağlı olarak adı ve ışını oluşturacak bir ara nokta oluşturun."
+      }
+    },
+    "chat": {
+      "details": {
+        "name": "Sohbet",
+        "description": "Sohbet seçeneklerinizi beğeninize göre özelleştirin."
+      }
+    },
+    "itemTrackerChild": {
+      "details": {
+        "name": "Öğe İzleyici",
+        "description": "Ne zaman ve ne kadar öğe aldığınızı veya bıraktığınızı gösterir."
+      }
+    },
+    "keystrokes": {
+      "details": {
+        "name": "Tuş Vuruşları",
+        "description": "Hareketinize, farenize veya boşluk çubuğuna basıldığında görüntülenir."
+      }
+    },
+    "saturation": {
+      "details": {
+        "name": "Doyma",
+        "description": "HUD'da mevcut yiyecek doygunluk seviyenizi gösterir."
+      }
+    },
+    "hypixel_mod": {
+      "details": {
+        "name": "Hypixel Modları",
+        "description": "Hypixel sunucu ağına doğrudan entegre olan bir mod koleksiyonu."
+      }
+    },
+    "fps": {
+      "details": {
+        "name": "FPS",
+        "description": "FPS'nizi HUD'da görüntüleyin."
+      }
+    },
+    "clock": {
+      "details": {
+        "name": "Saat",
+        "description": "HUD'da güncel saati görüntüleyin."
+      }
+    },
+    "stopwatch": {
+      "details": {
+        "name": "Kronometre",
+        "description": "HUD'ye bir kronometre ekler."
+      }
+    },
+    "block_outline": {
+      "details": {
+        "name": "Block Çizgileri",
+        "description": "Anahattı özelleştirmenize veya işaret ettiğiniz bloğa bir kaplama eklemenize olanak tanır."
+      }
+    },
+    "netgraph": {
+      "details": {
+        "name": "Net Grafik",
+        "description": "Oynadığınız sunucunun geçerli TPS'sini gösteren bir grafik."
+      }
+    },
+    "worldedit_cui": {
+      "details": {
+        "name": "WorldEdit CUI",
+        "description": "WorldEdit eklentisi için istemci tarafı bir kullanıcı arayüzü, seçtiğiniz bölgeyi oyun içinde gerçek zamanlı olarak görmenizi sağlar."
+      }
+    },
+    "one_seven_visuals": {
+      "details": {
+        "name": "1.7 Animasyonları",
+        "description": "1.7'de nasıl davrandıklarına belirli görselleri ve animasyonları geri döndür."
+      }
+    },
+    "screenshot": {
+      "details": {
+        "name": "Ekran Görüntüsü Yükleyici",
+        "description": "Görüntüyü anında açmanıza, yüklemenize veya tweetlemenize olanak tanıyan ekran görüntüsü davranışını günceller."
+      }
+    },
+    "ping": {
+      "details": {
+        "name": "Ping",
+        "description": "HUD'da sunucu gecikmesini görüntüler."
+      }
+    },
+    "teamview": {
+      "details": {
+        "name": "Takım Görünümü",
+        "description": "Takım arkadaşlarınızın HUD'da nerede olduğunu gösterir."
+      }
+    },
+    "potion_counter": {
+      "details": {
+        "name": "İksir Sayacı",
+        "description": "Gösterge Paneli'nde envanterinizde şu anda kaç tane iyileştirici iksir veya çorba olduğunu gösterir."
+      }
+    },
+    "shinyPots": {
+      "details": {
+        "name": "Parlak İksirler",
+        "description": "İksirlere dolu kutu parlak büyü efekti verir."
+      }
+    },
+    "potioneffects": {
+      "details": {
+        "name": "İksir Etkileri",
+        "description": "Aktif olan iksir efektlerinizi HUD'da gösterin."
+      }
+    },
+    "bossbar": {
+      "details": {
+        "name": "Boss Barı",
+        "description": "Minecraft Boss bar'ı gizlemenizi, taşımanızı veya özelleştirmenizi sağlar."
+      }
+    },
+    "scrollable_tooltips": {
+      "details": {
+        "name": "Kaydırılabilir Araç İpuçları",
+        "description": "Aşırı uzun öğe açıklamalarını okumak için kaydırma tekerleğinizi kullanın."
+      }
+    },
+    "streamerMode": {
+      "details": {
+        "name": "Yayıncı Modu",
+        "description": ""
+      }
+    },
+    "toggleSneak": {
+      "details": {
+        "name": "Eğilme/ Koşma Toggle",
+        "description": "Basılı tutulmaya ihtiyaç duymak yerine koşma ve eğilme tuşları değiştirilebilir hale getirin."
+      }
+    },
+    "mumble-link": {
+      "details": {
+        "name": "Mumble Bağlantısı",
+        "description": "Minecraft dünyasında konumsal ses oluşturmak için mumble kullanır."
+      }
+    },
+    "combo": {
+      "details": {
+        "name": "Combo Sayacı",
+        "description": "HUD'da belirli bir süre içinde başka bir oyuncuya ne sıklıkla vurduğunuzu gösterir."
+      }
+    },
+    "particleMultiplierMod": {
+      "details": {
+        "name": "Parçacık Çuğaltıcı",
+        "description": "Başka bir oyuncuya saldırırken gösterilen parçacık miktarını artırın."
+      }
+    },
+    "cooldowns": {
+      "details": {
+        "name": "Bekleme süreleri",
+        "description": "Sunucuların HUD'da bekleme süresinde olan öğeleri veya yetenekleri görüntülemesine izin verir."
+      }
+    }
+  },
+  "settings": {
+    "labels": {
+      "settings": "Ayarlar",
+      "general": "General",
+      "microphone": "Mikrofon",
+      "speaker": "Hoparlör",
+      "controls": "Kontroller",
+      "generalOptions": "General Ayarlar",
+      "colorOptions": "Renk Ayarları",
+      "damageOptions": "Hasar Ayarları",
+      "damageDisplay": "Hasar Ekranı",
+      "renderOptions": "Render Ayarları",
+      "blinkOptions": "Yanıp Sönme Seçenekleri",
+      "hudOptions": "Hud Seçenekleri",
+      "cosmeticOptions": "Kozmetik Seçenekler",
+      "modOptions": "Mod Seçenekleri",
+      "miscOptions": "Misc Seçenekleri",
+      "texturePackOptions": "Doku Paketi Seçenekleri",
+      "zealotOptions": "Zealot Seçenekleri",
+      "safetyOptions": "Güvenlik Seçenekleri",
+      "indicatorOptions": "Gösterge Seçenekleri",
+      "entityOptions": "Varlık Seçenekleri",
+      "locationResourceOptions": "Konum Kaynak Seçenekleri",
+      "backpackOptions": "Sırt Çantası Seçenekleri",
+      "warpTpOptions": "Warp / Işınlanma Seçenekleri",
+      "tooltipOptions": "Araç İpucu Seçenekleri",
+      "containerOptions": "Konteyner Seçenekleri",
+      "enchantedItemsBlacklist": "Büyülü Öğeler Kara Listesi",
+      "enchantedItemsBlacklistDescription": "Büyülü öğelerin kullanımını devre dışı bırakır",
+      "chatOptions": "Sohbet Seçenekleri",
+      "hideOptions": "Seçenekleri Gizle",
+      "warningOptions": "Uyarı Seçenekleri",
+      "flyBoostOptions": "Uçma hızı Seçenekleri",
+      "animations": "Animasyonlar",
+      "heldItems": "Sahip olduğun öğeler",
+      "mechanics": "Mekanikler",
+      "excludePotionEffects": "İksir Etkilerini Hariç Tut",
+      "shortDescription": "Kısa Açıklama",
+      "section": "Bölüm",
+      "description": "Açıklama",
+      "submit": "SUBMIT",
+      "mod": "MOD",
+      "gui": "GUI",
+      "cosmetic": "KOZMETIK",
+      "store": "MAĞAZA",
+      "voice": "SES",
+      "antiCheat": "HİLE KARŞITI",
+      "launcher": "BAŞLATICI",
+      "other": "DİĞER"
+    },
+    "buttons": {
+      "applyToAll": "HEPSİNE BAŞVUR"
+    },
+    "off": "Kapalı",
+    "off_van": "Kapalı (Vanilla)",
+    "inventoryOnly": "Yalnızca Envanter",
+    "all": "Herşey",
+    "high": "Yüksek",
+    "highest": "En yüksek (En Çok FPS)",
+    "medium": "Orta (Daha Fazla FPS)",
+    "low": "Düşük",
+    "lowest": "En Düşük (En Az FPS Artışı)",
+    "value": "Değer",
+    "percent": "Yüzde",
+    "none": "Hiçbiri",
+    "vertical": "Dikey",
+    "horizontal": "Yatay",
+    "wave": "El sallama",
+    "shift": "Shift",
+    "mods": "Modlar",
+    "custom": "Özel",
+    "normal": "Normal",
+    "cross": "Çapraz",
+    "circle": "Daire",
+    "thirdPerson": "Üçüncü",
+    "firstPerson": "Birinci",
+    "forward": "İleri",
+    "doNothing": "Hiçbir şey yapma",
+    "showSwing": "Vuruşu Göster",
+    "showSwingParticles": "Vuruşu ve Parçacıkları Göster",
+    "potion": "İksir",
+    "soup": "Çorba",
+    "regular": "Regular",
+    "compact": "Kompakt",
+    "free": "Bedava",
+    "three": "Üç",
+    "five": "Beş",
+    "six": "Altı",
+    "always": "Her zaman",
+    "skyBlockOnly": "Yalnızca SkyBlock",
+    "never": "Asla",
+    "scale_nr": "Ölçek",
+    "shadow_bl": "Metin gölgesi",
+    "background_bl": "Metin gölgesi",
+    "backgroundHeight_nr": "Arka Plan Yüksekliği",
+    "backgroundWidth_nr": "Arka Plan Genişliği",
+    "border_bl": "Bordür",
+    "border_thickness_nr": "Bordür Kalınlığı",
+    "text_clr_nr": "Metin Rengi",
+    "background_clr_nr": "Arka plan Rengi",
+    "border_clr_nr": "Sınır Rengi",
+    "colored_bl": "İksir Rengini Göster",
+    "renderGlintBehindPotion_bl": "İksirin Arkasında Parıltı Oluştur",
+    "spark_start_kblc": "Spark'ı Başlat",
+    "spark_stop_kblc": "Spark'ı Durdur",
+    "render_bar_bl": "Render Sağlık",
+    "customBossBar_bl": "Özel Boss Bar Kullan",
+    "barColor_clr_nr": "BossBar Rengi",
+    "toggle_sprint_bl": "Koşuş'a Geç",
+    "toggle_sneak_bl": "Eğilme'ye Geç",
+    "toggle_sneak_container_bl": "Konteyner İçinde Eğilme'ye Geç",
+    "double_tap_bl": "Çift Dokunma",
+    "show_text_bl": "Gösterge Paneli Metnini Göster",
+    "fly_boost_bl": "Uçuş Hızı Artırma",
+    "boost_amnt_nr": "Uçuş Hızı Artırma Miktarı",
+    "showHudText_bl": "Gösterge Paneli",
+    "default_fov_nr": "Varsayılan FOV",
+    "slowness_fov_nr": "Yavaşlık FOV",
+    "sprinting_fov_nr": "Koşuş FOV",
+    "flying_fov_nr": "Uçuş FOV",
+    "speed_fov_nr": "Hız FOV",
+    "mode": "Liste Modu",
+    "glint_anim": "Parlama Rendering",
+    "armor_hit_anim": "Zırh Vuruşu Animasyonu",
+    "block_hit_anim": "Blok Vuruşu",
+    "health_anim": "Sağlık Yanıp Sönüyüşü",
+    "sneak_anim": "Eğilme",
+    "hurt_camera_shake": "Hasar Kamera Sarsıntısı",
+    "potion_drinking": "İksir İçme",
+    "tp_held_items": "Üçüncül Kişi Kamerasında Elde Tutulan Öğeler",
+    "fp_carpet": "Halılar",
+    "fp_fishing_rod": "Olta",
+    "fp_sword": "Kılıçlar",
+    "fp_potion": "İksirler",
+    "fp_bow": "Yay",
+    "use_item_while_digging": "Kazarken Eşyayı Kullan",
+    "fakeSwingActions": "Miss Cooldown Davranışı",
+    "hit_armor_color_clr_nr": "Vurulmuş Zırh Rengi",
+    "stopwatch_kblc": "Başlat / Durdur Tuşu",
+    "resetEveryStart_bl": "Başlangıçta Sıfırla",
+    "potionCounter": "İyileştirme Tipi",
+    "auto_friend_bl": "Otomatik Arkadaş",
+    "auto_tip_bl": "Otomatik TIP",
+    "auto_gg_bl": "Otomatik GG",
+    "anti_gg_bl": "Anti GG",
+    "auto_who_bl": "Otomatik Kim",
+    "level_head_bl": "Level Head",
+    "level_color_clr_nr": "Level Metin Rengi",
+    "number_color_clr_nr": "Level Sayı Rengi",
+    "dot_bl": "Nokta",
+    "outline_bl": "Anahat",
+    "showInF5_bl": "Crosshair Üçüncü Kişide Göster",
+    "styleOption": "Style",
+    "thickness_nr": "Kalınlık",
+    "size_nr": "Boyut",
+    "gap_nr": "Boşluk",
+    "dotSize_nr": "Nokta Boyutu",
+    "dynamic_colors_bl": "Dinamik Renkler",
+    "color_clr_nr": "Renk",
+    "dotColor_clr_nr": "Nokta Rengi",
+    "friendly_clr_nr": "Dost Rengi",
+    "enemy_clr_nr": "Duşman Rengi",
+    "rotationSpeed_nr": "Dönüş hızı",
+    "list_mode": "Liste Modu",
+    "item_name_bl": "Öğe adı",
+    "item_count_bl": "Eşya sayısı",
+    "equipped_item_bl": "Donanmış Eşya",
+    "show_while_typing_bl": "Yazarken Göster",
+    "text_shadow_bl": "Metin Gölgesi",
+    "damage_overlay_bl": "Hasar Overlay",
+    "item_dmg_bl": "Eşya Hasarını Göster",
+    "armor_dmg_bl": "Zırh Hasarını Göster",
+    "max_dmg_bl": "Max Hasarı Göster",
+    "dmg_display": "Hasar Ekran Tipi",
+    "dmg_threshold": "Hasar Threshold Tipi",
+    "static_colors_bl": "Statik Hasar Renkleri",
+    "name_text_clr_nr": "İsim Rengi",
+    "highest_clr_nr": "Varsayılan Hasar Değeri",
+    "high_clr_nr": "Yüksek Hasar Değeri",
+    "medium_clr_nr": "Orta Hasar Değeri",
+    "medium_low_clr_nr": "Orta Düşük Hasar Değeri",
+    "low_clr_nr": "Düşük Hasar Değeri",
+    "lowest_clr_nr": "En Düşük Hasar Rengi",
+    "oldBlur_bl": "Eski Bulanıklık",
+    "value_nr": "Değer",
+    "skyblockOnly_bl": "Sadece Skyblock",
+    "show_c_bl": "C göster (Aktive Renders)",
+    "show_labels_bl": "Eksen Etiketlerini Göster",
+    "show_biome_bl": "Biome Göster",
+    "biome_coordinates_bl": "Biome Etiketini Göster",
+    "biome_color_bl": "Ön Ayarlı Biyom Renklerini Kullan",
+    "direction_bl": "Direksiyonu Göster",
+    "directionAffect_bl": "Direksiyon Modifikasyonunu Göster",
+    "text_coordinates_clr_nr": "Ana renk",
+    "x_label_color_clr_nr": "X Etiket Rengi",
+    "x_axis_color_clr_nr": "X Değer Rengi",
+    "y_label_color_clr_nr": "Y Etiket Rengi",
+    "y_axis_color_clr_nr": "Y Değer Renki",
+    "z_label_color_clr_nr": "Z Etiket Rengi",
+    "z_axis_color_clr_nr": "Z Değer Rengi",
+    "c_label_color_clr_nr": "C Etiket Rengi",
+    "c_axis_color_clr_nr": "C Değer Rengi",
+    "direction_color_clr_nr": "Direksiyon Rengi",
+    "direction_affect_color_clr_nr": "Direksiyon Modifikasyonunu Rengi",
+    "biomeColor_color_clr_nr": "Biome Rengi",
+    "biomeLabelColor_color_clr_nr": "Biome Etiket Rengi",
+    "1_hk_hk": "Tuş 1",
+    "2_hk_hk": "Tuş 2",
+    "3_hk_hk": "Tuş 3",
+    "4_hk_hk": "Tuş 4",
+    "5_hk_hk": "Tuş 5",
+    "6_hk_hk": "Tuş 6",
+    "7_hk_hk": "Tuş 7",
+    "8_hk_hk": "Tuş 8",
+    "9_hk_hk": "Tuş 9",
+    "10_hk_hk": "Tuş 10",
+    "11_hk_hk": "Tuş 11",
+    "12_hk_hk": "Tuş 12",
+    "13_hk_hk": "Tuş 13",
+    "14_hk_hk": "Tuş 14",
+    "15_hk_hk": "Tuş 15",
+    "clicks_bl": "Tıklamaları Göster",
+    "movement_bl": "Hareket Tuşlarını Göster",
+    "spacebar_bl": "Boşluk Çubuğunu Göster",
+    "arrows_bl": "İsimleri Oklarla Değiştir",
+    "textShadow_bl": "Metin Gölgesi",
+    "box_size_nr": "Kutu Boyutu",
+    "text_pressed_clr_nr": "Metin Rengi (Basılıyken)",
+    "background_pressed_clr_nr": "Arka Plan Rengi",
+    "numbers_bl": "Numaraları Sakla",
+    "background_color_clr_nr": "Arka plan Rengi",
+    "beams_bl": "Işık Göster",
+    "box_border_bl": "Kutu Sınırları",
+    "box_padding_nr": "Kutu Dolgusu",
+    "add_waypoint_kb": "Waypoint Yarat",
+    "hideHealthBar_bl": "Sağlık Çubuğunu Gizle",
+    "hideFoodBar_bl": "Yiyecekleri ve Zırh Çubuğunu Gizle",
+    "hidePetHealthBar_bl": "Hayvan Sağlığı Çubuğunu Gizle",
+    "combatTimerDisplay_bl": "Savaş Zamanlayıcısı",
+    "combatTimerDisplay_blDescription": "Bu özelliğin çalışması için Cooldowns Modunu etkinleştirmelisiniz.",
+    "skeletonHelmetBars_bl": "İskelet Kask Çubukları",
+    "zealotColor_clr_nr": "Zealot rengi",
+    "specialZealotAlert_bl": "Spesiyal Zealot Uyarısı",
+    "zealotColorBoolean_bl": "Zealot Rengini Deyistir",
+    "zealotCounterExplosiveBowSupport_bl": "Patlayıcı Yay Zealot Supportu",
+    "dropConfirmation": "Bırakma Onayı",
+    "lockSlots_bl": "Slot Kiliti",
+    "minimum_hotbar_item_rarity": "Düşmeyi durdurmak için minimum nadirlik",
+    "drop_blacklist": "Drop Eşya Blacklist",
+    "drop_blacklistDescription": "Bu metin kutusuna girilen öğelerin bırakılmasına izin verilmeyecektir. Öğeleri virgülle ayırın.",
+    "drop_whitelist": "Drop Eşya Whitelist",
+    "drop_whitelistDescription": "Bu metin kutusuna girilen öğelerin atılmasına izin verilecektir. Öğeleri virgülle ayırın.",
+    "stopDroppingSellingRareItems_bl": "Nadir Eşyaları Düşürmeyi / Satmayı Durdurun",
+    "avoidBreakingStems_bl": "Sapları Kırmaktan Kaçının",
+    "avoidBlinkingNightVision_bl": "Yanıp Sönen Gece Görüşünden Kaçının",
+    "dontOpenProfilesWithBow_bl": "Profilleri Yay ile Açmayın",
+    "freezeKey_kblc": "Dondurma Tuşu",
+    "lockKey_kblc": "Kilitleme Tuşu",
+    "makeBackpackInventoriesColored_bl": "Sırt Çantası Envanterlerini Renklendirin",
+    "slayerIndicator_bl": "Slayer Göstergesi",
+    "slayerIndicator_blDescription": "Bu özelliği etkinleştirmek, Zırh Durum Modunu da etkinleştirecektir.",
+    "turnBowGreenWhenUsingToxicArrowPoison_bl": "Zehirli Oklar Yayı Yeşil yapar",
+    "fishingSoundIndicator_bl": "Balık Tutma Sesi Göstergesi",
+    "changeBarColorForPotions_bl": "İksirler için Çubuk Rengini Değiştirin",
+    "colorEnderChestInEnd_bl": "End'de Enderchest Rengi",
+    "endEnderChestColor_clr_nr": "Enderchest Rengi",
+    "hideSvenPupNametags_bl": "Sven/Pup İsimlerini Gizle",
+    "hidePlayersNearNPC_bl": "NPC Yakınındaki Oyuncuları Gizle",
+    "hidePlayersInLobby_bl": "Oyuncuları Lobide Gizle",
+    "ignoreItemFrameClicks_bl": "Eşya Çerçevesi Tıklamalarını Yoksay",
+    "hideBones_bl": "İskelet Şapka Kemiklerini Gizle",
+    "preventMovementOnDeath_bl": "Ölüm Sırasında Hareketi Önleyin",
+    "onlyMineOresDeepCaverns_bl": "Sadece Derin Mağaralarda Maden Cevherlerini Kaz",
+    "onlyMineValuablesNether_bl": "Cehenemde Sadece Değeri Olan Cevherleri kaz",
+    "onlyBreakLogsPark_bl": "Sadece Parkta Odunları Kır",
+    "enableMessageWhenBreakingPark_bl": "Park'ta Odun keserken Mesaj'ı Etkinleştir",
+    "jungleAxeCooldown_bl": "Treecapitator Geri Sayacı",
+    "showBackpackPreview_bl": "Sırt Çantası Önizlemesini Göster",
+    "showBackpackHoldingShift_bl": "Sırt Çantası Sift Tuşuna Basılıyken Göster",
+    "backpackPreviewAh_bl": "Sırt Çantası Önizlemesi (AH)",
+    "cakeBagPreview_bl": "Pasta Torbası Önizlemesi",
+    "backpackStyle": "Sırt Çantası Tarzı",
+    "fancyWarpMenu_bl": "Süslü Warp Menüsü",
+    "doubleWarp_bl": "Çift warp",
+    "warpAdvancedMode_bl": "Gelişmiş Warp Modu",
+    "disableEndermanTeleportionEffect_bl": "Enderman Işınlanma Etkisini Devre Dışı Bırak",
+    "hideGreyEnchants_bl": "Gri Büyücüleri Gizle",
+    "showItemAnvilUses_bl": "Örs Kullanımlarını Göster",
+    "replaceRomanNumeralsWithNumbers_bl": "Roma Rakamlarını Sayılarla Değiştirin",
+    "organizeEnchants_bl": "Büyüleri Organize et",
+    "showEnchantmentsReforges_bl": "Büyü Reforglarını Göster",
+    "showBrokenFragments_bl": "Kırık Parçaları Göster",
+    "dontResetCursorInventory_bl": "Envantere Geçişte İmlecin Yerini Sıfırlama",
+    "craftingPatterns_bl": "Crafting Patterns",
+    "craftingPattern": "Varsayilan Crafting Pattern",
+    "disableEmberRod_bl": "Ember Rodu Devre Dışı Bırak",
+    "avoidPlacingEnchantItems_bl": "Büyülü Eşyaları Yerleştirmekten Kaçının",
+    "disableTeleportPadMessages_bl": "Teleport Pad Mesajlarını Devre Dışı Bırak",
+    "disableMagicalSoupMessages_bl": "Sihirli Çorba Mesajlarını Devre Dışı Bırak",
+    "manabarColor_clr_nr": "Çubuk Rengi",
+    "healthbarColor_clr_nr": "Çubuk Rengi",
+    "useVanillaTextureDefence_bl": "Vanilya Texture Kullanın",
+    "defensetextColor_clr_nr": "Metin Rengi",
+    "percentageDefense_bl": "Yüzdelik Olarak Göster",
+    "textColor_clr_nr": "Metin Rengi",
+    "show_on_other_games_bl": "Başka Oyunlarda Göster",
+    "detailed_bl": "Detaylı Ekran",
+    "bait_list_color_clr_nr": "Metin Rengi",
+    "warningTime_nr": "Uyarı Zamanı",
+    "fullInventoryWarning_bl": "Full Envanter Uyarısı",
+    "repeatFullInventoryWarning_bl": "Tekrar Full Envanter Uyarısı",
+    "magmaWarning_bl": "Magma Uyarısı",
+    "minionStopWarning_bl": "Durmuş Minion Uyarısı",
+    "minionFullWarning_bl": "Full Minion Uyarısı",
+    "minionDisableLocationWarning_bl": "Minion Konumu Devre Dışı Bırakma Uyarısı",
+    "legendarySeaCreatureWarning_bl": "Efsanevi Deniz Yaratığı Uyarısı",
+    "repeatSlayBossWarning_bl": "Slayer Boss Uyarısını Tekrarla",
+    "summonEyeAlert_bl": "Çağırma Göz Uyarısı",
+    "noArrowsLeftAlert_bl": "Ok Kalmadı Uyarısı",
+    "bossApproachAlert_bl": "Boss Yaklaşıma Uyarısı",
+    "block_outline_color_clr_nr": "Block Dış Hat Rengi",
+    "block_overlay_color_clr_nr": "Block Kaplama Rengi",
+    "block_outline_width_nr": "Block Dış Hat Kalınlığı",
+    "block_overlay_bl": "Block Kaplaması",
+    "block_outline_bl": "Block Dış Hattı",
+    "width_nr": "Kalınlık",
+    "useLegacyStyle_bl": "Eski Stili Kullan",
+    "directionColor_clr_nr": "Direksiyon Rengi",
+    "markerColor_clr_nr": "İşaret Rengi",
+    "invertPitch_bl": "Eğimi Ters Çevir (Yukarı ve Aşağı)",
+    "invertYaw_bl": "Sapmayı Ters Çevir (Sol ve Sağ)",
+    "freelook_kb": "Serbest Bakış",
+    "particleMultiplier_nr": "Parçacık Çuğaltıcı",
+    "showCriticals_bl": "Criticalleri Göster",
+    "affectCriticals_bl": "Affect Criticals",
+    "affectEnchantedCrits_bl": "Keskinliği Etkile",
+    "alwaysShowEnchantedCrits_bl": "Herzaman Keskinlik Göster",
+    "militaryTime_bl": "24 saat Formatı",
+    "point1Color_clr_nr": "Posizyon Bir Rengi",
+    "point2Color_clr_nr": "Posizyon İki Rengi",
+    "outlineColor_clr_nr": "Dış Hat Rengi",
+    "show_in_inventory_bl": "Envanterde Göster",
+    "display_typing_bl": "Yazarken Göster",
+    "effect_name_bl": "İsmi Etkile",
+    "blink_bl": "Blink",
+    "blink_duration_nr": "Blink Süresi",
+    "color_name_based_on_effect_bl": "Efekt Bazında Renk Adı",
+    "duration_clr_nr": "Süre Rengi",
+    "excludePerm_bl": "Kalıcı Etkiler",
+    "excludeSpeed_bl": "Hız",
+    "excludeSlowness_bl": "Yavaşlık",
+    "excludeStrength_bl": "Güç",
+    "excludeJumpBoost_bl": "Jıplama Boostu",
+    "excludeRegen_bl": "Rejenerasyon",
+    "excludeFireRes_bl": "Ateş Direnci",
+    "excludeWaterBreathing_bl": "Suda Nefes Alma",
+    "excludeNightVision_bl": "Gece Göruşu",
+    "excludeWeakness_bl": "Zayıflık",
+    "excludePoison_bl": "Zehir",
+    "excludeHaste_bl": "Acele",
+    "excludeInvis_bl": "Görunmezlik",
+    "time_nr": "Zaman",
+    "horizon_y_level_nr": "Ufuk Y Düzeyi",
+    "gold_ingot_scale_nr": "Altın Külçe Ölçeği",
+    "gold_nugget_scale_nr": "Altın Parça Ölçeği",
+    "gold_ore_scale_nr": "Altın Cevheri Ölçeği",
+    "gold_apple_scale_nr": "Altın Elma Ölçeği",
+    "skull_scale_nr": "Kafatası Ölçeği",
+    "rightCLick_bl": "Sağ Tıklama CPS",
+    "showCPSText_bl": "CPS Metnini Göster",
+    "lineColor_clr_nr": "Cizgi Rengi",
+    "menuBlur_bl": "Menü Bulanıklığını Göster",
+    "shift_effects_bl": "Shift Effects in Envanter",
+    "shift_effects_blDescription": "Envanterde İksir Etkilerinin Yerini Deyistir",
+    "achievements_bl": "Başarıları Göster",
+    "achievements_blDescription": "Minecraft başarı pencerelerini değiştirme seçeneği",
+    "show_hud_in_debug_bl": "HUD'ı F3'te göster",
+    "show_hud_in_debug_blDescription": "F3'teyken modları görmek isteyip istemediğinizi seçin",
+    "show_hud_in_shift_tab_bl": "HUD'ı Arkadşlar Menusunde Göster",
+    "show_hud_in_shift_tab_blDescription": "Arkadaş Menüsündeyken modları görmek isteyip istemediğinizi seçin",
+    "friends_menu_disable_bl": "Arkadaş Menüsünü Devre Dışı Bırak",
+    "friends_menu_disable_blDescription": "LC Arkadaş Menüsünü değiştirme seçeneği",
+    "use_minecraft_scale_enum": "Minecraft GUI Ölçeğini kullanın",
+    "use_minecraft_scale_enumDescription": "Minecraft'ın GUI ölçeğine göre LC modlarını ve menüleri ölçeklemek isteyip istemediğinizi seçin\n\n \n §bALL: §fScale Mods and Menus \n §bMODS: §fScale Mods Only \n §bOFF: §fUse Normal LC Scale ",
+    "nametag_bl": "Üçüncü Kişi İsim Etiketi",
+    "nametag_blDescription": "Kendi isim etiketinizi üçüncü şahısi'da olarak görme seçeneği",
+    "nametagLogo_bl": "İsim Etiketi Simgesini Göster",
+    "nametagLogo_blDescription": "İsim etiketlerinde LC logolarını değiştirme seçeneği",
+    "unlimited_chat_bl": "Sınırsız Sohbet",
+    "unlimited_chat_blDescription": "Sohbette mesaj geçmişini artırmak isteyip istemediğinizi seçin",
+    "stackMessages_bl": "Spam Mesajlarını Istifle",
+    "stackMessages_blDescription": "Sohbette aynı mesajlardan birden fazla istiflemek isteyip istemediğinizi seçin",
+    "hideBanWave_bl": "Ban Wave Mesajlarını Sakla",
+    "hideBanWave_blDescription": "Sohbette LC Ban wave mesajlarını görmek isteyip istemediğinizi seçin",
+    "sortingOptions": "Sıralama Seçenekleri",
+    "sortingOptionsDescription": "Modlarınızın sıralamasına karar veren bir seçenek\n \n §bDEFAULT: §fDefault LC Sorting \n §bCUSTOM: §fYour Custom Sorting",
+    "chatHeight_bl": "Sohbet Yüksekliği Düzeltmesi",
+    "chatHeight_blDescription": "Sohbeti 12 piksel yukarı taşır, böylece sağlık çubuğunu engellemez",
+    "chatNameColor": "Vurgulanan İsim Rengi",
+    "chatNameColorDescription": "Adınızın sohbette olduğu gibi vurgulanmasını istediğiniz bir renk seçin",
+    "searchOptions_bl": "Seçeneklere Göre Mod Ara",
+    "searchOptions_blDescription": "Modları bulmayı kolaylaştırmak için seçeneklere göre arayın",
+    "lockMods_bl": "Mod Sıralamayı Devre Dışı Bırak",
+    "lockMods_blDescription": "Modlarınızı sıraladıktan sonra konumlarında kilitleme seçeneği",
+    "borderless_fullscreen_bl": "Kenarlıksız Tam Ekran",
+    "borderless_fullscreen_blDescription": "Kenarlıksız tam ekranı etkinleştirmek isteyip istemediğinizi seçin",
+    "variable_zoom_bl": "Yakınlaştırmak için kaydırın",
+    "variable_zoom_blDescription": "Gelişmiş OptiFine yakınlaştırmayı etkinleştirmek için bir seçenek",
+    "weather_bl": "Havayı Devre Dışı Bırak",
+    "weather_blDescription": "Tüm hava durumunu devre dışı bırakmak isteyip istemediğinizi seçin",
+    "trans_res_pack_menu_bg_bl": "Şeffaf Arka Plan",
+    "trans_res_pack_menu_bg_blDescription": "Kaynak paketinizi değiştirirken şeffaf arka planı etkinleştirme seçeneği",
+    "red_string_bl": "Kırmızı ip",
+    "red_string_blDescription": "Kaynak paketinizden bağımsız olarak tüm iplerin kırmızı olup olmayacağını seçin",
+    "clear_glass": "Temiz cam",
+    "clear_glassDescription": "Camın berrak olmasını isteyip istemediğinizi seçin",
+    "hudLayoutColor_clr_nr": "Marka Rengi",
+    "hudLayoutColor_clr_nrDescription": "Hud düzeni rengini değiştirme seçeneği",
+    "mod_menu_kb": "Mod Menusu",
+    "mod_menu_kbDescription": "Bu menüyü gösterir",
+    "waypoints_kb": "Yol Noktası Menüsü",
+    "emote_kb": "İfade Çarkı",
+    "dropStack_kblc": "Yığın Bırak",
+    "dropStack_kblcDescription": "Bir öğe yerine yığın düşürmek için bırakma tuşuyla birlikte tutulması gereken anahtar",
+    "friendMenuKey_kblc": "Arkadaşlar Menusu",
+    "toggleChat_kblc": "Sohbeti Aç / Kapat",
+    "hide_endportals": "Endportallarını Gizle",
+    "hide_endportalsDescription": "Endportalı ne zaman saklayacağınızı seçme\n \n§bALWAYS: §fAlways show \n §bSKYBLOCK: §fShow only on SkyBlock \n §bNEVER: §fNever show",
+    "skip_lighting_bl": "Tam parlak",
+    "skip_lighting_blDescription": "Gammayı artırır, karanlık yerleri parlak hale getirir",
+    "glint": "Büyü Parıltısını Göster",
+    "glintDescription": "Parlama efektinin ne zaman oluşturulacağını seçin \n \n §bALL: §fAlways render \n §bINVENTORY ONLY: §fOnly render on inventory items \n §bNONE: §fNever render",
+    "lazy_chunk_loading": "Lazy Chunk Loading",
+    "lazy_chunk_loadingDescription": "Parçaların ne kadar hızlı yüklenebileceğini değiştirir. Daha düşük değerler, daha uzun bir süre boyunca büyük parçalar yükleyerek FPS'i artırabilir",
+    "entity_shadow_bl": "Gölge",
+    "entity_shadow_blDescription": "Varlıklar için gölgeler renderlar",
+    "entity_render": "Varlıklar",
+    "entity_renderDescription": "Belirli varlıkların ne kadar uzakta oluşturulacağını değiştirir. Daha düşük değerler, uzak varlıkları gizleyerek FPS'i artırabilir",
+    "b_entity_render": "Tile Varlıkları",
+    "b_entity_renderDescription": "Belirli tile varlıkların ne kadar uzakta oluşturulacağını değiştirir. Daha düşük değerler, uzak varlıkları gizleyerek FPS'i artırabilir",
+    "chat_bg_opacity_nr": "Arka Plan Şeffaflığı",
+    "chat_shadow_bl": "Sohbette Metin Gölgesi",
+    "chat_shadow_blDescription": "Sohbet satırlarında metin gölgesini göster",
+    "disable_chat_bl": "Gelen Mesajları Gizle",
+    "dragon_wings_bl": "Kanatlar",
+    "mask_bl": "Maskeler",
+    "bandanna_bl": "Bandanalar",
+    "hat_bl": "Şapka",
+    "cloak_bl": "Pelerinler",
+    "chroma_speed_nr": "Hız",
+    "chroma_bl": "Chroma",
+    "chroma_type": "Türü",
+    "horizontalScrollingKey_kblc": "Yatay Kaydırma Tuşu",
+    "horizontalScrollingKey_kblcDescription": "Yatay olarak kaydırmak için kaydırırken bu tuşu basılı tutun",
+    "hideName_bl": "İsim Etiketinizi Gizleyin",
+    "hideName_blDescription": "Bu seçeneğin açılması veya kapatılması, bulunduğunuz sunucuya yeniden bağlanmanızı gerektirir.",
+    "hideOwnSkin_bl": "Cildinizi Gizleyin",
+    "hideOthersNames_bl": "Başkalarının Adlarını Gizle",
+    "hideOthersNames_blDescription": "Bu seçeneğin açılması veya kapatılması, bulunduğunuz sunucuya yeniden bağlanmanızı gerektirir.",
+    "hideOthersSkin_bl": "Diğer Görünümlerini Gizle",
+    "1_hk_hk_kblc": "Otomatik Metin Kısayol Tuşu 1",
+    "2_hk_hk_kblc": "Otomatik Metin Kısayol Tuşu 2",
+    "3_hk_hk_kblc": "Otomatik Metin Kısayol Tuşu 3",
+    "4_hk_hk_kblc": "Otomatik Metin Kısayol Tuşu 4",
+    "5_hk_hk_kblc": "Otomatik Metin Kısayol Tuşu 5",
+    "6_hk_hk_kblc": "Otomatik Metin Kısayol Tuşu 6",
+    "7_hk_hk_kblc": "Otomatik Metin Kısayol Tuşu 7",
+    "8_hk_hk_kblc": "Otomatik Metin Kısayol Tuşu 8",
+    "9_hk_hk_kblc": "Otomatik Metin Kısayol Tuşu 9",
+    "10_hk_hk_kblc": "Otomatik Metin Kısayol Tuşu 10",
+    "11_hk_hk_kblc": "Otomatik Metin Kısayol Tuşu 11",
+    "12_hk_hk_kblc": "Otomatik Metin Kısayol Tuşu 12",
+    "13_hk_hk_kblc": "Otomatik Metin Kısayol Tuşu 13",
+    "14_hk_hk_kblc": "Otomatik Metin Kısayol Tuşu 14",
+    "15_hk_hk_kblc": "Otomatik Metin Kısayol Tuşu 15"
+  },
+  "gui": {
+    "components": {
+      "general": "General",
+      "performance": "Performans",
+      "controls": "Kontroller",
+      "all": "Hepsi",
+      "new": "Yeni",
+      "hud": "Hud",
+      "server": "Sunucu",
+      "mechanic": "Mekanikler",
+      "none": "Hiçbiri",
+      "profile": "Profil $0",
+      "mods": "MODLAR",
+      "settings": "AYARLAR",
+      "waypoints": "WAYPOINTS",
+      "staff": "STAFF",
+      "editHudLayout": "HUD DÜZENİNİ DÜZENLE",
+      "saveNewProfile": "YENİ PROFİL OLARAK KAYDET",
+      "resetPosition": "Konumu Sıfırla",
+      "resetToDefaults": "Varsayılanlara dön",
+      "noWaypointsSet": "Bu dünya için ayarlanmış herhangi bir waypointiniz yok.",
+      "searchPlaceholder": "arama...",
+      "namePlaceholder": "isim...",
+      "sendPlaceholder": "Sohbet mesajı gönder...",
+      "commandPlaceholder": "Bir komut yazın...",
+      "reportABug": "Hata Bildir",
+      "profileEditor": "Profil Düzenleyici",
+      "profileName": "Profil ismi",
+      "loggedInAs": "olarak giriş yaptı",
+      "invalidSession": "geçersiz oturum",
+      "clashesWith": "Şununla çakışıyor: $ 0",
+      "friends": "$0 ARKADAŞLAR",
+      "requests": "$0 TALEP",
+      "add": "EKLE",
+      "addFriend": "arkadaş ekle...",
+      "searchFriend": "arkadaş ara...",
+      "friendRequests": "Arkadaş istekleri",
+      "enabled": "Etkin",
+      "disabled": "Devre dışı",
+      "incorrectUsername": "Yanlış kullanıcı adı.",
+      "singleplayer": "TEK OYUNCU",
+      "multiplayer": "ÇOK OYUNCULU",
+      "createAWaypoint": "Bir Yol Noktası Oluşturun",
+      "save": "KAYIT ET",
+      "help": "?",
+      "cancel": "İPTAL",
+      "understood": "ANLADIM, DEVAM EDİYORUM",
+      "invalidSessionStatus": "Geçersiz bir oturum geçirdiniz",
+      "sendMessage": "Sohbet mesajı gönder",
+      "removeFriend": "Arkadaşı kaldır"
+    },
+    "competitiveDisconnect": {
+      "warning": "UYARI!",
+      "leavingPenalties": "Rekabetçi oyunlardan ayrılmak cezalara neden olabilir.",
+      "suspended": "Oyunlardan ayrılmaya devam ederseniz, rekabetçi oyunlardan uzaklaştırılabilirsiniz!"
+    },
+    "friends": {
+      "connecting": "Bağlanıyor"
+    },
+    "movement": {
+      "hold": "TUT",
+      "click": "TIKLA",
+      "shortcutsMovement": "Kısayollar & Hareket",
+      "addModsToRegion": "Seçili bölgeye mod ekleyin",
+      "selectDragMods": "Modları seçin ve sürükleyin",
+      "resetToClosest": "Modu en yakın konuma sıfırla",
+      "dontLockDragging": "Sürüklerken modları kilitlemeyin",
+      "toggleModSelection": "(Çoklu) mod seçimini aç / kapat",
+      "undoMovements": "Mod hareketlerini geri alın",
+      "redoMovements": "Mod hareketlerini yeniden yap",
+      "moveWithPrecision": "Seçili modu bir kesinlikle taşıyın"
+    },
+    "emotes": {
+      "available": "MEVCUT",
+      "equipped": "DONANILMIŞ",
+      "equipEmote": "Kuşan $0",
+      "unequipEmote": "Donanımı kaldır $0"
+    },
+    "bug": {
+      "shortDescriptionChars": "Kısa Açıklama ($0 characters left)"
+    },
+    "profile": {
+      "shortDescriptionChars": "Profil ismi ($0 characters left)",
+      "lblServer": "Sunucuya Katılırken Otomatik Profil Seç:",
+      "backConfirm": {
+        "warning": "UYARI!",
+        "lineOne": "Kaydedilmemiş değişiklikleriniz mevcut!",
+        "lineTwo": "Devam ederseniz değişiklikleriniz kaybolacak!"
+      },
+      "deleteConfirm": {
+        "warning": "UYARI: BU EYLEM GERİ ALINAMAZ!",
+        "lineOne": "Bir profili silmek üzeresiniz!",
+        "lineTwo": "Bu eylem geri alınamaz Devam etmek istediğinizden emin misiniz?"
+      }
+    },
+    "cosmetics": {
+      "cloaks": "PELERİNLER",
+      "wings": "KANATLAR",
+      "hats": "ŞAPKALAR",
+      "back": "GERİ",
+      "shop": "MAĞAZA",
+      "ownedCosmetics": "sahip olunan 0$",
+      "failedCosmeticConnection": "Kozmetik Sunucuya bağlanılamıyor.",
+      "failedCosmeticConnectionRetry": "Daha sonra tekrar deneyin.",
+      "noActive": "Hiçbiri",
+      "hint": "İPUCU: SÜRÜKLEMEK İÇİN TIKLAYIN"
+    },
+    "mainmenu": {
+      "addAccount": {
+        "login": "giriş",
+        "password": "şifre",
+        "confirm": "ONAYLA",
+        "emptyFields": "Lütfen her iki alanı da sağlayın.",
+        "failedToLogin": "Giriş yapılamadı.",
+        "back": "GERİ",
+        "loginRequest": "Lütfen giriş yapın"
+      }
+    }
+  }
+}

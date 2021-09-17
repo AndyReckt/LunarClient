@@ -1,0 +1,1002 @@
+{
+  "language": "Italian",
+  "features": {
+    "scoreboard": {
+      "details": {
+        "name": "Tabellone",
+        "description": "Ti permette di nascondere, spostare o personalizzare il tabellone di Minecraft."
+      }
+    },
+    "uhc_overlay": {
+      "details": {
+        "name": "Sovrapposizione UHC",
+        "description": "Ridimensiona ciò che è necessario in UHC per renderli più facili da individuare."
+      }
+    },
+    "coords": {
+      "details": {
+        "name": "Coordinate",
+        "description": "Visualizza le tue coordinate sul display di avvertimento."
+      }
+    },
+    "serverAddressMod": {
+      "details": {
+        "name": "Indirizzo Server",
+        "description": "Mostra il server a cui sei attualmente connesso sul display di avvertimento."
+      }
+    },
+    "directionhud": {
+      "details": {
+        "name": "Direction HUD",
+        "description": "Mostra i punti cardinali."
+      }
+    },
+    "range": {
+      "details": {
+        "name": "Reach Display",
+        "description": "Mostra la distanza da cui hai attaccato un altro giocatore."
+      }
+    },
+    "crosshair": {
+      "details": {
+        "name": "Mirino",
+        "description": "Cambia il mirino normale in uno personalizzato."
+      }
+    },
+    "armorstatus": {
+      "details": {
+        "name": "Armor Status",
+        "description": "Mostra quanti utilizzi ti restano all'armatura nel display di avvertimento."
+      }
+    },
+    "motionBlur": {
+      "details": {
+        "name": "Sfocatura Movimento",
+        "description": "Quando ti muovi tutto ciò intorno a te si sfoca."
+      }
+    },
+    "cps": {
+      "details": {
+        "name": "CPS",
+        "description": "Mostra quanti click al secondo fai nel display di avvertimento."
+      }
+    },
+    "memory": {
+      "details": {
+        "name": "Utilizzo della memoria",
+        "description": "Mostra tutta la tua memoria libera da utilizzare."
+      }
+    },
+    "spark": {
+      "details": {
+        "name": "Scintilla",
+        "description": ""
+      }
+    },
+    "itemPhysic": {
+      "details": {
+        "name": "Oggetti Fisici",
+        "description": "Sostituisce gli oggetti di terra con quelli fisici."
+      }
+    },
+    "skyblockAddons": {
+      "details": {
+        "name": "Skyblock Addons",
+        "description": "Una mod creata per Hi pixel Sky block con più di 20 features che miglioreranno la tua esperienza (version: ${sbaVersion})."
+      }
+    },
+    "skyBlockAddonsManaBarChild": {
+      "details": {
+        "name": "Mana Bar",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsManaTextChild": {
+      "details": {
+        "name": "Testo Mana",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsHealthBarChild": {
+      "details": {
+        "name": "Barra Della Salute",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsHealthTextChild": {
+      "details": {
+        "name": "Testo Della Salute",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsDefenseIconChild": {
+      "details": {
+        "name": "Icona Di Difesa",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsDefenseTextChild": {
+      "details": {
+        "name": "Difesa Del Testo",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsDefensePercentageChild": {
+      "details": {
+        "name": "Percentuale di difesa",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsSpeedTextChild": {
+      "details": {
+        "name": "Testo Veloce",
+        "description": ""
+      }
+    },
+    "skyblockAddonsBirchParkRainmaker": {
+      "details": {
+        "name": "Parco Di Betulla Rainmaker",
+        "description": ""
+      }
+    },
+    "skyblockAddonsdarkAuctionoTimer": {
+      "details": {
+        "name": "Timer asta oscura",
+        "description": ""
+      }
+    },
+    "skyblockAddonsEndstoneProtector": {
+      "details": {
+        "name": "Display di protezione pietra dell'end",
+        "description": ""
+      }
+    },
+    "skyblockAddonsMagmaTimer": {
+      "details": {
+        "name": "Timer Del Magma",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsPowerOrbStausChild": {
+      "details": {
+        "name": "Stato Orb Di Potenza",
+        "description": ""
+      }
+    },
+    "skyblockAddonsBoneDisplay": {
+      "details": {
+        "name": "Cappello d'osso",
+        "description": ""
+      }
+    },
+    "skyblockAddonsSkillDisplay": {
+      "details": {
+        "name": "Aggiornamento skill",
+        "description": ""
+      }
+    },
+    "skyblockAddonsSummoningEyeCounter": {
+      "details": {
+        "name": "Evocare il contatore di occhi",
+        "description": ""
+      }
+    },
+    "skyblockAddonsTickerChargesDisplay": {
+      "details": {
+        "name": "Visualizzazione delle tariffe ticker",
+        "description": ""
+      }
+    },
+    "skyblockAddonsZealotCounter": {
+      "details": {
+        "name": "Contatore Zealot",
+        "description": ""
+      }
+    },
+    "skyblockAddonsZealotTotalCounter": {
+      "details": {
+        "name": "Conto Totale Di Zealot",
+        "description": ""
+      }
+    },
+    "skyblockAddonsZealotPerEye": {
+      "details": {
+        "name": "Zealot Per Occhio",
+        "description": ""
+      }
+    },
+    "bait_list": {
+      "details": {
+        "name": "Lista Bait",
+        "description": ""
+      }
+    },
+    "sba_feature_warning": {
+      "details": {
+        "name": "Avvisi sulle funzionalità",
+        "description": ""
+      }
+    },
+    "textHotKey": {
+      "details": {
+        "name": "Tasto Automatico scelta rapida",
+        "description": "Consente di impostare un tasto o una combinazione di tasti che invierà un comando o un messaggio in chat quando viene premuto."
+      }
+    },
+    "freelook": {
+      "details": {
+        "name": "\"Sguardo Libero\"",
+        "description": "Quando viene attivato permette di guardarti attorno senza muovere il tuo personaggio."
+      }
+    },
+    "fov_mod": {
+      "details": {
+        "name": "FOV MOD",
+        "description": "Ti consente di personalizzare il tuo campo visivo per diversi stati di pozione o velocità."
+      }
+    },
+    "time_changer": {
+      "details": {
+        "name": "Cambio Tempo",
+        "description": "Personalizza l'ora del giorno corrente con un'altra."
+      }
+    },
+    "waypoints": {
+      "details": {
+        "name": "Way points",
+        "description": "Crea un way points in qualsiasi parte del mondo e ti mostrerà quanto sei lontano da lui, puoi scegliere che nome dargli e quale distanza."
+      }
+    },
+    "chat": {
+      "details": {
+        "name": "Chat",
+        "description": "Personalizza la chat a tuo piacimento."
+      }
+    },
+    "itemTrackerChild": {
+      "details": {
+        "name": "Traccia l'oggetto",
+        "description": "Mostra quanti oggetti raccogli o getti."
+      }
+    },
+    "keystrokes": {
+      "details": {
+        "name": "Sequenza di tasti",
+        "description": "Mostra i tasti che premi per camminare o saltare."
+      }
+    },
+    "saturation": {
+      "details": {
+        "name": "Saturazione",
+        "description": "Mostra il tuo livello di saturazione del cibo."
+      }
+    },
+    "hypixel_mod": {
+      "details": {
+        "name": "Mods Hypixel",
+        "description": "Una collezione di mod direttamente collegate con Hypixel."
+      }
+    },
+    "fps": {
+      "details": {
+        "name": "FPS",
+        "description": "Mostra i tuoi fps nel display di avvertimento."
+      }
+    },
+    "clock": {
+      "details": {
+        "name": "Orologio",
+        "description": "Mostra l'ora corrente."
+      }
+    },
+    "stopwatch": {
+      "details": {
+        "name": "Cronometro",
+        "description": "Aggiunge un cronometro alla schermata."
+      }
+    },
+    "block_outline": {
+      "details": {
+        "name": "Contorno del blocco",
+        "description": "Ti permette di personalizzare i blocchi che colpisci o miri."
+      }
+    },
+    "netgraph": {
+      "details": {
+        "name": "Grafico Di Rete",
+        "description": "E un grafico che mostra i TPS nel server in cui stai giocando."
+      }
+    },
+    "worldedit_cui": {
+      "details": {
+        "name": "World Edit CUI",
+        "description": "Una interfaccia che ti permette di vedere la regione selezionata in tempo reale."
+      }
+    },
+    "one_seven_visuals": {
+      "details": {
+        "name": "1.7 Visuale",
+        "description": "Cambia alcune animazioni e movimenti a come erano nella 1.7."
+      }
+    },
+    "screenshot": {
+      "details": {
+        "name": "\"Carica Immagine Dello Schermo\"",
+        "description": "Carica una foto velocemente tramite chat."
+      }
+    },
+    "ping": {
+      "details": {
+        "name": "\"ping\"",
+        "description": "Mostra il tuo ping sullo schermo o tab."
+      }
+    },
+    "teamview": {
+      "details": {
+        "name": "Vista Team",
+        "description": "Mostra dove sono i tuoi compagni di squadra nel display di avvertimento."
+      }
+    },
+    "potion_counter": {
+      "details": {
+        "name": "Contatore Di Pozioni",
+        "description": "Mostra quante pozioni o zuppe hai ancora nell'inventario."
+      }
+    },
+    "shinyPots": {
+      "details": {
+        "name": "Pozioni lucide",
+        "description": "Da alle pozioni un effetto di lucentezza."
+      }
+    },
+    "potioneffects": {
+      "details": {
+        "name": "\"Effetti Pozioni\"",
+        "description": "Mostra quanti secondi e effetti delle pozioni attive."
+      }
+    },
+    "bossbar": {
+      "details": {
+        "name": "Boss Bar",
+        "description": "Ti permette di nasconderla o modificarla a tuo piacimento."
+      }
+    },
+    "scrollable_tooltips": {
+      "details": {
+        "name": "Suggerimenti Rotellina",
+        "description": "Usa la tua rotellina per andare su e giù mentre leggi."
+      }
+    },
+    "streamerMode": {
+      "details": {
+        "name": "Modalità Streamer",
+        "description": ""
+      }
+    },
+    "toggleSneak": {
+      "details": {
+        "name": "Attiva/Disattiva Sneak/Sprint",
+        "description": "Basta premere un pulsante a vostra scelta ed avrete sempre attiva la corsa o lo sneak al posto di tenerlo cliccato."
+      }
+    },
+    "mumble-link": {
+      "details": {
+        "name": "Link Mumble",
+        "description": "Utilizza mumble per creare audio nel mondo di Mine craft."
+      }
+    },
+    "combo": {
+      "details": {
+        "name": "Contatore Di Pozioni",
+        "description": "Mostra quante volte hai colpito un player e per quanti secondi nella tua schermata."
+      }
+    },
+    "particleMultiplierMod": {
+      "details": {
+        "name": "Moltiplicatore Di Particelle",
+        "description": "Aumenta le particelle della texture mentre colpisci un altro giocatore."
+      }
+    },
+    "cooldowns": {
+      "details": {
+        "name": "Raffreddamento",
+        "description": "Consente ai server di visualizzare oggetti o abilità che sono in attesa."
+      }
+    }
+  },
+  "settings": {
+    "labels": {
+      "settings": "Impostazioni",
+      "general": "Generali",
+      "microphone": "Microfono",
+      "speaker": "Altoparlanti",
+      "controls": "Controlli",
+      "generalOptions": "Opzioni Generali",
+      "colorOptions": "Opzioni di Colore",
+      "damageOptions": "Opzioni Danno",
+      "damageDisplay": "Visualizzazione Danni",
+      "renderOptions": "Opzioni di Rendering",
+      "blinkOptions": "\"Opzioni Di Lampeggio\"",
+      "hudOptions": "Posizione del display di avvertimento",
+      "cosmeticOptions": "Opzioni dei cosmetici",
+      "modOptions": "Opzioni mod",
+      "miscOptions": "Opzioni misc",
+      "texturePackOptions": "Opzioni Texture Pack",
+      "zealotOptions": "Opzioni Zelota",
+      "safetyOptions": "Opzioni di sicurezza",
+      "indicatorOptions": "Opzioni Indicatore",
+      "entityOptions": "Opzioni di sicurezza",
+      "locationResourceOptions": "Opzioni risorsa posizione",
+      "backpackOptions": "Opzioni Zaino",
+      "warpTpOptions": "Opzioni Warp/Teletrasporto",
+      "tooltipOptions": "Opzioni Di Suggerimento",
+      "containerOptions": "Opzioni Di Container",
+      "enchantedItemsBlacklist": "Lista Nera Oggetti Incantati",
+      "enchantedItemsBlacklistDescription": "Disabilita l'uso degli oggetti incantati",
+      "chatOptions": "Opzioni Chat",
+      "hideOptions": "Nascondi Opzioni",
+      "warningOptions": "Opzioni di Avvertimento",
+      "flyBoostOptions": "Opzioni Fly Boost",
+      "animations": "Animazioni",
+      "heldItems": "Oggetti Tenuti",
+      "mechanics": "Meccaniche",
+      "excludePotionEffects": "Escludi Effetto Pozioni",
+      "shortDescription": "Descrizione Corta",
+      "section": "Sezione",
+      "description": "Descrizione",
+      "submit": "INVIA",
+      "mod": "MOD",
+      "gui": "GUI",
+      "cosmetic": "COSMETICI",
+      "store": "NEGOZIO",
+      "voice": "VOCE",
+      "antiCheat": "ANTI CHEAT",
+      "launcher": "\"Launcher\"",
+      "other": "ALTRO"
+    },
+    "buttons": {
+      "applyToAll": "APPLICARE A TUTTO"
+    },
+    "off": "\"Spento\"",
+    "off_van": "Off (Vanilla)",
+    "inventoryOnly": "Solo Inventario",
+    "all": "\"tutto\"",
+    "high": "Alta",
+    "highest": "\"Più Alto (massimo FPS)\"",
+    "medium": "\"Media (Più Fps)\"",
+    "low": "Basso",
+    "lowest": "\"Più Basso (Almeno Potenziamento Fps)\"",
+    "value": "Valore",
+    "percent": "Percentuale",
+    "none": "Nulla",
+    "vertical": "Verticale",
+    "horizontal": "Orizzontale",
+    "wave": "\"onda\"",
+    "shift": "Shift",
+    "mods": "Mods",
+    "custom": "\"Personalizzato\"",
+    "normal": "Normale",
+    "cross": "Croce",
+    "circle": "Cerchio",
+    "thirdPerson": "Terzo",
+    "firstPerson": "Primo",
+    "forward": "Inoltrare",
+    "doNothing": "Fare niente",
+    "showSwing": "Mostra Swing",
+    "showSwingParticles": "Mostra Swing e Particelle",
+    "potion": "Pozione",
+    "soup": "\"Minestra\"",
+    "regular": "Regolare",
+    "compact": "Compatto",
+    "free": "Gratis",
+    "three": "Tre",
+    "five": "Cinque",
+    "six": "Sei",
+    "always": "Sempre",
+    "skyBlockOnly": "Solo Sky Block",
+    "never": "Mai",
+    "scale_nr": "Scala",
+    "shadow_bl": "Ombra testo",
+    "background_bl": "Mostra Background",
+    "backgroundHeight_nr": "Background altezza",
+    "backgroundWidth_nr": "Background larghezza",
+    "border_bl": "Bordi",
+    "border_thickness_nr": "Grandezza bordi",
+    "text_clr_nr": "Colore Testo",
+    "background_clr_nr": "Colore di Background",
+    "border_clr_nr": "Bordi Colore",
+    "colored_bl": "Mostra il colore della pozione",
+    "renderGlintBehindPotion_bl": "Render Glint Dietro la Pozione",
+    "spark_start_kblc": "Attiva lucentezza",
+    "spark_stop_kblc": "Disattiva lucentezza",
+    "render_bar_bl": "\"Render Salute\"",
+    "customBossBar_bl": "Usa Custom Boss Bar",
+    "barColor_clr_nr": "\"Colore barra boss\"",
+    "toggle_sprint_bl": "\"Attiva/Disattiva Sprint\"",
+    "toggle_sneak_bl": "\"Attiva/Disattiva Sneak\"",
+    "toggle_sneak_container_bl": "\"Attiva/Disattiva sneak Nel Contenitore\"",
+    "double_tap_bl": "Doppio Tocco",
+    "show_text_bl": "Mostra Testo HUD",
+    "fly_boost_bl": "\"Fly Boost\"",
+    "boost_amnt_nr": "\"Fly Boost Amount\"",
+    "showHudText_bl": "Mostra HUD",
+    "default_fov_nr": "Default FOV",
+    "slowness_fov_nr": "Lentezza FOV",
+    "sprinting_fov_nr": "Corsa FOV",
+    "flying_fov_nr": "\"Volo FOV\"",
+    "speed_fov_nr": "Velocità FOV",
+    "mode": "\"Modalità Lista\"",
+    "glint_anim": "Glint Rendering",
+    "armor_hit_anim": "Armor Hit Animazione",
+    "block_hit_anim": "Para Attacca",
+    "health_anim": "Cuori che si illuminano",
+    "sneak_anim": "\"Furtivo\"",
+    "hurt_camera_shake": "Hurt Camera Shake",
+    "potion_drinking": "Bere La Pozione",
+    "tp_held_items": "Oggetti mantenuti in Terza Persona",
+    "fp_carpet": "Tappeti",
+    "fp_fishing_rod": "Canna Da Pesca",
+    "fp_sword": "Spade",
+    "fp_potion": "Pozioni",
+    "fp_bow": "Arco",
+    "use_item_while_digging": "Usa l'item mente scavi",
+    "fakeSwingActions": "\"perdere il comportamento di ricarica\"",
+    "hit_armor_color_clr_nr": "Hit Armor Colore",
+    "stopwatch_kblc": "Start/Stop Tasto",
+    "resetEveryStart_bl": "Resetta allo Start",
+    "potionCounter": "\"Tipo Di Guarigione\"",
+    "auto_friend_bl": "Auto Friend",
+    "auto_tip_bl": "Auto TIP",
+    "auto_gg_bl": "Auto GG",
+    "anti_gg_bl": "Auto GG",
+    "auto_who_bl": "\"Chi Automatico\"",
+    "level_head_bl": "\"level head\"",
+    "level_color_clr_nr": "\"Livello Colore Testo\"",
+    "number_color_clr_nr": "\"Colore Numero Del Livello\"",
+    "dot_bl": "Punto",
+    "outline_bl": "Schema",
+    "showInF5_bl": "Mostra il mirino in terza persona",
+    "styleOption": "Stile",
+    "thickness_nr": "Spessore",
+    "size_nr": "Taglia",
+    "gap_nr": "Dislivello",
+    "dotSize_nr": "Dot Size",
+    "dynamic_colors_bl": "Colori Dinamici",
+    "color_clr_nr": "Colore",
+    "dotColor_clr_nr": "Colore Testo",
+    "friendly_clr_nr": "Colore Amico",
+    "enemy_clr_nr": "Colore Nemico",
+    "rotationSpeed_nr": "Velocità di rotazione",
+    "list_mode": "\"Modalità Lista\"",
+    "item_name_bl": "Nome Oggetto",
+    "item_count_bl": "Contatore Di Oggetti",
+    "equipped_item_bl": "Oggetto Equipaggiato",
+    "show_while_typing_bl": "Mostra Mentre Scrivi",
+    "text_shadow_bl": "Ombra Del Testo",
+    "damage_overlay_bl": "Visualizzazione Danni",
+    "item_dmg_bl": "Mostra il Danno dell'oggetto",
+    "armor_dmg_bl": "Mostra i Danni Dell'Armatura",
+    "max_dmg_bl": "Mostra il Massimo Danno",
+    "dmg_display": "Tipo Di Visualizzazione Danno",
+    "dmg_threshold": "\"Tipo Soglia Danno\"",
+    "static_colors_bl": "\"Colori Danno Statico\"",
+    "name_text_clr_nr": "Nome Colore",
+    "highest_clr_nr": "Valore di danno predefinito",
+    "high_clr_nr": "Valore di danno elevato",
+    "medium_clr_nr": "Valore di danno medio",
+    "medium_low_clr_nr": "Valore di danno medio basso",
+    "low_clr_nr": "Basso valore di danno",
+    "lowest_clr_nr": "Valore di danno più basso",
+    "oldBlur_bl": "\"Sfocatura Vecchia\"",
+    "value_nr": "Valore",
+    "skyblockOnly_bl": "Solo SkyBlock",
+    "show_c_bl": "Mostra C (Attiva Render)",
+    "show_labels_bl": "Mostra Etichetta Asse",
+    "show_biome_bl": "Mostra Bioma",
+    "biome_coordinates_bl": "Mostra Etichetta Bioma",
+    "biome_color_bl": "Usa Il Colore del Bioma già messo",
+    "direction_bl": "Mostra Direzione",
+    "directionAffect_bl": "Mostra Modifica direzione",
+    "text_coordinates_clr_nr": "Colore Base",
+    "x_label_color_clr_nr": "X Label Colore",
+    "x_axis_color_clr_nr": "X Value Colore",
+    "y_label_color_clr_nr": "Y Label Colore",
+    "y_axis_color_clr_nr": "Y Value Colore",
+    "z_label_color_clr_nr": "Z Label Colore",
+    "z_axis_color_clr_nr": "Z Value Colore",
+    "c_label_color_clr_nr": "C Label Colore",
+    "c_axis_color_clr_nr": "C Value Colore",
+    "direction_color_clr_nr": "Colore Direzione",
+    "direction_affect_color_clr_nr": "Colore di modifica direzione",
+    "biomeColor_color_clr_nr": "Colore Bioma",
+    "biomeLabelColor_color_clr_nr": "Colore Etichetta Bioma",
+    "1_hk_hk": "Tasto 1",
+    "2_hk_hk": "Tasto 2",
+    "3_hk_hk": "Tasto 3",
+    "4_hk_hk": "Tasto 4",
+    "5_hk_hk": "Tasto 5",
+    "6_hk_hk": "Tasto 6",
+    "7_hk_hk": "Tasto 7",
+    "8_hk_hk": "Tasto 8",
+    "9_hk_hk": "Tasto 9",
+    "10_hk_hk": "Tasto 10",
+    "11_hk_hk": "Tasto 11",
+    "12_hk_hk": "Tasto 12",
+    "13_hk_hk": "Tasto 13",
+    "14_hk_hk": "Tasto 14",
+    "15_hk_hk": "Tasto 15",
+    "clicks_bl": "Mostra i Click",
+    "movement_bl": "Mostra tasti di movimento",
+    "spacebar_bl": "Mostra Barra spaziatrice",
+    "arrows_bl": "Sostituisci i nomi con le frecce",
+    "textShadow_bl": "\"Ombra Del Testo\"",
+    "box_size_nr": "\"Dimensione Casella\"",
+    "text_pressed_clr_nr": "Colore Testo (Premuto)",
+    "background_pressed_clr_nr": "Background Colore",
+    "numbers_bl": "Nascondi Numeri",
+    "background_color_clr_nr": "Background Colore",
+    "beams_bl": "Mostra Fascio",
+    "box_border_bl": "Box Bordi",
+    "box_padding_nr": "\"Box Padding\"",
+    "add_waypoint_kb": "Crea Un Way point",
+    "hideHealthBar_bl": "Nascondi Barra Salute",
+    "hideFoodBar_bl": "Nascondi la barra Del Cibo",
+    "hidePetHealthBar_bl": "Nascondi la salute Del Pet",
+    "combatTimerDisplay_bl": "\"Timer Di Combattimento\"",
+    "combatTimerDisplay_blDescription": "È necessario abilitare la modalità di ricarica per funzionare questa funzione.",
+    "skeletonHelmetBars_bl": "\"Barre Elmetto Scheletro\"",
+    "zealotColor_clr_nr": "Zealot Colore",
+    "specialZealotAlert_bl": "Allerta Speciale Zealot",
+    "zealotColorBoolean_bl": "Cambia Il Colore Zealot",
+    "zealotCounterExplosiveBowSupport_bl": "Zealot Counter Supporto per arco esplosivo",
+    "dropConfirmation": "\"Conferma Di Rilascio\"",
+    "lockSlots_bl": "Blocca slots",
+    "minimum_hotbar_item_rarity": "Rarità minima da fermare il drop",
+    "drop_blacklist": "\"Lista Nera Degli Oggetti\"",
+    "drop_blacklistDescription": "Gli elementi inseriti in questa casella di testo non potranno essere eliminati. Elementi separati con una virgola.",
+    "drop_whitelist": "\"Lista Bianca Degli Oggetti\"",
+    "drop_whitelistDescription": "Gli elementi inseriti in questa casella di testo potranno essere eliminati. Elementi separati con una virgola.",
+    "stopDroppingSellingRareItems_bl": "Smetti di rilasciare / vendere oggetti rari",
+    "avoidBreakingStems_bl": "Evita di rompere i gambi",
+    "avoidBlinkingNightVision_bl": "Evita la visione notturna lampeggiante",
+    "dontOpenProfilesWithBow_bl": "Non aprire i profili con l'arco",
+    "freezeKey_kblc": "\"Congela Tasto\"",
+    "lockKey_kblc": "\"Chiave Di Blocco\"",
+    "makeBackpackInventoriesColored_bl": "Rendi colorati gli inventari degli zaini",
+    "slayerIndicator_bl": "Indicatore Slayer",
+    "slayerIndicator_blDescription": "L'abilitazione di questa funzione abiliterà anche Armor Status Mod.",
+    "turnBowGreenWhenUsingToxicArrowPoison_bl": "Le frecce tossiche trasformano l'arco in verde",
+    "fishingSoundIndicator_bl": "Quando Peschi Emette un Suono",
+    "changeBarColorForPotions_bl": "Cambia il colore della barra per le pozioni",
+    "colorEnderChestInEnd_bl": "Colore Ender Chest in end",
+    "endEnderChestColor_clr_nr": "Colore Baule Dell'Ender",
+    "hideSvenPupNametags_bl": "Nascondi Sven / Pup targhetta",
+    "hidePlayersNearNPC_bl": "Nascondi Players vicino NPC",
+    "hidePlayersInLobby_bl": "Nascondi Players in Lobby",
+    "ignoreItemFrameClicks_bl": "Ignora Oggetti Frame Clicks",
+    "hideBones_bl": "\"Nascondi il cappello d'osso di scheletro\"",
+    "preventMovementOnDeath_bl": "Previeni Movimenti Alla morte",
+    "onlyMineOresDeepCaverns_bl": "Solo minerali nelle caverne profonde",
+    "onlyMineValuablesNether_bl": "Scava Oggetti Di Valore solo Nel Nether",
+    "onlyBreakLogsPark_bl": "Rompi Il legno solo nel parco",
+    "enableMessageWhenBreakingPark_bl": "Abilita il messaggio quando rompi nel parco",
+    "jungleAxeCooldown_bl": "Raffreddamento Treecapitatore",
+    "showBackpackPreview_bl": "Mostra Zaino Preview",
+    "showBackpackHoldingShift_bl": "Mostra Zaino Premendo Shift",
+    "backpackPreviewAh_bl": "Zaino Preview (AH)",
+    "cakeBagPreview_bl": "\"Anteprima Borsa Torta\"",
+    "backpackStyle": "Stile Zaino",
+    "fancyWarpMenu_bl": "Fancy Warp Menu",
+    "doubleWarp_bl": "Doppio Warp",
+    "warpAdvancedMode_bl": "Warp Mode Avanzata",
+    "disableEndermanTeleportionEffect_bl": "Disabilita l'effetto teletrasporto di Enderman",
+    "hideGreyEnchants_bl": "Nascondi gli enchants grigi",
+    "showItemAnvilUses_bl": "Mostra usi dell'incudine",
+    "replaceRomanNumeralsWithNumbers_bl": "Rimpiazza numeri romani con numeri",
+    "organizeEnchants_bl": "Organizza incantesimi",
+    "showEnchantmentsReforges_bl": "\"Mostra Forgiature Incantesimo\"",
+    "showBrokenFragments_bl": "Mostra i Frammenti Rotti",
+    "dontResetCursorInventory_bl": "Non reimpostare l'inventario del cursore",
+    "craftingPatterns_bl": "\"Modelli Di Costruzione\"",
+    "craftingPattern": "\"Motivo Di Creazione Predefinito\"",
+    "disableEmberRod_bl": "Disattiva Ember Rod",
+    "avoidPlacingEnchantItems_bl": "Evita di posizionare oggetti incantati",
+    "disableTeleportPadMessages_bl": "Disabilita Teletrasporto Pad Messages",
+    "disableMagicalSoupMessages_bl": "Disabilita i messaggi di Magic Soup",
+    "manabarColor_clr_nr": "Colore Base",
+    "healthbarColor_clr_nr": "Colore Base",
+    "useVanillaTextureDefence_bl": "Usa Vanilla Texture",
+    "defensetextColor_clr_nr": "Colore Testo",
+    "percentageDefense_bl": "Mostra come percentuale",
+    "textColor_clr_nr": "Colore Testo",
+    "show_on_other_games_bl": "Mostra su altri Giochi",
+    "detailed_bl": "Display Dettagliato",
+    "bait_list_color_clr_nr": "Colore Testo",
+    "warningTime_nr": "\"Tempo Di Avvertimento\"",
+    "fullInventoryWarning_bl": "\"Avviso Di Inventario Completo\"",
+    "repeatFullInventoryWarning_bl": "\"Ripeti Avviso Di Inventario Completo\"",
+    "magmaWarning_bl": "\"Avviso Magma\"",
+    "minionStopWarning_bl": "\"Avviso Arresto Minion\"",
+    "minionFullWarning_bl": "\"Avviso Arresto Minion\"",
+    "minionDisableLocationWarning_bl": "Minion Disabilita posizione Warning",
+    "legendarySeaCreatureWarning_bl": "Creatura Leggendaria Warning",
+    "repeatSlayBossWarning_bl": "Ripeti Slay Boss Warning",
+    "summonEyeAlert_bl": "Evoca Occhio Alert",
+    "noArrowsLeftAlert_bl": "Frecce Finite Alert",
+    "bossApproachAlert_bl": "Avviso Approccio Boss",
+    "block_outline_color_clr_nr": "Colore contorno del blocco",
+    "block_overlay_color_clr_nr": "Colore sovrapposizione del blocco",
+    "block_outline_width_nr": "Larghezza contorno del blocco",
+    "block_overlay_bl": "Blocco Sovrapposto",
+    "block_outline_bl": "Schema Del Blocco",
+    "width_nr": "Larghezza",
+    "useLegacyStyle_bl": "Usa Legacy Style",
+    "directionColor_clr_nr": "Colore Direzione",
+    "markerColor_clr_nr": "Colore Marcatore",
+    "invertPitch_bl": "Inverti intonazione (su e giù)",
+    "invertYaw_bl": "Inverti Yaw (sinistra e destra)",
+    "freelook_kb": "\"Sguardo Libero\"",
+    "particleMultiplier_nr": "Moltiplicatore di particelle",
+    "showCriticals_bl": "Mostra i Critici",
+    "affectCriticals_bl": "Affect Critici",
+    "affectEnchantedCrits_bl": "Affetto Nitidezza",
+    "alwaysShowEnchantedCrits_bl": "Mostra Sempre Sharpness",
+    "militaryTime_bl": "Formato 24ore",
+    "point1Color_clr_nr": "Posizione uno colore",
+    "point2Color_clr_nr": "Posizione due colore",
+    "outlineColor_clr_nr": "Contorno Colore",
+    "show_in_inventory_bl": "Mostra in Inventario",
+    "display_typing_bl": "Mostra Mentre Scrivi",
+    "effect_name_bl": "Nome Effetto",
+    "blink_bl": "Lampeggia",
+    "blink_duration_nr": "\"durata del lampeggio\"",
+    "color_name_based_on_effect_bl": "Nome Colorato in Base all'effetto",
+    "duration_clr_nr": "Colore Della Durata",
+    "excludePerm_bl": "Effetti Permanenti",
+    "excludeSpeed_bl": "Velocità",
+    "excludeSlowness_bl": "Lentezza",
+    "excludeStrength_bl": "Forza",
+    "excludeJumpBoost_bl": "Salto Potenziato",
+    "excludeRegen_bl": "Rigenerazione",
+    "excludeFireRes_bl": "Resistenza Al Fuoco",
+    "excludeWaterBreathing_bl": "Respirazione Subacquea",
+    "excludeNightVision_bl": "Visione Notturna",
+    "excludeWeakness_bl": "Debolezza",
+    "excludePoison_bl": "Veleno",
+    "excludeHaste_bl": "Rapidità",
+    "excludeInvis_bl": "Invisibilità",
+    "time_nr": "Tempo",
+    "horizon_y_level_nr": "Orizzonte Y Livello",
+    "gold_ingot_scale_nr": "Dimensione Lingotto D'oro",
+    "gold_nugget_scale_nr": "Dimensione pepita D'oro",
+    "gold_ore_scale_nr": "Dimensione Oro Grezzo",
+    "gold_apple_scale_nr": "Dimensione Mela D'oro",
+    "skull_scale_nr": "Dimensione Testa",
+    "rightCLick_bl": "Tasto Destro CPS",
+    "showCPSText_bl": "Mostra Testo Dei CPS",
+    "lineColor_clr_nr": "\"linea colore\"",
+    "menuBlur_bl": "Mostra Menu Blur",
+    "shift_effects_bl": "Cambio Effetti nell'inventario",
+    "shift_effects_blDescription": "Modifica la posizione degli effetti delle pozioni nel tuo inventario",
+    "achievements_bl": "Mostra Achievements",
+    "achievements_blDescription": "Un opzione per togliere gli achievement",
+    "show_hud_in_debug_bl": "Mostra HUD in F3",
+    "show_hud_in_debug_blDescription": "Scegli se vuoi vedere le mod mentre sei in F3",
+    "show_hud_in_shift_tab_bl": "Mostra HUD nel Menu Amici",
+    "show_hud_in_shift_tab_blDescription": "Scegli se vuoi vedere le mod mentre sei nel menu amici",
+    "friends_menu_disable_bl": "Disabilita Il Menu Amici",
+    "friends_menu_disable_blDescription": "Un opzione per togliere LC Menu amici",
+    "use_minecraft_scale_enum": "Usa GUI Scale iniziale",
+    "use_minecraft_scale_enumDescription": "Scegli se vuoi ridimensionare MOD e menu LC in base alla dimensione della GUI del gioco\n \n §b TUTTE: §f Le Dimensioni MODS E Menu \n §b MODS: §f Dimensioni Solo MOD \n §b OFF: §f Use Dimensioni LC Normale ",
+    "nametag_bl": "Targhetta Terza Persona",
+    "nametag_blDescription": "Un'opzione per vedere la tua targhetta in terza persona",
+    "nametagLogo_bl": "Mostra L'icona della Targhetta",
+    "nametagLogo_blDescription": "Un Opzione per toggle LC logo in targhette",
+    "unlimited_chat_bl": "Chat Illimitata",
+    "unlimited_chat_blDescription": "Scegli se aumentare o meno la cronologia dei messaggi nella chat",
+    "stackMessages_bl": "Stack Messaggi Spam",
+    "stackMessages_blDescription": "Scegli se vuoi o meno impilare più messaggi uguali nella chat",
+    "hideBanWave_bl": "Nascondi i Messaggi Della Ban Wave",
+    "hideBanWave_blDescription": "Scegli se vuoi o meno se vuoi vedere i messaggi ban wave LC nella chat",
+    "sortingOptions": "Opzioni di ordinamento",
+    "sortingOptionsDescription": "Un'opzione che decide in che tipo saranno le tue mod\n \n §b DEFAULT: §f Default LC Sorting \n § b CUSTOM: §f Your Custom Sorting",
+    "chatHeight_bl": "Correzione altezza chat",
+    "chatHeight_blDescription": "Sposta la chat di 12 pixel in modo da non bloccare la barra della salute",
+    "chatNameColor": "Colore del nome evidenziato",
+    "chatNameColorDescription": "Seleziona un colore che preferisci per avere il tuo nome evidenziato nella chat",
+    "searchOptions_bl": "Cerca mod dalle opzioni",
+    "searchOptions_blDescription": "Cerca le mod dalle opzioni per rendere le cose più facili da trovare",
+    "lockMods_bl": "Disabilita Mod Sorting",
+    "lockMods_blDescription": "Un'opzione per bloccare le tue mod in posizione dopo averle ordinate",
+    "borderless_fullscreen_bl": "Schermo Intero Senza Bordi",
+    "borderless_fullscreen_blDescription": "Scegli se abilitare o meno lo schermo intero senza bordi",
+    "variable_zoom_bl": "Scrolla per Zoomare",
+    "variable_zoom_blDescription": "Un'opzione per abilitare lo zoom di Optifine avanzato",
+    "weather_bl": "Disattiva Il Tempo",
+    "weather_blDescription": "Scegli se desideri disabilitare tutte le condizioni meteorologiche",
+    "trans_res_pack_menu_bg_bl": "Background Trasparente",
+    "trans_res_pack_menu_bg_blDescription": "Un'opzione per abilitare lo sfondo trasparente durante la modifica delle tue pack",
+    "red_string_bl": "Stringhe Rosse",
+    "red_string_blDescription": "Scegli se tutte le stringhe devono essere rosse o meno, indipendentemente dal tuo Resource Pack",
+    "clear_glass": "Vetro Trasparente",
+    "clear_glassDescription": "Scegli se vuoi o meno che il vetro sia trasparente",
+    "hudLayoutColor_clr_nr": "Colore del marchio",
+    "hudLayoutColor_clr_nrDescription": "Un'opzione per cambiare il colore del layout del display di avvertimento",
+    "mod_menu_kb": "Mod Menu",
+    "mod_menu_kbDescription": "Mostra Questo menu",
+    "waypoints_kb": "Menu Way point",
+    "emote_kb": "Emote Ruota",
+    "dropStack_kblc": "Drop Stack",
+    "dropStack_kblcDescription": "Premi control+q per gettare lo stack intero",
+    "friendMenuKey_kblc": "Menù Amici",
+    "toggleChat_kblc": "Attiva/Disattiva Chat",
+    "hide_endportals": "Nascondi Endportal",
+    "hide_endportalsDescription": "Scegli quando nascondere il mondo dell'end portal \n \n §bSempre: §fMostra Sempre \n §bSkyblock: §fMostra solo nello SkyBlock \n §bMai: §fMai Mostrare",
+    "skip_lighting_bl": "Full Bright",
+    "skip_lighting_blDescription": "Aumenta la gamma, Fa diventare i posti bui illuminati",
+    "glint": "Mostra Incantesimo Glint",
+    "glintDescription": "Scegli quando rendere l'effetto luccicante \n \n §b TUTTO: §f Renderizzare Sempre\n §b SOLO INVENTARIO: §f Renderizza solo in inventario \n §b NIENTE: §f Mai renderizzare",
+    "lazy_chunk_loading": "Lazy Chunk caricamento",
+    "lazy_chunk_loadingDescription": "Modifica la velocità di caricamento dei blocchi. Valori inferiori possono aumentare gli FPS facendo caricare grandi chunk per un periodo di tempo più lungo \n \n §2Più Basso: §f Carica ogni 30 ticks (Highest FPS Boost) \n §a Basso: §f Carica ogni 15 ticks (High FPS Boost) \n §e Medio: §f Carica ogni 10 ticks (Med FPS Boost) \n §6Alto: §f Carica ogni 5 ticks (Low FPS Boost) \n §c Più Alto: §f Carica ogni 2 ticks (Lowest FPS Boost) \n §b OFF: §f Vanilla Chunk Loading (No FPS Boost)",
+    "entity_shadow_bl": "Ombra",
+    "entity_shadow_blDescription": "Renderizza ombre per entità",
+    "entity_render": "Entità",
+    "entity_renderDescription": "Modifica la distanza da cui verranno renderizzate determinate entità. Valori più bassi possono aumentare gli FPS nascondendo entità distanti",
+    "b_entity_render": "Nomi Entità",
+    "b_entity_renderDescription": "Modifica la distanza da cui verranno renderizzate determinate entità. Valori più bassi possono aumentare gli FPS nascondendo entità distanti",
+    "chat_bg_opacity_nr": "Background Opaco",
+    "chat_shadow_bl": "Ombra del testo nella chat",
+    "chat_shadow_blDescription": "Mostra l'ombra del testo sulle linee di chat",
+    "disable_chat_bl": "Nascondi messaggi in arrivo",
+    "dragon_wings_bl": "Ali",
+    "mask_bl": "Maschere",
+    "bandanna_bl": "Bandane",
+    "hat_bl": "Cappelli",
+    "cloak_bl": "Mantelli",
+    "chroma_speed_nr": "Velocità",
+    "chroma_bl": "Croma",
+    "chroma_type": "Tipo",
+    "horizontalScrollingKey_kblc": "Tasto di scorrimento orizzontale",
+    "horizontalScrollingKey_kblcDescription": "Tenere premuto questo tasto durante lo scorrimento per scorrere in orizzontale (se possibile)",
+    "hideName_bl": "Nascondi la tua targhetta",
+    "hideName_blDescription": "Per attivare o disattivare questa opzione è necessario riconnettersi al server in cui ci si trova.",
+    "hideOwnSkin_bl": "Nascondi la tua Skin",
+    "hideOthersNames_bl": "Nascondi altri Nomi",
+    "hideOthersNames_blDescription": "Per attivare o disattivare questa opzione è necessario riconnettersi al server in cui ci si trova.",
+    "hideOthersSkin_bl": "Nascondi la skin degli altri",
+    "1_hk_hk_kblc": "\"Scorciatoia Di Testo Automatica 1\"",
+    "2_hk_hk_kblc": "\"Scorciatoia Di Testo Automatica 2\"",
+    "3_hk_hk_kblc": "\"Scorciatoia Di Testo Automatica 3\"",
+    "4_hk_hk_kblc": "\"Scorciatoia Di Testo Automatica 4\"",
+    "5_hk_hk_kblc": "\"Scorciatoia Di Testo Automatica 5\"",
+    "6_hk_hk_kblc": "\"Scorciatoia Di Testo Automatica 6\"",
+    "7_hk_hk_kblc": "\"Scorciatoia Di Testo Automatica 7\"",
+    "8_hk_hk_kblc": "\"Scorciatoia Di Testo Automatica 8\"",
+    "9_hk_hk_kblc": "\"Scorciatoia Di Testo Automatica 9\"",
+    "10_hk_hk_kblc": "\"Scorciatoia Di Testo Automatica 10\"",
+    "11_hk_hk_kblc": "\"Scorciatoia Di Testo Automatica 11\"",
+    "12_hk_hk_kblc": "\"Scorciatoia Di Testo Automatica 12\"",
+    "13_hk_hk_kblc": "\"Scorciatoia Di Testo Automatica 13\"",
+    "14_hk_hk_kblc": "\"Scorciatoia Di Testo Automatica 14\"",
+    "15_hk_hk_kblc": "\"Scorciatoia Di Testo Automatica 15\""
+  },
+  "gui": {
+    "components": {
+      "general": "Generali",
+      "performance": "\"Prestazione\"",
+      "controls": "Controlli",
+      "all": "Tutto",
+      "new": "Nuovi",
+      "hud": "\"display di avvertimento\"",
+      "server": "Server",
+      "mechanic": "Meccaniche",
+      "none": "Nessuna",
+      "profile": "Profilo $0",
+      "mods": "MOD",
+      "settings": "IMPOSTAZIONI",
+      "waypoints": "WAYPOINTS",
+      "staff": "STAFF",
+      "editHudLayout": "MODIFICA HUD LAYOUT",
+      "saveNewProfile": "SALVA COME NUOVO PROFILO",
+      "resetPosition": "Resetta Posizione",
+      "resetToDefaults": "Resetta a Defaults",
+      "noWaypointsSet": "Non Hai inserito nessun waypoints in questo mondo.",
+      "searchPlaceholder": "cerca...",
+      "namePlaceholder": "nome...",
+      "sendPlaceholder": "Manda un messaggio in chat...",
+      "commandPlaceholder": "Scrivi un comando...",
+      "reportABug": "Segnala un Bug",
+      "profileEditor": "\"Editor Del Profilo\"",
+      "profileName": "Nome Profilo",
+      "loggedInAs": "sei dentro come",
+      "invalidSession": "sessione Non Valida",
+      "clashesWith": "Scontra con: $0",
+      "friends": "$0 AMICI",
+      "requests": "$0 RICHIESTE",
+      "add": "AGGIUNGI",
+      "addFriend": "aggiungi Amico...",
+      "searchFriend": "cerca un Amico...",
+      "friendRequests": "Richieste Di Amicizia",
+      "enabled": "Abilitate",
+      "disabled": "Disabilitate",
+      "incorrectUsername": "Nome Non corretto.",
+      "singleplayer": "\"GIOCATORE SINGOLO\"",
+      "multiplayer": "MULTIPLAYER",
+      "createAWaypoint": "Crea Un Waypoint",
+      "save": "Salva",
+      "help": "?",
+      "cancel": "CANCELLA",
+      "understood": "Ho Capito, Continua",
+      "invalidSessionStatus": "Hai avuto una sessione non valida",
+      "sendMessage": "Manda un messaggio in chat",
+      "removeFriend": "Rimuovi Amico"
+    },
+    "competitiveDisconnect": {
+      "warning": "AVVERTENZE!",
+      "leavingPenalties": "Abbandonare le partite competitive può comportare sanzioni.",
+      "suspended": "Potresti essere sospeso dai giochi competitivi se continui ad uscire!"
+    },
+    "friends": {
+      "connecting": "Connettendo"
+    },
+    "movement": {
+      "hold": "TENERE",
+      "click": "CLICK",
+      "shortcutsMovement": "Scorciatoie e movimento",
+      "addModsToRegion": "Aggiungi mod alla regione selezionata",
+      "selectDragMods": "Seleziona e trascina le mod",
+      "resetToClosest": "Ripristina la mod nella posizione più vicina",
+      "dontLockDragging": "Non bloccare le mod mentre le trascini",
+      "toggleModSelection": "Attiva / disattiva la selezione (multipla) delle mod",
+      "undoMovements": "Annulla i movimenti della mod",
+      "redoMovements": "Ripeti i movimenti della mod",
+      "moveWithPrecision": "Sposta mod selezionate con cautela"
+    },
+    "emotes": {
+      "available": "A DISPOSIZIONE",
+      "equipped": "EQUIPAGGIATO",
+      "equipEmote": "Attrezzature $0",
+      "unequipEmote": "Un-equip $0"
+    },
+    "bug": {
+      "shortDescriptionChars": "Breve descrizione ($ 0 caratteri rimanenti)"
+    },
+    "profile": {
+      "shortDescriptionChars": "Nome profilo ($ 0 caratteri rimasti)",
+      "lblServer": "Selezione automatica del profilo durante l'accesso al server:",
+      "backConfirm": {
+        "warning": "AVVERTENZE!",
+        "lineOne": "Hai modifiche non salvate!",
+        "lineTwo": "Se continui, le modifiche andranno perse!"
+      },
+      "deleteConfirm": {
+        "warning": "ATTENZIONE: QUESTA AZIONE NON PUÒ ESSERE ANNULLATA!",
+        "lineOne": "Stai per eliminare un profilo!",
+        "lineTwo": "Questa azione non può essere annullata sei sicuro di voler continuare?"
+      }
+    },
+    "cosmetics": {
+      "cloaks": "MANTELLI",
+      "wings": "ALI",
+      "hats": "CAPPELLI",
+      "back": "INDIETRO",
+      "shop": "NEGOZIO",
+      "ownedCosmetics": "$0 Di Proprietà",
+      "failedCosmeticConnection": "Impossibile connettersi al Cosmetic Server.",
+      "failedCosmeticConnectionRetry": "Prova dopo.",
+      "noActive": "Nessuna",
+      "hint": "SUGGERIMENTO: CLICCA PER TRASCINARE"
+    },
+    "mainmenu": {
+      "addAccount": {
+        "login": "\"accedi\"",
+        "password": "password",
+        "confirm": "CONFFERMA",
+        "emptyFields": "Fornisci entrambi i campi.",
+        "failedToLogin": "Accesso non riuscito.",
+        "back": "Indietro",
+        "loginRequest": "Per piacere accedi"
+      }
+    }
+  }
+}

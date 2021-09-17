@@ -1,0 +1,1002 @@
+{
+  "language": "日本語",
+  "features": {
+    "scoreboard": {
+      "details": {
+        "name": "スコアボード",
+        "description": "Minecraftのスコアボードを非表示、移動、カスタマイズできます。"
+      }
+    },
+    "uhc_overlay": {
+      "details": {
+        "name": "UHC オーバーレイ",
+        "description": "UHCでよく使われるアイテムを見やすいサイズに変更できます。"
+      }
+    },
+    "coords": {
+      "details": {
+        "name": "座標",
+        "description": "HUDに座標を表示します。"
+      }
+    },
+    "serverAddressMod": {
+      "details": {
+        "name": "サーバーアドレス",
+        "description": "HUDに接続しているサーバーを表示します。"
+      }
+    },
+    "directionhud": {
+      "details": {
+        "name": "方角 HUD",
+        "description": "プレイヤーの向きをHUDに表示します。"
+      }
+    },
+    "range": {
+      "details": {
+        "name": "リーチディスプレイ",
+        "description": "プレイヤー攻撃時の距離を表示します。"
+      }
+    },
+    "crosshair": {
+      "details": {
+        "name": "クロスヘア",
+        "description": "デフォルトのクロスヘアをカスタマイズ可能なクロスヘアに切り替えることができます。"
+      }
+    },
+    "armorstatus": {
+      "details": {
+        "name": "アーマーステータス",
+        "description": "装備している防具、および手に持っているアイテムの情報をHUDに表示します。"
+      }
+    },
+    "motionBlur": {
+      "details": {
+        "name": "モーションブラー",
+        "description": "移動時に周囲にブラーを表示します。"
+      }
+    },
+    "cps": {
+      "details": {
+        "name": "CPS",
+        "description": "HUDにクリックスピードを表示します。"
+      }
+    },
+    "memory": {
+      "details": {
+        "name": "メモリ使用率",
+        "description": "メモリの合計使用率および空きメモリの使用量を表示します。"
+      }
+    },
+    "spark": {
+      "details": {
+        "name": "Spark",
+        "description": ""
+      }
+    },
+    "itemPhysic": {
+      "details": {
+        "name": "物理アイテムドロップ",
+        "description": "ドロップアイテムを物理的なアイテムとして表示します。"
+      }
+    },
+    "skyblockAddons": {
+      "details": {
+        "name": "スカイブロック アドオン",
+        "description": "Hypixel Skyblockを円滑にプレイするために開発された20種類以上の機能がついたMod(version: ${sbaVersion})."
+      }
+    },
+    "skyBlockAddonsManaBarChild": {
+      "details": {
+        "name": "マナバー",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsManaTextChild": {
+      "details": {
+        "name": "マナテキスト",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsHealthBarChild": {
+      "details": {
+        "name": "ヘルスバー",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsHealthTextChild": {
+      "details": {
+        "name": "ヘルステキスト",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsDefenseIconChild": {
+      "details": {
+        "name": "ディフェンスアイコン",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsDefenseTextChild": {
+      "details": {
+        "name": "ディフェンステキスト",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsDefensePercentageChild": {
+      "details": {
+        "name": "ディフェンスパーセンテージ",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsSpeedTextChild": {
+      "details": {
+        "name": "スピードテキスト",
+        "description": ""
+      }
+    },
+    "skyblockAddonsBirchParkRainmaker": {
+      "details": {
+        "name": "バーチパークレインメーカー",
+        "description": ""
+      }
+    },
+    "skyblockAddonsdarkAuctionoTimer": {
+      "details": {
+        "name": "ダークオークションタイマー",
+        "description": ""
+      }
+    },
+    "skyblockAddonsEndstoneProtector": {
+      "details": {
+        "name": "エンドストーンプロテクター 表示",
+        "description": ""
+      }
+    },
+    "skyblockAddonsMagmaTimer": {
+      "details": {
+        "name": "マグマタイマー",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsPowerOrbStausChild": {
+      "details": {
+        "name": "パワーオーブステータス",
+        "description": ""
+      }
+    },
+    "skyblockAddonsBoneDisplay": {
+      "details": {
+        "name": "ボーンハット",
+        "description": ""
+      }
+    },
+    "skyblockAddonsSkillDisplay": {
+      "details": {
+        "name": "スキルアップデート",
+        "description": ""
+      }
+    },
+    "skyblockAddonsSummoningEyeCounter": {
+      "details": {
+        "name": "サモニングアイカウンター",
+        "description": ""
+      }
+    },
+    "skyblockAddonsTickerChargesDisplay": {
+      "details": {
+        "name": "ティッカーチャージ 表示",
+        "description": ""
+      }
+    },
+    "skyblockAddonsZealotCounter": {
+      "details": {
+        "name": "Zealot カウンター",
+        "description": ""
+      }
+    },
+    "skyblockAddonsZealotTotalCounter": {
+      "details": {
+        "name": "Zealot 総数",
+        "description": ""
+      }
+    },
+    "skyblockAddonsZealotPerEye": {
+      "details": {
+        "name": "Zealotに対するEyeの割合",
+        "description": ""
+      }
+    },
+    "bait_list": {
+      "details": {
+        "name": "ベイトリスト",
+        "description": ""
+      }
+    },
+    "sba_feature_warning": {
+      "details": {
+        "name": "機能に関する警告",
+        "description": ""
+      }
+    },
+    "textHotKey": {
+      "details": {
+        "name": "自動テキストホットキー",
+        "description": "キーまたはキーの組み合わせを設定し、コマンドまたはチャットメッセージを送信できます。"
+      }
+    },
+    "freelook": {
+      "details": {
+        "name": "フリールック",
+        "description": "有効にすると、プレーヤーを回転させずにカメラの視点を変更できます。"
+      }
+    },
+    "fov_mod": {
+      "details": {
+        "name": "FOV Mod",
+        "description": "ポーションやスピードエフェクト時のFOVをカスタマイズできます。"
+      }
+    },
+    "time_changer": {
+      "details": {
+        "name": "タイムチェンジャー",
+        "description": "ゲーム内の時刻を決まった時刻に固定できます。"
+      }
+    },
+    "waypoints": {
+      "details": {
+        "name": "ウェイポイント",
+        "description": "現在地からウェイポイントまでの距離を確認できるほか、名前やビームをレンダリングすることもできます。"
+      }
+    },
+    "chat": {
+      "details": {
+        "name": "チャット",
+        "description": "好みに合わせてチャットオプションをカスタマイズできます。"
+      }
+    },
+    "itemTrackerChild": {
+      "details": {
+        "name": "アイテムトラッカー",
+        "description": "アイテムを拾ったりドロップした際に時間と量を表示します。"
+      }
+    },
+    "keystrokes": {
+      "details": {
+        "name": "キーストロークス",
+        "description": "移動中、またはマウス、スペースバーが押されたときに表示されます。"
+      }
+    },
+    "saturation": {
+      "details": {
+        "name": "空腹度",
+        "description": "HUDに現在の空腹度を表示します。"
+      }
+    },
+    "hypixel_mod": {
+      "details": {
+        "name": "Hypixel Mods",
+        "description": "Hypixel server network用に開発されたMod一覧"
+      }
+    },
+    "fps": {
+      "details": {
+        "name": "FPS",
+        "description": "HUDにFPSを表示します。"
+      }
+    },
+    "clock": {
+      "details": {
+        "name": "時計",
+        "description": "HUDに現在の時刻を表示します。"
+      }
+    },
+    "stopwatch": {
+      "details": {
+        "name": "ストップウォッチ",
+        "description": "HUDにストップウォッチを追加します。"
+      }
+    },
+    "block_outline": {
+      "details": {
+        "name": "ブロックアウトライン",
+        "description": "ブロックアウトラインのカスタマイズ、およびオーバーレイを追加できます。"
+      }
+    },
+    "netgraph": {
+      "details": {
+        "name": "ネットグラフ",
+        "description": "接続しているサーバーのTPSグラフを表示します。"
+      }
+    },
+    "worldedit_cui": {
+      "details": {
+        "name": "WorldEdit CUI",
+        "description": "WorldEditプラグインのクライアント側ユーザーインターフェースであり、選択した範囲をリアルタイムで表示できます。"
+      }
+    },
+    "one_seven_visuals": {
+      "details": {
+        "name": "1.7 Visuals",
+        "description": "特定のビジュアルとアニメーションを1.7での動作に戻します。"
+      }
+    },
+    "screenshot": {
+      "details": {
+        "name": "スクリーンショットアップローダー",
+        "description": "スクリーンショット時に画像を瞬時に開けるほか、その場でアップロードやツイートをすることができます。"
+      }
+    },
+    "ping": {
+      "details": {
+        "name": "Ping",
+        "description": "HUDにサーバーのPingを表示します。"
+      }
+    },
+    "teamview": {
+      "details": {
+        "name": "チーム表示",
+        "description": "HUD上にチームメイトの位置が表示されます。"
+      }
+    },
+    "potion_counter": {
+      "details": {
+        "name": "ポーションカウンター",
+        "description": "インベントリにある回復ポーションやスープの総数をHUDに表示します。"
+      }
+    },
+    "shinyPots": {
+      "details": {
+        "name": "Shiny Pots",
+        "description": "インベントリ、ホットバー内にあるポーションにエンチャントエフェクトを追加します。"
+      }
+    },
+    "potioneffects": {
+      "details": {
+        "name": "ポーションエフェクト",
+        "description": "HUDに現在有効なポーションエフェクトを表示します。"
+      }
+    },
+    "bossbar": {
+      "details": {
+        "name": "ボスバー",
+        "description": "Minecraftのボスバーを非表示、移動、カスタマイズできます。"
+      }
+    },
+    "scrollable_tooltips": {
+      "details": {
+        "name": "スクロール可能なツールヒント",
+        "description": "スクロールホイールを使用することで、長いアイテム説明を読みやすくします。"
+      }
+    },
+    "streamerMode": {
+      "details": {
+        "name": "配信モード",
+        "description": ""
+      }
+    },
+    "toggleSneak": {
+      "details": {
+        "name": "スニーク/スプリントの切り替え",
+        "description": "スプリントやスニークキーを押さえるのではなく、切り替え可能にします。"
+      }
+    },
+    "mumble-link": {
+      "details": {
+        "name": "Mumble Link",
+        "description": "Mumbleを使用してゲーム内での位置オーディオを使用します。"
+      }
+    },
+    "combo": {
+      "details": {
+        "name": "コンボカウンター",
+        "description": "一定時間内に相手プレイヤーをヒットした頻度をHUDに表示します。"
+      }
+    },
+    "particleMultiplierMod": {
+      "details": {
+        "name": "パーティクル乗算",
+        "description": "他のプレイヤーを攻撃する際に表示されるパーティクルの量を増やします。"
+      }
+    },
+    "cooldowns": {
+      "details": {
+        "name": "クールダウン",
+        "description": "クールダウン状態のアイテムやアビリティをHUDに表示します。"
+      }
+    }
+  },
+  "settings": {
+    "labels": {
+      "settings": "設定",
+      "general": "一般",
+      "microphone": "マイク",
+      "speaker": "スピーカー",
+      "controls": "コントロール",
+      "generalOptions": "一般設定",
+      "colorOptions": "色設定",
+      "damageOptions": "ダメージ設定",
+      "damageDisplay": "ダメージ表示",
+      "renderOptions": "レンダー設定",
+      "blinkOptions": "ブリンク設定",
+      "hudOptions": "Hud設定",
+      "cosmeticOptions": "Cosmetic設定",
+      "modOptions": "Mod設定",
+      "miscOptions": "その他の設定",
+      "texturePackOptions": "テクスチャパック設定",
+      "zealotOptions": "Zealot設定",
+      "safetyOptions": "セーフティオプション",
+      "indicatorOptions": "インジケーター設定",
+      "entityOptions": "エンティティ設定",
+      "locationResourceOptions": "位置情報設定",
+      "backpackOptions": "バックパック設定",
+      "warpTpOptions": "ワープ/テレポート設定",
+      "tooltipOptions": "ツールヒント設定",
+      "containerOptions": "コンテナ設定",
+      "enchantedItemsBlacklist": "エンチャントアイテムブラックリスト",
+      "enchantedItemsBlacklistDescription": "エンチャントアイテムの使用を無効",
+      "chatOptions": "チャット設定",
+      "hideOptions": "設定を非表示",
+      "warningOptions": "警告設定",
+      "flyBoostOptions": "フライブースト設定",
+      "animations": "アニメーション",
+      "heldItems": "所持アイテム",
+      "mechanics": "動作",
+      "excludePotionEffects": "ポーションエフェクトを除外",
+      "shortDescription": "概要説明",
+      "section": "セクション",
+      "description": "説明",
+      "submit": "送信",
+      "mod": "MOD",
+      "gui": "GUI",
+      "cosmetic": "COSMETIC",
+      "store": "ストア",
+      "voice": "音声",
+      "antiCheat": "ANTI CHEAT",
+      "launcher": "ランチャー",
+      "other": "その他"
+    },
+    "buttons": {
+      "applyToAll": "全てに適用"
+    },
+    "off": "オフ",
+    "off_van": "オフ (Vanilla)",
+    "inventoryOnly": "インベントリのみ",
+    "all": "全て",
+    "high": "高",
+    "highest": "最大 (最大FPS)",
+    "medium": "中 (FPS)",
+    "low": "低",
+    "lowest": "最低 (最低FPSブースト)",
+    "value": "値",
+    "percent": "割合",
+    "none": "無し",
+    "vertical": "縦",
+    "horizontal": "横",
+    "wave": "ウェーブ",
+    "shift": "シフト",
+    "mods": "Mods",
+    "custom": "カスタム",
+    "normal": "標準",
+    "cross": "十字形",
+    "circle": "円形",
+    "thirdPerson": "三人称視点",
+    "firstPerson": "一人称視点",
+    "forward": "進む",
+    "doNothing": "何もしない",
+    "showSwing": "スイングを表示",
+    "showSwingParticles": "スイングとパーティクルを表示",
+    "potion": "ポーション",
+    "soup": "スープ",
+    "regular": "標準",
+    "compact": "コンパクト",
+    "free": "フリー",
+    "three": "3",
+    "five": "5",
+    "six": "6",
+    "always": "常に表示",
+    "skyBlockOnly": "SkyBlock のみ",
+    "never": "常にしない",
+    "scale_nr": "拡大縮小",
+    "shadow_bl": "テキストシャドウ",
+    "background_bl": "背景を表示",
+    "backgroundHeight_nr": "背景の高さ",
+    "backgroundWidth_nr": "背景の幅",
+    "border_bl": "枠線",
+    "border_thickness_nr": "枠線の幅",
+    "text_clr_nr": "テキストの色",
+    "background_clr_nr": "背景色",
+    "border_clr_nr": "枠線の色",
+    "colored_bl": "ポーションの色を表示",
+    "renderGlintBehindPotion_bl": "ポーションの背後にグラントをレンダリング",
+    "spark_start_kblc": "Sparkを起動",
+    "spark_stop_kblc": "Sparkを停止",
+    "render_bar_bl": "体力を表示",
+    "customBossBar_bl": "カスタムボスバーを使用",
+    "barColor_clr_nr": "ボスバーの色",
+    "toggle_sprint_bl": "スプリント切り替え",
+    "toggle_sneak_bl": "スニーク切り替え",
+    "toggle_sneak_container_bl": "コンテナ内でスニークを切り替える",
+    "double_tap_bl": "ダブルタップ",
+    "show_text_bl": "HUDテキストを表示",
+    "fly_boost_bl": "フライブースト",
+    "boost_amnt_nr": "フライブースト値",
+    "showHudText_bl": "HUDを表示",
+    "default_fov_nr": "デフォルト FOV",
+    "slowness_fov_nr": "減速 FOV",
+    "sprinting_fov_nr": "スプリント FOV",
+    "flying_fov_nr": "飛行時 FOV",
+    "speed_fov_nr": "速度速度上昇 FOV",
+    "mode": "リストモード",
+    "glint_anim": "グリントレンダリング",
+    "armor_hit_anim": "アーマーヒット時のアニメーション",
+    "block_hit_anim": "ブロックヒット",
+    "health_anim": "体力のフラッシュ",
+    "sneak_anim": "スニーク時",
+    "hurt_camera_shake": "Hurt Camera Shake",
+    "potion_drinking": "ポーションを飲む",
+    "tp_held_items": "三人称視点のアイテム",
+    "fp_carpet": "カーペット",
+    "fp_fishing_rod": "釣り竿",
+    "fp_sword": "剣",
+    "fp_potion": "ポーション",
+    "fp_bow": "弓",
+    "use_item_while_digging": "採掘中にアイテムを使用",
+    "fakeSwingActions": "ミスクールダウンの動作",
+    "hit_armor_color_clr_nr": "アーマーヒット 色",
+    "stopwatch_kblc": "開始/停止 キー",
+    "resetEveryStart_bl": "開始時にリセット",
+    "potionCounter": "ヒーリングタイプ",
+    "auto_friend_bl": "Auto Friend",
+    "auto_tip_bl": "Auto TIP",
+    "auto_gg_bl": "Auto GG",
+    "anti_gg_bl": "Anti GG",
+    "auto_who_bl": "Auto Who",
+    "level_head_bl": "Level Head",
+    "level_color_clr_nr": "レベルテキストカラー",
+    "number_color_clr_nr": "レベルナンバー 色",
+    "dot_bl": "ドット",
+    "outline_bl": "アウトライン",
+    "showInF5_bl": "三人称でクロスヘアを表示",
+    "styleOption": "スタイル",
+    "thickness_nr": "太さ",
+    "size_nr": "サイズ",
+    "gap_nr": "ギャップ",
+    "dotSize_nr": "ドットサイズ",
+    "dynamic_colors_bl": "ダイナミックカラー",
+    "color_clr_nr": "色",
+    "dotColor_clr_nr": "ドット 色",
+    "friendly_clr_nr": "友好 色",
+    "enemy_clr_nr": "エネミー 色",
+    "rotationSpeed_nr": "回転速度",
+    "list_mode": "リストモード",
+    "item_name_bl": "アイテム名",
+    "item_count_bl": "アイテム数",
+    "equipped_item_bl": "装備アイテム",
+    "show_while_typing_bl": "入力中に表示",
+    "text_shadow_bl": "テキストシャドウ",
+    "damage_overlay_bl": "ダメージオーバーレイ",
+    "item_dmg_bl": "アイテムダメージを表示",
+    "armor_dmg_bl": "防具ダメージを表示",
+    "max_dmg_bl": "最大ダメージを表示",
+    "dmg_display": "ダメージ表示タイプ",
+    "dmg_threshold": "ダメージ閾値タイプ",
+    "static_colors_bl": "固定ダメージ 色",
+    "name_text_clr_nr": "ネームカラー",
+    "highest_clr_nr": "デフォルトのダメージ値",
+    "high_clr_nr": "ダメージ値（高）",
+    "medium_clr_nr": "ダメージ値（中）",
+    "medium_low_clr_nr": "ダメージ値（低中）",
+    "low_clr_nr": "ダメージ値（低）",
+    "lowest_clr_nr": "ダメージ値（最低）",
+    "oldBlur_bl": "Old Blur",
+    "value_nr": "値",
+    "skyblockOnly_bl": "SkyBlock のみ",
+    "show_c_bl": "C (アクティブレンダラー) を表示",
+    "show_labels_bl": "軸ラベルを表示",
+    "show_biome_bl": "バイオームを表示",
+    "biome_coordinates_bl": "バイオームラベルを表示",
+    "biome_color_bl": "プリセットのバイオームカラーを使用",
+    "direction_bl": "方向を表示",
+    "directionAffect_bl": "方向の変更を表示",
+    "text_coordinates_clr_nr": "基本色",
+    "x_label_color_clr_nr": "X ラベル 色",
+    "x_axis_color_clr_nr": "X 値 色",
+    "y_label_color_clr_nr": "Y ラベル 色",
+    "y_axis_color_clr_nr": "Y 値 色",
+    "z_label_color_clr_nr": "Z ラベル 色",
+    "z_axis_color_clr_nr": "Z 値 色",
+    "c_label_color_clr_nr": "C ラベル 色",
+    "c_axis_color_clr_nr": "C 値 色",
+    "direction_color_clr_nr": "方向 色",
+    "direction_affect_color_clr_nr": "方向変更 色",
+    "biomeColor_color_clr_nr": "バイオームカラー",
+    "biomeLabelColor_color_clr_nr": "バイオームラベル 色",
+    "1_hk_hk": "キー 1",
+    "2_hk_hk": "キー 2",
+    "3_hk_hk": "キー 3",
+    "4_hk_hk": "キー 4",
+    "5_hk_hk": "キー 5",
+    "6_hk_hk": "キー 6",
+    "7_hk_hk": "キー 7",
+    "8_hk_hk": "キー 8",
+    "9_hk_hk": "キー 9",
+    "10_hk_hk": "キー 10",
+    "11_hk_hk": "キー 11",
+    "12_hk_hk": "キー 12",
+    "13_hk_hk": "キー 13",
+    "14_hk_hk": "キー 14",
+    "15_hk_hk": "キー 15",
+    "clicks_bl": "クリックを表示",
+    "movement_bl": "移動キーを表示",
+    "spacebar_bl": "スペースバーを表示",
+    "arrows_bl": "名前を矢印に置き換え",
+    "textShadow_bl": "テキストシャドウ",
+    "box_size_nr": "ボックスサイズ",
+    "text_pressed_clr_nr": "テキストカラー (押されたとき)",
+    "background_pressed_clr_nr": "背景色",
+    "numbers_bl": "数字を非表示",
+    "background_color_clr_nr": "背景色",
+    "beams_bl": "ビームを表示",
+    "box_border_bl": "枠線",
+    "box_padding_nr": "Box Padding",
+    "add_waypoint_kb": "ウェイポイントを作成",
+    "hideHealthBar_bl": "ヘルスバーを非表示",
+    "hideFoodBar_bl": "食料と防具バーを非表示",
+    "hidePetHealthBar_bl": "ペットのヘルスバーを非表示",
+    "combatTimerDisplay_bl": "コンバットタイマー",
+    "combatTimerDisplay_blDescription": "この機能を使うにはクールダウンMODを有効にする必要があります。",
+    "skeletonHelmetBars_bl": "スケルトンヘルメットバー",
+    "zealotColor_clr_nr": "Zealot カラー",
+    "specialZealotAlert_bl": "Special Zealot アラート",
+    "zealotColorBoolean_bl": "Zealot カラー 変更",
+    "zealotCounterExplosiveBowSupport_bl": "Zealot Counter Explosive Bow Support",
+    "dropConfirmation": "ドロップの確認",
+    "lockSlots_bl": "スロットをロック",
+    "minimum_hotbar_item_rarity": "ドロップを停止する最低レアリティ",
+    "drop_blacklist": "ドロップアイテムブラックリスト",
+    "drop_blacklistDescription": "このテキストボックスに入力されたアイテムはドロップできません。コンマでアイテムを区切ってください。",
+    "drop_whitelist": "ドロップアイテムホワイトリスト",
+    "drop_whitelistDescription": "このテキストボックスに入力されたアイテムはドロップできます。コンマでアイテムを区切ってください。",
+    "stopDroppingSellingRareItems_bl": "レアアイテムのドロップ/売却を停止",
+    "avoidBreakingStems_bl": "茎の破壊を防止",
+    "avoidBlinkingNightVision_bl": "暗視のブリンクを防止",
+    "dontOpenProfilesWithBow_bl": "弓でプロファイルを開かない",
+    "freezeKey_kblc": "キーを固定",
+    "lockKey_kblc": "キーをロック",
+    "makeBackpackInventoriesColored_bl": "バックパックのインベントリを色付きにする",
+    "slayerIndicator_bl": "スレイヤー表示",
+    "slayerIndicator_blDescription": "この機能を有効にすると、アーマーステータスModも有効になります。",
+    "turnBowGreenWhenUsingToxicArrowPoison_bl": "悪性な矢を装備時弓を緑にする",
+    "fishingSoundIndicator_bl": "釣りの音を感知",
+    "changeBarColorForPotions_bl": "ポーションのバーの色を変更",
+    "colorEnderChestInEnd_bl": "エンドのエンダーチェストの色",
+    "endEnderChestColor_clr_nr": "エンダーチェストの色",
+    "hideSvenPupNametags_bl": "Sven / Pup ネームタグを非表示",
+    "hidePlayersNearNPC_bl": "NPC の近くにいるプレイヤーを隠す",
+    "hidePlayersInLobby_bl": "ロビーのプレイヤーを隠す",
+    "ignoreItemFrameClicks_bl": "アイテムフレームクリックを無視",
+    "hideBones_bl": "スケルトンハットボーンを非表示",
+    "preventMovementOnDeath_bl": "死亡時の移動を防止",
+    "onlyMineOresDeepCaverns_bl": "Deep Caverns内の鉱石のみ採掘",
+    "onlyMineValuablesNether_bl": "ネザー内の貴重なアイテムのみを採掘",
+    "onlyBreakLogsPark_bl": "パーク内のログのみ破壊",
+    "enableMessageWhenBreakingPark_bl": "パーク内での破壊でメッセージを有効",
+    "jungleAxeCooldown_bl": "Treecapitator クールダウン",
+    "showBackpackPreview_bl": "バックパックのプレビューを表示",
+    "showBackpackHoldingShift_bl": "シフトを押しながらバックパックを表示",
+    "backpackPreviewAh_bl": "バックパックプレビュー(AH)",
+    "cakeBagPreview_bl": "ケーキバッグプレビュー",
+    "backpackStyle": "バックパックのスタイル",
+    "fancyWarpMenu_bl": "Fancy Warp メニュー",
+    "doubleWarp_bl": "ダブルワープ",
+    "warpAdvancedMode_bl": "高度なワープモード",
+    "disableEndermanTeleportionEffect_bl": "エンダーマンテレポートエフェクトを無効にする",
+    "hideGreyEnchants_bl": "グレーのエンチャントを隠す",
+    "showItemAnvilUses_bl": "金床の使用状況を表示",
+    "replaceRomanNumeralsWithNumbers_bl": "ローマ数字を数字に置き換え",
+    "organizeEnchants_bl": "エンチャントを整理する",
+    "showEnchantmentsReforges_bl": "エンチャントリフォージを表示",
+    "showBrokenFragments_bl": "壊れたフラグメントを表示",
+    "dontResetCursorInventory_bl": "カーソルインベントリをリセットしない",
+    "craftingPatterns_bl": "クラフトのパターン",
+    "craftingPattern": "デフォルトのクラフトパターン",
+    "disableEmberRod_bl": "Ember Rodを無効にする",
+    "avoidPlacingEnchantItems_bl": "エンチャントアイテムを設置しないようにする",
+    "disableTeleportPadMessages_bl": "テレポートパッドメッセージを無効にする",
+    "disableMagicalSoupMessages_bl": "マジックスープメッセージを無効にする",
+    "manabarColor_clr_nr": "バーの色",
+    "healthbarColor_clr_nr": "バーの色",
+    "useVanillaTextureDefence_bl": "バニラテクスチャを使用",
+    "defensetextColor_clr_nr": "テキストカラー",
+    "percentageDefense_bl": "パーセンテージで表示",
+    "textColor_clr_nr": "テキストカラー",
+    "show_on_other_games_bl": "他のゲームに表示する",
+    "detailed_bl": "詳細表示",
+    "bait_list_color_clr_nr": "テキストカラー",
+    "warningTime_nr": "警告時間",
+    "fullInventoryWarning_bl": "フルインベントリ警告",
+    "repeatFullInventoryWarning_bl": "フルインベントリ警告を繰り返す",
+    "magmaWarning_bl": "マグマ警告",
+    "minionStopWarning_bl": "ミニオン停止警告",
+    "minionFullWarning_bl": "ミニオンの上限警告",
+    "minionDisableLocationWarning_bl": "ミニオンの位置無効警告",
+    "legendarySeaCreatureWarning_bl": "Legendary Sea Creature警告",
+    "repeatSlayBossWarning_bl": "Slay Boss警告を繰り返す",
+    "summonEyeAlert_bl": "サモンアイアラート",
+    "noArrowsLeftAlert_bl": "弓矢不足アラート",
+    "bossApproachAlert_bl": "ボス接近アラート",
+    "block_outline_color_clr_nr": "ブロックアウトライン 色",
+    "block_overlay_color_clr_nr": "ブロックオーバーレイ 色",
+    "block_outline_width_nr": "ブロックアウトライン 幅",
+    "block_overlay_bl": "ブロックオーバーレイ",
+    "block_outline_bl": "ブロックアウトライン",
+    "width_nr": "幅",
+    "useLegacyStyle_bl": "レガシースタイルを使用",
+    "directionColor_clr_nr": "方向 色",
+    "markerColor_clr_nr": "マーカーの色",
+    "invertPitch_bl": "ピッチを反転 (上下)",
+    "invertYaw_bl": "ヨーを反転 (左右)",
+    "freelook_kb": "フリールック",
+    "particleMultiplier_nr": "パーティクル乗算",
+    "showCriticals_bl": "クリティカルを表示",
+    "affectCriticals_bl": "クリティカルに影響",
+    "affectEnchantedCrits_bl": "ダメージ増加に影響",
+    "alwaysShowEnchantedCrits_bl": "常にダメージ増加を表示",
+    "militaryTime_bl": "24時間形式",
+    "point1Color_clr_nr": "ポジション１カラー",
+    "point2Color_clr_nr": "ポジション２カラー",
+    "outlineColor_clr_nr": "アウトライン 色",
+    "show_in_inventory_bl": "インベントリに表示",
+    "display_typing_bl": "入力中に表示",
+    "effect_name_bl": "エフェクト名",
+    "blink_bl": "ブリンク",
+    "blink_duration_nr": "ブリンク時間",
+    "color_name_based_on_effect_bl": "エフェクトに基づいて名前の色を設定",
+    "duration_clr_nr": "効果時間 色",
+    "excludePerm_bl": "永続効果",
+    "excludeSpeed_bl": "速度速度上昇",
+    "excludeSlowness_bl": "移動速度低下",
+    "excludeStrength_bl": "攻撃力上昇",
+    "excludeJumpBoost_bl": "跳躍力上昇",
+    "excludeRegen_bl": "再生能力",
+    "excludeFireRes_bl": "炎耐性",
+    "excludeWaterBreathing_bl": "水中呼吸",
+    "excludeNightVision_bl": "暗視",
+    "excludeWeakness_bl": "弱体化",
+    "excludePoison_bl": "毒",
+    "excludeHaste_bl": "採掘速度上昇",
+    "excludeInvis_bl": "透明化",
+    "time_nr": "時間",
+    "horizon_y_level_nr": "水平線Yレベル",
+    "gold_ingot_scale_nr": "金インゴット スケール",
+    "gold_nugget_scale_nr": "金ナゲット スケール",
+    "gold_ore_scale_nr": "金鉱石 スケール",
+    "gold_apple_scale_nr": "金リンゴ スケール",
+    "skull_scale_nr": "頭 スケール",
+    "rightCLick_bl": "右クリックCPS",
+    "showCPSText_bl": "CPSテキストを表示",
+    "lineColor_clr_nr": "ライン 色",
+    "menuBlur_bl": "メニューのぼかしを表示",
+    "shift_effects_bl": "インベントリ内のエフェクトをシフト",
+    "shift_effects_blDescription": "インベントリ内のポーションエフェクトの位置を変更する",
+    "achievements_bl": "実績を表示",
+    "achievements_blDescription": "Minecraft の実績ポップアップを切り替える設定",
+    "show_hud_in_debug_bl": "F3でHUDを表示",
+    "show_hud_in_debug_blDescription": "F3でMODを表示するかどうかを選択",
+    "show_hud_in_shift_tab_bl": "フレンドメニューにHUDを表示",
+    "show_hud_in_shift_tab_blDescription": "フレンドメニューでMODを表示するかどうかを選択",
+    "friends_menu_disable_bl": "フレンドメニューを無効にする",
+    "friends_menu_disable_blDescription": "LCフレンドメニューを切り替える設定",
+    "use_minecraft_scale_enum": "Minecraft GUIスケールを使用",
+    "use_minecraft_scale_enumDescription": "MinecraftのGUI スケールを使用してLC modsをスケールするか選択\n \n §b全て: §fScale Mods and Menus \n §bMODS: §fScale Mods Only \n §bオフ: §fUse Normal LC Scale ",
+    "nametag_bl": "三人称ネームタグ",
+    "nametag_blDescription": "自分のネームタグを三人称視点で表示する設定",
+    "nametagLogo_bl": "ネームタグアイコンを表示",
+    "nametagLogo_blDescription": "ネームタグのLCロゴを切り替える設定",
+    "unlimited_chat_bl": "無限チャット",
+    "unlimited_chat_blDescription": "チャットのメッセージ履歴を増やすかどうかを選択",
+    "stackMessages_bl": "スパムメッセージをスタック",
+    "stackMessages_blDescription": "チャットで同じメッセージをスタックするかどうかを選択",
+    "hideBanWave_bl": "Ban Waveメッセージを非表示",
+    "hideBanWave_blDescription": "チャットでLC ban waveメッセージを表示するかどうかを選択",
+    "sortingOptions": "並べ替え設定",
+    "sortingOptionsDescription": "modの並びを決める\n \n §bデフォルト: §fDefault LC Sorting \n §bカスタム: §fYour Custom Sorting",
+    "chatHeight_bl": "チャットの高さを修正",
+    "chatHeight_blDescription": "ヘルスバーをブロックしないよう、チャットを 12 ピクセル上に移動させます",
+    "chatNameColor": "ハイライトネームカラー",
+    "chatNameColorDescription": "チャットに表示される名前のハイライトの色を選択",
+    "searchOptions_bl": "オプションでModを検索",
+    "searchOptions_blDescription": "簡単に見つけられるようオプションでMODを検索",
+    "lockMods_bl": "Modの並べ替えを無効化",
+    "lockMods_blDescription": "modを並び替えた後その位置に固定する",
+    "borderless_fullscreen_bl": "ボーダーレスフルスクリーン",
+    "borderless_fullscreen_blDescription": "ボーダーレスフルスクリーンを有効にするかどうかを選択",
+    "variable_zoom_bl": "スクロールして拡大する",
+    "variable_zoom_blDescription": "最適化されたOptiFineズームを有効にする",
+    "weather_bl": "天気を無効化",
+    "weather_blDescription": "すべての天気を無効にするかどうかを選択",
+    "trans_res_pack_menu_bg_bl": "背景の透明化",
+    "trans_res_pack_menu_bg_blDescription": "テクスチャパックを変更する際に背景を透明化する",
+    "red_string_bl": "赤い糸",
+    "red_string_blDescription": "リソースパックに関係なく、糸を赤く表示するかどうかを選択",
+    "clear_glass": "ガラス透明化",
+    "clear_glassDescription": "ガラスを透明化するかどうかを選択",
+    "hudLayoutColor_clr_nr": "ブランディングカラー",
+    "hudLayoutColor_clr_nrDescription": "HUDレイアウトの色を変更する",
+    "mod_menu_kb": "Mod Menu",
+    "mod_menu_kbDescription": "このメニューを表示",
+    "waypoints_kb": "ウェイポイントメニュー",
+    "emote_kb": "エモートホイール",
+    "dropStack_kblc": "ドロップスタック",
+    "dropStack_kblcDescription": "スタックでアイテムをドロップする際にドロップキーと一緒に押す必要があるキー",
+    "friendMenuKey_kblc": "フレンドメニュー",
+    "toggleChat_kblc": "チャットの切り替え",
+    "hide_endportals": "エンドポータルを非表示",
+    "hide_endportalsDescription": "エンドポータルギャラクシーを非表示にする\n \n §b常に表示: §fAlways show \n §bSKYBLOCK: §fShow only on SkyBlock \n §b表示しない: §fNever show",
+    "skip_lighting_bl": "フルブライト",
+    "skip_lighting_blDescription": "ガンマを増やし、暗い場所を明るくする",
+    "glint": "エンチャントグリントを表示",
+    "glintDescription": "グリントエフェクトをいつレンダーするか設定\n \n §b全て: §fAlways render \n §bインベントリのみ: §fOnly render in inventory \n §b無し: §fNever render",
+    "lazy_chunk_loading": "低速チャンクローディング",
+    "lazy_chunk_loadingDescription": "チャンクが表示される速度を設定します。低い値では、チャンクを遅く読み込ませることでFPSを向上させることができます。\n \n §2最低: §fLoads every 30 ticks (Highest FPS Boost) \n §a低: §fLoads every 15 ticks (High FPS Boost) \n §e中: §fLoads every 10 ticks (Med FPS Boost) \n §6高: §fLoads every 5 ticks (Low FPS Boost) \n §c最高: §fLoads every 2 ticks (Lowest FPS Boost) \n §bオフ: §fVanilla Chunk Loading (No FPS Boost)",
+    "entity_shadow_bl": "影",
+    "entity_shadow_blDescription": "エンティティの影をレンダリングする",
+    "entity_render": "エンティティ",
+    "entity_renderDescription": "どの距離からエンティティがレンダーされるかを設定します。低い値では、遠くのエンティティを読み込まないことでFPSを向上させることができます。",
+    "b_entity_render": "タイルエンティティ",
+    "b_entity_renderDescription": "どの距離からタイルエンティティがレンダーされるかを設定します。低い値では、遠くのタイルエンティティを読み込まないことでFPSを向上させることができます。",
+    "chat_bg_opacity_nr": "背景の透明度",
+    "chat_shadow_bl": "チャットのテキストシャドウ",
+    "chat_shadow_blDescription": "チャット行にテキストシャドウを表示",
+    "disable_chat_bl": "受信メッセージを非表示",
+    "dragon_wings_bl": "ウィング",
+    "mask_bl": "マスク",
+    "bandanna_bl": "Bandannas",
+    "hat_bl": "帽子",
+    "cloak_bl": "クローク",
+    "chroma_speed_nr": "スピード",
+    "chroma_bl": "クロマ",
+    "chroma_type": "タイプ",
+    "horizontalScrollingKey_kblc": "横スクロールキー",
+    "horizontalScrollingKey_kblcDescription": "このキーを押しながらスクロールをすることで横向きにスクロールします (可能な場合)",
+    "hideName_bl": "ネームタグを隠す",
+    "hideName_blDescription": "この設定をオン/オフにすると、接続しているサーバーに再接続する必要があります。",
+    "hideOwnSkin_bl": "スキンを隠す",
+    "hideOthersNames_bl": "他ユーザーの名前を隠す",
+    "hideOthersNames_blDescription": "この設定をオン/オフにすると、接続しているサーバーに再接続する必要があります。",
+    "hideOthersSkin_bl": "他ユーザーのスキンを隠す",
+    "1_hk_hk_kblc": "自動テキストホットキー１",
+    "2_hk_hk_kblc": "自動テキストホットキー２",
+    "3_hk_hk_kblc": "自動テキストホットキー３",
+    "4_hk_hk_kblc": "自動テキストホットキー４",
+    "5_hk_hk_kblc": "自動テキストホットキー５",
+    "6_hk_hk_kblc": "自動テキストホットキー６",
+    "7_hk_hk_kblc": "自動テキストホットキー７",
+    "8_hk_hk_kblc": "自動テキストホットキー８",
+    "9_hk_hk_kblc": "自動テキストホットキー９",
+    "10_hk_hk_kblc": "自動テキストホットキー１０",
+    "11_hk_hk_kblc": "自動テキストホットキー１１",
+    "12_hk_hk_kblc": "自動テキストホットキー１２",
+    "13_hk_hk_kblc": "自動テキストホットキー１３",
+    "14_hk_hk_kblc": "自動テキストホットキー１４",
+    "15_hk_hk_kblc": "自動テキストホットキー１５"
+  },
+  "gui": {
+    "components": {
+      "general": "一般",
+      "performance": "パフォーマンス",
+      "controls": "コントロール",
+      "all": "全て",
+      "new": "新規",
+      "hud": "Hud",
+      "server": "サーバー",
+      "mechanic": "動作",
+      "none": "無し",
+      "profile": "プロファイル $0",
+      "mods": "MODS",
+      "settings": "設定",
+      "waypoints": "ウェイポイント",
+      "staff": "STAFF",
+      "editHudLayout": "HUD レイアウトを編集",
+      "saveNewProfile": "新規プロファイルとして保存",
+      "resetPosition": "位置をリセット",
+      "resetToDefaults": "初期設定にリセット",
+      "noWaypointsSet": "このワールドにはウェイポイントが設定されていません。",
+      "searchPlaceholder": "検索...",
+      "namePlaceholder": "名前...",
+      "sendPlaceholder": "チャットメッセージを送信...",
+      "commandPlaceholder": "コマンドを入力...",
+      "reportABug": "バグを報告",
+      "profileEditor": "プロファイルエディター",
+      "profileName": "プロファイル名",
+      "loggedInAs": "としてログイン",
+      "invalidSession": "無効なセッション",
+      "clashesWith": "$0 とクラッシュ",
+      "friends": "$ 0 フレンド",
+      "requests": "$0 リクエスト",
+      "add": "追加",
+      "addFriend": "フレンドを追加...",
+      "searchFriend": "フレンドを検索...",
+      "friendRequests": "フレンドリクエスト",
+      "enabled": "有効",
+      "disabled": "無効",
+      "incorrectUsername": "無効なユーザー名です。",
+      "singleplayer": "シングルプレイ",
+      "multiplayer": "マルチプレイ",
+      "createAWaypoint": "ウェイポイントを作成",
+      "save": "保存",
+      "help": "?",
+      "cancel": "キャンセル",
+      "understood": "理解しました。続行します。",
+      "invalidSessionStatus": "セッションが無効です",
+      "sendMessage": "チャットメッセージを送信",
+      "removeFriend": "フレンドを削除"
+    },
+    "competitiveDisconnect": {
+      "warning": "注意！",
+      "leavingPenalties": "競争性が高いゲームを途中で抜けるとペナルティが課せられる可能性があります。",
+      "suspended": "このままゲームを離れ続けると、競争性が高いゲームをプレイできなくなる可能性があります！"
+    },
+    "friends": {
+      "connecting": "接続中"
+    },
+    "movement": {
+      "hold": "HOLD",
+      "click": "CLICK",
+      "shortcutsMovement": "ショートカット＆移動",
+      "addModsToRegion": "選択範囲に Mod を追加",
+      "selectDragMods": "Modを選択＆ドラッグ",
+      "resetToClosest": "Modを最も近い位置にリセット",
+      "dontLockDragging": "ドラッグ中は Mod をロックしない",
+      "toggleModSelection": "(複数の) modの選択を切り替え",
+      "undoMovements": "Modの動作を元に戻す",
+      "redoMovements": "Modの動作を元に戻す",
+      "moveWithPrecision": "選択したModを移動"
+    },
+    "emotes": {
+      "available": "利用可能",
+      "equipped": "装備済み",
+      "equipEmote": "Equip $0",
+      "unequipEmote": "Un-equip $0"
+    },
+    "bug": {
+      "shortDescriptionChars": "簡単な説明 ($0 文字)"
+    },
+    "profile": {
+      "shortDescriptionChars": "プロファイル名 (残り$0文字)",
+      "lblServer": "サーバー接続時にプロファイルを自動選択:",
+      "backConfirm": {
+        "warning": "注意！",
+        "lineOne": "保存していない変更があります！",
+        "lineTwo": "続行すると、変更内容は失われます！"
+      },
+      "deleteConfirm": {
+        "warning": "警告：この操作は元に戻せません！",
+        "lineOne": "プロファイルを削除しようとしています！",
+        "lineTwo": "この操作は元に戻せません。続行しますか？"
+      }
+    },
+    "cosmetics": {
+      "cloaks": "クローク",
+      "wings": "ウィング",
+      "hats": "帽子",
+      "back": "戻る",
+      "shop": "ストア",
+      "ownedCosmetics": "$0 所持",
+      "failedCosmeticConnection": "Cosmetic Serverに接続できません。",
+      "failedCosmeticConnectionRetry": "後でもう一度お試しください。",
+      "noActive": "無し",
+      "hint": "ヒント: クリックしてドラッグ"
+    },
+    "mainmenu": {
+      "addAccount": {
+        "login": "ログイン",
+        "password": "パスワード",
+        "confirm": "確認",
+        "emptyFields": "両方のフィールドを入力してください。",
+        "failedToLogin": "ログインに失敗しました",
+        "back": "戻る",
+        "loginRequest": "ログインしてください"
+      }
+    }
+  }
+}

@@ -1,0 +1,1182 @@
+{
+  "language": "English",
+  "features": {
+    "staff": {
+      "XRAY": {
+        "details": {
+          "name": "XRAY",
+          "description": "Lets you see through blocks."
+        }
+      }
+    },
+    "replaymod": {
+      "details": {
+        "name": "ReplayMod",
+        "description": "Record your game sessions and replay them from any perspective."
+      }
+    },
+    "recording_indicator": {
+      "details": {
+        "name": "Recording Indicator",
+        "description": ""
+      }
+    },
+    "scoreboard": {
+      "details": {
+        "name": "Scoreboard",
+        "description": "Allows you to hide, move or customize the Minecraft scoreboard."
+      }
+    },
+    "uhc_overlay": {
+      "details": {
+        "name": "UHC Overlay",
+        "description": "Resize items that are commonly needed in UHC to make spotting them easier."
+      }
+    },
+    "coords": {
+      "details": {
+        "name": "Coordinates",
+        "description": "Displays your coordinates on the HUD."
+      }
+    },
+    "serverAddressMod": {
+      "details": {
+        "name": "Server Address",
+        "description": "Displays the server you are currently connected to on the HUD."
+      }
+    },
+    "directionhud": {
+      "details": {
+        "name": "Direction HUD",
+        "description": "Display your cardinal direction on the HUD."
+      }
+    },
+    "range": {
+      "details": {
+        "name": "Reach Display",
+        "description": "Display how far away you attacked another player from."
+      }
+    },
+    "daycounter": {
+      "details": {
+        "name": "Day Counter",
+        "description": "View the number of Minecraft Days you have played in a world."
+      }
+    },
+    "crosshair": {
+      "details": {
+        "name": "Crosshair",
+        "description": "Replace the default Minecraft crosshair with a customizable crosshair."
+      }
+    },
+    "armorstatus": {
+      "details": {
+        "name": "Armor Status",
+        "description": "Displays information about the armor you have equipped and the item you are holding on the HUD."
+      }
+    },
+    "motionBlur": {
+      "details": {
+        "name": "Motion Blur",
+        "description": "Blur your surroundings when moving."
+      }
+    },
+    "cps": {
+      "details": {
+        "name": "CPS",
+        "description": "Displays your clicking speed on the HUD."
+      }
+    },
+    "memory": {
+      "details": {
+        "name": "Memory Usage",
+        "description": "Displays your total and free memory usage."
+      }
+    },
+    "spark": {
+      "details": {
+        "name": "Spark",
+        "description": ""
+      }
+    },
+    "itemPhysic": {
+      "details": {
+        "name": "Item Physics",
+        "description": "Replaces ground items with ones that have physics."
+      }
+    },
+    "skyblockAddons": {
+      "details": {
+        "name": "Skyblock Addons",
+        "description": "A mod created for Hypixel Skyblock with over 20 features that will enhance your skyblock experience (version: ${sbaVersion})."
+      }
+    },
+    "skyBlockAddonsManaBarChild": {
+      "details": {
+        "name": "Mana Bar",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsManaTextChild": {
+      "details": {
+        "name": "Mana Text",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsHealthBarChild": {
+      "details": {
+        "name": "Health Bar",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsHealthTextChild": {
+      "details": {
+        "name": "Health Text",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsDefenseIconChild": {
+      "details": {
+        "name": "Defense Icon",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsDefenseTextChild": {
+      "details": {
+        "name": "Defense Text",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsDefensePercentageChild": {
+      "details": {
+        "name": "Defense Percentage",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsSpeedTextChild": {
+      "details": {
+        "name": "Speed Text",
+        "description": ""
+      }
+    },
+    "skyblockAddonsBirchParkRainmaker": {
+      "details": {
+        "name": "Birch Park Rainmaker",
+        "description": ""
+      }
+    },
+    "skyblockAddonsdarkAuctionoTimer": {
+      "details": {
+        "name": "Dark Auction Timer",
+        "description": ""
+      }
+    },
+    "skyblockAddonsEndstoneProtector": {
+      "details": {
+        "name": "Endstone Protector Display",
+        "description": ""
+      }
+    },
+    "skyblockAddonsMagmaTimer": {
+      "details": {
+        "name": "Magma Timer",
+        "description": ""
+      }
+    },
+    "skyBlockAddonsPowerOrbStausChild": {
+      "details": {
+        "name": "Power Orb Status",
+        "description": ""
+      }
+    },
+    "skyblockAddonsBoneDisplay": {
+      "details": {
+        "name": "Bone Hat",
+        "description": ""
+      }
+    },
+    "skyblockAddonsSkillDisplay": {
+      "details": {
+        "name": "Skill Update",
+        "description": ""
+      }
+    },
+    "skyblockAddonsSummoningEyeCounter": {
+      "details": {
+        "name": "Summoning Eye Counter",
+        "description": ""
+      }
+    },
+    "skyblockAddonsTickerChargesDisplay": {
+      "details": {
+        "name": "Ticker Charges Display",
+        "description": ""
+      }
+    },
+    "skyblockAddonsZealotCounter": {
+      "details": {
+        "name": "Zealot Counter",
+        "description": ""
+      }
+    },
+    "skyblockAddonsZealotTotalCounter": {
+      "details": {
+        "name": "Total Zealot Count",
+        "description": ""
+      }
+    },
+    "skyblockAddonsZealotPerEye": {
+      "details": {
+        "name": "Zealot Per Eye",
+        "description": ""
+      }
+    },
+    "bait_list": {
+      "details": {
+        "name": "Bait List",
+        "description": ""
+      }
+    },
+    "sba_feature_warning": {
+      "details": {
+        "name": "Feature Warnings",
+        "description": ""
+      }
+    },
+    "textHotKey": {
+      "details": {
+        "name": "Auto Text Hot Key",
+        "description": "Allows you to set a key or key combination that will send a command or chat message when pressed."
+      }
+    },
+    "freelook": {
+      "details": {
+        "name": "Freelook",
+        "description": "When actived, allows you to change your camera perspective without rotating your player."
+      }
+    },
+    "fov_mod": {
+      "details": {
+        "name": "FOV Mod",
+        "description": "Allows you to customize your field of view for different potion or speed states."
+      }
+    },
+    "time_changer": {
+      "details": {
+        "name": "Time Changer",
+        "description": "Customize the current time of day to a fixed position."
+      }
+    },
+    "waypoints": {
+      "details": {
+        "name": "Waypoints",
+        "description": "Create a waypoint anywhere in the world that will show how for away from a location you are as well as optionally render the name and a beam."
+      }
+    },
+    "chat": {
+      "details": {
+        "name": "Chat",
+        "description": "Customize your chat options to your liking."
+      }
+    },
+    "itemTrackerChild": {
+      "details": {
+        "name": "Item Tracker",
+        "description": "Shows you when and how much items you pick up or drop."
+      }
+    },
+    "keystrokes": {
+      "details": {
+        "name": "Key Strokes",
+        "description": "Displays when your movement, mouse or space bar is pressed."
+      }
+    },
+    "saturation": {
+      "details": {
+        "name": "Saturation",
+        "description": "Displays your current food saturation level on the HUD."
+      }
+    },
+    "hypixel_mod": {
+      "details": {
+        "name": "Hypixel Mods",
+        "description": "A collection of mods that directly integrate with the Hypixel server network."
+      }
+    },
+    "fps": {
+      "details": {
+        "name": "FPS",
+        "description": "Display your FPS on the HUD."
+      }
+    },
+    "clock": {
+      "details": {
+        "name": "Clock",
+        "description": "Display the current time on the HUD."
+      }
+    },
+    "stopwatch": {
+      "details": {
+        "name": "Stopwatch",
+        "description": "Adds a stopwatch to the HUD."
+      }
+    },
+    "block_outline": {
+      "details": {
+        "name": "Block Outline",
+        "description": "Allows you to customize the outline or add an overlay to the block you are pointing at."
+      }
+    },
+    "netgraph": {
+      "details": {
+        "name": "Net Graph",
+        "description": "A graph that displays the current TPS of the server you are playing on."
+      }
+    },
+    "worldedit_cui": {
+      "details": {
+        "name": "WorldEdit CUI",
+        "description": "A client-side user interface for the WorldEdit plugin allowing you to see your selected region in-game in real time."
+      }
+    },
+    "one_seven_visuals": {
+      "details": {
+        "name": "1.7 Visuals",
+        "description": "Revert certain visuals and animations to how they behaved on 1.7."
+      }
+    },
+    "screenshot": {
+      "details": {
+        "name": "Screenshot Uploader",
+        "description": "Updates the screenshot behaviour allowing you to instantly open, upload or tweet the image."
+      }
+    },
+    "ping": {
+      "details": {
+        "name": "Ping",
+        "description": "Displays server latency on the HUD."
+      }
+    },
+    "zoom": {
+      "details": {
+        "name": "Zoom",
+        "description": "Allows you to smoothly zoom in and out"
+      }
+    },
+    "teamview": {
+      "details": {
+        "name": "Team View",
+        "description": "Shows you where your teammates are on the HUD."
+      }
+    },
+    "potion_counter": {
+      "details": {
+        "name": "Potion Counter",
+        "description": "Displays how many healing potions or soups are currently in your inventory on the HUD."
+      }
+    },
+    "shinyPots": {
+      "details": {
+        "name": "Shiny Pots",
+        "description": "Gives potions the full box shiny enchantment effect."
+      }
+    },
+    "potioneffects": {
+      "details": {
+        "name": "Potion Effects",
+        "description": "Display your currently active potion effects on the HUD."
+      }
+    },
+    "bossbar": {
+      "details": {
+        "name": "Boss Bar",
+        "description": "Allows you to hide, move or customize the Minecraft boss bar."
+      }
+    },
+    "scrollable_tooltips": {
+      "details": {
+        "name": "Scrollable Tooltips",
+        "description": "Use your scroll wheel to read overly long item descriptions."
+       }
+     },
+    "nickHider": {
+      "details": {
+        "name": "Nick Hider",
+        "description": "Allows you to hide skins and usernames for yourself or others."
+      }
+    },
+    "toggleSneak": {
+      "details": {
+        "name": "Toggle Sneak/Sprint",
+        "description": "Make the sprinting and sneaking keys toggleable instead of needing to be held down."
+      }
+    },
+    "mumble-link": {
+      "details": {
+        "name": "Mumble Link",
+        "description": "Uses mumble to create positional audio in the Minecraft world."
+      }
+    },
+    "combo": {
+      "details": {
+        "name": "Combo Counter",
+        "description": "Displays how often you have hit another player within a certain amount of time on the HUD."
+      }
+    },
+    "particleMultiplierMod": {
+      "details": {
+        "name": "Particle Multiplier",
+        "description": "Increase the amount of particles shown when attacking another player."
+      }
+    },
+    "cooldowns": {
+      "details": {
+        "name": "Cooldowns",
+        "description": "Allows servers to display items or abilities that are on cooldown on the HUD."
+      }
+    },
+    "resource_display": {
+      "details": {
+        "name": "Pack Display",
+        "description": "Shows the currently active Resource Pack on the HUD."
+      }
+    },
+    "items2d": {
+      "details": {
+        "name": "2D Items",
+        "description": "Render blocks and items in a 2D perspective or with sprites."
+      }
+    },
+    "menu_blur": {
+      "details": {
+        "name": "Menu Blur",
+        "description": "Blurs the background behind menus."
+      }
+    },
+    "hitbox": {
+      "details": {
+        "name": "Hitbox",
+        "description": "Customize the hitbox displayed in F3+B"
+      }
+    }
+  },
+  "settings": {
+    "labels": {
+      "settings": "Settings",
+      "general": "General",
+      "recording": "Recording",
+      "replay": "Replay",
+      "pathing": "Pathing",
+      "microphone": "Microphone",
+      "speaker": "Speaker",
+      "controls": "Controls",
+      "crosshairPreview": "Crosshair Preview",
+      "generalOptions": "General Options",
+      "colorOptions": "Color Options",
+      "nameOptions": "Name Options",
+      "skinOptions": "Skin Options",
+      "sizeOption": "Size Options",
+      "damageOptions": "Damage Options",
+      "damageDisplay": "Damage Display",
+      "renderOptions": "Render Options",
+      "blinkOptions": "Blink Options",
+      "hudOptions": "Hud Options",
+      "cosmeticOptions": "Cosmetic Options",
+      "modOptions": "Mod Options",
+      "miscOptions": "Misc Options",
+      "texturePackOptions": "Texture Pack Options",
+      "zealotOptions": "Zealot Options",
+      "safetyOptions": "Safety Options",
+      "indicatorOptions": "Indicator Options",
+      "entityOptions": "Entity Options",
+      "locationResourceOptions": "Location Resource Options",
+      "backpackOptions": "Backpack Options",
+      "screenshotOptions": "Screenshot Options",
+      "screenshotChatOptions": "Screenshot Menu Options",
+      "warpTpOptions": "Warp / Teleport Options",
+      "tooltipOptions": "Tooltip Options",
+      "containerOptions": "Container Options",
+      "enchantedItemsBlacklist": "Enchanted Items Blacklist",
+      "enchantedItemsBlacklistDescription": "Disables the use of enchanted items",
+      "chatOptions": "Chat Options",
+      "warningOptions": "Warning Options",
+      "flyBoostOptions": "Fly Boost Options",
+      "animations": "Animations",
+      "heldItems": "Held Items",
+      "mechanics": "Mechanics",
+      "excludePotionEffects": "Exclude Potion Effects",
+      "shortDescription": "Short Description",
+      "section": "Section",
+      "description": "Description",
+      "submit": "SUBMIT",
+      "mod": "MOD",
+      "gui": "GUI",
+      "cosmetic": "COSMETIC",
+      "store": "STORE",
+      "voice": "VOICE",
+      "antiCheat": "ANTI CHEAT",
+      "launcher": "LAUNCHER",
+      "other": "OTHER",
+      "hitbox.player": "Player Hitbox",
+      "hitbox.item": "Item Hitbox",
+      "hitbox.projectile": "Projectile Hitbox",
+      "hitbox.mob": "Mob Hitbox",
+      "hitbox.expOrb": "Experience Orb Hitbox",
+      "hitbox.globalOptions": "Global Options"
+    },
+    "buttons": {
+      "applyToAll": "APPLY TO ALL"
+    },
+    "mod-disabled-message": "The $0 mod is disabled on this server.",
+    "mods-disabled-message": "The following mods are disabled on this server: $0",
+    "renderingOptions": "Render As",
+    "hold": "Hold",
+    "toggle": "Toggle",
+    "off": "Off",
+    "off_van": "Off (Vanilla)",
+    "inventoryOnly": "Inventory Only",
+    "all": "All",
+    "high": "High",
+    "highest": "Highest",
+    "medium": "Medium",
+    "low": "Low",
+    "lowest": "Lowest",
+    "value": "Value",
+    "percent": "Percent",
+    "none": "None",
+    "vertical": "Vertical",
+    "horizontal": "Horizontal",
+    "popup_location": "Notifications Position",
+    "top_left": "Top Left",
+    "top_right": "Top Right",
+    "bottom_left": "Bottom Left",
+    "bottom_right": "Bottom Right",
+    "wave": "Wave",
+    "shift": "Shift",
+    "mods": "Mods",
+    "custom": "Custom",
+    "normal": "Normal",
+    "alphabetical": "Alphabetical",
+    "cross": "Cross",
+    "circle": "Circle",
+    "thirdPerson": "Third",
+    "firstPerson": "First",
+    "forward": "Forward",
+    "doNothing": "Do Nothing",
+    "showSwing": "Show Swing",
+    "showSwingParticles": "Show Swing And Particles",
+    "potion": "Potion",
+    "soup": "Soup",
+    "regular": "Regular",
+    "compact": "Compact",
+    "free": "Free",
+    "three": "Three",
+    "five": "Five",
+    "six": "Six",
+    "always": "Always",
+    "skyBlockOnly": "SkyBlock Only",
+    "never": "Never",
+    "notifications_bl": "Notifications",
+    "recordingPath": "Recording File",
+    "cachePath": "Cache File",
+    "renderPath": "Render File",
+    "lunar_ui_bl": "Lunar UI",
+    "recordSingleplayer_bl": "Record Singleplayer",
+    "recordServer_bl": "Record Server",
+    "autoStartRecording_bl": "Auto Start Recording",
+    "renameDialog_bl": "Rename Dialog",
+    "showChat_bl": "Show Chat",
+    "pathpreview_bl": "Simple Path Preview",
+    "startStop_kblc": "Start/Stop Recording Key",
+    "pauseResume_kblc": "Pause/Resume Recording Key",
+    "scale_nr": "Scale",
+    "shadow_bl": "Text Shadow",
+    "background_bl": "Show Background",
+    "backgroundHeight_nr": "Background Height",
+    "backgroundWidth_nr": "Background Width",
+    "modernKeybindHandling_bl": "Modern Keybind Handling",
+    "modernKeybindHandling_blDescription": "Changing keybind handling when exiting inventories to act like 1.12+.",
+    "border_bl": "Border",
+    "border_thickness_nr": "Border Thickness",
+    "text_clr_nr": "Text Color",
+    "background_clr_nr": "Background Color",
+    "border_clr_nr": "Border Color",
+    "colored_bl": "Show Potion Color",
+    "zoom_kblc": "Zoom Key",
+    "holdPreference": "KeyBind Hold Preference",
+    "smoothCamera_bl": "Smooth Camera Movement",
+    "smoothCamera_blDescription": "When zoomed in the camera movement will move smoothly (cinematic camera)",
+    "smoothZoom_bl": "Smooth Zoom In/Out",
+    "smoothZoom_blDescription": "Add a transition when zooming in and out.",
+    "renderGlintBehindPotion_bl": "Render Glint Behind Potion",
+    "zoomDivisor_nr": "Zoom Level",
+    "zoomDivisor_nrDescription": "Change the initial zoom depth.",
+    "spark_start_kblc": "Start Spark",
+    "spark_stop_kblc": "Stop Spark",
+    "render_bar_bl": "Render Health",
+    "customBossBar_bl": "Use Custom Boss Bar",
+    "barColor_clr_nr": "BossBar Color",
+    "toggle_sprint_bl": "Toggle Sprint",
+    "toggle_sneak_bl": "Toggle Sneak",
+    "toggle_sneak_container_bl": "Toggle Sneak In Container",
+    "double_tap_bl":"Double Tap",
+    "show_text_bl": "Show HUD Text",
+    "fly_boost_bl": "Fly Boost",
+    "boost_amnt_nr": "Fly Boost Amount",
+    "showHudText_bl": "Show HUD",
+    "default_fov_nr": "Default FOV",
+    "slowness_fov_nr": "Slowness FOV",
+    "sprinting_fov_nr": "Sprinting FOV",
+    "flying_fov_nr": "Flying FOV",
+    "speed_fov_nr": "Speed FOV",
+    "static_FOV_bl": "Static FOV",
+    "mode": "List Mode",
+    "glint_anim": "Glint Rendering",
+    "armor_hit_anim": "Armor Hit Animation",
+    "block_hit_anim": "Block Hitting",
+    "health_anim": "Health Flashing",
+    "sneak_anim": "Sneaking",
+    "hurt_camera_shake": "Hurt Camera Shake",
+    "potion_drinking": "Potion Drinking",
+    "tp_held_items": "Third Person Held Items",
+    "fp_carpet": "Carpets",
+    "fp_fishing_rod": "Fishing Rod",
+    "fp_sword": "Swords",
+    "fp_potion": "Potions",
+    "fp_bow": "Bow",
+    "use_item_while_digging": "Use Item While Digging",
+    "fakeSwingActions": "Miss Cooldown Behaviour",
+    "hit_armor_color_clr_nr": "Hit Armor Color",
+    "stopwatch_kblc": "Start/Stop Key",
+    "resetEveryStart_bl": "Reset on Start",
+    "potionCounter": "Healing Type",
+    "auto_friend_bl": "Auto Friend",
+    "auto_tip_bl": "Auto TIP",
+    "auto_gg_bl": "Auto GG",
+    "anti_gg_bl": "Anti GG",
+    "auto_who_bl": "Auto Who",
+    "level_head_bl": "Level Head",
+    "level_color_clr_nr": "Level Text Color",
+    "number_color_clr_nr": "Level Number Color",
+    "dot_bl": "Dot",
+    "outline_bl": "Outline",
+    "showInF5_bl": "Show Crosshair In Third Person",
+    "styleOption": "Style",
+    "thickness_nr": "Thickness",
+    "size_nr": "Size",
+    "gap_nr": "Gap",
+    "dotSize_nr": "Dot Size",
+    "dynamic_colors_bl": "Dynamic Colors",
+    "color_clr_nr": "Color",
+    "dotColor_clr_nr": "Dot Color",
+    "friendly_clr_nr": "Friendly Color",
+    "enemy_clr_nr": "Enemy Color",
+    "rotationSpeed_nr": "Rotation Speed",
+    "list_mode": "List Mode",
+    "item_name_bl": "Item Name",
+    "item_count_bl": "Item Count",
+    "equipped_item_bl": "Equipped Item",
+    "show_while_typing_bl": "Show While Typing",
+    "text_shadow_bl": "Text Shadow",
+    "damage_overlay_bl": "Damage Overlay",
+    "item_dmg_bl": "Show Item Damage",
+    "armor_dmg_bl": "Show Armor Damage",
+    "max_dmg_bl": "Show Max Damage",
+    "dmg_display": "Damage Display Type",
+    "dmg_threshold": "Damage Threshold Type",
+    "static_colors_bl": "Static Damage Colors",
+    "name_text_clr_nr": "Name Color",
+    "highest_clr_nr": "Default Damage Value",
+    "high_clr_nr": "High Damage Value",
+    "medium_clr_nr": "Medium Damage Value",
+    "medium_low_clr_nr": "Medium Low Damage Value",
+    "low_clr_nr": "Low Damage Value",
+    "lowest_clr_nr": "Lowest Damage Value",
+    "oldBlur_bl": "Old Blur",
+    "value_nr": "Value",
+    "skyblockOnly_bl": "SkyBlock Only",
+    "show_c_bl": "Show C (Active Renderers)",
+    "show_labels_bl": "Show Axis Labels",
+    "show_biome_bl": "Show Biome",
+    "biome_coordinates_bl": "Show Biome Label",
+    "biome_color_bl": "Use Preset Biome Colors",
+    "direction_bl": "Show Direction",
+    "directionAffect_bl": "Show Direction Modification",
+    "text_coordinates_clr_nr": "Base Color",
+    "x_label_color_clr_nr": "X Label Color",
+    "x_axis_color_clr_nr": "X Value Color",
+    "y_label_color_clr_nr": "Y Label Color",
+    "y_axis_color_clr_nr": "Y Value Color",
+    "z_label_color_clr_nr": "Z Label Color",
+    "z_axis_color_clr_nr": "Z Value Color",
+    "c_label_color_clr_nr": "C Label Color",
+    "c_axis_color_clr_nr": "C Value Color",
+    "direction_color_clr_nr": "Direction Color",
+    "direction_affect_color_clr_nr": "Direction Modification Color",
+    "biomeColor_color_clr_nr": "Biome Color",
+    "biomeLabelColor_color_clr_nr": "Biome Label Color",
+    "1_hk_hk": "Key 1",
+    "2_hk_hk": "Key 2",
+    "3_hk_hk": "Key 3",
+    "4_hk_hk": "Key 4",
+    "5_hk_hk": "Key 5",
+    "6_hk_hk": "Key 6",
+    "7_hk_hk": "Key 7",
+    "8_hk_hk": "Key 8",
+    "9_hk_hk": "Key 9",
+    "10_hk_hk": "Key 10",
+    "11_hk_hk": "Key 11",
+    "12_hk_hk": "Key 12",
+    "13_hk_hk": "Key 13",
+    "14_hk_hk": "Key 14",
+    "15_hk_hk": "Key 15",
+    "clicks_bl": "Show Clicks",
+    "leftCPS_bl": "Show LMB CPS",
+    "rightCPS_bl": "Show RMB CPS",
+    "movement_bl": "Show Movement Keys",
+    "spacebar_bl": "Show Space Bar",
+    "arrows_bl": "Replace Names With Arrows",
+    "textShadow_bl": "Text Shadow",
+    "box_size_nr": "Box Size",
+    "text_pressed_clr_nr": "Text Color (Pressed)",
+    "background_pressed_clr_nr": "Background Color (Pressed)",
+    "numbers_bl": "Hide Numbers",
+    "background_color_clr_nr": "Background Color",
+    "beams_bl": "Show Beam",
+    "box_border_bl": "Box Borders",
+    "box_padding_nr": "Box Padding",
+    "add_waypoint_kb": "Create Waypoint",
+    "hideHealthBar_bl": "Hide Health Bar",
+    "hideFoodBar_bl": "Hide Food and Armor Bar",
+    "hidePetHealthBar_bl": "Hide Pet Health Bar",
+    "combatTimerDisplay_bl": "Combat Timer",
+    "combatTimerDisplay_blDescription": "You must enable Cooldowns Mod for this feature to work.",
+    "skeletonHelmetBars_bl": "Skeleton Helmet Bars",
+    "zealotColor_clr_nr": "Zealot Color",
+    "specialZealotAlert_bl": "Special Zealot Alert",
+    "zealotColorBoolean_bl": "Change Zealot Color",
+    "zealotCounterExplosiveBowSupport_bl": "Zealot Counter Explosive Bow Support",
+    "dropConfirmation": "Drop Confirmation",
+    "lockSlots_bl": "Lock Slots",
+    "minimum_hotbar_item_rarity": "Minimum rarity to stop dropping",
+    "drop_blacklist": "Drop Items Blacklist",
+    "drop_blacklistDescription": "Items entered in this textbox will not be allowed to be dropped. Seperate items with a comma.",
+    "drop_whitelist": "Drop Items Whitelist",
+    "drop_whitelistDescription": "Items entered in this textbox will be allowed to be dropped. Seperate items with a comma.",
+    "stopDroppingSellingRareItems_bl": "Stop Dropping/Selling Rare Items",
+    "avoidBreakingStems_bl": "Avoid Breaking Stems",
+    "avoidBlinkingNightVision_bl": "Avoid Blinking Night Vision",
+    "dontOpenProfilesWithBow_bl": "Don't Open Profiles with Bow",
+    "freezeKey_kblc": "Freeze Key",
+    "lockKey_kblc": "Lock Key",
+    "makeBackpackInventoriesColored_bl": "Make Backpack Inventories Colored",
+    "slayerIndicator_bl": "Slayer Indicator",
+    "slayerIndicator_blDescription": "Enabling this feature will also enable Armor Status Mod.",
+    "turnBowGreenWhenUsingToxicArrowPoison_bl": "Toxic Arrows Turn Bow Green",
+    "fishingSoundIndicator_bl": "Fishing Sound Indicator",
+    "changeBarColorForPotions_bl": "Change Bar Color for Potions",
+    "colorEnderChestInEnd_bl": "Color Ender Chest In End",
+    "endEnderChestColor_clr_nr": "Ender Chest Color",
+    "hideSvenPupNametags_bl": "Hide Sven / Pup Nametags",
+    "hidePlayersNearNPC_bl": "Hide Players Near NPC",
+    "hidePlayersInLobby_bl": "Hide Players in Lobby",
+    "ignoreItemFrameClicks_bl": "Ignore Item Frame Clicks",
+    "hideBones_bl": "Hide Skeleton Hat Bones",
+    "preventMovementOnDeath_bl": "Prevent Movement on Death",
+    "onlyMineOresDeepCaverns_bl": "Only Mine Ores in Deep Caverns",
+    "onlyMineValuablesNether_bl": "Only Mine Valuables in Nether",
+    "onlyBreakLogsPark_bl": "Only Break Logs in Park",
+    "enableMessageWhenBreakingPark_bl": "Enable Message when Breaking in Park",
+    "jungleAxeCooldown_bl": "Treecapitator Cooldown",
+    "showBackpackPreview_bl": "Show Backpack Preview",
+    "showBackpackHoldingShift_bl": "Show Backpack Holding Shift",
+    "backpackPreviewAh_bl": "Backpack Preview (AH)",
+    "cakeBagPreview_bl": "Cake Bag Preview",
+    "backpackStyle": "Backpack Style",
+    "fancyWarpMenu_bl": "Fancy Warp Menu",
+    "doubleWarp_bl": "Double Warp",
+    "warpAdvancedMode_bl": "Advanced Warp Mode",
+    "disableEndermanTeleportionEffect_bl": "Disable Enderman Teleport Effect",
+    "hideGreyEnchants_bl": "Hide Grey Enchants",
+    "showItemAnvilUses_bl": "Show Item Anvil Uses",
+    "replaceRomanNumeralsWithNumbers_bl": "Replace Roman Numerals with Numbers",
+    "organizeEnchants_bl": "Organize Enchants",
+    "showEnchantmentsReforges_bl": "Show Enchantment Reforges",
+    "showBrokenFragments_bl": "Show Broken Fragments",
+    "dontResetCursorInventory_bl": "Don't Reset Cursor Inventory",
+    "craftingPatterns_bl": "Crafting Patterns",
+    "craftingPattern": "Default Crafting Pattern",
+    "disableEmberRod_bl": "Disable Ember Rod",
+    "avoidPlacingEnchantItems_bl": "Avoid Placing Enchant Items",
+    "disableTeleportPadMessages_bl": "Disable Teleport Pad Messages",
+    "disableMagicalSoupMessages_bl": "Disable Magic Soup Messages",
+    "manabarColor_clr_nr": "Bar Color",
+    "healthbarColor_clr_nr": "Bar Color",
+    "useVanillaTextureDefence_bl": "Use Vanilla Texture",
+    "defensetextColor_clr_nr": "Text Color",
+    "percentageDefense_bl": "Show As Percentage",
+    "textColor_clr_nr": "Text Color",
+    "show_on_other_games_bl": "Show on other games",
+    "detailed_bl": "Detailed Display",
+    "bait_list_color_clr_nr": "Text Color",
+    "warningTime_nr": "Warning Time",
+    "fullInventoryWarning_bl": "Full Inventory Warning",
+    "repeatFullInventoryWarning_bl": "Repeat Full Inventory Warning",
+    "magmaWarning_bl": "Magma Warning",
+    "minionStopWarning_bl": "Minion Stop Warning",
+    "minionFullWarning_bl": "Minion Full Warning",
+    "minionDisableLocationWarning_bl": "Minion Disable Location Warning",
+    "legendarySeaCreatureWarning_bl": "Legendary Sea Creature Warning",
+    "repeatSlayBossWarning_bl": "Repeat Slay Boss Warning",
+    "summonEyeAlert_bl": "Summon Eye Alert",
+    "noArrowsLeftAlert_bl": "No Arrows Left Alert",
+    "bossApproachAlert_bl": "Boss Approach Alert",
+    "block_outline_color_clr_nr": "Block Outline Color",
+    "block_overlay_color_clr_nr": "Block Overlay Color",
+    "block_outline_width_nr": "Block Outline Width",
+    "block_overlay_bl": "Block Overlay",
+    "block_outline_bl": "Block Outline",
+    "width_nr": "Width",
+    "useLegacyStyle_bl": "Use Legacy Style",
+    "directionColor_clr_nr": "Direction Color",
+    "markerColor_clr_nr": "Marker Color",
+    "invertPitch_bl": "Invert Pitch (Up and Down)",
+    "invertYaw_bl": "Invert Yaw (Left and Right)",
+    "toggleKeyFreelook_bl": "Toggle Freelook",
+    "toggleKeyFreelook_blDescription": "Quickly pressing and releasing the key will toggle freelook",
+    "toggleKeyZoom_bl": "Toggle Zoom",
+    "toggleKeyZoom_blDescription": "Quickly pressing and releasing the key will toggle zoom",
+    "freelook_kb": "Freelook",
+    "particleMultiplier_nr": "Particle Multiplier",
+    "showCriticals_bl": "Show Criticals",
+    "affectCriticals_bl": "Affect Criticals",
+    "affectEnchantedCrits_bl": "Affect Sharpness",
+    "alwaysShowEnchantedCrits_bl": "Always Show Sharpness",
+    "militaryTime_bl": "24 Hour Format",
+    "pack_icon_bl": "Display Pack Icon",
+    "point1Color_clr_nr": "Position One Color",
+    "point2Color_clr_nr": "Position Two Color",
+    "outlineColor_clr_nr": "Outline Color",
+    "show_in_inventory_bl": "Show In Inventory",
+    "display_typing_bl": "Show While Typing",
+    "effect_name_bl": "Effect Name",
+    "blink_bl": "Blink",
+    "blink_duration_nr": "Blink Duration",
+    "color_name_based_on_effect_bl": "Color Name Based on Effect",
+    "duration_clr_nr": "Duration Color",
+    "excludePerm_bl": "Permanent Effects",
+    "excludeSpeed_bl": "Speed",
+    "excludeSlowness_bl": "Slowness",
+    "excludeStrength_bl": "Strength",
+    "excludeJumpBoost_bl": "Jump Boost",
+    "excludeRegen_bl": "Regeneration",
+    "excludeFireRes_bl": "Fire Resistance",
+    "excludeWaterBreathing_bl": "Water Breathing",
+    "excludeNightVision_bl": "Night Vision",
+    "excludeWeakness_bl": "Weakness",
+    "excludePoison_bl": "Poison",
+    "excludeHaste_bl": "Haste",
+    "excludeInvis_bl": "Invisibility",
+    "time_nr": "Time",
+    "copy_option_bl": "Show Copy Option",
+    "tweet_option_bl": "Show Tweet Option",
+    "upload_option_bl": "Show Upload Option",
+    "copy_automatically_bl": "Copy Screenshot Automatically",
+    "useRealTime_bl": "Use Real Current Time",
+    "horizon_y_level_nr": "Horizon Y Level",
+    "gold_ingot_scale_nr": "Gold Ingot Scale",
+    "gold_nugget_scale_nr": "Golden Nugget Scale",
+    "gold_ore_scale_nr": "Gold Ore Scale",
+    "gold_apple_scale_nr": "Golden Apple Scale",
+    "skull_scale_nr": "Skull Scale",
+    "rightCLick_bl": "Right Click CPS",
+    "showCPSText_bl": "Show CPS Text",
+    "lineColor_clr_nr": "Line Color",
+    "menuBlur_bl": "Show Menu Blur",
+    "menuBlur_blDescription": "Choose if you want to see mod menu blur",
+    "shift_effects_bl": "Shift Effects in Inventory",
+    "shift_effects_blDescription": "Alter the position of potion effects in your inventory",
+    "achievements_bl": "Show Achievements",
+    "achievements_blDescription": "An option to toggle Minecraft achievement popups",
+    "advancements_bl": "Show Advancements",
+    "advancements_blDescription": "An option to toggle Minecraft advancement popups",
+    "tutorial_hints_bl": "Show Tutorial Hints",
+    "tutorial_hints_blDescription": "An option to toggle Minecraft tutorial hints.",
+    "show_hud_in_debug_bl": "Show HUD in F3",
+    "show_hud_in_debug_blDescription": "Choose if you want to see mods while in F3",
+    "show_hud_in_shift_tab_bl": "Show HUD in Friend Menu",
+    "show_hud_in_shift_tab_blDescription": "Choose if you want to see mods while in Friend Menu",
+    "friend_online_status_bl": "Notify Friend Status",
+    "friend_online_status_blDescription": "Display a notifications when a friend comes online.",
+    "friends_menu_disable_bl": "Disable Friend Menu",
+    "friends_menu_disable_blDescription": "An option to toggle LC Friend Menu",
+    "use_minecraft_scale_enum": "Use Minecraft GUI Scale",
+    "use_minecraft_scale_enumDescription": "Choose if you want to scale LC mods and menus based on Minecraft's GUI scale \n \n §bALL: §fScale Mods and Menus \n §bMODS: §fScale Mods Only \n §bOFF: §fUse Normal LC Scale ",
+    "nametag_bl": "Third Person Nametag",
+    "nametag_blDescription": "An option to see your own nametag in third person",
+    "nametagLogo_bl": "Show Nametag Icon",
+    "nametagLogo_blDescription": "An option to toggle LC logos in nametags",
+    "tabLogo_bl": "Show Tab Icon",
+    "tabLogo_blDescription": "An option to toggle LC logos in player list tab overlay.",
+    "unlimited_chat_bl": "Unlimited Chat",
+    "no_close_my_chat_bl": "Stop Servers From Closing Chat",
+    "unlimited_chat_blDescription": "Choose whether or not you want to increase the message history in chat",
+    "stackMessages_bl": "Stack Spam Messages",
+    "stackMessages_blDescription": "Choose whether or not you want to stack multiple of the same messages in chat",
+    "hideBanWave_bl": "Hide Ban Wave Messages",
+    "hideBanWave_blDescription": "Choose whether or not you want to see LC ban wave messages in chat",
+    "sortingOptions": "Sorting Options",
+    "sortingOptionsDescription": "An option that decides what sort your mods will be in\n \n §bDEFAULT: §fDefault LC Sorting \n §bCUSTOM: §fYour Custom Sorting",
+    "chatHeight_bl": "Chat Height Fix",
+    "chatHeight_blDescription": "Moves the chat up 12 pixels so it doesn't block health bar",
+    "chatNameColor": "Highlighted Name Color",
+    "chatNameColorDescription": "Select a color you want your name to be highlighted as in chat",
+    "searchOptions_bl": "Search Mods by Options",
+    "searchOptions_blDescription": "Search mods by options to make things easier to find",
+    "lockMods_bl": "Disable Mod Sorting",
+    "lockMods_blDescription": "An option to lock your mods in position after you've sorted them",
+    "borderless_fullscreen_bl": "Borderless Fullscreen",
+    "borderless_fullscreen_blDescription": "Choose whether or not you want to enable borderless fullscreen",
+    "variable_zoom_bl": "Scroll to Zoom",
+    "variable_zoom_blDescription": "Adjust the zoom depth using Mouse Scroll Wheel",
+    "weather_bl": "Disable Weather",
+    "weather_blDescription": "Choose if you want to disable all weather",
+    "trans_res_pack_menu_bg_bl": "Transparent Background",
+    "trans_res_pack_menu_bg_blDescription": "An option to enable transparent background when modifying your texturepack",
+    "red_string_bl": "Red String",
+    "red_string_blDescription": "Choose whether or not all string should be red, regardless of your resource pack",
+    "clear_glass": "Clear Glass",
+    "clear_glassDescription": "Choose whether or not you want glass to be clear",
+    "hudLayoutColor_clr_nr": "Branding Color",
+    "hudLayoutColor_clr_nrDescription": "An option to change the hud layout color",
+    "mod_menu_kb": "Mod Menu",
+    "mod_menu_kbDescription": "Shows this menu",
+    "waypoints_kb": "Waypoint Menu",
+    "emote_kb": "Emote Wheel",
+    "xrayToggle_kblc": "Xray Toggle",
+    "dropStack_kblc": "Drop Stack",
+    "dropStack_kblcDescription": "The key that needs to be held along with your drop key to drop a stack instead of one item",
+    "friendMenuKey_kblc": "Friend Menu",
+    "toggleNametags_kblc": "Toggle Nametags",
+    "toggleNametags_kblcDescription": "Toggle all NameTags above player heads.",
+    "toggleChat_kblc": "Toggle Chat",
+    "hide_endportals": "Hide Endportals",
+    "hide_endportalsDescription": "Choose when to hide the end portal galaxy \n \n §bALWAYS: §fAlways show \n §bSKYBLOCK: §fShow only on SkyBlock \n §bNEVER: §fNever show",
+    "skip_lighting_bl": "Full Bright",
+    "skip_lighting_blDescription": "Increases gamma, making dark places bright",
+    "glint": "Show Enchantment Glint",
+    "glintDescription": "Choose when to render the glint effect \n \n §bALL: §fAlways render \n §bINVENTORY ONLY: §fOnly render in inventory \n §bNONE: §fNever render",
+    "lazy_chunk_loading": "Lazy Chunk Loading",
+    "lazy_chunk_loadingDescription": "Alters how fast chunks can load. Lower values can increase FPS by making large chunks load over a longer period of time \n \n §2Lowest: §fLoads every 30 ticks (Highest FPS Boost) \n §aLow: §fLoads every 15 ticks (High FPS Boost) \n §eMedium: §fLoads every 10 ticks (Med FPS Boost) \n §6High: §fLoads every 5 ticks (Low FPS Boost) \n §cHighest: §fLoads every 2 ticks (Lowest FPS Boost) \n §bOFF: §fVanilla Chunk Loading (No FPS Boost)",
+    "entity_shadow_bl": "Shadow",
+    "entity_shadow_blDescription": "Render shadows for entities",
+    "entity_render": "Entities",
+    "entity_renderDescription": "Alters how far away certain entities will render from. Lower values can increase FPS by hiding distant entities",
+    "b_entity_render": "Tile Entities",
+    "b_entity_renderDescription": "Alters how far away certain tile entities will render from. Lower values can increase FPS by hiding distant tile entities",
+    "ground_arrows_bl": "Show Ground Arrows",
+    "ground_arrows_blDescription": "Choose whether or not to hide arrows that are stuck in the ground",
+    "stuck_arrows_bl": "Show Stuck Arrows",
+    "stuck_arrows_blDescription": "Choose whether or not to hide arrows that are stuck in players",
+    "chat_bg_opacity_nr": "Background Opacity",
+    "chat_shadow_bl": "Text Shadow in Chat",
+    "chat_shadow_blDescription": "Show text shadow on chat lines",
+    "disable_chat_bl": "Hide Incoming Messages",
+    "dragon_wings_bl": "Wings",
+    "mask_bl": "Masks",
+    "bandanna_bl": "Bandannas",
+    "bodywear_bl": "Bodywear",
+    "hat_bl": "Hats",
+    "cloak_bl": "Cloaks",
+    "chroma_speed_nr": "Speed",
+    "chroma_bl": "Chroma",
+    "chroma_type": "Type",
+    "horizontalScrollingKey_kblc": "Horizontal Scrolling Key",
+    "horizontalScrollingKey_kblcDescription": "Hold this key down while scrolling to scroll horizontally (if possible)",
+    "hideName_bl": "Hide Your Nick",
+    "hideRealName_bl": "Hide Your Real Name",
+    "hideOwnSkin_bl": "Hide Your Skin",
+    "useRealSkin_bl": "Show Real Skin",
+    "hideOthersNames_bl": "Hide Others Names",
+    "hideOthersSkin_bl": "Hide Others Skins",
+    "1_hk_hk_kblc": "Auto Text HotKey 1",
+    "2_hk_hk_kblc": "Auto Text HotKey 2",
+    "3_hk_hk_kblc": "Auto Text HotKey 3",
+    "4_hk_hk_kblc": "Auto Text HotKey 4",
+    "5_hk_hk_kblc": "Auto Text HotKey 5",
+    "6_hk_hk_kblc": "Auto Text HotKey 6",
+    "7_hk_hk_kblc": "Auto Text HotKey 7",
+    "8_hk_hk_kblc": "Auto Text HotKey 8",
+    "9_hk_hk_kblc": "Auto Text HotKey 9",
+    "10_hk_hk_kblc": "Auto Text HotKey 10",
+    "11_hk_hk_kblc": "Auto Text HotKey 11",
+    "12_hk_hk_kblc": "Auto Text HotKey 12",
+    "13_hk_hk_kblc": "Auto Text HotKey 13",
+    "14_hk_hk_kblc": "Auto Text HotKey 14",
+    "15_hk_hk_kblc": "Auto Text HotKey 15",
+    "debug_01_bl": "Show Debug Output",
+    "hide_modern_icons_bl": "Hide Vanilla HUD Potion Icons",
+    "server_icon_bl": "Display Server Icon",
+    "blur_strength_nr": "Blur Strength",
+    "blur_time_nr": "Blur Animation Time",
+    "blur_lunar_background_clr_nr": "Lunar UI Background Color",
+    "blur_inventory_background_clr_nr": "Inventory Background Color",
+    "blur_pause_background_clr_nr": "Pause Screen Background Color",
+    "blur_inventory_toggle_bl": "Show Inventory Blur",
+    "blur_pause_toggle_bl": "Show Pause Screen Blur",
+    "blur_lunar_toggle_bl": "Show Lunar UI Blur",
+    "hitbox.linePattern": "Line Pattern",
+    "hitbox.player.lineWidth_nr": "Line Width",
+    "hitbox.player.lineColor_clr_nr": "Line Color",
+    "hitbox.player.show_bl": "Shown",
+    "hitbox.player.lookVector_bl": "Show Look Vector",
+    "hitbox.item.lineWidth_nr": "Line Width",
+    "hitbox.item.lineColor_clr_nr": "Line Color",
+    "hitbox.item.show_bl": "Shown",
+    "hitbox.item.lookVector_bl": "Show Look Vector",
+    "hitbox.projectile.lineWidth_nr": "Line Width",
+    "hitbox.projectile.lineColor_clr_nr": "Line Color",
+    "hitbox.projectile.show_bl": "Shown",
+    "hitbox.projectile.lookVector_bl": "Show Look Vector",
+    "hitbox.mob.lineWidth_nr": "Line Width",
+    "hitbox.mob.lineColor_clr_nr": "Line Color",
+    "hitbox.mob.show_bl": "Shown",
+    "hitbox.mob.lookVector_bl": "Show Look Vector",
+    "hitbox.expOrb.lineWidth_nr": "Line Width",
+    "hitbox.expOrb.lineColor_clr_nr": "Line Color",
+    "hitbox.expOrb.show_bl": "Shown",
+    "hitbox.expOrb.lookVector_bl": "Show Look Vector"
+  },
+  "gui": {
+    "components": {
+      "general": "General",
+      "performance": "Performance",
+      "controls": "Controls",
+      "all": "All",
+      "new": "New",
+      "hud": "Hud",
+      "server": "Server",
+      "mechanic": "Mechanic",
+      "none": "None",
+      "profile": "Profile $0",
+      "mods": "MODS",
+      "settings": "SETTINGS",
+      "waypoints": "WAYPOINTS",
+      "staff": "STAFF",
+      "editHudLayout": "EDIT HUD LAYOUT",
+      "saveNewProfile": "SAVE AS NEW PROFILE",
+      "resetPosition": "Reset Position",
+      "resetToDefaults": "Reset to Defaults",
+      "noWaypointsSet": "You do not have any waypoints set for this world.",
+      "searchPlaceholder": "search...",
+      "namePlaceholder": "name...",
+      "sendPlaceholder": "Send chat message...",
+      "commandPlaceholder": "Type a command...",
+      "reportABug": "Report A Bug",
+      "btnExit": "Quit",
+      "btnMenu": "Lunar Settings",
+      "btnCosmetics": "Lunar Cosmetics",
+      "btnOptions": "Minecraft Settings",
+      "btnLanguage": "Language",
+      "btnRealms": "Minecraft Realms",
+      "btnReplayViewer": "Replay Viewer",
+      "profileEditor": "Profile Editor",
+      "profileName": "Profile Name",
+      "loggedInAs": "logged in as",
+      "invalidSession": "invalid session",
+      "clashesWith": "Clashes with: $0",
+      "friends": "$0 FRIENDS",
+      "requests": "$0 REQUESTS",
+      "add": "ADD",
+      "addFriend": "add a friend...",
+      "searchFriend": "search for a friend...",
+      "friendRequests": "Friend Requests",
+      "enabled": "Enabled",
+      "disabled": "Disabled",
+      "incorrectUsername": "Incorrect username.",
+      "singleplayer": "SINGLEPLAYER",
+      "multiplayer": "MULTIPLAYER",
+      "createAWaypoint": "Create A Waypoint",
+      "save": "SAVE",
+      "help": "?",
+      "cancel": "CANCEL",
+      "understood": "I UNDERSTAND, CONTINUE",
+      "invalidSessionStatus": "You had an invalid session",
+      "sendMessage": "Send chat message",
+      "removeFriend": "Remove friend",
+      "originalAuthors": "Original creators: "
+    },
+    "competitiveDisconnect": {
+      "warning": "WARNING!",
+      "leavingPenalties": "Leaving competitive games can result in penalties.",
+      "suspended": "You may be suspended from competitive games if you continue leaving games!"
+    },
+    "friends": {
+      "connecting": "Connecting"
+    },
+    "movement": {
+      "hold": "HOLD",
+      "click": "CLICK",
+      "shortcutsMovement": "Shortcuts & Movement",
+      "addModsToRegion": "Add mods to selected region",
+      "selectDragMods": "Select & drag mods",
+      "resetToClosest": "Reset mod to closest position",
+      "dontLockDragging": "Don't lock mods while dragging",
+      "toggleModSelection": "Toggle (multiple) mod selection",
+      "undoMovements": "Undo mod movements",
+      "redoMovements": "Redo mod movements",
+      "moveWithPrecision": "Move selected mod with precision"
+    },
+    "emotes": {
+      "available": "AVAILABLE",
+      "equipped": "EQUIPPED",
+      "equipEmote": "Equip $0",
+      "unequipEmote": "Un-equip $0"
+    },
+    "bug": {
+      "shortDescriptionChars": "Short Description ($0 characters left)"
+    },
+    "profile": {
+      "shortDescriptionChars": "Profile Name ($0 characters left)",
+      "lblServer": "Auto Select Profile When Joining Server:",
+      "backConfirm": {
+        "warning": "WARNING!",
+        "lineOne": "You have unsaved changes!",
+        "lineTwo": "If you continue, your changes will be lost!"
+      },
+      "deleteConfirm": {
+        "warning": "WARNING: THIS ACTION CANNOT BE UNDONE!",
+        "lineOne": "You are about to delete a profile!",
+        "lineTwo": "This action cannot be undone are you sure you would like to continue?"
+      },
+      "resetProfile": {
+        "warning": "WARNING: THIS ACTION CANNOT BE UNDONE!",
+        "lineOne": "You are about to reset a profile!",
+        "lineTwo": "This action cannot be undone are you sure you would like to continue?"
+      }
+    },
+    "cosmetics": {
+      "cloaks": "CLOAKS",
+      "wings": "WINGS",
+      "hats": "HATS",
+      "back": "BACK",
+      "shop": "SHOP",
+      "ownedCosmetics": "$0 owned",
+      "failedCosmeticConnection": "Cannot connect to Cosmetic Server.",
+      "failedCosmeticConnectionRetry": "Try again later.",
+      "noActive": "None",
+      "hint": "HINT: CLICK TO DRAG"
+    },
+    "mainmenu": {
+      "addAccount": {
+        "login": "login",
+        "password": "password",
+        "confirm": "CONFIRM",
+        "emptyFields": "Please provide both fields.",
+        "failedToLogin": "Failed to log in.",
+        "back": "BACK",
+        "loginRequest": "Please log in"
+      }
+    }
+  }
+}

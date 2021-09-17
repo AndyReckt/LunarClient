@@ -1,0 +1,106 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+        maven {
+            name = 'sponge'
+            url = 'https://repo.spongepowered.org/repository/maven-public/'
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT'
+        classpath 'org.spongepowered:mixingradle:0.6-SNAPSHOT'
+    }
+}
+
+apply plugin: 'net.minecraftforge.gradle.tweaker-client'
+apply plugin: 'org.spongepowered.mixin'
+apply plugin: 'java'
+
+version = "4c763b41856aa5cc20e7c8c4dad05aa9a86b4c22"
+group= "com.lunarclient"
+archivesBaseName = "Lunar Client"
+
+sourceCompatibility = targetCompatibility = 1.8
+compileJava.options.encoding = 'UTF-8'
+
+minecraft {
+    version = "1.8.9"
+    tweakClass = "com.moonsworth.lunar.mixin.Tweaker"
+    runDir = "run"
+    mappings = "stable_22"
+    clientJvmArgs = ["-XX:-DisableExplicitGC"]
+    makeObfSourceJar = true
+}
+
+repositories {
+    maven {
+        name "jitpack"
+        url "https://jitpack.io"
+    }
+
+    maven {
+        name "spongepowered"
+        url "https://repo.spongepowered.org/maven/"
+    }
+    jcenter()
+    mavenCentral()
+}
+
+configurations {
+    embed
+    compile.extendsFrom(embed)
+}
+
+dependencies {
+    embed('org.spongepowered:mixin:0.7.11-SNAPSHOT') {
+        exclude module: 'launchwrapper'
+    }
+    embed 'org.java-websocket:Java-WebSocket:1.4.1'
+    embed 'javax.vecmath:vecmath:1.5.2'
+    embed 'it.unimi.dsi:fastutil:8.5.4'
+    embed 'com.jagrosh:DiscordIPC:0.4'
+    embed "org.joml:joml:1.10.1"
+    embed fileTree(dir: 'libs', include: ['*.jar'])
+    compileOnly 'org.projectlombok:lombok:1.18.12'
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+}
+
+mixin {
+    defaultObfuscationEnv = "notch"
+   // add sourceSets.main, "mixins.lunar.refmap.json"
+}
+
+processResources {
+    inputs.files "src/main/resources"
+    outputs.dir "build/classes/main"
+    copy {
+        from("src/main/resources")
+        into("build/classes/main")
+    }
+}
+
+jar {
+    dependsOn configurations.compile
+    from {
+        configurations.embed.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+    exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA'
+}
+
+jar {
+    manifest.attributes(
+            "MixinConfigs": 'mixins.lunar.json',
+            "TweakClass": 'com.moonsworth.lunar.mixin.Tweaker',
+            "TweakOrder": 0,
+            "Manifest-Version": 1.0
+    )
+
+    configurations.embed.each { dep ->
+        from(project.zipTree(dep)) {
+            exclude 'META-INF', 'META-INF/**'
+        }
+    }
+}
