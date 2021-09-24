@@ -8,8 +8,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 
-public abstract class ConfigurableFeature
-extends Feature {
+public abstract class ConfigurableFeature extends Feature {
     public final List<AbstractFeatureContainerChild> llllIIlIIlIIlIIllIIlIIllI = Collections.synchronizedList(this.llllIlIlIIIllllIIlIllIlII());
     public Predicate lllllIllIllIllllIlIllllII = abstractFeatureContainerChild -> true;
 
@@ -22,30 +21,28 @@ extends Feature {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(JsonObject jsonObject) {
-        super.lIlIlIlIlIIlIIlIIllIIIIIl(jsonObject);
+    public void write(JsonObject jsonObject) {
+        super.write(jsonObject);
         for (AbstractFeatureContainerChild abstractFeatureContainerChild : this.llllIIlIIlIIlIIllIIlIIllI) {
             try {
                 JsonObject jsonObject2 = new JsonObject();
-                abstractFeatureContainerChild.lIlIlIlIlIIlIIlIIllIIIIIl(jsonObject2);
+                abstractFeatureContainerChild.write(jsonObject2);
                 if (jsonObject2.entrySet().isEmpty()) continue;
-                jsonObject.add(abstractFeatureContainerChild.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl(), jsonObject2);
-            }
-            catch (Exception exception) {
+                jsonObject.add(abstractFeatureContainerChild.getDetails().getId(), jsonObject2);
+            } catch (Exception exception) {
                 exception.printStackTrace();
             }
         }
     }
 
     @Override
-    public void IlllIIIIIIlllIlIIlllIlIIl(JsonObject jsonObject) {
-        super.IlllIIIIIIlllIlIIlllIlIIl(jsonObject);
+    public void read(JsonObject jsonObject) {
+        super.read(jsonObject);
         for (ConfigurableFeature configurableFeature : this.llllIIlIIlIIlIIllIIlIIllI) {
             try {
-                JsonObject jsonObject2 = jsonObject.has(configurableFeature.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl()) && !jsonObject.get(configurableFeature.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl()).isJsonNull() ? jsonObject.getAsJsonObject(configurableFeature.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl()) : new JsonObject();
-                configurableFeature.IlllIIIIIIlllIlIIlllIlIIl(jsonObject2);
-            }
-            catch (Exception exception) {
+                JsonObject jsonObject2 = jsonObject.has(configurableFeature.getDetails().getId()) && !jsonObject.get(configurableFeature.getDetails().getId()).isJsonNull() ? jsonObject.getAsJsonObject(configurableFeature.getDetails().getId()) : new JsonObject();
+                configurableFeature.read(jsonObject2);
+            } catch (Exception exception) {
                 exception.printStackTrace();
             }
         }

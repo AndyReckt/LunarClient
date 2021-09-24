@@ -12,40 +12,39 @@ import com.moonsworth.lunar.bridge.minecraft.util.IChatComponentBridge;
  * @since 10/07/2021 14:10
  */
 public interface EntityPlayerBridge extends EntityLivingBaseBridge {
-    public GameProfile bridge$getGameProfile();
+    GameProfile bridge$getGameProfile();
 
-    public PlayerCapabilitiesBridge bridge$getPlayerCapabilities();
+    PlayerCapabilitiesBridge bridge$getPlayerCapabilities();
 
-    public boolean bridge$isSpectator();
+    boolean bridge$isSpectator();
 
-    public void bridge$addChatMessage(IChatComponentBridge var1);
+    void bridge$addChatMessage(IChatComponentBridge var1);
 
-    public boolean bridge$isBlocking();
+    boolean bridge$isBlocking();
 
-    public InventoryPlayerBridge bridge$getInventory();
+    InventoryPlayerBridge bridge$getInventory();
 
-    public ItemStackBridge bridge$getCurrentEquippedItem();
+    ItemStackBridge bridge$getCurrentEquippedItem();
 
-    public boolean bridge$isSprinting();
+    boolean bridge$isSprinting();
 
-    public String bridge$getName();
+    String bridge$getName();
 
-    public FoodStatsBridge bridge$getFoodStats();
+    FoodStatsBridge bridge$getFoodStats();
 
-    @Override
-    public ItemStackBridge bridge$getHeldItem();
+    @Override ItemStackBridge bridge$getHeldItem();
 
-    public void bridge$onEnchantmentCritical(EntityBridge var1);
+    void bridge$onEnchantmentCritical(EntityBridge var1);
 
-    public void bridge$preparePlayerToSpawn();
+    void bridge$preparePlayerToSpawn();
 
-    public ItemStackBridge bridge$getArmor(int var1);
+    ItemStackBridge bridge$getArmor(int var1);
 
-    public int bridge$getItemInUseCount();
+    int bridge$getItemInUseCount();
 
-    public float bridge$getBedOrientationInDegrees();
+    float bridge$getBedOrientationInDegrees();
 
-    public boolean bridge$isUsingItem();
+    boolean bridge$isUsingItem();
 
-    public void bridge$setFlyToggleTimer(int var1);
+    void bridge$setFlyToggleTimer(int var1);
 }

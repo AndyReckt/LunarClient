@@ -1,10 +1,3 @@
-/*
- * Decompiled with CFR 0.150.
- * 
- * Could not load the following classes:
- *  lunar.G.EntityLivingBaseBridge
- *  lunar.al.LunarClient
- */
 package mchorse.emoticons.common.emotes;
 
 import com.moonsworth.lunar.LunarClient;
@@ -61,7 +54,7 @@ public class Emote {
     }
 
     public float rand(float f) {
-        return LunarClient.random.nextFloat() * f - f / 2.0f;
+        return LunarClient.RANDOM.nextFloat() * f - f / 2.0f;
     }
 }
 

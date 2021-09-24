@@ -31,7 +31,7 @@ public class IIlIllIlllllllIIlIIIllIIl extends BooleanSetting {
 
     @Override
     public String f_() {
-        return this.get(this.lIlIlIlIlIIlIIlIIllIIIIIl, new Object[0]);
+        return this.get(this.lIlIlIlIlIIlIIlIIllIIIIIl);
     }
 
     public String llllIIlIIlIIlIIllIIlIIllI() {

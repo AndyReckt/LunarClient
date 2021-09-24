@@ -11,31 +11,30 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public abstract class AbstractDraggableListUIComponent
-extends AbstractDraggableUIComponent {
-    public List<UIComponent> IlllIIIIIIlllIlIIlllIlIIl = Collections.synchronizedList(this.lIllIlIIIlIIIIIIIlllIlIll());
+public abstract class AbstractDraggableListUIComponent extends AbstractDraggableUIComponent {
+    public List<UIComponent> list = Collections.synchronizedList(this.lIllIlIIIlIIIIIIIlllIlIll());
     public IllIllIIIllIIIlIlIlIIIIll asas;
 
     public AbstractDraggableListUIComponent(UIComponent parent) {
         super(parent);
-        this.lIlIlIlIlIIlIIlIIllIIIIIl((float f, float f2, int n) -> {
-            for (UIComponent uIComponent : this.IlllIIIIIIlllIlIIlllIlIIl) {
-                if (!uIComponent.IlllIIIIIIlllIlIIlllIlIIl(f, f2) || !this.lIlIlIlIlIIlIIlIIllIIIIIl(uIComponent, f, f2, new UIComponent[0]) || !uIComponent.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, n)) continue;
+        this.onMouseClick((float f, float f2, int n) -> {
+            for (UIComponent uIComponent : this.list) {
+                if (!uIComponent.mouseInside(f, f2) || !this.lIlIlIlIlIIlIIlIIllIIIIIl(uIComponent, f, f2) || !uIComponent.onMouseClicked(f, f2, n)) continue;
                 AbstractUIScreen.IIlIllIlllllllIIlIIIllIIl();
                 return true;
             }
-            if (this.asas != null && this.asas.IlllIIIIIIlllIlIIlllIlIIl(f, f2) && this.lIlIlIlIlIIlIIlIIllIIIIIl(this.asas, f, f2, new UIComponent[0]) && this.asas.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, n)) {
+            if (this.asas != null && this.asas.mouseInside(f, f2) && this.lIlIlIlIlIIlIIlIIllIIIIIl(this.asas, f, f2) && this.asas.onMouseClicked(f, f2, n)) {
                 AbstractUIScreen.IIlIllIlllllllIIlIIIllIIl();
                 return true;
             }
             return true;
         });
         this.IlllIIIIIIlllIlIIlllIlIIl((f, f2, n) -> {
-            if (this.asas != null && !this.asas.IlllIIIIIIlllIlIIlllIlIIl(f, f2)) {
+            if (this.asas != null && !this.asas.mouseInside(f, f2)) {
                 this.asas = null;
             }
-            for (UIComponent uIComponent : this.IlllIIIIIIlllIlIIlllIlIIl) {
-                if (uIComponent.IlllIIIIIIlllIlIIlllIlIIl(f, f2) && this.lIlIlIlIlIIlIIlIIllIIIIIl(uIComponent, f, f2, new UIComponent[0]) || !uIComponent.IlllIIIIIIlllIlIIlllIlIIl(f, f2, n)) continue;
+            for (UIComponent uIComponent : this.list) {
+                if (uIComponent.mouseInside(f, f2) && this.lIlIlIlIlIIlIIlIIllIIIIIl(uIComponent, f, f2) || !uIComponent.IlllIIIIIIlllIlIIlllIlIIl(f, f2, n)) continue;
                 return true;
             }
             return false;
@@ -46,17 +45,17 @@ extends AbstractDraggableUIComponent {
         this.asas = illIllIIIllIIIlIlIlIIIIll;
     }
 
-    public abstract List lIllIlIIIlIIIIIIIlllIlIll();
+    public abstract List<UIComponent> lIllIlIIIlIIIIIIIlllIlIll();
 
     @Override
     public void lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2) {
-        if (this.IllIllIIIllIIIlIlIlIIIIll.get()) {
+        if (this.dragging.get()) {
             if (!Bridge.llIIIlllIIlllIllllIlIllIl().lIlIlIlIlIIlIIlIIllIIIIIl(0)) {
-                this.IllIllIIIllIIIlIlIlIIIIll.set(false);
+                this.dragging.set(false);
                 return;
             }
-            float f3 = f - this.llIlIIIllIIlIllIllIllllIl.lIlIlIlIlIIlIIlIIllIIIIIl;
-            float f4 = f2 - this.llIlIIIllIIlIllIllIllllIl.IlllIIIIIIlllIlIIlllIlIIl;
+            float f3 = f - this.point.x;
+            float f4 = f2 - this.point.y;
             ScaledResolutionHelper scaledResolutionHelper = AbstractUIScreen.llllIlIllllIlIlIIIllIlIlI();
             if ((double)f3 >= scaledResolutionHelper.lIllIlIIIlIIIIIIIlllIlIll() - (double)(this.width / 2.0f)) {
                 f3 = (float)scaledResolutionHelper.lIllIlIIIlIIIIIIIlllIlIll() - this.width / 2.0f;
@@ -70,49 +69,49 @@ extends AbstractDraggableUIComponent {
             }
             float f5 = this.x - f3;
             float f6 = this.y - f4;
-            this.lIlIlIlIlIIlIIlIIllIIIIIl(f3, f4, this.width, this.height);
-            for (UIComponent uIComponent : this.IlllIIIIIIlllIlIIlllIlIIl) {
-                uIComponent.lIlIlIlIlIIlIIlIIllIIIIIl(uIComponent.lllIIIIIlllIIlIllIIlIIIlI() - f5, uIComponent.lIlIIIIIIlIIIllllIllIIlII() - f6, uIComponent.llIlIIIllIIlIllIllIllllIl(), uIComponent.IllIllIIIllIIIlIlIlIIIIll());
+            this.setPositionAndSize(f3, f4, this.width, this.height);
+            for (UIComponent uIComponent : this.list) {
+                uIComponent.setPositionAndSize(uIComponent.getX() - f5, uIComponent.getY() - f6, uIComponent.getWidth(), uIComponent.getHeight());
             }
         }
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl() {
-        for (UIComponent uIComponent : this.IlllIIIIIIlllIlIIlllIlIIl) {
-            uIComponent.lIlIlIlIlIIlIIlIIllIIIIIl();
+    public void onUpdateScreen() {
+        for (UIComponent uIComponent : this.list) {
+            uIComponent.onUpdateScreen();
         }
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2, boolean bl) {
-        for (UIComponent uIComponent : this.IlllIIIIIIlllIlIIlllIlIIl) {
-            uIComponent.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, bl && this.lIlIlIlIlIIlIIlIIllIIIIIl(uIComponent, f, f2, new UIComponent[0]));
+    public void drawComponent(float mouseX, float mouseY, boolean bl) {
+        for (UIComponent uIComponent : this.list) {
+            uIComponent.drawComponent(mouseX, mouseY, bl && this.lIlIlIlIlIIlIIlIIllIIIIIl(uIComponent, mouseX, mouseY));
         }
         if (this.asas != null) {
-            this.asas.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, bl && this.lIlIlIlIlIIlIIlIIllIIIIIl(this.asas, f, f2, new UIComponent[0]));
+            this.asas.drawComponent(mouseX, mouseY, bl && this.lIlIlIlIlIIlIIlIIllIIIIIl(this.asas, mouseX, mouseY));
         }
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(char c, KeyType keyType) {
-        for (UIComponent uIComponent : this.IlllIIIIIIlllIlIIlllIlIIl) {
-            uIComponent.lIlIlIlIlIIlIIlIIllIIIIIl(c, keyType);
+    public void onKeyTyped(char c, KeyType keyType) {
+        for (UIComponent uIComponent : this.list) {
+            uIComponent.onKeyTyped(c, keyType);
         }
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(int n) {
-        super.lIlIlIlIlIIlIIlIIllIIIIIl(n);
-        for (UIComponent uIComponent : this.IlllIIIIIIlllIlIIlllIlIIl) {
-            uIComponent.lIlIlIlIlIIlIIlIIllIIIIIl(n);
+    public void handleMouseScrollDelta(int n) {
+        super.handleMouseScrollDelta(n);
+        for (UIComponent uIComponent : this.list) {
+            uIComponent.handleMouseScrollDelta(n);
         }
     }
 
     @Override
-    public void IlllIIIIIIlllIlIIlllIlIIl() {
-        for (UIComponent uIComponent : this.IlllIIIIIIlllIlIIlllIlIIl) {
-            uIComponent.IlllIIIIIIlllIlIIlllIlIIl();
+    public void onGuiClosed() {
+        for (UIComponent uIComponent : this.list) {
+            uIComponent.onGuiClosed();
         }
     }
 
@@ -123,25 +122,24 @@ extends AbstractDraggableUIComponent {
             return true;
         }
         boolean bl = true;
-        for (int i = this.IlllIIIIIIlllIlIIlllIlIIl.size() - 1; i >= 0 && (uIComponent2 = (UIComponent)this.IlllIIIIIIlllIlIIlllIlIIl.get(i)) != uIComponent; --i) {
+        for (int i = this.list.size() - 1; i >= 0 && (uIComponent2 = this.list.get(i)) != uIComponent; --i) {
             if (list.contains(uIComponent2)) continue;
-            if (this.asas != null && this.asas.IlllIIIIIIlllIlIIlllIlIIl(f, f2)) {
+            if (this.asas != null && this.asas.mouseInside(f, f2)) {
                 bl = false;
                 break;
             }
-            if (!uIComponent2.IlllIIIIIIlllIlIIlllIlIIl(f, f2)) continue;
+            if (!uIComponent2.mouseInside(f, f2)) continue;
             bl = false;
             break;
         }
         return bl;
     }
 
-    public List llllIIlIIlIIlIIllIIlIIllI() {
-        return this.IlllIIIIIIlllIlIIlllIlIIl;
+    public List<UIComponent> llllIIlIIlIIlIIllIIlIIllI() {
+        return this.list;
     }
 
     public IllIllIIIllIIIlIlIlIIIIll llIIIIIIIllIIllIlIllIIIIl() {
         return this.asas;
     }
 }
- 

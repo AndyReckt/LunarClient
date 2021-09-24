@@ -21,7 +21,7 @@ public enum NotificationPosition implements IEnumSetting {
 
     @Override
     public String toString() {
-        return this.get(this.lIlIlIlIlIIlIIlIIllIIIIIl(), new Object[0]);
+        return this.get(this.lIlIlIlIlIIlIIlIIllIIIIIl());
     }
 
     NotificationPosition(final String s, final int n, final PositionCalculator llllIIlIIlIIlIIllIIlIIllI, final PositionCalculator ilIlIlllllIlIIlIlIlllIlIl) {
@@ -38,4 +38,3 @@ public enum NotificationPosition implements IEnumSetting {
         return this.IlIlIlllllIlIIlIlIlllIlIl;
     }
 }
- 

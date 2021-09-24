@@ -8,14 +8,15 @@ import com.moonsworth.lunar.client.event.type.network.NetHandlerConnectionStateU
 import com.moonsworth.lunar.client.event.type.world.TickEvent;
 import com.moonsworth.lunar.client.ref.Ref;
 import com.moonsworth.lunar.client.util.PlayerNameUtil;
+import com.moonsworth.lunar.client.websocket.packet.IIlIllIlllllllIIlIIIllIIl;
+import com.moonsworth.lunar.client.websocket.packet.llIlIIIllIIlIllIllIllllIl;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.stream.Collectors;
 
-public class PlayerEventHandler
-implements EventHandler {
+public class PlayerEventHandler implements EventHandler {
     public static final long lIlIlIlIlIIlIIlIIllIIIIIl = 150L;
     public static final long IlllIIIIIIlllIlIIlllIlIIl = 750L;
     public final Set lIllIlIIIlIIIIIIIlllIlIll = new HashSet();
@@ -40,7 +41,6 @@ implements EventHandler {
         if (l > 150L && this.llIlllIIIllllIIlllIllIIIl.size() > 0) {
             List<UUID> list = this.llIlllIIIllllIIlllIllIIIl.entrySet().stream().filter(entry -> entry.getValue() <= System.currentTimeMillis()).map(Map.Entry::getKey).collect(Collectors.toList());
             if (!list.isEmpty()) {
-                // todo: websocket packet
                 Ref.lIlIlIlIlIIlIIlIIllIIIIIl(new llIlIIIllIIlIllIllIllllIl(list));
                 this.lIllIlIIIlIIIIIIIlllIlIll.addAll(list);
                 for (UUID uUID : list) {
@@ -52,7 +52,6 @@ implements EventHandler {
         int n = this.llllIIlIIlIIlIIllIIlIIllI.size();
         l = Ref.lllIIIIIlllIIlIllIIlIIIlI() - this.lIIIllIllIIllIlllIlIIlllI;
         if (l > 750L && n > 0) {
-            //todo: ws packet
             Ref.lIlIlIlIlIIlIIlIIllIIIIIl(new IIlIllIlllllllIIlIIIllIIl(new ArrayList(this.llllIIlIIlIIlIIllIIlIIllI)));
             this.lIllIlIIIlIIIIIIIlllIlIll.removeAll(this.llllIIlIIlIIlIIllIIlIIllI);
             this.llllIIlIIlIIlIIllIIlIIllI.clear();
@@ -85,7 +84,7 @@ implements EventHandler {
     }
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(EntityPlayerBridge entityPlayerBridge) {
-        if (entityPlayerBridge.bridge$getUniqueID().equals(Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getSession().bridge$getProfile().getId()) || PlayerNameUtil.lIlIlIlIlIIlIIlIIllIIIIIl(entityPlayerBridge)) {
+        if (entityPlayerBridge.bridge$getUniqueID().equals(Ref.getMinecraft().bridge$getSession().bridge$getProfile().getId()) || PlayerNameUtil.lIlIlIlIlIIlIIlIIllIIIIIl(entityPlayerBridge)) {
             return;
         }
         this.llIlllIIIllllIIlllIllIIIl.put(entityPlayerBridge.bridge$getUniqueID(), System.currentTimeMillis() + 150L);
@@ -97,7 +96,7 @@ implements EventHandler {
         if (!this.lIllIlIIIlIIIIIIIlllIlIll.contains(entityPlayerBridge.bridge$getUniqueID())) {
             return;
         }
-        if (entityPlayerBridge.bridge$getUniqueID().equals(Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getSession().bridge$getProfile().getId()) || PlayerNameUtil.lIlIlIlIlIIlIIlIIllIIIIIl(entityPlayerBridge)) {
+        if (entityPlayerBridge.bridge$getUniqueID().equals(Ref.getMinecraft().bridge$getSession().bridge$getProfile().getId()) || PlayerNameUtil.lIlIlIlIlIIlIIlIIllIIIIIl(entityPlayerBridge)) {
             return;
         }
         this.llllIIlIIlIIlIIllIIlIIllI.add(entityPlayerBridge.bridge$getUniqueID());
@@ -105,8 +104,8 @@ implements EventHandler {
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl() {
         this.IlIlIlllllIlIIlIlIlllIlIl = true;
-        if (Ref.llIIIIIIIllIIllIlIllIIIIl() != null) {
-            for (EntityPlayerBridge entityPlayerBridge : Ref.llIIIIIIIllIIllIlIllIIIIl().bridge$getPlayerEntities()) {
+        if (Ref.getWorld() != null) {
+            for (EntityPlayerBridge entityPlayerBridge : Ref.getWorld().bridge$getPlayerEntities()) {
                 this.lIlIlIlIlIIlIIlIIllIIIIIl(entityPlayerBridge);
             }
         }
@@ -119,4 +118,3 @@ implements EventHandler {
         this.lIllIlIIIlIIIIIIIlllIlIll.clear();
     }
 }
- 

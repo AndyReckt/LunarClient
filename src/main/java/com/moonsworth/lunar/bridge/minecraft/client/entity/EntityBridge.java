@@ -12,133 +12,133 @@ import java.util.UUID;
  * @since 10/07/2021 14:12
  */
 public interface EntityBridge {
-    public boolean bridge$isSneaking();
+    boolean bridge$isSneaking();
 
-    public boolean bridge$isRiding();
+    boolean bridge$isRiding();
 
-    public int bridge$getTicksExisted();
+    int bridge$getTicksExisted();
 
-    public WorldBridge bridge$getWorld();
+    WorldBridge bridge$getWorld();
 
-    public double bridge$getPosX();
+    double bridge$getPosX();
 
-    public void bridge$setPosX(double var1);
+    void bridge$setPosX(double var1);
 
-    public double bridge$getPosY();
+    double bridge$getPosY();
 
-    public void bridge$setPosY(double var1);
+    void bridge$setPosY(double var1);
 
-    public double bridge$getPosZ();
+    double bridge$getPosZ();
 
-    public void bridge$setPosZ(double var1);
+    void bridge$setPosZ(double var1);
 
-    public double bridge$getPreviousPosX();
+    double bridge$getPreviousPosX();
 
-    public void bridge$setPreviousPosX(double var1);
+    void bridge$setPreviousPosX(double var1);
 
-    public double bridge$getPreviousPosY();
+    double bridge$getPreviousPosY();
 
-    public void bridge$setPreviousPosY(double var1);
+    void bridge$setPreviousPosY(double var1);
 
-    public double bridge$getPreviousPosZ();
+    double bridge$getPreviousPosZ();
 
-    public void bridge$setPreviousPosZ(double var1);
+    void bridge$setPreviousPosZ(double var1);
 
-    public double bridge$getMotionX();
+    double bridge$getMotionX();
 
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(double var1);
+    void lIlIlIlIlIIlIIlIIllIIIIIl(double var1);
 
-    public double bridge$getMotionY();
+    double bridge$getMotionY();
 
-    public void bridge$setMotionY(double var1);
+    void bridge$setMotionY(double var1);
 
-    public double bridge$getMotionZ();
+    double bridge$getMotionZ();
 
-    public void IlllIIIIIIlllIlIIlllIlIIl(double var1);
+    void IlllIIIIIIlllIlIIlllIlIIl(double var1);
 
-    public double bridge$getRotationYaw();
+    double bridge$getRotationYaw();
 
-    public double bridge$getRotationPitch();
+    double bridge$getRotationPitch();
 
-    public void bridge$setRotationYaw(double var1);
+    void bridge$setRotationYaw(double var1);
 
-    public void bridge$setRotationPitch(double var1);
+    void bridge$setRotationPitch(double var1);
 
-    public double bridge$getPreviousRotationYaw();
+    double bridge$getPreviousRotationYaw();
 
-    public void bridge$setPreviousRotationYaw(double var1);
+    void bridge$setPreviousRotationYaw(double var1);
 
-    public double bridge$getPreviousRotationPitch();
+    double bridge$getPreviousRotationPitch();
 
-    public void bridge$setPreviousRotationPitch(double var1);
+    void bridge$setPreviousRotationPitch(double var1);
 
-    public UUID bridge$getUniqueID();
+    UUID bridge$getUniqueID();
 
-    public AxisAlignedBBBridge bridge$getBoundingBox();
+    AxisAlignedBBBridge bridge$getBoundingBox();
 
-    public AxisAlignedBBBridge bridge$getFrustumBoundingBox();
+    AxisAlignedBBBridge bridge$getFrustumBoundingBox();
 
-    public boolean bridge$isOnGround();
+    boolean bridge$isOnGround();
 
-    public boolean bridge$isInvisibleTo(EntityPlayerBridge var1);
+    boolean bridge$isInvisibleTo(EntityPlayerBridge var1);
 
-    default public double lIlIlIlIlIIlIIlIIllIIIIIl(EntityBridge entityBridge) {
+default double lIlIlIlIlIIlIIlIIllIIIIIl(EntityBridge entityBridge) {
         double d = this.bridge$getPosX() - entityBridge.bridge$getPosX();
         double d2 = this.bridge$getPosY() - entityBridge.bridge$getPosY();
         double d3 = this.bridge$getPosZ() - entityBridge.bridge$getPosZ();
         return d * d + d2 * d2 + d3 * d3;
     }
 
-    default public double IlllIIIIIIlllIlIIlllIlIIl(EntityBridge entityBridge) {
+default double IlllIIIIIIlllIlIIlllIlIIl(EntityBridge entityBridge) {
         return Math.sqrt(this.lIlIlIlIlIIlIIlIIllIIIIIl(entityBridge));
     }
 
-    default public double lIlIlIlIlIIlIIlIIllIIIIIl(double d, double d2, double d3) {
+default double lIlIlIlIlIIlIIlIIllIIIIIl(double d, double d2, double d3) {
         double d4 = this.bridge$getPosX() - d;
         double d5 = this.bridge$getPosY() - d2;
         double d6 = this.bridge$getPosZ() - d3;
         return d4 * d4 + d5 * d5 + d6 * d6;
     }
 
-    default public double IlllIIIIIIlllIlIIlllIlIIl(double d, double d2, double d3) {
+default double IlllIIIIIIlllIlIIlllIlIIl(double d, double d2, double d3) {
         return Math.sqrt(this.lIlIlIlIlIIlIIlIIllIIIIIl(d, d2, d3));
     }
 
-    public int bridge$getEntityId();
+    int bridge$getEntityId();
 
-    public Vec3Bridge bridge$getLookAngle();
+    Vec3Bridge bridge$getLookAngle();
 
-    public int bridge$getDimension();
+    int bridge$getDimension();
 
-    public void bridge$setDimension(int var1);
+    void bridge$setDimension(int var1);
 
-    default public String bridge$getDimensionName() {
+default String bridge$getDimensionName() {
         return "";
     }
 
-    public float bridge$getEyeHeight();
+    float bridge$getEyeHeight();
 
-    public EntityBridge bridge$getRidingEntity();
+    EntityBridge bridge$getRidingEntity();
 
-    public float bridge$getFallDistance();
+    float bridge$getFallDistance();
 
-    public boolean bridge$hitByEntity(EntityBridge var1);
+    boolean bridge$hitByEntity(EntityBridge var1);
 
-    public double bridge$lastTickX();
+    double bridge$lastTickX();
 
-    public double bridge$lastTickY();
+    double bridge$lastTickY();
 
-    public double bridge$lastTickZ();
+    double bridge$lastTickZ();
 
-    public DataWatcherBridge bridge$getDataWatcher();
+    DataWatcherBridge bridge$getDataWatcher();
 
-    public int bridge$getBrightnessForRender(float var1);
+    int bridge$getBrightnessForRender(float var1);
 
-    public boolean bridge$isBurning();
+    boolean bridge$isBurning();
 
-    public boolean bridge$isInvisible();
+    boolean bridge$isInvisible();
 
-    public float bridge$getWidth();
+    float bridge$getWidth();
 
-    public boolean bridge$isCollidedHorizontally();
+    boolean bridge$isCollidedHorizontally();
 }

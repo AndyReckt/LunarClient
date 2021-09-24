@@ -2,8 +2,7 @@ package com.moonsworth.lunar.client.event.type.world;
 
 import com.moonsworth.lunar.client.event.CancellableEvent;
 
-public class DrawSelectionBoundingBoxEvent
-extends CancellableEvent {
+public class DrawSelectionBoundingBoxEvent extends CancellableEvent {
     public final double lIlIlIlIlIIlIIlIIllIIIIIl;
     public final double IlllIIIIIIlllIlIIlllIlIIl;
     public final double lIllIlIIIlIIIIIIIlllIlIll;

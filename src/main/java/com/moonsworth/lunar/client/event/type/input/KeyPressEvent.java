@@ -10,7 +10,6 @@ import com.moonsworth.lunar.client.event.state.KeyState;
 import com.moonsworth.lunar.client.feature.type.replaymod.ReplayMod;
 import com.moonsworth.lunar.client.ref.Ref;
 import com.moonsworth.lunar.client.setting.BindableSetting;
-import com.moonsworth.lunar.client.setting.KeyBind;
 import com.moonsworth.lunar.client.setting.LunarKeybindSetting;
 
 import java.util.Set;
@@ -19,8 +18,7 @@ import java.util.Set;
  * @author Decencies
  * @since 10/07/2021 13:18
  */
-public class KeyPressEvent
-        extends CancellableEvent {
+public class KeyPressEvent extends CancellableEvent {
     public final KeyType lIlIlIlIlIIlIIlIIllIIIIIl;
     public final KeyState IlllIIIIIIlllIlIIlllIlIIl;
 
@@ -29,10 +27,10 @@ public class KeyPressEvent
     }
 
     public boolean lIlIlIlIlIIlIIlIIllIIIIIl(BindableSetting bindableSetting, boolean bl) {
-        if (this.lIlIlIlIlIIlIIlIIllIIIIIl == KeyType.lIlIlIlIlIIlIIlIIllIIIIIl || this.lIlIlIlIlIIlIIlIIllIIIIIl(this.lIlIlIlIlIIlIIlIIllIIIIIl)) {
+        if (this.lIlIlIlIlIIlIIlIIllIIIIIl == KeyType.KEY_NONE || this.lIlIlIlIlIIlIIlIIllIIIIIl(this.lIlIlIlIlIIlIIlIIllIIIIIl)) {
             return false;
         }
-        if (!(Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getCurrentScreen() != null || this.IlllIIIIIIlllIlIIlllIlIIl != KeyState.DOWN || this.lIlIlIlIlIIlIIlIIllIIIIIl != Bridge.llIIlIlIIIllIlIlIlIIlIIll().IlllIIIIIIlllIlIIlllIlIIl(bindableSetting.llIlllIIIllllIIlllIllIIIl()) || bl && UIEventHandler.lIlIlIlIlIIlIIlIIllIIIIIl())) {
+        if (!(Ref.getMinecraft().bridge$getCurrentScreen() != null || this.IlllIIIIIIlllIlIIlllIlIIl != KeyState.DOWN || this.lIlIlIlIlIIlIIlIIllIIIIIl != Bridge.llIIlIlIIIllIlIlIlIIlIIll().IlllIIIIIIlllIlIIlllIlIIl(bindableSetting.llIlllIIIllllIIlllIllIIIl()) || bl && UIEventHandler.lIlIlIlIlIIlIIlIIllIIIIIl())) {
             this.cancel();
             return true;
         }
@@ -44,10 +42,10 @@ public class KeyPressEvent
     }
 
     public boolean lIlIlIlIlIIlIIlIIllIIIIIl(LunarKeybindSetting lunarKeybindSetting, boolean bl) {
-        if (this.lIlIlIlIlIIlIIlIIllIIIIIl == KeyType.lIlIlIlIlIIlIIlIIllIIIIIl || this.lIlIlIlIlIIlIIlIIllIIIIIl(this.lIlIlIlIlIIlIIlIIllIIIIIl)) {
+        if (this.lIlIlIlIlIIlIIlIIllIIIIIl == KeyType.KEY_NONE || this.lIlIlIlIlIIlIIlIIllIIIIIl(this.lIlIlIlIlIIlIIlIIllIIIIIl)) {
             return false;
         }
-        if (!(Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getCurrentScreen() != null || this.IlllIIIIIIlllIlIIlllIlIIl != KeyState.DOWN || !lunarKeybindSetting.lIllIlIIIlIIIIIIIlllIlIll() || this.lIlIlIlIlIIlIIlIIllIIIIIl != lunarKeybindSetting.llIlllIIIllllIIlllIllIIIl().llIlllIIIllllIIlllIllIIIl() || bl && UIEventHandler.lIlIlIlIlIIlIIlIIllIIIIIl())) {
+        if (!(Ref.getMinecraft().bridge$getCurrentScreen() != null || this.IlllIIIIIIlllIlIIlllIlIIl != KeyState.DOWN || !lunarKeybindSetting.lIllIlIIIlIIIIIIIlllIlIll() || this.lIlIlIlIlIIlIIlIIllIIIIIl != lunarKeybindSetting.llIlllIIIllllIIlllIllIIIl().llIlllIIIllllIIlllIllIIIl() || bl && UIEventHandler.lIlIlIlIlIIlIIlIIllIIIIIl())) {
             if (lunarKeybindSetting.llllIIlIIlIIlIIllIIlIIllI()) {
                 this.cancel();
             }
@@ -61,10 +59,10 @@ public class KeyPressEvent
     }
 
     public boolean lIlIlIlIlIIlIIlIIllIIIIIl(LunarKeybindSetting lunarKeybindSetting, KeyState keyState, boolean bl) {
-        if (this.lIlIlIlIlIIlIIlIIllIIIIIl == KeyType.lIlIlIlIlIIlIIlIIllIIIIIl || this.lIlIlIlIlIIlIIlIIllIIIIIl(this.lIlIlIlIlIIlIIlIIllIIIIIl)) {
+        if (this.lIlIlIlIlIIlIIlIIllIIIIIl == KeyType.KEY_NONE || this.lIlIlIlIlIIlIIlIIllIIIIIl(this.lIlIlIlIlIIlIIlIIllIIIIIl)) {
             return false;
         }
-        if (!(Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getCurrentScreen() != null || keyState != this.IlllIIIIIIlllIlIIlllIlIIl || !lunarKeybindSetting.lIllIlIIIlIIIIIIIlllIlIll() || this.lIlIlIlIlIIlIIlIIllIIIIIl != lunarKeybindSetting.llIlllIIIllllIIlllIllIIIl().llIlllIIIllllIIlllIllIIIl() || bl && UIEventHandler.lIlIlIlIlIIlIIlIIllIIIIIl())) {
+        if (!(Ref.getMinecraft().bridge$getCurrentScreen() != null || keyState != this.IlllIIIIIIlllIlIIlllIlIIl || !lunarKeybindSetting.lIllIlIIIlIIIIIIIlllIlIll() || this.lIlIlIlIlIIlIIlIIllIIIIIl != lunarKeybindSetting.llIlllIIIllllIIlllIllIIIl().llIlllIIIllllIIlllIllIIIl() || bl && UIEventHandler.lIlIlIlIlIIlIIlIIllIIIIIl())) {
             if (lunarKeybindSetting.llllIIlIIlIIlIIllIIlIIllI()) {
                 this.cancel();
             }
@@ -78,10 +76,10 @@ public class KeyPressEvent
     }
 
     public boolean lIlIlIlIlIIlIIlIIllIIIIIl(BindableSetting bindableSetting, KeyState keyState, boolean bl) {
-        if (this.lIlIlIlIlIIlIIlIIllIIIIIl == KeyType.lIlIlIlIlIIlIIlIIllIIIIIl || this.lIlIlIlIlIIlIIlIIllIIIIIl(this.lIlIlIlIlIIlIIlIIllIIIIIl)) {
+        if (this.lIlIlIlIlIIlIIlIIllIIIIIl == KeyType.KEY_NONE || this.lIlIlIlIlIIlIIlIIllIIIIIl(this.lIlIlIlIlIIlIIlIIllIIIIIl)) {
             return false;
         }
-        if (!(Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getCurrentScreen() != null || keyState != this.IlllIIIIIIlllIlIIlllIlIIl || this.lIlIlIlIlIIlIIlIIllIIIIIl != Bridge.llIIlIlIIIllIlIlIlIIlIIll().IlllIIIIIIlllIlIIlllIlIIl(bindableSetting.llIlllIIIllllIIlllIllIIIl()) || bl && UIEventHandler.lIlIlIlIlIIlIIlIIllIIIIIl())) {
+        if (!(Ref.getMinecraft().bridge$getCurrentScreen() != null || keyState != this.IlllIIIIIIlllIlIIlllIlIIl || this.lIlIlIlIlIIlIIlIIllIIIIIl != Bridge.llIIlIlIIIllIlIlIlIIlIIll().IlllIIIIIIlllIlIIlllIlIIl(bindableSetting.llIlllIIIllllIIlllIllIIIl()) || bl && UIEventHandler.lIlIlIlIlIIlIIlIIllIIIIIl())) {
             this.cancel();
             return true;
         }
@@ -89,11 +87,11 @@ public class KeyPressEvent
     }
 
     public boolean lIlIlIlIlIIlIIlIIllIIIIIl(KeyType keyType) {
-        ReplayMod replayMod = LunarClient.IIllIlIllIlIllIllIllIllII().lllllIllIllIllllIlIllllII().lIlIIlIlllIIlIIIlIlIlIllI();
+        ReplayMod replayMod = LunarClient.getInstance().lllllIllIllIllllIlIllllII().lIlIIlIlllIIlIIIlIlIlIllI();
         if (!replayMod.IlllIIIIIIlllIlIIlllIlIIl() || !replayMod.lIllllIllIIlIIlIIIlIIIlII().isViewingReplay()) {
             return false;
         }
-        Set<KeyBindingBridge> set = LunarClient.IIllIlIllIlIllIllIllIllII().lllllIllIllIllllIlIllllII().lIlIIlIlllIIlIIIlIlIlIllI().lIllllIllIIlIIlIIIlIIIlII().getKeyBindings();
+        Set<KeyBindingBridge> set = LunarClient.getInstance().lllllIllIllIllllIlIllllII().lIlIIlIlllIIlIIIlIlIlIllI().lIllllIllIIlIIlIIIlIIIlII().getKeyBindings();
         for (KeyBindingBridge keyBindingBridge : set) {
             if (keyBindingBridge.bridge$getKey() != keyType) continue;
             return true;

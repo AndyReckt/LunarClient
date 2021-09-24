@@ -12,8 +12,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class ResourceUploadRunnable
-implements Runnable {
+public class ResourceUploadRunnable implements Runnable {
     public static final int[] lIlIlIlIlIIlIIlIIllIIIIIl = new int[AbstractUploadableTickingTexture.getMaxTextureSize()];
     public final IResourceManagerBridge IlllIIIIIIlllIlIIlllIlIIl;
     public final AbstractUploadableTickingTexture lIllIlIIIlIIIIIIIlllIlIll;
@@ -32,8 +31,7 @@ implements Runnable {
             InputStream inputStream = simpleResourceBridge.bridge$getInputStream();
             try {
                 bufferedImage = ImageIO.read(inputStream);
-            }
-            finally {
+            } finally {
                 IOUtils.closeQuietly(inputStream);
             }
             boolean bl = false;
@@ -45,9 +43,8 @@ implements Runnable {
                         bl = textureMetadataSectionBridge.bridge$getTextureBlur();
                         bl2 = textureMetadataSectionBridge.bridge$getTextureClamp();
                     }
-                }
-                catch (Exception class18) {
-                    LunarLogger.lIllIlIIIlIIIIIIIlllIlIll((Object)("Failed reading metadata of: " + this.lIllIlIIIlIIIIIIIlllIlIll.textureLocation), new Object[]{class18});
+                } catch (Exception class18) {
+                    LunarLogger.warn("Failed reading metadata of: " + this.lIllIlIIIlIIIIIIIlllIlIll.textureLocation, class18);
                 }
             }
             int n = bufferedImage.getWidth();
@@ -65,11 +62,9 @@ implements Runnable {
             this.lIllIlIIIlIIIIIIIlllIlIll.setTextureWidth(n);
             this.lIllIlIIIlIIIIIIIlllIlIll.setTextureHeight(n2);
             this.lIllIlIIIlIIIIIIIlllIlIll.markReadyForUpload();
-        }
-        catch (IOException iOException) {
-            LunarLogger.lIllIlIIIlIIIIIIIlllIlIll((Object)("Failed to load texture: " + this.lIllIlIIIlIIIIIIIlllIlIll.textureLocation), iOException);
-        }
-        catch (Throwable throwable) {
+        } catch (IOException iOException) {
+            LunarLogger.warn((Object)("Failed to load texture: " + this.lIllIlIIIlIIIIIIIlllIlIll.textureLocation), iOException);
+        } catch (Throwable throwable) {
             throwable.printStackTrace();
         }
     }
@@ -79,4 +74,3 @@ implements Runnable {
         this.lIllIlIIIlIIIIIIIlllIlIll = abstractUploadableTickingTexture;
     }
 }
- 

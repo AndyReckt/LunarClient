@@ -8,13 +8,12 @@ import com.moonsworth.lunar.client.ui.ease.ColorEase;
 import com.moonsworth.lunar.client.ui.screen.AbstractUIScreen;
 import com.moonsworth.lunar.client.util.ColorUtil;
 
-public class lIlIlIIIIIIllIlIIIIllIIII
-extends UIComponent {
-    public String lIlIlIlIlIIlIIlIIllIIIIIl;
-    public final LCFontRenderer IlllIIIIIIlllIlIIlllIlIIl;
-    public final ColorEase lIllIlIIIlIIIIIIIlllIlIll = new ColorEase(0, 0x45000000);
-    public int llIlIIIllIIlIllIllIllllIl = -1;
-    public boolean IllIllIIIllIIIlIlIlIIIIll;
+public class lIlIlIIIIIIllIlIIIIllIIII extends UIComponent {
+    public String translationKey;
+    public final LCFontRenderer fontRenderer;
+    public final ColorEase ease = new ColorEase(0, 0x45000000);
+    public int color = -1;
+    public boolean hoverOverride;
 
     public lIlIlIIIIIIllIlIIIIllIIII(UIComponent uIComponent, String string, int n) {
         this(uIComponent, string, FontRegistry.lIIIllIllIIllIlllIlIIlllI(), n);
@@ -26,46 +25,46 @@ extends UIComponent {
 
     public lIlIlIIIIIIllIlIIIIllIIII(UIComponent uIComponent, String string, LCFontRenderer lCFontRenderer, int n) {
         super(uIComponent);
-        this.lIlIlIlIlIIlIIlIIllIIIIIl = string;
-        this.IlllIIIIIIlllIlIIlllIlIIl = lCFontRenderer;
-        this.llIlIIIllIIlIllIllIllllIl = n;
+        this.translationKey = string;
+        this.fontRenderer = lCFontRenderer;
+        this.color = n;
     }
 
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(String string) {
-        this.lIlIlIlIlIIlIIlIIllIIIIIl = string;
-    }
-
-    @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl() {
+    public void setTranslationKey(String string) {
+        this.translationKey = string;
     }
 
     @Override
-    public void IlllIIIIIIlllIlIIlllIlIIl() {
+    public void onUpdateScreen() {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(char c, KeyType keyType) {
+    public void onGuiClosed() {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2, boolean bl) {
-        AbstractUIScreen.lIllIlIIIlIIIIIIIlllIlIll(this.x, this.y, this.width, this.height, this.lIllIlIIIlIIIIIIIlllIlIll.lIlIlIlIlIIlIIlIIllIIIIIl(this.IllIllIIIllIIIlIlIlIIIIll || bl && this.IlllIIIIIIlllIlIIlllIlIIl(f, f2)));
-        float f3 = this.IlllIIIIIIlllIlIIlllIlIIl.lIlIlIlIlIIlIIlIIllIIIIIl();
+    public void onKeyTyped(char c, KeyType keyType) {
+    }
+
+    @Override
+    public void drawComponent(float mouseX, float mouseY, boolean bl) {
+        AbstractUIScreen.lIllIlIIIlIIIIIIIlllIlIll(this.x, this.y, this.width, this.height, this.ease.lIlIlIlIlIIlIIlIIllIIIIIl(this.hoverOverride || bl && this.mouseInside(mouseX, mouseY)));
+        float f3 = this.fontRenderer.getHeight();
         float f4 = this.x + 5.0f;
-        if (this.llIlIIIllIIlIllIllIllllIl != -1) {
-            AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl((double)(f4 + 3.0f), (double)(this.y + this.height / 2.0f + 0.5f), 2.0, ColorUtil.lIlIlIlIlIIlIIlIIllIIIIIl(ColorUtil.IlllIIIIIIlllIlIIlllIlIIl(this.llIlIIIllIIlIllIllIllllIl), ColorUtil.llIlllIIIllllIIlllIllIIIl(this.llIlIIIllIIlIllIllIllllIl), ColorUtil.IlIlIlllllIlIIlIlIlllIlIl(this.llIlIIIllIIlIllIllIllllIl), 255));
+        if (this.color != -1) {
+            AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(f4 + 3.0f, this.y + this.height / 2.0f + 0.5f, 2.0, ColorUtil.lIlIlIlIlIIlIIlIIllIIIIIl(ColorUtil.IlllIIIIIIlllIlIIlllIlIIl(this.color), ColorUtil.llIlllIIIllllIIlllIllIIIl(this.color), ColorUtil.IlIlIlllllIlIIlIlIlllIlIl(this.color), 255));
             f4 += 10.0f;
         }
-        String string = this.get(this.lIlIlIlIlIIlIIlIIllIIIIIl, new Object[0]);
-        FontRegistry.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl(string, f4, this.y + this.height / 2.0f - f3, 0x20000000);
-        FontRegistry.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl(string, f4 - 1.0f, this.y + this.height / 2.0f - f3 - 1.0f, -538778910);
+        String translation = this.get(this.translationKey);
+        FontRegistry.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl(translation, f4, this.y + this.height / 2.0f - f3, 0x20000000);
+        FontRegistry.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl(translation, f4 - 1.0f, this.y + this.height / 2.0f - f3 - 1.0f, -538778910);
     }
 
-    public String lIllIlIIIlIIIIIIIlllIlIll() {
-        return this.get(this.lIlIlIlIlIIlIIlIIllIIIIIl, new Object[0]);
+    public String getTranslationText() {
+        return this.get(this.translationKey);
     }
 
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(boolean bl) {
-        this.IllIllIIIllIIIlIlIlIIIIll = bl;
+    public void setHoverOverride(boolean bl) {
+        this.hoverOverride = bl;
     }
 }

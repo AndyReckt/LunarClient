@@ -8,8 +8,7 @@ import com.moonsworth.lunar.client.cosmetic.iface.IlllIIIIIIlllIlIIlllIlIIl;
  * @author Decencies
  * @since 11/07/2021 13:21
  */
-public abstract class Cosmetic
-        implements IlllIIIIIIlllIlIIlllIlIIl {
+public abstract class Cosmetic implements IlllIIIIIIlllIlIIlllIlIIl {
     public long lIlIlIlIlIIlIIlIIllIIIIIl;
     public String asas;
     public CosmeticType lIllIlIIIlIIIIIIIlllIlIll;
@@ -23,9 +22,9 @@ public abstract class Cosmetic
         this.asas = string;
         this.llIlllIIIllllIIlllIllIIIl = f;
         this.lIllIlIIIlIIIIIIIlllIlIll = cosmeticType;
-        this.llllIIlIIlIIlIIllIIlIIllI = Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation("lunar", string2);
+        this.llllIIlIIlIIlIIllIIlIIllI = Bridge.getInstance().initResourceLocation("lunar", string2);
         String[] stringArray = string2.split("/");
-        this.IlIlIlllllIlIIlIlIlllIlIl = Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation("lunar:cosmetics/wings/thumbnail/" + stringArray[stringArray.length - 1]);
+        this.IlIlIlllllIlIIlIlIlllIlIl = Bridge.getInstance().initResourceLocation("lunar:cosmetics/wings/thumbnail/" + stringArray[stringArray.length - 1]);
         this.llIIIIIIIllIIllIlIllIIIIl = bl;
     }
 

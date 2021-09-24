@@ -12,7 +12,7 @@ public final class ModSettings {
 
     public static final Gson GSON = new GsonBuilder().registerTypeHierarchyAdapter(ModSettings.class, new ModSettingsAdapter()).create();
 
-    private Map<String, ModSetting> modSettings = new HashMap<>();
+    private final Map<String, ModSetting> modSettings = new HashMap<>();
 
     public ModSettings addModSetting(String modId, ModSetting setting) {
         modSettings.put(modId, setting);
@@ -49,9 +49,9 @@ public final class ModSettings {
         @Override
         public String toString() {
             return "ModSetting{" +
-                    "enabled=" + enabled +
-                    ", properties=" + properties +
-                    '}';
+                   "enabled=" + enabled +
+                   ", properties=" + properties +
+                   '}';
         }
 
         @Override
@@ -60,7 +60,7 @@ public final class ModSettings {
             if (o == null || getClass() != o.getClass()) return false;
             ModSetting that = (ModSetting) o;
             return enabled == that.enabled &&
-                    Objects.equals(properties, that.properties);
+                   Objects.equals(properties, that.properties);
         }
 
         @Override

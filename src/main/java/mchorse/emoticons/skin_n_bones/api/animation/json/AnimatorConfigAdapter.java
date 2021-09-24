@@ -1,13 +1,3 @@
-/*
- * Decompiled with CFR 0.150.
- * 
- * Could not load the following classes:
- *  com.google.gson.JsonArray
- *  com.google.gson.JsonDeserializationContext
- *  com.google.gson.JsonDeserializer
- *  com.google.gson.JsonElement
- *  com.google.gson.JsonObject
- */
 package mchorse.emoticons.skin_n_bones.api.animation.json;
 
 import com.google.gson.JsonArray;
@@ -24,8 +14,7 @@ import mchorse.emoticons.skin_n_bones.api.animation.model.AnimatorActionsConfig;
 import mchorse.emoticons.skin_n_bones.api.animation.model.AnimatorConfig;
 import mchorse.emoticons.skin_n_bones.api.animation.model.AnimatorHeldItemConfig;
 
-public class AnimatorConfigAdapter
-implements JsonDeserializer {
+public class AnimatorConfigAdapter implements JsonDeserializer<AnimatorConfig> {
     public AnimatorConfig deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) {
         if (!jsonElement.isJsonObject()) {
             return null;
@@ -60,7 +49,7 @@ implements JsonDeserializer {
             animatorConfig.head = jsonObject.get("head").getAsString();
         }
         if (jsonObject.has("actions")) {
-            animatorConfig.actions = (AnimatorActionsConfig)jsonDeserializationContext.deserialize(jsonObject.get("actions"), AnimatorActionsConfig.class);
+            animatorConfig.actions = jsonDeserializationContext.deserialize(jsonObject.get("actions"), AnimatorActionsConfig.class);
         }
         if (jsonObject.has("meshes")) {
             HashMap hashMap = new HashMap();
@@ -84,7 +73,7 @@ implements JsonDeserializer {
             }
             if (!jsonElement.isJsonObject()) break block3;
             for (Map.Entry entry : ((JsonObject)jsonElement).entrySet()) {
-                AnimatorHeldItemConfig animatorHeldItemConfig = (AnimatorHeldItemConfig)jsonDeserializationContext.deserialize((JsonElement)entry.getValue(), AnimatorHeldItemConfig.class);
+                AnimatorHeldItemConfig animatorHeldItemConfig = jsonDeserializationContext.deserialize((JsonElement)entry.getValue(), AnimatorHeldItemConfig.class);
                 animatorHeldItemConfig.boneName = (String)entry.getKey();
                 map.put(animatorHeldItemConfig.boneName, animatorHeldItemConfig);
             }

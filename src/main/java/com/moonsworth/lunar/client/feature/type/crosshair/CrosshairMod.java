@@ -2,6 +2,8 @@ package com.moonsworth.lunar.client.feature.type.crosshair;
 
 import com.google.common.collect.ImmutableList;
 import com.moonsworth.lunar.bridge.minecraft.client.entity.EntityBridge;
+import com.moonsworth.lunar.bridge.minecraft.client.entity.monster.EntityMobBridge;
+import com.moonsworth.lunar.bridge.minecraft.client.entity.passive.EntityAnimalBridge;
 import com.moonsworth.lunar.bridge.minecraft.client.entity.player.EntityPlayerBridge;
 import com.moonsworth.lunar.bridge.minecraft.client.gui.CustomScreen;
 import com.moonsworth.lunar.bridge.minecraft.client.gui.GuiChatBridge;
@@ -25,7 +27,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class CrosshairMod
-extends ConfigurableFeature {
+    extends ConfigurableFeature {
     public BooleanSetting llllIIlIIlIIlIIllIIlIIllI;
     public BooleanSetting IlIlIlllllIlIIlIlIlllIlIl;
     public ColorSetting llIIIIIIIllIIllIlIllIIIIl;
@@ -47,7 +49,7 @@ extends ConfigurableFeature {
     }
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(RenderCrosshairEvent renderCrosshairEvent) {
-        renderCrosshairEvent.lIlIlIlIlIIlIIlIIllIIIIIl(EventWithResult.EventStateResult.IlllIIIIIIlllIlIIlllIlIIl);
+        renderCrosshairEvent.lIlIlIlIlIIlIIlIIllIIIIIl(EventWithResult.EventStateResult.DENY);
     }
 
     /*
@@ -55,25 +57,25 @@ extends ConfigurableFeature {
      * Lifted jumps to return sites
      */
     public void lIlIlIlIlIIlIIlIIllIIIIIl(RenderGameOverlayEvent renderGameOverlayEvent) {
-        GuiScreenBridge guiScreenBridge = this.lIllIlIIIlIIIIIIIlllIlIll.bridge$getCurrentScreen();
+        GuiScreenBridge guiScreenBridge = this.mc.bridge$getCurrentScreen();
         if (guiScreenBridge != null && !(guiScreenBridge instanceof GuiChatBridge) && guiScreenBridge instanceof WrappedGuiScreenBridge) {
             CustomScreen customScreen = ((WrappedGuiScreenBridge)guiScreenBridge).getCustomScreen();
             if (!(customScreen instanceof SettingsUIScreen)) return;
             SettingsUIScreen settingsUIScreen = (SettingsUIScreen)customScreen;
             if (!(settingsUIScreen.llIIIIIIIllIIllIlIllIIIIl().lIIlIlllIlIlIIIlllIIlIIII() instanceof FeatureSettingsUIComponent)) return;
             FeatureSettingsUIComponent featureSettingsUIComponent = (FeatureSettingsUIComponent)settingsUIScreen.llIIIIIIIllIIllIlIllIIIIl().lIIlIlllIlIlIIIlllIIlIIII();
-            if (!featureSettingsUIComponent.llllIIlIIlIIlIIllIIlIIllI().llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl().equals(this.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl())) {
+            if (!featureSettingsUIComponent.llllIIlIIlIIlIIllIIlIIllI().getDetails().getId().equals(this.getDetails().getId())) {
                 return;
             }
         }
-        if (Ref.IlllIIIIIIlllIlIIlllIlIIl().lllllIllIllIllllIlIllllII().lIlIIlIlllIIlIIIlIlIlIllI().IlIllIIlIIlIIIllIllllIIll()) {
+        if (Ref.getLC().lllllIllIllIllllIlIllllII().lIlIIlIlllIIlIIIlIlIlIllI().IlIllIIlIIlIIIllIllllIIll()) {
             return;
         }
         double d = renderGameOverlayEvent.lIlIlIlIlIIlIIlIIllIIIIIl();
         double d2 = renderGameOverlayEvent.IlllIIIIIIlllIlIIlllIlIIl();
         float f = (float)d / 2.0f;
         float f2 = (float)d2 / 2.0f;
-        if (Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getGameSettings().bridge$getThirdPersonView() != 0 && !Ref.IlllIIIIIIlllIlIIlllIlIIl().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().IllIIIlllIIIlIlllIlIIlIII().llIlllIIIllllIIlllIllIIIl().booleanValue()) {
+        if (Ref.getMinecraft().bridge$getGameSettings().bridge$getThirdPersonView() != 0 && !Ref.getLC().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().IllIIIlllIIIlIlllIlIIlIII().llIlllIIIllllIIlllIllIIIl().booleanValue()) {
             return;
         }
         this.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2);
@@ -87,14 +89,14 @@ extends ConfigurableFeature {
         float f6 = this.lllIIIIIlllIIlIllIIlIIIlI.llIlllIIIllllIIlllIllIIIl().floatValue();
         float f7 = f + f2;
         if (this.llIIIlllIIlllIllllIlIllIl.llIlllIIIllllIIlllIllIIIl().booleanValue()) {
-            EntityBridge entityBridge = Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getPointedEntity().orElse(null);
-            if (entityBridge instanceof lIlIlIlIlIIlIIlIIllIIIIIl) {
+            EntityBridge entityBridge = Ref.getMinecraft().bridge$getPointedEntity().orElse(null);
+            if (entityBridge instanceof EntityAnimalBridge) {
                 n = this.IlllllIlIIIlIIlIIllIIlIll.lIlIlIlIlIIlIIlIIllIIIIIl(f7);
-            } else if (entityBridge instanceof IlllIIIIIIlllIlIIlllIlIIl) {
+            } else if (entityBridge instanceof EntityMobBridge) {
                 n = this.llIIlIlIIIllIlIlIlIIlIIll.lIlIlIlIlIIlIIlIIllIIIIIl(f7);
             } else if (entityBridge instanceof EntityPlayerBridge) {
                 UUID uUID = entityBridge.bridge$getUniqueID();
-                n = this.llIlllIIIllllIIlllIllIIIl.IlIllIIlIIlIIIllIllllIIll().llIlllIIIllllIIlllIllIIIl().containsKey(uUID) ? this.IlllllIlIIIlIIlIIllIIlIll.lIlIlIlIlIIlIIlIIllIIIIIl(f7) : (!entityBridge.bridge$isInvisibleTo(Ref.IlIlIlllllIlIIlIlIlllIlIl()) ? this.llIIlIlIIIllIlIlIlIIlIIll.lIlIlIlIlIIlIIlIIllIIIIIl(f7).intValue() : this.lIIIllIllIIllIlllIlIIlllI.lIlIlIlIlIIlIIlIIllIIIIIl(f7).intValue());
+                n = this.lc.getFriendRegistry().llIlllIIIllllIIlllIllIIIl().containsKey(uUID) ? this.IlllllIlIIIlIIlIIllIIlIll.lIlIlIlIlIIlIIlIIllIIIIIl(f7) : (!entityBridge.bridge$isInvisibleTo(Ref.getPlayer()) ? this.llIIlIlIIIllIlIlIlIIlIIll.lIlIlIlIlIIlIIlIIllIIIIIl(f7).intValue() : this.lIIIllIllIIllIlllIlIIlllI.lIlIlIlIlIIlIIlIIllIIIIIl(f7).intValue());
             } else {
                 n = this.lIIIllIllIIllIlllIlIIlllI.lIlIlIlIlIIlIIlIIllIIIIIl(f7);
             }
@@ -111,41 +113,41 @@ extends ConfigurableFeature {
             }
         }
         switch ((CrosshairModDisplayType)this.IIlIllIlllllllIIlIIIllIIl.llIlllIIIllllIIlllIllIIIl()) {
-            case CROSS: {
-                if (bl) {
-                    int n3 = -16777216;
-                    f3 = 0.5f;
-                    AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(f - f5 - f4, f2 - f6 / 2.0f, f4, f6, f3, n3, n);
-                    AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(f + f5, f2 - f6 / 2.0f, f4, f6, f3, n3, n);
-                    AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(f - f6 / 2.0f, f2 - f5 - f4, f6, f4, f3, n3, n);
-                    AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(f - f6 / 2.0f, f2 + f5, f6, f4, f3, n3, n);
-                    break;
-                }
-                Bridge.IlllllIlIIIlIIlIIllIIlIll().bridge$drawRect(f - f5 - f4, f2 - f6 / 2.0f, f4, f6, n);
-                Bridge.IlllllIlIIIlIIlIIllIIlIll().bridge$drawRect(f + f5, f2 - f6 / 2.0f, f4, f6, n);
-                Bridge.IlllllIlIIIlIIlIIllIIlIll().bridge$drawRect(f - f6 / 2.0f, f2 - f5 - f4, f6, f4, n);
-                Bridge.IlllllIlIIIlIIlIIllIIlIll().bridge$drawRect(f - f6 / 2.0f, f2 + f5, f6, f4, n);
+        case CROSS: {
+            if (bl) {
+                int n3 = -16777216;
+                f3 = 0.5f;
+                AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(f - f5 - f4, f2 - f6 / 2.0f, f4, f6, f3, n3, n);
+                AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(f + f5, f2 - f6 / 2.0f, f4, f6, f3, n3, n);
+                AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(f - f6 / 2.0f, f2 - f5 - f4, f6, f4, f3, n3, n);
+                AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(f - f6 / 2.0f, f2 + f5, f6, f4, f3, n3, n);
                 break;
             }
-            case CIRCLE: {
-                f6 = f6 == 1.0f ? 1.25f : (f6 == 0.5f ? 1.15f : f6);
-                AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, f5 *= 2.0f, f5 / f6, 1.0, 1, 0.0, n);
-                if (!bl) break;
-                int n4 = -16777216;
-                f3 = 1.0f;
-                AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, f5 + f3, f5, 1.0, 1, 0.0, n4);
-                break;
+            Bridge.IlllllIlIIIlIIlIIllIIlIll().bridge$drawRect(f - f5 - f4, f2 - f6 / 2.0f, f4, f6, n);
+            Bridge.IlllllIlIIIlIIlIIllIIlIll().bridge$drawRect(f + f5, f2 - f6 / 2.0f, f4, f6, n);
+            Bridge.IlllllIlIIIlIIlIIllIIlIll().bridge$drawRect(f - f6 / 2.0f, f2 - f5 - f4, f6, f4, n);
+            Bridge.IlllllIlIIIlIIlIIllIIlIll().bridge$drawRect(f - f6 / 2.0f, f2 + f5, f6, f4, n);
+            break;
+        }
+        case CIRCLE: {
+            f6 = f6 == 1.0f ? 1.25f : (f6 == 0.5f ? 1.15f : f6);
+            AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, f5 *= 2.0f, f5 / f6, 1.0, 1, 0.0, n);
+            if (!bl) break;
+            int n4 = -16777216;
+            f3 = 1.0f;
+            AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, f5 + f3, f5, 1.0, 1, 0.0, n4);
+            break;
+        }
+        case ARROW: {
+            Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$pushMatrix();
+            if (bl) {
+                int n5 = -16777216;
+                f3 = 2.0f;
+                AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(new float[] {f - f4 - 0.5f, f2 + f4 + 0.5f, f, f2, f, f2, f + f4 + 0.5f, f2 + f4 + 0.5f}, f6 * 2.0f + f3, n5);
             }
-            case ARROW: {
-                Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$pushMatrix();
-                if (bl) {
-                    int n5 = -16777216;
-                    f3 = 2.0f;
-                    AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(new float[]{f - f4 - 0.5f, f2 + f4 + 0.5f, f, f2, f, f2, f + f4 + 0.5f, f2 + f4 + 0.5f}, f6 * 2.0f + f3, n5);
-                }
-                AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(new float[]{f - f4, f2 + f4, f, f2, f, f2, f + f4, f2 + f4}, f6 * 2.0f, n);
-                Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$popMatrix();
-            }
+            AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(new float[] {f - f4, f2 + f4, f, f2, f, f2, f + f4, f2 + f4}, f6 * 2.0f, n);
+            Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$popMatrix();
+        }
         }
         Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$color(1.0f, 1.0f, 1.0f, 1.0f);
     }
@@ -181,7 +183,7 @@ extends ConfigurableFeature {
     }
 
     @Override
-    public FeatureDetails llIIIIIIIllIIllIlIllIIIIl() {
-        return new FeatureDetails("crosshair", ImmutableList.of(ModuleCategory.lIlIlIlIlIIlIIlIIllIIIIIl, ModuleCategory.IlllIIIIIIlllIlIIlllIlIIl));
+    public FeatureDetails initDetails() {
+        return new FeatureDetails("crosshair", ImmutableList.of(ModuleCategory.ALL, ModuleCategory.NEW));
     }
 }

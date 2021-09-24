@@ -4,9 +4,9 @@ import com.moonsworth.lunar.bridge.minecraft.client.entity.AbstractClientPlayerB
 import com.moonsworth.lunar.bridge.minecraft.client.model.ModelRendererBridge;
 
 public interface IlllIIIIIIlllIlIIlllIlIIl {
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(AbstractClientPlayerBridge var1, float var2);
+    void lIlIlIlIlIIlIIlIIllIIIIIl(AbstractClientPlayerBridge var1, float var2);
 
-    default public void lIlIlIlIlIIlIIlIIllIIIIIl(ModelRendererBridge modelRendererBridge, ModelRendererBridge modelRendererBridge2) {
+default void lIlIlIlIlIIlIIlIIllIIIIIl(ModelRendererBridge modelRendererBridge, ModelRendererBridge modelRendererBridge2) {
         modelRendererBridge.bridge$setOffsetX(modelRendererBridge2.bridge$getOffsetX());
         modelRendererBridge.bridge$setOffsetY(modelRendererBridge2.bridge$getOffsetY());
         modelRendererBridge.bridge$setOffsetZ(modelRendererBridge2.bridge$getOffsetZ());
@@ -18,4 +18,3 @@ public interface IlllIIIIIIlllIlIIlllIlIIl {
         modelRendererBridge.bridge$setRotatePointZ(modelRendererBridge2.bridge$getRotatePointZ());
     }
 }
- 

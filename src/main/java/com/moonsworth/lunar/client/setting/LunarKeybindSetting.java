@@ -52,38 +52,38 @@ public class LunarKeybindSetting extends AbstractFeatureSetting<KeyBind> {
     }
 
     @Override
-    public AbstractDescritiveSettingUIComponent lIlIlIlIlIIlIIlIIllIIIIIl(UIComponent uIComponent) {
+    public AbstractDescritiveSettingUIComponent getUIComponent(UIComponent uIComponent) {
         return new KeybindSettingUIComponent(this, uIComponent);
     }
 
     @Override
     public boolean IlllIIIIIIlllIlIIlllIlIIl() {
-        if (((KeyBind)this.llIlllIIIllllIIlllIllIIIl()).IlllIIIIIIlllIlIIlllIlIIl() && !Bridge.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl(KeyType.IlIlIllIIllllIllllllIIlIl)) {
+        if (this.llIlllIIIllllIIlllIllIIIl().IlllIIIIIIlllIlIIlllIlIIl() && !Bridge.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl(KeyType.KEY_LSHIFT)) {
             return false;
         }
-        if (((KeyBind)this.llIlllIIIllllIIlllIllIIIl()).lIllIlIIIlIIIIIIIlllIlIll() && !AbstractUIScreen.IIlIllIlIIllIIlIlIllllllI()) {
+        if (this.llIlllIIIllllIIlllIllIIIl().lIllIlIIIlIIIIIIIlllIlIll() && !AbstractUIScreen.IIlIllIlIIllIIlIlIllllllI()) {
             return false;
         }
-        if (((KeyBind)this.llIlllIIIllllIIlllIllIIIl()).lIlIlIlIlIIlIIlIIllIIIIIl() && !Bridge.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl(KeyType.llIIIIllIlIIlIlIIlllIllIl)) {
+        if (this.llIlllIIIllllIIlllIllIIIl().lIlIlIlIlIIlIIlIIllIIIIIl() && !Bridge.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl(KeyType.KEY_LMENU)) {
             return false;
         }
-        return Bridge.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl(((KeyBind)this.llIlllIIIllllIIlllIllIIIl()).llIlllIIIllllIIlllIllIIIl());
+        return Bridge.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl(this.llIlllIIIllllIIlllIllIIIl().llIlllIIIllllIIlllIllIIIl());
     }
 
     @Override
     public boolean lIllIlIIIlIIIIIIIlllIlIll() {
-        if (((KeyBind)this.llIlllIIIllllIIlllIllIIIl()).IlllIIIIIIlllIlIIlllIlIIl() && !Bridge.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl(KeyType.IlIlIllIIllllIllllllIIlIl)) {
+        if (this.llIlllIIIllllIIlllIllIIIl().IlllIIIIIIlllIlIIlllIlIIl() && !Bridge.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl(KeyType.KEY_LSHIFT)) {
             return false;
         }
-        if (((KeyBind)this.llIlllIIIllllIIlllIllIIIl()).lIllIlIIIlIIIIIIIlllIlIll() && !AbstractUIScreen.IIlIllIlIIllIIlIlIllllllI()) {
+        if (this.llIlllIIIllllIIlllIllIIIl().lIllIlIIIlIIIIIIIlllIlIll() && !AbstractUIScreen.IIlIllIlIIllIIlIlIllllllI()) {
             return false;
         }
-        return !((KeyBind)this.llIlllIIIllllIIlllIllIIIl()).lIlIlIlIlIIlIIlIIllIIIIIl() || Bridge.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl(KeyType.llIIIIllIlIIlIlIIlllIllIl);
+        return !this.llIlllIIIllllIIlllIllIIIl().lIlIlIlIlIIlIIlIIllIIIIIl() || Bridge.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl(KeyType.KEY_LMENU);
     }
 
     @Override
     public KeyType g_() {
-        return ((KeyBind)this.llIlllIIIllllIIlllIllIIIl()).llIlllIIIllllIIlllIllIIIl();
+        return this.llIlllIIIllllIIlllIllIIIl().llIlllIIIllllIIlllIllIIIl();
     }
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(KeyBind keyBind) {
@@ -96,7 +96,7 @@ public class LunarKeybindSetting extends AbstractFeatureSetting<KeyBind> {
     }
 
     @Override
-    public void IlllIIIIIIlllIlIIlllIlIIl(JsonObject jsonObject) {
+    public void read(JsonObject jsonObject) {
         this.lIlIlIlIlIIlIIlIIllIIIIIl(this.lIIlIlllIlIlIIIlllIIlIIII(), jsonObject, true);
         this.lIlIlIlIlIIlIIlIIllIIIIIl(this.lIIlIlllIlIlIIIlllIIlIIII() + "_kblc", jsonObject, false);
     }
@@ -104,7 +104,7 @@ public class LunarKeybindSetting extends AbstractFeatureSetting<KeyBind> {
     public void lIlIlIlIlIIlIIlIIllIIIIIl(String string, JsonObject jsonObject, boolean bl) {
         if (!(jsonObject.has(string) && !jsonObject.get(string).isJsonNull() || jsonObject.has(string + "_shift") && !jsonObject.get(string + "_shift").isJsonNull() || jsonObject.has(string + "_alt") && !jsonObject.get(string + "_alt").isJsonNull() || jsonObject.has(string + "_control") && !jsonObject.get(string + "_control").isJsonNull())) {
             if (bl) {
-                this.lIlIlIlIlIIlIIlIIllIIIIIl((KeyBind)this.IIlIllIlllllllIIlIIIllIIl());
+                this.lIlIlIlIlIIlIIlIIllIIIIIl(this.IIlIllIlllllllIIlIIIllIIl());
             }
             return;
         }
@@ -116,14 +116,14 @@ public class LunarKeybindSetting extends AbstractFeatureSetting<KeyBind> {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(JsonObject jsonObject) {
-        if (((KeyBind)this.IllIllIIIllIIIlIlIlIIIIll()).equals(this.IIlIllIlllllllIIlIIIllIIl())) {
+    public void write(JsonObject jsonObject) {
+        if (this.IllIllIIIllIIIlIlIlIIIIll().equals(this.IIlIllIlllllllIIlIIIllIIl())) {
             return;
         }
-        jsonObject.addProperty(this.lIIlIlllIlIlIIIlllIIlIIII(), ((KeyBind)this.llIlllIIIllllIIlllIllIIIl()).llIlllIIIllllIIlllIllIIIl().name());
-        jsonObject.addProperty(this.lIIlIlllIlIlIIIlllIIlIIII() + "_shift", ((KeyBind) this.llIlllIIIllllIIlllIllIIIl()).IlllIIIIIIlllIlIIlllIlIIl());
-        jsonObject.addProperty(this.lIIlIlllIlIlIIIlllIIlIIII() + "_control", Boolean.valueOf(((KeyBind)this.llIlllIIIllllIIlllIllIIIl()).lIllIlIIIlIIIIIIIlllIlIll()));
-        jsonObject.addProperty(this.lIIlIlllIlIlIIIlllIIlIIII() + "_alt", Boolean.valueOf(((KeyBind)this.llIlllIIIllllIIlllIllIIIl()).lIlIlIlIlIIlIIlIIllIIIIIl()));
+        jsonObject.addProperty(this.lIIlIlllIlIlIIIlllIIlIIII(), this.llIlllIIIllllIIlllIllIIIl().llIlllIIIllllIIlllIllIIIl().name());
+        jsonObject.addProperty(this.lIIlIlllIlIlIIIlllIIlIIII() + "_shift", this.llIlllIIIllllIIlllIllIIIl().IlllIIIIIIlllIlIIlllIlIIl());
+        jsonObject.addProperty(this.lIIlIlllIlIlIIIlllIIlIIII() + "_control", Boolean.valueOf(this.llIlllIIIllllIIlllIllIIIl().lIllIlIIIlIIIIIIIlllIlIll()));
+        jsonObject.addProperty(this.lIIlIlllIlIlIIIlllIIlIIII() + "_alt", Boolean.valueOf(this.llIlllIIIllllIIlllIllIIIl().lIlIlIlIlIIlIIlIIllIIIIIl()));
     }
 
     public boolean llllIIlIIlIIlIIllIIlIIllI() {

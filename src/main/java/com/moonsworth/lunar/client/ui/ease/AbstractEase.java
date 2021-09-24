@@ -1,142 +1,142 @@
 package com.moonsworth.lunar.client.ui.ease;
 
 public abstract class AbstractEase {
-    public long lIlIlIlIlIIlIIlIIllIIIIIl;
-    public long IlllIIIIIIlllIlIIlllIlIIl;
-    public long lIllIlIIIlIIIIIIIlllIlIll;
-    public boolean llIlllIIIllllIIlllIllIIIl = true;
-    public float llllIIlIIlIIlIIllIIlIIllI;
-    public long IlIlIlllllIlIIlIlIlllIlIl;
-    public final float llIIIIIIIllIIllIlIllIIIIl;
-    public boolean lIIIllIllIIllIlllIlIIlllI;
-    public int IlllllIlIIIlIIlIIllIIlIll = 1;
-    public int llIIlIlIIIllIlIlIlIIlIIll = 1;
-    public boolean llIIIlllIIlllIllllIlIllIl;
+    public long startTime;
+    public long _unusedLong;
+    public long duration;
+    public boolean someBool = true;
+    public float timePassedAsFloat;
+    public long currentTimeMinusStartTime;
+    public final float maxValue;
+    public boolean setTrueByMethod;
+    public int tick = 1;
+    public int maxTicks = 1;
+    public boolean _unusedBool;
 
-    public AbstractEase(long l, float f) {
-        this.lIllIlIIIlIIIIIIIlllIlIll = l;
-        this.llIIIIIIIllIIllIlIllIIIIl = f;
+    public AbstractEase(long duration, float maxValue) {
+        this.duration = duration;
+        this.maxValue = maxValue;
     }
 
-    public abstract float IlllIIIIIIlllIlIIlllIlIIl();
+    public abstract float getTimePassedAsFloat();
 
-    public abstract long lIlIlIlIlIIlIIlIIllIIIIIl(float var1);
+    public abstract long getTimeScale(float scale);
 
     public void lIllIlIIIlIIIIIIIlllIlIll() {
-        this.lIlIlIlIlIIlIIlIIllIIIIIl = System.currentTimeMillis();
-        this.llIlllIIIllllIIlllIllIIIl = true;
+        this.startTime = System.currentTimeMillis();
+        this.someBool = true;
     }
 
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(long l) {
-        this.lIlIlIlIlIIlIIlIIllIIIIIl = System.currentTimeMillis() - l;
-        this.llIlllIIIllllIIlllIllIIIl = true;
+    public void lIlIlIlIlIIlIIlIIllIIIIIl(long time) {
+        this.startTime = System.currentTimeMillis() - time;
+        this.someBool = true;
     }
 
     public void llIlllIIIllllIIlllIllIIIl() {
-        this.lIIIllIllIIllIlllIlIIlllI = true;
+        this.setTrueByMethod = true;
     }
 
     public boolean llllIIlIIlIIlIIllIIlIIllI() {
-        return this.lIlIlIlIlIIlIIlIIllIIIIIl != 0L;
+        return this.startTime != 0L;
     }
 
     public boolean IlIlIlllllIlIIlIlIlllIlIl() {
-        return this.lIlIIIIIIlIIIllllIllIIlII() <= 0L && this.llIlllIIIllllIIlllIllIIIl;
+        return this.lIlIIIIIIlIIIllllIllIIlII() <= 0L && this.someBool;
     }
 
     public void llIIIIIIIllIIllIlIllIIIIl() {
-        this.lIlIlIlIlIIlIIlIIllIIIIIl = 0L;
-        this.IlllllIlIIIlIIlIIllIIlIll = 1;
+        this.startTime = 0L;
+        this.tick = 1;
     }
 
     public boolean lIIIllIllIIllIlllIlIIlllI() {
-        return this.lIlIlIlIlIIlIIlIIllIIIIIl != 0L && this.lIlIIIIIIlIIIllllIllIIlII() > 0L;
+        return this.startTime != 0L && this.lIlIIIIIIlIIIllllIllIIlII() > 0L;
     }
 
     public float lIlIlIlIlIIlIIlIIllIIIIIl() {
-        if (this.lIlIlIlIlIIlIIlIIllIIIIIl == 0L) {
+        if (this.startTime == 0L) {
             return 0.0f;
         }
         if (this.lIlIIIIIIlIIIllllIllIIlII() <= 0L) {
             return 1.0f;
         }
-        return this.IlllIIIIIIlllIlIIlllIlIIl();
+        return this.getTimePassedAsFloat();
     }
 
-    public float IlllllIlIIIlIIlIIllIIlIll() {
-        if (this.lIlIlIlIlIIlIIlIIllIIIIIl == 0L) {
+    public float getProgress() {
+        if (this.startTime == 0L) {
             return 0.0f;
         }
         if (this.IlIlIlllllIlIIlIlIlllIlIl()) {
-            if (this.lIIIllIllIIllIlllIlIIlllI || this.llIIlIlIIIllIlIlIlIIlIIll >= 1 && this.IlllllIlIIIlIIlIIllIIlIll < this.llIIlIlIIIllIlIlIlIIlIIll) {
+            if (this.setTrueByMethod || this.maxTicks >= 1 && this.tick < this.maxTicks) {
                 this.lIllIlIIIlIIIIIIIlllIlIll();
-                ++this.IlllllIlIIIlIIlIIllIIlIll;
+                ++this.tick;
             }
-            return this.llIIIIIIIllIIllIlIllIIIIl;
+            return this.maxValue;
         }
-        if (this.llIlllIIIllllIIlllIllIIIl) {
-            return this.IlllIIIIIIlllIlIIlllIlIIl();
+        if (this.someBool) {
+            return this.getTimePassedAsFloat();
         }
-        return this.llllIIlIIlIIlIIllIIlIIllI;
+        return this.timePassedAsFloat;
     }
 
     public void llIIlIlIIIllIlIlIlIIlIIll() {
-        this.llIlllIIIllllIIlllIllIIIl = false;
-        this.llllIIlIIlIIlIIllIIlIIllI = this.IlllIIIIIIlllIlIIlllIlIIl();
-        this.IlIlIlllllIlIIlIlIlllIlIl = System.currentTimeMillis() - this.lIlIlIlIlIIlIIlIIllIIIIIl;
+        this.someBool = false;
+        this.timePassedAsFloat = this.getTimePassedAsFloat();
+        this.currentTimeMinusStartTime = System.currentTimeMillis() - this.startTime;
     }
 
     public void llIIIlllIIlllIllllIlIllIl() {
-        this.lIlIlIlIlIIlIIlIIllIIIIIl = System.currentTimeMillis() - this.IlIlIlllllIlIIlIlIlllIlIl;
-        this.llIlllIIIllllIIlllIllIIIl = true;
+        this.startTime = System.currentTimeMillis() - this.currentTimeMinusStartTime;
+        this.someBool = true;
     }
 
     public long lllllIllIllIllllIlIllllII() {
-        long l = this.llIlllIIIllllIIlllIllIIIl ? this.lIlIIIIIIlIIIllllIllIIlII() : System.currentTimeMillis() - this.IlIlIlllllIlIIlIlIlllIlIl + this.lIllIlIIIlIIIIIIIlllIlIll - System.currentTimeMillis();
-        return Math.min(this.lIllIlIIIlIIIIIIIlllIlIll, Math.max(0L, l));
+        long l = this.someBool ? this.lIlIIIIIIlIIIllllIllIIlII() : System.currentTimeMillis() - this.currentTimeMinusStartTime + this.duration - System.currentTimeMillis();
+        return Math.min(this.duration, Math.max(0L, l));
     }
 
     public long lllIIIIIlllIIlIllIIlIIIlI() {
-        return this.lIllIlIIIlIIIIIIIlllIlIll - this.lllllIllIllIllllIlIllllII();
+        return this.duration - this.lllllIllIllIllllIlIllllII();
     }
 
     public long lIlIIIIIIlIIIllllIllIIlII() {
-        return this.lIlIlIlIlIIlIIlIIllIIIIIl + this.lIllIlIIIlIIIIIIIlllIlIll - System.currentTimeMillis();
+        return this.startTime + this.duration - System.currentTimeMillis();
     }
 
     public long llIlIIIllIIlIllIllIllllIl() {
-        return this.lIlIlIlIlIIlIIlIIllIIIIIl;
+        return this.startTime;
     }
 
     public long IllIllIIIllIIIlIlIlIIIIll() {
-        return this.IlllIIIIIIlllIlIIlllIlIIl;
+        return this._unusedLong;
     }
 
-    public long IIlIllIlllllllIIlIIIllIIl() {
-        return this.lIllIlIIIlIIIIIIIlllIlIll;
+    public long getDuration() {
+        return this.duration;
     }
 
     public boolean lIIlIlllIlIlIIIlllIIlIIII() {
-        return this.llIlllIIIllllIIlllIllIIIl;
+        return this.someBool;
     }
 
     public float llIllIlIllIlllIllIIIIllII() {
-        return this.llllIIlIIlIIlIIllIIlIIllI;
+        return this.timePassedAsFloat;
     }
 
     public long IllllllllllIlIIIlllIlllll() {
-        return this.IlIlIlllllIlIIlIlIlllIlIl;
+        return this.currentTimeMinusStartTime;
     }
 
-    public float lllllIllIlIIlIIlIIIlllIlI() {
-        return this.llIIIIIIIllIIllIlIllIIIIl;
+    public float getMaxValue() {
+        return this.maxValue;
     }
 
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(int n) {
-        this.llIIlIlIIIllIlIlIlIIlIIll = n;
+    public void setMaxTicks(int n) {
+        this.maxTicks = n;
     }
 
     public boolean IllIIIlllIIIlIlllIlIIlIII() {
-        return this.llIIIlllIIlllIllllIlIllIl;
+        return this._unusedBool;
     }
 }

@@ -9,31 +9,30 @@ import com.moonsworth.lunar.client.ui.component.UIComponent;
  * @author Decencies
  * @since 10/07/2021 18:22
  */
-public class NumberSettingUIComponent
-        extends AbstractDescritiveSettingUIComponent {
+public class NumberSettingUIComponent extends AbstractDescritiveSettingUIComponent<Number> {
     public final IntSliderUIComponent lIlIlIlIlIIlIIlIIllIIIIIl;
 
     public NumberSettingUIComponent(NumberSetting numberSetting, UIComponent uIComponent) {
         super(numberSetting, uIComponent);
         this.lIlIlIlIlIIlIIlIIllIIIIIl = new IntSliderUIComponent(numberSetting, this);
-        this.IlllIIIIIIlllIlIIlllIlIIl = numberSetting;
-        this.lIlIlIlIlIIlIIlIIllIIIIIl((float f, float f2, int n) -> {
-            if (this.lIlIlIlIlIIlIIlIIllIIIIIl.IlllIIIIIIlllIlIIlllIlIIl(f, f2)) {
-                return this.lIlIlIlIlIIlIIlIIllIIIIIl.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, n);
+        this.setting = numberSetting;
+        this.onMouseClick((float f, float f2, int n) -> {
+            if (this.lIlIlIlIlIIlIIlIIllIIIIIl.mouseInside(f, f2)) {
+                return this.lIlIlIlIlIIlIIlIIllIIIIIl.onMouseClicked(f, f2, n);
             }
             return false;
         });
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2, float f3) {
-        super.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, f3);
-        this.lIlIlIlIlIIlIIlIIllIIIIIl.lIlIlIlIlIIlIIlIIllIIIIIl(f + f3 / 3.0f, f2, f3 - f3 / 3.0f, this.height);
+    public void resoze(float f, float f2, float f3) {
+        super.resoze(f, f2, f3);
+        this.lIlIlIlIlIIlIIlIIllIIIIIl.setPositionAndSize(f + f3 / 3.0f, f2, f3 - f3 / 3.0f, this.height);
     }
 
     @Override
-    public float IllIllIIIllIIIlIlIlIIIIll() {
-        return ((NumberSetting)this.llIIIIIIIllIIllIlIllIIIIl()).llIllIlIllIlllIllIIIIllII().getAsBoolean() ? 0.0f : 14.0f;
+    public float getHeight() {
+        return this.llIIIIIIIllIIllIlIllIIIIl().llIllIlIllIlllIllIIIIllII().getAsBoolean() ? 0.0f : 14.0f;
     }
 
     @Override
@@ -42,20 +41,20 @@ public class NumberSettingUIComponent
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl() {
+    public void onUpdateScreen() {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2, boolean bl) {
-        FontRegistry.llIIIIIIIllIIllIlIllIIIIl().lIlIlIlIlIIlIIlIIllIIIIIl(((NumberSetting)this.IlllIIIIIIlllIlIIlllIlIIl).f_(), this.x, this.y + 1.5f, -4079426);
-        this.lIlIlIlIlIIlIIlIIllIIIIIl.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, bl);
+    public void drawComponent(float mouseX, float mouseY, boolean bl) {
+        FontRegistry.llIIIIIIIllIIllIlIllIIIIl().lIlIlIlIlIIlIIlIIllIIIIIl(this.setting.f_(), this.x, this.y + 1.5f, -4079426);
+        this.lIlIlIlIlIIlIIlIIllIIIIIl.drawComponent(mouseX, mouseY, bl);
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(char c, KeyType keyType) {
+    public void onKeyTyped(char c, KeyType keyType) {
     }
 
     @Override
-    public void IlllIIIIIIlllIlIIlllIlIIl() {
+    public void onGuiClosed() {
     }
 }

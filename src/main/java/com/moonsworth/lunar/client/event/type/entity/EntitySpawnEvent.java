@@ -5,7 +5,7 @@ import com.moonsworth.lunar.bridge.minecraft.world.WorldBridge;
 import com.moonsworth.lunar.client.event.CancellableEvent;
 
 public class EntitySpawnEvent
-extends CancellableEvent {
+    extends CancellableEvent {
     public EntityBridge lIlIlIlIlIIlIIlIIllIIIIIl;
     public WorldBridge IlllIIIIIIlllIlIIlllIlIIl;
 
@@ -14,4 +14,3 @@ extends CancellableEvent {
         this.IlllIIIIIIlllIlIIlllIlIIl = worldBridge;
     }
 }
- 

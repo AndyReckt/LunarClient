@@ -4,58 +4,58 @@ import java.util.Map;
 import java.util.function.BiPredicate;
 
 public interface ItemStackBridge {
-    public String bridge$getDisplayName();
+    String bridge$getDisplayName();
 
-    public ItemBridge bridge$getItem();
+    ItemBridge bridge$getItem();
 
-    public int bridge$getStackSize();
+    int bridge$getStackSize();
 
-    public void bridge$setStackSize(int var1);
+    void bridge$setStackSize(int var1);
 
-    public int bridge$getMaxDamage();
+    int bridge$getMaxDamage();
 
-    public int bridge$getItemDamage();
+    int bridge$getItemDamage();
 
-    public boolean bridge$isItemDamaged();
+    boolean bridge$isItemDamaged();
 
-    public int bridge$getMaxStackSize();
+    int bridge$getMaxStackSize();
 
-    public boolean bridge$isItemStackDamageableNoUnbr();
+    boolean bridge$isItemStackDamageableNoUnbr();
 
-    public int bridge$getRepairCost();
+    int bridge$getRepairCost();
 
-    public boolean bridge$hasDisplayName();
+    boolean bridge$hasDisplayName();
 
-    public boolean bridge$isItemStackDamageable();
+    boolean bridge$isItemStackDamageable();
 
-    public void bridge$clearCustomName();
+    void bridge$clearCustomName();
 
-    public void bridge$setItemDamage(int var1);
+    void bridge$setItemDamage(int var1);
 
-    public void bridge$setStackDisplayName(String var1);
+    void bridge$setStackDisplayName(String var1);
 
-    public ItemStackBridge bridge$copy();
+    ItemStackBridge bridge$copy();
 
-    public void bridge$setRepairCost(int var1);
+    void bridge$setRepairCost(int var1);
 
-    public void bridge$setEnchantments(Map var1);
+    void bridge$setEnchantments(Map<EnchantmentBridge, Integer> var1);
 
-    public boolean bridge$isEmpty();
+    boolean bridge$isEmpty();
 
-    public lIlIlIlIlIIlIIlIIllIIIIIl bridge$getItemUseAction();
+    lIlIlIlIlIIlIIlIIllIIIIIl bridge$getItemUseAction();
 
-    public boolean bridge$areItemsEqual(ItemStackBridge var1);
+    boolean bridge$areItemsEqual(ItemStackBridge var1);
 
-    public boolean bridge$areItemsEqual(ItemStackBridge var1, BiPredicate var2);
+    boolean bridge$areItemsEqual(ItemStackBridge var1, BiPredicate var2);
 
-    public static enum lIlIlIlIlIIlIIlIIllIIIIIl {
+    enum lIlIlIlIlIIlIIlIIllIIIIIl {
         lIlIlIlIlIIlIIlIIllIIIIIl,
         IlllIIIIIIlllIlIIlllIlIIl,
         lIllIlIIIlIIIIIIIlllIlIll,
         llIlllIIIllllIIlllIllIIIl,
         llllIIlIIlIIlIIllIIlIIllI,
         IlIlIlllllIlIIlIlIlllIlIl,
-        llIIIIIIIllIIllIlIllIIIIl;
+        llIIIIIIIllIIllIlIllIIIIl
 
     }
 }

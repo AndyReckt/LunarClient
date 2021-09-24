@@ -1,18 +1,16 @@
 package com.moonsworth.lunar.client.ui.component.type.overlay;
 
 import com.moonsworth.lunar.client.ui.component.UIComponent;
-import com.moonsworth.lunar.client.websocket.FriendProfile;
+import com.moonsworth.lunar.client.profile.FriendProfile;
+import lombok.Getter;
 
-public abstract class AbstractFriendUIComponent
-extends UIComponent {
-    public final FriendProfile lIlIlIlIlIIlIIlIIllIIIIIl;
+@Getter
+public abstract class AbstractFriendUIComponent extends UIComponent {
+    protected final FriendProfile friend;
 
-    public AbstractFriendUIComponent(UIComponent uIComponent, FriendProfile websocketProfile) {
-        super(uIComponent);
-        this.lIlIlIlIlIIlIIlIIllIIIIIl = websocketProfile;
+    public AbstractFriendUIComponent(UIComponent parent, FriendProfile friend) {
+        super(parent);
+        this.friend = friend;
     }
 
-    public FriendProfile lIllIlIIIlIIIIIIIlllIlIll() {
-        return this.lIlIlIlIlIIlIIlIIllIIIIIl;
-    }
 }

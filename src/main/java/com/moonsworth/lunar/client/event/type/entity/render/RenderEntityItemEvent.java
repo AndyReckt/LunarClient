@@ -5,7 +5,7 @@ import com.moonsworth.lunar.bridge.minecraft.client.entity.item.EntityItemBridge
 import com.moonsworth.lunar.client.event.CancellableEvent;
 
 public class RenderEntityItemEvent
-extends CancellableEvent {
+    extends CancellableEvent {
     public int lIlIlIlIlIIlIIlIIllIIIIIl;
     public Object IlllIIIIIIlllIlIIlllIlIIl;
     public MatrixStackBridge lIllIlIIIlIIIIIIIlllIlIll;

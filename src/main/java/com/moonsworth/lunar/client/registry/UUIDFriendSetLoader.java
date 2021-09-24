@@ -2,12 +2,11 @@ package com.moonsworth.lunar.client.registry;
 
 import com.moonsworth.lunar.client.json.file.ItemSetLoader;
 import com.moonsworth.lunar.client.ui.screen.type.overlay.FriendsUIScreen;
-import com.moonsworth.lunar.client.websocket.FriendProfile;
+import com.moonsworth.lunar.client.profile.FriendProfile;
 
 import java.util.*;
 
-public class UUIDFriendSetLoader
-extends ItemSetLoader<FriendProfile> {
+public class UUIDFriendSetLoader extends ItemSetLoader<FriendProfile> {
     public List<FriendProfile> lIlIlIlIlIIlIIlIIllIIIIIl = new ArrayList<>();
 
     @Override
@@ -48,4 +47,3 @@ extends ItemSetLoader<FriendProfile> {
         return this.lIlIlIlIlIIlIIlIIllIIIIIl;
     }
 }
- 

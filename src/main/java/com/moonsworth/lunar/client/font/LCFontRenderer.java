@@ -42,7 +42,7 @@ public class LCFontRenderer extends LCFont {
     }
 
     public float lIlIlIlIlIIlIIlIIllIIIIIl(String string, float f, float f2, int n) {
-        return this.lIlIlIlIlIIlIIlIIllIIIIIl(string, (double)f, (double)f2, n, false);
+        return this.lIlIlIlIlIIlIIlIIllIIIIIl(string, f, f2, n, false);
     }
 
     public float IlllIIIIIIlllIlIIlllIlIIl(String string, float f, float f2, int n) {
@@ -89,12 +89,11 @@ public class LCFontRenderer extends LCFont {
             Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$bindTexture(this.llIIIIIIIllIIllIlIllIIIIl);
             for (int i = 0; i < n2; ++i) {
                 char c = string.charAt(i);
-                if (c == this.lIlIIIIIIlIIIllllIllIIlII && i < n2) {
+                if (c == this.lIlIIIIIIlIIIllllIllIIlII) {
                     int n3 = 21;
                     try {
                         n3 = "0123456789abcdefklmnor".indexOf(string.charAt(i + 1));
-                    }
-                    catch (Exception exception) {
+                    } catch (Exception exception) {
                         exception.printStackTrace();
                     }
                     if (n3 < 16) {
@@ -158,9 +157,9 @@ public class LCFontRenderer extends LCFont {
                 if (bl6) {
                     this.lIlIlIlIlIIlIIlIIllIIIIIl(d, d2 + (double)charDataArray[c].IlllIIIIIIlllIlIIlllIlIIl - 2.0, d + (double)charDataArray[c].lIlIlIlIlIIlIIlIIllIIIIIl - 8.0, d2 + (double)charDataArray[c].IlllIIIIIIlllIlIIlllIlIIl - 2.0, 1.0f);
                 }
-                d += (double)(charDataArray[c].lIlIlIlIlIIlIIlIIllIIIIIl - 8 + this.IlIlIlllllIlIIlIlIlllIlIl);
+                d += charDataArray[c].lIlIlIlIlIIlIIlIIllIIIIIl - 8 + this.IlIlIlllllIlIIlIlIlllIlIl;
             }
-            GL11.glHint((int)3155, (int)4352);
+            GL11.glHint(3155, 4352);
             Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$popMatrix();
         }
         return (float)d / 2.0f;
@@ -268,10 +267,10 @@ public class LCFontRenderer extends LCFont {
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(double d, double d2, double d3, double d4, float f) {
         Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$disableTexture2D();
-        GL11.glLineWidth((float)f);
-        GL11.glBegin((int)1);
-        GL11.glVertex2d((double)d, (double)d2);
-        GL11.glVertex2d((double)d3, (double)d4);
+        GL11.glLineWidth(f);
+        GL11.glBegin(1);
+        GL11.glVertex2d(d, d2);
+        GL11.glVertex2d(d3, d4);
         GL11.glEnd();
         Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$enableTexture2D();
     }
@@ -299,13 +298,13 @@ public class LCFontRenderer extends LCFont {
             String string4 = stringBuilder.toString();
             if (string4.contains(" ")) {
                 string3 = string4.substring(0, string4.lastIndexOf(" "));
-                string2 = string4.substring(string4.lastIndexOf(" "), string4.length());
+                string2 = string4.substring(string4.lastIndexOf(" "));
                 if (string2.startsWith(" ")) {
                     string2 = string2.replaceFirst(" ", "");
                 }
             } else {
                 string3 = string4.substring(0, string4.length() - 1);
-                string2 = string4.substring(string4.length() - 1, string4.length());
+                string2 = string4.substring(string4.length() - 1);
             }
             stringBuilder2.append(string3).append("\n");
             String string5 = FontCharParser.lIlIlIlIlIIlIIlIIllIIIIIl(stringBuilder.toString());
@@ -341,7 +340,6 @@ public class LCFontRenderer extends LCFont {
             if (string2.length() > 0) {
                 if ((double)this.IlllIIIIIIlllIlIIlllIlIIl(string2) < d) {
                     arrayList.add(string2 + " ");
-                    string2 = "";
                 } else {
                     arrayList.addAll(this.llIlllIIIllllIIlllIllIIIl(string2, d));
                 }
@@ -363,7 +361,7 @@ public class LCFontRenderer extends LCFont {
                 c = cArray[i + 1];
             }
             StringBuilder stringBuilder2 = new StringBuilder();
-            if ((double)this.IlllIIIIIIlllIlIIlllIlIIl(stringBuilder2.append(stringBuilder.toString()).append(c2).toString()) < d) {
+            if ((double)this.IlllIIIIIIlllIlIIlllIlIIl(stringBuilder2.append(stringBuilder).append(c2).toString()) < d) {
                 stringBuilder.append(c2);
                 continue;
             }

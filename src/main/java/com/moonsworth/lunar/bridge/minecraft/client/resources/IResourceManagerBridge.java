@@ -11,15 +11,15 @@ import java.util.Set;
  * @since 10/07/2021 14:22
  */
 public interface IResourceManagerBridge {
-    public Set bridge$getResourceDomains();
+    Set<String> bridge$getResourceDomains();
 
     // todo might not thrown
-    default public SimpleResourceBridge bridge$getResource(ResourceLocationBridge resourceLocationBridge) throws IOException {
-        return this.bridge$getResource(resourceLocationBridge, false);
-    }
+default SimpleResourceBridge bridge$getResource(ResourceLocationBridge resourceLocationBridge) throws IOException {
+            return this.bridge$getResource(resourceLocationBridge, false);
+        }
 
-    public SimpleResourceBridge bridge$getResource(ResourceLocationBridge var1, boolean var2) throws IOException;
+    SimpleResourceBridge bridge$getResource(ResourceLocationBridge var1, boolean var2) throws IOException;
 
-    public List bridge$getAllResources(ResourceLocationBridge var1);
+    List bridge$getAllResources(ResourceLocationBridge var1);
 }
 

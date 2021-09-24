@@ -3,8 +3,7 @@ package com.moonsworth.lunar.client.event.type.chat;
 import com.moonsworth.lunar.bridge.minecraft.util.IChatComponentBridge;
 import com.moonsworth.lunar.client.event.CancellableEvent;
 
-public class ChatEvent
-extends CancellableEvent {
+public class ChatEvent extends CancellableEvent {
     public String lIlIlIlIlIIlIIlIIllIIIIIl;
     public IChatComponentBridge IlllIIIIIIlllIlIIlllIlIIl;
     public int lIllIlIIIlIIIIIIIlllIlIll;

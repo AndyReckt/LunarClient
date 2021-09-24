@@ -7,7 +7,7 @@ import com.moonsworth.lunar.bridge.minecraft.client.renderer.block.model.ItemCam
  * @since 10/07/2021 14:37
  */
 public interface IBakedModelBridge {
-    public boolean bridge$isGui3D();
+    boolean bridge$isGui3D();
 
-    public ItemCameraTransformsBridge bridge$getItemCameraTransforms();
+    ItemCameraTransformsBridge bridge$getItemCameraTransforms();
 }

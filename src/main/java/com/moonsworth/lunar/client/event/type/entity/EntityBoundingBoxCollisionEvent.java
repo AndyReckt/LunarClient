@@ -7,10 +7,10 @@ import com.moonsworth.lunar.client.event.CancellableEvent;
 import java.util.List;
 
 public class EntityBoundingBoxCollisionEvent
-extends CancellableEvent {
+    extends CancellableEvent {
     public final EntityBridge lIlIlIlIlIIlIIlIIllIIIIIl;
     public final AxisAlignedBBBridge IlllIIIIIIlllIlIIlllIlIIl;
-    public final List lIllIlIIIlIIIIIIIlllIlIll;
+    public final List<AxisAlignedBBBridge> lIllIlIIIlIIIIIIIlllIlIll;
 
     public EntityBridge lIlIlIlIlIIlIIlIIllIIIIIl() {
         return this.lIlIlIlIlIIlIIlIIllIIIIIl;
@@ -20,11 +20,11 @@ extends CancellableEvent {
         return this.IlllIIIIIIlllIlIIlllIlIIl;
     }
 
-    public List lIllIlIIIlIIIIIIIlllIlIll() {
+    public List<AxisAlignedBBBridge> lIllIlIIIlIIIIIIIlllIlIll() {
         return this.lIllIlIIIlIIIIIIIlllIlIll;
     }
 
-    public EntityBoundingBoxCollisionEvent(EntityBridge entityBridge, AxisAlignedBBBridge axisAlignedBBBridge, List list) {
+    public EntityBoundingBoxCollisionEvent(EntityBridge entityBridge, AxisAlignedBBBridge axisAlignedBBBridge, List<AxisAlignedBBBridge> list) {
         this.lIlIlIlIlIIlIIlIIllIIIIIl = entityBridge;
         this.IlllIIIIIIlllIlIIlllIlIIl = axisAlignedBBBridge;
         this.lIllIlIIIlIIIIIIIlllIlIll = list;

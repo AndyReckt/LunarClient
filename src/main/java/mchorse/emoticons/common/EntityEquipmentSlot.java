@@ -8,7 +8,7 @@ public enum EntityEquipmentSlot {
     FEET,
     LEGS,
     CHEST,
-    HEAD;
+    HEAD
 
 }
 

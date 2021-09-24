@@ -43,7 +43,7 @@ public class FOVChangeEvent extends CancellableEvent {
 
     public enum Result {
         RETURN,
-        CONSTANT;
+        CONSTANT
     }
 
 }

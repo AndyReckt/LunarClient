@@ -5,12 +5,12 @@ package com.moonsworth.lunar.bridge.minecraft.world.storage;
  * @since 10/07/2021 14:13
  */
 public interface WorldInfoBridge {
-    public int bridge$getSpawnX();
+    int bridge$getSpawnX();
 
-    public int bridge$getSpawnY();
+    int bridge$getSpawnY();
 
-    public int bridge$getSpawnZ();
+    int bridge$getSpawnZ();
 
-    public long bridge$getGameTime();
+    long bridge$getGameTime();
 }
 

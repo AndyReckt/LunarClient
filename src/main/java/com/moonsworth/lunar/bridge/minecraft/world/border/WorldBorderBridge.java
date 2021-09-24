@@ -3,14 +3,13 @@ package com.moonsworth.lunar.bridge.minecraft.world.border;
 import com.moonsworth.lunar.bridge.minecraft.client.entity.EntityBridge;
 
 public interface WorldBorderBridge {
-    public double bridge$getClosestDistance(EntityBridge var1);
+    double bridge$getClosestDistance(EntityBridge var1);
 
-    public double bridge$minX();
+    double bridge$minX();
 
-    public double bridge$minZ();
+    double bridge$minZ();
 
-    public double bridge$maxX();
+    double bridge$maxX();
 
-    public double bridge$maxZ();
+    double bridge$maxZ();
 }
- 

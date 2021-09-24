@@ -28,8 +28,7 @@ public class FontCharParser {
     }
 
     // todo don't know origin of exception handling
-    @SneakyThrows
-    public static List IlllIIIIIIlllIlIIlllIlIIl(String string) {
+    public static List<FontCharParser.Element> IlllIIIIIIlllIlIIlllIlIIl(String string) throws llIlllIIIllllIIlllIllIIIl {
         return lIllIlIIIlIIIIIIIlllIlIll.lIlIlIlIlIIlIIlIIllIIIIIl(string);
     }
 
@@ -41,46 +40,46 @@ public class FontCharParser {
             for (char c : string.toCharArray()) {
                 llllIIlIIlIIlIIllIIlIIllI llllIIlIIlIIlIIllIIlIIllI2 = llllIIlIIlIIlIIllIIlIIllI.lIlIlIlIlIIlIIlIIllIIIIIl(c);
                 switch (llllIIlIIlIIlIIllIIlIIllI2) {
-                    case OPEN: {
-                        if (element != null) {
-                            arrayList.add(element);
-                        }
-                        element = new Element(ElementType.llIlllIIIllllIIlllIllIIIl, "", null);
-                        break;
-                    }
-                    case CLOSE: {
-                        if (element == null) break;
+                case OPEN: {
+                    if (element != null) {
                         arrayList.add(element);
-                        element = null;
-                        break;
                     }
-                    case HEX: {
-                        if (element == null || element.IlllIIIIIIlllIlIIlllIlIIl() != ElementType.llIlllIIIllllIIlllIllIIIl) break;
-                        element.lIlIlIlIlIIlIIlIIllIIIIIl(ElementType.IlllIIIIIIlllIlIIlllIlIIl);
-                        break;
+                    element = new Element(ElementType.llIlllIIIllllIIlllIllIIIl, "", null);
+                    break;
+                }
+                case CLOSE: {
+                    if (element == null) break;
+                    arrayList.add(element);
+                    element = null;
+                    break;
+                }
+                case HEX: {
+                    if (element == null || element.IlllIIIIIIlllIlIIlllIlIIl() != ElementType.llIlllIIIllllIIlllIllIIIl) break;
+                    element.lIlIlIlIlIIlIIlIIllIIIIIl(ElementType.IlllIIIIIIlllIlIIlllIlIIl);
+                    break;
+                }
+                case ASSIGN: {
+                    if (element == null || element.IlllIIIIIIlllIlIIlllIlIIl() != ElementType.llIlllIIIllllIIlllIllIIIl) break;
+                    element.lIlIlIlIlIIlIIlIIllIIIIIl(ElementType.lIlIlIlIlIIlIIlIIllIIIIIl);
+                    break;
+                }
+                default: {
+                    if (element == null) {
+                        element = new Element(ElementType.lIllIlIIIlIIIIIIIlllIlIll, "", null);
                     }
-                    case ASSIGN: {
-                        if (element == null || element.IlllIIIIIIlllIlIIlllIlIIl() != ElementType.llIlllIIIllllIIlllIllIIIl) break;
-                        element.lIlIlIlIlIIlIIlIIllIIIIIl(ElementType.lIlIlIlIlIIlIIlIIllIIIIIl);
-                        break;
-                    }
-                    default: {
-                        if (element == null) {
-                            element = new Element(ElementType.lIllIlIIIlIIIIIIIlllIlIll, "", null);
-                        }
-                        if (element.IlllIIIIIIlllIlIIlllIlIIl() != ElementType.lIlIlIlIlIIlIIlIIllIIIIIl) {
-                            if (element.IlllIIIIIIlllIlIIlllIlIIl() == ElementType.IlllIIIIIIlllIlIIlllIlIIl) {
-                                if (c >= '0' && c <= '9' || c >= 'a' && c <= 'f' || c >= 'A' && c <= 'F') {
-                                    element.lIlIlIlIlIIlIIlIIllIIIIIl(element.lIllIlIIIlIIIIIIIlllIlIll() + c);
-                                    break;
-                                }
-                                throw new llIlllIIIllllIIlllIllIIIl("expected hexadecimal number but found invalid character '" + c + "' at index " + n);
+                    if (element.IlllIIIIIIlllIlIIlllIlIIl() != ElementType.lIlIlIlIlIIlIIlIIllIIIIIl) {
+                        if (element.IlllIIIIIIlllIlIIlllIlIIl() == ElementType.IlllIIIIIIlllIlIIlllIlIIl) {
+                            if (c >= '0' && c <= '9' || c >= 'a' && c <= 'f' || c >= 'A' && c <= 'F') {
+                                element.lIlIlIlIlIIlIIlIIllIIIIIl(element.lIllIlIIIlIIIIIIIlllIlIll() + c);
+                                break;
                             }
-                            element.lIlIlIlIlIIlIIlIIllIIIIIl(element.lIllIlIIIlIIIIIIIlllIlIll() + c);
-                            break;
+                            throw new llIlllIIIllllIIlllIllIIIl("expected hexadecimal number but found invalid character '" + c + "' at index " + n);
                         }
-                        element.IlllIIIIIIlllIlIIlllIlIIl(element.lIlIlIlIlIIlIIlIIllIIIIIl().isPresent() ? element.lIlIlIlIlIIlIIlIIllIIIIIl().get() + c : String.valueOf(c));
+                        element.lIlIlIlIlIIlIIlIIllIIIIIl(element.lIllIlIIIlIIIIIIIlllIlIll() + c);
+                        break;
                     }
+                    element.IlllIIIIIIlllIlIIlllIlIIl(element.lIlIlIlIlIIlIIlIIllIIIIIl().isPresent() ? element.lIlIlIlIlIIlIIlIIllIIIIIl().get() + c : String.valueOf(c));
+                }
                 }
                 ++n;
             }
@@ -146,18 +145,18 @@ public class FontCharParser {
 
         public static llllIIlIIlIIlIIllIIlIIllI lIlIlIlIlIIlIIlIIllIIIIIl(char c) {
             switch (c) {
-                case '<': {
-                    return OPEN;
-                }
-                case '>': {
-                    return CLOSE;
-                }
-                case ':': {
-                    return ASSIGN;
-                }
-                case '#': {
-                    return HEX;
-                }
+            case '<': {
+                return OPEN;
+            }
+            case '>': {
+                return CLOSE;
+            }
+            case ':': {
+                return ASSIGN;
+            }
+            case '#': {
+                return HEX;
+            }
             }
             return TEXT;
         }

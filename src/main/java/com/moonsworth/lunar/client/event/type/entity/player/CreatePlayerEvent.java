@@ -4,7 +4,7 @@ import com.moonsworth.lunar.bridge.minecraft.client.entity.AbstractClientPlayerB
 import com.moonsworth.lunar.client.event.Event;
 
 public class CreatePlayerEvent
-extends Event {
+    extends Event {
     public AbstractClientPlayerBridge lIlIlIlIlIIlIIlIIllIIIIIl;
 
     public CreatePlayerEvent(AbstractClientPlayerBridge abstractClientPlayerBridge) {

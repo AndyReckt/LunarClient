@@ -2,8 +2,7 @@ package com.moonsworth.lunar.client.ui.ease;
 
 import java.awt.*;
 
-public class ColorEase
-extends LinearEase {
+public class ColorEase extends LinearEase {
     public int startColor;
     public int endColor;
     public boolean llIIlIlIIIllIlIlIlIIlIIll;
@@ -35,7 +34,7 @@ extends LinearEase {
             this.lIllIlIIIlIIIIIIIlllIlIll();
         }
         if (this.lIIIllIllIIllIlllIlIIlllI()) {
-            float f = super.IlllllIlIIIlIIlIIllIIlIll();
+            float f = super.getProgress();
             int n3 = (int)Math.abs(f * (float)this.lllllIllIllIllllIlIllllII.getRed() + (1.0f - f) * (float)this.llIIIlllIIlllIllllIlIllIl.getRed());
             int n4 = (int)Math.abs(f * (float)this.lllllIllIllIllllIlIllllII.getGreen() + (1.0f - f) * (float)this.llIIIlllIIlllIllllIlIllIl.getGreen());
             int n5 = (int)Math.abs(f * (float)this.lllllIllIllIllllIlIllllII.getBlue() + (1.0f - f) * (float)this.llIIIlllIIlllIllllIlIllIl.getBlue());

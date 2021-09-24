@@ -3,7 +3,7 @@ package com.moonsworth.lunar.client.event.type.gui;
 import com.moonsworth.lunar.client.event.Event;
 
 public class ResizeWindowEvent
-extends Event {
+    extends Event {
     public final int lIlIlIlIlIIlIIlIIllIIIIIl;
     public final int IlllIIIIIIlllIlIIlllIlIIl;
 
@@ -20,4 +20,3 @@ extends Event {
         this.IlllIIIIIIlllIlIIlllIlIIl = n2;
     }
 }
- 

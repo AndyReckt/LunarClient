@@ -4,6 +4,5 @@ import com.moonsworth.lunar.bridge.minecraft.client.entity.EntityBridge;
 import com.moonsworth.lunar.bridge.minecraft.item.ItemStackBridge;
 
 public interface EntityItemBridge extends EntityBridge {
-    public ItemStackBridge bridge$getItem();
+    ItemStackBridge bridge$getItem();
 }
- 

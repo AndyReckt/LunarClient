@@ -4,8 +4,7 @@ import com.moonsworth.lunar.bridge.minecraft.block.BlockBridge;
 import com.moonsworth.lunar.bridge.minecraft.util.Vec3iBridge;
 
 public interface TileEntityBridge {
-    public Vec3iBridge bridge$getPos();
+    Vec3iBridge bridge$getPos();
 
-    public BlockBridge bridge$getBlockType();
+    BlockBridge bridge$getBlockType();
 }
- 

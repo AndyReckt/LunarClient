@@ -37,7 +37,7 @@ public class LunarExecutorService extends AbstractExecutorService implements Sch
     }
 
     public void execute(Runnable var1) {
-        this.lIlIlIlIlIIlIIlIIllIIIIIl.execute(LunarExecutors.lIlIlIlIlIIlIIlIIllIIIIIl(var1));
+        this.lIlIlIlIlIIlIIlIIllIIIIIl.execute(LunarExecutors.run(var1));
     }
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(Runnable var1, int var2) {
@@ -45,7 +45,7 @@ public class LunarExecutorService extends AbstractExecutorService implements Sch
     }
 
     public ScheduledFuture schedule(Runnable var1, long var2, TimeUnit var4) {
-        Runnable var5 = LunarExecutors.lIlIlIlIlIIlIIlIIllIIIIIl(var1);
+        Runnable var5 = LunarExecutors.run(var1);
         return this.lIlIlIlIlIIlIIlIIllIIIIIl(this.IlllIIIIIIlllIlIIlllIlIIl.schedule(() -> {
             this.lIlIlIlIlIIlIIlIIllIIIIIl.execute(var5);
         }, var2, var4));
@@ -56,7 +56,7 @@ public class LunarExecutorService extends AbstractExecutorService implements Sch
     }
 
     public ScheduledFuture scheduleAtFixedRate(Runnable var1, long var2, long var4, TimeUnit var6) {
-        return this.lIlIlIlIlIIlIIlIIllIIIIIl(this.IlllIIIIIIlllIlIIlllIlIIl.scheduleAtFixedRate(new LunarExecutorService.Executable(LunarExecutors.lIlIlIlIlIIlIIlIIllIIIIIl(var1)), var2, var4, var6));
+        return this.lIlIlIlIlIIlIIlIIllIIIIIl(this.IlllIIIIIIlllIlIIlllIlIIl.scheduleAtFixedRate(new LunarExecutorService.Executable(LunarExecutors.run(var1)), var2, var4, var6));
     }
 
     public ScheduledFuture scheduleWithFixedDelay(Runnable var1, long var2, long var4, TimeUnit var6) {

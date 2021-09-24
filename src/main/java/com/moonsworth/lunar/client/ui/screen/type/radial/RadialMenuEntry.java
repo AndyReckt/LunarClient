@@ -25,4 +25,3 @@ public class RadialMenuEntry {
         this.lIllIlIIIlIIIIIIIlllIlIll = resourceLocationBridge;
     }
 }
- 

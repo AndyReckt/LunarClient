@@ -1,22 +1,13 @@
-/*
- * Decompiled with CFR 0.150.
- * 
- * Could not load the following classes:
- *  lunar.G.EntityLivingBaseBridge
- *  lunar.a.Bridge
- *  lunar.al.LunarClient
- */
 package mchorse.emoticons.common.emotes;
 
-import lunar.G.EntityLivingBaseBridge;
-import lunar.a.Bridge;
-import lunar.al.LunarClient;
+import com.moonsworth.lunar.LunarClient;
+import com.moonsworth.lunar.bridge.minecraft.client.entity.EntityLivingBaseBridge;
+import com.moonsworth.lunar.client.bridge.Bridge;
 import mchorse.emoticons.api.animation.model.AnimatorEmoticonsController;
-import mchorse.emoticons.common.emotes.Emote;
 import mchorse.emoticons.skin_n_bones.api.bobj.BOBJArmature;
 
 public class RockPaperScissorsEmote
-extends Emote {
+    extends Emote {
     public String suffix = "";
 
     public RockPaperScissorsEmote(String string, int n, boolean bl) {
@@ -30,7 +21,7 @@ extends Emote {
 
     @Override
     public Emote getDynamicEmote() {
-        int n = LunarClient.random.nextInt(30);
+        int n = LunarClient.RANDOM.nextInt(30);
         String string = "";
         if (n <= 10) {
             string = "rock";
@@ -55,11 +46,11 @@ extends Emote {
     @Override
     public void startAnimation(AnimatorEmoticonsController animatorEmoticonsController) {
         if (this.suffix.equals("rock")) {
-            animatorEmoticonsController.itemSlot = Bridge.llIlllIIIllllIIlllIllIIIl().initItemStack(Bridge.IllIllIIIllIIIlIlIlIIIIll().bridge$stone());
+            animatorEmoticonsController.itemSlot = Bridge.getInstance().initItemStack(Bridge.IllIllIIIllIIIlIlIlIIIIll().bridge$stone());
         } else if (this.suffix.equals("paper")) {
-            animatorEmoticonsController.itemSlot = Bridge.llIlllIIIllllIIlllIllIIIl().initItemStack(Bridge.llIlIIIllIIlIllIllIllllIl().bridge$getItem("paper"));
+            animatorEmoticonsController.itemSlot = Bridge.getInstance().initItemStack(Bridge.llIlIIIllIIlIllIllIllllIl().bridge$getItem("paper"));
         } else if (this.suffix.equals("scissors")) {
-            animatorEmoticonsController.itemSlot = Bridge.llIlllIIIllllIIlllIllIIIl().initItemStack(Bridge.llIlIIIllIIlIllIllIllllIl().bridge$getItem("shears"));
+            animatorEmoticonsController.itemSlot = Bridge.getInstance().initItemStack(Bridge.llIlIIIllIIlIllIllIllllIl().bridge$getItem("shears"));
         }
         animatorEmoticonsController.itemSlotScale = 0.0f;
     }
@@ -71,7 +62,7 @@ extends Emote {
 
     @Override
     public void stopAnimation(AnimatorEmoticonsController animatorEmoticonsController) {
-        animatorEmoticonsController.itemSlot = Bridge.llIlllIIIllllIIlllIllIIIl().initEmptyItemStack();
+        animatorEmoticonsController.itemSlot = Bridge.getInstance().initEmptyItemStack();
         animatorEmoticonsController.itemSlotScale = 0.0f;
     }
 }

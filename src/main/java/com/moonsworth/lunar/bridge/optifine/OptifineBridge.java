@@ -2,6 +2,7 @@ package com.moonsworth.lunar.bridge.optifine;
 
 import com.moonsworth.lunar.bridge.minecraft.util.ResourceLocationBridge;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -9,21 +10,21 @@ import java.util.Optional;
  * @since 10/07/2021 17:32
  */
 public interface OptifineBridge {
-    public ConfigBridge getConfig();
+    ConfigBridge getConfig();
 
-    public ShadersBridge getShaders();
+    ShadersBridge getShaders();
 
-    public Optional getCustomItems();
+    Optional<CustomItemsBridge> getCustomItems();
 
-    default public Optional getCustomColors() {
+    default Optional getCustomColors() {
         return Optional.empty();
     }
 
-    default public int getBossTextColor(int n) {
+    default int getBossTextColor(int n) {
         return n;
     }
 
-    default public Optional initAsyncTexture(ResourceLocationBridge resourceLocationBridge) {
+    default Optional initAsyncTexture(ResourceLocationBridge resourceLocationBridge) {
         return Optional.empty();
     }
 }

@@ -5,9 +5,9 @@ import com.moonsworth.lunar.bridge.minecraft.client.resources.IResourceManagerBr
 import java.io.IOException;
 
 public interface CustomTextureBridge {
-    public void bridge$setGlTextureId(int var1);
+    void bridge$setGlTextureId(int var1);
 
-    public int bridge$getGlTextureId();
+    int bridge$getGlTextureId();
 
-    public void bridge$loadTexture(IResourceManagerBridge var1) throws IOException;
+    void bridge$loadTexture(IResourceManagerBridge var1) throws IOException;
 }

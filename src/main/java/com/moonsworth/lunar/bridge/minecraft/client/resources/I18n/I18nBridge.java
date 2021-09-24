@@ -1,5 +1,7 @@
 package com.moonsworth.lunar.bridge.minecraft.client.resources.I18n;
 
+import com.moonsworth.lunar.LunarClient;
+
 /**
  * @author Decencies
  * @since 09/07/2021 23:35
@@ -7,8 +9,7 @@ package com.moonsworth.lunar.bridge.minecraft.client.resources.I18n;
 public interface I18nBridge {
     String getLanguagePath();
 
-    default String get(String string, Object... objectArray) {
-        throw new UnsupportedOperationException("");
-        //return LunarClient.IIllIlIllIlIllIllIllIllII().lIlIIlIlllIIlIIIlIlIlIllI().lIlIlIlIlIIlIIlIIllIIIIIl(this, string, objectArray);
+default String get(String string, Object... objectArray) {
+        return LunarClient.getInstance().lIlIIlIlllIIlIIIlIlIlIllI().lIlIlIlIlIIlIIlIIllIIIIIl(this, string, objectArray);
     }
 }

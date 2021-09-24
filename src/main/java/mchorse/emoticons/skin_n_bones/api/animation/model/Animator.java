@@ -1,13 +1,3 @@
-/*
- * Decompiled with CFR 0.150.
- * 
- * Could not load the following classes:
- *  lunar.G.EntityBridge
- *  lunar.G.EntityLivingBaseBridge
- *  lunar.L.EntityPlayerBridge
- *  lunar.Q.ItemStackBridge
- *  lunar.Q.ItemStackBridge$lIlIlIlIlIIlIIlIIllIIIIIl
- */
 package mchorse.emoticons.skin_n_bones.api.animation.model;
 
 import java.util.ArrayList;
@@ -26,7 +16,7 @@ import mchorse.emoticons.skin_n_bones.api.animation.model.IAnimator;
 import mchorse.emoticons.skin_n_bones.api.bobj.BOBJArmature;
 
 public class Animator
-implements IAnimator {
+    implements IAnimator {
     public ActionPlayback idle;
     public ActionPlayback walking;
     public ActionPlayback running;
@@ -114,9 +104,9 @@ implements IAnimator {
         if (this.lastActive != null) {
             this.lastActive.update();
         }
-        Iterator iterator = this.actions.iterator();
+        Iterator<ActionPlayback> iterator = this.actions.iterator();
         while (iterator.hasNext()) {
-            ActionPlayback actionPlayback = (ActionPlayback)iterator.next();
+            ActionPlayback actionPlayback = iterator.next();
             actionPlayback.update();
             if (!actionPlayback.finishedFading()) continue;
             actionPlayback.unfade();

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.function.BooleanSupplier;
 
 public abstract class AbstractFeatureSetting<T>
-extends AbstractSetting<T> {
+    extends AbstractSetting<T> {
     public boolean lIlIlIlIlIIlIIlIIllIIIIIl = true;
     public List IlllIIIIIIlllIlIIlllIlIIl = new ArrayList();
     public boolean lIllIlIIIlIIIIIIIlllIlIll = true;
@@ -53,7 +53,6 @@ extends AbstractSetting<T> {
         return this;
     }
 
-    @Override
     public abstract boolean IlllIIIIIIlllIlIIlllIlIIl();
 
     public abstract boolean lIllIlIIIlIIIIIIIlllIlIll();

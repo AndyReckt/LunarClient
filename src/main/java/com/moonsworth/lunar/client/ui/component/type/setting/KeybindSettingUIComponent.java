@@ -5,41 +5,41 @@ import com.moonsworth.lunar.client.bridge.Bridge;
 import com.moonsworth.lunar.client.registry.FontRegistry;
 import com.moonsworth.lunar.client.setting.LunarKeybindSetting;
 import com.moonsworth.lunar.client.ui.screen.AbstractUIScreen;
-import com.moonsworth.lunar.client.ui.screen.BooleanCallbackSetting;
+import com.moonsworth.lunar.client.ui.screen.UIScreenCloseException;
 import com.moonsworth.lunar.client.ui.component.UIComponent;
 
 /**
  * @author Decencies
  * @since 10/07/2021 18:10
  */
-public class KeybindSettingUIComponent extends ClashesWithWarningUIComponent implements BooleanCallbackSetting {
-    public boolean llIlIIIllIIlIllIllIllllIl;
+public class KeybindSettingUIComponent extends ClashesWithWarningUIComponent implements UIScreenCloseException {
+    public boolean editing;
     public KeyType IllIllIIIllIIIlIlIlIIIIll = null;
 
     public KeybindSettingUIComponent(LunarKeybindSetting lunarKeybindSetting, UIComponent uIComponent) {
         super(lunarKeybindSetting, uIComponent);
-        this.lIlIlIlIlIIlIIlIIllIIIIIl = new IlllIIIIIIlllIlIIlllIlIIl(this, (lunarKeybindSetting.llIlllIIIllllIIlllIllIIIl().lIllIlIIIlIIIIIIIlllIlIll() ? "CTRL + " : (lunarKeybindSetting.llIlllIIIllllIIlllIllIIIl().lIlIlIlIlIIlIIlIIllIIIIIl() ? "ALT + " : (lunarKeybindSetting.llIlllIIIllllIIlllIllIIIl().IlllIIIIIIlllIlIIlllIlIIl() ? "SHIFT + " : ""))) + lunarKeybindSetting.llIlllIIIllllIIlllIllIIIl().llIlllIIIllllIIlllIllIIIl().lIlIlIlIlIIlIIlIIllIIIIIl());
+        this.lIlIlIlIlIIlIIlIIllIIIIIl = new DefaultButtonUIComponent(this, (lunarKeybindSetting.llIlllIIIllllIIlllIllIIIl().lIllIlIIIlIIIIIIIlllIlIll() ? "CTRL + " : (lunarKeybindSetting.llIlllIIIllllIIlllIllIIIl().lIlIlIlIlIIlIIlIIllIIIIIl() ? "ALT + " : (lunarKeybindSetting.llIlllIIIllllIIlllIllIIIl().IlllIIIIIIlllIlIIlllIlIIl() ? "SHIFT + " : ""))) + lunarKeybindSetting.llIlllIIIllllIIlllIllIIIl().llIlllIIIllllIIlllIllIIIl().lIlIlIlIlIIlIIlIIllIIIIIl());
         this.lIlIlIlIlIIlIIlIIllIIIIIl.lIlIlIlIlIIlIIlIIllIIIIIl(() -> {
-            if (!this.llIlIIIllIIlIllIllIllllIl && !lunarKeybindSetting.IlIlIlllllIlIIlIlIlllIlIl()) {
+            if (!this.editing && !lunarKeybindSetting.IlIlIlllllIlIIlIlIlllIlIl()) {
                 return -2538942;
             }
             return -4275267;
         });
-        this.lIlIlIlIlIIlIIlIIllIIIIIl((float f, float f2, int n) -> {
-            if ((n == 4 || n == 5 || n == 3 || n == 2) && this.llIlIIIllIIlIllIllIllllIl) {
-                this.llIlIIIllIIlIllIllIllllIl = false;
+        this.onMouseClick((float f, float f2, int n) -> {
+            if ((n == 4 || n == 5 || n == 3 || n == 2) && this.editing) {
+                this.editing = false;
                 this.lIlIlIlIlIIlIIlIIllIIIIIl.lIlIlIlIlIIlIIlIIllIIIIIl(false);
                 lunarKeybindSetting.lIlIlIlIlIIlIIlIIllIIIIIl(KeyType.valueOf("KEY_MOUSE" + (n + 1)), false, false, false);
                 this.lIlIlIlIlIIlIIlIIllIIIIIl.lIlIlIlIlIIlIIlIIllIIIIIl(lunarKeybindSetting.llIlllIIIllllIIlllIllIIIl().llIlllIIIllllIIlllIllIIIl().lIlIlIlIlIIlIIlIIllIIIIIl());
                 return true;
             }
-            if (this.lIlIlIlIlIIlIIlIIllIIIIIl.IlllIIIIIIlllIlIIlllIlIIl(f, f2)) {
-                if (n == 1 && !this.llIlIIIllIIlIllIllIllllIl) {
-                    lunarKeybindSetting.lIlIlIlIlIIlIIlIIllIIIIIl(KeyType.lIlIlIlIlIIlIIlIIllIIIIIl, false, false, false);
+            if (this.lIlIlIlIlIIlIIlIIllIIIIIl.mouseInside(f, f2)) {
+                if (n == 1 && !this.editing) {
+                    lunarKeybindSetting.lIlIlIlIlIIlIIlIIllIIIIIl(KeyType.KEY_NONE, false, false, false);
                     this.lIlIlIlIlIIlIIlIIllIIIIIl.lIlIlIlIlIIlIIlIIllIIIIIl(lunarKeybindSetting.llIlllIIIllllIIlllIllIIIl().llIlllIIIllllIIlllIllIIIl().lIlIlIlIlIIlIIlIIllIIIIIl());
                 } else {
-                    boolean bl = this.llIlIIIllIIlIllIllIllllIl = !this.llIlIIIllIIlIllIllIllllIl;
-                    if (this.llIlIIIllIIlIllIllIllllIl) {
+                    boolean bl = this.editing = !this.editing;
+                    if (this.editing) {
                         this.lIlIlIlIlIIlIIlIIllIIIIIl.lIlIlIlIlIIlIIlIIllIIIIIl("?");
                     } else {
                         this.lIlIlIlIlIIlIIlIIllIIIIIl.lIlIlIlIlIIlIIlIIllIIIIIl((lunarKeybindSetting.llIlllIIIllllIIlllIllIIIl().lIllIlIIIlIIIIIIIlllIlIll() ? "CTRL + " : (lunarKeybindSetting.llIlllIIIllllIIlllIllIIIl().lIlIlIlIlIIlIIlIIllIIIIIl() ? "ALT + " : (lunarKeybindSetting.llIlllIIIllllIIlllIllIIIl().IlllIIIIIIlllIlIIlllIlIIl() ? "SHIFT + " : ""))) + lunarKeybindSetting.llIlllIIIllllIIlllIllIIIl().llIlllIIIllllIIlllIllIIIl().lIlIlIlIlIIlIIlIIllIIIIIl());
@@ -52,7 +52,7 @@ public class KeybindSettingUIComponent extends ClashesWithWarningUIComponent imp
     }
 
     @Override
-    public float IllIllIIIllIIIlIlIlIIIIll() {
+    public float getHeight() {
         return this.llIIIIIIIllIIllIlIllIIIIl().llIllIlIllIlllIllIIIIllII().getAsBoolean() ? 0.0f : 14.0f;
     }
 
@@ -62,73 +62,73 @@ public class KeybindSettingUIComponent extends ClashesWithWarningUIComponent imp
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl() {
-        this.lIlIlIlIlIIlIIlIIllIIIIIl.lIlIlIlIlIIlIIlIIllIIIIIl();
-        if (this.IllIllIIIllIIIlIlIlIIIIll != null && this.llIlIIIllIIlIllIllIllllIl && !this.lIlIlIlIlIIlIIlIIllIIIIIl(this.IllIllIIIllIIIlIlIlIIIIll)) {
-            ((LunarKeybindSetting)this.IlllIIIIIIlllIlIIlllIlIIl).lIlIlIlIlIIlIIlIIllIIIIIl(this.IllIllIIIllIIIlIlIlIIIIll, false, false, false);
-            this.llIlIIIllIIlIllIllIllllIl = false;
+    public void onUpdateScreen() {
+        this.lIlIlIlIlIIlIIlIIllIIIIIl.onUpdateScreen();
+        if (this.IllIllIIIllIIIlIlIlIIIIll != null && this.editing && !this.lIlIlIlIlIIlIIlIIllIIIIIl(this.IllIllIIIllIIIlIlIlIIIIll)) {
+            ((LunarKeybindSetting)this.setting).lIlIlIlIlIIlIIlIIllIIIIIl(this.IllIllIIIllIIIlIlIlIIIIll, false, false, false);
+            this.editing = false;
             this.IllIllIIIllIIIlIlIlIIIIll = null;
-            this.lIlIlIlIlIIlIIlIIllIIIIIl.lIlIlIlIlIIlIIlIIllIIIIIl(((LunarKeybindSetting)this.IlllIIIIIIlllIlIIlllIlIIl).llIlllIIIllllIIlllIllIIIl().llIlllIIIllllIIlllIllIIIl().lIlIlIlIlIIlIIlIIllIIIIIl());
+            this.lIlIlIlIlIIlIIlIIllIIIIIl.lIlIlIlIlIIlIIlIIllIIIIIl(((LunarKeybindSetting)this.setting).llIlllIIIllllIIlllIllIIIl().llIlllIIIllllIIlllIllIIIl().lIlIlIlIlIIlIIlIIllIIIIIl());
         }
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2, boolean bl) {
-        FontRegistry.llIIIIIIIllIIllIlIllIIIIl().lIlIlIlIlIIlIIlIIllIIIIIl(this.IlllIIIIIIlllIlIIlllIlIIl.f_(), this.x, this.y + 1.5f, -4079426);
-        this.lIlIlIlIlIIlIIlIIllIIIIIl.lIlIlIlIlIIlIIlIIllIIIIIl(this.x + this.width - 70.0f, this.y + 2.0f, 70.0f, 12.0f);
-        this.lIlIlIlIlIIlIIlIIllIIIIIl.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, bl);
+    public void drawComponent(float mouseX, float mouseY, boolean bl) {
+        FontRegistry.llIIIIIIIllIIllIlIllIIIIl().lIlIlIlIlIIlIIlIIllIIIIIl(this.setting.f_(), this.x, this.y + 1.5f, -4079426);
+        this.lIlIlIlIlIIlIIlIIllIIIIIl.setPositionAndSize(this.x + this.width - 70.0f, this.y + 2.0f, 70.0f, 12.0f);
+        this.lIlIlIlIlIIlIIlIIllIIIIIl.drawComponent(mouseX, mouseY, bl);
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(char c, KeyType keyType) {
-        if (this.llIlIIIllIIlIllIllIllllIl) {
-            if (keyType == KeyType.lIIIlIllllIIlIIlIIlIIIIlI) {
-                ((LunarKeybindSetting)this.IlllIIIIIIlllIlIIlllIlIIl).lIlIlIlIlIIlIIlIIllIIIIIl(KeyType.lIlIlIlIlIIlIIlIIllIIIIIl, false, false, false);
-                this.llIlIIIllIIlIllIllIllllIl = false;
+    public void onKeyTyped(char c, KeyType keyType) {
+        if (this.editing) {
+            if (keyType == KeyType.KEY_ESCAPE) {
+                ((LunarKeybindSetting)this.setting).lIlIlIlIlIIlIIlIIllIIIIIl(KeyType.KEY_NONE, false, false, false);
+                this.editing = false;
                 this.IllIllIIIllIIIlIlIlIIIIll = null;
-                this.lIlIlIlIlIIlIIlIIllIIIIIl.lIlIlIlIlIIlIIlIIllIIIIIl(((LunarKeybindSetting)this.IlllIIIIIIlllIlIIlllIlIIl).llIlllIIIllllIIlllIllIIIl().llIlllIIIllllIIlllIllIIIl().lIlIlIlIlIIlIIlIIllIIIIIl());
+                this.lIlIlIlIlIIlIIlIIllIIIIIl.lIlIlIlIlIIlIIlIIllIIIIIl(((LunarKeybindSetting)this.setting).llIlllIIIllllIIlllIllIIIl().llIlllIIIllllIIlllIllIIIl().lIlIlIlIlIIlIIlIIllIIIIIl());
                 return;
             }
-            if (keyType == KeyType.IlIlIllIIllllIllllllIIlIl || keyType == KeyType.llIllIIIIlIIIIIIlllIllIlI || keyType == KeyType.llIIIIllIlIIlIlIIlllIllIl) {
+            if (keyType == KeyType.KEY_LSHIFT || keyType == KeyType.KEY_LCONTROL || keyType == KeyType.KEY_LMENU) {
                 this.IllIllIIIllIIIlIlIlIIIIll = keyType;
                 return;
             }
-            ((LunarKeybindSetting)this.IlllIIIIIIlllIlIIlllIlIIl).lIlIlIlIlIIlIIlIIllIIIIIl(keyType, this.lIlIlIlIlIIlIIlIIllIIIIIl(KeyType.IlIlIllIIllllIllllllIIlIl), this.lIlIlIlIlIIlIIlIIllIIIIIl(KeyType.llIIIIllIlIIlIlIIlllIllIl), this.lIlIlIlIlIIlIIlIIllIIIIIl(KeyType.llIllIIIIlIIIIIIlllIllIlI));
-            this.llIlIIIllIIlIllIllIllllIl = false;
+            ((LunarKeybindSetting)this.setting).lIlIlIlIlIIlIIlIIllIIIIIl(keyType, this.lIlIlIlIlIIlIIlIIllIIIIIl(KeyType.KEY_LSHIFT), this.lIlIlIlIlIIlIIlIIllIIIIIl(KeyType.KEY_LMENU), this.lIlIlIlIlIIlIIlIIllIIIIIl(KeyType.KEY_LCONTROL));
+            this.editing = false;
             this.IllIllIIIllIIIlIlIlIIIIll = null;
-            this.lIlIlIlIlIIlIIlIIllIIIIIl.lIlIlIlIlIIlIIlIIllIIIIIl((((LunarKeybindSetting)this.IlllIIIIIIlllIlIIlllIlIIl).llIlllIIIllllIIlllIllIIIl().lIllIlIIIlIIIIIIIlllIlIll() ? "CTRL + " : "") + (((LunarKeybindSetting)this.IlllIIIIIIlllIlIIlllIlIIl).llIlllIIIllllIIlllIllIIIl().lIlIlIlIlIIlIIlIIllIIIIIl() ? "ALT + " : "") + (((LunarKeybindSetting)this.IlllIIIIIIlllIlIIlllIlIIl).llIlllIIIllllIIlllIllIIIl().IlllIIIIIIlllIlIIlllIlIIl() ? "SHIFT + " : "") + ((LunarKeybindSetting)this.IlllIIIIIIlllIlIIlllIlIIl).llIlllIIIllllIIlllIllIIIl().llIlllIIIllllIIlllIllIIIl().lIlIlIlIlIIlIIlIIllIIIIIl());
+            this.lIlIlIlIlIIlIIlIIllIIIIIl.lIlIlIlIlIIlIIlIIllIIIIIl((((LunarKeybindSetting)this.setting).llIlllIIIllllIIlllIllIIIl().lIllIlIIIlIIIIIIIlllIlIll() ? "CTRL + " : "") + (((LunarKeybindSetting)this.setting).llIlllIIIllllIIlllIllIIIl().lIlIlIlIlIIlIIlIIllIIIIIl() ? "ALT + " : "") + (((LunarKeybindSetting)this.setting).llIlllIIIllllIIlllIllIIIl().IlllIIIIIIlllIlIIlllIlIIl() ? "SHIFT + " : "") + ((LunarKeybindSetting)this.setting).llIlllIIIllllIIlllIllIIIl().llIlllIIIllllIIlllIllIIIl().lIlIlIlIlIIlIIlIIllIIIIIl());
         }
     }
 
     @Override
-    public void IlllIIIIIIlllIlIIlllIlIIl() {
+    public void onGuiClosed() {
     }
 
     public boolean lIlIlIlIlIIlIIlIIllIIIIIl(KeyType keyType) {
-        if (Bridge.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl(KeyType.IlIlIllIIllllIllllllIIlIl)) {
-            return keyType == KeyType.IlIlIllIIllllIllllllIIlIl;
+        if (Bridge.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl(KeyType.KEY_LSHIFT)) {
+            return keyType == KeyType.KEY_LSHIFT;
         }
         if (AbstractUIScreen.IIlIllIlIIllIIlIlIllllllI()) {
-            return keyType == KeyType.llIllIIIIlIIIIIIlllIllIlI;
+            return keyType == KeyType.KEY_LCONTROL;
         }
-        if (Bridge.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl(KeyType.llIIIIllIlIIlIlIIlllIllIl)) {
-            return keyType == KeyType.llIIIIllIlIIlIlIIlllIllIl;
+        if (Bridge.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl(KeyType.KEY_LMENU)) {
+            return keyType == KeyType.KEY_LMENU;
         }
         return Bridge.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl(keyType);
     }
 
     @Override
     public boolean lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2) {
-        return super.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2) && !this.lIlIlIlIlIIlIIlIIllIIIIIl.IlllIIIIIIlllIlIIlllIlIIl(f, f2);
+        return super.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2) && !this.lIlIlIlIlIIlIIlIIllIIIIIl.mouseInside(f, f2);
     }
 
     @Override
-    public boolean c_() {
-        return this.llIlIIIllIIlIllIllIllllIl;
+    public boolean shouldCancel() {
+        return this.editing;
     }
 
     @Override
-    public boolean IlllIIIIIIlllIlIIlllIlIIl(float f, float f2) {
-        return super.IlllIIIIIIlllIlIIlllIlIIl(f, f2) || this.c_();
+    public boolean mouseInside(float mouseX, float mouseY) {
+        return super.mouseInside(mouseX, mouseY) || this.shouldCancel();
     }
 }

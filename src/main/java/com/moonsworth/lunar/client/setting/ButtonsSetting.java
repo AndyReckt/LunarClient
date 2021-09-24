@@ -19,16 +19,16 @@ public class ButtonsSetting extends AbstractSetting<String> {
     }
 
     @Override
-    public AbstractDescritiveSettingUIComponent lIlIlIlIlIIlIIlIIllIIIIIl(UIComponent uIComponent) {
+    public AbstractDescritiveSettingUIComponent getUIComponent(UIComponent uIComponent) {
         return new lIllIlIIIlIIIIIIIlllIlIll(this, uIComponent);
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(JsonObject jsonObject) {
+    public void write(JsonObject jsonObject) {
     }
 
     @Override
-    public void IlllIIIIIIlllIlIIlllIlIIl(JsonObject jsonObject) {
+    public void read(JsonObject jsonObject) {
     }
 
     @Override
@@ -40,4 +40,3 @@ public class ButtonsSetting extends AbstractSetting<String> {
         return this.clickCallback;
     }
 }
- 

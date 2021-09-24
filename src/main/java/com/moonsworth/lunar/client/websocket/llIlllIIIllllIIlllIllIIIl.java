@@ -1,7 +1,9 @@
 package com.moonsworth.lunar.client.websocket;
 
-public interface llIlllIIIllllIIlllIllIIIl {
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(AbstractPacket var1);
+import com.moonsworth.lunar.client.websocket.packet.AbstractWebSocketPacket;
 
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(Object var1);
+public interface llIlllIIIllllIIlllIllIIIl {
+    void lIlIlIlIlIIlIIlIIllIIIIIl(final AbstractWebSocketPacket p0);
+
+    void lIlIlIlIlIIlIIlIIllIIIIIl(final Object p0);
 }

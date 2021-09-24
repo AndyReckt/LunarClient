@@ -1,15 +1,15 @@
 package com.moonsworth.lunar.client.feature.type.fps;
 
 import com.moonsworth.lunar.client.feature.FeatureDetails;
-import com.moonsworth.lunar.client.feature.hud.Anchor;
+import com.moonsworth.lunar.client.feature.hud.HudModPosition;
 import com.moonsworth.lunar.client.feature.hud.simple.SimpleHudMod;
 import com.moonsworth.lunar.client.feature.hud.simple.SimpleHudModSize;
 import com.moonsworth.lunar.client.ref.Ref;
 
 public class FPSMod
-extends SimpleHudMod {
+    extends SimpleHudMod {
     public FPSMod() {
-        super(false, Anchor.TOP_LEFT);
+        super(false, HudModPosition.TOP_LEFT);
     }
 
     @Override
@@ -28,13 +28,12 @@ extends SimpleHudMod {
     }
 
     @Override
-    public FeatureDetails llIIIIIIIllIIllIlIllIIIIl() {
+    public FeatureDetails initDetails() {
         return new FeatureDetails("fps");
     }
 
     @Override
     public String lllllIlIllIlIlllIIIlIIlIl() {
-        return Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getDebugFPS() + " FPS";
+        return Ref.getMinecraft().bridge$getDebugFPS() + " FPS";
     }
 }
- 

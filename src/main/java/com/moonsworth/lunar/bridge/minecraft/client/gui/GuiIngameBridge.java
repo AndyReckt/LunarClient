@@ -1,13 +1,12 @@
 package com.moonsworth.lunar.bridge.minecraft.client.gui;
 
 public interface GuiIngameBridge
-extends GuiBridge {
-    public void bridge$renderGameOverlay(float var1);
+    extends GuiBridge {
+    void bridge$renderGameOverlay(float var1);
 
-    public boolean bridge$showCrosshair();
+    boolean bridge$showCrosshair();
 
-    public GuiNewChatBridge bridge$getChatGUI();
+    GuiNewChatBridge bridge$getChatGUI();
 
-    public void bridge$resetTitleTimer();
+    void bridge$resetTitleTimer();
 }
- 

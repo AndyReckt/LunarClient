@@ -1,8 +1,6 @@
 package com.moonsworth.lunar.client.registry;
 
-import club.decencies.remapper.lunar.annotation.OriginalName;
 import com.google.common.collect.ImmutableSet;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
@@ -10,7 +8,7 @@ import com.moonsworth.lunar.LunarClient;
 import com.moonsworth.lunar.bridge.lunar.lang.LanguageType;
 import com.moonsworth.lunar.bridge.minecraft.client.resources.I18n.I18nBridge;
 import com.moonsworth.lunar.client.feature.external.ThirdPartyMod;
-import com.moonsworth.lunar.client.json.file.DefaultJson;
+import com.moonsworth.lunar.client.json.file.JsonFile;
 import com.moonsworth.lunar.client.json.file.ItemSetLoader;
 import com.moonsworth.lunar.client.logger.LunarLogger;
 import com.moonsworth.lunar.client.util.LanguageParser;
@@ -26,25 +24,22 @@ import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
 
-@OriginalName(value="lunar/cJ/lllIIIIIlllIIlIllIIlIIIlI")
-public class LanguageConfig
-extends ItemSetLoader
-implements DefaultJson {
+public class LanguageConfig extends ItemSetLoader<LanguageType> implements JsonFile {
     public LanguageType lIlIlIlIlIIlIIlIIllIIIIIl;
     public JsonObject IlllIIIIIIlllIlIIlllIlIIl = new JsonObject();
-    public final Map lIllIlIIIlIIIIIIIlllIlIll = new HashMap();
+    public final Map<String, List<String>> lIllIlIIIlIIIIIIIlllIlIll = new HashMap<>();
 
     @Override
-    public Set lIlIlIlIlIIlIIlIIllIIIIIl() {
+    public Set<LanguageType> lIlIlIlIlIIlIIlIIllIIIIIl() {
         return ImmutableSet.copyOf(Arrays.asList(LanguageType.values()));
     }
 
     public String lIlIlIlIlIIlIIlIIllIIIIIl(I18nBridge i18nBridge, String string, Object ... objectArray) {
         String string2 = i18nBridge.getLanguagePath();
         if (!this.lIllIlIIIlIIIIIIIlllIlIll.containsKey(string2)) {
-            this.lIllIlIIIlIIIIIIIlllIlIll.put(string2, new LinkedList<String>(Arrays.asList(string2.split(Pattern.quote(".")))));
+            this.lIllIlIIIlIIIIIIIlllIlIll.put(string2, new LinkedList<>(Arrays.asList(string2.split(Pattern.quote(".")))));
         }
-        List list = (List)this.lIllIlIIIlIIIIIIIlllIlIll.get(string2);
+        List<String> list = this.lIllIlIIIlIIIIIIIlllIlIll.get(string2);
         return this.lIlIlIlIlIIlIIlIIllIIIIIl(list, string, objectArray);
     }
 
@@ -57,8 +52,7 @@ implements DefaultJson {
                 jsonObject = jsonObject.getAsJsonObject(string3);
             }
             string2 = LanguageParser.lIlIlIlIlIIlIIlIIllIIIIIl(jsonObject.get(string).getAsString(), objectArray);
-        }
-        catch (Exception exception) {
+        } catch (Exception exception) {
             // empty catch block
         }
         return string2 == null || string2.isEmpty() ? string : string2;
@@ -80,11 +74,11 @@ implements DefaultJson {
     }
 
     public void IlllllIlIIIlIIlIIllIIlIll() {
-        LunarLogger.IlllIIIIIIlllIlIIlllIlIIl("LANG", (Object)"Language set as %s (%s).", this.lIlIlIlIlIIlIIlIIllIIIIIl.name(), this.lIlIlIlIlIIlIIlIIllIIIIIl.lIlIlIlIlIIlIIlIIllIIIIIl());
+        LunarLogger.info("LANG", "Language set as %s (%s).", this.lIlIlIlIlIIlIIlIIllIIIIIl.name(), this.lIlIlIlIlIIlIIlIIllIIIIIl.lIlIlIlIlIIlIIlIIllIIIIIl());
         this.IlllIIIIIIlllIlIIlllIlIIl = this.IlllIIIIIIlllIlIIlllIlIIl("lang/lunar/" + this.lIlIlIlIlIIlIIlIIllIIIIIl.lIlIlIlIlIIlIIlIIllIIIIIl());
-        for (ThirdPartyMod thirdPartyMod : LunarClient.IIllIlIllIlIllIllIllIllII().IlIlIlIlIIIlIIlIIlllIllIl().values()) {
-            LunarLogger.IlllIIIIIIlllIlIIlllIlIIl("LANG", (Object)"Checking language files for %s.", thirdPartyMod.lIlIlIlIlIIlIIlIIllIIIIIl());
-            this.IlllIIIIIIlllIlIIlllIlIIl.add(thirdPartyMod.lIlIlIlIlIIlIIlIIllIIIIIl(), (JsonElement)this.IlllIIIIIIlllIlIIlllIlIIl("lang/" + thirdPartyMod.lIlIlIlIlIIlIIlIIllIIIIIl() + "/" + this.lIlIlIlIlIIlIIlIIllIIIIIl.lIlIlIlIlIIlIIlIIllIIIIIl()));
+        for (ThirdPartyMod thirdPartyMod : LunarClient.getInstance().IlIlIlIlIIIlIIlIIlllIllIl().values()) {
+            LunarLogger.info("LANG", "Checking language files for %s.", thirdPartyMod.lIlIlIlIlIIlIIlIIllIIIIIl());
+            this.IlllIIIIIIlllIlIIlllIlIIl.add(thirdPartyMod.lIlIlIlIlIIlIIlIIllIIIIIl(), this.IlllIIIIIIlllIlIIlllIlIIl("lang/" + thirdPartyMod.lIlIlIlIlIIlIIlIIllIIIIIl() + "/" + this.lIlIlIlIlIIlIIlIIllIIIIIl.lIlIlIlIlIIlIIlIIllIIIIIl()));
         }
     }
 
@@ -96,7 +90,7 @@ implements DefaultJson {
                 InputStream inputStream = this.lIlIlIlIlIIlIIlIIllIIIIIl(string + ".json", string.toLowerCase() + ".json", string + ".lang", string.toLowerCase() + ".lang");
                 if (inputStream != null) {
                     int n;
-                    LunarLogger.IlllIIIIIIlllIlIIlllIlIIl("LANG", (Object)"Language file found: %s.", string);
+                    LunarLogger.info("LANG", "Language file found: %s.", string);
                     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
                     byte[] byArray = new byte[1024];
                     while ((n = inputStream.read(byArray)) != -1) {
@@ -105,16 +99,14 @@ implements DefaultJson {
                     String string2 = byteArrayOutputStream.toString("UTF-8");
                     try {
                         jsonObject = new JsonParser().parse(string2).getAsJsonObject();
-                    }
-                    catch (Exception exception) {
+                    } catch (Exception exception) {
                         jsonObject = this.lIllIlIIIlIIIIIIIlllIlIll(string2);
                     }
                     inputStream.close();
                     break block6;
                 }
-                LunarLogger.llIlllIIIllllIIlllIllIIIl("LANG", (Object)"Language file not found %s.", string);
-            }
-            catch (JsonParseException | IOException | IllegalStateException throwable) {
+                LunarLogger.error("LANG", "Language file not found %s.", string);
+            } catch (JsonParseException | IOException | IllegalStateException throwable) {
                 throwable.printStackTrace();
             }
         }
@@ -146,11 +138,11 @@ implements DefaultJson {
     }
 
     @Override
-    public void IlllIIIIIIlllIlIIlllIlIIl(JsonObject jsonObject) {
+    public void read(JsonObject jsonObject) {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(JsonObject jsonObject) {
+    public void write(JsonObject jsonObject) {
     }
 
     @Override

@@ -5,21 +5,21 @@ package com.moonsworth.lunar.bridge.minecraft.util;
  * @since 10/07/2021 14:15
  */
 public interface AxisAlignedBBBridge {
-    public double bridge$getMinX();
+    double bridge$getMinX();
 
-    public double bridge$getMinY();
+    double bridge$getMinY();
 
-    public double bridge$getMinZ();
+    double bridge$getMinZ();
 
-    public double bridge$getMaxX();
+    double bridge$getMaxX();
 
-    public double bridge$getMaxY();
+    double bridge$getMaxY();
 
-    public double bridge$getMaxZ();
+    double bridge$getMaxZ();
 
-    public AxisAlignedBBBridge bridge$expand(double var1, double var3, double var5);
+    AxisAlignedBBBridge bridge$expand(double var1, double var3, double var5);
 
-    public AxisAlignedBBBridge bridge$offset(double var1, double var3, double var5);
+    AxisAlignedBBBridge bridge$offset(double var1, double var3, double var5);
 
-    public boolean bridge$intersectsWith(AxisAlignedBBBridge var1);
+    boolean bridge$intersectsWith(AxisAlignedBBBridge var1);
 }

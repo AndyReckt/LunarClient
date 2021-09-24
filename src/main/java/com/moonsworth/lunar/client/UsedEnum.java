@@ -2,8 +2,7 @@ package com.moonsworth.lunar.client;
 
 import com.moonsworth.lunar.client.setting.IEnumSetting;
 
-public enum UsedEnum implements IEnumSetting
-{
+public enum UsedEnum implements IEnumSetting {
     ALL,
     MOVEMENT_UI,
     F3_KEYS,
@@ -15,4 +14,3 @@ public enum UsedEnum implements IEnumSetting
         return this.name().replace("_", " ");
     }
 }
- 

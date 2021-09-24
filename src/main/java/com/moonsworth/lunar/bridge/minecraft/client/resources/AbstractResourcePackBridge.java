@@ -2,6 +2,7 @@ package com.moonsworth.lunar.bridge.minecraft.client.resources;
 
 import com.moonsworth.lunar.bridge.minecraft.util.ResourceLocationBridge;
 
+import java.awt.image.BufferedImage;
 import java.io.InputStream;
 import java.util.Optional;
 
@@ -10,11 +11,11 @@ import java.util.Optional;
  * @since 10/07/2021 14:24
  */
 public interface AbstractResourcePackBridge {
-    public InputStream bridge$getInputStream(ResourceLocationBridge var1);
+    InputStream bridge$getInputStream(ResourceLocationBridge var1);
 
-    public String bridge$getPackName();
+    String bridge$getPackName();
 
-    default public Optional bridge$getPackImage() {
+default Optional<BufferedImage> bridge$getPackImage() {
         return Optional.empty();
     }
 }

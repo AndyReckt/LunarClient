@@ -7,10 +7,10 @@ import com.moonsworth.lunar.client.blog.BlogCollector;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-public class BlogPostLoader
-extends ItemSetLoader<BlogCache> {
+public class BlogPostLoader extends ItemSetLoader<BlogCache> {
     public BlogPostLoader() {
-        new Thread(new BlogCollector()).start();
+        // new Thread(new BlogCollector()).start();
+        getSet().add(new BlogCache("lol", "https://cdn.thedailymash.co.uk/wp-content/uploads/20190324205638/random667.jpg", "https://decencies.club"));
     }
 
     @Override
@@ -18,4 +18,3 @@ extends ItemSetLoader<BlogCache> {
         return new LinkedHashSet<>();
     }
 }
- 

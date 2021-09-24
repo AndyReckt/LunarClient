@@ -4,14 +4,12 @@ import com.google.common.collect.ImmutableSet;
 import com.google.gson.JsonObject;
 import com.lunarclient.bukkitapi.nethandler.client.obj.ServerRule;
 import com.moonsworth.lunar.client.feature.IlllIIIIIIlllIlIIlllIlIIl;
-import com.moonsworth.lunar.client.json.file.DefaultJson;
+import com.moonsworth.lunar.client.json.file.JsonFile;
 import com.moonsworth.lunar.client.json.file.ItemSetLoader;
 
 import java.util.Set;
 
-public class RuleFeaturesConfig
-extends ItemSetLoader<IlllIIIIIIlllIlIIlllIlIIl>
-implements DefaultJson {
+public class RuleFeaturesConfig extends ItemSetLoader<IlllIIIIIIlllIlIIlllIlIIl> implements JsonFile {
     @Override
     public Set<IlllIIIIIIlllIlIIlllIlIIl> lIlIlIlIlIIlIIlIIllIIIIIl() {
         return ImmutableSet.of();
@@ -41,24 +39,22 @@ implements DefaultJson {
     }
 
     @Override
-    public void IlllIIIIIIlllIlIIlllIlIIl(JsonObject jsonObject) {
+    public void read(JsonObject jsonObject) {
         for (IlllIIIIIIlllIlIIlllIlIIl illlIIIIIIlllIlIIlllIlIIl : this.llIlllIIIllllIIlllIllIIIl()) {
             try {
-                illlIIIIIIlllIlIIlllIlIIl.IlllIIIIIIlllIlIIlllIlIIl(jsonObject.getAsJsonObject(illlIIIIIIlllIlIIlllIlIIl.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl()));
-            }
-            catch (Exception exception) {}
+                illlIIIIIIlllIlIIlllIlIIl.read(jsonObject.getAsJsonObject(illlIIIIIIlllIlIIlllIlIIl.getDetails().getId()));
+            } catch (Exception exception) {}
         }
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(JsonObject jsonObject) {
+    public void write(JsonObject jsonObject) {
         for (IlllIIIIIIlllIlIIlllIlIIl illlIIIIIIlllIlIIlllIlIIl : this.llIlllIIIllllIIlllIllIIIl()) {
             try {
                 JsonObject jsonObject2 = new JsonObject();
-                jsonObject.add(illlIIIIIIlllIlIIlllIlIIl.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl(), jsonObject2);
-                illlIIIIIIlllIlIIlllIlIIl.lIlIlIlIlIIlIIlIIllIIIIIl(jsonObject2);
-            }
-            catch (Exception exception) {}
+                jsonObject.add(illlIIIIIIlllIlIIlllIlIIl.getDetails().getId(), jsonObject2);
+                illlIIIIIIlllIlIIlllIlIIl.write(jsonObject2);
+            } catch (Exception exception) {}
         }
     }
 
@@ -67,4 +63,3 @@ implements DefaultJson {
         this.save();
     }
 }
- 

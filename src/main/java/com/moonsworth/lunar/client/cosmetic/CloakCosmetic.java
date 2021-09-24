@@ -11,4 +11,3 @@ public class CloakCosmetic extends Cosmetic {
     public void lIlIlIlIlIIlIIlIIllIIIIIl(AbstractClientPlayerBridge abstractClientPlayerBridge, float f) {
     }
 }
- 

@@ -8,7 +8,6 @@ import com.moonsworth.lunar.client.bridge.Bridge;
 import com.moonsworth.lunar.client.ref.Ref;
 
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
@@ -24,7 +23,7 @@ public interface CosmeticRotationHelper {
 
     static CosmeticRotationHelper lIlIlIlIlIIlIIlIIllIIIIIl(float var0, float var1, float var2) {
         return new CosmeticRotationHelper.lIllIlIIIlIIIIIIIlllIlIll(0.0F, var0, var1, var2) {
-            public float lIlIlIlIlIIlIIlIIllIIIIIl = 0.0F;
+            public final float lIlIlIlIlIIlIIlIIllIIIIIl = 0.0F;
 
             public void transform(AbstractClientPlayerBridge var1, float var2) {
                 Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$rotate((this.lIlIlIlIlIIlIIlIIllIIIIIl + var2) * 57.295776F, this.IlllIIIIIIlllIlIIlllIlIIl[1], this.IlllIIIIIIlllIlIIlllIlIIl[2], this.IlllIIIIIIlllIlIIlllIlIIl[3]);
@@ -43,9 +42,9 @@ public interface CosmeticRotationHelper {
     }
 
     static CosmeticRotationHelper lIlIlIlIlIIlIIlIIllIIIIIl(final Function<EntityPlayerBridge, Vector3f> var0) {
-        return new CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl((Vector3f) null) {
+        return new CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl(null) {
             public void transform(AbstractClientPlayerBridge var1, float var2) {
-                Vector3f var3 = (Vector3f) var0.apply(var1);
+                Vector3f var3 = var0.apply(var1);
                 if (var3 != null) {
                     Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$translate(var3.llIIIIIIIllIIllIlIllIIIIl, var3.lIIIllIllIIllIlllIlIIlllI, var3.IlllllIlIIIlIIlIIllIIlIll);
                 }
@@ -53,9 +52,9 @@ public interface CosmeticRotationHelper {
             }
 
             public void lIlIlIlIlIIlIIlIIllIIIIIl(AbstractClientPlayerBridge var1, MatrixStackBridge var2, float var3) {
-                Vector3f var4 = (Vector3f) var0.apply(var1);
+                Vector3f var4 = var0.apply(var1);
                 if (var4 != null) {
-                    var2.lIlIlIlIlIIlIIlIIllIIIIIl((double) var4.llIIIIIIIllIIllIlIllIIIIl, (double) var4.lIIIllIllIIllIlllIlIIlllI, (double) var4.IlllllIlIIIlIIlIIllIIlIll);
+                    var2.lIlIlIlIlIIlIIlIIllIIIIIl(var4.llIIIIIIIllIIllIlIllIIIIl, var4.lIIIllIllIIllIlllIlIIlllI, (double) var4.IlllllIlIIIlIIlIIllIIlIll);
                 }
 
             }
@@ -67,17 +66,17 @@ public interface CosmeticRotationHelper {
     }
 
     static CosmeticRotationHelper IlllIIIIIIlllIlIIlllIlIIl(final Function<EntityPlayerBridge, Vector3f> var0) {
-        return new CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl((Vector3f) null) {
+        return new CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl(null) {
             public void transform(AbstractClientPlayerBridge var1, float var2) {
-                Vector3f var3 = (Vector3f) var0.apply(var1);
+                Vector3f var3 = var0.apply(var1);
                 if (var3 != null) {
-                    Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$scale((double) var3.llIIIIIIIllIIllIlIllIIIIl, (double) var3.lIIIllIllIIllIlllIlIIlllI, (double) var3.IlllllIlIIIlIIlIIllIIlIll);
+                    Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$scale(var3.llIIIIIIIllIIllIlIllIIIIl, var3.lIIIllIllIIllIlllIlIIlllI, var3.IlllllIlIIIlIIlIIllIIlIll);
                 }
 
             }
 
             public void lIlIlIlIlIIlIIlIIllIIIIIl(AbstractClientPlayerBridge var1, MatrixStackBridge var2, float var3) {
-                Vector3f var4 = (Vector3f) var0.apply(var1);
+                Vector3f var4 = var0.apply(var1);
                 if (var4 != null) {
                     var2.lIlIlIlIlIIlIIlIIllIIIIIl(var4.llIIIIIIIllIIllIlIllIIIIl, var4.lIIIllIllIIllIlllIlIIlllI, var4.IlllllIlIIIlIIlIIllIIlIll);
                 }
@@ -89,7 +88,7 @@ public interface CosmeticRotationHelper {
     static CosmeticRotationHelper lIllIlIIIlIIIIIIIlllIlIll(Vector3f var0) {
         return lIlIlIlIlIIlIIlIIllIIIIIl(lIlIlIlIlIIlIIlIIllIIIIIl((var1) -> {
             if (var1 != null && var1.bridge$isSneaking()) {
-                return !Ref.IlllIIIIIIlllIlIIlllIlIIl().lIIlIlllIlIlIIIlllIIlIIII().lIlIlIlIlIIlIIlIIllIIIIIl(var1) ? new Vector3f(0.0F, -var1.bridge$getEyeHeight() + 0.25F, 0.0F) : new Vector3f(0.0F, -var1.bridge$getEyeHeight(), 0.0F);
+                return !Ref.getLC().lIIlIlllIlIlIIIlllIIlIIII().lIlIlIlIlIIlIIlIIllIIIIIl(var1) ? new Vector3f(0.0F, -var1.bridge$getEyeHeight() + 0.25F, 0.0F) : new Vector3f(0.0F, -var1.bridge$getEyeHeight(), 0.0F);
             } else {
                 return var0;
             }
@@ -109,10 +108,10 @@ public interface CosmeticRotationHelper {
 
     void transform(AbstractClientPlayerBridge var1, float var2);
 
-    default void lIlIlIlIlIIlIIlIIllIIIIIl(AbstractClientPlayerBridge var1, MatrixStackBridge var2, float var3) {
+default void lIlIlIlIlIIlIIlIIllIIIIIl(AbstractClientPlayerBridge var1, MatrixStackBridge var2, float var3) {
     }
 
-    public static class IlllIIIIIIlllIlIIlllIlIIl implements CosmeticRotationHelper {
+    class IlllIIIIIIlllIlIIlllIlIIl implements CosmeticRotationHelper {
         public List<CosmeticRotationHelper> lIlIlIlIlIIlIIlIIllIIIIIl;
 
         public IlllIIIIIIlllIlIIlllIlIIl(List<CosmeticRotationHelper> var1) {
@@ -126,13 +125,13 @@ public interface CosmeticRotationHelper {
         }
     }
 
-    public static class llIlllIIIllllIIlllIllIIIl extends CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl {
+    class llIlllIIIllllIIlllIllIIIl extends CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl {
         public llIlllIIIllllIIlllIllIIIl(Vector3f var1) {
             super(var1);
         }
 
         public void transform(AbstractClientPlayerBridge var1, float var2) {
-            Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$scale((double) this.IlllIIIIIIlllIlIIlllIlIIl.llIIIIIIIllIIllIlIllIIIIl, (double) this.IlllIIIIIIlllIlIIlllIlIIl.lIIIllIllIIllIlllIlIIlllI, (double) this.IlllIIIIIIlllIlIIlllIlIIl.IlllllIlIIIlIIlIIllIIlIll);
+            Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$scale(this.IlllIIIIIIlllIlIIlllIlIIl.llIIIIIIIllIIllIlIllIIIIl, this.IlllIIIIIIlllIlIIlllIlIIl.lIIIllIllIIllIlllIlIIlllI, this.IlllIIIIIIlllIlIIlllIlIIl.IlllllIlIIIlIIlIIllIIlIll);
         }
 
         public void lIlIlIlIlIIlIIlIIllIIIIIl(AbstractClientPlayerBridge var1, MatrixStackBridge var2, float var3) {
@@ -140,7 +139,7 @@ public interface CosmeticRotationHelper {
         }
     }
 
-    public static class llllIIlIIlIIlIIllIIlIIllI extends CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl {
+    class llllIIlIIlIIlIIllIIlIIllI extends CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl {
         public llllIIlIIlIIlIIllIIlIIllI(Vector3f var1) {
             super(var1);
         }
@@ -150,11 +149,11 @@ public interface CosmeticRotationHelper {
         }
 
         public void lIlIlIlIlIIlIIlIIllIIIIIl(AbstractClientPlayerBridge var1, MatrixStackBridge var2, float var3) {
-            var2.lIlIlIlIlIIlIIlIIllIIIIIl((double) this.IlllIIIIIIlllIlIIlllIlIIl.llIIIIIIIllIIllIlIllIIIIl, (double) this.IlllIIIIIIlllIlIIlllIlIIl.lIIIllIllIIllIlllIlIIlllI, (double) this.IlllIIIIIIlllIlIIlllIlIIl.IlllllIlIIIlIIlIIllIIlIll);
+            var2.lIlIlIlIlIIlIIlIIllIIIIIl(this.IlllIIIIIIlllIlIIlllIlIIl.llIIIIIIIllIIllIlIllIIIIl, this.IlllIIIIIIlllIlIIlllIlIIl.lIIIllIllIIllIlllIlIIlllI, (double) this.IlllIIIIIIlllIlIIlllIlIIl.IlllllIlIIIlIIlIIllIIlIll);
         }
     }
 
-    public static class lIllIlIIIlIIIIIIIlllIlIll implements CosmeticRotationHelper {
+    class lIllIlIIIlIIIIIIIlllIlIll implements CosmeticRotationHelper {
         public float[] IlllIIIIIIlllIlIIlllIlIIl = new float[4];
 
         public lIllIlIIIlIIIIIIIlllIlIll(float var1, float var2, float var3, float var4) {
@@ -173,7 +172,7 @@ public interface CosmeticRotationHelper {
         }
     }
 
-    public abstract static class lIlIlIlIlIIlIIlIIllIIIIIl implements CosmeticRotationHelper {
+    abstract class lIlIlIlIlIIlIIlIIllIIIIIl implements CosmeticRotationHelper {
         public Vector3f IlllIIIIIIlllIlIIlllIlIIl;
 
         public lIlIlIlIlIIlIIlIIllIIIIIl(Vector3f var1) {

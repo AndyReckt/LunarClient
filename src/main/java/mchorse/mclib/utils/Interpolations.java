@@ -1,12 +1,12 @@
 /*
  * Decompiled with CFR 0.150.
- * 
+ *
  * Could not load the following classes:
  *  lunar.a.Bridge
  */
 package mchorse.mclib.utils;
 
-import lunar.a.Bridge;
+import com.moonsworth.lunar.client.bridge.Bridge;
 
 public class Interpolations {
     public static float lerp(float f, float f2, float f3) {
@@ -121,7 +121,7 @@ public class Interpolations {
     public static double bezierX(double d, double d2, double d3, double d4) {
         double d5 = d3;
         double d6 = Interpolations.bezier(0.0, d, d2, 1.0, d3);
-        double d7 = Math.copySign((double)0.1f, d3 - d6);
+        double d7 = Math.copySign(0.1f, d3 - d6);
         while (Math.abs(d3 - d6) > d4) {
             double d8 = d7;
             d6 = Interpolations.bezier(0.0, d, d2, 1.0, d5 += d7);
@@ -132,7 +132,7 @@ public class Interpolations {
     }
 
     public static double bezierX(double d, double d2, float f) {
-        return Interpolations.bezierX(d, d2, (double)f, (double)5.0E-4f);
+        return Interpolations.bezierX(d, d2, f, 5.0E-4f);
     }
 
     public static double bezier(double d, double d2, double d3, double d4, double d5) {

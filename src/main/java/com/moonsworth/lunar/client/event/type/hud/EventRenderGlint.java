@@ -2,13 +2,14 @@ package com.moonsworth.lunar.client.event.type.hud;
 
 import com.moonsworth.lunar.bridge.minecraft.client.entity.EntityBridge;
 import com.moonsworth.lunar.bridge.minecraft.client.resources.model.BuiltInModelBridge;
+import com.moonsworth.lunar.bridge.minecraft.client.resources.model.IBakedModelBridge;
 import com.moonsworth.lunar.bridge.minecraft.item.ItemStackBridge;
 import com.moonsworth.lunar.client.event.CancellableEvent;
 
 public class EventRenderGlint
-extends CancellableEvent {
+    extends CancellableEvent {
     public final Where lIlIlIlIlIIlIIlIIllIIIIIl;
-    public final BuiltInModelBridge IlllIIIIIIlllIlIIlllIlIIl;
+    public final IBakedModelBridge IlllIIIIIIlllIlIIlllIlIIl;
     public final EntityBridge lIllIlIIIlIIIIIIIlllIlIll;
     public final ItemStackBridge llIlllIIIllllIIlllIllIIIl;
 
@@ -16,7 +17,7 @@ extends CancellableEvent {
         return this.lIlIlIlIlIIlIIlIIllIIIIIl;
     }
 
-    public BuiltInModelBridge IlllIIIIIIlllIlIIlllIlIIl() {
+    public IBakedModelBridge IlllIIIIIIlllIlIIlllIlIIl() {
         return this.IlllIIIIIIlllIlIIlllIlIIl;
     }
 
@@ -28,17 +29,17 @@ extends CancellableEvent {
         return this.llIlllIIIllllIIlllIllIIIl;
     }
 
-    public EventRenderGlint(Where where, BuiltInModelBridge builtInModelBridge, EntityBridge entityBridge, ItemStackBridge itemStackBridge) {
+    public EventRenderGlint(Where where, IBakedModelBridge bakedModelBridge, EntityBridge entityBridge, ItemStackBridge itemStackBridge) {
         this.lIlIlIlIlIIlIIlIIllIIIIIl = where;
-        this.IlllIIIIIIlllIlIIlllIlIIl = builtInModelBridge;
+        this.IlllIIIIIIlllIlIIlllIlIIl = bakedModelBridge;
         this.lIllIlIIIlIIIIIIIlllIlIll = entityBridge;
         this.llIlllIIIllllIIlllIllIIIl = itemStackBridge;
     }
 
-    public static enum Where {
+    public enum Where {
         lIlIlIlIlIIlIIlIIllIIIIIl, // EQUIPPED_ARMOR
         IlllIIIIIIlllIlIIlllIlIIl, // ITEM
-        lIllIlIIIlIIIIIIIlllIlIll; // GUI
+        lIllIlIIIlIIIIIIIlllIlIll // GUI
 
     }
 }

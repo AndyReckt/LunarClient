@@ -8,21 +8,21 @@ import com.moonsworth.lunar.client.json.file.ItemSetLoader;
 import com.moonsworth.lunar.client.ref.Ref;
 import com.moonsworth.lunar.client.ui.screen.AbstractUIScreen;
 import com.moonsworth.lunar.client.ui.screen.type.overlay.FriendsUIScreen;
-import com.moonsworth.lunar.client.websocket.FriendProfile;
+import com.moonsworth.lunar.client.profile.FriendProfile;
+import com.moonsworth.lunar.client.websocket.packet.WSPacketClientFriendRemove;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class PlayerHeadManager
-extends ItemSetLoader<FriendProfile> {
-    public static final Map lIlIlIlIlIIlIIlIIllIIIIIl = new HashMap();
-    public final Map IlllIIIIIIlllIlIIlllIlIIl = new ConcurrentHashMap();
+public class PlayerHeadManager extends ItemSetLoader<FriendProfile> {
+    public static final Map<String, ResourceLocationBridge> lIlIlIlIlIIlIIlIIllIIIIIl = new HashMap<>();
+    public final Map<FriendProfile, List<com.moonsworth.lunar.client.websocket.lIllIlIIIlIIIIIIIlllIlIll>> IlllIIIIIIlllIlIIlllIlIIl = new ConcurrentHashMap<>();
 
     @Override
-    public Set lIlIlIlIlIIlIIlIIllIIIIIl() {
-        return new HashSet();
+    public Set<FriendProfile> lIlIlIlIlIIlIIlIIllIIIIIl() {
+        return new HashSet<>();
     }
 
     public FriendProfile lIlIlIlIlIIlIIlIIllIIIIIl(UUID uUID) {
@@ -57,7 +57,7 @@ extends ItemSetLoader<FriendProfile> {
         FriendProfile profile = this.lIlIlIlIlIIlIIlIIllIIIIIl(uUID);
         if (profile != null && this.IlllIIIIIIlllIlIIlllIlIIl.containsKey(profile)) {
             int n = 0;
-            for (lIllIlIIIlIIIIIIIlllIlIll lIllIlIIIlIIIIIIIlllIlIll2 : (List)this.IlllIIIIIIlllIlIIlllIlIIl.get(profile)) {
+            for (com.moonsworth.lunar.client.websocket.lIllIlIIIlIIIIIIIlllIlIll lIllIlIIIlIIIIIIIlllIlIll2 : this.IlllIIIIIIlllIlIIlllIlIIl.get(profile)) {
                 if (lIllIlIIIlIIIIIIIlllIlIll2.IlIlIlllllIlIIlIlIlllIlIl()) continue;
                 ++n;
             }
@@ -69,28 +69,28 @@ extends ItemSetLoader<FriendProfile> {
     public void lIlIlIlIlIIlIIlIIllIIIIIl(UUID uUID, String string) {
         FriendProfile profile = this.lIlIlIlIlIIlIIlIIllIIIIIl(uUID);
         if (profile != null) {
-            this.IlllIIIIIIlllIlIIlllIlIIl.putIfAbsent(profile, new CopyOnWriteArrayList());
-            if (((List)this.IlllIIIIIIlllIlIIlllIlIIl.get(profile)).size() > 200) {
-                ((List)this.IlllIIIIIIlllIlIIlllIlIIl.get(profile)).remove(0);
+            this.IlllIIIIIIlllIlIIlllIlIIl.putIfAbsent(profile, new CopyOnWriteArrayList<>());
+            if (this.IlllIIIIIIlllIlIIlllIlIIl.get(profile).size() > 200) {
+                this.IlllIIIIIIlllIlIIlllIlIIl.get(profile).remove(0);
             }
-            LunarClient.IIllIlIllIlIllIllIllIllII().IIIlIIIIIIllIIIIllIIIIlII().llIlllIIIllllIIlllIllIIIl(profile.llIlllIIIllllIIlllIllIIIl(), string);
-            ((List)this.IlllIIIIIIlllIlIIlllIlIIl.get(profile)).add(0, new lIllIlIIIlIIIIIIIlllIlIll(profile, string));
+            LunarClient.getInstance().IIIlIIIIIIllIIIIllIIIIlII().llIlllIIIllllIIlllIllIIIl(profile.llIlllIIIllllIIlllIllIIIl(), string);
+            this.IlllIIIIIIlllIlIIlllIlIIl.get(profile).add(0, new com.moonsworth.lunar.client.websocket.lIllIlIIIlIIIIIIIlllIlIll(profile, string));
         }
     }
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(FriendProfile profile, UUID uUID, String string) {
         FriendProfile profile2 = this.lIlIlIlIlIIlIIlIIllIIIIIl(uUID);
         if (profile2 != null) {
-            this.IlllIIIIIIlllIlIIlllIlIIl.putIfAbsent(profile2, new CopyOnWriteArrayList());
-            lIllIlIIIlIIIIIIIlllIlIll lIllIlIIIlIIIIIIIlllIlIll2 = new lIllIlIIIlIIIIIIIlllIlIll(profile, string);
-            ((List)this.IlllIIIIIIlllIlIIlllIlIIl.get(profile2)).add(0, lIllIlIIIlIIIIIIIlllIlIll2);
+            this.IlllIIIIIIlllIlIIlllIlIIl.putIfAbsent(profile2, new CopyOnWriteArrayList<>());
+            com.moonsworth.lunar.client.websocket.lIllIlIIIlIIIIIIIlllIlIll lIllIlIIIlIIIIIIIlllIlIll2 = new com.moonsworth.lunar.client.websocket.lIllIlIIIlIIIIIIIlllIlIll(profile, string);
+            this.IlllIIIIIIlllIlIIlllIlIIl.get(profile2).add(0, lIllIlIIIlIIIIIIIlllIlIll2);
             lIllIlIIIlIIIIIIIlllIlIll2.lIlIlIlIlIIlIIlIIllIIIIIl();
         }
         this.IlIlIlllllIlIIlIlIlllIlIl();
     }
 
-    public List IlllIIIIIIlllIlIIlllIlIIl(FriendProfile profile) {
-        return (List)this.IlllIIIIIIlllIlIIlllIlIIl.get(profile);
+    public List<com.moonsworth.lunar.client.websocket.lIllIlIIIlIIIIIIIlllIlIll> IlllIIIIIIlllIlIIlllIlIIl(FriendProfile profile) {
+        return this.IlllIIIIIIlllIlIIlllIlIIl.get(profile);
     }
 
     public void llllIIlIIlIIlIIllIIlIIllI() {
@@ -103,10 +103,10 @@ extends ItemSetLoader<FriendProfile> {
     }
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2, FriendProfile profile) {
-        this.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, profile.lIllIlIIIlIIIIIIIlllIlIll(), profile.lIlIlIlIlIIlIIlIIllIIIIIl(), 1.0f);
+        this.drawPlayerHead(f, f2, profile.lIllIlIIIlIIIIIIIlllIlIll(), profile.lIlIlIlIlIIlIIlIIllIIIIIl(), 1.0f);
     }
 
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2, UUID uUID, int n, float f3) {
+    public void drawPlayerHead(float f, float f2, UUID uUID, int n, float f3) {
         Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$color(1.0f, 1.0f, 1.0f, f3);
         AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(PlayerHeadManager.lIlIlIlIlIIlIIlIIllIIIIIl(uUID.toString()), 6.0f, f + 1.0f, f2 + 1.0f);
         AbstractUIScreen.lIllIlIIIlIIIIIIIlllIlIll(f + 1.0f, f2 + 1.0f, 12.0f, 12.0f, 4.0f, n);
@@ -114,12 +114,12 @@ extends ItemSetLoader<FriendProfile> {
 
     public static ResourceLocationBridge lIlIlIlIlIIlIIlIIllIIIIIl(String string) {
         if (!lIlIlIlIlIIlIIlIIllIIIIIl.containsKey(string)) {
-            ThreadDownloadImageDataBridge threadDownloadImageDataBridge = Bridge.llIlllIIIllllIIlllIllIIIl().initThreadDownloadImageData(null, "https://minotar.net/helm/" + string + "/32.png", Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation("lunar", "steve.png"));
-            ResourceLocationBridge resourceLocationBridge = Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation("lunar", "download/heads/" + string + ".png");
-            Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getTextureManager().bridge$loadTexture(resourceLocationBridge, threadDownloadImageDataBridge);
+            ThreadDownloadImageDataBridge threadDownloadImageDataBridge = Bridge.getInstance().initThreadDownloadImageData(null, "https://minotar.net/helm/" + string + "/32.png", Bridge.getInstance().initResourceLocation("lunar", "steve.png"));
+            ResourceLocationBridge resourceLocationBridge = Bridge.getInstance().initResourceLocation("lunar", "download/heads/" + string + ".png");
+            Ref.getMinecraft().bridge$getTextureManager().bridge$loadTexture(resourceLocationBridge, threadDownloadImageDataBridge);
             lIlIlIlIlIIlIIlIIllIIIIIl.put(string, resourceLocationBridge);
             return resourceLocationBridge;
         }
-        return (ResourceLocationBridge)lIlIlIlIlIIlIIlIIllIIIIIl.get(string);
+        return lIlIlIlIlIIlIIlIIllIIIIIl.get(string);
     }
 }

@@ -1,5 +1,6 @@
 package com.moonsworth.lunar.client.cosmetic.de;
 
+import com.moonsworth.lunar.bridge.current.MatrixStackBridge;
 import com.moonsworth.lunar.bridge.minecraft.util.ResourceLocationBridge;
 
 import java.util.function.BiConsumer;
@@ -9,7 +10,7 @@ public class IlllIIIIIIlllIlIIlllIlIIl {
     public final BiConsumer IlllIIIIIIlllIlIIlllIlIIl;
     public boolean lIllIlIIIlIIIIIIIlllIlIll = false;
 
-    public IlllIIIIIIlllIlIIlllIlIIl(ResourceLocationBridge resourceLocationBridge, BiConsumer biConsumer, boolean bl) {
+    public IlllIIIIIIlllIlIIlllIlIIl(ResourceLocationBridge resourceLocationBridge, BiConsumer<MatrixStackBridge, com.moonsworth.lunar.bridge.current.lIllIlIIIlIIIIIIIlllIlIll> biConsumer, boolean bl) {
         this.lIlIlIlIlIIlIIlIIllIIIIIl = resourceLocationBridge;
         this.IlllIIIIIIlllIlIIlllIlIIl = biConsumer;
         this.lIllIlIIIlIIIIIIIlllIlIll = bl;

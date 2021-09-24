@@ -1,14 +1,3 @@
-/*
- * Decompiled with CFR 0.150.
- * 
- * Could not load the following classes:
- *  com.google.gson.JsonDeserializationContext
- *  com.google.gson.JsonDeserializer
- *  com.google.gson.JsonElement
- *  com.google.gson.JsonObject
- *  com.google.gson.JsonSerializationContext
- *  com.google.gson.JsonSerializer
- */
 package mchorse.emoticons.skin_n_bones.api.animation.json;
 
 import com.google.gson.JsonDeserializationContext;
@@ -21,9 +10,7 @@ import java.lang.reflect.Type;
 import mchorse.emoticons.skin_n_bones.api.animation.AnimationMeshConfig;
 import mchorse.mclib.utils.resources.RLUtils;
 
-public class AnimationMeshConfigAdapter
-implements JsonDeserializer,
-JsonSerializer {
+public class AnimationMeshConfigAdapter implements JsonDeserializer<AnimationMeshConfig>, JsonSerializer<AnimationMeshConfig> {
     public AnimationMeshConfig deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) {
         if (!jsonElement.isJsonObject()) {
             return null;
@@ -60,11 +47,11 @@ JsonSerializer {
             jsonObject.add("texture", RLUtils.writeJson(animationMeshConfig.texture));
         }
         jsonObject.addProperty("filtering", animationMeshConfig.filtering == 9729 ? "linear" : "nearest");
-        jsonObject.addProperty("normals", Boolean.valueOf(animationMeshConfig.normals));
-        jsonObject.addProperty("smooth", Boolean.valueOf(animationMeshConfig.smooth));
-        jsonObject.addProperty("visible", Boolean.valueOf(animationMeshConfig.visible));
-        jsonObject.addProperty("lighting", Boolean.valueOf(animationMeshConfig.lighting));
-        jsonObject.addProperty("color", (Number)animationMeshConfig.color);
+        jsonObject.addProperty("normals", animationMeshConfig.normals);
+        jsonObject.addProperty("smooth", animationMeshConfig.smooth);
+        jsonObject.addProperty("visible", animationMeshConfig.visible);
+        jsonObject.addProperty("lighting", animationMeshConfig.lighting);
+        jsonObject.addProperty("color", animationMeshConfig.color);
         return jsonObject;
     }
 }

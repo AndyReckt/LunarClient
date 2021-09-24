@@ -3,38 +3,37 @@ package com.moonsworth.lunar.bridge.minecraft.client.network;
 import io.netty.buffer.ByteBuf;
 
 public interface PacketBufferBridge {
-    public ByteBuf bridge$writeInt(int var1);
+    ByteBuf bridge$writeInt(int var1);
 
-    public int bridge$readInt();
+    int bridge$readInt();
 
-    public void bridge$writeString(String var1);
+    void bridge$writeString(String var1);
 
-    public String bridge$readStringFromBuffer(int var1);
+    String bridge$readStringFromBuffer(int var1);
 
-    public ByteBuf bridge$writeLong(long var1);
+    ByteBuf bridge$writeLong(long var1);
 
-    public long bridge$readLong();
+    long bridge$readLong();
 
-    public boolean bridge$readBoolean();
+    boolean bridge$readBoolean();
 
-    public void bridge$writeVarIntToBuffer(int var1);
+    void bridge$writeVarIntToBuffer(int var1);
 
-    public int bridge$readVarIntFromBuffer();
+    int bridge$readVarIntFromBuffer();
 
-    public ByteBuf bridge$writeShort(int var1);
+    ByteBuf bridge$writeShort(int var1);
 
-    public short bridge$readShort();
+    short bridge$readShort();
 
-    public ByteBuf bridge$writeBytes(byte[] var1);
+    ByteBuf bridge$writeBytes(byte[] var1);
 
-    public ByteBuf bridge$readBytes(byte[] var1);
+    ByteBuf bridge$readBytes(byte[] var1);
 
-    public float bridge$readFloat();
+    float bridge$readFloat();
 
-    public ByteBuf bridge$writeBoolean(boolean var1);
+    ByteBuf bridge$writeBoolean(boolean var1);
 
-    public int bridge$readableBytes();
+    int bridge$readableBytes();
 
-    public boolean bridge$release();
+    boolean bridge$release();
 }
- 

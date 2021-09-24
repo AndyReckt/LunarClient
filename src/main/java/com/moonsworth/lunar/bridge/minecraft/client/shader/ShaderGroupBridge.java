@@ -7,8 +7,8 @@ import java.util.List;
  * @since 10/07/2021 14:30
  */
 public interface ShaderGroupBridge {
-    public List<ShaderBridge> bridge$listShaders();
+    List<ShaderBridge> bridge$listShaders();
 
-    public String bridge$getShaderGroupName();
+    String bridge$getShaderGroupName();
 }
 

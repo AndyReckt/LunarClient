@@ -3,28 +3,28 @@ package com.moonsworth.lunar.client.feature.hud;
 import com.moonsworth.lunar.bridge.minecraft.client.resources.I18n.I18nBridge;
 
 public enum ModuleCategory implements I18nBridge {
-    lIlIlIlIlIIlIIlIIllIIIIIl("all"),
-    IlllIIIIIIlllIlIIlllIlIIl("new"),
-    lIllIlIIIlIIIIIIIlllIlIll("hud"),
-    llIlllIIIllllIIlllIllIIIl("server"),
-    llllIIlIIlIIlIIllIIlIIllI("mechanic"),
-    IlIlIlllllIlIIlIlIlllIlIl("none");
+    ALL("all"),
+    NEW("new"),
+    HUD("hud"),
+    SERVER("server"),
+    MECHANIC("mechanic"),
+    NONE("none");
 
-    public String llIIIIIIIllIIllIlIllIIIIl;
+    public String label;
 
-    ModuleCategory(String var3) {
-        this.llIIIIIIIllIIllIlIllIIIIl = var3;
+    ModuleCategory(String label) {
+        this.label = label;
     }
 
     public String toString() {
-        return this.llIIIIIIIllIIllIlIllIIIIl;
+        return this.label;
     }
 
     public String getLanguagePath() {
         return "gui.components";
     }
 
-    public String lIlIlIlIlIIlIIlIIllIIIIIl() {
-        return this.llIIIIIIIllIIllIlIllIIIIl;
+    public String getLabel() {
+        return this.label;
     }
 }

@@ -13,7 +13,7 @@ public enum IlllIIIIIIlllIlIIlllIlIIl {
         return 7;
     }),
     lIllIlIIIlIIIIIIIlllIlIll("sbaVersion", () -> {
-        return ((ThirdPartyMod)LunarClient.IIllIlIllIlIllIllIllIllII().IlIlIlIlIIIlIIlIIlllIllIl().get("skyblockaddons")).lIllIlIIIlIIIIIIIlllIlIll();
+        return LunarClient.getInstance().IlIlIlIlIIIlIIlIIlllIllIl().get("skyblockaddons").lIllIlIIIlIIIIIIIlllIlIll();
     });
 
     public final String llIlllIIIllllIIlllIllIIIl;
@@ -50,4 +50,3 @@ public enum IlllIIIIIIlllIlIIlllIlIIl {
         this.llllIIlIIlIIlIIllIIlIIllI = var4;
     }
 }
- 

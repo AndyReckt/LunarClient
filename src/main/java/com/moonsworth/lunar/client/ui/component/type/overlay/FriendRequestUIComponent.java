@@ -4,94 +4,95 @@ import com.moonsworth.lunar.LunarClient;
 import com.moonsworth.lunar.bridge.lunar.input.KeyType;
 import com.moonsworth.lunar.bridge.minecraft.util.ResourceLocationBridge;
 import com.moonsworth.lunar.client.bridge.Bridge;
+import com.moonsworth.lunar.client.ref.Ref;
 import com.moonsworth.lunar.client.registry.FontRegistry;
 import com.moonsworth.lunar.client.ui.component.UIComponent;
 import com.moonsworth.lunar.client.ui.ease.ColorEase;
-import com.moonsworth.lunar.client.websocket.FriendProfile;
+import com.moonsworth.lunar.client.profile.FriendProfile;
+import com.moonsworth.lunar.client.ui.screen.type.overlay.FriendsUIScreen;
+import com.moonsworth.lunar.client.websocket.packet.WSPacketClientFriendRequestUpdate;
 
-public class FriendRequestUIComponent
-extends AbstractFriendUIComponent {
-    public ColorEase IlllIIIIIIlllIlIIlllIlIIl;
-    public static final ResourceLocationBridge lIllIlIIIlIIIIIIIlllIlIll = Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation("lunar", "icons/assets/accept-10x10.png");
-    public static final ResourceLocationBridge llIlIIIllIIlIllIllIllllIl = Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation("lunar", "icons/assets/deny-10x10.png");
-    public final lIllIlIIIlIIIIIIIlllIlIll IllIllIIIllIIIlIlIlIIIIll;
-    public final lIllIlIIIlIIIIIIIlllIlIll IIlIllIlllllllIIlIIIllIIl;
-    public final boolean lIIlIlllIlIlIIIlllIIlIIII;
+public class FriendRequestUIComponent extends AbstractFriendUIComponent {
+    public ColorEase ease;
+    public static final ResourceLocationBridge acceptIcon = Bridge.getInstance().initResourceLocation("lunar", "icons/assets/accept-10x10.png");
+    public static final ResourceLocationBridge denyIcon = Bridge.getInstance().initResourceLocation("lunar", "icons/assets/deny-10x10.png");
+    public final FriendRequestButtonUIComponent acceptButton;
+    public final FriendRequestButtonUIComponent denyButton;
+    public final boolean isOutbound;
 
-    public FriendRequestUIComponent(UIComponent uIComponent, FriendProfile websocketProfile, boolean bl) {
-        super(uIComponent, websocketProfile);
-        this.lIIlIlllIlIlIIIlllIIlIIII = bl;
-        this.IlllIIIIIIlllIlIIlllIlIIl = new ColorEase(0, 1075649821);
-        this.IllIllIIIllIIIlIlIlIIIIll = new lIllIlIIIlIIIIIIIlllIlIll(this, lIllIlIIIlIIIIIIIlllIlIll, -1891257749, -12209557);
-        this.IIlIllIlllllllIIlIIIllIIl = new lIllIlIIIlIIIIIIIlllIlIll(this, llIlIIIllIIlIllIllIllllIl, -1879953071, -904879);
-        this.IllIllIIIllIIIlIlIlIIIIll.lIlIlIlIlIIlIIlIIllIIIIIl((float f, float f2, int n) -> {
-            Ref.lIlIlIlIlIIlIIlIIllIIIIIl(new WSPacketClientFriendRequestUpdate(true, websocketProfile.lIllIlIIIlIIIIIIIlllIlIll().toString()));
-            this.lIlIIIIIIlIIIllllIllIIlII.IllIIIlllIIIlIlllIlIIlIII().lIlIlIlIlIIlIIlIIllIIIIIl(websocketProfile.lIllIlIIIlIIIIIIIlllIlIll());
+    public FriendRequestUIComponent(UIComponent parent, FriendProfile friend, boolean bl) {
+        super(parent, friend);
+        this.isOutbound = bl;
+        this.ease = new ColorEase(0, 1075649821);
+        this.acceptButton = new FriendRequestButtonUIComponent(this, acceptIcon, -1891257749, -12209557);
+        this.denyButton = new FriendRequestButtonUIComponent(this, denyIcon, -1879953071, -904879);
+        this.acceptButton.onMouseClick((mouseX, mouseY, button) -> {
+            Ref.lIlIlIlIlIIlIIlIIllIIIIIl(new WSPacketClientFriendRequestUpdate(true, friend.lIllIlIIIlIIIIIIIlllIlIll().toString()));
+            this.lc.IllIIIlllIIIlIlllIlIIlIII().lIlIlIlIlIIlIIlIIllIIIIIl(friend.lIllIlIIIlIIIIIIIlllIlIll());
             return true;
         });
-        this.IIlIllIlllllllIIlIIIllIIl.lIlIlIlIlIIlIIlIIllIIIIIl((float f, float f2, int n) -> {
+        this.denyButton.onMouseClick((mouseX, mouseY, button) -> {
             if (bl) {
-                Ref.lIlIlIlIlIIlIIlIIllIIIIIl(new WSPacketClientFriendRequestUpdate(false, websocketProfile.lIllIlIIIlIIIIIIIlllIlIll().toString()));
-                this.lIlIIIIIIlIIIllllIllIIlII.IllIIIlllIIIlIlllIlIIlIII().IlIlIlllllIlIIlIlIlllIlIl().remove(websocketProfile);
+                Ref.lIlIlIlIlIIlIIlIIllIIIIIl(new WSPacketClientFriendRequestUpdate(false, friend.lIllIlIIIlIIIIIIIlllIlIll().toString()));
+                this.lc.IllIIIlllIIIlIlllIlIIlIII().IlIlIlllllIlIIlIlIlllIlIl().remove(friend);
                 FriendsUIScreen.llIIIIIIIllIIllIlIllIIIIl().IlllllIlIIIlIIlIIllIIlIll();
                 return true;
             }
-            Ref.lIlIlIlIlIIlIIlIIllIIIIIl(new WSPacketClientFriendRequestUpdate(false, websocketProfile.lIllIlIIIlIIIIIIIlllIlIll().toString()));
-            this.lIlIIIIIIlIIIllllIllIIlII.IllIIIlllIIIlIlllIlIIlIII().lIlIlIlIlIIlIIlIIllIIIIIl(websocketProfile.lIllIlIIIlIIIIIIIlllIlIll());
+            Ref.lIlIlIlIlIIlIIlIIllIIIIIl(new WSPacketClientFriendRequestUpdate(false, friend.lIllIlIIIlIIIIIIIlllIlIll().toString()));
+            this.lc.IllIIIlllIIIlIlllIlIIlIII().lIlIlIlIlIIlIIlIIllIIIIIl(friend.lIllIlIIIlIIIIIIIlllIlIll());
             return true;
         });
     }
 
-    public FriendRequestUIComponent(UIComponent uIComponent, FriendProfile websocketProfile) {
-        this(uIComponent, websocketProfile, false);
+    public FriendRequestUIComponent(UIComponent parent, FriendProfile friend) {
+        this(parent, friend, false);
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2, float f3, float f4) {
-        super.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, f3, f4);
-        this.IIlIllIlllllllIIlIIIllIIl.lIlIlIlIlIIlIIlIIllIIIIIl(f + f3 - 20.0f, f2, 10.0f, f4);
-        if (this.lIIlIlllIlIlIIIlllIIlIIII) {
+    public void setPositionAndSize(float x, float y, float width, float height) {
+        super.setPositionAndSize(x, y, width, height);
+        this.denyButton.setPositionAndSize(x + width - 20.0f, y, 10.0f, height);
+        if (this.isOutbound) {
             return;
         }
-        this.IllIllIIIllIIIlIlIlIIIIll.lIlIlIlIlIIlIIlIIllIIIIIl(f + f3 - 30.0f, f2, 10.0f, f4);
+        this.acceptButton.setPositionAndSize(x + width - 30.0f, y, 10.0f, height);
     }
 
     @Override
-    public boolean lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2, int n) {
-        if (this.IIlIllIlllllllIIlIIIllIIl.IlllIIIIIIlllIlIIlllIlIIl(f, f2)) {
-            this.IIlIllIlllllllIIlIIIllIIl.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, n);
+    public boolean onMouseClicked(float mouseX, float mouseY, int mouseButton) {
+        if (this.denyButton.mouseInside(mouseX, mouseY)) {
+            this.denyButton.onMouseClicked(mouseX, mouseY, mouseButton);
         }
-        if (this.lIIlIlllIlIlIIIlllIIlIIII) {
-            return super.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, n);
+        if (this.isOutbound) {
+            return super.onMouseClicked(mouseX, mouseY, mouseButton);
         }
-        if (this.IllIllIIIllIIIlIlIlIIIIll.IlllIIIIIIlllIlIIlllIlIIl(f, f2)) {
-            this.IllIllIIIllIIIlIlIlIIIIll.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, n);
+        if (this.acceptButton.mouseInside(mouseX, mouseY)) {
+            this.acceptButton.onMouseClicked(mouseX, mouseY, mouseButton);
         }
-        return super.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, n);
+        return super.onMouseClicked(mouseX, mouseY, mouseButton);
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl() {
+    public void onUpdateScreen() {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2, boolean bl) {
-        LunarClient.IIllIlIllIlIllIllIllIllII().lllllIllIlIIlIIlIIIlllIlI().lIlIlIlIlIIlIIlIIllIIIIIl(this.x + 8.0f, this.y + 3.0f, this.lIlIlIlIlIIlIIlIIllIIIIIl);
-        FontRegistry.llIIIlllIIlllIllllIlIllIl().lIlIlIlIlIIlIIlIIllIIIIIl(this.lIlIlIlIlIIlIIlIIllIIIIIl.llIlllIIIllllIIlllIllIIIl().toUpperCase(), this.x + 28.0f, this.y + 3.5f, this.lIlIlIlIlIIlIIlIIllIIIIIl.lIlIlIlIlIIlIIlIIllIIIIIl());
+    public void drawComponent(float mouseX, float mouseY, boolean bl) {
+        LunarClient.getInstance().getPlayerHeadManager().lIlIlIlIlIIlIIlIIllIIIIIl(this.x + 8.0f, this.y + 3.0f, this.friend);
+        FontRegistry.llIIIlllIIlllIllllIlIllIl().lIlIlIlIlIIlIIlIIllIIIIIl(this.friend.llIlllIIIllllIIlllIllIIIl().toUpperCase(), this.x + 28.0f, this.y + 3.5f, this.friend.lIlIlIlIlIIlIIlIIllIIIIIl());
         FontRegistry.IlllllIlIIIlIIlIIllIIlIll().lIlIlIlIlIIlIIlIIllIIIIIl("Friend Request", this.x + 28.0f, this.y + 10.5f, -4210753);
-        this.IIlIllIlllllllIIlIIIllIIl.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, bl);
-        if (this.lIIlIlllIlIlIIIlllIIlIIII) {
+        this.denyButton.drawComponent(mouseX, mouseY, bl);
+        if (this.isOutbound) {
             return;
         }
-        this.IllIllIIIllIIIlIlIlIIIIll.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, bl);
+        this.acceptButton.drawComponent(mouseX, mouseY, bl);
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(char c, KeyType keyType) {
+    public void onKeyTyped(char c, KeyType keyType) {
     }
 
     @Override
-    public void IlllIIIIIIlllIlIIlllIlIIl() {
+    public void onGuiClosed() {
     }
 }
- 

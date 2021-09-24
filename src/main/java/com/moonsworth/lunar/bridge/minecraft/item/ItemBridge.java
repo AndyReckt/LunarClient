@@ -1,34 +1,36 @@
 package com.moonsworth.lunar.bridge.minecraft.item;
 
+import com.moonsworth.lunar.bridge.minecraft.client.renderer.texture.TextureAtlasSpriteBridge;
+
 import java.util.Map;
 import java.util.Optional;
 
 public interface ItemBridge {
-    public boolean bridge$isItemPotion();
+    boolean bridge$isItemPotion();
 
-    public boolean bridge$isItemSoup();
+    boolean bridge$isItemSoup();
 
-    default public boolean bridge$isItemSkull() {
+default boolean bridge$isItemSkull() {
         return false;
     }
 
-    public boolean bridge$hasEffect(ItemStackBridge var1);
+    boolean bridge$hasEffect(ItemStackBridge var1);
 
-    public Integer bridge$getColorFromItemStack(ItemStackBridge var1, int var2);
+    Integer bridge$getColorFromItemStack(ItemStackBridge var1, int var2);
 
-    default public Optional lIlIlIlIlIIlIIlIIllIIIIIl(ItemStackBridge itemStackBridge, int n) {
+default Optional<TextureAtlasSpriteBridge> lIlIlIlIlIIlIIlIIllIIIIIl(ItemStackBridge itemStackBridge, int n) {
         return Optional.empty();
     }
 
-    default public boolean lIlIlIlIlIIlIIlIIllIIIIIl() {
+default boolean lIlIlIlIlIIlIIlIIllIIIIIl() {
         return false;
     }
 
-    public boolean bridge$isItemBlock();
+    boolean bridge$isItemBlock();
 
-    public String bridge$getRegistryName();
+    String bridge$getRegistryName();
 
-    public boolean bridge$isRepairable(ItemStackBridge var1, ItemStackBridge var2);
+    boolean bridge$isRepairable(ItemStackBridge var1, ItemStackBridge var2);
 
-    public Map bridge$getEnchantments(ItemStackBridge var1);
+    Map bridge$getEnchantments(ItemStackBridge var1);
 }

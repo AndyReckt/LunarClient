@@ -3,8 +3,7 @@ package com.moonsworth.lunar.client.event.type.hud;
 import com.moonsworth.lunar.bridge.minecraft.client.entity.item.EntityItemBridge;
 import com.moonsworth.lunar.client.event.Event;
 
-public class RenderEntityItemScaleEvent
-extends Event {
+public class RenderEntityItemScaleEvent extends Event {
     public final EntityItemBridge lIlIlIlIlIIlIIlIIllIIIIIl;
     public boolean IlllIIIIIIlllIlIIlllIlIIl = false;
     public boolean lIllIlIIIlIIIIIIIlllIlIll = false;

@@ -25,7 +25,7 @@ public enum CosmeticType {
         this.llIIIIIIIllIIllIlIllIIIIl = var3;
         this.lIIIllIllIIllIlllIlIIlllI = var4;
         this.IlllllIlIIIlIIlIIllIIlIll = var5;
-        this.llIIlIlIIIllIlIlIlIIlIIll = Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation("lunar", var6);
+        this.llIIlIlIIIllIlIlIlIIlIIll = Bridge.getInstance().initResourceLocation("lunar", var6);
         this.llIIIlllIIlllIllllIlIllIl = var7;
         this.lllllIllIllIllllIlIllllII = var8;
         this.lllIIIIIlllIIlIllIIlIIIlI = new BooleanSetting(var3, true);
@@ -33,7 +33,7 @@ public enum CosmeticType {
     }
 
     CosmeticType(String var3, String var4, String var5, int var6, int var7, String var8) {
-        this(var3, var4, (CosmeticType)null, var5, var6, var7, var8);
+        this(var3, var4, null, var5, var6, var7, var8);
     }
 
     public String lIlIlIlIlIIlIIlIIllIIIIIl() {

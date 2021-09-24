@@ -10,7 +10,7 @@ import java.lang.reflect.Field;
 @Retention(value = RetentionPolicy.RUNTIME)
 public @interface Debug {
 
-    public static class DebugHelper {
+    class DebugHelper {
         public static boolean lIlIlIlIlIIlIIlIIllIIIIIl(Object object, Object object2) {
             for (Field field : object2.getClass().getDeclaredFields()) {
                 try {
@@ -31,4 +31,3 @@ public @interface Debug {
         }
     }
 }
- 

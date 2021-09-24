@@ -1,17 +1,11 @@
-/*
- * Decompiled with CFR 0.150.
- */
 package mchorse.emoticons.skin_n_bones.api.bobj;
 
 import java.util.ArrayList;
 import java.util.List;
-import mchorse.emoticons.skin_n_bones.api.bobj.BOBJBone;
-import mchorse.emoticons.skin_n_bones.api.bobj.BOBJChannel;
-import mchorse.emoticons.skin_n_bones.api.bobj.BOBJKeyframe;
 
 public class BOBJGroup {
     public String name;
-    public List channels = new ArrayList();
+    public List<BOBJChannel> channels = new ArrayList<>();
 
     public BOBJGroup(String string) {
         this.name = string;
@@ -34,7 +28,7 @@ public class BOBJGroup {
         for (BOBJChannel bOBJChannel : this.channels) {
             int n2 = bOBJChannel.keyframes.size();
             if (n2 <= 0) continue;
-            n = Math.max(n, ((BOBJKeyframe)bOBJChannel.keyframes.get((int)(n2 - 1))).frame);
+            n = Math.max(n, bOBJChannel.keyframes.get(n2 - 1).frame);
         }
         return n;
     }

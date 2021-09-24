@@ -3,28 +3,35 @@ package com.moonsworth.lunar.bridge.minecraft.potion;
 import com.moonsworth.lunar.bridge.minecraft.item.ItemStackBridge;
 
 public interface PotionBridge {
-    public PotionBridge bridge$moveSlowdown();
+    PotionBridge bridge$moveSlowdown();
 
-    public PotionBridge bridge$moveSpeed();
+    PotionBridge bridge$moveSpeed();
 
-    public PotionBridge bridge$confusion();
+    PotionBridge bridge$confusion();
 
-    public PotionBridge bridge$heal();
+    PotionBridge bridge$heal();
 
-    public PotionBridge bridge$blindness();
+    PotionBridge bridge$blindness();
 
-    public PotionBridge bridge$getPotionTypes(int var1);
+    boolean bridge$isBadEffect();
 
-    public PotionEffectBridge bridge$initPotionEffect(int var1, int var2, int var3);
+    boolean bridge$hasStatusIcon();
 
-    public String bridge$translateToLocal(String var1);
+    int bridge$getStatusIconIndex();
 
-    public String bridge$getDurationString(PotionEffectBridge var1);
+    int bridge$getID();
 
-    public boolean bridge$isPotionSplash(ItemStackBridge var1);
+    PotionBridge bridge$getPotionTypes(int var1);
 
-    default public boolean lIlIlIlIlIIlIIlIIllIIIIIl(ItemStackBridge itemStackBridge) {
+    PotionEffectBridge bridge$initPotionEffect(int var1, int var2, int var3);
+
+    String bridge$translateToLocal(String var1);
+
+    String bridge$getDurationString(PotionEffectBridge var1);
+
+    boolean bridge$isPotionSplash(ItemStackBridge var1);
+
+default boolean lIlIlIlIlIIlIIlIIllIIIIIl(ItemStackBridge itemStackBridge) {
         return false;
     }
 }
- 

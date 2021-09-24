@@ -31,8 +31,8 @@ public class KeystrokesKey {
         float f4;
         float f5;
         boolean bl2;
-        MinecraftBridge minecraftBridge = Ref.lIlIlIlIlIIlIIlIIllIIIIIl();
-        boolean bl3 = bl2 = Bridge.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl(this.IlllIIIIIIlllIlIIlllIlIIl.bridge$getKey()) && Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getCurrentScreen() == null;
+        MinecraftBridge minecraftBridge = Ref.getMinecraft();
+        boolean bl3 = bl2 = Bridge.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl(this.IlllIIIIIIlllIlIIlllIlIIl.bridge$getKey()) && Ref.getMinecraft().bridge$getCurrentScreen() == null;
         if (bl2 && !this.llllIIlIIlIIlIIllIIlIIllI) {
             this.llllIIlIIlIIlIIllIIlIIllI = true;
             this.IlIlIlllllIlIIlIlIlllIlIl = System.currentTimeMillis();
@@ -63,25 +63,25 @@ public class KeystrokesKey {
             colorSetting5.lIlIlIlIlIIlIIlIIllIIIIIl(f + this.lIllIlIIIlIIIIIIIlllIlIll / 2.0f - this.lIllIlIIIlIIIIIIIlllIlIll / 6.0f, f2 + 3.0f, this.lIllIlIIIlIIIIIIIlllIlIll / 3.0f, 1.0f, bl);
         } else {
             boolean bl4;
-            KeyStrokesMod keyStrokesMod = Ref.IlllIIIIIIlllIlIIlllIlIIl().lllllIllIllIllllIlIllllII().llIIIlllIIlllIllllIlIllIl();
+            KeyStrokesMod keyStrokesMod = Ref.getLC().lllllIllIllIllllIlIllllII().llIIIlllIIlllIllllIlIllIl();
             f5 = f + this.lIllIlIIIlIIIIIIIlllIlIll / 2.0f;
-            f4 = f2 + this.llIlllIIIllllIIlllIllIIIl / 2.0f - (float)(Ref.IlllllIlIIIlIIlIIllIIlIll().lIlIlIlIlIIlIIlIIllIIIIIl() / 2) + 1.0f;
-            boolean bl5 = this.IlllIIIIIIlllIlIIlllIlIIl.bridge$getKey() == minecraftBridge.bridge$getGameSettings().bridge$keyBindAttack().bridge$getKey() && (Boolean)keyStrokesMod.IIIIIIIIIIIIIIIllllIIlIIl().llIlllIIIllllIIlllIllIIIl() != false;
-            boolean bl6 = bl4 = this.IlllIIIIIIlllIlIIlllIlIIl.bridge$getKey() == minecraftBridge.bridge$getGameSettings().bridge$keyBindUseItem().bridge$getKey() && (Boolean)keyStrokesMod.llIIIIllIlIIlIlIIlllIllIl().llIlllIIIllllIIlllIllIIIl() != false;
+            f4 = f2 + this.llIlllIIIllllIIlllIllIIIl / 2.0f - (float)(Ref.getFontRenderer().lIlIlIlIlIIlIIlIIllIIIIIl() / 2) + 1.0f;
+            boolean bl5 = this.IlllIIIIIIlllIlIIlllIlIIl.bridge$getKey() == minecraftBridge.bridge$getGameSettings().bridge$keyBindAttack().bridge$getKey() && keyStrokesMod.IIIIIIIIIIIIIIIllllIIlIIl().llIlllIIIllllIIlllIllIIIl() != false;
+            boolean bl6 = bl4 = this.IlllIIIIIIlllIlIIlllIlIIl.bridge$getKey() == minecraftBridge.bridge$getGameSettings().bridge$keyBindUseItem().bridge$getKey() && keyStrokesMod.llIIIIllIlIIlIlIIlllIllIl().llIlllIIIllllIIlllIllIIIl() != false;
             if (bl5 || bl4) {
                 Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$pushMatrix();
                 f3 = 0.6f;
                 Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$scale(f3, f3, 0.0);
-                f4 = f2 + this.llIlllIIIllllIIlllIllIIIl - (float)Ref.IlllllIlIIIlIIlIIllIIlIll().lIlIlIlIlIIlIIlIIllIIIIIl() + 2.0f;
-                String string = Ref.IlllIIIIIIlllIlIIlllIlIIl().IlIlIllIIllllIllllllIIlIl().lIlIlIlIlIIlIIlIIllIIIIIl(bl5) + " CPS";
+                f4 = f2 + this.llIlllIIIllllIIlllIllIIIl - (float)Ref.getFontRenderer().lIlIlIlIlIIlIIlIIllIIIIIl() + 2.0f;
+                String string = Ref.getLC().IlIlIllIIllllIllllllIIlIl().lIlIlIlIlIIlIIlIIllIIIIIl(bl5) + " CPS";
                 if (bl) {
-                    Ref.IlllllIlIIIlIIlIIllIIlIll().lIlIlIlIlIIlIIlIIllIIIIIl(string, f5 / f3, f4 / f3, colorSetting5.lIlIlIlIlIIlIIlIIllIIIIIl(f5 + f4));
+                    Ref.getFontRenderer().lIlIlIlIlIIlIIlIIllIIIIIl(string, f5 / f3, f4 / f3, colorSetting5.lIlIlIlIlIIlIIlIIllIIIIIl(f5 + f4));
                 } else {
-                    Ref.IlllllIlIIIlIIlIIllIIlIll().IlllIIIIIIlllIlIIlllIlIIl(string, f5 / f3, f4 / f3, colorSetting5.lIlIlIlIlIIlIIlIIllIIIIIl(f5 + f4));
+                    Ref.getFontRenderer().IlllIIIIIIlllIlIIlllIlIIl(string, f5 / f3, f4 / f3, colorSetting5.lIlIlIlIlIIlIIlIIllIIIIIl(f5 + f4));
                 }
                 Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$scale(1.0, 1.0, 0.0);
                 Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$popMatrix();
-                f4 = f2 + this.llIlllIIIllllIIlllIllIIIl / 4.0f - (float)(Ref.IlllllIlIIIlIIlIIllIIlIll().lIlIlIlIlIIlIIlIIllIIIIIl() / 4);
+                f4 = f2 + this.llIlllIIIllllIIlllIllIIIl / 4.0f - (float)(Ref.getFontRenderer().lIlIlIlIlIIlIIlIIllIIIIIl() / 4);
             }
             if (bl) {
                 colorSetting5.lIlIlIlIlIIlIIlIIllIIIIIl(this.lIlIlIlIlIIlIIlIIllIIIIIl, f5, f4);
@@ -111,4 +111,3 @@ public class KeystrokesKey {
         return this.IlllIIIIIIlllIlIIlllIlIIl;
     }
 }
- 

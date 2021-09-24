@@ -2,17 +2,18 @@ package com.moonsworth.lunar.client.event.type.hud;
 
 import com.moonsworth.lunar.bridge.minecraft.client.entity.EntityLivingBaseBridge;
 import com.moonsworth.lunar.client.event.CancellableEvent;
+import com.moonsworth.lunar.client.util.NameLine;
 
 import java.util.List;
 
 public class RenderNameEvent
-extends CancellableEvent {
+    extends CancellableEvent {
     public final EntityLivingBaseBridge lIlIlIlIlIIlIIlIIllIIIIIl;
     public String IlllIIIIIIlllIlIIlllIlIIl;
     public final double lIllIlIIIlIIIIIIIlllIlIll;
     public final double llIlllIIIllllIIlllIllIIIl;
     public final double llllIIlIIlIIlIIllIIlIIllI;
-    public List IlIlIlllllIlIIlIlIlllIlIl;
+    public List<NameLine> IlIlIlllllIlIIlIlIlllIlIl;
 
     public EntityLivingBaseBridge lIlIlIlIlIIlIIlIIllIIIIIl() {
         return this.lIlIlIlIlIIlIIlIIllIIIIIl;
@@ -34,7 +35,7 @@ extends CancellableEvent {
         return this.llllIIlIIlIIlIIllIIlIIllI;
     }
 
-    public List IlIlIlllllIlIIlIlIlllIlIl() {
+    public List<NameLine> IlIlIlllllIlIIlIlIlllIlIl() {
         return this.IlIlIlllllIlIIlIlIlllIlIl;
     }
 
@@ -51,7 +52,7 @@ extends CancellableEvent {
         this.IlllIIIIIIlllIlIIlllIlIIl = string;
     }
 
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(List list) {
+    public void lIlIlIlIlIIlIIlIIllIIIIIl(List<NameLine> list) {
         this.IlIlIlllllIlIIlIlIlllIlIl = list;
     }
 }

@@ -39,7 +39,7 @@ public final class LanguageParser {
         return string2;
     }
 
-    public static String lIlIlIlIlIIlIIlIIllIIIIIl(String string) {
+    public static String normalize(String string) {
         return Normalizer.normalize(string, Normalizer.Form.NFD).replaceAll("[^A-Za-z0-9.]", "");
     }
 
@@ -47,4 +47,3 @@ public final class LanguageParser {
         throw new UnsupportedOperationException("This is a utility class and cannot be instantiated");
     }
 }
- 

@@ -7,13 +7,12 @@ import com.moonsworth.lunar.client.setting.CrosshairPreviewSetting;
 import com.moonsworth.lunar.client.ui.component.UIComponent;
 import com.moonsworth.lunar.client.ui.screen.AbstractUIScreen;
 
-public class CrosshairPreviewUIComponent
-extends AbstractDescritiveSettingUIComponent {
-    public static final ResourceLocationBridge[] lIlIlIlIlIIlIIlIIllIIIIIl = new ResourceLocationBridge[]{Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation("lunar", "previews/biome_0.png"), Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation("lunar", "previews/biome_1.png"), Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation("lunar", "previews/biome_2.png"), Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation("lunar", "previews/biome_3.png")};
+public class CrosshairPreviewUIComponent extends AbstractDescritiveSettingUIComponent {
+    public static final ResourceLocationBridge[] previews = new ResourceLocationBridge[] {Bridge.getInstance().initResourceLocation("lunar", "previews/biome_0.png"), Bridge.getInstance().initResourceLocation("lunar", "previews/biome_1.png"), Bridge.getInstance().initResourceLocation("lunar", "previews/biome_2.png"), Bridge.getInstance().initResourceLocation("lunar", "previews/biome_3.png")};
 
     public CrosshairPreviewUIComponent(CrosshairPreviewSetting crosshairPreviewSetting, UIComponent uIComponent) {
         super(crosshairPreviewSetting, uIComponent);
-        this.lIlIlIlIlIIlIIlIIllIIIIIl((float f, float f2, int n) -> {
+        this.onMouseClick((float f, float f2, int n) -> {
             if (f < this.x + this.width - 85.0f || f > this.x + this.width) {
                 return false;
             }
@@ -23,23 +22,23 @@ extends AbstractDescritiveSettingUIComponent {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl() {
+    public void onUpdateScreen() {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2, boolean bl) {
-        int n = Math.min(3, Math.max(0, (Integer)((CrosshairPreviewSetting)this.IlllIIIIIIlllIlIIlllIlIIl).llIlllIIIllllIIlllIllIIIl()));
+    public void drawComponent(float mouseX, float mouseY, boolean bl) {
+        int n = Math.min(3, Math.max(0, (Integer) this.setting.llIlllIIIllllIIlllIllIIIl()));
         Bridge.llIIIIIIIllIIllIlIllIIIIl().lIlIlIlIlIIlIIlIIllIIIIIl(-1);
         float f3 = this.width - 85.0f;
-        AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(lIlIlIlIlIIlIIlIIllIIIIIl[n], this.x, this.y, f3, this.height);
+        AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(previews[n], this.x, this.y, f3, this.height);
         for (int i = 0; i < 4; ++i) {
-            AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(lIlIlIlIlIIlIIlIIllIIIIIl[i], this.x + this.width - 85.0f, this.y + (float)i * this.height / 4.0f, 85.0f, this.height / 4.0f);
+            AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(previews[i], this.x + this.width - 85.0f, this.y + (float)i * this.height / 4.0f, 85.0f, this.height / 4.0f);
             if (n == i) {
                 this.lIlIlIlIlIIlIIlIIllIIIIIl(this.x + f3, this.y + (float)i * this.height / 4.0f, 85.0f, this.height / 4.0f - 1.0f, 1.0f, -10496);
             }
             Bridge.llIIIIIIIllIIllIlIllIIIIl().lIlIlIlIlIIlIIlIIllIIIIIl(-1);
         }
-        ((CrosshairPreviewSetting)this.IlllIIIIIIlllIlIIlllIlIIl).IlllIIIIIIlllIlIIlllIlIIl().lIlIlIlIlIIlIIlIIllIIIIIl(this.x + f3 / 2.0f, this.y + this.height / 2.0f);
+        ((CrosshairPreviewSetting)this.setting).IlllIIIIIIlllIlIIlllIlIIl().lIlIlIlIlIIlIIlIIllIIIIIl(this.x + f3 / 2.0f, this.y + this.height / 2.0f);
     }
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2, float f3, float f4, float f5, int n) {
@@ -50,15 +49,15 @@ extends AbstractDescritiveSettingUIComponent {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(char c, KeyType keyType) {
+    public void onKeyTyped(char c, KeyType keyType) {
     }
 
     @Override
-    public void IlllIIIIIIlllIlIIlllIlIIl() {
+    public void onGuiClosed() {
     }
 
     @Override
-    public float IllIllIIIllIIIlIlIlIIIIll() {
+    public float getHeight() {
         return 96.0f;
     }
 
@@ -67,4 +66,3 @@ extends AbstractDescritiveSettingUIComponent {
         return false;
     }
 }
- 

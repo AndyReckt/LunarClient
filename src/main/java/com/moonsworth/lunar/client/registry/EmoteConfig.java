@@ -1,27 +1,90 @@
 package com.moonsworth.lunar.client.registry;
 
 import com.google.common.collect.BiMap;
+import com.google.common.collect.ImmutableBiMap;
+import com.moonsworth.lunar.bridge.minecraft.client.entity.EntityLivingBaseBridge;
 import com.moonsworth.lunar.bridge.minecraft.client.entity.player.EntityPlayerBridge;
 import com.moonsworth.lunar.client.bridge.Bridge;
+import com.moonsworth.lunar.client.emote.AbstractEmote;
+import com.moonsworth.lunar.client.emote.Emote;
 import com.moonsworth.lunar.client.event.EventHandler;
+import com.moonsworth.lunar.client.event.state.EventState;
 import com.moonsworth.lunar.client.event.type.entity.player.CreatePlayerEvent;
 import com.moonsworth.lunar.client.event.type.entity.player.RemovePlayerEvent;
+import com.moonsworth.lunar.client.event.type.hud.ModelBipedRenderEvent;
 import com.moonsworth.lunar.client.event.type.world.TickEvent;
 import com.moonsworth.lunar.client.json.file.ItemMapLoader;
 import com.moonsworth.lunar.client.logger.LunarLogger;
 import com.moonsworth.lunar.client.ref.Ref;
+import com.moonsworth.lunar.client.websocket.packet.WSPacketClientEmote;
+import com.moonsworth.lunar.client.websocket.packet.WSPacketEmotesList;
+import mchorse.emoticons.capabilities.cosmetic.Cosmetic;
+import mchorse.emoticons.common.EmoteAPI;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
-public class EmoteConfig
-extends ItemMapLoader
-implements EventHandler {
-    public static final BiMap llIlllIIIllllIIlllIllIIIl = ((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)((ImmutableBiMap.Builder)ImmutableBiMap.builder().put((Object)7, "fresh")).put((Object)8, "hype")).put((Object)9, "squat_kick")).put((Object)10, "l_dance")).put((Object)11, "tidy")).put((Object)12, "free_flow")).put((Object)13, "shimmer")).put((Object)14, "get_funky")).put((Object)15, "gun_lean")).put((Object)16, "gangnam_style")).put((Object)17, "salute")).put((Object)18, "bitchslap")).put((Object)19, "bongo_cat")).put((Object)20, "breathtaking")).put((Object)21, "disgusted")).put((Object)22, "exhausted")).put((Object)23, "punch")).put((Object)24, "sneeze")).put((Object)25, "threatening")).put((Object)26, "woah")).put((Object)27, "boneless")).put((Object)28, "best_mates")).put((Object)29, "default")).put((Object)30, "disco_fever")).put((Object)31, "electro_shuffle")).put((Object)32, "floss")).put((Object)33, "infinite_dab")).put((Object)34, "orange_justice")).put((Object)35, "skibidi")).put((Object)36, "boy")).put((Object)37, "bow")).put((Object)38, "calculated")).put((Object)39, "chicken")).put((Object)40, "clapping")).put((Object)41, "club")).put((Object)42, "confused")).put((Object)43, "crying")).put((Object)44, "dab")).put((Object)45, "facepalm")).put((Object)46, "fist")).put((Object)47, "laughing")).put((Object)48, "no")).put((Object)49, "pointing")).put((Object)50, "popcorn")).put((Object)51, "pure_salt")).put((Object)52, "shrug")).put((Object)53, "t_pose")).put((Object)54, "thinking")).put((Object)55, "twerk")).put((Object)56, "wave")).put((Object)57, "yes")).put((Object)58, "naruto_run")).put((Object)59, "moonwalk")).put((Object)63, "whip_and_nae_nae")).put((Object)64, "hands_up")).put((Object)65, "renegade")).put((Object)66, "toosie_slide")).build();
-    public List llllIIlIIlIIlIIllIIlIIllI = new ArrayList();
-    public List IlIlIlllllIlIIlIlIlllIlIl = new ArrayList();
+public class EmoteConfig extends ItemMapLoader<UUID, AbstractEmote> implements EventHandler {
+    public static final BiMap<Integer, String> llIlllIIIllllIIlllIllIIIl = (BiMap)(ImmutableBiMap.builder()
+            .put(7, "fresh")
+            .put(8, "hype")
+            .put(9, "squat_kick")
+            .put(10, "l_dance")
+            .put(11, "tidy")
+            .put(12, "free_flow")
+            .put(13, "shimmer")
+            .put(14, "get_funky")
+            .put(15, "gun_lean")
+            .put(16, "gangnam_style")
+            .put(17, "salute")
+            .put(18, "bitchslap")
+            .put(19, "bongo_cat")
+            .put(20, "breathtaking")
+            .put(21, "disgusted")
+            .put(22, "exhausted")
+            .put(23, "punch")
+            .put(24, "sneeze")
+            .put(25, "threatening")
+            .put(26, "woah")
+            .put(27, "boneless")
+            .put(28, "best_mates")
+            .put(29, "default")
+            .put(30, "disco_fever")
+            .put(31, "electro_shuffle")
+            .put(32, "floss")
+            .put(33, "infinite_dab")
+            .put(34, "orange_justice")
+            .put(35, "skibidi")
+            .put(36, "boy")
+            .put(37, "bow")
+            .put(38, "calculated")
+            .put(39, "chicken")
+            .put(40, "clapping")
+            .put(41, "club")
+            .put(42, "confused")
+            .put(43, "crying")
+            .put(44, "dab")
+            .put(45, "facepalm")
+            .put(46, "fist")
+            .put(47, "laughing")
+            .put(48, "no")
+            .put(49, "pointing")
+            .put(50, "popcorn")
+            .put(51, "pure_salt")
+            .put(52, "shrug")
+            .put(53, "t_pose")
+            .put(54, "thinking")
+            .put(55, "twerk")
+            .put(56, "wave")
+            .put(57, "yes")
+            .put(58, "naruto_run")
+            .put(59, "moonwalk")
+            .put(63, "whip_and_nae_nae")
+            .put(64, "hands_up")
+            .put(65, "renegade")
+            .put(66, "toosie_slide")
+            .build());
+    public List<Integer> llllIIlIIlIIlIIllIIlIIllI = new ArrayList<>();
+    public List<Integer> IlIlIlllllIlIIlIlIlllIlIl = new ArrayList<>();
     public boolean lIlIlIlIlIIlIIlIIllIIIIIl;
     public int IlllIIIIIIlllIlIIlllIlIIl;
     public boolean lIllIlIIIlIIIIIIIlllIlIll;
@@ -29,39 +92,39 @@ implements EventHandler {
     public EmoteConfig() {
         this.lIlIlIlIlIIlIIlIIllIIIIIl(TickEvent.class, this::lIlIlIlIlIIlIIlIIllIIIIIl);
         this.lIlIlIlIlIIlIIlIIllIIIIIl(RemovePlayerEvent.class, (removePlayerEvent) -> {
-            if (Ref.llIIIIIIIllIIllIlIllIIIIl() == null) {
+            if (Ref.getWorld() == null) {
                 return;
             }
-            Ref.IlllIIIIIIlllIlIIlllIlIIl().lIIlIlllIlIlIIIlllIIlIIII().lIlIlIlIlIIlIIlIIllIIIIIl(removePlayerEvent.lIlIlIlIlIIlIIlIIllIIIIIl(), false);
+            Ref.getLC().lIIlIlllIlIlIIIlllIIlIIII().lIlIlIlIlIIlIIlIIllIIIIIl(removePlayerEvent.lIlIlIlIlIIlIIlIIllIIIIIl(), false);
         });
         this.lIlIlIlIlIIlIIlIIllIIIIIl(CreatePlayerEvent.class, (createPlayerEvent) -> {
-            if (Ref.llIIIIIIIllIIllIlIllIIIIl() == null) {
+            if (Ref.getWorld() == null) {
                 return;
             }
-            Ref.IlllIIIIIIlllIlIIlllIlIIl().lIIlIlllIlIlIIIlllIIlIIII().lIlIlIlIlIIlIIlIIllIIIIIl((EntityPlayerBridge)createPlayerEvent.lIlIlIlIlIIlIIlIIllIIIIIl(), false);
+            Ref.getLC().lIIlIlllIlIlIIIlllIIlIIII().lIlIlIlIlIIlIIlIIllIIIIIl(createPlayerEvent.lIlIlIlIlIIlIIlIIllIIIIIl(), false);
         });
     }
 
     public void llllIIlIIlIIlIIllIIlIIllI() {
-        this.lIlIlIlIlIIlIIlIIllIIIIIl(Ref.IlIlIlllllIlIIlIlIlllIlIl(), false, false);
-        if (Ref.llIIIIIIIllIIllIlIllIIIIl() != null) {
-            for (EntityPlayerBridge entityPlayerBridge : Ref.llIIIIIIIllIIllIlIllIIIIl().bridge$getPlayerEntities()) {
-                Ref.IlllIIIIIIlllIlIIlllIlIIl().lIIlIlllIlIlIIIlllIIlIIII().lIlIlIlIlIIlIIlIIllIIIIIl(entityPlayerBridge, false, false);
+        this.lIlIlIlIlIIlIIlIIllIIIIIl(Ref.getPlayer(), false, false);
+        if (Ref.getWorld() != null) {
+            for (EntityPlayerBridge entityPlayerBridge : Ref.getWorld().bridge$getPlayerEntities()) {
+                Ref.getLC().lIIlIlllIlIlIIIlllIIlIIII().lIlIlIlIlIIlIIlIIllIIIIIl(entityPlayerBridge, false, false);
             }
         }
     }
 
     public void IlIlIlllllIlIIlIlIlllIlIl() {
-        Ref.lIlIlIlIlIIlIIlIIllIIIIIl(new WSPacketEmotesList(new ArrayList(this.IlIlIlllllIlIIlIlIlllIlIl)));
+        Ref.lIlIlIlIlIIlIIlIIllIIIIIl(new WSPacketEmotesList(new ArrayList<>(this.IlIlIlllllIlIIlIlIlllIlIl)));
     }
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(AbstractEmote abstractEmote) {
-        if (Ref.IlllIIIIIIlllIlIIlllIlIIl().lllllIllIllIllllIlIllllII().lIlIIlIlllIIlIIIlIlIlIllI().IlIllIIlIIlIIIllIllllIIll()) {
+        if (Ref.getLC().lllllIllIllIllllIlIllllII().lIlIIlIlllIIlIIIlIlIlIllI().IlIllIIlIIlIIIllIllllIIll()) {
             return;
         }
         if (this.IlllIIIIIIlllIlIIlllIlIIl(abstractEmote)) {
-            int n = (Integer)llIlllIIIllllIIlllIllIIIl.inverse().get(abstractEmote.lIlIlIlIlIIlIIlIIllIIIIIl());
-            if (this.llIlllIIIllllIIlllIllIIIl().containsKey(Ref.IlIlIlllllIlIIlIlIlllIlIl().bridge$getUniqueID())) {
+            int n = llIlllIIIllllIIlllIllIIIl.inverse().get(abstractEmote.lIlIlIlIlIIlIIlIIllIIIIIl());
+            if (this.llIlllIIIllllIIlllIllIIIl().containsKey(Ref.getPlayer().bridge$getUniqueID())) {
                 this.lIlIlIlIlIIlIIlIIllIIIIIl = false;
                 this.lIllIlIIIlIIIIIIIlllIlIll = true;
             } else {
@@ -69,30 +132,31 @@ implements EventHandler {
             }
             Ref.lIlIlIlIlIIlIIlIIllIIIIIl(new WSPacketClientEmote(n));
         } else {
-            LunarLogger.llIlllIIIllllIIlllIllIIIl((Object)"Couldn't perform emote (%s) as you do not own it", abstractEmote.getClass().getSimpleName());
+            LunarLogger.error((Object) "Couldn't perform emote (%s) as you do not own it", abstractEmote.getClass().getSimpleName());
         }
     }
 
+    // IlllIIIIIIlllIlIIlllIlIIl
     public boolean IlllIIIIIIlllIlIIlllIlIIl(AbstractEmote abstractEmote) {
         return this.llllIIlIIlIIlIIllIIlIIllI.contains(llIlllIIIllllIIlllIllIIIl.inverse().get(abstractEmote.lIlIlIlIlIIlIIlIIllIIIIIl()));
     }
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(EntityPlayerBridge entityPlayerBridge, AbstractEmote abstractEmote) {
         this.IlllIIIIIIlllIlIIlllIlIIl(entityPlayerBridge);
-        if (abstractEmote != null && entityPlayerBridge == Ref.IlIlIlllllIlIIlIlIlllIlIl() && !Ref.IlllIIIIIIlllIlIIlllIlIIl().lllllIllIllIllllIlIllllII().lIlIIlIlllIIlIIIlIlIlIllI().IlIllIIlIIlIIIllIllllIIll() && !Ref.IlIlIlllllIlIIlIlIlllIlIl().bridge$getMovementInput().bridge$isSneaking() && Bridge.llllIIlIIlIIlIIllIIlIIllI().bridge$getGameSettings().bridge$getThirdPersonView() == 0) {
+        if (abstractEmote != null && entityPlayerBridge == Ref.getPlayer() && !Ref.getLC().lllllIllIllIllllIlIllllII().lIlIIlIlllIIlIIIlIlIlIllI().IlIllIIlIIlIIIllIllllIIll() && !Ref.getPlayer().bridge$getMovementInput().bridge$isSneaking() && Bridge.llllIIlIIlIIlIIllIIlIIllI().bridge$getGameSettings().bridge$getThirdPersonView() == 0) {
             this.lIlIlIlIlIIlIIlIIllIIIIIl = true;
             Bridge.llllIIlIIlIIlIIllIIlIIllI().bridge$getGameSettings().bridge$setThirdPersonView(1);
         }
         if (abstractEmote != null) {
             this.llIlllIIIllllIIlllIllIIIl().putIfAbsent(entityPlayerBridge.bridge$getUniqueID(), abstractEmote);
             if (abstractEmote instanceof Emote) {
-                ((Emote)abstractEmote).IlllIIIIIIlllIlIIlllIlIIl(entityPlayerBridge);
+                ((Emote) abstractEmote).IlllIIIIIIlllIlIIlllIlIIl(entityPlayerBridge);
             }
         }
     }
 
     public boolean lIlIlIlIlIIlIIlIIllIIIIIl(EntityPlayerBridge entityPlayerBridge) {
-        Cosmetic cosmetic = (Cosmetic)Cosmetic.get(entityPlayerBridge.bridge$getUniqueID());
+        Cosmetic cosmetic = (Cosmetic) Cosmetic.get(entityPlayerBridge.bridge$getUniqueID());
         return cosmetic != null && cosmetic.emote != null;
     }
 
@@ -105,7 +169,7 @@ implements EventHandler {
             return;
         }
         this.IlllIIIIIIlllIlIIlllIlIIl(entityPlayerBridge);
-        if (entityPlayerBridge == Ref.IlIlIlllllIlIIlIlIlllIlIl() && Ref.getAssetsWebsocket().isPresent() && ((AssetsWebSocket)Ref.getAssetsWebsocket().get()).isOpen() && bl2 && !bl) {
+        if (entityPlayerBridge == Ref.getPlayer() && Ref.getAssetsWebsocket().isPresent() && Ref.getAssetsWebsocket().get().isOpen() && bl2 && !bl) {
             Ref.lIlIlIlIlIIlIIlIIllIIIIIl(new WSPacketClientEmote(-1));
         }
     }
@@ -113,7 +177,7 @@ implements EventHandler {
     public void IlllIIIIIIlllIlIIlllIlIIl(EntityPlayerBridge entityPlayerBridge) {
         Map<UUID, AbstractEmote> map = this.llIlllIIIllllIIlllIllIIIl();
         if (map != null && map.containsKey(entityPlayerBridge.bridge$getUniqueID())) {
-            AbstractEmote abstractEmote = (AbstractEmote)map.get(entityPlayerBridge.bridge$getUniqueID());
+            AbstractEmote abstractEmote = map.get(entityPlayerBridge.bridge$getUniqueID());
             if (abstractEmote != null) {
                 if (abstractEmote instanceof Emote) {
                     EmoteAPI.setEmoteClient(null, entityPlayerBridge);
@@ -126,17 +190,16 @@ implements EventHandler {
 
     public AbstractEmote lIlIlIlIlIIlIIlIIllIIIIIl(int n) {
         try {
-            String string = (String)llIlllIIIllllIIlllIllIIIl.get(n);
+            String string = llIlllIIIllllIIlllIllIIIl.get(n);
             return string == null ? null : new Emote(n, string);
-        }
-        catch (Exception exception) {
+        } catch (Exception exception) {
             exception.printStackTrace();
             return null;
         }
     }
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(ModelBipedRenderEvent modelBipedRenderEvent) {
-        AbstractEmote abstractEmote = (AbstractEmote)this.llIlllIIIllllIIlllIllIIIl().get(modelBipedRenderEvent.IlllIIIIIIlllIlIIlllIlIIl().bridge$getUniqueID());
+        AbstractEmote abstractEmote = this.llIlllIIIllllIIlllIllIIIl().get(modelBipedRenderEvent.IlllIIIIIIlllIlIIlllIlIIl().bridge$getUniqueID());
         if (abstractEmote != null && !modelBipedRenderEvent.IlllIIIIIIlllIlIIlllIlIIl().bridge$isInvisible()) {
             if (modelBipedRenderEvent.lIlIlIlIlIIlIIlIIllIIIIIl() == EventState.PRE) {
                 abstractEmote.lIlIlIlIlIIlIIlIIllIIIIIl(modelBipedRenderEvent.IlllIIIIIIlllIlIIlllIlIIl(), modelBipedRenderEvent.lIllIlIIIlIIIIIIIlllIlIll(), modelBipedRenderEvent.llIlllIIIllllIIlllIllIIIl());
@@ -149,13 +212,13 @@ implements EventHandler {
     public void lIlIlIlIlIIlIIlIIllIIIIIl(TickEvent tickEvent) {
         if (!this.llIlllIIIllllIIlllIllIIIl().isEmpty()) {
             ArrayList<UUID> arrayList = new ArrayList<UUID>();
-            for (Map.Entry object : this.llIlllIIIllllIIlllIllIIIl().entrySet()) {
-                UUID uUID = (UUID)object.getKey();
-                AbstractEmote abstractEmote = (AbstractEmote)object.getValue();
+            for (Map.Entry<UUID, AbstractEmote> object : this.llIlllIIIllllIIlllIllIIIl().entrySet()) {
+                UUID uUID = object.getKey();
+                AbstractEmote abstractEmote = object.getValue();
                 if (!abstractEmote.IlllIIIIIIlllIlIIlllIlIIl()) continue;
-                Ref.llIIIIIIIllIIllIlIllIIIIl().bridge$getPlayerByUniqueId(uUID).ifPresent(entityPlayerBridge -> {
+                Ref.getWorld().bridge$getPlayerByUniqueId(uUID).ifPresent(entityPlayerBridge -> {
                     if (abstractEmote.IlllIIIIIIlllIlIIlllIlIIl()) {
-                        abstractEmote.lIlIlIlIlIIlIIlIIllIIIIIl((EntityPlayerBridge)entityPlayerBridge);
+                        abstractEmote.lIlIlIlIlIIlIIlIIllIIIIIl(entityPlayerBridge);
                     }
                 });
                 arrayList.add(uUID);
@@ -167,29 +230,28 @@ implements EventHandler {
     }
 
     @Override
-    public Map lIlIlIlIlIIlIIlIIllIIIIIl() {
-        return new HashMap();
+    public Map<UUID, AbstractEmote> lIlIlIlIlIIlIIlIIllIIIIIl() {
+        return new HashMap<>();
     }
 
     public boolean lIlIlIlIlIIlIIlIIllIIIIIl(EntityLivingBaseBridge entityLivingBaseBridge) {
-        AbstractEmote abstractEmote = (AbstractEmote)this.llIlllIIIllllIIlllIllIIIl().get(entityLivingBaseBridge.bridge$getUniqueID());
+        AbstractEmote abstractEmote = this.llIlllIIIllllIIlllIllIIIl().get(entityLivingBaseBridge.bridge$getUniqueID());
         return abstractEmote == null || abstractEmote.lIllIlIIIlIIIIIIIlllIlIll();
     }
 
-    public List llIIIIIIIllIIllIlIllIIIIl() {
+    public List<Integer> llIIIIIIIllIIllIlIllIIIIl() {
         return this.llllIIlIIlIIlIIllIIlIIllI;
     }
 
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(List list) {
+    public void lIlIlIlIlIIlIIlIIllIIIIIl(List<Integer> list) {
         this.llllIIlIIlIIlIIllIIlIIllI = list;
     }
 
-    public List lIIIllIllIIllIlllIlIIlllI() {
+    public List<Integer> lIIIllIllIIllIlllIlIIlllI() {
         return this.IlIlIlllllIlIIlIlIlllIlIl;
     }
 
-    public void IlllIIIIIIlllIlIIlllIlIIl(List list) {
+    public void IlllIIIIIIlllIlIIlllIlIIl(List<Integer> list) {
         this.IlIlIlllllIlIIlIlIlllIlIl = list;
     }
 }
- 

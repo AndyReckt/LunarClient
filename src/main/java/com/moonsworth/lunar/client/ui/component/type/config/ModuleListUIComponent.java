@@ -2,7 +2,6 @@ package com.moonsworth.lunar.client.ui.component.type.config;
 
 import com.moonsworth.lunar.LunarClient;
 import com.moonsworth.lunar.bridge.lunar.input.KeyType;
-import com.moonsworth.lunar.bridge.minecraft.client.gui.CustomScreen;
 import com.moonsworth.lunar.bridge.minecraft.client.gui.WrappedGuiScreenBridge;
 import com.moonsworth.lunar.client.bridge.Bridge;
 import com.moonsworth.lunar.client.feature.Feature;
@@ -13,9 +12,8 @@ import com.moonsworth.lunar.client.ref.Ref;
 import com.moonsworth.lunar.client.registry.FontRegistry;
 import com.moonsworth.lunar.client.ui.component.AbstractListUIComponent;
 import com.moonsworth.lunar.client.ui.component.UIComponent;
-import com.moonsworth.lunar.client.ui.component.type.overlay.ClientSettingsParentUIComponent;
-import com.moonsworth.lunar.client.ui.component.type.setting.IIlIllIlIIllIIlIlIllllllI;
-import com.moonsworth.lunar.client.ui.component.type.setting.lllllIllIlIIlIIlIIIlllIlI;
+import com.moonsworth.lunar.client.ui.component.type.setting.ScrollbarUIComponent;
+import com.moonsworth.lunar.client.ui.component.type.setting.TextboxWithIcon;
 import com.moonsworth.lunar.client.ui.screen.AbstractUIScreen;
 import com.moonsworth.lunar.client.util.LanguageParser;
 import org.lwjgl.opengl.GL11;
@@ -23,355 +21,374 @@ import org.lwjgl.opengl.GL11;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class ModuleListUIComponent
-extends AbstractListUIComponent {
-    public List<ModuleCategoryButtonUIComponent> lIlIlIlIlIIlIIlIIllIIIIIl;
-    public List<AbstractFeatureUIComponent> IlllIIIIIIlllIlIIlllIlIIl;
-    public ModuleCategory lIllIlIIIlIIIIIIIlllIlIll = ModuleCategory.lIlIlIlIlIIlIIlIIllIIIIIl;
-    public AbstractFeatureUIComponent IIlIllIlllllllIIlIIIllIIl = null;
-    public float lIIlIlllIlIlIIIlllIIlIIII = 0.0f;
-    public float llIllIlIllIlllIllIIIIllII = 0.0f;
-    public AbstractFeatureUIComponent IllllllllllIlIIIlllIlllll = null;
-    public long lllllIllIlIIlIIlIIIlllIlI = 0L;
-    public com.moonsworth.lunar.client.ui.component.type.setting.IIlIllIlIIllIIlIlIllllllI IllIIIlllIIIlIlllIlIIlIII = new IIlIllIlIIllIIlIlIllllllI(this);
-    public com.moonsworth.lunar.client.ui.component.type.setting.lllllIllIlIIlIIlIIIlllIlI IIlIllIlIIllIIlIlIllllllI;
-    public FeaturesLayoutSwitchButtonUIComponent lIIIlllIIIIllllIlIIIlIIll;
-    public boolean llIIIlIllIIIIlIIIlIlIllIl;
+public class ModuleListUIComponent extends AbstractListUIComponent<UIComponent> {
+    public List<ModuleCategoryButtonUIComponent> categoryButtons;
+    public List<AbstractFeatureUIComponent> featureUIComponents;
+    public ModuleCategory category = ModuleCategory.ALL;
+    public AbstractFeatureUIComponent dragging = null;
+    public float dragOffsetX = 0.0f;
+    public float dragOffsetY = 0.0f;
+    public AbstractFeatureUIComponent clicked = null;
+    public long mouseDownTime = 0L;
+    public ScrollbarUIComponent scrollContainer = new ScrollbarUIComponent(this);
+    public TextboxWithIcon searchBox;
+    public FeaturesLayoutSwitchButtonUIComponent layoutSwitchButton;
+    public boolean mouseDown;
 
     public ModuleListUIComponent(UIComponent parent) {
         super(parent);
-        this.lIllIlIIIlIIIIIIIlllIlIll((f, f2, n) -> {
-            if (this.llIIIlIllIIIIlIIIlIlIllIl) {
-                for (AbstractFeatureUIComponent abstractFeatureUIComponent : this.IlllIIIIIIlllIlIIlllIlIIl) {
-                    if (!(f2 > this.y + 20.0f) || !abstractFeatureUIComponent.IlllIIIIIIlllIlIIlllIlIIl(f, f2 - this.IllIIIlllIIIlIlllIlIIlIII.lIllIlIIIlIIIIIIIlllIlIll())) continue;
-                    this.llIIIlIllIIIIlIIIlIlIllIl = false;
-                    return abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll(f, f2 - this.IllIIIlllIIIlIlllIlIIlIII.lIllIlIIIlIIIIIIIlllIlIll(), n);
+        this.onMouseRelease((f, f2, n) -> {
+            if (this.mouseDown) {
+                for (AbstractFeatureUIComponent abstractFeatureUIComponent : this.featureUIComponents) {
+                    if (!(f2 > this.y + 20.0f) || !abstractFeatureUIComponent.mouseInside(f, f2 - this.scrollContainer.getYOffset())) continue;
+                    this.mouseDown = false;
+                    return abstractFeatureUIComponent.onMouseReleased(f, f2 - this.scrollContainer.getYOffset(), n);
                 }
             }
-            this.llIIIlIllIIIIlIIIlIlIllIl = false;
+            this.mouseDown = false;
             return false;
         });
-        this.lIlIlIlIlIIlIIlIIllIIIIIl((float f, float f2, int n) -> {
-            this.llIIIlIllIIIIlIIIlIlIllIl = true;
-            if (this.lIIIlllIIIIllllIlIIIlIIll.IlllIIIIIIlllIlIIlllIlIIl(f, f2)) {
-                LunarClient.IIllIlIllIlIllIllIllIllII().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().lIlIlIIIIIIllIlIIIIllIIII().lIlIlIlIlIIlIIlIIllIIIIIl((Boolean)LunarClient.IIllIlIllIlIllIllIllIllII().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().lIlIlIIIIIIllIlIIIIllIIII().llIlllIIIllllIIlllIllIIIl() == false);
-                if (Ref.llIIIIIIIllIIllIlIllIIIIl() != null) {
-                    LunarClient.IIllIlIllIlIllIllIllIllII().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().save();
+        this.onMouseClick((mouseX, mouseY, mouseButton) -> {
+            this.mouseDown = true;
+            if (this.layoutSwitchButton.mouseInside(mouseX, mouseY)) {
+                LunarClient.getInstance().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().getCompactMenu().lIlIlIlIlIIlIIlIIllIIIIIl(LunarClient.getInstance().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().getCompactMenu().llIlllIIIllllIIlllIllIIIl() == false);
+                if (Ref.getWorld() != null) {
+                    LunarClient.getInstance().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().save();
                 }
-                this.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, this.width, this.height);
+                this.setPositionAndSize(mouseX, mouseY, this.width, this.height);
                 return true;
             }
-            for (UIComponent uIComponent : this.lIlIlIlIlIIlIIlIIllIIIIIl) {
-                if (!uIComponent.IlllIIIIIIlllIlIIlllIlIIl(f, f2)) continue;
-                this.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, this.width, this.height);
-                return uIComponent.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, n);
+            for (UIComponent component : this.categoryButtons) {
+                if (!component.mouseInside(mouseX, mouseY)) continue;
+                this.setPositionAndSize(mouseX, mouseY, this.width, this.height);
+                return component.onMouseClicked(mouseX, mouseY, mouseButton);
             }
-            for (UIComponent uIComponent : this.IlllIIIIIIlllIlIIlllIlIIl) {
-                if (!(f2 > this.y + 20.0f) || !uIComponent.IlllIIIIIIlllIlIIlllIlIIl(f, f2 - this.IllIIIlllIIIlIlllIlIIlIII.lIllIlIIIlIIIIIIIlllIlIll()) || !uIComponent.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2 - this.IllIIIlllIIIlIlllIlIIlIII.lIllIlIIIlIIIIIIIlllIlIll(), n)) continue;
-                this.IIlIllIlllllllIIlIIIllIIl = null;
-                this.llIllIlIllIlllIllIIIIllII = 0.0f;
-                this.lIIlIlllIlIlIIIlllIIlIIII = 0.0f;
-                this.IllllllllllIlIIIlllIlllll = null;
-                this.lllllIllIlIIlIIlIIIlllIlI = 0L;
+            for (UIComponent component : this.featureUIComponents) {
+                if (!(mouseY > this.y + 20.0f) || !component.mouseInside(mouseX, mouseY - this.scrollContainer.getYOffset()) || !component.onMouseClicked(mouseX, mouseY - this.scrollContainer.getYOffset(), mouseButton)) continue;
+                this.dragging = null;
+                this.dragOffsetY = 0.0f;
+                this.dragOffsetX = 0.0f;
+                this.clicked = null;
+                this.mouseDownTime = 0L;
                 return true;
             }
-            return this.IllIIIlllIIIlIlllIlIIlIII.IlllIIIIIIlllIlIIlllIlIIl(f, f2) && this.IllIIIlllIIIlIlllIlIIlIII.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, n) || this.IIlIllIlIIllIIlIlIllllllI.IlllIIIIIIlllIlIIlllIlIIl(f, f2) && this.IIlIllIlIIllIIlIlIllllllI.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, n);
+            return this.scrollContainer.mouseInside(mouseX, mouseY) && this.scrollContainer.onMouseClicked(mouseX, mouseY, mouseButton) || this.searchBox.mouseInside(mouseX, mouseY) && this.searchBox.onMouseClicked(mouseX, mouseY, mouseButton);
         });
-        this.IlllIIIIIIlllIlIIlllIlIIl((f, f2, n) -> this.IIlIllIlIIllIIlIlIllllllI.IlllIIIIIIlllIlIIlllIlIIl(f, f2, n));
-        this.lIlIlIlIlIIlIIlIIllIIIIIl = new ArrayList();
+        this.IlllIIIIIIlllIlIIlllIlIIl((f, f2, n) -> this.searchBox.IlllIIIIIIlllIlIIlllIlIIl(f, f2, n));
+        this.categoryButtons = new ArrayList<>();
         for (ModuleCategory moduleCategory : ModuleCategory.values()) {
-            if (moduleCategory == ModuleCategory.IlIlIlllllIlIIlIlIlllIlIl) continue;
-            ModuleCategoryButtonUIComponent moduleCategoryButtonUIComponent = new ModuleCategoryButtonUIComponent(moduleCategory, this);
-            this.lIlIlIlIlIIlIIlIIllIIIIIl.add(moduleCategoryButtonUIComponent);
-            if (moduleCategory == ModuleCategory.lIlIlIlIlIIlIIlIIllIIIIIl) {
-                moduleCategoryButtonUIComponent.lIlIlIlIlIIlIIlIIllIIIIIl(true);
+            if (moduleCategory == ModuleCategory.NONE) continue;
+            ModuleCategoryButtonUIComponent categoryButton = new ModuleCategoryButtonUIComponent(moduleCategory, this);
+            this.categoryButtons.add(categoryButton);
+            if (moduleCategory == ModuleCategory.ALL) {
+                categoryButton.setSelected(true);
             }
-            moduleCategoryButtonUIComponent.lIlIlIlIlIIlIIlIIllIIIIIl((float f, float f2, int n) -> {
-                for (ModuleCategoryButtonUIComponent moduleCategoryButtonUIComponent2 : this.lIlIlIlIlIIlIIlIIllIIIIIl) {
-                    moduleCategoryButtonUIComponent2.lIlIlIlIlIIlIIlIIllIIIIIl(false);
+            categoryButton.onMouseClick((f, f2, n) -> {
+                for (ModuleCategoryButtonUIComponent buttonUIComponent : this.categoryButtons) {
+                    buttonUIComponent.setSelected(false);
                 }
-                moduleCategoryButtonUIComponent.lIlIlIlIlIIlIIlIIllIIIIIl(true);
-                this.lIllIlIIIlIIIIIIIlllIlIll = moduleCategoryButtonUIComponent.lIllIlIIIlIIIIIIIlllIlIll();
-                this.lIlIlIlIlIIlIIlIIllIIIIIl(this.x, this.y, this.width, this.height);
+                categoryButton.setSelected(true);
+                this.category = categoryButton.getCategory();
+                this.setPositionAndSize(this.x, this.y, this.width, this.height);
                 return true;
             });
         }
-        this.lIIIlllIIIIllllIlIIIlIIll = new FeaturesLayoutSwitchButtonUIComponent(this);
-        this.IlllIIIIIIlllIlIIlllIlIIl = new LinkedList();
-        this.llllIIlIIlIIlIIllIIlIIllI();
+        this.layoutSwitchButton = new FeaturesLayoutSwitchButtonUIComponent(this);
+        this.featureUIComponents = new LinkedList<>();
+        this.initialize();
     }
 
     @Override
     public void IlIlIlllllIlIIlIlIlllIlIl() {
-        this.lIlIlIlIlIIlIIlIIllIIIIIl(this.x, this.y, this.width, this.height);
+        this.setPositionAndSize(this.x, this.y, this.width, this.height);
     }
 
-    public void llllIIlIIlIIlIIllIIlIIllI() {
-        this.IlllIIIIIIlllIlIIlllIlIIl.clear();
-        this.IIlIllIlllllllIIlIIIllIIl = null;
-        this.IllllllllllIlIIIlllIlllll = null;
-        for (ConfigurableFeature configurableFeature : this.lIlIIIIIIlIIIllllIllIIlII.lllllIllIllIllllIlIllllII().llIlllIIIllllIIlllIllIIIl()) {
-            if (!configurableFeature.llIIlIlIIIllIlIlIlIIlIIll().lIllIlIIIlIIIIIIIlllIlIll()) continue;
-            this.IlllIIIIIIlllIlIIlllIlIIl.add((Boolean)LunarClient.IIllIlIllIlIllIllIllIllII().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().lIlIlIIIIIIllIlIIIIllIIII().llIlllIIIllllIIlllIllIIIl() != false ? new IlllIIIIIIlllIlIIlllIlIIl(this, (ClientSettingsParentUIComponent)this.lIIIllIllIIllIlllIlIIlllI, this, configurableFeature) : new NewLabelHolderUIComponent(this, (ClientSettingsParentUIComponent)this.lIIIllIllIIllIlllIlIIlllI, configurableFeature));
+    public void initialize() {
+        this.featureUIComponents.clear();
+        this.dragging = null;
+        this.clicked = null;
+        for (ConfigurableFeature configurableFeature : this.lc.lllllIllIllIllllIlIllllII().llIlllIIIllllIIlllIllIIIl()) {
+            if (!configurableFeature.getDetails().isEnabledOnCurrentVersion()) continue;
+            this.featureUIComponents.add(
+                LunarClient.getInstance().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().getCompactMenu().llIlllIIIllllIIlllIllIIIl() ?
+                new CompactModuleUIComponent(this, (ClientSettingsParentUIComponent)this.parent, this, configurableFeature) :
+                new DefaultModuleUIComponent(this, (ClientSettingsParentUIComponent)this.parent, configurableFeature)
+            );
         }
-        if (Ref.IlllIIIIIIlllIlIIlllIlIIl().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().lIlIIlIlllIIlIIIlIlIlIllI().llIlllIIIllllIIlllIllIIIl() == GeneralOptions.SortingOptions.IlllIIIIIIlllIlIIlllIlIIl) {
-            this.IlllIIIIIIlllIlIIlllIlIIl = this.IlllIIIIIIlllIlIIlllIlIIl.stream().sorted(Comparator.comparing(abstractFeatureUIComponent -> abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().llIIlIlIIIllIlIlIlIIlIIll().get("name", new Object[0]))).collect(Collectors.toList());
+        if (Ref.getLC().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().lIlIIlIlllIIlIIIlIlIlIllI().llIlllIIIllllIIlllIllIIIl() == GeneralOptions.SortingOptions.ALPHABETICAL) {
+            this.featureUIComponents = this.featureUIComponents.stream().sorted(Comparator.comparing(abstractFeatureUIComponent -> abstractFeatureUIComponent.getFeature().getDetails().get("name"))).collect(Collectors.toList());
         }
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2, float f3, float f4) {
-        int n;
-        ArrayList<Integer> arrayList = new ArrayList<Integer>();
-        for (AbstractFeatureUIComponent abstractFeatureUIComponent : this.IlllIIIIIIlllIlIIlllIlIIl) {
-            if (!abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().llIIlIlIIIllIlIlIlIIlIIll().IlllIIIIIIlllIlIIlllIlIIl().contains(ModuleCategory.lIlIlIlIlIIlIIlIIllIIIIIl)) continue;
-            if (arrayList.contains(abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI())) {
-                abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().lIlIlIlIlIIlIIlIIllIIIIIl(0.0f);
-                abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().IlllIIIIIIlllIlIIlllIlIIl(0.0f);
-                abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().lIlIlIlIlIIlIIlIIllIIIIIl(0);
-                abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().llIlllIIIllllIIlllIllIIIl(true);
+    public void setPositionAndSize(float x, float y, float width, float height) {
+
+        if (mouseDown) {
+            float left = x;
+            float top = y;
+            float right = x + width;
+            float bottom = y + height;
+            AbstractUIScreen.IlllIIIIIIlllIlIIlllIlIIl(left, top, bottom, right, -1);
+        }
+
+        ArrayList<Integer> panelIndexes = new ArrayList<>();
+        for (AbstractFeatureUIComponent featureUIComponent : this.featureUIComponents) {
+            if (!featureUIComponent.getFeature().getDetails().getCategories().contains(ModuleCategory.ALL)) continue;
+            if (panelIndexes.contains(featureUIComponent.getFeature().getPanelIndex())) {
+                featureUIComponent.getFeature().setPanelX(0.0f);
+                featureUIComponent.getFeature().setPanelY(0.0f);
+                featureUIComponent.getFeature().setPanelIndex(0);
+                featureUIComponent.getFeature().llIlllIIIllllIIlllIllIIIl(true);
                 continue;
             }
-            arrayList.add(abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI());
+            panelIndexes.add(featureUIComponent.getFeature().getPanelIndex());
         }
-        float f5 = arrayList.stream().max(Integer::compare).orElse(0).intValue();
-        float f6 = arrayList.stream().min(Integer::compare).orElse(0).intValue();
-        if (f5 != (float)(arrayList.size() - 1)) {
-            for (n = 0; n < arrayList.size() - 1; ++n) {
-                if (arrayList.contains(n)) continue;
-                for (AbstractFeatureUIComponent abstractFeatureUIComponent : this.IlllIIIIIIlllIlIIlllIlIIl) {
-                    if (abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI() < n) continue;
-                    abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().lIlIlIlIlIIlIIlIIllIIIIIl(abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI() - 1);
+        int max = panelIndexes.stream().max(Integer::compare).orElse(0);
+        int min = panelIndexes.stream().min(Integer::compare).orElse(0);
+        if (max != panelIndexes.size() - 1) {
+            for (int panelIndex = 0; panelIndex < panelIndexes.size() - 1; ++panelIndex) {
+                if (panelIndexes.contains(panelIndex)) continue;
+                for (AbstractFeatureUIComponent abstractFeatureUIComponent : this.featureUIComponents) {
+                    if (abstractFeatureUIComponent.getFeature().getPanelIndex() < panelIndex) continue;
+                    abstractFeatureUIComponent.getFeature().setPanelIndex(abstractFeatureUIComponent.getFeature().getPanelIndex() - 1);
                 }
                 break;
             }
         }
-        if (f6 != 0.0f) {
-            for (n = 0; n < arrayList.size() - 1; ++n) {
-                if (arrayList.contains(n)) continue;
-                for (AbstractFeatureUIComponent abstractFeatureUIComponent : this.IlllIIIIIIlllIlIIlllIlIIl) {
-                    if (abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI() >= n) continue;
-                    abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().lIlIlIlIlIIlIIlIIllIIIIIl(abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI() + 1);
+        if (min != 0) {
+            for (int panelIndex = 0; panelIndex < panelIndexes.size() - 1; ++panelIndex) {
+                if (panelIndexes.contains(panelIndex)) continue;
+                for (AbstractFeatureUIComponent abstractFeatureUIComponent : this.featureUIComponents) {
+                    if (abstractFeatureUIComponent.getFeature().getPanelIndex() >= panelIndex) continue;
+                    abstractFeatureUIComponent.getFeature().setPanelIndex(abstractFeatureUIComponent.getFeature().getPanelIndex() + 1);
                 }
                 break;
             }
         }
-        float f7 = this.lllIIIIIlllIIlIllIIlIIIlI();
-        float f8 = this.lIlIIIIIIlIIIllllIllIIlII();
-        super.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, f3, f4);
+        super.setPositionAndSize(x, y, width, height);
         float f9 = 0.0f;
-        for (ModuleCategoryButtonUIComponent moduleCategoryButtonUIComponent : this.lIlIlIlIlIIlIIlIIllIIIIIl) {
-            moduleCategoryButtonUIComponent.lIlIlIlIlIIlIIlIIllIIIIIl(f + f9, f2 + 1.0f);
-            f9 += moduleCategoryButtonUIComponent.llIlIIIllIIlIllIllIllllIl() + 4.0f;
+        for (ModuleCategoryButtonUIComponent categoryButtonUIComponent : this.categoryButtons) {
+            categoryButtonUIComponent.setPosition(x + f9, y + 1.0f);
+            f9 += categoryButtonUIComponent.getWidth() + 4.0f;
         }
-        int n2 = 0;
-        int n3 = 0;
-        HashMap<String, AbstractFeatureUIComponent> hashMap = new HashMap<String, AbstractFeatureUIComponent>();
-        if (!this.IIlIllIlIIllIIlIlIllllllI.llllIIlIIlIIlIIllIIlIIllI().isEmpty()) {
-            String string = LanguageParser.lIlIlIlIlIIlIIlIIllIIIIIl(this.IIlIllIlIIllIIlIlIllllllI.llllIIlIIlIIlIIllIIlIIllI());
-            for (AbstractFeatureUIComponent abstractFeatureUIComponent : this.IlllIIIIIIlllIlIIlllIlIIl) {
-                String string2 = abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().llIIlIlIIIllIlIlIlIIlIIll().get("name", new Object[0]);
-                if (hashMap.containsKey(string2) || !this.lIlIlIlIlIIlIIlIIllIIIIIl(abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll(), string)) continue;
-                hashMap.put(string2, abstractFeatureUIComponent);
+        int column = 0;
+        int row = 0;
+        HashMap<String, AbstractFeatureUIComponent> searchResults = new HashMap<>();
+        if (!this.searchBox.getText().isEmpty()) {
+            String normalized = LanguageParser.normalize(this.searchBox.getText());
+            for (AbstractFeatureUIComponent featureUIComponent : this.featureUIComponents) {
+                String name = featureUIComponent.getFeature().getDetails().get("name");
+                if (searchResults.containsKey(name) || !this.isFilterMatch(featureUIComponent.getFeature(), normalized)) continue;
+                searchResults.put(name, featureUIComponent);
             }
         }
-        for (AbstractFeatureUIComponent object : this.IlllIIIIIIlllIlIIlllIlIIl) {
-            if (!((AbstractFeatureUIComponent)object).lIllIlIIIlIIIIIIIlllIlIll().llIIlIlIIIllIlIlIlIIlIIll().IlllIIIIIIlllIlIIlllIlIIl().contains(this.lIllIlIIIlIIIIIIIlllIlIll) || !this.IIlIllIlIIllIIlIlIllllllI.llllIIlIIlIIlIIllIIlIIllI().isEmpty() && !hashMap.containsKey(((AbstractFeatureUIComponent)object).lIllIlIIIlIIIIIIIlllIlIll().llIIlIlIIIllIlIlIlIIlIIll().get("name", new Object[0]))) {
-                ((UIComponent)object).lIlIlIlIlIIlIIlIIllIIIIIl(f - this.llIIlIlIIIllIlIlIlIIlIIll() - 10.0f, f2, this.llIIlIlIIIllIlIlIlIIlIIll(), this.IllllllllllIlIIIlllIlllll());
+        for (AbstractFeatureUIComponent component : this.featureUIComponents) {
+            if (!component.getFeature().getDetails().getCategories().contains(this.category) || !this.searchBox.getText().isEmpty() && !searchResults.containsKey(component.getFeature().getDetails().get("name"))) {
+                component.setPositionAndSize(x - this.getTileWidth() - 10.0f, y, this.getTileWidth(), this.getTileHeight());
                 continue;
             }
-            if (n2 == 3) {
-                n2 = 0;
-                ++n3;
+            if (column == 3) {
+                column = 0;
+                ++row;
             }
-            int n4 = n2 + n3 * 3;
-            if (((AbstractFeatureUIComponent)object).lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlllllllIIlIIIllIIl() && ((AbstractFeatureUIComponent)object).lIllIlIIIlIIIIIIIlllIlIll().lllllIllIlIIlIIlIIIlllIlI() == 0.0f && ((AbstractFeatureUIComponent)object).lIllIlIIIlIIIIIIIlllIlIll().IllIIIlllIIIlIlllIlIIlIII() == 0.0f && ((AbstractFeatureUIComponent)object).lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI() == 0) {
-                ((AbstractFeatureUIComponent)object).lIllIlIIIlIIIIIIIlllIlIll().lIlIlIlIlIIlIIlIIllIIIIIl(n4);
-                ((AbstractFeatureUIComponent)object).lIllIlIIIlIIIIIIIlllIlIll().lIlIlIlIlIIlIIlIIllIIIIIl(f + (this.llIIlIlIIIllIlIlIlIIlIIll() + 8.0f) * (float)n2);
-                ((AbstractFeatureUIComponent)object).lIllIlIIIlIIIIIIIlllIlIll().IlllIIIIIIlllIlIIlllIlIIl(f2 + 22.0f + (this.IllllllllllIlIIIlllIlllll() + 8.0f) * (float)n3);
-                ((AbstractFeatureUIComponent)object).lIllIlIIIlIIIIIIIlllIlIll().llIlllIIIllllIIlllIllIIIl(false);
-                for (AbstractFeatureUIComponent abstractFeatureUIComponent : this.IlllIIIIIIlllIlIIlllIlIIl) {
-                    if (!abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().llIIlIlIIIllIlIlIlIIlIIll().IlllIIIIIIlllIlIIlllIlIIl().contains(ModuleCategory.lIlIlIlIlIIlIIlIIllIIIIIl) || abstractFeatureUIComponent.equals(object) || abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlllllllIIlIIIllIIl() && abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().lllllIllIlIIlIIlIIIlllIlI() == 0.0f && abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().IllIIIlllIIIlIlllIlIIlIII() == 0.0f && abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI() == 0 || n4 > abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI()) continue;
-                    abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().lIlIlIlIlIIlIIlIIllIIIIIl(abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI() + 1);
-                    abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().lIlIlIlIlIIlIIlIIllIIIIIl(f + (this.llIIlIlIIIllIlIlIlIIlIIll() + 8.0f) * (float)(abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI() % 3));
-                    abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().IlllIIIIIIlllIlIIlllIlIIl(f2 + 22.0f + (this.IllllllllllIlIIIlllIlllll() + 8.0f) * (float)(abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI() - abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI() % 3) / 3.0f);
-                    abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().llIlllIIIllllIIlllIllIIIl(false);
+            int index = column + row * 3;
+            if (component.getFeature().IIlIllIlllllllIIlIIIllIIl() && component.getFeature().getPanelX() == 0.0f && component.getFeature().getPanelY() == 0.0f && component.getFeature().getPanelIndex() == 0) {
+                component.getFeature().setPanelIndex(index);
+                component.getFeature().setPanelX(x + (this.getTileWidth() + 8.0f) * (float)column);
+                component.getFeature().setPanelY(y + 22.0f + (this.getTileHeight() + 8.0f) * (float)row);
+                component.getFeature().llIlllIIIllllIIlllIllIIIl(false);
+                for (AbstractFeatureUIComponent featureUIComponent : this.featureUIComponents) {
+                    if (!featureUIComponent.getFeature().getDetails().getCategories().contains(ModuleCategory.ALL) ||
+                            featureUIComponent.equals(component) ||
+                            featureUIComponent.getFeature().IIlIllIlllllllIIlIIIllIIl() &&
+                            featureUIComponent.getFeature().getPanelX() == 0.0f &&
+                            featureUIComponent.getFeature().getPanelY() == 0.0f &&
+                            featureUIComponent.getFeature().getPanelIndex() == 0
+                            || index > featureUIComponent.getFeature().getPanelIndex()
+                       ) continue;
+                    featureUIComponent.getFeature().setPanelIndex(featureUIComponent.getFeature().getPanelIndex() + 1);
+                    featureUIComponent.getFeature().setPanelX(x + (this.getTileWidth() + 8.0f) * (float)(featureUIComponent.getFeature().getPanelIndex() % 3));
+                    featureUIComponent.getFeature().setPanelY(y + 22.0f + (this.getTileHeight() + 8.0f) * (float)(featureUIComponent.getFeature().getPanelIndex() - featureUIComponent.getFeature().getPanelIndex() % 3) / 3.0f);
+                    featureUIComponent.getFeature().llIlllIIIllllIIlllIllIIIl(false);
                 }
             }
-            if (this.IllllllllllIlIIIlllIlllll == null && this.IIlIllIlllllllIIlIIIllIIl == null) {
-                ((AbstractFeatureUIComponent)object).lIllIlIIIlIIIIIIIlllIlIll().lIlIlIlIlIIlIIlIIllIIIIIl(f + (this.llIIlIlIIIllIlIlIlIIlIIll() + 8.0f) * (float)(((AbstractFeatureUIComponent)object).lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI() % 3));
-                ((AbstractFeatureUIComponent)object).lIllIlIIIlIIIIIIIlllIlIll().IlllIIIIIIlllIlIIlllIlIIl(f2 + 22.0f + (this.IllllllllllIlIIIlllIlllll() + 8.0f) * (float)(((AbstractFeatureUIComponent)object).lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI() - ((AbstractFeatureUIComponent)object).lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI() % 3) / 3.0f);
+            if (this.clicked == null && this.dragging == null) {
+                component.getFeature().setPanelX(x + (this.getTileWidth() + 8.0f) * (float)(component.getFeature().getPanelIndex() % 3));
+                component.getFeature().setPanelY(y + 22.0f + (this.getTileHeight() + 8.0f) * (float)(component.getFeature().getPanelIndex() - component.getFeature().getPanelIndex() % 3) / 3.0f);
             }
-            if (Ref.IlllIIIIIIlllIlIIlllIlIIl().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().lIlIIlIlllIIlIIIlIlIlIllI().llIlllIIIllllIIlllIllIIIl() == GeneralOptions.SortingOptions.lIlIlIlIlIIlIIlIIllIIIIIl && this.lIllIlIIIlIIIIIIIlllIlIll == ModuleCategory.lIlIlIlIlIIlIIlIIllIIIIIl && this.IIlIllIlIIllIIlIlIllllllI.llllIIlIIlIIlIIllIIlIIllI().isEmpty()) {
-                ((UIComponent)object).lIlIlIlIlIIlIIlIIllIIIIIl(((AbstractFeatureUIComponent)object).lIllIlIIIlIIIIIIIlllIlIll().lllllIllIlIIlIIlIIIlllIlI(), ((AbstractFeatureUIComponent)object).lIllIlIIIlIIIIIIIlllIlIll().IllIIIlllIIIlIlllIlIIlIII(), this.llIIlIlIIIllIlIlIlIIlIIll(), this.IllllllllllIlIIIlllIlllll());
+            if (Ref.getLC().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().lIlIIlIlllIIlIIIlIlIlIllI().llIlllIIIllllIIlllIllIIIl() == GeneralOptions.SortingOptions.CUSTOM && this.category == ModuleCategory.ALL && this.searchBox.getText().isEmpty()) {
+                component.setPositionAndSize(component.getFeature().getPanelX(), component.getFeature().getPanelY(), this.getTileWidth(), this.getTileHeight());
             } else {
-                ((UIComponent)object).lIlIlIlIlIIlIIlIIllIIIIIl(f + (((UIComponent)object).llIlIIIllIIlIllIllIllllIl() + 8.0f) * (float)n2, f2 + 22.0f + (((UIComponent)object).IllIllIIIllIIIlIlIlIIIIll() + 8.0f) * (float)n3, this.llIIlIlIIIllIlIlIlIIlIIll(), this.IllllllllllIlIIIlllIlllll());
+                component.setPositionAndSize(x + (component.getWidth() + 8.0f) * (float)column, y + 22.0f + (component.getHeight() + 8.0f) * (float)row, this.getTileWidth(), this.getTileHeight());
             }
-            ++n2;
+            ++column;
         }
-        this.IllIIIlllIIIlIlllIlIIlIII.lIlIlIlIlIIlIIlIIllIIIIIl(f + f3 - 6.0f, f2 + 20.0f, 4.0f, f4 - 20.0f);
-        this.IllIIIlllIIIlIlllIlIIlIII.IlIlIlllllIlIIlIlIlllIlIl(n3 == 0 ? this.llIIlIlIIIllIlIlIlIIlIIll() + 4.0f : 4.0f + this.IllllllllllIlIIIlllIlllll() + (this.IllllllllllIlIIIlllIlllll() + 8.0f) * (float)n3);
-        this.lIIIlllIIIIllllIlIIIlIIll.lIlIlIlIlIIlIIlIIllIIIIIl(f + f9, this.IIlIllIlIIllIIlIlIllllllI.lIlIIIIIIlIIIllllIllIIlII(), 14.0f, 14.0f);
+        this.scrollContainer.setPositionAndSize(x + width - 6.0f, y + 20.0f, 4.0f, height - 20.0f);
+        this.scrollContainer.setContentHeight(row == 0 ? this.getTileWidth() + 4.0f : 4.0f + this.getTileHeight() + (this.getTileHeight() + 8.0f) * (float)row);
+        this.layoutSwitchButton.setPositionAndSize(x + f9, y + 1.0f, 14.0f, 14.0f);
         float f10 = 100.0f;
         float f11 = 14.0f;
-        this.IIlIllIlIIllIIlIlIllllllI.lIlIlIlIlIIlIIlIIllIIIIIl(f + (f9 += 16.0f), f2 + 1.0f, f3 - f9 - 2.0f, f11);
+        this.searchBox.setPositionAndSize(x + (f9 += 16.0f), y + 1.0f, width - f9 - 2.0f, f11);
         Bridge.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl(true);
     }
 
     @Override
-    public List lIllIlIIIlIIIIIIIlllIlIll() {
-        UIComponent[] uIComponentArray = new UIComponent[1];
-        this.IIlIllIlIIllIIlIlIllllllI = new lllllIllIlIIlIIlIIIlllIlI(this, Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation("lunar", "icons/assets/magnifying-glass-12x12.png"), FontRegistry.llllIIlIIlIIlIIllIIlIIllI, "searchPlaceholder", 0x20FFFFFF, 0x35FFFFFF);
-        uIComponentArray[0] = this.IIlIllIlIIllIIlIlIllllllI;
-        return Arrays.asList(uIComponentArray);
+    public List<UIComponent> lIllIlIIIlIIIIIIIlllIlIll() {
+        return Arrays.asList(this.searchBox = new TextboxWithIcon(this, Bridge.getInstance().initResourceLocation("lunar", "icons/assets/magnifying-glass-12x12.png"), FontRegistry.llllIIlIIlIIlIIllIIlIIllI, "searchPlaceholder", 0x20FFFFFF, 0x35FFFFFF));
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2, boolean bl) {
+    public void drawComponent(float mouseX, float mouseY, boolean bl) {
         WrappedGuiScreenBridge aaa;
-        for (ModuleCategoryButtonUIComponent object2 : this.lIlIlIlIlIIlIIlIIllIIIIIl) {
-            ((ModuleCategoryButtonUIComponent)object2).lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, bl);
+        for (ModuleCategoryButtonUIComponent object2 : this.categoryButtons) {
+            object2.drawComponent(mouseX, mouseY, bl);
         }
-        this.lIIIlllIIIIllllIlIIIlIIll.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, bl);
-        if (!this.llIIIlIllIIIIlIIIlIlIllIl) {
-            if (this.IIlIllIlllllllIIlIIIllIIl != null) {
-                for (AbstractFeatureUIComponent object2 : this.IlllIIIIIIlllIlIIlllIlIIl) {
-                    ((AbstractFeatureUIComponent)object2).lIllIlIIIlIIIIIIIlllIlIll().lIlIlIlIlIIlIIlIIllIIIIIl(this.x + (this.llIIlIlIIIllIlIlIlIIlIIll() + 8.0f) * (float)(((AbstractFeatureUIComponent)object2).lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI() % 3));
-                    ((AbstractFeatureUIComponent)object2).lIllIlIIIlIIIIIIIlllIlIll().IlllIIIIIIlllIlIIlllIlIIl(this.y + 22.0f + (this.IllllllllllIlIIIlllIlllll() + 8.0f) * (float)(((AbstractFeatureUIComponent)object2).lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI() - ((AbstractFeatureUIComponent)object2).lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI() % 3) / 3.0f);
+        this.layoutSwitchButton.drawComponent(mouseX, mouseY, bl);
+        if (!this.mouseDown) {
+            if (this.dragging != null) {
+                for (AbstractFeatureUIComponent object2 : this.featureUIComponents) {
+                    object2.getFeature().setPanelX(this.x + (this.getTileWidth() + 8.0f) * (float)(object2.getFeature().getPanelIndex() % 3));
+                    object2.getFeature().setPanelY(this.y + 22.0f + (this.getTileHeight() + 8.0f) * (float)(object2.getFeature().getPanelIndex() - object2.getFeature().getPanelIndex() % 3) / 3.0f);
                 }
-                this.IIlIllIlllllllIIlIIIllIIl = null;
+                this.dragging = null;
             }
-            if (this.IllllllllllIlIIIlllIlllll != null) {
-                this.IllllllllllIlIIIlllIlllll = null;
-                this.lllllIllIlIIlIIlIIIlllIlI = 0L;
+            if (this.clicked != null) {
+                this.clicked = null;
+                this.mouseDownTime = 0L;
             }
-        } else if (this.lllllIllIlIIlIIlIIIlllIlI != 0L && this.IllllllllllIlIIIlllIlllll != null && System.currentTimeMillis() - this.lllllIllIlIIlIIlIIIlllIlI >= 350L) {
-            this.IIlIllIlllllllIIlIIIllIIl = this.IllllllllllIlIIIlllIlllll;
-            this.IllllllllllIlIIIlllIlllll = null;
-            this.lllllIllIlIIlIIlIIIlllIlI = 0L;
+        } else if (this.mouseDownTime != 0L && this.clicked != null && System.currentTimeMillis() - this.mouseDownTime >= 350L) {
+            this.dragging = this.clicked;
+            this.clicked = null;
+            this.mouseDownTime = 0L;
         }
-        if (this.IIlIllIlllllllIIlIIIllIIl != null) {
-            this.IIlIllIlllllllIIlIIIllIIl.lIllIlIIIlIIIIIIIlllIlIll().lIlIlIlIlIIlIIlIIllIIIIIl(Math.max(this.x, Math.min(this.lIIlIlllIlIlIIIlllIIlIIII + f, this.x + this.width - this.llIIlIlIIIllIlIlIlIIlIIll())));
-            if (this.IIlIllIlllllllIIlIIIllIIl.lIllIlIIIlIIIIIIIlllIlIll().IllIIIlllIIIlIlllIlIIlIII() >= this.y + this.height - this.IllllllllllIlIIIlllIlllll() - this.IllIIIlllIIIlIlllIlIIlIII.lIllIlIIIlIIIIIIIlllIlIll()) {
-                this.IllIIIlllIIIlIlllIlIIlIII.lIlIlIlIlIIlIIlIIllIIIIIl(this.IllIIIlllIIIlIlllIlIIlIII.llllIIlIIlIIlIIllIIlIIllI() - 10.0);
-            } else if (this.IIlIllIlllllllIIlIIIllIIl.lIllIlIIIlIIIIIIIlllIlIll().IllIIIlllIIIlIlllIlIIlIII() <= this.y + 20.0f - this.IllIIIlllIIIlIlllIlIIlIII.lIllIlIIIlIIIIIIIlllIlIll()) {
-                this.IllIIIlllIIIlIlllIlIIlIII.lIlIlIlIlIIlIIlIIllIIIIIl(this.IllIIIlllIIIlIlllIlIIlIII.llllIIlIIlIIlIIllIIlIIllI() + 10.0);
+        if (this.dragging != null) {
+            this.dragging.getFeature().setPanelX(Math.max(this.x, Math.min(this.dragOffsetX + mouseX, this.x + this.width - this.getTileWidth())));
+            if (this.dragging.getFeature().getPanelY() >= this.y + this.height - this.getTileHeight() - this.scrollContainer.getYOffset()) {
+                this.scrollContainer.setScrollAmount(this.scrollContainer.getScrollAmount() - 10.0);
+            } else if (this.dragging.getFeature().getPanelY() <= this.y + 20.0f - this.scrollContainer.getYOffset()) {
+                this.scrollContainer.setScrollAmount(this.scrollContainer.getScrollAmount() + 10.0);
             }
-            this.IIlIllIlllllllIIlIIIllIIl.lIllIlIIIlIIIIIIIlllIlIll().IlllIIIIIIlllIlIIlllIlIIl(Math.max(this.y - this.IllIIIlllIIIlIlllIlIIlIII.lIllIlIIIlIIIIIIIlllIlIll(), Math.min(this.y + this.height - this.IllIIIlllIIIlIlllIlIIlIII.lIllIlIIIlIIIIIIIlllIlIll(), this.llIllIlIllIlllIllIIIIllII + f2 - this.IllIIIlllIIIlIlllIlIIlIII.lIllIlIIIlIIIIIIIlllIlIll())));
-            for (Object object2 : this.IlllIIIIIIlllIlIIlllIlIIl) {
-                if (object2.equals(this.IIlIllIlllllllIIlIIIllIIl) || !((UIComponent)object2).IlllIIIIIIlllIlIIlllIlIIl(f, f2 - this.IllIIIlllIIIlIlllIlIIlIII.lIllIlIIIlIIIIIIIlllIlIll())) continue;
-                boolean bl2 = ((AbstractFeatureUIComponent)object2).lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI() - this.IIlIllIlllllllIIlIIIllIIl.lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI() < 0;
-                float f3 = this.IIlIllIlllllllIIlIIIllIIl.lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI();
-                this.IIlIllIlllllllIIlIIIllIIl.lIllIlIIIlIIIIIIIlllIlIll().lIlIlIlIlIIlIIlIIllIIIIIl(((AbstractFeatureUIComponent)object2).lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI());
-                for (AbstractFeatureUIComponent abstractFeatureUIComponent : this.IlllIIIIIIlllIlIIlllIlIIl) {
-                    if (abstractFeatureUIComponent.equals(this.IIlIllIlllllllIIlIIIllIIl)) continue;
-                    if (bl2 && abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI() >= ((AbstractFeatureUIComponent)object2).lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI() && (float)abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI() < f3) {
-                        abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().lIlIlIlIlIIlIIlIIllIIIIIl(abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI() + 1);
+            this.dragging.getFeature().setPanelY(Math.max(this.y - this.scrollContainer.getYOffset(), Math.min(this.y + this.height - this.scrollContainer.getYOffset(), this.dragOffsetY + mouseY - this.scrollContainer.getYOffset())));
+            for (AbstractFeatureUIComponent featureUIComponent : this.featureUIComponents) {
+                if (featureUIComponent.equals(this.dragging) || !featureUIComponent.mouseInside(mouseX, mouseY - this.scrollContainer.getYOffset())) continue;
+                boolean bl2 = featureUIComponent.getFeature().getPanelIndex() - this.dragging.getFeature().getPanelIndex() < 0;
+                float f3 = this.dragging.getFeature().getPanelIndex();
+                this.dragging.getFeature().setPanelIndex(featureUIComponent.getFeature().getPanelIndex());
+                for (AbstractFeatureUIComponent otherFeature : this.featureUIComponents) {
+                    if (otherFeature.equals(this.dragging)) continue;
+                    if (bl2 && otherFeature.getFeature().getPanelIndex() >= featureUIComponent.getFeature().getPanelIndex() && (float)otherFeature.getFeature().getPanelIndex() < f3) {
+                        otherFeature.getFeature().setPanelIndex(otherFeature.getFeature().getPanelIndex() + 1);
                     }
-                    if (!bl2 && abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI() <= ((AbstractFeatureUIComponent)object2).lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI() && (float)abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI() > f3) {
-                        abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().lIlIlIlIlIIlIIlIIllIIIIIl(abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI() - 1);
+                    if (!bl2 && otherFeature.getFeature().getPanelIndex() <= featureUIComponent.getFeature().getPanelIndex() && (float)otherFeature.getFeature().getPanelIndex() > f3) {
+                        otherFeature.getFeature().setPanelIndex(otherFeature.getFeature().getPanelIndex() - 1);
                     }
-                    abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().lIlIlIlIlIIlIIlIIllIIIIIl(this.x + (this.llIIlIlIIIllIlIlIlIIlIIll() + 8.0f) * (float)(abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI() % 3));
-                    abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().IlllIIIIIIlllIlIIlllIlIIl(this.y + 22.0f + (this.IllllllllllIlIIIlllIlllll() + 8.0f) * (float)(abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI() - abstractFeatureUIComponent.lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI() % 3) / 3.0f);
+                    otherFeature.getFeature().setPanelX(this.x + (this.getTileWidth() + 8.0f) * (float)(otherFeature.getFeature().getPanelIndex() % 3));
+                    otherFeature.getFeature().setPanelY(this.y + 22.0f + (this.getTileHeight() + 8.0f) * (float)(otherFeature.getFeature().getPanelIndex() - otherFeature.getFeature().getPanelIndex() % 3) / 3.0f);
                 }
             }
         }
         Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$pushMatrix();
-        GL11.glEnable((int)3089);
+        GL11.glEnable(3089);
         float f4 = 0.0f;
-        if (this.lllIIIIIlllIIlIllIIlIIIlI.bridge$getCurrentScreen() instanceof WrappedGuiScreenBridge && (aaa = (WrappedGuiScreenBridge)this.lllIIIIIlllIIlIllIIlIIIlI.bridge$getCurrentScreen()).getCustomScreen() instanceof AbstractUIScreen) {
+        if (this.mc.bridge$getCurrentScreen() instanceof WrappedGuiScreenBridge && (aaa = (WrappedGuiScreenBridge)this.mc.bridge$getCurrentScreen()).getCustomScreen() instanceof AbstractUIScreen) {
             AbstractUIScreen abstractUIScreen = (AbstractUIScreen) aaa.getCustomScreen();
             f4 = abstractUIScreen.lllllIllIlIIlIIlIIIlllIlI();
         }
         AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl((int)(this.x - 2.0f), (int)(this.y + 20.0f), (int)(this.x + this.width + 2.0f), (int)(this.y + this.height + 5.0f), (float)((int)((float)AbstractUIScreen.llllIlIllllIlIlIIIllIlIlI().llllIIlIIlIIlIIllIIlIIllI() * AbstractUIScreen.lIIlIlllIlIlIIIlllIIlIIII())), (int)f4);
-        if (this.IIlIllIlllllllIIlIIIllIIl != null) {
-            float f5 = this.x + (this.llIIlIlIIIllIlIlIlIIlIIll() + 8.0f) * (float)(this.IIlIllIlllllllIIlIIIllIIl.lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI() % 3);
-            float f6 = this.y + 22.0f + (this.IllllllllllIlIIIlllIlllll() + 8.0f) * (float)(this.IIlIllIlllllllIIlIIIllIIl.lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI() - this.IIlIllIlllllllIIlIIIllIIl.lIllIlIIIlIIIIIIIlllIlIll().IIlIllIlIIllIIlIlIllllllI() % 3) / 3.0f + this.IllIIIlllIIIlIlllIlIIlIII.lIllIlIIIlIIIIIIIlllIlIll();
-            AbstractUIScreen.IlllIIIIIIlllIlIIlllIlIIl(f5, f6, this.llIIlIlIIIllIlIlIlIIlIIll(), this.IllllllllllIlIIIlllIlllll(), 3.0f, 0x2AFFFFFF);
+        if (this.dragging != null) {
+            float f5 = this.x + (this.getTileWidth() + 8.0f) * (float)(this.dragging.getFeature().getPanelIndex() % 3);
+            float f6 = this.y + 22.0f + (this.getTileHeight() + 8.0f) * (float)(this.dragging.getFeature().getPanelIndex() - this.dragging.getFeature().getPanelIndex() % 3) / 3.0f + this.scrollContainer.getYOffset();
+            AbstractUIScreen.IlllIIIIIIlllIlIIlllIlIIl(f5, f6, this.getTileWidth(), this.getTileHeight(), 3.0f, 0x2AFFFFFF);
         }
-        this.IllIIIlllIIIlIlllIlIIlIII.IlllIIIIIIlllIlIIlllIlIIl(f, f2, bl);
-        for (AbstractFeatureUIComponent abstractFeatureUIComponent : this.IlllIIIIIIlllIlIIlllIlIIl) {
-            boolean bl3;
-            boolean bl4 = abstractFeatureUIComponent.lIlIIIIIIlIIIllllIllIIlII() + abstractFeatureUIComponent.IllIllIIIllIIIlIlIlIIIIll() + this.IllIIIlllIIIlIlllIlIIlIII.lIllIlIIIlIIIIIIIlllIlIll() < this.IllIIIlllIIIlIlllIlIIlIII.lIlIIIIIIlIIIllllIllIIlII();
-            boolean bl5 = bl3 = abstractFeatureUIComponent.lIlIIIIIIlIIIllllIllIIlII() + this.IllIIIlllIIIlIlllIlIIlIII.lIllIlIIIlIIIIIIIlllIlIll() > this.IllIIIlllIIIlIlllIlIIlIII.lIlIIIIIIlIIIllllIllIIlII() + this.IllIIIlllIIIlIlllIlIIlIII.IllIllIIIllIIIlIlIlIIIIll();
-            if (!(abstractFeatureUIComponent.lllIIIIIlllIIlIllIIlIIIlI() >= this.x) || bl4 || bl3) continue;
-            if (this.IIlIllIlllllllIIlIIIllIIl != null && this.IIlIllIlllllllIIlIIIllIIl.equals(abstractFeatureUIComponent)) {
-                abstractFeatureUIComponent.lIlIlIlIlIIlIIlIIllIIIIIl(abstractFeatureUIComponent.lllIIIIIlllIIlIllIIlIIIlI(), abstractFeatureUIComponent.lIlIIIIIIlIIIllllIllIIlII(), abstractFeatureUIComponent.llIlIIIllIIlIllIllIllllIl() + 3.0f, abstractFeatureUIComponent.IllIllIIIllIIIlIlIlIIIIll() + 3.0f);
+        this.scrollContainer.onDraw(mouseX, mouseY, bl);
+        for (AbstractFeatureUIComponent abstractFeatureUIComponent : this.featureUIComponents) {
+            boolean bl4 = abstractFeatureUIComponent.getY() + abstractFeatureUIComponent.getHeight() + this.scrollContainer.getYOffset() < this.scrollContainer.getY();
+            boolean bl3 = abstractFeatureUIComponent.getY() + this.scrollContainer.getYOffset() > this.scrollContainer.getY() + this.scrollContainer.getHeight();
+            if (!(abstractFeatureUIComponent.getX() >= this.x) || bl4 || bl3) continue;
+            if (this.dragging != null && this.dragging.equals(abstractFeatureUIComponent)) {
+                abstractFeatureUIComponent.setPositionAndSize(abstractFeatureUIComponent.getX(), abstractFeatureUIComponent.getY(), abstractFeatureUIComponent.getWidth() + 3.0f, abstractFeatureUIComponent.getHeight() + 3.0f);
             }
-            abstractFeatureUIComponent.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2 - this.IllIIIlllIIIlIlllIlIIlIII.lIllIlIIIlIIIIIIIlllIlIll(), this.IIlIllIlllllllIIlIIIllIIl == null && bl && !this.IllIIIlllIIIlIlllIlIIlIII.lIIIllIllIIllIlllIlIIlllI());
+            abstractFeatureUIComponent.drawComponent(mouseX, mouseY - this.scrollContainer.getYOffset(), this.dragging == null && bl && !this.scrollContainer.lIIIllIllIIllIlllIlIIlllI());
         }
-        this.IllIIIlllIIIlIlllIlIIlIII.llllIIlIIlIIlIIllIIlIIllI(f, f2, bl);
-        GL11.glDisable((int)3089);
+        this.scrollContainer.llllIIlIIlIIlIIllIIlIIllI(mouseX, mouseY, bl);
+        GL11.glDisable(3089);
         Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$popMatrix();
-        super.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, bl);
+        super.drawComponent(mouseX, mouseY, bl);
+//        // todo debugging lol
+//        if (mouseDown) {
+//            float left = 20;
+//            float top = 20;
+//            float bottom = 120;
+//            float right = 120;
+//            AbstractUIScreen.IlllIIIIIIlllIlIIlllIlIIl(left, top, bottom, right, -1);
+//        }
     }
 
     @Override
-    public boolean lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2, int n) {
-        if (this.lIllIlIIIlIIIIIIIlllIlIll == ModuleCategory.lIlIlIlIlIIlIIlIIllIIIIIl && !(Boolean) Ref.IlllIIIIIIlllIlIIlllIlIIl().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().lIIlllIIIIIlllIIIlIlIlllI().llIlllIIIllllIIlllIllIIIl() && Ref.IlllIIIIIIlllIlIIlllIlIIl().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().lIlIIlIlllIIlIIIlIlIlIllI().llIlllIIIllllIIlllIllIIIl() == GeneralOptions.SortingOptions.lIlIlIlIlIIlIIlIIllIIIIIl && this.IIlIllIlIIllIIlIlIllllllI.llllIIlIIlIIlIIllIIlIIllI().isEmpty() && f2 > this.y + 20.0f && f2 < this.y + this.height) {
-            for (AbstractFeatureUIComponent abstractFeatureUIComponent : this.IlllIIIIIIlllIlIIlllIlIIl) {
-                boolean bl;
-                boolean bl2 = abstractFeatureUIComponent.lIlIIIIIIlIIIllllIllIIlII() + abstractFeatureUIComponent.IllIllIIIllIIIlIlIlIIIIll() + this.IllIIIlllIIIlIlllIlIIlIII.lIllIlIIIlIIIIIIIlllIlIll() < this.IllIIIlllIIIlIlllIlIIlIII.lIlIIIIIIlIIIllllIllIIlII();
-                boolean bl3 = bl = abstractFeatureUIComponent.lIlIIIIIIlIIIllllIllIIlII() + this.IllIIIlllIIIlIlllIlIIlIII.lIllIlIIIlIIIIIIIlllIlIll() > this.IllIIIlllIIIlIlllIlIIlIII.lIlIIIIIIlIIIllllIllIIlII() + this.IllIIIlllIIIlIlllIlIIlIII.IllIllIIIllIIIlIlIlIIIIll();
-                if (!(abstractFeatureUIComponent.lllIIIIIlllIIlIllIIlIIIlI() >= this.x) || bl2 || bl || !abstractFeatureUIComponent.IlllIIIIIIlllIlIIlllIlIIl(f, f2 - this.IllIIIlllIIIlIlllIlIIlIII.lIllIlIIIlIIIIIIIlllIlIll()) || this.IllllllllllIlIIIlllIlllll != null || this.IIlIllIlllllllIIlIIIllIIl != null) continue;
-                this.IllllllllllIlIIIlllIlllll = abstractFeatureUIComponent;
-                this.lllllIllIlIIlIIlIIIlllIlI = System.currentTimeMillis();
-                this.lIIlIlllIlIlIIIlllIIlIIII = this.IllllllllllIlIIIlllIlllll.lIllIlIIIlIIIIIIIlllIlIll().lllllIllIlIIlIIlIIIlllIlI() - f;
-                this.llIllIlIllIlllIllIIIIllII = this.IllllllllllIlIIIlllIlllll.lIllIlIIIlIIIIIIIlllIlIll().IllIIIlllIIIlIlllIlIIlIII() - f2 + this.IllIIIlllIIIlIlllIlIIlIII.lIllIlIIIlIIIIIIIlllIlIll();
+    public boolean onMouseClicked(float mouseX, float mouseY, int mouseButton) {
+        if (this.category == ModuleCategory.ALL && !(Boolean) Ref.getLC().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().lIIlllIIIIIlllIIIlIlIlllI().llIlllIIIllllIIlllIllIIIl() && Ref.getLC().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().lIlIIlIlllIIlIIIlIlIlIllI().llIlllIIIllllIIlllIllIIIl() == GeneralOptions.SortingOptions.CUSTOM && this.searchBox.getText().isEmpty() && mouseY > this.y + 20.0f && mouseY < this.y + this.height) {
+            for (AbstractFeatureUIComponent component : this.featureUIComponents) {
+                boolean bl2 = component.getY() + component.getHeight() + this.scrollContainer.getYOffset() < this.scrollContainer.getY();
+                boolean bl = component.getY() + this.scrollContainer.getYOffset() > this.scrollContainer.getY() + this.scrollContainer.getHeight();
+                if (!(component.getX() >= this.x) || bl2 || bl || !component.mouseInside(mouseX, mouseY - this.scrollContainer.getYOffset()) || this.clicked != null || this.dragging != null) continue;
+                this.clicked = component;
+                this.mouseDownTime = System.currentTimeMillis();
+                this.dragOffsetX = this.clicked.getFeature().getPanelX() - mouseX;
+                this.dragOffsetY = this.clicked.getFeature().getPanelY() - mouseY + this.scrollContainer.getYOffset();
                 break;
             }
         }
-        return super.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, n);
+        return super.onMouseClicked(mouseX, mouseY, mouseButton);
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(char c, KeyType keyType) {
-        if (keyType == KeyType.lIIIlIllllIIlIIlIIlIIIIlI && this.IIlIllIlIIllIIlIlIllllllI.llIllIlIllIlllIllIIIIllII()) {
-            this.IIlIllIlIIllIIlIlIllllllI.lIlIlIlIlIIlIIlIIllIIIIIl(false);
-            this.IIlIllIlIIllIIlIlIllllllI.lIlIlIlIlIIlIIlIIllIIIIIl("");
+    public void onKeyTyped(char c, KeyType keyType) {
+        if (keyType == KeyType.KEY_ESCAPE && this.searchBox.isTyping()) {
+            this.searchBox.setTyping(false);
+            this.searchBox.setText("");
             return;
         }
-        super.lIlIlIlIlIIlIIlIIllIIIIIl(c, keyType);
-        if (!this.IIlIllIlIIllIIlIlIllllllI.llIllIlIllIlllIllIIIIllII()) {
-            this.IIlIllIlIIllIIlIlIllllllI.lIlIlIlIlIIlIIlIIllIIIIIl(true);
-            this.IIlIllIlIIllIIlIlIllllllI.lIlIlIlIlIIlIIlIIllIIIIIl(c, keyType);
+        super.onKeyTyped(c, keyType);
+        if (!this.searchBox.isTyping()) {
+            this.searchBox.setTyping(true);
+            this.searchBox.onKeyTyped(c, keyType);
         }
     }
 
     @Override
-    public boolean IlllIIIIIIlllIlIIlllIlIIl(float f, float f2) {
-        if (this.IIlIllIlllllllIIlIIIllIIl != null) {
+    public boolean mouseInside(float mouseX, float mouseY) {
+        if (this.dragging != null) {
             return true;
         }
-        return super.IlllIIIIIIlllIlIIlllIlIIl(f, f2);
+        return super.mouseInside(mouseX, mouseY);
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(int n) {
-        this.IllIIIlllIIIlIlllIlIIlIII.lIlIlIlIlIIlIIlIIllIIIIIl(n);
-        super.lIlIlIlIlIIlIIlIIllIIIIIl(n);
+    public void handleMouseScrollDelta(int n) {
+        this.scrollContainer.handleMouseScrollDelta(n);
+        super.handleMouseScrollDelta(n);
     }
 
     @Override
-    public void IlllIIIIIIlllIlIIlllIlIIl() {
-        super.IlllIIIIIIlllIlIIlllIlIIl();
+    public void onGuiClosed() {
+        super.onGuiClosed();
         Bridge.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl(false);
     }
 
-    public float llIIlIlIIIllIlIlIlIIlIIll() {
-        return (Boolean)LunarClient.IIllIlIllIlIllIllIllIllII().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().lIlIlIIIIIIllIlIIIIllIIII().llIlllIIIllllIIlllIllIIIl() != false ? 115.0f : 115.0f;
+    public float getTileWidth() {
+        return LunarClient.getInstance().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().getCompactMenu().llIlllIIIllllIIlllIllIIIl() ? 115.0f : 115.0f;
     }
 
-    public float IllllllllllIlIIIlllIlllll() {
-        return (Boolean)LunarClient.IIllIlIllIlIllIllIllIllII().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().lIlIlIIIIIIllIlIIIIllIIII().llIlllIIIllllIIlllIllIIIl() != false ? 22.0f : 112.0f;
+    public float getTileHeight() {
+        return LunarClient.getInstance().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().getCompactMenu().llIlllIIIllllIIlllIllIIIl() ? 22.0f : 112.0f;
     }
 
-    public boolean lIlIlIlIlIIlIIlIIllIIIIIl(Feature feature, String string) {
+    public boolean isFilterMatch(Feature feature, String string) {
         for (String string2 : feature.lIIIllIllIIllIlllIlIIlllI()) {
             if (!string2.startsWith(string.toLowerCase())) continue;
             return true;
         }
-        if (((Boolean)Ref.IlllIIIIIIlllIlIIlllIlIIl().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().IIIlIIIIIIllIIIIllIIIIlII().llIlllIIIllllIIlllIllIIIl()).booleanValue()) {
+        if (Ref.getLC().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().getSearchOptions().llIlllIIIllllIIlllIllIIIl()) {
             for (String string2 : feature.IlllllIlIIIlIIlIIllIIlIll()) {
                 if (!string2.startsWith(string.toLowerCase())) continue;
                 return true;
@@ -380,16 +397,15 @@ extends AbstractListUIComponent {
         return false;
     }
 
-    public AbstractFeatureUIComponent llIIIIIIIllIIllIlIllIIIIl() {
-        return this.IIlIllIlllllllIIlIIIllIIl;
+    public AbstractFeatureUIComponent getDragging() {
+        return this.dragging;
     }
 
-    public IIlIllIlIIllIIlIlIllllllI lIIIllIllIIllIlllIlIIlllI() {
-        return this.IllIIIlllIIIlIlllIlIIlIII;
+    public ScrollbarUIComponent lIIIllIllIIllIlllIlIIlllI() {
+        return this.scrollContainer;
     }
 
-    public lllllIllIlIIlIIlIIIlllIlI IlllllIlIIIlIIlIIllIIlIll() {
-        return this.IIlIllIlIIllIIlIlIllllllI;
+    public TextboxWithIcon IlllllIlIIIlIIlIIllIIlIll() {
+        return this.searchBox;
     }
 }
- 

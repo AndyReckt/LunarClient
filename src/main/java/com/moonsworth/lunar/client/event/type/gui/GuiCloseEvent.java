@@ -4,7 +4,7 @@ import com.moonsworth.lunar.bridge.minecraft.client.gui.GuiScreenBridge;
 import com.moonsworth.lunar.client.event.Event;
 
 public class GuiCloseEvent
-extends Event {
+    extends Event {
     public GuiScreenBridge lIlIlIlIlIIlIIlIIllIIIIIl;
     public GuiScreenBridge IlllIIIIIIlllIlIIlllIlIIl;
 

@@ -3,13 +3,12 @@ package com.moonsworth.lunar.client.setting;
 import com.moonsworth.lunar.bridge.minecraft.client.resources.I18n.I18nBridge;
 
 public interface IEnumSetting extends I18nBridge {
-    public String toString();
+    String toString();
 
-    public String lIlIlIlIlIIlIIlIIllIIIIIl();
+    String lIlIlIlIlIIlIIlIIllIIIIIl();
 
     @Override
-    default public String getLanguagePath() {
+    default String getLanguagePath() {
         return "settings";
     }
 }
- 

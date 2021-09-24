@@ -10,8 +10,7 @@ import com.moonsworth.lunar.client.ui.ease.AbstractEase;
 import com.moonsworth.lunar.client.ui.ease.QuadraticEase;
 import com.moonsworth.lunar.client.ui.screen.AbstractUIScreen;
 
-public class IntSliderUIComponent
-extends UIComponent {
+public class IntSliderUIComponent extends UIComponent {
     public final AbstractEase lIlIlIlIlIIlIIlIIllIIIIIl = new QuadraticEase(500L);
     public Number IlllIIIIIIlllIlIIlllIlIIl;
     public boolean lIllIlIIIlIIIIIIIlllIlIll;
@@ -20,20 +19,20 @@ extends UIComponent {
     public IntSliderUIComponent(NumberSetting numberSetting, UIComponent uIComponent) {
         super(uIComponent);
         this.llIlIIIllIIlIllIllIllllIl = numberSetting;
-        this.IlllIIIIIIlllIlIIlllIlIIl = (Number)numberSetting.llIlllIIIllllIIlllIllIIIl();
-        this.lIlIlIlIlIIlIIlIIllIIIIIl((float f, float f2, int n) -> {
+        this.IlllIIIIIIlllIlIIlllIlIIl = numberSetting.llIlllIIIllllIIlllIllIIIl();
+        this.onMouseClick((float f, float f2, int n) -> {
             this.lIllIlIIIlIIIIIIIlllIlIll = true;
             return true;
         });
     }
 
     @Override
-    public float IllIllIIIllIIIlIlIlIIIIll() {
+    public float getHeight() {
         return 14.0f;
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl() {
+    public void onUpdateScreen() {
     }
 
     public void IlllIIIIIIlllIlIIlllIlIIl(float f, float f2, boolean bl) {
@@ -47,9 +46,9 @@ extends UIComponent {
         if (!Bridge.llIIIlllIIlllIllllIlIllIl().lIlIlIlIlIIlIIlIIllIIIIIl(0) && this.lIllIlIIIlIIIIIIIlllIlIll) {
             this.lIllIlIIIlIIIIIIIlllIlIll = false;
         }
-        if (this.IlllIIIIIIlllIlIIlllIlIIl(f, f2) && Bridge.llIIIlllIIlllIllllIlIllIl().lIlIlIlIlIIlIIlIIllIIIIIl(0) && this.lIllIlIIIlIIIIIIIlllIlIll) {
+        if (this.mouseInside(f, f2) && Bridge.llIIIlllIIlllIllllIlIllIl().lIlIlIlIlIIlIIlIIllIIIIIl(0) && this.lIllIlIIIlIIIIIIIlllIlIll) {
             if (this.lIlIlIlIlIIlIIlIIllIIIIIl.IlIlIlllllIlIIlIlIlllIlIl()) {
-                this.IlllIIIIIIlllIlIIlllIlIIl = (Number)this.llIlIIIllIIlIllIllIllllIl.llIlllIIIllllIIlllIllIIIl();
+                this.IlllIIIIIIlllIlIIlllIlIIl = this.llIlIIIllIIlIllIllIllllIl.llIlllIIIllllIIlllIllIIIl();
                 this.lIlIlIlIlIIlIIlIIllIIIIIl.lIllIlIIIlIIIIIIIlllIlIll();
             }
             f9 = this.llIlIIIllIIlIllIllIllllIl.lllllIllIllIllllIlIllllII().floatValue();
@@ -63,13 +62,13 @@ extends UIComponent {
                 f5 = f8;
             }
             this.llIlIIIllIIlIllIllIllllIl.lIlIlIlIlIIlIIlIIllIIIIIl((double)Math.round((double)f5 * 100.0) / 100.0);
-        } else if (!((Number)this.llIlIIIllIIlIllIllIllllIl.llIlllIIIllllIIlllIllIIIl()).equals(this.IlllIIIIIIlllIlIIlllIlIIl) && this.lIlIlIlIlIIlIIlIIllIIIIIl.IlIlIlllllIlIIlIlIlllIlIl()) {
-            this.IlllIIIIIIlllIlIIlllIlIIl = (Number)this.llIlIIIllIIlIllIllIllllIl.llIlllIIIllllIIlllIllIIIl();
+        } else if (!this.llIlIIIllIIlIllIllIllllIl.llIlllIIIllllIIlllIllIIIl().equals(this.IlllIIIIIIlllIlIIlllIlIIl) && this.lIlIlIlIlIIlIIlIIllIIIIIl.IlIlIlllllIlIIlIlIlllIlIl()) {
+            this.IlllIIIIIIlllIlIIlllIlIIl = this.llIlIIIllIIlIllIllIllllIl.llIlllIIIllllIIlllIllIIIl();
             this.lIlIlIlIlIIlIIlIIllIIIIIl.lIllIlIIIlIIIIIIIlllIlIll();
         }
         f9 = this.llIlIIIllIIlIllIllIllllIl.lllllIllIllIllllIlIllllII().floatValue();
         f8 = this.llIlIIIllIIlIllIllIllllIl.lllIIIIIlllIIlIllIIlIIIlI().floatValue();
-        f7 = ((Number)this.llIlIIIllIIlIllIllIllllIl.llIlllIIIllllIIlllIllIIIl()).floatValue();
+        f7 = this.llIlIIIllIIlIllIllIllllIl.llIlllIIIllllIIlllIllIIIl().floatValue();
         f6 = (f7 - f9) / (f8 - f9);
         f5 = this.width * f6;
         if (this.lIlIlIlIlIIlIIlIIllIIIIIl.lIIlIlllIlIlIIIlllIIlIIII()) {
@@ -77,30 +76,30 @@ extends UIComponent {
             f3 = this.width * f6;
             float f10 = this.width * f4;
             float f11 = f10 - f3;
-            f5 = f10 - f11 * this.lIlIlIlIlIIlIIlIIllIIIIIl.IlllllIlIIIlIIlIIllIIlIll();
+            f5 = f10 - f11 * this.lIlIlIlIlIIlIIlIIllIIIIIl.getProgress();
         }
         f4 = this.height / 4.0f;
         AbstractUIScreen.lIllIlIIIlIIIIIIIlllIlIll(this.x, this.y + this.height / 2.0f - f4 / 2.0f, this.width, f4, -15066341);
         f3 = this.height / 3.0f;
-        AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl((double)(this.x + f5), (double)(this.y + this.height / 2.0f), (double)f3, -11561732);
+        AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(this.x + f5, this.y + this.height / 2.0f, (double)f3, -11561732);
         Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$color(1.0f, 1.0f, 1.0f, 0.14f);
-        AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl((double)(this.x + f5), (double)(this.y + this.height / 2.0f), (double)f3, (double)(f3 - 1.0f), 1.0, 1, 1.0);
+        AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(this.x + f5, this.y + this.height / 2.0f, f3, f3 - 1.0f, 1.0, 1, 1.0);
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2, boolean bl) {
+    public void drawComponent(float mouseX, float mouseY, boolean bl) {
         LCFontRenderer lCFontRenderer = FontRegistry.lllIIIIIlllIIlIllIIlIIIlI();
-        String string = (double)Math.round((double)((Number)this.llIlIIIllIIlIllIllIllllIl.llIlllIIIllllIIlllIllIIIl()).floatValue() * 100.0) / 100.0 + "";
+        String string = (double)Math.round((double) this.llIlIIIllIIlIllIllIllllIl.llIlllIIIllllIIlllIllIIIl().floatValue() * 100.0) / 100.0 + "";
         float f3 = lCFontRenderer.IlllIIIIIIlllIlIIlllIlIIl(string);
-        lCFontRenderer.lIlIlIlIlIIlIIlIIllIIIIIl(string, this.x - 8.0f - f3, this.y + this.height / 2.0f - (float)(lCFontRenderer.lIlIlIlIlIIlIIlIIllIIIIIl() / 2) - 2.0f, -1879048193);
-        this.IlllIIIIIIlllIlIIlllIlIIl(f, f2, bl);
+        lCFontRenderer.lIlIlIlIlIIlIIlIIllIIIIIl(string, this.x - 8.0f - f3, this.y + this.height / 2.0f - (float)(lCFontRenderer.getHeight() / 2) - 2.0f, -1879048193);
+        this.IlllIIIIIIlllIlIIlllIlIIl(mouseX, mouseY, bl);
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(char c, KeyType keyType) {
+    public void onKeyTyped(char c, KeyType keyType) {
     }
 
     @Override
-    public void IlllIIIIIIlllIlIIlllIlIIl() {
+    public void onGuiClosed() {
     }
 }

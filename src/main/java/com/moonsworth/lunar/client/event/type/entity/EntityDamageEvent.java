@@ -5,7 +5,7 @@ import com.moonsworth.lunar.bridge.minecraft.util.DamageSourceBridge;
 import com.moonsworth.lunar.client.event.CancellableEvent;
 
 public class EntityDamageEvent
-extends CancellableEvent {
+    extends CancellableEvent {
     public final EntityLivingBaseBridge lIlIlIlIlIIlIIlIIllIIIIIl;
     public DamageSourceBridge IlllIIIIIIlllIlIIlllIlIIl;
     public float lIllIlIIIlIIIIIIIlllIlIll;

@@ -2,10 +2,6 @@ package com.moonsworth.lunar.client.util;
 
 import com.moonsworth.lunar.bridge.minecraft.client.MinecraftBridge;
 
-/**
- * @author Decencies
- * @since 10/07/2021 18:29
- */
 public class ScaledResolutionHelper {
     public final double lIlIlIlIlIIlIIlIIllIIIIIl;
     public final double IlllIIIIIIlllIlIIlllIlIIl;

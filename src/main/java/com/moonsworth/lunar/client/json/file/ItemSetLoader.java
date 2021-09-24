@@ -5,10 +5,6 @@ import lombok.Getter;
 
 import java.util.Set;
 
-/**
- * @author Decencies
- * @since 10/07/2021 12:28
- */
 public abstract class ItemSetLoader<T> implements ItemLoader {
 
     // todo: getSet
@@ -20,7 +16,7 @@ public abstract class ItemSetLoader<T> implements ItemLoader {
 
     @Override
     public void b_() {
-        LunarLogger.lIlIlIlIlIIlIIlIIllIIIIIl(getClass().getSimpleName() + " loaded " + set.size() + " items.");
+        LunarLogger.debug(getClass().getSimpleName() + " loaded " + set.size() + " items.");
     }
 
     @Override

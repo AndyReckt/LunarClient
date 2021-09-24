@@ -11,11 +11,10 @@ import org.lwjgl.opengl.GL11;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class AnimatedLunarLogoUIComponent
-extends UIComponent {
+public class AnimatedLunarLogoUIComponent extends UIComponent {
     public static final int lIlIlIlIlIIlIIlIIllIIIIIl = 8;
     public static final float IlllIIIIIIlllIlIIlllIlIIl = 0.15f;
-    public static final ResourceLocationBridge lIllIlIIIlIIIIIIIlllIlIll = Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation("lunar", "animatedlogo/128/logo_128_no_stars.png");
+    public static final ResourceLocationBridge lIllIlIIIlIIIIIIIlllIlIll = Bridge.getInstance().initResourceLocation("lunar", "animatedlogo/128/logo_128_no_stars.png");
     public static final ResourceLocationBridge[] llIlIIIllIIlIllIllIllllIl = new ResourceLocationBridge[8];
     public final StarEase[] IllIllIIIllIIIlIlIlIIIIll = new StarEase[8];
     public final float[] IIlIllIlllllllIIlIIIllIIl = new float[8];
@@ -27,7 +26,7 @@ extends UIComponent {
         super(uIComponent);
         for (int i = 1; i <= 8; ++i) {
             if (llIlIIIllIIlIllIllIllllIl[i - 1] != null) continue;
-            AnimatedLunarLogoUIComponent.llIlIIIllIIlIllIllIllllIl[i - 1] = Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation("lunar", "animatedlogo/128/logo_128_star_" + i + ".png");
+            AnimatedLunarLogoUIComponent.llIlIIIllIIlIllIllIllllIl[i - 1] = Bridge.getInstance().initResourceLocation("lunar", "animatedlogo/128/logo_128_star_" + i + ".png");
         }
         this.lIllIlIIIlIIIIIIIlllIlIll();
         this.IllllllllllIlIIIlllIlllll = bl2;
@@ -49,18 +48,18 @@ extends UIComponent {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl() {
+    public void onUpdateScreen() {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2, boolean bl) {
+    public void drawComponent(float mouseX, float mouseY, boolean bl) {
         GL11.glPushMatrix();
         if (this.llIllIlIllIlllIllIIIIllII) {
             Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$color(0.0f, 0.0f, 0.0f, 0.2f);
             AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(lIllIlIIIlIIIIIIIlllIlIll, this.x + 1.0f, this.y + 1.0f, this.width, this.height);
         }
         if (!this.IllllllllllIlIIIlllIlllll) {
-            Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$color(Ref.IlllIIIIIIlllIlIIlllIlIIl().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().llllIlIllllIlIlIIIllIlIlI().IlllIIIIIIlllIlIIlllIlIIl(0.0f), Ref.IlllIIIIIIlllIlIIlllIlIIl().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().llllIlIllllIlIlIIIllIlIlI().lIllIlIIIlIIIIIIIlllIlIll(0.0f), Ref.IlllIIIIIIlllIlIIlllIlIIl().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().llllIlIllllIlIlIIIllIlIlI().llIlllIIIllllIIlllIllIIIl(0.0f), 1.0f);
+            Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$color(Ref.getLC().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().llllIlIllllIlIlIIIllIlIlI().IlllIIIIIIlllIlIIlllIlIIl(0.0f), Ref.getLC().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().llllIlIllllIlIlIIIllIlIlI().lIllIlIIIlIIIIIIIlllIlIll(0.0f), Ref.getLC().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().llllIlIllllIlIlIIIllIlIlI().llIlllIIIllllIIlllIllIIIl(0.0f), 1.0f);
         } else {
             Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$color(1.0f, 1.0f, 1.0f, 1.0f);
         }
@@ -75,7 +74,7 @@ extends UIComponent {
                 this.lIllIlIIIlIIIIIIIlllIlIll();
             }
             float f3 = 1.0f * lIlIlIlIlIIlIIlIIllIIIIIl2.IIlIllIlIIllIIlIlIllllllI();
-            if (lIlIlIlIlIIlIIlIIllIIIIIl2.lIlIlIlIlIIlIIlIIllIIIIIl() && this.lIIlIlllIlIlIIIlllIIlIIII) {
+            if (lIlIlIlIlIIlIIlIIllIIIIIl2.done() && this.lIIlIlllIlIlIIIlllIIlIIII) {
                 this.lIIlIlllIlIlIIIlllIIlIIII = false;
             }
             if (this.lIIlIlllIlIlIIIlllIIlIIII) {
@@ -86,7 +85,7 @@ extends UIComponent {
                 AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(llIlIIIllIIlIllIllIllllIl[i], this.x + 1.0f, this.y + 1.0f, this.width, this.height);
             }
             if (!this.IllllllllllIlIIIlllIlllll) {
-                Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$color(Ref.IlllIIIIIIlllIlIIlllIlIIl().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().llllIlIllllIlIlIIIllIlIlI().IlllIIIIIIlllIlIIlllIlIIl(0.0f), Ref.IlllIIIIIIlllIlIIlllIlIIl().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().llllIlIllllIlIlIIIllIlIlI().lIllIlIIIlIIIIIIIlllIlIll(0.0f), Ref.IlllIIIIIIlllIlIIlllIlIIl().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().llllIlIllllIlIlIIIllIlIlI().llIlllIIIllllIIlllIllIIIl(0.0f), f3);
+                Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$color(Ref.getLC().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().llllIlIllllIlIlIIIllIlIlI().IlllIIIIIIlllIlIIlllIlIIl(0.0f), Ref.getLC().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().llllIlIllllIlIlIIIllIlIlI().lIllIlIIIlIIIIIIIlllIlIll(0.0f), Ref.getLC().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().llllIlIllllIlIlIIIllIlIlI().llIlllIIIllllIIlllIllIIIl(0.0f), f3);
             } else {
                 Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$color(1.0f, 1.0f, 1.0f, f3);
             }
@@ -98,11 +97,11 @@ extends UIComponent {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(char c, KeyType keyType) {
+    public void onKeyTyped(char c, KeyType keyType) {
     }
 
     @Override
-    public void IlllIIIIIIlllIlIIlllIlIIl() {
+    public void onGuiClosed() {
     }
 
     public static class StarEase extends LinearEase {
@@ -124,7 +123,7 @@ extends UIComponent {
         }
 
         // todo
-        public boolean lIlIlIlIlIIlIIlIIllIIIIIl() {
+        public boolean done() {
             return this.lIIIllIllIIllIlllIlIIlllI.IlIlIlllllIlIIlIlIlllIlIl();
         }
 
@@ -133,13 +132,13 @@ extends UIComponent {
                 this.lIIIllIllIIllIlllIlIIlllI.lIllIlIIIlIIIIIIIlllIlIll();
             }
             if (this.lIIIllIllIIllIlllIlIIlllI.lIIIllIllIIllIlllIlIIlllI()) {
-                return Math.max(1.0f * this.lIIIllIllIIllIlllIlIIlllI.IlllllIlIIIlIIlIIllIIlIll(), 0.15f);
+                return Math.max(1.0f * this.lIIIllIllIIllIlllIlIIlllI.getProgress(), 0.15f);
             }
-            if (this.lllllIllIllIllllIlIllllII() <= this.IlllllIlIIIlIIlIIllIIlIll.IIlIllIlllllllIIlIIIllIIl()) {
+            if (this.lllllIllIllIllllIlIllllII() <= this.IlllllIlIIIlIIlIIllIIlIll.getDuration()) {
                 if (!this.IlllllIlIIIlIIlIIllIIlIll.llllIIlIIlIIlIIllIIlIIllI()) {
                     this.IlllllIlIIIlIIlIIllIIlIll.lIllIlIIIlIIIIIIIlllIlIll();
                 }
-                return 1.0f - 0.85f * this.IlllllIlIIIlIIlIIllIIlIll.IlllllIlIIIlIIlIIllIIlIll();
+                return 1.0f - 0.85f * this.IlllllIlIIIlIIlIIllIIlIll.getProgress();
             }
             return 1.0f;
         }

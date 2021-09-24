@@ -46,4 +46,3 @@ public final class CosmeticIndexEntry {
         return "CosmeticIndexEntry(id=" + this.lIlIlIlIlIIlIIlIIllIIIIIl() + ", scale=" + this.IlllIIIIIIlllIlIIlllIlIIl() + ", resource=" + this.lIllIlIIIlIIIIIIIlllIlIll() + ", name=" + this.llIlllIIIllllIIlllIllIIIl() + ", type=" + this.llllIIlIIlIIlIIllIIlIIllI() + ", animated=" + this.IlIlIlllllIlIIlIlIlllIlIl() + ")";
     }
 }
- 

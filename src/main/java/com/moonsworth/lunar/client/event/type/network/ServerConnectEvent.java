@@ -5,8 +5,8 @@ import com.moonsworth.lunar.client.event.Event;
 import com.moonsworth.lunar.client.ref.Ref;
 
 public class ServerConnectEvent
-extends Event {
-    public final ServerDataBridge lIlIlIlIlIIlIIlIIllIIIIIl = Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getCurrentServerData();
+    extends Event {
+    public final ServerDataBridge lIlIlIlIlIIlIIlIIllIIIIIl = Ref.getMinecraft().bridge$getCurrentServerData();
     public final String IlllIIIIIIlllIlIIlllIlIIl;
     public final int lIllIlIIIlIIIIIIIlllIlIll;
 
@@ -27,4 +27,3 @@ extends Event {
         this.lIllIlIIIlIIIIIIIlllIlIll = n;
     }
 }
- 

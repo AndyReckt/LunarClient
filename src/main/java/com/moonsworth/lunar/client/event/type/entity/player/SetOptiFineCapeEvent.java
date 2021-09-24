@@ -4,7 +4,7 @@ import com.moonsworth.lunar.bridge.minecraft.client.entity.AbstractClientPlayerB
 import com.moonsworth.lunar.client.event.CancellableEvent;
 
 public class SetOptiFineCapeEvent
-extends CancellableEvent {
+    extends CancellableEvent {
     public AbstractClientPlayerBridge lIlIlIlIlIIlIIlIIllIIIIIl;
 
     public SetOptiFineCapeEvent(AbstractClientPlayerBridge abstractClientPlayerBridge) {

@@ -18,7 +18,7 @@ public abstract class ItemMapLoader<K, V> implements ItemLoader {
 
     @Override
     public void b_() {
-        LunarLogger.lIlIlIlIlIIlIIlIIllIIIIIl(getClass().getSimpleName() + " loaded " + map.size() + " items.");
+        LunarLogger.debug(getClass().getSimpleName() + " loaded " + map.size() + " items.");
     }
 
     @Override

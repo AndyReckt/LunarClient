@@ -4,9 +4,11 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
+import com.lunarclient.bukkitapi.nethandler.client.LCPacketVoiceMute;
 import com.moonsworth.lunar.LunarClient;
 import com.moonsworth.lunar.client.event.EventHandler;
-import com.moonsworth.lunar.client.json.file.DefaultJson;
+import com.moonsworth.lunar.client.event.type.network.NetHandlerConnectionStateUpdateEvent;
+import com.moonsworth.lunar.client.json.file.JsonFile;
 import com.moonsworth.lunar.client.json.file.ItemSetLoader;
 import com.moonsworth.lunar.client.logger.LunarLogger;
 import io.netty.util.internal.ConcurrentSet;
@@ -16,11 +18,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
-public class MutedUsersConfig
-extends ItemSetLoader<UUID>
-implements EventHandler,
-        DefaultJson {
-    public List lIlIlIlIlIIlIIlIIllIIIIIl = new ArrayList();
+public class MutedUsersConfig extends ItemSetLoader<UUID> implements EventHandler, JsonFile {
+    public List<UUID> lIlIlIlIlIIlIIlIIllIIIIIl = new ArrayList<>();
 
     public MutedUsersConfig() {
         this.lIlIlIlIlIIlIIlIIllIIIIIl(NetHandlerConnectionStateUpdateEvent.class, this::lIlIlIlIlIIlIIlIIllIIIIIl);
@@ -28,7 +27,7 @@ implements EventHandler,
 
     @Override
     public Set<UUID> lIlIlIlIlIIlIIlIIllIIIIIl() {
-        return new ConcurrentSet();
+        return new ConcurrentSet<>();
     }
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(NetHandlerConnectionStateUpdateEvent netHandlerConnectionStateUpdateEvent) {
@@ -38,7 +37,7 @@ implements EventHandler,
     public boolean lIlIlIlIlIIlIIlIIllIIIIIl(UUID uUID) {
         if (!this.lIlIlIlIlIIlIIlIIllIIIIIl.contains(uUID)) {
             this.lIlIlIlIlIIlIIlIIllIIIIIl.add(uUID);
-            LunarClient.IIllIlIllIlIllIllIllIllII().llIIIIIIIllIIllIlIllIIIIl().lIlIlIlIlIIlIIlIIllIIIIIl(new LCPacketVoiceMute(uUID, -1));
+            LunarClient.getInstance().llIIIIIIIllIIllIlIllIIIIl().lIlIlIlIlIIlIIlIIllIIIIIl(new LCPacketVoiceMute(uUID, -1));
             return true;
         }
         return false;
@@ -47,7 +46,7 @@ implements EventHandler,
     public boolean IlllIIIIIIlllIlIIlllIlIIl(UUID uUID) {
         if (this.lIlIlIlIlIIlIIlIIllIIIIIl.contains(uUID)) {
             this.lIlIlIlIlIIlIIlIIllIIIIIl.removeIf(uUID::equals);
-            LunarClient.IIllIlIllIlIllIllIllIllII().llIIIIIIIllIIllIlIllIIIIl().lIlIlIlIlIIlIIlIIllIIIIIl(new LCPacketVoiceMute(uUID, -1));
+            LunarClient.getInstance().llIIIIIIIllIIllIlIllIIIIl().lIlIlIlIlIIlIIlIIllIIIIIl(new LCPacketVoiceMute(uUID, -1));
             return true;
         }
         return false;
@@ -70,23 +69,22 @@ implements EventHandler,
     }
 
     @Override
-    public void IlllIIIIIIlllIlIIlllIlIIl(JsonObject jsonObject) {
+    public void read(JsonObject jsonObject) {
         JsonArray jsonArray = jsonObject.getAsJsonArray("mutes");
         for (JsonElement jsonElement : jsonArray) {
             try {
-                LunarLogger.lIlIlIlIlIIlIIlIIllIIIIIl((Object)"Added Mute [%s]", jsonElement.getAsString());
+                LunarLogger.debug((Object)"Added Mute [%s]", jsonElement.getAsString());
                 this.llIlllIIIllllIIlllIllIIIl().add(UUID.fromString(jsonElement.getAsString()));
-            }
-            catch (Exception exception) {}
+            } catch (Exception exception) {}
         }
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(JsonObject jsonObject) {
+    public void write(JsonObject jsonObject) {
         JsonArray jsonArray = new JsonArray();
         jsonObject.add("mutes", jsonArray);
         for (UUID uUID : this.llIlllIIIllllIIlllIllIIIl()) {
-            jsonArray.add((JsonElement)new JsonPrimitive(uUID.toString()));
+            jsonArray.add(new JsonPrimitive(uUID.toString()));
         }
     }
 

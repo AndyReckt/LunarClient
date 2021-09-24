@@ -5,19 +5,17 @@ import com.moonsworth.lunar.bridge.minecraft.client.settings.KeyBindingBridge;
 import com.moonsworth.lunar.client.event.type.gui.GuiOpenEvent;
 import com.moonsworth.lunar.client.event.type.render.RenderGameOverlayEvent;
 import com.moonsworth.lunar.client.feature.FeatureDetails;
-import com.moonsworth.lunar.client.feature.hud.Anchor;
+import com.moonsworth.lunar.client.feature.hud.HudModPosition;
 import com.moonsworth.lunar.client.feature.hud.DraggableHudMod;
 import com.moonsworth.lunar.client.feature.hud.ModuleCategory;
 import com.moonsworth.lunar.client.ref.Ref;
-import com.moonsworth.lunar.client.setting.AbstractSetting;
 import com.moonsworth.lunar.client.setting.BooleanSetting;
 import com.moonsworth.lunar.client.setting.ColorSetting;
 import com.moonsworth.lunar.client.setting.NumberSetting;
 
 import java.util.List;
 
-public class KeyStrokesMod
-extends DraggableHudMod {
+public class KeyStrokesMod extends DraggableHudMod {
     public BooleanSetting IllIllIIIllIIIlIlIlIIIIll;
     public BooleanSetting IIlIllIlllllllIIlIIIllIIl;
     public BooleanSetting lIIlIlllIlIlIIIlllIIlIIII;
@@ -39,11 +37,11 @@ extends DraggableHudMod {
     public KeystrokesKey IlIIlIIlIIlIIllIIIllIIllI;
 
     public KeyStrokesMod() {
-        super(false, Anchor.TOP_LEFT);
+        super(false, HudModPosition.TOP_LEFT);
         this.llIlIIIllIIlIllIllIllllIl.lIlIlIlIlIIlIIlIIllIIIIIl((f) -> this.IlIllIIlIIlIIIllIllllIIll());
         this.lllllIllIlIIlIIlIIIlllIlI.lIlIlIlIlIIlIIlIIllIIIIIl((bl) -> this.IlIllIIlIIlIIIllIllllIIll());
         this.lIlIlIlIlIIlIIlIIllIIIIIl(GuiOpenEvent.class, guiOpenEvent -> {
-            if (Ref.llIIIlllIIlllIllllIlIllIl() != null && Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getCurrentScreen().bridge$isControlsGui()) {
+            if (Ref.llIIIlllIIlllIllllIlIllIl() != null && Ref.getMinecraft().bridge$getCurrentScreen().bridge$isControlsGui()) {
                 this.IlIllIIlIIlIIIllIllllIIll();
             }
         });
@@ -58,7 +56,7 @@ extends DraggableHudMod {
     public void lIlIlIlIlIIlIIlIIllIIIIIl(RenderGameOverlayEvent renderGameOverlayEvent, float f, float f2) {
         float f3 = 0.0f;
         float f4 = 0.0f;
-        if (this.llIllIlIllIlllIllIIIIllII.llIlllIIIllllIIlllIllIIIl().booleanValue()) {
+        if (this.llIllIlIllIlllIllIIIIllII.llIlllIIIllllIIlllIllIIIl()) {
             this.llIIIlIllIIIIlIIIlIlIllIl.lIlIlIlIlIIlIIlIIllIIIIIl(f + this.llllIlIllllIlIlIIIllIlIlI.IlllIIIIIIlllIlIIlllIlIIl() + 1.0f, f2, this.IIlIllIlIIllIIlIlIllllllI, this.lllIIIIIlllIIlIllIIlIIIlI, this.lIIIlllIIIIllllIlIIIlIIll, this.lIlIIIIIIlIIIllllIllIIlII, this.IllIIIlllIIIlIlllIlIIlIII.llIlllIIIllllIIlllIllIIIl());
             this.llllIlIllllIlIlIIIllIlIlI.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2 + this.llIIIlIllIIIIlIIIlIlIllIl.lIllIlIIIlIIIIIIIlllIlIll() + 1.0f, this.IIlIllIlIIllIIlIlIllllllI, this.lllIIIIIlllIIlIllIIlIIIlI, this.lIIIlllIIIIllllIlIIIlIIll, this.lIlIIIIIIlIIIllllIllIIlII, this.IllIIIlllIIIlIlllIlIIlIII.llIlllIIIllllIIlllIllIIIl());
             this.lIllllIllIIlIIlIIIlIIIlII.lIlIlIlIlIIlIIlIIllIIIIIl(f + this.llllIlIllllIlIlIIIllIlIlI.IlllIIIIIIlllIlIIlllIlIIl() + 1.0f, f2 + this.llIIIlIllIIIIlIIIlIlIllIl.lIllIlIIIlIIIIIIIlllIlIll() + 1.0f, this.IIlIllIlIIllIIlIlIllllllI, this.lllIIIIIlllIIlIllIIlIIIlI, this.lIIIlllIIIIllllIlIIIlIIll, this.lIlIIIIIIlIIIllllIllIIlII, this.IllIIIlllIIIlIlllIlIIlIII.llIlllIIIllllIIlllIllIIIl());
@@ -66,13 +64,13 @@ extends DraggableHudMod {
             f3 = this.llllIlIllllIlIlIIIllIlIlI.IlllIIIIIIlllIlIIlllIlIIl() + this.lIllllIllIIlIIlIIIlIIIlII.IlllIIIIIIlllIlIIlllIlIIl() + this.IlIllIIlIIlIIIllIllllIIll.IlllIIIIIIlllIlIIlllIlIIl() + 2.0f;
             f4 += this.llIIIlIllIIIIlIIIlIlIllIl.lIllIlIIIlIIIIIIIlllIlIll() + 2.0f + this.lIllllIllIIlIIlIIIlIIIlII.lIllIlIIIlIIIIIIIlllIlIll();
         }
-        if (this.IllIllIIIllIIIlIlIlIIIIll.llIlllIIIllllIIlllIllIIIl().booleanValue()) {
+        if (this.IllIllIIIllIIIlIlIlIIIIll.llIlllIIIllllIIlllIllIIIl()) {
             this.lIlIlIIIIIIllIlIIIIllIIII.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2 + f4, this.IIlIllIlIIllIIlIlIllllllI, this.lllIIIIIlllIIlIllIIlIIIlI, this.lIIIlllIIIIllllIlIIIlIIll, this.lIlIIIIIIlIIIllllIllIIlII, this.IllIIIlllIIIlIlllIlIIlIII.llIlllIIIllllIIlllIllIIIl());
             this.lIIlIIIIIIlIIlIIllIlIIlII.lIlIlIlIlIIlIIlIIllIIIIIl(f + this.lIlIlIIIIIIllIlIIIIllIIII.IlllIIIIIIlllIlIIlllIlIIl() + 1.0f, f2 + f4, this.IIlIllIlIIllIIlIlIllllllI, this.lllIIIIIlllIIlIllIIlIIIlI, this.lIIIlllIIIIllllIlIIIlIIll, this.lIlIIIIIIlIIIllllIllIIlII, this.IllIIIlllIIIlIlllIlIIlIII.llIlllIIIllllIIlllIllIIIl());
             f3 = this.lIlIlIIIIIIllIlIIIIllIIII.IlllIIIIIIlllIlIIlllIlIIl() + this.lIIlIIIIIIlIIlIIllIlIIlII.IlllIIIIIIlllIlIIlllIlIIl() + 1.0f;
             f4 += this.lIIlIIIIIIlIIlIIllIlIIlII.lIllIlIIIlIIIIIIIlllIlIll() + 1.0f;
         }
-        if (this.IllllllllllIlIIIlllIlllll.llIlllIIIllllIIlllIllIIIl().booleanValue()) {
+        if (this.IllllllllllIlIIIlllIlllll.llIlllIIIllllIIlllIllIIIl()) {
             this.IlIIlIIlIIlIIllIIIllIIllI.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2 + f4, this.IIlIllIlIIllIIlIlIllllllI, this.lllIIIIIlllIIlIllIIlIIIlI, this.lIIIlllIIIIllllIlIIIlIIll, this.lIlIIIIIIlIIIllllIllIIlII, this.IllIIIlllIIIlIlllIlIIlIII.llIlllIIIllllIIlllIllIIIl());
             f4 += this.IlIIlIIlIIlIIllIIIllIIllI.lIllIlIIIlIIIIIIIlllIlIll() + 1.0f;
         }
@@ -93,26 +91,26 @@ extends DraggableHudMod {
         this.lllIIIIIlllIIlIllIIlIIIlI = new ColorSetting("text_pressed", -16777216);
         this.lIIIlllIIIIllllIlIIIlIIll = new ColorSetting("background", 0x6F000000);
         this.lIlIIIIIIlIIIllllIllIIlII = new ColorSetting("background_pressed", 0x6FFFFFFF);
-        return ImmutableList.of(this.IllIllIIIllIIIlIlIlIIIIll, this.IIlIllIlllllllIIlIIIllIIl, this.lIIlIlllIlIlIIIlllIIlIIII, this.llIllIlIllIlllIllIIIIllII, this.IllllllllllIlIIIlllIlllll, this.lllllIllIlIIlIIlIIIlllIlI, this.IllIIIlllIIIlIlllIlIIlIII, this.llIlIIIllIIlIllIllIllllIl, this.IIlIllIlIIllIIlIlIllllllI, this.lllIIIIIlllIIlIllIIlIIIlI, this.lIIIlllIIIIllllIlIIIlIIll, this.lIlIIIIIIlIIIllllIllIIlII, new AbstractSetting[0]);
+        return ImmutableList.of(this.IllIllIIIllIIIlIlIlIIIIll, this.IIlIllIlllllllIIlIIIllIIl, this.lIIlIlllIlIlIIIlllIIlIIII, this.llIllIlIllIlllIllIIIIllII, this.IllllllllllIlIIIlllIlllll, this.lllllIllIlIIlIIlIIIlllIlI, this.IllIIIlllIIIlIlllIlIIlIII, this.llIlIIIllIIlIllIllIllllIl, this.IIlIllIlIIllIIlIlIllllllI, this.lllIIIIIlllIIlIllIIlIIIlI, this.lIIIlllIIIIllllIlIIIlIIll, this.lIlIIIIIIlIIIllllIllIIlII);
     }
 
     public void IlIllIIlIIlIIIllIllllIIll() {
-        KeyBindingBridge keyBindingBridge = Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getGameSettings().bridge$keyBindForward();
-        KeyBindingBridge keyBindingBridge2 = Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getGameSettings().bridge$keyBindLeft();
-        KeyBindingBridge keyBindingBridge3 = Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getGameSettings().bridge$keyBindBack();
-        KeyBindingBridge keyBindingBridge4 = Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getGameSettings().bridge$keyBindRight();
+        KeyBindingBridge keyBindingBridge = Ref.getMinecraft().bridge$getGameSettings().bridge$keyBindForward();
+        KeyBindingBridge keyBindingBridge2 = Ref.getMinecraft().bridge$getGameSettings().bridge$keyBindLeft();
+        KeyBindingBridge keyBindingBridge3 = Ref.getMinecraft().bridge$getGameSettings().bridge$keyBindBack();
+        KeyBindingBridge keyBindingBridge4 = Ref.getMinecraft().bridge$getGameSettings().bridge$keyBindRight();
         float f = this.llIlIIIllIIlIllIllIllllIl.llIlllIIIllllIIlllIllIIIl().floatValue();
         String string = keyBindingBridge.bridge$getKeyName().toUpperCase();
         String string2 = keyBindingBridge2.bridge$getKeyName().toUpperCase();
         String string3 = keyBindingBridge3.bridge$getKeyName().toUpperCase();
         String string4 = keyBindingBridge4.bridge$getKeyName().toUpperCase();
-        float f2 = Ref.IlllllIlIIIlIIlIIllIIlIll().bridge$getStringWidth(string);
-        float f3 = Ref.IlllllIlIIIlIIlIIllIIlIll().bridge$getStringWidth(string2);
-        float f4 = Ref.IlllllIlIIIlIIlIIllIIlIll().bridge$getStringWidth(string3);
-        float f5 = Ref.IlllllIlIIIlIIlIIllIIlIll().bridge$getStringWidth(string4);
-        KeyBindingBridge keyBindingBridge5 = Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getGameSettings().bridge$keyBindJump();
-        KeyBindingBridge keyBindingBridge6 = Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getGameSettings().bridge$keyBindAttack();
-        KeyBindingBridge keyBindingBridge7 = Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getGameSettings().bridge$keyBindUseItem();
+        float f2 = Ref.getFontRenderer().bridge$getStringWidth(string);
+        float f3 = Ref.getFontRenderer().bridge$getStringWidth(string2);
+        float f4 = Ref.getFontRenderer().bridge$getStringWidth(string3);
+        float f5 = Ref.getFontRenderer().bridge$getStringWidth(string4);
+        KeyBindingBridge keyBindingBridge5 = Ref.getMinecraft().bridge$getGameSettings().bridge$keyBindJump();
+        KeyBindingBridge keyBindingBridge6 = Ref.getMinecraft().bridge$getGameSettings().bridge$keyBindAttack();
+        KeyBindingBridge keyBindingBridge7 = Ref.getMinecraft().bridge$getGameSettings().bridge$keyBindUseItem();
         boolean bl = this.lllllIllIlIIlIIlIIIlllIlI.llIlllIIIllllIIlllIllIIIl();
         this.llIIIlIllIIIIlIIIlIlIllIl = new KeystrokesKey(bl ? "▲" : (f2 > f ? string.substring(0, 1) : string), keyBindingBridge, f, f);
         this.llllIlIllllIlIlIIIllIlIlI = new KeystrokesKey(bl ? "◀" : (f3 > f ? string2.substring(0, 1) : string2), keyBindingBridge2, f, f);
@@ -130,8 +128,8 @@ extends DraggableHudMod {
     }
 
     @Override
-    public FeatureDetails llIIIIIIIllIIllIlIllIIIIl() {
-        return new FeatureDetails("keystrokes", ImmutableList.of(ModuleCategory.lIlIlIlIlIIlIIlIIllIIIIIl, ModuleCategory.lIllIlIIIlIIIIIIIlllIlIll), new String[0]);
+    public FeatureDetails initDetails() {
+        return new FeatureDetails("keystrokes", ImmutableList.of(ModuleCategory.ALL, ModuleCategory.HUD));
     }
 
     public BooleanSetting IIIIIIIIIIIIIIIllllIIlIIl() {

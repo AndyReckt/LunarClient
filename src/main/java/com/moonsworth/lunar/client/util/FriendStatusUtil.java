@@ -15,24 +15,24 @@ import java.util.regex.Pattern;
 
 public final class FriendStatusUtil {
     public static final Pattern lIlIlIlIlIIlIIlIIllIIIIIl = Pattern.compile("(.+) <- (?:.+)");
-    public static final Map<String, String> IlllIIIIIIlllIlIIlllIlIIl = new HashMap<>();
-    public static final Pattern lIllIlIIIlIIIIIIIlllIlIll;
+    public static final Map<String, String> IPS = new HashMap<>();
+    public static final Pattern COLOR_CODES;
     public static String llIlllIIIllllIIlllIllIIIl;
 
     public static String lIlIlIlIlIIlIIlIIllIIIIIl(String string) {
-        for (Map.Entry entry : IlllIIIIIIlllIlIIlllIlIIl.entrySet()) {
-            if (!string.endsWith((String) entry.getKey())) continue;
-            return (String) entry.getValue();
+        for (Map.Entry<String, String> entry : IPS.entrySet()) {
+            if (!string.endsWith(entry.getKey())) continue;
+            return entry.getValue();
         }
         return string;
     }
 
     public static void lIlIlIlIlIIlIIlIIllIIIIIl() {
-        if (Ref.IlIlIlllllIlIIlIlIlllIlIl() == null || Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getCurrentServerData() == null) {
+        if (Ref.getPlayer() == null || Ref.getMinecraft().bridge$getCurrentServerData() == null) {
             llIlllIIIllllIIlllIllIIIl = null;
             return;
         }
-        if (!Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getCurrentServerData().bridge$serverIP().toLowerCase().endsWith("hypixel.net")) {
+        if (!Ref.getMinecraft().bridge$getCurrentServerData().bridge$serverIP().toLowerCase().endsWith("hypixel.net")) {
             llIlllIIIllllIIlllIllIIIl = null;
             return;
         }
@@ -45,20 +45,19 @@ public final class FriendStatusUtil {
     }
 
     public static String IlllIIIIIIlllIlIIlllIlIIl(String string) {
-        if ((string = lIllIlIIIlIIIIIIIlllIlIll.matcher(string).replaceAll("")).equalsIgnoreCase("skyblock co-op")) {
+        if ((string = COLOR_CODES.matcher(string).replaceAll("")).equalsIgnoreCase("skyblock co-op")) {
             return "SKYBLOCK";
         }
         return string;
     }
 
     public static String lIllIlIIIlIIIIIIIlllIlIll() {
-        ScoreObjectiveBridge scoreObjectiveBridge;
-        ScoreboardBridge scoreboardBridge = Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getWorld().bridge$getScoreboard();
+        ScoreboardBridge scoreboardBridge = Ref.getMinecraft().bridge$getWorld().bridge$getScoreboard();
         ScoreObjectiveBridge scoreObjectiveBridge2 = null;
-        ScorePlayerTeamBridge scorePlayerTeamBridge = scoreboardBridge.bridge$getPlayersTeam(Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getPlayer().bridge$getName());
+        ScorePlayerTeamBridge scorePlayerTeamBridge = scoreboardBridge.bridge$getPlayersTeam(Ref.getMinecraft().bridge$getPlayer().bridge$getName());
         if (scorePlayerTeamBridge != null) {
             int n = scorePlayerTeamBridge.bridge$getChatFormat().llllIIlIIlIIlIIllIIlIIllI();
-            if (Bridge.IlllIIIIIIlllIlIIlllIlIIl() == MinecraftVersion.lIlIlIlIlIIlIIlIIllIIIIIl) {
+            if (Bridge.getMinecraftVersion() == MinecraftVersion.lIlIlIlIlIIlIIlIIllIIIIIl) {
                 scoreObjectiveBridge2 = scoreboardBridge.bridge$getObjectiveInDisplaySlot(1);
             } else if (n >= 0) {
                 try {
@@ -68,7 +67,7 @@ public final class FriendStatusUtil {
                 }
             }
         }
-        ScoreObjectiveBridge scoreObjectiveBridge3 = scoreObjectiveBridge = scoreObjectiveBridge2 != null ? scoreObjectiveBridge2 : scoreboardBridge.bridge$getObjectiveInDisplaySlot(1);
+        ScoreObjectiveBridge scoreObjectiveBridge = scoreObjectiveBridge2 != null ? scoreObjectiveBridge2 : scoreboardBridge.bridge$getObjectiveInDisplaySlot(1);
         if (scoreObjectiveBridge == null) {
             return null;
         }
@@ -80,9 +79,9 @@ public final class FriendStatusUtil {
     }
 
     public static boolean lIlIlIlIlIIlIIlIIllIIIIIl(KnownServerPMC knownServerPMC) {
-        if (Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getPlayer() != null && Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getPlayer().bridge$getClientBrand().isPresent()) {
-            String string = (String) Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getPlayer().bridge$getClientBrand().get();
-            if (Bridge.IlllIIIIIIlllIlIIlllIlIIl().lIllIlIIIlIIIIIIIlllIlIll()) {
+        if (Ref.getMinecraft().bridge$getPlayer() != null && Ref.getMinecraft().bridge$getPlayer().bridge$getClientBrand().isPresent()) {
+            String string = Ref.getMinecraft().bridge$getPlayer().bridge$getClientBrand().get();
+            if (Bridge.getMinecraftVersion().lIllIlIIIlIIIIIIIlllIlIll()) {
                 return string.startsWith(knownServerPMC.lIlIlIlIlIIlIIlIIllIIIIIl());
             }
             Matcher matcher = lIlIlIlIlIIlIIlIIllIIIIIl.matcher(string);
@@ -102,13 +101,13 @@ public final class FriendStatusUtil {
     }
 
     static {
-        IlllIIIIIIlllIlIIlllIlIIl.put("hypixel.net", "Hypixel Network");
-        IlllIIIIIIlllIlIIlllIlIIl.put("lunar.gg", "Lunar Network");
-        IlllIIIIIIlllIlIIlllIlIIl.put("minemen.club", "Minemen Club");
-        IlllIIIIIIlllIlIIlllIlIIl.put("mineman.club", "Minemen Club");
-        IlllIIIIIIlllIlIIlllIlIIl.put("mineplex.com", "Mineplex Network");
-        IlllIIIIIIlllIlIIlllIlIIl.put("vipermc.net", "ViperMC Network");
-        IlllIIIIIIlllIlIIlllIlIIl.put("holypvp.net", "HolyHCF Network");
-        lIllIlIIIlIIIIIIIlllIlIll = Pattern.compile("(?i)§[0-9A-FK-OR]");
+        IPS.put("hypixel.net", "Hypixel Network");
+        IPS.put("lunar.gg", "Lunar Network");
+        IPS.put("minemen.club", "Minemen Club");
+        IPS.put("mineman.club", "Minemen Club");
+        IPS.put("mineplex.com", "Mineplex Network");
+        IPS.put("vipermc.net", "ViperMC Network");
+        IPS.put("holypvp.net", "HolyHCF Network");
+        COLOR_CODES = Pattern.compile("(?i)§[0-9A-FK-OR]");
     }
 }

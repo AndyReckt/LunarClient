@@ -5,7 +5,7 @@ package com.moonsworth.lunar.bridge.minecraft.client.multiplayer;
  * @since 10/07/2021 14:16
  */
 public interface PlayerControllerMPBridge {
-    public boolean bridge$isSpectator();
+    boolean bridge$isSpectator();
 
-    public boolean bridge$isSpectatorMode();
+    boolean bridge$isSpectatorMode();
 }

@@ -6,13 +6,13 @@ import com.moonsworth.lunar.client.bridge.Bridge;
 import com.moonsworth.lunar.client.event.EventHandler;
 import com.moonsworth.lunar.client.event.type.network.NetHandlerConnectionStateUpdateEvent;
 import com.moonsworth.lunar.client.event.type.world.PreRunTickEvent;
+import com.moonsworth.lunar.client.server.ServerIntegration;
 
-public class ShaderServerRuleEventHandler
-implements EventHandler {
+public class ShaderServerRuleEventHandler implements EventHandler {
     public ShaderServerRuleEventHandler() {
 
         this.lIlIlIlIlIIlIIlIIllIIIIIl(PreRunTickEvent.class, preRunTickEvent -> {
-            if (this.lIlIlIlIlIIlIIlIIllIIIIIl() && ((Boolean)ServerIntegration.lIlIlIlIlIIlIIlIIllIIIIIl(ServerRule.SHADERS_DISABLED)).booleanValue()) {
+            if (this.lIlIlIlIlIIlIIlIIllIIIIIl() && (Boolean) ServerIntegration.lIlIlIlIlIIlIIlIIllIIIIIl(ServerRule.SHADERS_DISABLED)) {
                 Bridge.lIllIlIIIlIIIIIIIlllIlIll().ifPresent(optifineBridge -> {
                     ShadersBridge shadersBridge = optifineBridge.getShaders();
                     shadersBridge.setShaderPack(shadersBridge.getPackNone());
@@ -20,7 +20,7 @@ implements EventHandler {
             }
         });
         this.lIlIlIlIlIIlIIlIIllIIIIIl(NetHandlerConnectionStateUpdateEvent.class, netHandlerConnectionStateUpdateEvent -> {
-            if (this.lIlIlIlIlIIlIIlIIllIIIIIl() && ((Boolean)ServerIntegration.lIlIlIlIlIIlIIlIIllIIIIIl(ServerRule.SHADERS_DISABLED)).booleanValue()) {
+            if (this.lIlIlIlIlIIlIIlIIllIIIIIl() && (Boolean) ServerIntegration.lIlIlIlIlIIlIIlIIllIIIIIl(ServerRule.SHADERS_DISABLED)) {
                 Bridge.lIllIlIIIlIIIIIIIlllIlIll().ifPresent(optifineBridge -> {
                     ShadersBridge shadersBridge = optifineBridge.getShaders();
                     shadersBridge.setShaderPack(shadersBridge.getPackNone());
@@ -37,4 +37,3 @@ implements EventHandler {
         }).orElse(false);
     }
 }
- 

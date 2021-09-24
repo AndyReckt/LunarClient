@@ -1,6 +1,6 @@
 /*
  * Decompiled with CFR 0.150.
- * 
+ *
  * Could not load the following classes:
  *  lunar.a.Bridge
  *  lunar.a.MinecraftVersion
@@ -13,10 +13,11 @@ package mchorse.emoticons;
 import java.io.File;
 import java.io.InputStream;
 import java.nio.charset.Charset;
-import lunar.a.Bridge;
-import lunar.a.MinecraftVersion;
-import lunar.aH.PreRenderPlayerEvent;
-import lunar.aw.EventBus;
+
+import com.moonsworth.lunar.client.bridge.Bridge;
+import com.moonsworth.lunar.client.bridge.MinecraftVersion;
+import com.moonsworth.lunar.client.event.EventBus;
+import com.moonsworth.lunar.client.event.type.entity.player.PreRenderPlayerEvent;
 import mchorse.emoticons.client.EntityModelHandler;
 import mchorse.emoticons.skin_n_bones.api.animation.Animation;
 import mchorse.emoticons.skin_n_bones.api.animation.AnimationManager;
@@ -29,14 +30,14 @@ public class ClientProxy {
 
     public void init() {
         EntityModelHandler entityModelHandler = new EntityModelHandler();
-        EventBus.lIlIlIlIlIIlIIlIIllIIIIIl().lIlIlIlIlIIlIIlIIllIIIIIl(PreRenderPlayerEvent.class, entityModelHandler::onRenderPlayer);
+        EventBus.getInstance().register(PreRenderPlayerEvent.class, entityModelHandler::onRenderPlayer);
         Bridge.lllllIllIlIIlIIlIIIlllIlI().bridge$create();
         try {
             Class<?> class_ = this.getClass();
             AnimationManager animationManager = AnimationManager.INSTANCE;
             BOBJLoader.BOBJData bOBJData = BOBJLoader.readData(class_.getResourceAsStream("/assets/emoticons/models/entity/props.bobj"));
             BOBJLoader.BOBJData bOBJData2 = BOBJLoader.readData(class_.getResourceAsStream("/assets/emoticons/models/entity/props_simple.bobj"));
-            String string = String.format("/assets/emoticons/models/entity/default%s.bobj", Bridge.IlllIIIIIIlllIlIIlllIlIIl() == MinecraftVersion.lIlIlIlIlIIlIIlIIllIIIIIl ? "_1_7" : "");
+            String string = String.format("/assets/emoticons/models/entity/default%s.bobj", Bridge.getMinecraftVersion() == MinecraftVersion.lIlIlIlIlIIlIIlIIllIIIIIl ? "_1_7" : "");
             BOBJLoader.BOBJData bOBJData3 = BOBJLoader.readData(class_.getResourceAsStream(string));
             BOBJLoader.BOBJData bOBJData4 = BOBJLoader.readData(class_.getResourceAsStream("/assets/emoticons/models/entity/slim.bobj"));
             BOBJLoader.BOBJData bOBJData5 = BOBJLoader.readData(class_.getResourceAsStream("/assets/emoticons/models/entity/default_simple.bobj"));
@@ -66,16 +67,15 @@ public class ClientProxy {
             animationManager.animations.put("slim", new AnimationManager.AnimationEntry(animation2, configFolder, 1L));
             animationManager.animations.put("default_simple", new AnimationManager.AnimationEntry(animation3, configFolder, 1L));
             animationManager.animations.put("slim_simple", new AnimationManager.AnimationEntry(animation4, configFolder, 1L));
-            AnimatorConfig animatorConfig = (AnimatorConfig)animationManager.gson.fromJson(IOUtils.toString((InputStream)class_.getResourceAsStream("/assets/emoticons/models/entity/default.json"), (Charset)Charset.defaultCharset()), AnimatorConfig.class);
-            AnimatorConfig animatorConfig2 = (AnimatorConfig)animationManager.gson.fromJson(IOUtils.toString((InputStream)class_.getResourceAsStream("/assets/emoticons/models/entity/slim.json"), (Charset)Charset.defaultCharset()), AnimatorConfig.class);
-            AnimatorConfig animatorConfig3 = (AnimatorConfig)animationManager.gson.fromJson(IOUtils.toString((InputStream)class_.getResourceAsStream("/assets/emoticons/models/entity/default_simple.json"), (Charset)Charset.defaultCharset()), AnimatorConfig.class);
-            AnimatorConfig animatorConfig4 = (AnimatorConfig)animationManager.gson.fromJson(IOUtils.toString((InputStream)class_.getResourceAsStream("/assets/emoticons/models/entity/slim_simple.json"), (Charset)Charset.defaultCharset()), AnimatorConfig.class);
+            AnimatorConfig animatorConfig = animationManager.gson.fromJson(IOUtils.toString(class_.getResourceAsStream("/assets/emoticons/models/entity/default.json"), Charset.defaultCharset()), AnimatorConfig.class);
+            AnimatorConfig animatorConfig2 = animationManager.gson.fromJson(IOUtils.toString(class_.getResourceAsStream("/assets/emoticons/models/entity/slim.json"), Charset.defaultCharset()), AnimatorConfig.class);
+            AnimatorConfig animatorConfig3 = animationManager.gson.fromJson(IOUtils.toString(class_.getResourceAsStream("/assets/emoticons/models/entity/default_simple.json"), Charset.defaultCharset()), AnimatorConfig.class);
+            AnimatorConfig animatorConfig4 = animationManager.gson.fromJson(IOUtils.toString(class_.getResourceAsStream("/assets/emoticons/models/entity/slim_simple.json"), Charset.defaultCharset()), AnimatorConfig.class);
             animationManager.configs.put("default", new AnimatorConfig.AnimatorConfigEntry(animatorConfig, 1L));
             animationManager.configs.put("slim", new AnimatorConfig.AnimatorConfigEntry(animatorConfig2, 1L));
             animationManager.configs.put("default_simple", new AnimatorConfig.AnimatorConfigEntry(animatorConfig3, 1L));
             animationManager.configs.put("slim_simple", new AnimatorConfig.AnimatorConfigEntry(animatorConfig4, 1L));
-        }
-        catch (Exception exception) {
+        } catch (Exception exception) {
             exception.printStackTrace();
         }
     }

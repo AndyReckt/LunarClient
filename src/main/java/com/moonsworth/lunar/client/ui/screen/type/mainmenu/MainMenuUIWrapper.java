@@ -4,6 +4,7 @@ import com.moonsworth.lunar.bridge.lunar.input.KeyType;
 import com.moonsworth.lunar.bridge.minecraft.client.MinecraftBridge;
 import com.moonsworth.lunar.client.ui.screen.AbstractUIScreen;
 
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class MainMenuUIWrapper extends BaseMainMenuUIScreen {
@@ -11,16 +12,16 @@ public class MainMenuUIWrapper extends BaseMainMenuUIScreen {
     public boolean IllIllIIIllIIIlIlIlIIIIll;
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(MinecraftBridge minecraftBridge, int n, int n2) {
-        this.llIlIIIllIIlIllIllIllllIl.lIlIlIlIlIIlIIlIIllIIIIIl(minecraftBridge, n, n2);
-        super.lIlIlIlIlIIlIIlIIllIIIIIl(minecraftBridge, n, n2);
+    public void setWorldAndResolution(MinecraftBridge minecraftBridge, int n, int n2) {
+        this.llIlIIIllIIlIllIllIllllIl.setWorldAndResolution(minecraftBridge, n, n2);
+        super.setWorldAndResolution(minecraftBridge, n, n2);
     }
 
     @Override
     public void llIIIlllIIlllIllllIlIllIl() {
         if (!this.IllIllIIIllIIIlIlIlIIIIll) {
             this.IllIllIIIllIIIlIlIlIIIIll = true;
-            this.llIIlIlIIIllIlIlIlIIlIIll = Stream.concat(this.llIIlIlIIIllIlIlIlIIlIIll.stream(), this.llIlIIIllIIlIllIllIllllIl.llIIIlIllIIIIlIIIlIlIllIl().stream()).collect(Collectors.toList());
+            this.components = Stream.concat(this.components.stream(), this.llIlIIIllIIlIllIllIllllIl.llIIIlIllIIIIlIIIlIlIllIl().stream()).collect(Collectors.toList());
         }
         this.llIlIIIllIIlIllIllIllllIl.llIIIlllIIlllIllllIlIllIl();
         super.llIIIlllIIlllIllllIlIllIl();
@@ -66,7 +67,7 @@ public class MainMenuUIWrapper extends BaseMainMenuUIScreen {
         this.llIlIIIllIIlIllIllIllllIl = abstractUIScreen;
     }
 
-    public AbstractUIScreen llIIIIIIIllIIllIlIllIIIIl() {
+    public AbstractUIScreen bruh() {
         return this.llIlIIIllIIlIllIllIllllIl;
     }
 }

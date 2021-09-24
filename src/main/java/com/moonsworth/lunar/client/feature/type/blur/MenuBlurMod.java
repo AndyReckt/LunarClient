@@ -7,6 +7,7 @@ import com.moonsworth.lunar.bridge.minecraft.client.shader.ShaderGroupBridge;
 import com.moonsworth.lunar.bridge.minecraft.client.shader.ShaderUniformBridge;
 import com.moonsworth.lunar.bridge.minecraft.util.ResourceLocationBridge;
 import com.moonsworth.lunar.client.bridge.Bridge;
+import com.moonsworth.lunar.client.event.type.gui.GuiOpenEvent;
 import com.moonsworth.lunar.client.feature.FeatureDetails;
 import com.moonsworth.lunar.client.feature.hud.ConfigurableFeature;
 import com.moonsworth.lunar.client.feature.hud.ModuleCategory;
@@ -27,7 +28,7 @@ import java.util.Optional;
  * @since 10/07/2021 18:36
  */
 public class MenuBlurMod extends ConfigurableFeature {
-    public static final ResourceLocationBridge llllIIlIIlIIlIIllIIlIIllI = Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation("shaders/post/menu_blur.json");
+    public static final ResourceLocationBridge llllIIlIIlIIlIIllIIlIIllI = Bridge.getInstance().initResourceLocation("shaders/post/menu_blur.json");
     public boolean IlIlIlllllIlIIlIlIlllIlIl = true;
     public float llIIIIIIIllIIllIlIllIIIIl = 0.0F;
     public final ExponentialEase lIIIllIllIIllIlllIlIIlllI = new ExponentialEase(125L);
@@ -39,13 +40,11 @@ public class MenuBlurMod extends ConfigurableFeature {
 
     public MenuBlurMod() {
         super(true);
-        throw new RuntimeException("aa");
-//        this.lIlIlIlIlIIlIIlIIllIIIIIl(GuiOpenEvent.class, (var1) -> {
-//            if (var1.lIlIlIlIlIIlIIlIIllIIIIIl() == null) {
-//                this.lIlIlIIIIIIllIlIIIIllIIII();
-//            }
-//
-//        });
+        this.lIlIlIlIlIIlIIlIIllIIIIIl(GuiOpenEvent.class, (var1) -> {
+            if (var1.lIlIlIlIlIIlIIlIIllIIIIIl() == null) {
+                this.lIlIlIIIIIIllIlIIIIllIIII();
+            }
+        });
     }
 
     public List IlIlIlllllIlIIlIlIlllIlIl() {
@@ -62,8 +61,8 @@ public class MenuBlurMod extends ConfigurableFeature {
         this.lIlIlIlIlIIlIIlIIllIIIIIl("Menu Blur", var1, var2, var3, var4);
     }
 
-    public FeatureDetails llIIIIIIIllIIllIlIllIIIIl() {
-        return new FeatureDetails("menu_blur", ImmutableList.of(ModuleCategory.lIlIlIlIlIIlIIlIIllIIIIIl, ModuleCategory.IlllIIIIIIlllIlIIlllIlIIl), new String[0]);
+    public FeatureDetails initDetails() {
+        return new FeatureDetails("menu_blur", ImmutableList.of(ModuleCategory.ALL, ModuleCategory.NEW));
     }
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(boolean var1) {
@@ -75,9 +74,9 @@ public class MenuBlurMod extends ConfigurableFeature {
 
     public void IlIllIIlIIlIIIllIllllIIll() {
         try {
-            Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getEntityRenderer().bridge$loadShader(llllIIlIIlIIlIIllIIlIIllI);
-            if (Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getEntityRenderer().bridge$isShaderActive()) {
-                ShaderGroupBridge var1 = Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getEntityRenderer().bridge$getShaderGroup();
+            Ref.getMinecraft().bridge$getEntityRenderer().bridge$loadShader(llllIIlIIlIIlIIllIIlIIllI);
+            if (Ref.getMinecraft().bridge$getEntityRenderer().bridge$isShaderActive()) {
+                ShaderGroupBridge var1 = Ref.getMinecraft().bridge$getEntityRenderer().bridge$getShaderGroup();
 
                 try {
                     List<ShaderBridge> var2 = var1.bridge$listShaders();
@@ -105,7 +104,7 @@ public class MenuBlurMod extends ConfigurableFeature {
         } catch (NullPointerException | IOException var8) {
         }
 
-        this.lIIIllIllIIllIlllIlIIlllI.lIlIlIlIlIIlIIlIIllIIIIIl((long)((float)this.lIIIllIllIIllIlllIlIIlllI.IIlIllIlllllllIIlIIIllIIl() * this.llIIIIIIIllIIllIlIllIIIIl));
+        this.lIIIllIllIIllIlllIlIIlllI.lIlIlIlIlIIlIIlIIllIIIIIl((long)((float)this.lIIIllIllIIllIlllIlIIlllI.getDuration() * this.llIIIIIIIllIIllIlIllIIIIl));
     }
 
     public void lIllllIllIIlIIlIIIlIIIlII() {
@@ -115,7 +114,7 @@ public class MenuBlurMod extends ConfigurableFeature {
 
         if (this.lIIIllIllIIllIlllIlIIlllI.lIIIllIllIIllIlllIlIIlllI() && !this.IlllllIlIIIlIIlIIllIIlIll.isEmpty()) {
             this.IlllllIlIIIlIIlIIllIIlIll.forEach((var1) -> {
-                var1.bridge$set(this.lIIIllIllIIllIlllIlIIlllI.IlllllIlIIIlIIlIIllIIlIll());
+                var1.bridge$set(this.lIIIllIllIIllIlllIlIIlllI.getProgress());
             });
         }
 
@@ -130,8 +129,8 @@ public class MenuBlurMod extends ConfigurableFeature {
         }
 
         this.IlIlIlllllIlIIlIlIlllIlIl = true;
-        if (Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getEntityRenderer().bridge$isShaderActive()) {
-            Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getEntityRenderer().bridge$stopUseShader();
+        if (Ref.getMinecraft().bridge$getEntityRenderer().bridge$isShaderActive()) {
+            Ref.getMinecraft().bridge$getEntityRenderer().bridge$stopUseShader();
         }
 
     }
@@ -143,7 +142,7 @@ public class MenuBlurMod extends ConfigurableFeature {
         int var5 = var1 & 255;
         float var6;
         if (this.lIIIllIllIIllIlllIlIIlllI.lIIIllIllIIllIlllIlIIlllI()) {
-            var6 = Math.max(Math.min(this.lIIIllIllIIllIlllIlIIlllI.IlllIIIIIIlllIlIIlllIlIIl(), 0.75F), 0.0F);
+            var6 = Math.max(Math.min(this.lIIIllIllIIllIlllIlIIlllI.getTimePassedAsFloat(), 0.75F), 0.0F);
         } else {
             var6 = 0.75F;
         }
@@ -155,7 +154,7 @@ public class MenuBlurMod extends ConfigurableFeature {
         return var2 << 24 | var3 << 16 | var4 << 8 | var5;
     }
 
-    public Optional lIlIlIlIlIIlIIlIIllIIIIIl(GuiScreenBridge var1) {
+    public Optional<Integer> lIlIlIlIlIIlIIlIIllIIIIIl(GuiScreenBridge var1) {
         if (this.llIIIlllIIlllIllllIlIllIl.lIlIlIlIlIIlIIlIIllIIIIIl(var1)) {
             return Optional.of(this.llIIIlllIIlllIllllIlIllIl.lIlIlIlIlIIlIIlIIllIIIIIl());
         } else if (this.lllIIIIIlllIIlIllIIlIIIlI.lIlIlIlIlIIlIIlIIllIIIIIl(var1)) {
@@ -215,7 +214,7 @@ public class MenuBlurMod extends ConfigurableFeature {
         public final List llIlllIIIllllIIlllIllIIIl = new ArrayList();
 
         public lIlIlIlIlIIlIIlIIllIIIIIl(String var2, int var3) {
-            this.IlllIIIIIIlllIlIIlllIlIIl = new BooleanSetting(MenuBlurMod.this.lIlIlIlIlIIlIIlIIllIIIIIl, "blur_" + var2 + "_toggle", true);
+            this.IlllIIIIIIlllIlIIlllIlIIl = new BooleanSetting(MenuBlurMod.this.enabled, "blur_" + var2 + "_toggle", true);
             if ("lunar".equals(var2)) {
                 this.IlllIIIIIIlllIlIIlllIlIIl.lIlIlIlIlIIlIIlIIllIIIIIl(((var1x) -> {
                     if (!var1x) {

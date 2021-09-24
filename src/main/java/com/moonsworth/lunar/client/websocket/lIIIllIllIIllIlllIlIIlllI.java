@@ -6,9 +6,9 @@ public class lIIIllIllIIllIlllIlIIlllI {
     public final UUID lIlIlIlIlIIlIIlIIllIIIIIl;
     public final String IlllIIIIIIlllIlIIlllIlIIl;
 
-    public lIIIllIllIIllIlllIlIIlllI(UUID uUID, String string) {
-        this.lIlIlIlIlIIlIIlIIllIIIIIl = uUID;
-        this.IlllIIIIIIlllIlIIlllIlIIl = string;
+    public lIIIllIllIIllIlllIlIIlllI(final UUID lIlIlIlIlIIlIIlIIllIIIIIl, final String illlIIIIIIlllIlIIlllIlIIl) {
+        this.lIlIlIlIlIIlIIlIIllIIIIIl = lIlIlIlIlIIlIIlIIllIIIIIl;
+        this.IlllIIIIIIlllIlIIlllIlIIl = illlIIIIIIlllIlIIlllIlIIl;
     }
 
     public UUID lIlIlIlIlIIlIIlIIllIIIIIl() {

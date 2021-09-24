@@ -1,6 +1,6 @@
 /*
  * Decompiled with CFR 0.150.
- * 
+ *
  * Could not load the following classes:
  *  lunar.G.EntityBridge
  *  lunar.G.EntityLivingBaseBridge
@@ -18,14 +18,14 @@ import mchorse.emoticons.common.emotes.Emotes;
 
 public class EmoteAPI {
     public static void setEmoteClient(String string, EntityPlayerBridge entityPlayerBridge) {
-        ICosmetic iCosmetic = Cosmetic.get((EntityBridge)entityPlayerBridge);
+        ICosmetic iCosmetic = Cosmetic.get(entityPlayerBridge);
         if (iCosmetic == null) {
             return;
         }
         Emote emote = Emotes.get(string);
         ICosmetic.CosmeticMode cosmeticMode = iCosmetic.getMode();
         if (cosmeticMode == ICosmetic.CosmeticMode.CLIENT || emote == null) {
-            iCosmetic.setEmote(emote, (EntityLivingBaseBridge)entityPlayerBridge);
+            iCosmetic.setEmote(emote, entityPlayerBridge);
         }
     }
 }

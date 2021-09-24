@@ -4,7 +4,7 @@ import com.moonsworth.lunar.bridge.minecraft.client.entity.EntityBridge;
 import com.moonsworth.lunar.client.event.Event;
 
 public class EntityStatusEvent
-extends Event {
+    extends Event {
     public EntityBridge lIlIlIlIlIIlIIlIIllIIIIIl;
     public byte IlllIIIIIIlllIlIIlllIlIIl;
 

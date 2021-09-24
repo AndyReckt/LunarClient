@@ -7,12 +7,12 @@ import java.util.Collection;
  * @since 10/07/2021 14:16
  */
 public interface ScoreboardBridge {
-    public ScorePlayerTeamBridge bridge$getPlayersTeam(String var1);
+    ScorePlayerTeamBridge bridge$getPlayersTeam(String var1);
 
-    public ScoreObjectiveBridge bridge$getObjectiveInDisplaySlot(int var1);
+    ScoreObjectiveBridge bridge$getObjectiveInDisplaySlot(int var1);
 
-    public Collection bridge$getSortedScores(ScoreObjectiveBridge var1);
+    Collection<ScoreBridge> bridge$getSortedScores(ScoreObjectiveBridge var1);
 
-    public ScoreBridge bridge$getValueFromObjective(String var1, ScoreObjectiveBridge var2);
+    ScoreBridge bridge$getValueFromObjective(String var1, ScoreObjectiveBridge var2);
 }
 

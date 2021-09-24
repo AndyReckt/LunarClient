@@ -4,8 +4,8 @@ import com.moonsworth.lunar.bridge.minecraft.client.entity.AbstractClientPlayerB
 import com.moonsworth.lunar.bridge.minecraft.client.model.ModelPlayerBridge;
 
 public interface RenderPlayerBridge {
-    public ModelPlayerBridge bridge$getMainModel();
+    ModelPlayerBridge bridge$getMainModel();
 
-    default public void lIlIlIlIlIIlIIlIIllIIIIIl(AbstractClientPlayerBridge abstractClientPlayerBridge, float f) {
+default void lIlIlIlIlIIlIIlIIllIIIIIl(AbstractClientPlayerBridge abstractClientPlayerBridge, float f) {
     }
 }

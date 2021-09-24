@@ -1,6 +1,6 @@
 /*
  * Decompiled with CFR 0.150.
- * 
+ *
  * Could not load the following classes:
  *  javax.vecmath.Matrix4f
  *  javax.vecmath.Tuple4f
@@ -34,19 +34,19 @@ public class BOBJBoneModifier {
             return;
         }
         this.global.set(0.0f, 0.0f, 0.0f, 1.0f);
-        this.target.mat.transform((Tuple4f)this.global);
+        this.target.mat.transform(this.global);
         this.local.set(0.0f, 0.0f, 0.0f, 1.0f);
-        bOBJBone.mat.transform((Tuple4f)this.local);
-        this.local.sub((Tuple4f)this.global);
+        bOBJBone.mat.transform(this.local);
+        this.local.sub(this.global);
         float f = this.local.length();
         this.inverse.set(bOBJBone.mat);
         this.inverse.invert();
-        this.local.set((Tuple4f)this.global);
-        this.inverse.transform((Tuple4f)this.local);
+        this.local.set(this.global);
+        this.inverse.transform(this.local);
         Vector3f vector3f = new Vector3f(this.local.x, this.local.y, this.local.z);
         vector3f.normalize();
         this.local.set(0.0f, 0.0f, 1.0f, 1.0f);
-        this.target.mat.transform((Tuple4f)this.local);
+        this.target.mat.transform(this.local);
         Vector3f vector3f2 = new Vector3f(0.0f, 1.0f, 0.0f);
         vector3f2.normalize();
         vector3f2.cross(vector3f, vector3f2);
@@ -66,7 +66,7 @@ public class BOBJBoneModifier {
         this.inverse.m22 = vector3f3.z;
         if (this.stick) {
             this.local.set(0.0f, f - bOBJBone.length, 0.0f, 1.0f);
-            this.inverse.transform((Tuple4f)this.local);
+            this.inverse.transform(this.local);
             this.inverse.m03 = this.local.x;
             this.inverse.m13 = this.local.y;
             this.inverse.m23 = this.local.z;

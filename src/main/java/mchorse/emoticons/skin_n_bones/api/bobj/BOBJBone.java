@@ -1,11 +1,3 @@
-/*
- * Decompiled with CFR 0.150.
- * 
- * Could not load the following classes:
- *  javax.vecmath.Matrix4f
- *  javax.vecmath.Tuple3f
- *  javax.vecmath.Vector3f
- */
 package mchorse.emoticons.skin_n_bones.api.bobj;
 
 import java.util.ArrayList;
@@ -13,7 +5,6 @@ import java.util.List;
 import javax.vecmath.Matrix4f;
 import javax.vecmath.Tuple3f;
 import javax.vecmath.Vector3f;
-import mchorse.emoticons.skin_n_bones.api.bobj.BOBJBoneModifier;
 
 public class BOBJBone {
     public int index;
@@ -39,24 +30,24 @@ public class BOBJBone {
     public Matrix4f relBoneMat = new Matrix4f();
     public Matrix4f tempMat = new Matrix4f();
 
-    public BOBJBone(int n, String string, String string2, Vector3f vector3f, Matrix4f matrix4f) {
-        this.index = n;
-        this.name = string;
-        this.parent = string2;
-        this.boneMat = matrix4f;
-        this.head = new Vector3f(matrix4f.m03, matrix4f.m13, matrix4f.m23);
-        this.tail = vector3f;
+    public BOBJBone(int index, String name, String parent, Vector3f tail, Matrix4f boneMat) {
+        this.index = index;
+        this.name = name;
+        this.parent = parent;
+        this.boneMat = boneMat;
+        this.head = new Vector3f(boneMat.m03, boneMat.m13, boneMat.m23);
+        this.tail = tail;
         Vector3f vector3f2 = new Vector3f(this.tail);
-        vector3f2.sub((Tuple3f)this.head);
+        vector3f2.sub(this.head);
         this.length = vector3f2.length();
-        this.invBoneMat.set(matrix4f);
+        this.invBoneMat.set(boneMat);
         this.invBoneMat.invert();
         this.relBoneMat.setIdentity();
     }
 
     public void addModifier(BOBJBoneModifier bOBJBoneModifier) {
         if (this.modifiers == null) {
-            this.modifiers = new ArrayList();
+            this.modifiers = new ArrayList<>();
         }
         this.modifiers.add(bOBJBoneModifier);
     }

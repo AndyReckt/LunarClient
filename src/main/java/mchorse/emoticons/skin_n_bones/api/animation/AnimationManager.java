@@ -1,6 +1,6 @@
 /*
  * Decompiled with CFR 0.150.
- * 
+ *
  * Could not load the following classes:
  *  com.google.gson.Gson
  *  com.google.gson.GsonBuilder
@@ -36,11 +36,11 @@ public class AnimationManager {
         this.defaultConfig.config.rightHands.put("right_hand", new AnimatorHeldItemConfig("right_hand"));
         this.defaultConfig.config.leftHands.put("left_hand", new AnimatorHeldItemConfig("left_hand"));
         GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.registerTypeAdapter(AnimationMeshConfig.class, (Object)new AnimationMeshConfigAdapter());
-        gsonBuilder.registerTypeAdapter(AnimatorConfig.class, (Object)new AnimatorConfigAdapter());
-        gsonBuilder.registerTypeAdapter(AnimatorActionsConfig.class, (Object)new AnimatorActionsConfigAdapter());
-        gsonBuilder.registerTypeAdapter(AnimatorHeldItemConfig.class, (Object)new AnimatorHeldItemConfigAdapter());
-        gsonBuilder.registerTypeAdapter(ActionConfig.class, (Object)new ActionConfigAdapter());
+        gsonBuilder.registerTypeAdapter(AnimationMeshConfig.class, new AnimationMeshConfigAdapter());
+        gsonBuilder.registerTypeAdapter(AnimatorConfig.class, new AnimatorConfigAdapter());
+        gsonBuilder.registerTypeAdapter(AnimatorActionsConfig.class, new AnimatorActionsConfigAdapter());
+        gsonBuilder.registerTypeAdapter(AnimatorHeldItemConfig.class, new AnimatorHeldItemConfigAdapter());
+        gsonBuilder.registerTypeAdapter(ActionConfig.class, new ActionConfigAdapter());
         this.gson = gsonBuilder.create();
     }
 

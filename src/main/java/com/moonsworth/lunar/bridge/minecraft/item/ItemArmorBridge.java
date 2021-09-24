@@ -9,7 +9,7 @@ public interface ItemArmorBridge extends ItemBridge {
 
     ItemArmorBridge.ArmorMaterial bridge$getArmorMaterial();
 
-    public static enum ArmorMaterial {
+    enum ArmorMaterial {
         lIlIlIlIlIIlIIlIIllIIIIIl("leather"),
         IlllIIIIIIlllIlIIlllIlIIl("chainmail"),
         lIllIlIIIlIIIIIIIlllIlIll("iron"),
@@ -29,4 +29,3 @@ public interface ItemArmorBridge extends ItemBridge {
         }
     }
 }
- 

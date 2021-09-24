@@ -12,8 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class ConnectionEventHandler
-implements EventHandler {
+public class ConnectionEventHandler implements EventHandler {
     public final List<lIlIlIlIlIIlIIlIIllIIIIIl> lIlIlIlIlIIlIIlIIllIIIIIl = new ArrayList();
     public lIlIlIlIlIIlIIlIIllIIIIIl IlllIIIIIIlllIlIIlllIlIIl;
 
@@ -43,7 +42,7 @@ implements EventHandler {
                 return;
             }
             for (lIlIlIlIlIIlIIlIIllIIIIIl lIlIlIlIlIIlIIlIIllIIIIIl2 : this.lIlIlIlIlIIlIIlIIllIIIIIl) {
-                if (!lIlIlIlIlIIlIIlIIllIIIIIl2.lIlIlIlIlIIlIIlIIllIIIIIl.test(Ref.IlIlIlllllIlIIlIlIlllIlIl().bridge$getClientBrand().orElse(null))) continue;
+                if (!lIlIlIlIlIIlIIlIIllIIIIIl2.lIlIlIlIlIIlIIlIIllIIIIIl.test(Ref.getPlayer().bridge$getClientBrand().orElse(null))) continue;
                 if (this.IlllIIIIIIlllIlIIlllIlIIl == lIlIlIlIlIIlIIlIIllIIIIIl2) {
                     return;
                 }
@@ -52,33 +51,33 @@ implements EventHandler {
                 break;
             }
         });
-        this.lIlIlIlIlIIlIIlIIllIIIIIl.add(new lIlIlIlIlIIlIIlIIllIIIIIl(string -> string != null && (string.toLowerCase().endsWith("shotbow.net") || string.toLowerCase().endsWith("shotbow.com"))){
+        this.lIlIlIlIlIIlIIlIIllIIIIIl.add(new lIlIlIlIlIIlIIlIIllIIIIIl(string -> string != null && (string.toLowerCase().endsWith("shotbow.net") || string.toLowerCase().endsWith("shotbow.com"))) {
 
             @Override
             public void lIlIlIlIlIIlIIlIIllIIIIIl() {
-                Ref.IlllIIIIIIlllIlIIlllIlIIl().lllllIllIllIllllIlIllllII().lllllIllIllIllllIlIllllII().lIlIlIlIlIIlIIlIIllIIIIIl((Boolean)false);
+                Ref.getLC().lllllIllIllIllllIlIllllII().lllllIllIllIllllIlIllllII().lIlIlIlIlIIlIIlIIllIIIIIl((Boolean)false);
             }
 
             @Override
             public void IlllIIIIIIlllIlIIlllIlIIl() {
-                Ref.IlllIIIIIIlllIlIIlllIlIIl().lllllIllIllIllllIlIllllII().lllllIllIllIllllIlIllllII().lIlIlIlIlIIlIIlIIllIIIIIl((Boolean)null);
+                Ref.getLC().lllllIllIllIllllIlIllllII().lllllIllIllIllllIlIllllII().lIlIlIlIlIIlIIlIIllIIIIIl((Boolean)null);
             }
         });
-        this.lIlIlIlIlIIlIIlIIllIIIIIl.add(new lIlIlIlIlIIlIIlIIllIIIIIl(string -> string != null && (string.toLowerCase().endsWith("hypixel.net") || FriendStatusUtil.lIlIlIlIlIIlIIlIIllIIIIIl(KnownServerPMC.HYPIXEL))){
+        this.lIlIlIlIlIIlIIlIIllIIIIIl.add(new lIlIlIlIlIIlIIlIIllIIIIIl(string -> string != null && (string.toLowerCase().endsWith("hypixel.net") || FriendStatusUtil.lIlIlIlIlIIlIIlIIllIIIIIl(KnownServerPMC.HYPIXEL))) {
 
             @Override
             public void lIlIlIlIlIIlIIlIIllIIIIIl() {
-                Ref.IlllIIIIIIlllIlIIlllIlIIl().lllllIllIllIllllIlIllllII().lllllIllIllIllllIlIllllII().lIlIlIlIlIIlIIlIIllIIIIIl((Boolean)false);
+                Ref.getLC().lllllIllIllIllllIlIllllII().lllllIllIllIllllIlIllllII().lIlIlIlIlIIlIIlIIllIIIIIl((Boolean)false);
             }
 
             @Override
             public void IlllIIIIIIlllIlIIlllIlIIl() {
-                Ref.IlllIIIIIIlllIlIIlllIlIIl().lllllIllIllIllllIlIllllII().lllllIllIllIllllIlIllllII().lIlIlIlIlIIlIIlIIllIIIIIl((Boolean)null);
+                Ref.getLC().lllllIllIllIllllIlIllllII().lllllIllIllIllllIlIllllII().lIlIlIlIlIIlIIlIIllIIIIIl((Boolean)null);
             }
         });
     }
 
-    public abstract class lIlIlIlIlIIlIIlIIllIIIIIl {
+    public abstract static class lIlIlIlIlIIlIIlIIllIIIIIl {
         public final Predicate<String> lIlIlIlIlIIlIIlIIllIIIIIl;
 
         public abstract void lIlIlIlIlIIlIIlIIllIIIIIl();
@@ -90,4 +89,3 @@ implements EventHandler {
         }
     }
 }
- 

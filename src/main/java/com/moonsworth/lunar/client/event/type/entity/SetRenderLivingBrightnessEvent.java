@@ -3,7 +3,7 @@ package com.moonsworth.lunar.client.event.type.entity;
 import com.moonsworth.lunar.client.event.Event;
 
 public class SetRenderLivingBrightnessEvent
-extends Event {
+    extends Event {
     public float lIlIlIlIlIIlIIlIIllIIIIIl;
     public float IlllIIIIIIlllIlIIlllIlIIl;
     public float lIllIlIIIlIIIIIIIlllIlIll;

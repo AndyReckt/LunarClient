@@ -9,8 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class MouseEventHandler
-implements EventHandler {
+public class MouseEventHandler implements EventHandler {
     public final List<Long> lIlIlIlIlIIlIIlIIllIIIIIl = new ArrayList<>(); // name: leftCps
     public final List<Long> IlllIIIIIIlllIlIIlllIlIIl = new ArrayList<>(); // name: rightCps
     public static final Predicate<Long> lIllIlIIIlIIIIIIIlllIlIll = l -> l < System.currentTimeMillis() - 1000L; // name: shouldRemove

@@ -22,8 +22,7 @@ public class EventConsumer implements Consumer<Event> {
     @Override public void accept(Event event) {
         try {
             this.IlllIIIIIIlllIlIIlllIlIIl.invoke(this.lIlIlIlIlIIlIIlIIllIIIIIl, event);
-        }
-        catch (IllegalAccessException | InvocationTargetException reflectiveOperationException) {
+        } catch (IllegalAccessException | InvocationTargetException reflectiveOperationException) {
             reflectiveOperationException.printStackTrace();
         }
     }

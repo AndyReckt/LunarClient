@@ -6,7 +6,7 @@ package mchorse.mclib.utils;
 import mchorse.mclib.utils.Interpolations;
 
 public enum Interpolation {
-    LINEAR("linear"){
+    LINEAR("linear") {
 
         @Override
         public float interpolate(float f, float f2, float f3) {
@@ -14,7 +14,7 @@ public enum Interpolation {
         }
     }
     ,
-    QUAD_IN("quad_in"){
+    QUAD_IN("quad_in") {
 
         @Override
         public float interpolate(float f, float f2, float f3) {
@@ -22,7 +22,7 @@ public enum Interpolation {
         }
     }
     ,
-    QUAD_OUT("quad_out"){
+    QUAD_OUT("quad_out") {
 
         @Override
         public float interpolate(float f, float f2, float f3) {
@@ -30,7 +30,7 @@ public enum Interpolation {
         }
     }
     ,
-    QUAD_INOUT("quad_inout"){
+    QUAD_INOUT("quad_inout") {
 
         @Override
         public float interpolate(float f, float f2, float f3) {
@@ -41,7 +41,7 @@ public enum Interpolation {
         }
     }
     ,
-    CUBIC_IN("cubic_in"){
+    CUBIC_IN("cubic_in") {
 
         @Override
         public float interpolate(float f, float f2, float f3) {
@@ -49,7 +49,7 @@ public enum Interpolation {
         }
     }
     ,
-    CUBIC_OUT("cubic_out"){
+    CUBIC_OUT("cubic_out") {
 
         @Override
         public float interpolate(float f, float f2, float f3) {
@@ -57,7 +57,7 @@ public enum Interpolation {
         }
     }
     ,
-    CUBIC_INOUT("cubic_inout"){
+    CUBIC_INOUT("cubic_inout") {
 
         @Override
         public float interpolate(float f, float f2, float f3) {
@@ -68,7 +68,7 @@ public enum Interpolation {
         }
     }
     ,
-    EXP_IN("exp_in"){
+    EXP_IN("exp_in") {
 
         @Override
         public float interpolate(float f, float f2, float f3) {
@@ -76,7 +76,7 @@ public enum Interpolation {
         }
     }
     ,
-    EXP_OUT("exp_out"){
+    EXP_OUT("exp_out") {
 
         @Override
         public float interpolate(float f, float f2, float f3) {
@@ -84,7 +84,7 @@ public enum Interpolation {
         }
     }
     ,
-    EXP_INOUT("exp_inout"){
+    EXP_INOUT("exp_inout") {
 
         @Override
         public float interpolate(float f, float f2, float f3) {
@@ -107,20 +107,10 @@ public enum Interpolation {
      * WARNING - Possible parameter corruption
      * WARNING - void declaration
      */
-    public Interpolation() {
-        void var3_1;
-        this.key = var3_1;
+    Interpolation(String key) {
+        this.key = key;
     }
 
     public abstract float interpolate(float var1, float var2, float var3);
-
-    /*
-     * WARNING - void declaration
-     */
-    public /* synthetic */ Interpolation(String string, 1 var2_1) {
-        this((String)var1_-1, (int)var2_1, (String)var3_2);
-        void var3_2;
-        void var1_-1;
-    }
 }
 

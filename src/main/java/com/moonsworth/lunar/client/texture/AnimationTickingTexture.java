@@ -13,12 +13,11 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.InputStream;
 
-public final class AnimationTickingTexture
-extends AbstractTickingTexture {
+public final class AnimationTickingTexture extends AbstractTickingTexture {
     public ResourceLocationBridge lIlIlIlIlIIlIIlIIllIIIIIl;
     public AnimationMetadataSectionBridge IlllIIIIIIlllIlIIlllIlIIl;
-    public long lIllIlIIIlIIIIIIIlllIlIll;
-    public int llIlllIIIllllIIlllIllIIIl = 0;
+    public long lastTick;
+    public int tick = 0;
     public int llllIIlIIlIIlIIllIIlIIllI;
     public int IlIlIlllllIlIIlIlIlllIlIl;
     public int llIIIIIIIllIIllIlIllIIIIl;
@@ -35,7 +34,7 @@ extends AbstractTickingTexture {
     }
 
     public int lIlIlIlIlIIlIIlIIllIIIIIl() {
-        int n = this.lIIIllIllIIllIlllIlIIlllI ? this.IlllIIIIIIlllIlIIlllIlIIl.bridge$getFrameIndex(this.llIlllIIIllllIIlllIllIIIl % this.llllIIlIIlIIlIIllIIlIIllI) : this.llIlllIIIllllIIlllIllIIIl % this.IlIlIlllllIlIIlIlIlllIlIl;
+        int n = this.lIIIllIllIIllIlllIlIIlllI ? this.IlllIIIIIIlllIlIIlllIlIIl.bridge$getFrameIndex(this.tick % this.llllIIlIIlIIlIIllIIlIIllI) : this.tick % this.IlIlIlllllIlIIlIlIlllIlIl;
         return n;
     }
 
@@ -46,11 +45,11 @@ extends AbstractTickingTexture {
     @Override
     public void bridge$tick() {
         int n;
-        int n2 = 1;
+        int n2;
         n2 = this.lIIIllIllIIllIlllIlIIlllI && this.IlllIIIIIIlllIlIIlllIlIIl.bridge$hasTime(n = this.lIlIlIlIlIIlIIlIIllIIIIIl()) ? this.IlllIIIIIIlllIlIIlllIlIIl.bridge$getFrameTimeSingle(n) : this.llIIIIIIIllIIllIlIllIIIIl;
-        if (System.currentTimeMillis() - this.lIllIlIIIlIIIIIIIlllIlIll >= (long)(n2 *= 50)) {
-            ++this.llIlllIIIllllIIlllIllIIIl;
-            this.lIllIlIIIlIIIIIIIlllIlIll = System.currentTimeMillis();
+        if (System.currentTimeMillis() - this.lastTick >= n2 * 50L) {
+            ++this.tick;
+            this.lastTick = System.currentTimeMillis();
         }
     }
 
@@ -59,7 +58,7 @@ extends AbstractTickingTexture {
     public void bridge$loadTexture(IResourceManagerBridge iResourceManagerBridge) {
         SimpleResourceBridge simpleResourceBridge = iResourceManagerBridge.bridge$getResource(this.lIlIlIlIlIIlIIlIIllIIIIIl);
         if (simpleResourceBridge != null) {
-            InputStream inputStream = Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getResourceManager().bridge$getResource(this.lIlIlIlIlIIlIIlIIllIIIIIl).bridge$getInputStream();
+            InputStream inputStream = Ref.getMinecraft().bridge$getResourceManager().bridge$getResource(this.lIlIlIlIlIIlIIlIIllIIIIIl).bridge$getInputStream();
             BufferedImage bufferedImage = ImageIO.read(inputStream);
             this.IlIlIlllllIlIIlIlIlllIlIl = bufferedImage.getHeight() / this.IlllIIIIIIlllIlIIlllIlIIl.bridge$getFrameHeight();
             Bridge.lIIIllIllIIllIlllIlIIlllI().bridge$uploadTextureImage(this.bridge$getGlTextureId(), bufferedImage);
@@ -68,4 +67,3 @@ extends AbstractTickingTexture {
         }
     }
 }
- 

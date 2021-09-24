@@ -2,8 +2,7 @@ package com.moonsworth.lunar.client.event.type.chat;
 
 import com.moonsworth.lunar.client.event.CancellableEvent;
 
-public class OutgoingChatEvent
-extends CancellableEvent {
+public class OutgoingChatEvent extends CancellableEvent {
     public String lIlIlIlIlIIlIIlIIllIIIIIl;
 
     public boolean lIlIlIlIlIIlIIlIIllIIIIIl(String string) {

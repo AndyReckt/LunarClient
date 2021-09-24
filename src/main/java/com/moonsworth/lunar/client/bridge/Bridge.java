@@ -5,7 +5,6 @@ import com.moonsworth.lunar.bridge.minecraft.client.MinecraftBridge;
 import com.moonsworth.lunar.bridge.minecraft.client.renderer.GlStateManagerBridge;
 import com.moonsworth.lunar.bridge.minecraft.client.renderer.OpenGlHelperBridge;
 import com.moonsworth.lunar.bridge.minecraft.client.renderer.entity.RenderEntityItemBridge;
-import com.moonsworth.lunar.bridge.minecraft.client.renderer.entity.RendererLivingEntityBridge;
 import com.moonsworth.lunar.bridge.minecraft.client.renderer.entity.UnknownRenderEntityBridge;
 import com.moonsworth.lunar.bridge.minecraft.client.renderer.texture.TextureUtilBridge;
 import com.moonsworth.lunar.bridge.minecraft.client.renderer.vertex.DefaultVertexFormatsBridge;
@@ -31,14 +30,14 @@ import java.util.Optional;
  */
 public class Bridge {
 
-    public static IBridge lIlIlIlIlIIlIIlIIllIIIIIl;
-    public static MinecraftBridge IlllIIIIIIlllIlIIlllIlIIl;
-    public static CryptManagerBridge lIllIlIIIlIIIIIIIlllIlIll;
-    public static GlStateManagerBridge llIlllIIIllllIIlllIllIIIl;
-    public static TextureUtilBridge llllIIlIIlIIlIIllIIlIIllI;
-    public static RenderUtilBridge IlIlIlllllIlIIlIlIlllIlIl;
-    public static KeyboardBridge llIIIIIIIllIIllIlIllIIIIl;
-    public static MouseBridge lIIIllIllIIllIlllIlIIlllI;
+    public static IBridge INSTANCE;
+    public static MinecraftBridge minecraftBridge;
+    public static CryptManagerBridge cryptManagerBridge;
+    public static GlStateManagerBridge glStateManagerBridge;
+    public static TextureUtilBridge textureUtilBridge;
+    public static RenderUtilBridge renderUtilBridge;
+    public static KeyboardBridge keyboardBridge;
+    public static MouseBridge mouseBridge;
     public static GLContextBridge IlllllIlIIIlIIlIIllIIlIll;
     public static CosmeticBridge llIIlIlIIIllIlIlIlIIlIIll;
     public static OpenGlHelperBridge llIIIlllIIlllIllllIlIllIl;
@@ -56,19 +55,19 @@ public class Bridge {
     public static AbstractResourcePackBridge IIlIllIlIIllIIlIlIllllllI;
 
     public static void lIlIlIlIlIIlIIlIIllIIIIIl(IBridge iBridge) {
-        if (lIlIlIlIlIIlIIlIIllIIIIIl != null) {
+        if (INSTANCE != null) {
             throw new IllegalStateException("Can't reset Bridge Implementation!");
         }
-        lIlIlIlIlIIlIIlIIllIIIIIl = iBridge;
+        INSTANCE = iBridge;
         System.out.println("[Bridge] Setting Bridge Implementation to " + iBridge.getClass().getName());
-        lIlIlIlIlIIlIIlIIllIIIIIl.enable();
+        INSTANCE.enable();
     }
 
     public static void lIlIlIlIlIIlIIlIIllIIIIIl(MinecraftBridge minecraftBridge) {
-        if (IlllIIIIIIlllIlIIlllIlIIl != null) {
+        if (Bridge.minecraftBridge != null) {
             throw new IllegalStateException("Can't reset Minecraft Client instance!");
         }
-        IlllIIIIIIlllIlIIlllIlIIl = minecraftBridge;
+        Bridge.minecraftBridge = minecraftBridge;
         System.out.println("[Bridge] Setting Minecraft Client instance to " + minecraftBridge.getClass().getName());
     }
 
@@ -79,72 +78,72 @@ public class Bridge {
         IIlIllIlIIllIIlIlIllllllI = abstractResourcePackBridge;
     }
 
-    public static Optional lIlIlIlIlIIlIIlIIllIIIIIl() {
+    public static Optional<AbstractResourcePackBridge> lIlIlIlIlIIlIIlIIllIIIIIl() {
         return Optional.ofNullable(IIlIllIlIIllIIlIlIllllllI);
     }
 
-    public static MinecraftVersion IlllIIIIIIlllIlIIlllIlIIl() {
-        return lIlIlIlIlIIlIIlIIllIIIIIl.getMinecraftVersion();
+    public static MinecraftVersion getMinecraftVersion() {
+        return INSTANCE.getMinecraftVersion();
     }
 
     public static Optional<OptifineBridge> lIllIlIIIlIIIIIIIlllIlIll() {
         return Optional.ofNullable(lIIlIlllIlIlIIIlllIIlIIII);
     }
 
-    public static IBridge llIlllIIIllllIIlllIllIIIl() {
-        return lIlIlIlIlIIlIIlIIllIIIIIl;
+    public static IBridge getInstance() {
+        return INSTANCE;
     }
 
     public static MinecraftBridge llllIIlIIlIIlIIllIIlIIllI() {
-        return IlllIIIIIIlllIlIIlllIlIIl;
+        return minecraftBridge;
     }
 
     public static CryptManagerBridge IlIlIlllllIlIIlIlIlllIlIl() {
-        return lIllIlIIIlIIIIIIIlllIlIll;
+        return cryptManagerBridge;
     }
 
     public static void lIlIlIlIlIIlIIlIIllIIIIIl(CryptManagerBridge cryptManagerBridge) {
-        lIllIlIIIlIIIIIIIlllIlIll = cryptManagerBridge;
+        Bridge.cryptManagerBridge = cryptManagerBridge;
     }
 
     public static GlStateManagerBridge llIIIIIIIllIIllIlIllIIIIl() {
-        return llIlllIIIllllIIlllIllIIIl;
+        return glStateManagerBridge;
     }
 
     public static void lIlIlIlIlIIlIIlIIllIIIIIl(GlStateManagerBridge glStateManagerBridge) {
-        llIlllIIIllllIIlllIllIIIl = glStateManagerBridge;
+        Bridge.glStateManagerBridge = glStateManagerBridge;
     }
 
     public static TextureUtilBridge lIIIllIllIIllIlllIlIIlllI() {
-        return llllIIlIIlIIlIIllIIlIIllI;
+        return textureUtilBridge;
     }
 
     public static void lIlIlIlIlIIlIIlIIllIIIIIl(TextureUtilBridge textureUtilBridge) {
-        llllIIlIIlIIlIIllIIlIIllI = textureUtilBridge;
+        Bridge.textureUtilBridge = textureUtilBridge;
     }
 
     public static RenderUtilBridge IlllllIlIIIlIIlIIllIIlIll() {
-        return IlIlIlllllIlIIlIlIlllIlIl;
+        return renderUtilBridge;
     }
 
     public static void lIlIlIlIlIIlIIlIIllIIIIIl(RenderUtilBridge renderUtilBridge) {
-        IlIlIlllllIlIIlIlIlllIlIl = renderUtilBridge;
+        Bridge.renderUtilBridge = renderUtilBridge;
     }
 
     public static KeyboardBridge llIIlIlIIIllIlIlIlIIlIIll() {
-        return llIIIIIIIllIIllIlIllIIIIl;
+        return keyboardBridge;
     }
 
     public static void lIlIlIlIlIIlIIlIIllIIIIIl(KeyboardBridge keyboardBridge) {
-        llIIIIIIIllIIllIlIllIIIIl = keyboardBridge;
+        Bridge.keyboardBridge = keyboardBridge;
     }
 
     public static MouseBridge llIIIlllIIlllIllllIlIllIl() {
-        return lIIIllIllIIllIlllIlIIlllI;
+        return mouseBridge;
     }
 
     public static void lIlIlIlIlIIlIIlIIllIIIIIl(MouseBridge mouseBridge) {
-        lIIIllIllIIllIlllIlIIlllI = mouseBridge;
+        Bridge.mouseBridge = mouseBridge;
     }
 
     public static GLContextBridge lllllIllIllIllllIlIllllII() {

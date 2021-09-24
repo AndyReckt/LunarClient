@@ -2,16 +2,21 @@ package com.moonsworth.lunar.client.cosmetic.part;
 
 import com.google.common.base.Preconditions;
 import com.moonsworth.lunar.bridge.minecraft.client.resources.SimpleResourceBridge;
+import com.moonsworth.lunar.bridge.minecraft.client.resources.data.AnimationMetadataSectionBridge;
 import com.moonsworth.lunar.bridge.minecraft.util.ResourceLocationBridge;
 import com.moonsworth.lunar.client.bridge.Bridge;
+import com.moonsworth.lunar.client.cosmetic.model.ModelMesh;
 import com.moonsworth.lunar.client.ref.Ref;
+import com.moonsworth.lunar.client.texture.AnimationTickingTexture;
 import com.moonsworth.lunar.client.util.CosmeticRotationHelper;
+import lombok.SneakyThrows;
+import mchorse.emoticons.skin_n_bones.api.bobj.BOBJLoader;
 
+import javax.annotation.Nullable;
 import java.util.*;
 
-public abstract class AbstractCosmetic
-implements lIllIlIIIlIIIIIIIlllIlIll,
-com.moonsworth.lunar.client.cosmetic.iface.lIllIlIIIlIIIIIIIlllIlIll {
+public abstract class AbstractCosmetic implements lIllIlIIIlIIIIIIIlllIlIll,
+    com.moonsworth.lunar.client.cosmetic.iface.lIllIlIIIlIIIIIIIlllIlIll {
     public static final String lIlIlIlIlIIlIIlIIllIIIIIl = "cosmetics/%s/%s/%s";
     public String IlllIIIIIIlllIlIIlllIlIIl;
     public boolean lIllIlIIIlIIIIIIIlllIlIll = false;
@@ -33,8 +38,8 @@ com.moonsworth.lunar.client.cosmetic.iface.lIllIlIIIlIIIIIIIlllIlIll {
         this.lIllIlIIIlIIIIIIIlllIlIll = bl;
         this.lllIIIIIlllIIlIllIIlIIIlI = bodyPart;
         this.lllllIllIllIllllIlIllllII = bodySection;
-        this.IlIlIlllllIlIIlIlIlllIlIl = Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation("lunar", String.format(lIlIlIlIlIIlIIlIIllIIIIIl, bodySection.name().toLowerCase(), string, string + ".png"));
-        this.llIIIIIIIllIIllIlIllIIIIl = Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation("lunar", String.format(lIlIlIlIlIIlIIlIIllIIIIIl, bodySection.name().toLowerCase(), string, string + ".obj"));
+        this.IlIlIlllllIlIIlIlIlllIlIl = Bridge.getInstance().initResourceLocation("lunar", String.format(lIlIlIlIlIIlIIlIIllIIIIIl, bodySection.name().toLowerCase(), string, string + ".png"));
+        this.llIIIIIIIllIIllIlIllIIIIl = Bridge.getInstance().initResourceLocation("lunar", String.format(lIlIlIlIlIIlIIlIIllIIIIIl, bodySection.name().toLowerCase(), string, string + ".obj"));
         this.lIlIIIIIIlIIIllllIllIIlII.addAll(Arrays.asList(cosmeticRotationHelperArray));
     }
 
@@ -48,24 +53,25 @@ com.moonsworth.lunar.client.cosmetic.iface.lIllIlIIIlIIIIIIIlllIlIll {
         return this.llIIIIIIIllIIllIlIllIIIIl;
     }
 
+    @SneakyThrows
     public void lIllIlIIIlIIIIIIIlllIlIll() {
         Preconditions.checkState(!this.llllIIlIIlIIlIIllIIlIIllI, "cosmetic already loaded");
         if (this.lIIIllIllIIllIlllIlIIlllI == null) {
-            SimpleResourceBridge simpleResourceBridge = Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getResourceManager().bridge$getResource(this.llIIIIIIIllIIllIlIllIIIIl);
+            SimpleResourceBridge simpleResourceBridge = Ref.getMinecraft().bridge$getResourceManager().bridge$getResource(this.llIIIIIIIllIIllIlIllIIIIl);
             BOBJLoader.BOBJData bOBJData = BOBJLoader.readData(simpleResourceBridge.bridge$getInputStream());
             this.lIIIllIllIIllIlllIlIIlllI = new ModelMesh(bOBJData);
             this.lIIIllIllIIllIlllIlIIlllI.lIlIlIlIlIIlIIlIIllIIIIIl();
         }
         this.llllIIlIIlIIlIIllIIlIIllI = true;
     }
-
+    @SneakyThrows
     public AnimationTickingTexture llIlllIIIllllIIlllIllIIIl() {
         if (this.llIIIIIIIllIIllIlIllIIIIl()) {
             return null;
         }
-        SimpleResourceBridge simpleResourceBridge = Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getResourceManager().bridge$getResource(this.IlIlIlllllIlIIlIlIlllIlIl);
+        SimpleResourceBridge simpleResourceBridge = Ref.getMinecraft().bridge$getResourceManager().bridge$getResource(this.IlIlIlllllIlIIlIlIlllIlIl);
         AnimationTickingTexture animationTickingTexture = new AnimationTickingTexture(this.IlIlIlllllIlIIlIlIlllIlIl, (AnimationMetadataSectionBridge)simpleResourceBridge.bridge$getMetadata("animation"));
-        Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getTextureManager().bridge$loadTickableTexture(this.IlIlIlllllIlIIlIlIlllIlIl, Bridge.llIlllIIIllllIIlllIllIIIl().initTickingTexture(animationTickingTexture));
+        Ref.getMinecraft().bridge$getTextureManager().bridge$loadTickableTexture(this.IlIlIlllllIlIIlIlIlllIlIl, Bridge.getInstance().initTickingTexture(animationTickingTexture));
         this.llIIIlllIIlllIllllIlIllIl = animationTickingTexture;
         return animationTickingTexture;
     }
@@ -147,8 +153,7 @@ com.moonsworth.lunar.client.cosmetic.iface.lIllIlIIIlIIIIIIIlllIlIll {
             if (animationTickingTexture == null) {
                 try {
                     animationTickingTexture = this.llIlllIIIllllIIlllIllIIIl();
-                }
-                catch (Exception exception) {
+                } catch (Exception exception) {
                     // empty catch block
                 }
             }
@@ -161,4 +166,3 @@ com.moonsworth.lunar.client.cosmetic.iface.lIllIlIIIlIIIIIIIlllIlIll {
         }
     }
 }
- 

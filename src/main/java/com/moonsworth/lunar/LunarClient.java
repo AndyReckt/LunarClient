@@ -22,13 +22,13 @@ import com.moonsworth.lunar.client.event.type.lunar.PostInitEvent;
 import com.moonsworth.lunar.client.event.type.world.PreRunTickEvent;
 import com.moonsworth.lunar.client.event.type.world.TickEvent;
 import com.moonsworth.lunar.client.feature.external.ThirdPartyMod;
+import com.moonsworth.lunar.client.feature.type.nick.lIllIlIIIlIIIIIIIlllIlIll;
 import com.moonsworth.lunar.client.feature.type.replaymod.IReplayModWrapper;
 import com.moonsworth.lunar.client.feature.type.replaymod.ReplayMod;
 import com.moonsworth.lunar.client.json.file.ItemLoader;
 import com.moonsworth.lunar.client.logger.LunarLogger;
 import com.moonsworth.lunar.client.nethandler.NetHandler;
 import com.moonsworth.lunar.client.notification.NotificationManager;
-import com.moonsworth.lunar.client.profile.Profile;
 import com.moonsworth.lunar.client.profile.ProfileLoader;
 import com.moonsworth.lunar.client.ref.Ref;
 import com.moonsworth.lunar.client.registry.*;
@@ -36,16 +36,20 @@ import com.moonsworth.lunar.client.server.ServerIntegration;
 import com.moonsworth.lunar.client.threading.LunarExecutors;
 import com.moonsworth.lunar.client.ui.component.MainMenuRedirectListener;
 import com.moonsworth.lunar.client.ui.screen.type.bugreport.BugReportUIScreen;
+import com.moonsworth.lunar.client.ui.screen.type.mainmenu.MainMenuUIScreen;
 import com.moonsworth.lunar.client.ui.screen.type.mainmenu.MainMenuUIWrapper;
-import com.moonsworth.lunar.client.ui.screen.type.mainmenu.cosmetics.CosmeticsListUIComponent;
-import com.moonsworth.lunar.client.ui.screen.type.mainmenu.cosmetics.CosmeticsUIScreenBase;
+import com.moonsworth.lunar.client.ui.screen.type.mainmenu.cosmetics.base.CosmeticsListUIComponent;
+import com.moonsworth.lunar.client.ui.screen.type.mainmenu.cosmetics.CosmeticsUIScreen;
+import com.moonsworth.lunar.client.ui.screen.type.mainmenu.cosmetics.base.CosmeticsUIScreenBase;
 import com.moonsworth.lunar.client.ui.screen.type.overlay.FriendsUIScreen;
 import com.moonsworth.lunar.client.util.AuthUtil;
 import com.moonsworth.lunar.client.util.NullUtil;
 import com.moonsworth.lunar.client.websocket.AssetsWebSocket;
-import com.moonsworth.lunar.client.websocket.FriendProfile;
+import com.moonsworth.lunar.client.profile.FriendProfile;
+import com.moonsworth.lunar.client.websocket.AuthenticatorWebSocket;
 import com.moonsworth.lunar.client.websocket.Status;
 import com.moonsworth.lunar.client.websocket.WebSocketState;
+import com.moonsworth.lunar.client.websocket.packet.FeaturesConfigWebsocketPacket;
 import lombok.Getter;
 import mchorse.emoticons.Emoticons;
 import org.apache.commons.io.FileUtils;
@@ -73,60 +77,60 @@ public class LunarClient {
     public static String OS_NAME = "?";
     public static String OS_ARCH = "?";
     public static String LANG = "en_US";
-    public static final EventBus IlllllIlIIIlIIlIIllIIlIll = EventBus.lIlIlIlIlIIlIIlIIllIIIIIl();
-    public static final Gson llIIlIlIIIllIlIlIlIIlIIll = (new GsonBuilder()).registerTypeAdapter(CrashReportBridge.class, new CrashReportSerializer()).create();
-    public static final Random random = new Random();
-    public FriendProfile llIlIIIllIIlIllIllIllllIl;
+    public static final EventBus EVENT_BUS = EventBus.getInstance();
+    public static final Gson GSON = (new GsonBuilder()).registerTypeAdapter(CrashReportBridge.class, new CrashReportSerializer()).create();
+    public static final Random RANDOM = new Random();
+    public FriendProfile profile;
     public File gameSettingsDir;
-    public final NetHandler IIlIllIlllllllIIlIIIllIIl;
-    public ServerIntegration lIIlIlllIlIlIIIlllIIlIIII;
-    public AssetsWebSocket llIllIlIllIlllIllIIIIllII;
+    public final NetHandler netHandler;
+    public ServerIntegration serverIntegration;
+    public AssetsWebSocket assetsWebsocket;
     public String IllllllllllIlIIIlllIlllll = "";
-    public final Set lllllIllIlIIlIIlIIIlllIlI;
-    public final ModuleManager IllIIIlllIIIlIlllIlIIlIII;
-    public final SettingsLoader IIlIllIlIIllIIlIlIllllllI;
-    public final RuleFeaturesConfig lIIIlllIIIIllllIlIIIlIIll;
-    public final AccountsConfig llIIIlIllIIIIlIIIlIlIllIl;
-    public final EmptySetLoader llllIlIllllIlIlIIIllIlIlI;
-    public final StaffModsConfig IlIllIIlIIlIIIllIllllIIll;
-    public final EmoteConfig lIllllIllIIlIIlIIIlIIIlII;
-    public final WaypointsJson lIlIlIIIIIIllIlIIIIllIIII;
-    public final FavoriteColorsConfig lIIlIIIIIIlIIlIIllIlIIlII;
-    public final PlayerHeadManager IlIIlIIlIIlIIllIIIllIIllI;
-    public final UUIDFriendSetLoader IIlIlIIIllIIllllIllllIlIl;
-    public final CosmeticManager lllllIIIIlIlllIllIIIlIIlI;
-    public final EmptyMapLoader IIlllIllIlIllIllIIllIlIIl;
-    public final ConcurrentMapLoaderWrapper lIlIIlIlllIIlIIIlIlIlIllI;
-    public final PinnedServersConfig lIIlllIIIIIlllIIIlIlIlllI;
-    public final FriendLoader IIIlIIIIIIllIIIIllIIIIlII;
-    public final TitlesSetLoader IlIIIlIlIlIlIlIllIIllIIlI;
-    public final ProfileLoader IlIlIllIIllllIllllllIIlIl;
-    public final FeaturesConfig lIIlIIlllIIIIlIlllIIIIlll;
-    public final BorderManager llIllIIIIlIIIIIIlllIllIlI;
-    public final MutedUsersConfig lIlIIIIIllIIlIIlIIlIlIIlI;
-    public final ProfileMapLoader IIllIlIllIlIllIllIllIllII;
-    public final BlogPostLoader IlIlllIlIlllIllIIIIIIlllI;
-    public final LanguageConfig llllIlIlIIIllllIIlIllIlII;
-    public final ResizeScreenNotificationSetLoader llIIIllllIIIllIIIIlIlIlll;
-    public final NotificationManager IIIIIIIIIIIIIIIllllIIlIIl;
-    public final PlayerEventHandler llIIIIllIlIIlIlIIlllIllIl;
-    public final MouseEventHandler IIIIlIllIllIlIIIIIlIlIlIl;
-    public Optional optional = Optional.empty();
-    public EvictingQueue queue = EvictingQueue.create(4);
-    public static final ItemStackBridge emptyItemStack = Bridge.llIlllIIIllllIIlllIllIIIl().initEmptyItemStack();
-    public final Map<String, ThirdPartyMod> lllllIlIllIlIlllIIIlIIlIl = new HashMap();
+    public final Set<ItemLoader> loaders;
+    public final ModuleManager moduleManager;
+    public final SettingsLoader settingsLoader;
+    public final RuleFeaturesConfig featuresConfig;
+    public final AccountsConfig accountsConfig;
+    public final ConsoleLines loader;
+    public final StaffModsConfig modsConfig;
+    public final EmoteConfig emotesConfig;
+    public final WaypointsJson waypointsJson;
+    public final FavoriteColorsConfig favoriteColorsConfig;
+    public final PlayerHeadManager playerHeadManager;
+    public final UUIDFriendSetLoader uuidFriendSetLoader;
+    public final CosmeticManager cosmeticManager;
+    public final HologramsRegistry holograms;
+    public final CustomNameplatesRegistry customNameplatesRegistry;
+    public final PinnedServersConfig pinnedServersConfig;
+    public final FriendLoader friendLoader;
+    public final TitlesSetLoader titlesSetLoader;
+    public final ProfileLoader profileLoader;
+    public final FeaturesConfig featuresConfig1;
+    public final BorderManager borderManager;
+    public final MutedUsersConfig mutedUsersConfig;
+    public final ProfileMapLoader profileMapLoader;
+    public final BlogPostLoader blogPostLoader;
+    public final LanguageConfig languageConfig;
+    public final ResizeScreenNotificationSetLoader resizeScreenNotificationSetLoader;
+    public final NotificationManager notificationManager;
+    public final PlayerEventHandler playerEventHandler;
+    public final MouseEventHandler mouseEventHandler;
+    public Optional<lIllIlIIIlIIIIIIIlllIlIll> optional = Optional.empty();
+    public EvictingQueue<String> queue = EvictingQueue.create(4);
+    public static final ItemStackBridge emptyItemStack = Bridge.getInstance().initEmptyItemStack();
+    public final Map<String, ThirdPartyMod> thirdPartyModHashMap = new HashMap<>();
     public boolean lllIIIIIlllIIlIllIIlIIIlI = true;
 
     public LunarClient() {
         lIlIIIIIIlIIIllllIllIIlII = this;
-        Bridge.llIlllIIIllllIIlllIllIIIl().lateInit();
+        Bridge.getInstance().lateInit();
         Bridge.llllIIlIIlIIlIIllIIlIIllI().bridge$setDisplayTitle(getDisplayTitle());
-        LunarLogger.IlllIIIIIIlllIlIIlllIlIIl("Starting Lunar client...");
+        LunarLogger.info("Starting Lunar client...");
         this.gameSettingsDir = new File(System.getProperty("user.home") + File.separator + ".lunarclient" + File.separator + "settings" + File.separator + "game");
         if (!this.gameSettingsDir.exists()) {
             this.gameSettingsDir.mkdirs();
-            File var1 = new File(Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getMcDataDir() + File.separator + "config" + File.separator + "assets" + File.separator + "lunar");
-            File var2 = new File(Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getMcDataDir() + File.separator + "config" + File.separator + "lunar");
+            File var1 = new File(Ref.getMinecraft().bridge$getMcDataDir() + File.separator + "config" + File.separator + "assets" + File.separator + "lunar");
+            File var2 = new File(Ref.getMinecraft().bridge$getMcDataDir() + File.separator + "config" + File.separator + "lunar");
             File var3 = null;
             if (var1.exists() && var2.exists()) {
                 if (var1.lastModified() > var2.lastModified()) {
@@ -149,14 +153,14 @@ public class LunarClient {
             }
         }
 
-        this.IIlIllIlllllllIIlIIIllIIl = new NetHandler();
-        this.lIIlIlllIlIlIIIlllIIlIIII = new ServerIntegration();
-        this.lllllIllIlIIlIIlIIIlllIlI = ImmutableSet.of(new FontRegistry(), this.llIIIllllIIIllIIIIlIlIlll = new ResizeScreenNotificationSetLoader(), this.IIIIIIIIIIIIIIIllllIIlIIl = new NotificationManager(), this.llllIlIlIIIllllIIlIllIlII = new LanguageConfig(), this.IlIlIllIIllllIllllllIIlIl = new ProfileLoader(), this.IllIIIlllIIIlIlllIlIIlIII = new ModuleManager(), new ItemLoader[]{this.IlIllIIlIIlIIIllIllllIIll = new StaffModsConfig(), this.IIlIllIlIIllIIlIlIllllllI = new SettingsLoader(), this.lIIIlllIIIIllllIlIIIlIIll = new RuleFeaturesConfig(), this.llIIIlIllIIIIlIIIlIlIllIl = new AccountsConfig(), this.llllIlIllllIlIlIIIllIlIlI = new EmptySetLoader(), this.lIlIlIIIIIIllIlIIIIllIIII = new WaypointsJson(), this.lIIlIIIIIIlIIlIIllIlIIlII = new FavoriteColorsConfig(), this.IlIIlIIlIIlIIllIIIllIIllI = new PlayerHeadManager(), this.IIlIlIIIllIIllllIllllIlIl = new UUIDFriendSetLoader(), this.lllllIIIIlIlllIllIIIlIIlI = new CosmeticManager(), this.lIllllIllIIlIIlIIIlIIIlII = new EmoteConfig(), this.IIlllIllIlIllIllIIllIlIIl = new EmptyMapLoader(), this.llIllIIIIlIIIIIIlllIllIlI = new BorderManager(), this.lIlIIlIlllIIlIIIlIlIlIllI = new ConcurrentMapLoaderWrapper(), this.lIIlllIIIIIlllIIIlIlIlllI = new PinnedServersConfig(), this.IIIlIIIIIIllIIIIllIIIIlII = new FriendLoader(), this.IlIIIlIlIlIlIlIllIIllIIlI = new TitlesSetLoader(), this.lIIlIIlllIIIIlIlllIIIIlll = new FeaturesConfig(), this.IIllIlIllIlIllIllIllIllII = new ProfileMapLoader(), this.lIlIIIIIllIIlIIlIIlIlIIlI = new MutedUsersConfig(), this.IlIlllIlIlllIllIIIIIIlllI = new BlogPostLoader()});
+        this.netHandler = new NetHandler();
+        this.serverIntegration = new ServerIntegration();
+        this.loaders = ImmutableSet.of(new FontRegistry(), this.resizeScreenNotificationSetLoader = new ResizeScreenNotificationSetLoader(), this.notificationManager = new NotificationManager(), this.languageConfig = new LanguageConfig(), this.profileLoader = new ProfileLoader(), this.moduleManager = new ModuleManager(), this.modsConfig = new StaffModsConfig(), this.settingsLoader = new SettingsLoader(), this.featuresConfig = new RuleFeaturesConfig(), this.accountsConfig = new AccountsConfig(), this.loader = new ConsoleLines(), this.waypointsJson = new WaypointsJson(), this.favoriteColorsConfig = new FavoriteColorsConfig(), this.playerHeadManager = new PlayerHeadManager(), this.uuidFriendSetLoader = new UUIDFriendSetLoader(), this.cosmeticManager = new CosmeticManager(), this.emotesConfig = new EmoteConfig(), this.holograms = new HologramsRegistry(), this.borderManager = new BorderManager(), this.customNameplatesRegistry = new CustomNameplatesRegistry(), this.pinnedServersConfig = new PinnedServersConfig(), this.friendLoader = new FriendLoader(), this.titlesSetLoader = new TitlesSetLoader(), this.featuresConfig1 = new FeaturesConfig(), this.profileMapLoader = new ProfileMapLoader(), this.mutedUsersConfig = new MutedUsersConfig(), this.blogPostLoader = new BlogPostLoader());
         new MainMenuRedirectListener();
         new UIEventHandler();
         new StatusUpdateEventListener();
-        this.IIIIlIllIllIlIIIIIlIlIlIl = new MouseEventHandler();
-        this.llIIIIllIlIIlIlIIlllIllIl = new PlayerEventHandler();
+        this.mouseEventHandler = new MouseEventHandler();
+        this.playerEventHandler = new PlayerEventHandler();
         new ConnectionEventHandler();
         new ShaderServerRuleEventHandler();
         new KeybindEventHandler();
@@ -164,15 +168,15 @@ public class LunarClient {
         new Emoticons();
         this.readThirdPartyMods();
         this.load();
-        EventBus.lIlIlIlIlIIlIIlIIllIIIIIl().lIlIlIlIlIIlIIlIIllIIIIIl((new PostInitEvent()));
-        EventBus.lIlIlIlIlIIlIIlIIllIIIIIl().lIlIlIlIlIIlIIlIIllIIIIIl((new SwapPackEvent(Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getSelectedResourcePack())));
+        EventBus.getInstance().call((new PostInitEvent()));
+        EventBus.getInstance().call((new SwapPackEvent(Ref.getMinecraft().bridge$getSelectedResourcePack())));
     }
 
     public void invokeDevEnvironment() {
         try {
             Class var1 = Class.forName("com.moonsworth.lunar.client.dev.DevEnvironment");
             Method var2 = var1.getMethod("init");
-            var2.invoke((Object)null);
+            var2.invoke(null);
         } catch (ReflectiveOperationException var3) {
             var3.printStackTrace();
         }
@@ -187,21 +191,21 @@ public class LunarClient {
                 String[] var3 = var2;
                 int var4 = var2.length;
 
-                for(int var5 = 0; var5 < var4; ++var5) {
+                for (int var5 = 0; var5 < var4; ++var5) {
                     String var6 = var3[var5];
                     if (!var6.trim().isEmpty()) {
-                        LunarLogger.IlllIIIIIIlllIlIIlllIlIIl("ThirdParty", "Creating mod " + var6.trim());
+                        LunarLogger.info("ThirdParty", "Creating mod " + var6.trim());
                         Class var7 = Class.forName(var6.trim());
                         Object var8 = var7.newInstance();
                         if (var7.isAnnotationPresent(ThirdPartyMod.class)) {
-                            ThirdPartyMod var9 = (ThirdPartyMod)var7.getAnnotation(ThirdPartyMod.class);
-                            this.lllllIlIllIlIlllIIIlIIlIl.put(var9.lIlIlIlIlIIlIIlIIllIIIIIl(), var9);
-                            LunarLogger.IlllIIIIIIlllIlIIlllIlIIl("ThirdParty", "Created mod: " + var9.IlllIIIIIIlllIlIIlllIlIIl() + " (" + var9.lIllIlIIIlIIIIIIIlllIlIll() + ")");
+                            ThirdPartyMod var9 = (ThirdPartyMod) var7.getAnnotation(ThirdPartyMod.class);
+                            this.thirdPartyModHashMap.put(var9.lIlIlIlIlIIlIIlIIllIIIIIl(), var9);
+                            LunarLogger.info("ThirdParty", "Created mod: " + var9.IlllIIIIIIlllIlIIlllIlIIl() + " (" + var9.lIllIlIIIlIIIIIIIlllIlIll() + ")");
                         }
                     }
                 }
             } else {
-                LunarLogger.llIlllIIIllllIIlllIllIIIl("ThirdParty", "Couldn't load third party mods");
+                LunarLogger.error("ThirdParty", "Couldn't load third party mods");
             }
         } catch (Throwable var10) {
             var10.printStackTrace();
@@ -210,15 +214,12 @@ public class LunarClient {
     }
 
     public void load() {
-        this.llllIlIlIIIllllIIlIllIlII.lIlIlIlIlIIlIIlIIllIIIIIl(LANG);
-        this.llIIIllllIIIllIIIIlIlIlll.lIlIlIlIlIIlIIlIIllIIIIIl(Ref.lIlIlIlIlIIlIIlIIllIIIIIl(), Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$displayWidth(), Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$displayHeight());
-        Iterator var1 = this.lllllIllIlIIlIIlIIIlllIlI.iterator();
+        this.languageConfig.lIlIlIlIlIIlIIlIIllIIIIIl(LANG);
+        this.resizeScreenNotificationSetLoader.lIlIlIlIlIIlIIlIIllIIIIIl(Ref.getMinecraft(), Ref.getMinecraft().bridge$displayWidth(), Ref.getMinecraft().bridge$displayHeight());
 
-        while(var1.hasNext()) {
-            ItemLoader var2 = (ItemLoader)var1.next();
-
+        for (ItemLoader o : this.loaders) {
             try {
-                var2.b_();
+                o.b_();
             } catch (Exception var4) {
                 var4.printStackTrace();
             }
@@ -226,16 +227,16 @@ public class LunarClient {
 
         System.out.println("Launching");
         (new Thread(new DiscordIPC())).start();
-        EventBus.lIlIlIlIlIIlIIlIIllIIIIIl().lIlIlIlIlIIlIIlIIllIIIIIl(PreRunTickEvent.class, (var0) -> {
+        EventBus.getInstance().register(PreRunTickEvent.class, (var0) -> {
             if (lIlIlIlIlIIlIIlIIllIIIIIl != null) {
-                Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$connect(Bridge.llIlllIIIllllIIlllIllIIIl().initServerData(lIlIlIlIlIIlIIlIIllIIIIIl, lIlIlIlIlIIlIIlIIllIIIIIl, false), Bridge.llIlllIIIllllIIlllIllIIIl().initCustomScreen(new MainMenuUIScreen()));
+                Ref.getMinecraft().bridge$connect(Bridge.getInstance().initServerData(lIlIlIlIlIIlIIlIIllIIIIIl, lIlIlIlIlIIlIIlIIllIIIIIl, false), Bridge.getInstance().initCustomScreen(new MainMenuUIScreen()));
                 lIlIlIlIlIIlIIlIIllIIIIIl = null;
             }
 
-            if (Ref.getAssetsWebsocket().isPresent() && ((AssetsWebSocket)Ref.getAssetsWebsocket().get()).lIlIlIlIlIIlIIlIIllIIIIIl() == WebSocketState.READY) {
+            if (Ref.getAssetsWebsocket().isPresent() && (Ref.getAssetsWebsocket().get()).lIlIlIlIlIIlIIlIIllIIIIIl() == WebSocketState.READY) {
                 int ticks = TickEvent.lIlIlIlIlIIlIIlIIllIIIIIl / 20;
                 if (ticks % 30 == 0) {
-                    Ref.lIlIlIlIlIIlIIlIIllIIIIIl((AbstractWebSocketPacket)(new FeaturesConfigWebsocketPacket()));
+                    Ref.lIlIlIlIlIIlIIlIIllIIIIIl(new FeaturesConfigWebsocketPacket());
                 }
 
             }
@@ -243,112 +244,109 @@ public class LunarClient {
     }
 
     public void shutdown() {
-        ReplayMod var1 = this.IllIIIlllIIIlIlllIlIIlIII.lIlIIlIlllIIlIIIlIlIlIllI();
+        ReplayMod var1 = this.moduleManager.lIlIIlIlllIIlIIIlIlIlIllI();
         IReplayModWrapper var2 = var1.lIllllIllIIlIIlIIIlIIIlII();
         if (var2 != null && (!var1.IlllIIIIIIlllIlIIlllIlIIl() || !var2.isRecording())) {
             var2.noRecover();
         }
 
-        Iterator var3 = this.lllllIllIlIIlIIlIIIlllIlI.iterator();
-
-        while(var3.hasNext()) {
-            ItemLoader var4 = (ItemLoader)var3.next();
-            var4.lIllIlIIIlIIIIIIIlllIlIll();
+        for (ItemLoader o : this.loaders) {
+            o.lIllIlIIIlIIIIIIIlllIlIll();
         }
 
-        if (this.llIllIlIllIlllIllIIIIllII != null && this.llIllIlIllIlllIllIIIIllII.isOpen()) {
-            this.llIllIlIllIlllIllIIIIllII.close();
+        if (this.assetsWebsocket != null && this.assetsWebsocket.isOpen()) {
+            this.assetsWebsocket.close();
         }
 
-        LunarExecutors.IlllIIIIIIlllIlIIlllIlIIl().lIlIlIlIlIIlIIlIIllIIIIIl();
+        LunarExecutors.getLunarExecutor().lIlIlIlIlIIlIIlIIllIIIIIl();
     }
 
-    public void authenticate(Consumer var1) {
-        SessionBridge var2 = Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getSession();
-        Account var3 = Ref.IlllIIIIIIlllIlIIlllIlIIl().llIlIIIllIIlIllIllIllllIl().IlllllIlIIIlIIlIIllIIlIll();
-        if (var3 == null) {
-            LunarLogger.IlllIIIIIIlllIlIIlllIlIIl("Auth", "Failed to establish connection with the auth server, account null.");
-            var1.accept((Object)null);
+    public void authenticate(Consumer<String> consumer) {
+        SessionBridge session = Ref.getMinecraft().bridge$getSession();
+        Account account = Ref.getLC().llIlIIIllIIlIllIllIllllIl().IlllllIlIIIlIIlIIllIIlIll();
+        if (account == null) {
+            LunarLogger.info("Auth", "Failed to establish connection with the auth server, account null.");
+            consumer.accept(null);
         } else {
             try {
-                (new AuthenticatorWebSocket(ImmutableMap.builder().put("username", var2.bridge$getUsername()).put("playerId", AuthUtil.lIllIlIIIlIIIIIIIlllIlIll(var2.bridge$getPlayerID())).build(), var1)).connect();
+                (new AuthenticatorWebSocket(ImmutableMap.builder().put("username", session.bridge$getUsername()).put("playerId", AuthUtil.lIllIlIIIlIIIIIIIlllIlIll(session.bridge$getPlayerID())).build(), consumer)).connect();
             } catch (URISyntaxException var5) {
                 var5.printStackTrace();
-                var1.accept((Object)null);
+                consumer.accept(null);
             }
         }
     }
 
     public void loginToAssetsWebsocket() {
-        LunarExecutors.IlllIIIIIIlllIlIIlllIlIIl().execute(() -> {
+        LunarExecutors.getLunarExecutor().execute(() -> {
             try {
-                LunarLogger.IlllIIIIIIlllIlIIlllIlIIl("Assets", "Establishing connection");
-                if (this.llIllIlIllIlllIllIIIIllII != null && this.llIllIlIllIlllIllIIIIllII.isOpen()) {
-                    this.llIllIlIllIlllIllIIIIllII.closeBlocking();
+                LunarLogger.info("Assets", "Establishing connection");
+                if (this.assetsWebsocket != null && this.assetsWebsocket.isOpen()) {
+                    this.assetsWebsocket.closeBlocking();
                 }
-
-                SessionBridge var1 = Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getSession();
-                Account var2 = Ref.IlllIIIIIIlllIlIIlllIlIIl().llIlIIIllIIlIllIllIllllIl().IlllllIlIIIlIIlIIllIIlIll();
-                String var3 = Ref.IlllIIIIIIlllIlIIlllIlIIl().llllIIlIIlIIlIIllIIlIIllI().llIIIIIIIllIIllIlIllIIIIl();
-                this.authenticate((var4x) -> {
-                    if (var4x != null) {
-                        try {
-                            this.llIllIlIllIlllIllIIIIllII = new AssetsWebSocket(ImmutableMap.builder().put("accountType", var2.llIIlIlIIIllIlIlIlIIlIIll().name()).put("version", Bridge.IlllIIIIIIlllIlIIlllIlIIl().name()).put("gitCommit", llllIlIlIIIllllIIlIllIlII()).put("branch", llIIIllllIIIllIIIIlIlIlll()).put("os", OS_NAME = System.getProperty("os.name")).put("arch", OS_ARCH = (String) Nul
-                        } catch (URISyntaxException var6) {
-                            var6.printStackTrace();
-                        }
-
-                        this.llIllIlIllIlllIllIIIIllII.connect();
+                SessionBridge sessionBridge = Ref.getMinecraft().bridge$getSession();
+                Account account = Ref.getLC().llIlIIIllIIlIllIllIllllIl().IlllllIlIIIlIIlIIllIIlIll();
+                String string = Ref.getLC().llllIIlIIlIIlIIllIIlIIllI().llIIIIIIIllIIllIlIllIIIIl();
+                this.authenticate(string2 -> {
+                    if (string2 == null) {
+                        return;
                     }
+                    try {
+                        OS_NAME = System.getProperty("os.name");
+                        OS_ARCH = (String) NullUtil.lIlIlIlIlIIlIIlIIllIIIIIl(System.getenv("PROCESSOR_ARCHITECTURE"), System.getProperty("os.arch"));
+                        this.assetsWebsocket = new AssetsWebSocket(ImmutableMap.builder().put("accountType", account.getType().name()).put("version", Bridge.getMinecraftVersion().name()).put("gitCommit", LunarClient.llllIlIlIIIllllIIlIllIlII()).put("branch", LunarClient.llIIIllllIIIllIIIIlIlIlll()).put("os", OS_NAME).put("arch", OS_ARCH).put("server", string == null ? "" : string).put("launcherVersion", AssetsWebSocket.lIlIlIlIlIIlIIlIIllIIIIIl).put("username", sessionBridge.bridge$getUsername()).put("playerId", AuthUtil.lIllIlIIIlIIIIIIIlllIlIll(sessionBridge.bridge$getPlayerID())).put("Authorization", string2).put("protocolVersion", PROTOCOL_VERSION).build());
+                    } catch (URISyntaxException uRISyntaxException) {
+                        uRISyntaxException.printStackTrace();
+                    }
+                    this.assetsWebsocket.connect();
                 });
-            } catch (InterruptedException var4) {
-                var4.printStackTrace();
+            } catch (InterruptedException interruptedException) {
+                interruptedException.printStackTrace();
             }
-
         });
     }
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(SessionBridge var1) {
         try {
             boolean var2 = var1 != null && var1.bridge$getProfile() != null && var1.bridge$getProfile().getId() != null;
-            boolean var3 = var2 && !var1.bridge$getProfile().getId().equals(Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getSession().bridge$getProfile().getId());
-            boolean var4 = this.llIllIlIllIlllIllIIIIllII != null;
+            boolean var3 = var2 && !var1.bridge$getProfile().getId().equals(Ref.getMinecraft().bridge$getSession().bridge$getProfile().getId());
+            boolean var4 = this.assetsWebsocket != null;
             if (var2 && var3) {
-                this.lllllIIIIlIlllIllIIIlIIlI.llIlllIIIllllIIlllIllIIIl(var1.bridge$getProfile().getId());
+                this.cosmeticManager.llIlllIIIllllIIlllIllIIIl(var1.bridge$getProfile().getId());
             }
 
-            this.llIlIIIllIIlIllIllIllllIl = new FriendProfile(Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getSession().bridge$getProfile().getId());
-            this.llIlIIIllIIlIllIllIllllIl.IlllIIIIIIlllIlIIlllIlIIl(Status.lIlIlIlIlIIlIIlIIllIIIIIl);
-            this.llIlIIIllIIlIllIllIllllIl.lIlIlIlIlIIlIIlIIllIIIIIl(true);
-            this.llIlIIIllIIlIllIllIllllIl.lIlIlIlIlIIlIIlIIllIIIIIl(Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getSession().bridge$getUsername());
-            this.llIlIIIllIIlIllIllIllllIl.IlllIIIIIIlllIlIIlllIlIIl("In-Menus");
+            this.profile = new FriendProfile(Ref.getMinecraft().bridge$getSession().bridge$getProfile().getId());
+            this.profile.setStatus(Status.ONLINE);
+            this.profile.lIlIlIlIlIIlIIlIIllIIIIIl(true);
+            this.profile.lIlIlIlIlIIlIIlIIllIIIIIl(Ref.getMinecraft().bridge$getSession().bridge$getUsername());
+            this.profile.IlllIIIIIIlllIlIIlllIlIIl("In-Menus");
             this.loginToAssetsWebsocket();
-            Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$submit(() -> {
+            Ref.getMinecraft().bridge$submit(() -> {
                 boolean var0 = false;
-                if (Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getCurrentScreen() != null && Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getCurrentScreen().lIlIlIlIlIIlIIlIIllIIIIIl(CosmeticsUIScreen.class)) {
-                    Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$displayScreen(null);
+                if (Ref.getMinecraft().bridge$getCurrentScreen() != null && Ref.getMinecraft().bridge$getCurrentScreen().lIlIlIlIlIIlIIlIIllIIIIIl(CosmeticsUIScreen.class)) {
+                    Ref.getMinecraft().bridge$displayScreen(null);
                     var0 = true;
                 }
 
-                CosmeticsUIScreen.llIIIIIIIllIIllIlIllIIIIl();
+                CosmeticsUIScreen.silly();
                 if (var0) {
-                    Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$displayScreen(Bridge.llIlllIIIllllIIlllIllIIIl().initCustomScreen(new CosmeticsUIScreen()));
+                    Ref.getMinecraft().bridge$displayScreen(Bridge.getInstance().initCustomScreen(new CosmeticsUIScreen()));
                 }
 
             });
-            Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$submit(() -> {
+            Ref.getMinecraft().bridge$submit(() -> {
                 boolean var0 = false;
-                if (Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getCurrentScreen() != null && Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getCurrentScreen().lIlIlIlIlIIlIIlIIllIIIIIl(lunar.cl.CosmeticsUIScreen.class)) {
-                    Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$displayScreen(null);
+                if (Ref.getMinecraft().bridge$getCurrentScreen() != null && Ref.getMinecraft().bridge$getCurrentScreen().lIlIlIlIlIIlIIlIIllIIIIIl(CosmeticsUIScreen.class)) {
+                    Ref.getMinecraft().bridge$displayScreen(null);
                     var0 = true;
                 }
 
                 CosmeticsListUIComponent.lIlIlIlIlIIlIIlIIllIIIIIl(CosmeticsListUIComponent.llllIIlIIlIIlIIllIIlIIllI());
                 if (var0) {
-                    if (Ref.llIIIIIIIllIIllIlIllIIIIl() == null) {
-                        Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$displayScreen(Bridge.llIlllIIIllllIIlllIllIIIl().initCustomScreen(new MainMenuUIWrapper(new CosmeticsUIScreenBase(Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getCurrentScreen()))));
+                    if (Ref.getWorld() == null) {
+                        Ref.getMinecraft().bridge$displayScreen(Bridge.getInstance().initCustomScreen(new MainMenuUIWrapper(new CosmeticsUIScreenBase(Ref.getMinecraft().bridge$getCurrentScreen()))));
                     } else {
-                        Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$displayScreen(Bridge.llIlllIIIllllIIlllIllIIIl().initCustomScreen(new CosmeticsUIScreen(Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getCurrentScreen())));
+                        Ref.getMinecraft().bridge$displayScreen(Bridge.getInstance().initCustomScreen(new CosmeticsUIScreenBase(Ref.getMinecraft().bridge$getCurrentScreen())));
                     }
                 }
 
@@ -363,8 +361,8 @@ public class LunarClient {
     public void lIlIlIlIlIIlIIlIIllIIIIIl(GuiScreenBridge var1) {
         if (var1 != null) {
             if (var1 instanceof WrappedGuiScreenBridge) {
-                if (!(((WrappedGuiScreenBridge)var1).getCustomScreen() instanceof BugReportUIScreen)) {
-                    this.queue.add(((WrappedGuiScreenBridge)var1).getCustomScreen().getClass().getName());
+                if (!(((WrappedGuiScreenBridge) var1).getCustomScreen() instanceof BugReportUIScreen)) {
+                    this.queue.add(((WrappedGuiScreenBridge) var1).getCustomScreen().getClass().getName());
                 }
             } else {
                 this.queue.add(var1.getClass().getName());
@@ -377,7 +375,7 @@ public class LunarClient {
     }
 
     public static String getDisplayTitle() {
-        return "Lunar Client (" + Bridge.IlllIIIIIIlllIlIIlllIlIIl().IlIlIlllllIlIIlIlIlllIlIl() + "-" + IlIlllIlIlllIllIIIIIIlllI() + "/" + llIIIllllIIIllIIIIlIlIlll() + ")";
+        return "Lunar Client (" + Bridge.getMinecraftVersion().IlIlIlllllIlIIlIlIlllIlIl() + "-" + IlIlllIlIlllIllIIIIIIlllI() + "/" + llIIIllllIIIllIIIIlIlIlll() + ")";
     }
 
     public static int llIlllIIIllllIIlllIllIIIl() {
@@ -385,7 +383,7 @@ public class LunarClient {
     }
 
     public FriendProfile llllIIlIIlIIlIIllIIlIIllI() {
-        return this.llIlIIIllIIlIllIllIllllIl;
+        return this.profile;
     }
 
     public File IlIlIlllllIlIIlIlIlllIlIl() {
@@ -393,15 +391,15 @@ public class LunarClient {
     }
 
     public NetHandler llIIIIIIIllIIllIlIllIIIIl() {
-        return this.IIlIllIlllllllIIlIIIllIIl;
+        return this.netHandler;
     }
 
     public ServerIntegration lIIIllIllIIllIlllIlIIlllI() {
-        return this.lIIlIlllIlIlIIIlllIIlIIII;
+        return this.serverIntegration;
     }
 
     public AssetsWebSocket IlllllIlIIIlIIlIIllIIlIll() {
-        return this.llIllIlIllIlllIllIIIIllII;
+        return this.assetsWebsocket;
     }
 
     public String llIIlIlIIIllIlIlIlIIlIIll() {
@@ -409,122 +407,122 @@ public class LunarClient {
     }
 
     public Set llIIIlllIIlllIllllIlIllIl() {
-        return this.lllllIllIlIIlIIlIIIlllIlI;
+        return this.loaders;
     }
 
     public ModuleManager lllllIllIllIllllIlIllllII() {
-        return this.IllIIIlllIIIlIlllIlIIlIII;
+        return this.moduleManager;
     }
 
     public SettingsLoader lllIIIIIlllIIlIllIIlIIIlI() {
-        return this.IIlIllIlIIllIIlIlIllllllI;
+        return this.settingsLoader;
     }
 
     public RuleFeaturesConfig lIlIIIIIIlIIIllllIllIIlII() {
-        return this.lIIIlllIIIIllllIlIIIlIIll;
+        return this.featuresConfig;
     }
 
     public AccountsConfig llIlIIIllIIlIllIllIllllIl() {
-        return this.llIIIlIllIIIIlIIIlIlIllIl;
+        return this.accountsConfig;
     }
 
-    public EmptySetLoader IllIllIIIllIIIlIlIlIIIIll() {
-        return this.llllIlIllllIlIlIIIllIlIlI;
+    public ConsoleLines IllIllIIIllIIIlIlIlIIIIll() {
+        return this.loader;
     }
 
     public StaffModsConfig IIlIllIlllllllIIlIIIllIIl() {
-        return this.IlIllIIlIIlIIIllIllllIIll;
+        return this.modsConfig;
     }
 
     public EmoteConfig lIIlIlllIlIlIIIlllIIlIIII() {
-        return this.lIllllIllIIlIIlIIIlIIIlII;
+        return this.emotesConfig;
     }
 
     public WaypointsJson llIllIlIllIlllIllIIIIllII() {
-        return this.lIlIlIIIIIIllIlIIIIllIIII;
+        return this.waypointsJson;
     }
 
     public FavoriteColorsConfig IllllllllllIlIIIlllIlllll() {
-        return this.lIIlIIIIIIlIIlIIllIlIIlII;
+        return this.favoriteColorsConfig;
     }
 
-    public PlayerHeadManager lllllIllIlIIlIIlIIIlllIlI() {
-        return this.IlIIlIIlIIlIIllIIIllIIllI;
+    public PlayerHeadManager getPlayerHeadManager() {
+        return this.playerHeadManager;
     }
 
     public UUIDFriendSetLoader IllIIIlllIIIlIlllIlIIlIII() {
-        return this.IIlIlIIIllIIllllIllllIlIl;
+        return this.uuidFriendSetLoader;
     }
 
     public CosmeticManager IIlIllIlIIllIIlIlIllllllI() {
-        return this.lllllIIIIlIlllIllIIIlIIlI;
+        return this.cosmeticManager;
     }
 
-    public EmptyMapLoader lIIIlllIIIIllllIlIIIlIIll() {
-        return this.IIlllIllIlIllIllIIllIlIIl;
+    public HologramsRegistry getHolograms() {
+        return this.holograms;
     }
 
-    public ConcurrentMapLoaderWrapper llIIIlIllIIIIlIIIlIlIllIl() {
-        return this.lIlIIlIlllIIlIIIlIlIlIllI;
+    public CustomNameplatesRegistry llIIIlIllIIIIlIIIlIlIllIl() {
+        return this.customNameplatesRegistry;
     }
 
     public PinnedServersConfig llllIlIllllIlIlIIIllIlIlI() {
-        return this.lIIlllIIIIIlllIIIlIlIlllI;
+        return this.pinnedServersConfig;
     }
 
-    public FriendLoader IlIllIIlIIlIIIllIllllIIll() {
-        return this.IIIlIIIIIIllIIIIllIIIIlII;
+    public FriendLoader getFriendRegistry() {
+        return this.friendLoader;
     }
 
     public TitlesSetLoader lIllllIllIIlIIlIIIlIIIlII() {
-        return this.IlIIIlIlIlIlIlIllIIllIIlI;
+        return this.titlesSetLoader;
     }
 
     public ProfileLoader lIlIlIIIIIIllIlIIIIllIIII() {
-        return this.IlIlIllIIllllIllllllIIlIl;
+        return this.profileLoader;
     }
 
     public FeaturesConfig lIIlIIIIIIlIIlIIllIlIIlII() {
-        return this.lIIlIIlllIIIIlIlllIIIIlll;
+        return this.featuresConfig1;
     }
 
     public BorderManager IlIIlIIlIIlIIllIIIllIIllI() {
-        return this.llIllIIIIlIIIIIIlllIllIlI;
+        return this.borderManager;
     }
 
     public MutedUsersConfig IIlIlIIIllIIllllIllllIlIl() {
-        return this.lIlIIIIIllIIlIIlIIlIlIIlI;
+        return this.mutedUsersConfig;
     }
 
     public ProfileMapLoader lllllIIIIlIlllIllIIIlIIlI() {
-        return this.IIllIlIllIlIllIllIllIllII;
+        return this.profileMapLoader;
     }
 
     public BlogPostLoader IIlllIllIlIllIllIIllIlIIl() {
-        return this.IlIlllIlIlllIllIIIIIIlllI;
+        return this.blogPostLoader;
     }
 
     public LanguageConfig lIlIIlIlllIIlIIIlIlIlIllI() {
-        return this.llllIlIlIIIllllIIlIllIlII;
+        return this.languageConfig;
     }
 
     public ResizeScreenNotificationSetLoader lIIlllIIIIIlllIIIlIlIlllI() {
-        return this.llIIIllllIIIllIIIIlIlIlll;
+        return this.resizeScreenNotificationSetLoader;
     }
 
     public NotificationManager IIIlIIIIIIllIIIIllIIIIlII() {
-        return this.IIIIIIIIIIIIIIIllllIIlIIl;
+        return this.notificationManager;
     }
 
     public PlayerEventHandler IlIIIlIlIlIlIlIllIIllIIlI() {
-        return this.llIIIIllIlIIlIlIIlllIllIl;
+        return this.playerEventHandler;
     }
 
     public MouseEventHandler IlIlIllIIllllIllllllIIlIl() {
-        return this.IIIIlIllIllIlIIIIIlIlIlIl;
+        return this.mouseEventHandler;
     }
 
-    public EvictingQueue lIIlIIlllIIIIlIlllIIIIlll() {
+    public EvictingQueue<String> getLastGuis() {
         return this.queue;
     }
 
@@ -536,7 +534,7 @@ public class LunarClient {
         return lIlIlIlIlIIlIIlIIllIIIIIl;
     }
 
-    public static LunarClient IIllIlIllIlIllIllIllIllII() {
+    public static LunarClient getInstance() {
         return lIlIIIIIIlIIIllllIllIIlII;
     }
 
@@ -564,7 +562,7 @@ public class LunarClient {
         this.IllllllllllIlIIIlllIlllll = var1;
     }
 
-    public Optional IIIIlIllIllIlIIIIIlIlIlIl() {
+    public Optional<lIllIlIIIlIIIIIIIlllIlIll> IIIIlIllIllIlIIIIIlIlIlIl() {
         return this.optional;
     }
 
@@ -573,7 +571,7 @@ public class LunarClient {
     }
 
     public Map<String, ThirdPartyMod> IlIlIlIlIIIlIIlIIlllIllIl() {
-        return this.lllllIlIllIlIlllIIIlIIlIl;
+        return this.thirdPartyModHashMap;
     }
 }
 

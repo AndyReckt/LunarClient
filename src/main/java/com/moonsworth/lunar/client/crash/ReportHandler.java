@@ -1,5 +1,6 @@
 package com.moonsworth.lunar.client.crash;
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.io.ByteStreams;
 import com.google.gson.annotations.SerializedName;
 import com.moonsworth.lunar.LunarClient;
@@ -7,12 +8,16 @@ import com.moonsworth.lunar.bridge.minecraft.crash.CrashReportBridge;
 import com.moonsworth.lunar.client.bridge.Bridge;
 import com.moonsworth.lunar.client.feature.Feature;
 import com.moonsworth.lunar.client.ref.Ref;
+import com.moonsworth.lunar.client.websocket.AssetsWebSocket;
+import com.moonsworth.lunar.client.websocket.packet.llIlllIIIllllIIlllIllIIIl;
+import com.moonsworth.lunar.client.websocket.packet.llllIIlIIlIIlIIllIIlIIllI;
 
 import javax.swing.*;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class ReportHandler {
     public static final String lIlIlIlIlIIlIIlIIllIIIIIl = "https://api.lunarclientprod.com/game/crashReport";
@@ -21,15 +26,15 @@ public class ReportHandler {
     public static void lIlIlIlIlIIlIIlIIllIIIIIl(String string, String string2) {
         String string4 = "BUG-" + UUID.randomUUID();
         ClientContext clientContext = ReportHandler.lIlIlIlIlIIlIIlIIllIIIIIl();
-        String string5 = LunarClient.llIIlIlIIIllIlIlIlIIlIIll.toJson((Object)new lIlIlIlIlIIlIIlIIllIIIIIl(string4, string, string2, clientContext));
-        Ref.IlllIIIIIIlllIlIIlllIlIIl().authenticate(string3 -> {
+        String string5 = LunarClient.GSON.toJson(new lIlIlIlIlIIlIIlIIllIIIIIl(string4, string, string2, clientContext));
+        Ref.getLC().authenticate(string3 -> {
             try {
                 Object object;
                 URL uRL = new URL(IlllIIIIIIlllIlIIlllIlIIl);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)uRL.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 if (string3 != null) {
-                    httpURLConnection.setRequestProperty("Authorization", (String)string3);
+                    httpURLConnection.setRequestProperty("Authorization", string3);
                 }
                 httpURLConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
                 httpURLConnection.setRequestProperty("Content-Length", String.valueOf(string5.length()));
@@ -50,8 +55,7 @@ public class ReportHandler {
                 ((InputStream)object).close();
                 httpURLConnection.disconnect();
                 Ref.lIlIlIlIlIIlIIlIIllIIIIIl(new llIlllIIIllllIIlllIllIIIl(string4));
-            }
-            catch (Exception exception) {
+            } catch (Exception exception) {
                 exception.printStackTrace();
             }
         });
@@ -62,16 +66,16 @@ public class ReportHandler {
         String string = "CRASH-" + UUID.randomUUID();
         System.out.println(string);
         ClientContext clientContext = ReportHandler.lIlIlIlIlIIlIIlIIllIIIIIl();
-        String string3 = LunarClient.llIIlIlIIIllIlIlIlIIlIIll.toJson((Object)new IlllIIIIIIlllIlIIlllIlIIl(string, crashReportBridge, clientContext));
+        String string3 = LunarClient.GSON.toJson(new IlllIIIIIIlllIlIIlllIlIIl(string, crashReportBridge, clientContext));
         System.out.println(string3);
-        Ref.IlllIIIIIIlllIlIIlllIlIIl().authenticate(string2 -> {
+        Ref.getLC().authenticate(string2 -> {
             try {
                 Object object;
                 URL uRL = new URL(lIlIlIlIlIIlIIlIIllIIIIIl);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)uRL.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 if (string2 != null) {
-                    httpURLConnection.setRequestProperty("Authorization", (String)string2);
+                    httpURLConnection.setRequestProperty("Authorization", string2);
                 }
                 httpURLConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
                 httpURLConnection.setRequestProperty("Content-Length", String.valueOf(string3.length()));
@@ -91,8 +95,7 @@ public class ReportHandler {
                 object = httpURLConnection.getInputStream();
                 ((InputStream)object).close();
                 httpURLConnection.disconnect();
-            }
-            catch (Exception exception) {
+            } catch (Exception exception) {
                 exception.printStackTrace();
             }
         });
@@ -103,19 +106,30 @@ public class ReportHandler {
         }
         try {
             Thread.sleep(7000L);
-        }
-        catch (InterruptedException interruptedException) {
+        } catch (InterruptedException interruptedException) {
             interruptedException.printStackTrace();
         }
         Ref.lIlIlIlIlIIlIIlIIllIIIIIl(new llllIIlIIlIIlIIllIIlIIllI(string));
     }
 
     public static ClientContext lIlIlIlIlIIlIIlIIllIIIIIl() {
-        boolean bl = LunarClient.IIllIlIllIlIllIllIllIllII() != null && LunarClient.IIllIlIllIlIllIllIllIllII().lllllIllIllIllllIlIllllII() != null;
-        String string = bl ? Ref.IlllIIIIIIlllIlIIlllIlIIl().lllllIllIllIllllIlIllllII().llIlllIIIllllIIlllIllIIIl().stream().filter(Feature::IlllIIIIIIlllIlIIlllIlIIl).map(configurableFeature -> configurableFeature.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl()).collect(Collectors.joining(",")) : "unknown";
+        boolean bl = LunarClient.getInstance() != null && LunarClient.getInstance().lllllIllIllIllllIlIllllII() != null;
+        String string = bl ? Ref.getLC().lllllIllIllIllllIlIllllII().llIlllIIIllllIIlllIllIIIl().stream().filter(Feature::IlllIIIIIIlllIlIIlllIlIIl).map(configurableFeature -> configurableFeature.getDetails().getId()).collect(Collectors.joining(",")) : "unknown";
         Runtime runtime = Runtime.getRuntime();
-        String string2 = bl ? (Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getCurrentServerData() == null ? "None" : Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getCurrentServerData().bridge$serverIP()) : "unknown";
-        return new ClientContext(Bridge.IlllIIIIIIlllIlIIlllIlIIl().IlIlIlllllIlIIlIlIlllIlIl(), AssetsWebSocket.lIlIlIlIlIIlIIlIIllIIIIIl, "master", "6f9eb864d0d24cafb109d638a849d13ad67d5979", bl ? Bridge.lIlIIIIIIlIIIllllIllIIlII().bridge$getCPU() : "unknown", "unknown", System.getProperty("os.name"), string2, LunarClient.llIIIIllIlIIlIlIIlllIllIl(), System.getProperty("java.version"), (int)((double)runtime.totalMemory() / 1048576.0), (int)((double)runtime.freeMemory() / 1048576.0), (int)((double)runtime.maxMemory() / 1048576.0), bl ? Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getDebugFPS() : -1, bl ? LunarClient.IIllIlIllIlIllIllIllIllII().lIIlIIlllIIIIlIlllIIIIlll() : ImmutableList.of(), ImmutableList.of());
+        String string2 = bl ? (Ref.getMinecraft().bridge$getCurrentServerData() == null ? "None" : Ref.getMinecraft().bridge$getCurrentServerData().bridge$serverIP()) : "unknown";
+        return new ClientContext(
+                   Bridge.getMinecraftVersion().IlIlIlllllIlIIlIlIlllIlIl(),
+                   AssetsWebSocket.lIlIlIlIlIIlIIlIIllIIIIIl,
+                   "master",
+                   "6f9eb864d0d24cafb109d638a849d13ad67d5979",
+                   bl ? Bridge.lIlIIIIIIlIIIllllIllIIlII().bridge$getCPU() : "unknown", "unknown",
+                   System.getProperty("os.name"), string2, LunarClient.llIIIIllIlIIlIlIIlllIllIl(),
+                   System.getProperty("java.version"), (int)((double)runtime.totalMemory() / 1048576.0),
+                   (int)((double)runtime.freeMemory() / 1048576.0), (int)((double)runtime.maxMemory() / 1048576.0),
+                   bl ? Ref.getMinecraft().bridge$getDebugFPS() : -1,
+                   bl ? LunarClient.getInstance().getLastGuis() : ImmutableList.of(),
+                   ImmutableList.of()
+               );
     }
 
     public static class lIlIlIlIlIIlIIlIIllIIIIIl {

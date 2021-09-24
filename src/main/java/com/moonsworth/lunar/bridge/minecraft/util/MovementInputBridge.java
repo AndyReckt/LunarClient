@@ -1,50 +1,50 @@
 package com.moonsworth.lunar.bridge.minecraft.util;
 
 public interface MovementInputBridge {
-    public float bridge$getStrafeSpeed();
+    float bridge$getStrafeSpeed();
 
-    public float bridge$getForwardSpeed();
+    float bridge$getForwardSpeed();
 
-    public boolean bridge$isSneaking();
+    boolean bridge$isSneaking();
 
-    public boolean bridge$isJumping();
+    boolean bridge$isJumping();
 
-    default public void lIlIlIlIlIIlIIlIIllIIIIIl() {
+    default void lIlIlIlIlIIlIIlIIllIIIIIl() {
     }
 
-    public void bridge$setMoveForward(float var1);
+    void bridge$setMoveForward(float var1);
 
-    public void bridge$setMoveStrafe(float var1);
+    void bridge$setMoveStrafe(float var1);
 
-    public void bridge$setJump(boolean var1);
+    void bridge$setJump(boolean var1);
 
-    public void bridge$setSneak(boolean var1);
+    void bridge$setSneak(boolean var1);
 
-    default public boolean IlllIIIIIIlllIlIIlllIlIIl() {
+    default boolean IlllIIIIIIlllIlIIlllIlIIl() {
         return false;
     }
 
-    default public boolean lIllIlIIIlIIIIIIIlllIlIll() {
+    default boolean lIllIlIIIlIIIIIIIlllIlIll() {
         return false;
     }
 
-    default public boolean llIlllIIIllllIIlllIllIIIl() {
+    default boolean llIlllIIIllllIIlllIllIIIl() {
         return false;
     }
 
-    default public boolean llllIIlIIlIIlIIllIIlIIllI() {
+    default boolean llllIIlIIlIIlIIllIIlIIllI() {
         return false;
     }
 
-    default public void lIlIlIlIlIIlIIlIIllIIIIIl(boolean bl) {
+    default void lIlIlIlIlIIlIIlIIllIIIIIl(boolean bl) {
     }
 
-    default public void IlllIIIIIIlllIlIIlllIlIIl(boolean bl) {
+    default void IlllIIIIIIlllIlIIlllIlIIl(boolean bl) {
     }
 
-    default public void lIllIlIIIlIIIIIIIlllIlIll(boolean bl) {
+    default void lIllIlIIIlIIIIIIIlllIlIll(boolean bl) {
     }
 
-    default public void llIlllIIIllllIIlllIllIIIl(boolean bl) {
+    default void llIlllIIIllllIIlllIllIIIl(boolean bl) {
     }
 }

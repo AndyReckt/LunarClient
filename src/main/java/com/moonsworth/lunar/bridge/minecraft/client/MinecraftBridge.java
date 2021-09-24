@@ -1,5 +1,6 @@
 package com.moonsworth.lunar.bridge.minecraft.client;
 
+import com.moonsworth.lunar.bridge.minecraft.block.BlockBridge;
 import com.moonsworth.lunar.bridge.minecraft.client.audio.SoundHandlerBridge;
 import com.moonsworth.lunar.bridge.minecraft.client.entity.EntityBridge;
 import com.moonsworth.lunar.bridge.minecraft.client.entity.EntityPlayerSPBridge;
@@ -36,122 +37,121 @@ import java.util.Optional;
  * @since 10/07/2021 14:09
  */
 public interface MinecraftBridge {
-    public EntityPlayerSPBridge bridge$getPlayer();
+    EntityPlayerSPBridge bridge$getPlayer();
 
-    public void bridge$setPlayer(EntityPlayerSPBridge var1);
+    void bridge$setPlayer(EntityPlayerSPBridge var1);
 
-    public PlayerControllerMPBridge bridge$getPlayerController();
+    PlayerControllerMPBridge bridge$getPlayerController();
 
-    public WorldClientBridge bridge$getWorld();
+    WorldClientBridge bridge$getWorld();
 
-    public Optional<EntityBridge> bridge$getPointedEntity();
+    Optional<EntityBridge> bridge$getPointedEntity();
 
-    public NetHandlerPlayClientBridge bridge$getNetHandler();
+    NetHandlerPlayClientBridge bridge$getNetHandler();
 
-    public GuiScreenBridge bridge$getCurrentScreen();
+    GuiScreenBridge bridge$getCurrentScreen();
 
-    public FontRendererBridge bridge$getFontRenderer();
+    FontRendererBridge bridge$getFontRenderer();
 
-    public IResourceManagerBridge bridge$getResourceManager();
+    IResourceManagerBridge bridge$getResourceManager();
 
-    public AbstractResourcePackBridge bridge$getMcDefaultResourcePack();
+    AbstractResourcePackBridge bridge$getMcDefaultResourcePack();
 
-    public TextureManagerBridge bridge$getTextureManager();
+    TextureManagerBridge bridge$getTextureManager();
 
-    public SessionBridge bridge$getSession();
+    SessionBridge bridge$getSession();
 
-    public EntityRendererBridge bridge$getEntityRenderer();
+    EntityRendererBridge bridge$getEntityRenderer();
 
-    public ServerDataBridge bridge$getCurrentServerData();
+    ServerDataBridge bridge$getCurrentServerData();
 
-    public RenderItemBridge bridge$getRenderItem();
+    RenderItemBridge bridge$getRenderItem();
 
-    public SoundHandlerBridge bridge$getSoundHandler();
+    SoundHandlerBridge bridge$getSoundHandler();
 
-    public void bridge$setSession(SessionBridge var1);
+    void bridge$setSession(SessionBridge var1);
 
-    public File bridge$getMcDataDir();
+    File bridge$getMcDataDir();
 
-    public void bridge$displayScreen(GuiScreenBridge var1);
+    void bridge$displayScreen(GuiScreenBridge var1);
 
-    public int bridge$displayWidth();
+    int bridge$displayWidth();
 
-    public int bridge$displayHeight();
+    int bridge$displayHeight();
 
-    public boolean bridge$unicode();
+    boolean bridge$unicode();
 
-    public int bridge$getGuiScale();
+    int bridge$getGuiScale();
 
-    public void bridge$loadWorld(WorldClientBridge var1);
+    void bridge$loadWorld(WorldClientBridge var1);
 
-    public void bridge$refreshResources();
+    void bridge$refreshResources();
 
-    public void bridge$shutdownMinecraftApplet();
+    void bridge$shutdownMinecraftApplet();
 
-    public GameSettingsBridge bridge$getGameSettings();
+    GameSettingsBridge bridge$getGameSettings();
 
-    default public Optional lIlIlIlIlIIlIIlIIllIIIIIl() {
+default Optional lIlIlIlIlIIlIIlIIllIIIIIl() {
         return Optional.empty();
     }
 
-    public RenderManagerBridge bridge$getRenderManager();
+    RenderManagerBridge bridge$getRenderManager();
 
-    public long bridge$getSystemTime();
+    long bridge$getSystemTime();
 
-    public TimerBridge bridge$getTimer();
+    TimerBridge bridge$getTimer();
 
-    public GuiIngameBridge bridge$getGuiIngame();
+    GuiIngameBridge bridge$getGuiIngame();
 
-    public int bridge$getDebugFPS();
+    int bridge$getDebugFPS();
 
-    public FramebufferBridge bridge$getFramebuffer();
+    FramebufferBridge bridge$getFramebuffer();
 
-    public EntityBridge bridge$getRenderViewEntity();
+    EntityBridge bridge$getRenderViewEntity();
 
-    public RenderGlobalBridge bridge$getRenderGlobal();
+    RenderGlobalBridge bridge$getRenderGlobal();
 
-    public boolean bridge$hasInGameFocus();
+    boolean bridge$hasInGameFocus();
 
-    public TextureMapBridge bridge$getTextureMap();
+    TextureMapBridge bridge$getTextureMap();
 
-    public boolean bridge$isFullScreen();
+    boolean bridge$isFullScreen();
 
-    public void bridge$toggleFullscreen();
+    void bridge$toggleFullscreen();
 
-    public EffectRendererBridge bridge$getEffectRenderer();
+    EffectRendererBridge bridge$getEffectRenderer();
 
-    public MovingObjectPositionBridge bridge$getObjectMouseOver();
+    MovingObjectPositionBridge bridge$getObjectMouseOver();
 
-    public void bridge$submit(Runnable var1);
+    void bridge$submit(Runnable var1);
 
-    public ItemRendererBridge bridge$getItemRenderer();
+    ItemRendererBridge bridge$getItemRenderer();
 
-    public boolean bridge$isGamePaused();
+    boolean bridge$isGamePaused();
 
-    public boolean bridge$isDisplayCreated();
+    boolean bridge$isDisplayCreated();
 
-    public boolean bridge$isDisplayActive();
+    boolean bridge$isDisplayActive();
 
-    public void bridge$setDisplayTitle(String var1);
+    void bridge$setDisplayTitle(String var1);
 
-    public boolean bridge$repeatEventsEnabled();
+    boolean bridge$repeatEventsEnabled();
 
-    public void bridge$setRepeatEventsEnabled(boolean var1);
+    void bridge$setRepeatEventsEnabled(boolean var1);
 
-    public ServerDataBridge bridge$lastServerData();
+    ServerDataBridge bridge$lastServerData();
 
-    // com.moonsworth.lunar.bridge.minecraft.client.renderer.lIlIlIlIlIIlIIlIIllIIIIIl's optional return
-    default public Optional IlllIIIIIIlllIlIIlllIlIIl() {
+default Optional<com.moonsworth.lunar.bridge.minecraft.client.renderer.llIIlIlIIIllIlIlIlIIlIIll> IlllIIIIIIlllIlIIlllIlIIl() {
         return Optional.empty();
     }
 
-    default public List bridge$xrayBlocks() {
-        return new ArrayList();
+default List<BlockBridge> bridge$xrayBlocks() {
+        return new ArrayList<>();
     }
 
-    public AbstractResourcePackBridge bridge$getSelectedResourcePack();
+    AbstractResourcePackBridge bridge$getSelectedResourcePack();
 
-    public void bridge$connect(ServerDataBridge var1, GuiScreenBridge var2);
+    void bridge$connect(ServerDataBridge var1, GuiScreenBridge var2);
 
-    public boolean bridge$isConnectedToRealms();
+    boolean bridge$isConnectedToRealms();
 }

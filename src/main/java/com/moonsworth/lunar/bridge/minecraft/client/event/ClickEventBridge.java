@@ -5,6 +5,6 @@ package com.moonsworth.lunar.bridge.minecraft.client.event;
  * @since 10/07/2021 16:17
  */
 public interface ClickEventBridge {
-    public String bridge$getValue();
+    String bridge$getValue();
 }
 

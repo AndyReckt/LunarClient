@@ -1,15 +1,15 @@
 package com.moonsworth.lunar.client.registry;
 
 import com.moonsworth.lunar.client.event.EventHandler;
+import com.moonsworth.lunar.client.event.type.network.NetHandlerConnectionStateUpdateEvent;
 import com.moonsworth.lunar.client.json.file.ItemMapLoader;
-import com.moonsworth.lunar.client.websocket.FriendProfile;
+import com.moonsworth.lunar.client.profile.FriendProfile;
 
 import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class FriendLoader
-extends ItemMapLoader
-implements EventHandler {
+public class FriendLoader extends ItemMapLoader<UUID, FriendProfile> implements EventHandler {
     public FriendLoader() {
         this.lIlIlIlIlIIlIIlIIllIIIIIl(NetHandlerConnectionStateUpdateEvent.class, this::lIlIlIlIlIIlIIlIIllIIIIIl);
     }
@@ -19,8 +19,8 @@ implements EventHandler {
     }
 
     @Override
-    public Map lIlIlIlIlIIlIIlIIllIIIIIl() {
-        return new ConcurrentHashMap();
+    public Map<UUID, FriendProfile> lIlIlIlIlIIlIIlIIllIIIIIl() {
+        return new ConcurrentHashMap<>();
     }
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(FriendProfile profile) {
@@ -35,4 +35,3 @@ implements EventHandler {
         this.llIlllIIIllllIIlllIllIIIl().remove(profile.lIllIlIIIlIIIIIIIlllIlIll());
     }
 }
- 

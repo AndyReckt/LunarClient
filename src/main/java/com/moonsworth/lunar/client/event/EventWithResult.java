@@ -5,7 +5,7 @@ package com.moonsworth.lunar.client.event;
  * @since 10/07/2021 13:03
  */
 public class EventWithResult extends Event {
-    public EventStateResult lIlIlIlIlIIlIIlIIllIIIIIl = EventStateResult.lIllIlIIIlIIIIIIIlllIlIll;
+    public EventStateResult lIlIlIlIlIIlIIlIIllIIIIIl = EventStateResult.DEFAULT;
 
     public EventStateResult lIlIlIlIlIIlIIlIIllIIIIIl() {
         return this.lIlIlIlIlIIlIIlIIllIIIIIl;
@@ -16,8 +16,8 @@ public class EventWithResult extends Event {
     }
 
     public enum EventStateResult {
-        lIlIlIlIlIIlIIlIIllIIIIIl, // ALLOW
-        IlllIIIIIIlllIlIIlllIlIIl, // DENY
-        lIllIlIIIlIIIIIIIlllIlIll // DEFAULT
+        ALLOW, // lIlIlIlIlIIlIIlIIllIIIIIl
+        DENY, // IlllIIIIIIlllIlIIlllIlIIl
+        DEFAULT // lIllIlIIIlIIIIIIIlllIlIll
     }
 }

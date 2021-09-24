@@ -10,13 +10,13 @@ import com.google.gson.JsonParser;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import com.moonsworth.lunar.bridge.minecraft.client.renderer.entity.RendererLivingEntityBridge;
-import com.moonsworth.lunar.bridge.minecraft.client.renderer.entity.UnknownRenderEntityBridge;
 import com.moonsworth.lunar.bridge.minecraft.client.renderer.entity.layers.LayerCapeBridge;
 import com.moonsworth.lunar.bridge.minecraft.client.renderer.texture.AbstractTextureBridge;
 import com.moonsworth.lunar.bridge.minecraft.client.renderer.texture.CustomTextureBridge;
 import com.moonsworth.lunar.bridge.minecraft.client.renderer.texture.CustomTextureHolder;
 import com.moonsworth.lunar.bridge.minecraft.client.resources.SimpleResourceBridge;
 import com.moonsworth.lunar.bridge.minecraft.client.resources.data.AnimationMetadataSectionBridge;
+import com.moonsworth.lunar.bridge.minecraft.util.ModelCloak;
 import com.moonsworth.lunar.bridge.minecraft.util.ResourceLocationBridge;
 import com.moonsworth.lunar.client.bridge.Bridge;
 import com.moonsworth.lunar.client.bridge.MinecraftVersion;
@@ -26,6 +26,8 @@ import com.moonsworth.lunar.client.cosmetic.CosmeticIndexEntry;
 import com.moonsworth.lunar.client.cosmetic.builder.HeadwearCosmeticBuilder;
 import com.moonsworth.lunar.client.cosmetic.builder.TieCosmeticBuilder;
 import com.moonsworth.lunar.client.cosmetic.layer.CosmeticManagerLayer;
+import com.moonsworth.lunar.client.cosmetic.layer.LowBodyCustomLayer;
+import com.moonsworth.lunar.client.cosmetic.model.ModelMesh;
 import com.moonsworth.lunar.client.cosmetic.part.AbstractCosmetic;
 import com.moonsworth.lunar.client.cosmetic.type.HatCosmetic;
 import com.moonsworth.lunar.client.cosmetic.type.HatCosmeticType;
@@ -40,23 +42,23 @@ import com.moonsworth.lunar.client.json.file.ItemSetLoader;
 import com.moonsworth.lunar.client.logger.LunarLogger;
 import com.moonsworth.lunar.client.ref.Ref;
 import com.moonsworth.lunar.client.texture.AnimationTickingTexture;
-import com.moonsworth.lunar.client.ui.screen.type.mainmenu.cosmetics.CosmeticsListUIComponent;
+import com.moonsworth.lunar.client.ui.screen.type.mainmenu.cosmetics.base.CosmeticsListUIComponent;
+import com.moonsworth.lunar.client.websocket.packet.WSPacketClientCosmetics;
 import lombok.SneakyThrows;
+import mchorse.emoticons.skin_n_bones.api.bobj.BOBJLoader;
 
 import java.io.InputStreamReader;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Function;
 
-public class CosmeticManager
-        extends ItemSetLoader<Cosmetic>
-        implements EventHandler {
-    public final Map<Integer, CosmeticIndexEntry> llIlllIIIllllIIlllIllIIIl = new HashMap();
-    public final Map<UUID, List<Cosmetic>> llllIIlIIlIIlIIllIIlIIllI = new HashMap();
-    public Map IlIlIlllllIlIIlIlIlllIlIl = new HashMap();
-    public BiMap llIIIIIIIllIIllIlIllIIIIl = HashBiMap.create();
-    public Map lIIIllIllIIllIlllIlIIlllI = new HashMap();
-    public final Map IlllllIlIIIlIIlIIllIIlIll = new HashMap();
+public class CosmeticManager extends ItemSetLoader<Cosmetic> implements EventHandler {
+    public final Map<Integer, CosmeticIndexEntry> llIlllIIIllllIIlllIllIIIl = new HashMap<>();
+    public final Map<UUID, List<Cosmetic>> llllIIlIIlIIlIIllIIlIIllI = new HashMap<>();
+    public Map<UUID, NameTagLogo> IlIlIlllllIlIIlIlIlllIlIl = new HashMap<>();
+    public BiMap<String, UUID> llIIIIIIIllIIllIlIllIIIIl = HashBiMap.create();
+    public Map<ResourceLocationBridge, ModelCloak> lIIIllIllIIllIlllIlIIlllI = new HashMap<>();
+    public final Map<ResourceLocationBridge, ModelMesh> IlllllIlIIIlIIlIIllIIlIll = new HashMap<>();
     public boolean llIIlIlIIIllIlIlIlIIlIIll = false;
     public static final Function<ResourceLocationBridge, HatCosmetic> llIIIlllIIlllIllllIlIllIl = resourceLocationBridge -> {
         if (resourceLocationBridge.bridge$getPath().toLowerCase().contains("masks/halloween")) {
@@ -83,7 +85,7 @@ public class CosmeticManager
         return (HatCosmetic) HeadwearCosmeticBuilder.lIlIlIlIlIIlIIlIIllIIIIIl.get(resourceLocationBridge.bridge$getPath().toLowerCase());
     };
     public static final Function<ResourceLocationBridge, AbstractCosmetic> lllllIllIllIllllIlIllllII = resourceLocationBridge -> {
-        HatCosmetic hatCosmetic = (HatCosmetic) llIIIlllIIlllIllllIlIllIl.apply(resourceLocationBridge);
+        HatCosmetic hatCosmetic = llIIIlllIIlllIllllIlIllIl.apply(resourceLocationBridge);
         if (hatCosmetic != null) {
             return hatCosmetic;
         }
@@ -102,20 +104,20 @@ public class CosmeticManager
     public LowBodyCustomLayer llIlIIIllIIlIllIllIllllIl;
     public LayerCapeBridge IllIllIIIllIIIlIlIlIIIIll;
     public static AtomicBoolean IIlIllIlllllllIIlIIIllIIl = new AtomicBoolean(false);
-    public static final ResourceLocationBridge lIlIlIlIlIIlIIlIIllIIIIIl = Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation("lunar", "logo/logo-64x64.png");
-    public static final ResourceLocationBridge IlllIIIIIIlllIlIIlllIlIIl = Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation("lunar", "logo/logo-100x100.png");
-    public static final ResourceLocationBridge lIllIlIIIlIIIIIIIlllIlIll = Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation("lunar", "logo/logo-32x30.png");
+    public static final ResourceLocationBridge lIlIlIlIlIIlIIlIIllIIIIIl = Bridge.getInstance().initResourceLocation("lunar", "logo/logo-64x64.png");
+    public static final ResourceLocationBridge IlllIIIIIIlllIlIIlllIlIIl = Bridge.getInstance().initResourceLocation("lunar", "logo/logo-100x100.png");
+    public static final ResourceLocationBridge lIllIlIIIlIIIIIIIlllIlIll = Bridge.getInstance().initResourceLocation("lunar", "logo/logo-32x30.png");
 
     public CosmeticManager() {
         this.lIlIlIlIlIIlIIlIIllIIIIIl(SetOptiFineCapeEvent.class, this::lIlIlIlIlIIlIIlIIllIIIIIl);
         this.lIlIlIlIlIIlIIlIIllIIIIIl(CreatePlayerEvent.class, this::lIlIlIlIlIIlIIlIIllIIIIIl);
-        if (Bridge.IlllIIIIIIlllIlIIlllIlIIl() == MinecraftVersion.lIlIlIlIlIIlIIlIIllIIIIIl) {
+        if (Bridge.getMinecraftVersion() == MinecraftVersion.lIlIlIlIlIIlIIlIIllIIIIIl) {
             this.lIlIlIlIlIIlIIlIIllIIIIIl(ModelBipedRenderEvent.class, this::lIlIlIlIlIIlIIlIIllIIIIIl);
         }
         System.out.println("Loading cosmetic index...");
         try {
-            ResourceLocationBridge resourceLocationBridge = Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation("lunar", "cosmetics/index");
-            SimpleResourceBridge simpleResourceBridge = Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getResourceManager().bridge$getResource(resourceLocationBridge);
+            ResourceLocationBridge resourceLocationBridge = Bridge.getInstance().initResourceLocation("lunar", "cosmetics/index");
+            SimpleResourceBridge simpleResourceBridge = Ref.getMinecraft().bridge$getResourceManager().bridge$getResource(resourceLocationBridge);
             Scanner scanner = new Scanner(new InputStreamReader(simpleResourceBridge.bridge$getInputStream()));
             while (scanner.hasNextLine()) {
                 String string = scanner.nextLine();
@@ -129,11 +131,11 @@ public class CosmeticManager
     }
 
     public HatCosmetic lIlIlIlIlIIlIIlIIllIIIIIl(ResourceLocationBridge resourceLocationBridge) {
-        return (HatCosmetic) llIIIlllIIlllIllllIlIllIl.apply(resourceLocationBridge);
+        return llIIIlllIIlllIllllIlIllIl.apply(resourceLocationBridge);
     }
 
     public AbstractCosmetic IlllIIIIIIlllIlIIlllIlIIl(ResourceLocationBridge resourceLocationBridge) {
-        return (AbstractCosmetic) lllllIllIllIllllIlIllllII.apply(resourceLocationBridge);
+        return lllllIllIllIllllIlIllllII.apply(resourceLocationBridge);
     }
 
     @Override
@@ -142,7 +144,7 @@ public class CosmeticManager
     }
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(ModelBipedRenderEvent modelBipedRenderEvent) {
-        if (!modelBipedRenderEvent.lIlIlIlIlIIlIIlIIllIIIIIl().equals((Object) EventState.POST) || modelBipedRenderEvent.IlllIIIIIIlllIlIIlllIlIIl().bridge$isSpectator()) {
+        if (!modelBipedRenderEvent.lIlIlIlIlIIlIIlIIllIIIIIl().equals(EventState.POST) || modelBipedRenderEvent.IlllIIIIIIlllIlIIlllIlIIl().bridge$isSpectator()) {
             return;
         }
         for (Cosmetic cosmetic : this.llllIIlIIlIIlIIllIIlIIllI(modelBipedRenderEvent.IlllIIIIIIlllIlIIlllIlIIl().bridge$getUniqueID())) {
@@ -154,7 +156,7 @@ public class CosmeticManager
     }
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(CreatePlayerEvent createPlayerEvent) {
-        if (createPlayerEvent.lIlIlIlIlIIlIIlIIllIIIIIl() == Ref.IlIlIlllllIlIIlIlIlllIlIl()) {
+        if (createPlayerEvent.lIlIlIlIlIIlIIlIIllIIIIIl() == Ref.getPlayer()) {
             this.IlIlIlllllIlIIlIlIlllIlIl();
         }
     }
@@ -175,7 +177,7 @@ public class CosmeticManager
     }
 
     public HatCosmeticType IlllIIIIIIlllIlIIlllIlIIl(UUID uUID) {
-        return (HatCosmeticType) this.IlllIIIIIIlllIlIIlllIlIIl(uUID, HatCosmeticType.class);
+        return this.IlllIIIIIIlllIlIIlllIlIIl(uUID, HatCosmeticType.class);
     }
 
     public List<HatCosmeticType> lIllIlIIIlIIIIIIIlllIlIll(UUID uUID) {
@@ -220,7 +222,7 @@ public class CosmeticManager
         this.lllIIIIIlllIIlIllIIlIIIlI = new HeadCustomLayer(this);
         this.lIlIIIIIIlIIIllllIllIIlII = new CosmeticManagerLayer(this);
         this.llIlIIIllIIlIllIllIllllIl = new LowBodyCustomLayer(this);
-        if (Bridge.IlllIIIIIIlllIlIIlllIlIIl().ordinal() >= MinecraftVersion.IlllIIIIIIlllIlIIlllIlIIl.ordinal()) {
+        if (Bridge.getMinecraftVersion().ordinal() >= MinecraftVersion.IlllIIIIIIlllIlIIlllIlIIl.ordinal()) {
             for (Object object : Bridge.llllIIlIIlIIlIIllIIlIIllI().bridge$getRenderManager().bridge$getSkinMap().values()) {
                 if (object instanceof RendererLivingEntityBridge) {
                     RendererLivingEntityBridge rendererLivingEntityBridge = (RendererLivingEntityBridge) object;
@@ -228,7 +230,7 @@ public class CosmeticManager
                     rendererLivingEntityBridge.bridge$addLayer(this.lIlIIIIIIlIIIllllIllIIlII, true);
                     rendererLivingEntityBridge.lIlIlIlIlIIlIIlIIllIIIIIl(this.llIlIIIllIIlIllIllIllllIl);
                 }
-                this.IllIllIIIllIIIlIlIlIIIIll = ((UnknownRenderEntityBridge) ((Object) Bridge.llllIIlIIlIIlIIllIIlIIllI().bridge$getRenderManager().bridge$defaultPlayerRenderer())).bridge$getLayerCape();
+                this.IllIllIIIllIIIlIlIlIIIIll = ((RendererLivingEntityBridge) (Bridge.llllIIlIIlIIlIIllIIlIIllI().bridge$getRenderManager().bridge$defaultPlayerRenderer())).bridge$getLayerCape();
             }
         }
         for (Object object : HeadwearCosmeticBuilder.lIlIlIlIlIIlIIlIIllIIIIIl.values()) {
@@ -250,12 +252,12 @@ public class CosmeticManager
                 this.llIlllIIIllllIIlllIllIIIl.forEach((n, cosmeticIndexEntry) -> {
                     if (cosmeticIndexEntry.IlIlIlllllIlIIlIlIlllIlIl()) {
                         try {
-                            ResourceLocationBridge resourceLocationBridge = Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation("lunar", cosmeticIndexEntry.lIllIlIIIlIIIIIIIlllIlIll());
+                            ResourceLocationBridge resourceLocationBridge = Bridge.getInstance().initResourceLocation("lunar", cosmeticIndexEntry.lIllIlIIIlIIIIIIIlllIlIll());
                             AnimationTickingTexture animationTickingTexture = this.llIlllIIIllllIIlllIllIIIl(resourceLocationBridge);
                             if (cosmeticIndexEntry.llllIIlIIlIIlIIllIIlIIllI().equalsIgnoreCase("cape")) {
-                                this.llIIIlllIIlllIllllIlIllIl().put(resourceLocationBridge, Bridge.llIlllIIIllllIIlllIllIIIl().initModelCloak(animationTickingTexture.IlllIIIIIIlllIlIIlllIlIIl()));
+                                this.llIIIlllIIlllIllllIlIllIl().put(resourceLocationBridge, Bridge.getInstance().initModelCloak(animationTickingTexture.IlllIIIIIIlllIlIIlllIlIIl()));
                             } else {
-                                SimpleResourceBridge simpleResourceBridge = Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getResourceManager().bridge$getResource(((AbstractCosmetic) lllllIllIllIllllIlIllllII.apply(resourceLocationBridge)).IlllIIIIIIlllIlIIlllIlIIl());
+                                SimpleResourceBridge simpleResourceBridge = Ref.getMinecraft().bridge$getResourceManager().bridge$getResource(lllllIllIllIllllIlIllllII.apply(resourceLocationBridge).IlllIIIIIIlllIlIIlllIlIIl());
                                 BOBJLoader.BOBJData bOBJData = BOBJLoader.readData(simpleResourceBridge.bridge$getInputStream());
                                 ModelMesh modelMesh = new ModelMesh(bOBJData);
                                 modelMesh.lIlIlIlIlIIlIIlIIllIIIIIl();
@@ -276,16 +278,16 @@ public class CosmeticManager
                 if (!abstractCosmetic.IlllllIlIIIlIIlIIllIIlIll()) continue;
                 abstractCosmetic.llIlIIIllIIlIllIllIllllIl();
             }
-            for (Map.Entry entry : this.IlllllIlIIIlIIlIIllIIlIll.entrySet()) {
+            for (Map.Entry<ResourceLocationBridge, ModelMesh> entry : this.IlllllIlIIIlIIlIIllIIlIll.entrySet()) {
                 CustomTextureBridge customTextureBridge;
-                AbstractTextureBridge abstractTextureBridge = Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getTextureManager().bridge$getTexture((ResourceLocationBridge) entry.getKey());
+                AbstractTextureBridge abstractTextureBridge = Ref.getMinecraft().bridge$getTextureManager().bridge$getTexture(entry.getKey());
                 if (abstractTextureBridge == null || !(abstractTextureBridge instanceof CustomTextureHolder) || !((customTextureBridge = ((CustomTextureHolder) abstractTextureBridge).getCustomTexture()) instanceof AnimationTickingTexture))
                     continue;
                 AnimationTickingTexture animationTickingTexture = (AnimationTickingTexture) customTextureBridge;
                 animationTickingTexture.bridge$tick();
                 int n2 = animationTickingTexture.lIlIlIlIlIIlIIlIIllIIIIIl() * animationTickingTexture.IlllIIIIIIlllIlIIlllIlIIl();
                 int n3 = animationTickingTexture.IlllIIIIIIlllIlIIlllIlIIl();
-                ((ModelMesh) entry.getValue()).lIlIlIlIlIIlIIlIIllIIIIIl(n2, n3);
+                entry.getValue().lIlIlIlIlIIlIIlIIllIIIIIl(n2, n3);
             }
         });
     }
@@ -300,13 +302,13 @@ public class CosmeticManager
     }
 
     public void llllIIlIIlIIlIIllIIlIIllI() {
-        Ref.lIlIlIlIlIIlIIlIIllIIIIIl(new WSPacketClientCosmetics(new ArrayList(this.llIlllIIIllllIIlllIllIIIl())));
-        LunarLogger.lIlIlIlIlIIlIIlIIllIIIIIl((Object) "Synced cosmetics to assets server.", new Object[0]);
+        Ref.lIlIlIlIlIIlIIlIIllIIIIIl(new WSPacketClientCosmetics(new ArrayList<>(this.llIlllIIIllllIIlllIllIIIl())));
+        LunarLogger.debug("Synced cosmetics to assets server.");
         this.IlIlIlllllIlIIlIlIlllIlIl();
     }
 
     public void IlIlIlllllIlIIlIlIlllIlIl() {
-        UUID uUID = Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getSession().bridge$getProfile().getId();
+        UUID uUID = Ref.getMinecraft().bridge$getSession().bridge$getProfile().getId();
         this.llllIIlIIlIIlIIllIIlIIllI.remove(uUID);
         for (Cosmetic cosmetic : this.llIlllIIIllllIIlllIllIIIl()) {
             if (!cosmetic.llIIIIIIIllIIllIlIllIIIIl()) continue;
@@ -321,10 +323,10 @@ public class CosmeticManager
 
     @SneakyThrows
     public AnimationTickingTexture llIlllIIIllllIIlllIllIIIl(ResourceLocationBridge resourceLocationBridge) {
-        SimpleResourceBridge simpleResourceBridge = Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getResourceManager().bridge$getResource(resourceLocationBridge);
+        SimpleResourceBridge simpleResourceBridge = Ref.getMinecraft().bridge$getResourceManager().bridge$getResource(resourceLocationBridge);
         if (simpleResourceBridge.bridge$hasMetadata() && simpleResourceBridge.bridge$getMetadata("animation") != null) {
             AnimationTickingTexture animationTickingTexture = new AnimationTickingTexture(resourceLocationBridge, (AnimationMetadataSectionBridge) simpleResourceBridge.bridge$getMetadata("animation"));
-            Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getTextureManager().bridge$loadTickableTexture(resourceLocationBridge, Bridge.llIlllIIIllllIIlllIllIIIl().initTickingTexture(animationTickingTexture));
+            Ref.getMinecraft().bridge$getTextureManager().bridge$loadTickableTexture(resourceLocationBridge, Bridge.getInstance().initTickingTexture(animationTickingTexture));
             return animationTickingTexture;
         }
         return null;
@@ -354,7 +356,7 @@ public class CosmeticManager
         }
     }
 
-    public Map llIIIIIIIllIIllIlIllIIIIl() {
+    public Map<Integer, CosmeticIndexEntry> llIIIIIIIllIIllIlIllIIIIl() {
         return this.llIlllIIIllllIIlllIllIIIl;
     }
 
@@ -362,19 +364,19 @@ public class CosmeticManager
         return this.llllIIlIIlIIlIIllIIlIIllI;
     }
 
-    public Map IlllllIlIIIlIIlIIllIIlIll() {
+    public Map<UUID, NameTagLogo> IlllllIlIIIlIIlIIllIIlIll() {
         return this.IlIlIlllllIlIIlIlIlllIlIl;
     }
 
-    public BiMap llIIlIlIIIllIlIlIlIIlIIll() {
+    public BiMap<String, UUID> llIIlIlIIIllIlIlIlIIlIIll() {
         return this.llIIIIIIIllIIllIlIllIIIIl;
     }
 
-    public Map llIIIlllIIlllIllllIlIllIl() {
+    public Map<ResourceLocationBridge, ModelCloak> llIIIlllIIlllIllllIlIllIl() {
         return this.lIIIllIllIIllIlllIlIIlllI;
     }
 
-    public Map lllllIllIllIllllIlIllllII() {
+    public Map<ResourceLocationBridge, ModelMesh> lllllIllIllIllllIlIllllII() {
         return this.IlllllIlIIIlIIlIIllIIlIll;
     }
 

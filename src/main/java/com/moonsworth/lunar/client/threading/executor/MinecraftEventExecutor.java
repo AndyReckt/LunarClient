@@ -33,16 +33,16 @@ public class MinecraftEventExecutor implements java.util.concurrent.Executor, Ev
 
     //@Override
     public void lIlIlIlIlIIlIIlIIllIIIIIl(Runnable runnable) {
-        this.lIlIlIlIlIIlIIlIIllIIIIIl.put(LunarExecutors.lIlIlIlIlIIlIIlIIllIIIIIl(runnable), 0);
+        this.lIlIlIlIlIIlIIlIIllIIIIIl.put(LunarExecutors.run(runnable), 0);
     }
 
     @Override
     public void execute(Runnable runnable) {
-        Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$submit(LunarExecutors.lIlIlIlIlIIlIIlIIllIIIIIl(runnable));
+        Ref.getMinecraft().bridge$submit(LunarExecutors.run(runnable));
     }
 
     //@Override
     public void lIlIlIlIlIIlIIlIIllIIIIIl(Runnable runnable, int n) {
-        this.lIlIlIlIlIIlIIlIIllIIIIIl.put(LunarExecutors.lIlIlIlIlIIlIIlIIllIIIIIl(runnable), n);
+        this.lIlIlIlIlIIlIIlIIllIIIIIl.put(LunarExecutors.run(runnable), n);
     }
 }

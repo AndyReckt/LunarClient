@@ -13,4 +13,3 @@ public enum SimpleHudModDisplayType implements IEnumSetting {
         return this.name();
     }
 }
- 

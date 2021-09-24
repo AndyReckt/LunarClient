@@ -7,80 +7,80 @@ import java.util.Optional;
 import java.util.Set;
 
 public interface GameSettingsBridge {
-    public void bridge$setThirdPersonView(int var1);
+    void bridge$setThirdPersonView(int var1);
 
-    public int bridge$getThirdPersonView();
+    int bridge$getThirdPersonView();
 
-    public KeyType bridge$getScreenshotKey();
+    KeyType bridge$getScreenshotKey();
 
-    public KeyBindingBridge bridge$keyBindForward();
+    KeyBindingBridge bridge$keyBindForward();
 
-    public KeyBindingBridge bridge$keyBindLeft();
+    KeyBindingBridge bridge$keyBindLeft();
 
-    public KeyBindingBridge bridge$keyBindBack();
+    KeyBindingBridge bridge$keyBindBack();
 
-    public KeyBindingBridge bridge$keyBindRight();
+    KeyBindingBridge bridge$keyBindRight();
 
-    public KeyBindingBridge bridge$keyBindJump();
+    KeyBindingBridge bridge$keyBindJump();
 
-    public KeyBindingBridge bridge$keyBindAttack();
+    KeyBindingBridge bridge$keyBindAttack();
 
-    public KeyBindingBridge bridge$keyBindUseItem();
+    KeyBindingBridge bridge$keyBindUseItem();
 
-    public KeyBindingBridge bridge$keyBindSprint();
+    KeyBindingBridge bridge$keyBindSprint();
 
-    public KeyBindingBridge bridge$keyBindSneak();
+    KeyBindingBridge bridge$keyBindSneak();
 
-    public KeyBindingBridge bridge$keyBindTogglePerspective();
+    KeyBindingBridge bridge$keyBindTogglePerspective();
 
-    public KeyBindingBridge[] bridge$getKeyBindings();
+    KeyBindingBridge[] bridge$getKeyBindings();
 
-    public boolean bridge$isFancyGraphics();
+    boolean bridge$isFancyGraphics();
 
-    public int bridge$getRenderDistance();
+    int bridge$getRenderDistance();
 
-    public void bridge$setGamma(float var1);
+    void bridge$setGamma(float var1);
 
-    public boolean bridge$showDebugInfo();
+    boolean bridge$showDebugInfo();
 
-    public Set bridge$getModelParts();
+    Set bridge$getModelParts();
 
-    public boolean bridge$isHideGui();
+    boolean bridge$isHideGui();
 
-    public float bridge$getChatScale();
+    float bridge$getChatScale();
 
-    public void bridge$setOptionFloatValue(int var1, float var2);
+    void bridge$setOptionFloatValue(int var1, float var2);
 
-    public void bridge$setFancyGraphics(boolean var1);
+    void bridge$setFancyGraphics(boolean var1);
 
-    public void bridge$setKeyBindState(KeyType var1, boolean var2);
+    void bridge$setKeyBindState(KeyType var1, boolean var2);
 
-    public void bridge$unpressAllKeys();
+    void bridge$unpressAllKeys();
 
-    public List getResourcePacks();
+    List getResourcePacks();
 
-    public void bridge$setSmoothCamera(boolean var1);
+    void bridge$setSmoothCamera(boolean var1);
 
-    public boolean bridge$getSmoothCamera();
+    boolean bridge$getSmoothCamera();
 
-    default public void bridge$updateVSync() {
+default void bridge$updateVSync() {
     }
 
-    default public void lIlIlIlIlIIlIIlIIllIIIIIl(boolean bl) {
+default void lIlIlIlIlIIlIIlIIllIIIIIl(boolean bl) {
     }
 
-    default public void IlllIIIIIIlllIlIIlllIlIIl(boolean bl) {
+default void IlllIIIIIIlllIlIIlllIlIIl(boolean bl) {
     }
 
-    default public boolean lIlIlIlIlIIlIIlIIllIIIIIl() {
+default boolean lIlIlIlIlIIlIIlIIllIIIIIl() {
         return false;
     }
 
-    default public boolean IlllIIIIIIlllIlIIlllIlIIl() {
+default boolean IlllIIIIIIlllIlIIlllIlIIl() {
         return false;
     }
 
-    default public Optional bridge$getZoomKey() {
+default Optional<KeyBindingBridge> bridge$getZoomKey() {
         return Optional.empty();
     }
 }

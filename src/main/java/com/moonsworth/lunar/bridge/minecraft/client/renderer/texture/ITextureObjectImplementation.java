@@ -1,7 +1,7 @@
 package com.moonsworth.lunar.bridge.minecraft.client.renderer.texture;
 
 public abstract class ITextureObjectImplementation
-implements CustomTextureBridge {
+    implements CustomTextureBridge {
     public int glTextureId = -1;
 
     @Override
@@ -14,4 +14,3 @@ implements CustomTextureBridge {
         return this.glTextureId;
     }
 }
- 

@@ -1,6 +1,6 @@
 /*
  * Decompiled with CFR 0.150.
- * 
+ *
  * Could not load the following classes:
  *  javax.vecmath.Matrix4f
  *  javax.vecmath.Tuple3f
@@ -77,44 +77,44 @@ public class AnimationMesh {
     }
 
     public void initBuffers() {
-        this.vertices = BufferUtils.createFloatBuffer((int)this.data.posData.length);
+        this.vertices = BufferUtils.createFloatBuffer(this.data.posData.length);
         this.vertices.put(this.data.posData).flip();
-        this.normals = BufferUtils.createFloatBuffer((int)this.data.normData.length);
+        this.normals = BufferUtils.createFloatBuffer(this.data.normData.length);
         this.normals.put(this.data.normData).flip();
-        this.textcoords = BufferUtils.createFloatBuffer((int)this.data.texData.length);
+        this.textcoords = BufferUtils.createFloatBuffer(this.data.texData.length);
         this.textcoords.put(this.data.texData).flip();
-        this.indices = BufferUtils.createIntBuffer((int)this.data.indexData.length);
+        this.indices = BufferUtils.createIntBuffer(this.data.indexData.length);
         this.indices.put(this.data.indexData).flip();
         this.vertexBuffer = GL15.glGenBuffers();
-        GL15.glBindBuffer((int)34962, (int)this.vertexBuffer);
-        GL15.glBufferData((int)34962, (FloatBuffer)this.vertices, (int)35048);
+        GL15.glBindBuffer(34962, this.vertexBuffer);
+        GL15.glBufferData(34962, this.vertices, 35048);
         this.normalBuffer = GL15.glGenBuffers();
-        GL15.glBindBuffer((int)34962, (int)this.normalBuffer);
-        GL15.glBufferData((int)34962, (FloatBuffer)this.normals, (int)35044);
+        GL15.glBindBuffer(34962, this.normalBuffer);
+        GL15.glBufferData(34962, this.normals, 35044);
         this.texcoordBuffer = GL15.glGenBuffers();
-        GL15.glBindBuffer((int)34962, (int)this.texcoordBuffer);
-        GL15.glBufferData((int)34962, (FloatBuffer)this.textcoords, (int)35044);
+        GL15.glBindBuffer(34962, this.texcoordBuffer);
+        GL15.glBufferData(34962, this.textcoords, 35044);
         this.indexBuffer = GL15.glGenBuffers();
-        GL15.glBindBuffer((int)34963, (int)this.indexBuffer);
-        GL15.glBufferData((int)34963, (IntBuffer)this.indices, (int)35044);
-        GL15.glBindBuffer((int)34962, (int)0);
-        GL15.glBindBuffer((int)34963, (int)0);
+        GL15.glBindBuffer(34963, this.indexBuffer);
+        GL15.glBufferData(34963, this.indices, 35044);
+        GL15.glBindBuffer(34962, 0);
+        GL15.glBindBuffer(34963, 0);
     }
 
     public void setFiltering(int n) {
-        GL11.glTexParameteri((int)3553, (int)10241, (int)n);
-        GL11.glTexParameteri((int)3553, (int)10240, (int)n);
+        GL11.glTexParameteri(3553, 10241, n);
+        GL11.glTexParameteri(3553, 10240, n);
     }
 
     public int getFiltering() {
-        return GL11.glGetTexParameteri((int)3553, (int)10241);
+        return GL11.glGetTexParameteri(3553, 10241);
     }
 
     public void delete() {
-        GL15.glDeleteBuffers((int)this.vertexBuffer);
-        GL15.glDeleteBuffers((int)this.normalBuffer);
-        GL15.glDeleteBuffers((int)this.texcoordBuffer);
-        GL15.glDeleteBuffers((int)this.indexBuffer);
+        GL15.glDeleteBuffers(this.vertexBuffer);
+        GL15.glDeleteBuffers(this.normalBuffer);
+        GL15.glDeleteBuffers(this.texcoordBuffer);
+        GL15.glDeleteBuffers(this.indexBuffer);
         this.vertices = null;
         this.normals = null;
         this.textcoords = null;
@@ -139,13 +139,13 @@ public class AnimationMesh {
                 if (!(f > 0.0f)) continue;
                 int n3 = this.data.boneIndexData[i * 4 + j];
                 vector4f.set(arrf[i * 4], arrf[i * 4 + 1], arrf[i * 4 + 2], 1.0f);
-                arrmatrix4f[n3].transform((Tuple4f)vector4f);
+                arrmatrix4f[n3].transform(vector4f);
                 vector4f.scale(f);
-                vector4f2.add((Tuple4f)vector4f);
+                vector4f2.add(vector4f);
                 vector3f.set(arrf3[i * 3], arrf3[i * 3 + 1], arrf3[i * 3 + 2]);
                 arrmatrix4f[n3].transform(vector3f);
                 vector3f.scale(f);
-                vector3f2.add((Tuple3f)vector3f);
+                vector3f2.add(vector3f);
                 ++n2;
             }
             if (n2 == 0) {
@@ -174,15 +174,15 @@ public class AnimationMesh {
     public void updateVertices(float[] arrf) {
         this.vertices.clear();
         this.vertices.put(arrf).flip();
-        GL15.glBindBuffer((int)34962, (int)this.vertexBuffer);
-        GL15.glBufferData((int)34962, (FloatBuffer)this.vertices, (int)35048);
+        GL15.glBindBuffer(34962, this.vertexBuffer);
+        GL15.glBufferData(34962, this.vertices, 35048);
     }
 
     public void updateNormals(float[] arrf) {
         this.normals.clear();
         this.normals.put(arrf).flip();
-        GL15.glBindBuffer((int)34962, (int)this.normalBuffer);
-        GL15.glBufferData((int)34962, (FloatBuffer)this.normals, (int)35048);
+        GL15.glBindBuffer(34962, this.normalBuffer);
+        GL15.glBufferData(34962, this.normals, 35048);
     }
 
     public void render(MinecraftBridge minecraftBridge, AnimationMeshConfig animationMeshConfig, lIllIlIIIlIIIIIIIlllIlIll lIllIlIIIlIIIIIIIlllIlIll2, MatrixStackEntryBridge matrixStackEntryBridge, int n) {
@@ -202,9 +202,9 @@ public class AnimationMesh {
         if (resourceLocationBridge != null && !resourceLocationBridge.bridge$getPath().contains("leather")) {
             n2 = 0xFFFFFF;
         }
-        int n3 = ColorUtil.IlllIIIIIIlllIlIIlllIlIIl((int)n2);
-        int n4 = ColorUtil.llIlllIIIllllIIlllIllIIIl((int)n2);
-        int n5 = ColorUtil.IlIlIlllllIlIIlIlIlllIlIl((int)n2);
+        int n3 = ColorUtil.IlllIIIIIIlllIlIIlllIlIIl(n2);
+        int n4 = ColorUtil.llIlllIIIllllIIlllIllIIIl(n2);
+        int n5 = ColorUtil.IlIlIlllllIlIIlIlIlllIlIl(n2);
         for (int i = 0; i < arrf.length / 4; ++i) {
             float f = arrf[i * 4];
             float f2 = arrf[i * 4 + 1];
@@ -239,7 +239,7 @@ public class AnimationMesh {
             }
         }
         if (bl && bl2) {
-            GL11.glShadeModel((int)7425);
+            GL11.glShadeModel(7425);
         }
         if (!bl2) {
             renderUtilBridge.bridge$disableStandardItemLighting();
@@ -257,24 +257,24 @@ public class AnimationMesh {
         glStateManagerBridge.bridge$color(f3, f4, f5, 1.0f);
         glStateManagerBridge.bridge$disableBlend();
         glStateManagerBridge.bridge$enableRescaleNormal();
-        GL15.glBindBuffer((int)34962, (int)this.vertexBuffer);
-        GL11.glVertexPointer((int)4, (int)5126, (int)0, (long)0L);
-        GL15.glBindBuffer((int)34962, (int)this.normalBuffer);
-        GL11.glNormalPointer((int)5126, (int)0, (long)0L);
-        GL15.glBindBuffer((int)34962, (int)this.texcoordBuffer);
-        GL11.glTexCoordPointer((int)2, (int)5126, (int)0, (long)0L);
-        GL11.glEnableClientState((int)32884);
-        GL11.glEnableClientState((int)32885);
-        GL11.glEnableClientState((int)32888);
-        GL15.glBindBuffer((int)34963, (int)this.indexBuffer);
-        GL11.glDrawElements((int)4, (int)this.data.indexData.length, (int)5125, (long)0L);
-        GL15.glBindBuffer((int)34963, (int)0);
-        GL15.glBindBuffer((int)34962, (int)0);
-        GL11.glDisableClientState((int)32884);
-        GL11.glDisableClientState((int)32885);
-        GL11.glDisableClientState((int)32888);
+        GL15.glBindBuffer(34962, this.vertexBuffer);
+        GL11.glVertexPointer(4, 5126, 0, 0L);
+        GL15.glBindBuffer(34962, this.normalBuffer);
+        GL11.glNormalPointer(5126, 0, 0L);
+        GL15.glBindBuffer(34962, this.texcoordBuffer);
+        GL11.glTexCoordPointer(2, 5126, 0, 0L);
+        GL11.glEnableClientState(32884);
+        GL11.glEnableClientState(32885);
+        GL11.glEnableClientState(32888);
+        GL15.glBindBuffer(34963, this.indexBuffer);
+        GL11.glDrawElements(4, this.data.indexData.length, 5125, 0L);
+        GL15.glBindBuffer(34963, 0);
+        GL15.glBindBuffer(34962, 0);
+        GL11.glDisableClientState(32884);
+        GL11.glDisableClientState(32885);
+        GL11.glDisableClientState(32888);
         if (bl && bl2) {
-            GL11.glShadeModel((int)7424);
+            GL11.glShadeModel(7424);
         }
         if (!bl2) {
             renderUtilBridge.bridge$enableStandardItemLighting();
@@ -296,41 +296,41 @@ public class AnimationMesh {
                 Vector4f vector4f4 = new Vector4f(0.0f, 0.1f, 0.0f, 1.0f);
                 Vector4f vector4f5 = new Vector4f(0.0f, 0.0f, 0.1f, 1.0f);
                 Matrix4f matrix4f = bOBJBone.mat;
-                matrix4f.transform((Tuple4f)vector4f);
-                matrix4f.transform((Tuple4f)vector4f2);
-                matrix4f.transform((Tuple4f)vector4f3);
-                matrix4f.transform((Tuple4f)vector4f4);
-                matrix4f.transform((Tuple4f)vector4f5);
-                GL11.glPointSize((float)5.0f);
-                GL11.glBegin((int)0);
+                matrix4f.transform(vector4f);
+                matrix4f.transform(vector4f2);
+                matrix4f.transform(vector4f3);
+                matrix4f.transform(vector4f4);
+                matrix4f.transform(vector4f5);
+                GL11.glPointSize(5.0f);
+                GL11.glBegin(0);
                 glStateManagerBridge.bridge$color(1.0f, 1.0f, 1.0f);
-                GL11.glVertex3f((float)vector4f.x, (float)vector4f.y, (float)vector4f.z);
+                GL11.glVertex3f(vector4f.x, vector4f.y, vector4f.z);
                 GL11.glEnd();
-                GL11.glLineWidth((float)1.0f);
-                GL11.glBegin((int)1);
+                GL11.glLineWidth(1.0f);
+                GL11.glBegin(1);
                 glStateManagerBridge.bridge$color(0.9f, 0.9f, 0.9f);
-                GL11.glVertex3f((float)vector4f.x, (float)vector4f.y, (float)vector4f.z);
-                GL11.glVertex3f((float)vector4f2.x, (float)vector4f2.y, (float)vector4f2.z);
+                GL11.glVertex3f(vector4f.x, vector4f.y, vector4f.z);
+                GL11.glVertex3f(vector4f2.x, vector4f2.y, vector4f2.z);
                 GL11.glEnd();
-                GL11.glLineWidth((float)2.0f);
-                GL11.glBegin((int)1);
+                GL11.glLineWidth(2.0f);
+                GL11.glBegin(1);
                 glStateManagerBridge.bridge$color(1.0f, 0.0f, 0.0f);
-                GL11.glVertex3f((float)vector4f.x, (float)vector4f.y, (float)vector4f.z);
-                GL11.glVertex3f((float)vector4f3.x, (float)vector4f3.y, (float)vector4f3.z);
+                GL11.glVertex3f(vector4f.x, vector4f.y, vector4f.z);
+                GL11.glVertex3f(vector4f3.x, vector4f3.y, vector4f3.z);
                 GL11.glEnd();
-                GL11.glBegin((int)1);
+                GL11.glBegin(1);
                 glStateManagerBridge.bridge$color(0.0f, 1.0f, 0.0f);
-                GL11.glVertex3f((float)vector4f.x, (float)vector4f.y, (float)vector4f.z);
-                GL11.glVertex3f((float)vector4f4.x, (float)vector4f4.y, (float)vector4f4.z);
+                GL11.glVertex3f(vector4f.x, vector4f.y, vector4f.z);
+                GL11.glVertex3f(vector4f4.x, vector4f4.y, vector4f4.z);
                 GL11.glEnd();
-                GL11.glBegin((int)1);
+                GL11.glBegin(1);
                 glStateManagerBridge.bridge$color(0.0f, 0.0f, 1.0f);
-                GL11.glVertex3f((float)vector4f.x, (float)vector4f.y, (float)vector4f.z);
-                GL11.glVertex3f((float)vector4f5.x, (float)vector4f5.y, (float)vector4f5.z);
+                GL11.glVertex3f(vector4f.x, vector4f.y, vector4f.z);
+                GL11.glVertex3f(vector4f5.x, vector4f5.y, vector4f5.z);
                 GL11.glEnd();
             }
             glStateManagerBridge.bridge$color(1.0f, 1.0f, 1.0f);
-            GL11.glLineWidth((float)1.0f);
+            GL11.glLineWidth(1.0f);
             glStateManagerBridge.bridge$enableDepth();
             glStateManagerBridge.bridge$enableLighting();
             glStateManagerBridge.bridge$enableTexture2D();

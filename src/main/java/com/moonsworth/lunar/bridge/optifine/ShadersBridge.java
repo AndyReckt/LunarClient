@@ -1,23 +1,23 @@
 package com.moonsworth.lunar.bridge.optifine;
 
 public interface ShadersBridge {
-    public boolean hasShadowPass();
+    boolean hasShadowPass();
 
-    public String getShaderPack();
+    String getShaderPack();
 
-    public void setShaderPack(String var1);
+    void setShaderPack(String var1);
 
-    public void useProgram(ProgramBridge var1);
+    void useProgram(ProgramBridge var1);
 
-    public void beginBeacon();
+    void beginBeacon();
 
-    public void endBeacon();
+    void endBeacon();
 
-    public String getPackNone();
+    String getPackNone();
 
-    public String getPackDefault();
+    String getPackDefault();
 
-    public ProgramBridge getProgramBasic();
+    ProgramBridge getProgramBasic();
 
-    public SVertexFormatBridge getShaderVertexFormats();
+    SVertexFormatBridge getShaderVertexFormats();
 }

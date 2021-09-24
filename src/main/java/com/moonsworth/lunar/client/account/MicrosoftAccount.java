@@ -7,11 +7,10 @@ import com.moonsworth.lunar.client.util.AuthUtil;
 
 import java.time.Instant;
 
-public class MicrosoftAccount
-extends Account {
+public class MicrosoftAccount extends Account {
     public MicrosoftAccount(String string) {
         super(string);
-        this.lIlIlIlIlIIlIIlIIllIIIIIl(AccountType.IlllIIIIIIlllIlIIlllIlIIl);
+        this.setType(AccountType.XBOX);
     }
 
     @Override
@@ -21,7 +20,7 @@ extends Account {
 
     @Override
     public int lIllIlIIIlIIIIIIIlllIlIll() {
-        JsonObject jsonObject = AuthUtil.IlllIIIIIIlllIlIIlllIlIIl(this.llllIIlIIlIIlIIllIIlIIllI());
+        JsonObject jsonObject = AuthUtil.IlllIIIIIIlllIlIIlllIlIIl(this.getAccessToken());
         if (!jsonObject.has("iat")) {
             return 0;
         }
@@ -30,12 +29,11 @@ extends Account {
 
     @Override
     public boolean lIlIlIlIlIIlIIlIIllIIIIIl() {
-        if (Instant.now().isAfter(this.IlIlIlllllIlIIlIlIlllIlIl())) {
+        if (Instant.now().isAfter(this.getAccessTokenExpiresAt())) {
             AuthUtil.lIlIlIlIlIIlIIlIIllIIIIIl(this);
             return false;
         }
-        Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$setSession(Bridge.llIlllIIIllllIIlllIllIIIl().initSession(this.lIIIllIllIIllIlllIlIIlllI().IlllIIIIIIlllIlIIlllIlIIl(), this.lIIIllIllIIllIlllIlIIlllI().lIlIlIlIlIIlIIlIIllIIIIIl(), this.llllIIlIIlIIlIIllIIlIIllI(), "mojang"));
+        Ref.getMinecraft().bridge$setSession(Bridge.getInstance().initSession(this.getProfile().getName(), this.getProfile().getId(), this.getAccessToken(), "mojang"));
         return true;
     }
 }
- 

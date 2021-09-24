@@ -7,8 +7,7 @@ import com.moonsworth.lunar.client.ui.component.UIComponent;
 import com.moonsworth.lunar.client.ui.ease.ColorEase;
 import com.moonsworth.lunar.client.ui.screen.AbstractUIScreen;
 
-public class EditHudLayoutButtonUIComponent
-extends UIComponent {
+public class EditHudLayoutButtonUIComponent extends UIComponent {
     public String lIlIlIlIlIIlIIlIIllIIIIIl;
     public final LCFontRenderer IlllIIIIIIlllIlIIlllIlIIl;
     public final ColorEase lIllIlIIIlIIIIIIIlllIlIll = new ColorEase(-11040558, -11561732);
@@ -25,7 +24,7 @@ extends UIComponent {
     }
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2) {
-        super.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, (float)this.IlllIIIIIIlllIlIIlllIlIIl.IlllIIIIIIlllIlIIlllIlIIl(this.get(this.lIlIlIlIlIIlIIlIIllIIIIIl, new Object[0]).replace("", " ").trim()) + 16.0f, 16.0f);
+        super.setPositionAndSize(f, f2, (float)this.IlllIIIIIIlllIlIIlllIlIIl.IlllIIIIIIlllIlIIlllIlIIl(this.get(this.lIlIlIlIlIIlIIlIIllIIIIIl).replace("", " ").trim()) + 16.0f, 16.0f);
     }
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(String string) {
@@ -33,22 +32,22 @@ extends UIComponent {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl() {
+    public void onUpdateScreen() {
     }
 
     @Override
-    public void IlllIIIIIIlllIlIIlllIlIIl() {
+    public void onGuiClosed() {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(char c, KeyType keyType) {
+    public void onKeyTyped(char c, KeyType keyType) {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2, boolean bl) {
-        AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(this.x, this.y, this.width, this.height, 4.0f, 1621271202, 1621271202, this.lIllIlIIIlIIIIIIIlllIlIll.lIlIlIlIlIIlIIlIIllIIIIIl(this.llIlIIIllIIlIllIllIllllIl || bl && this.IlllIIIIIIlllIlIIlllIlIIl(f, f2)));
-        float f3 = this.IlllIIIIIIlllIlIIlllIlIIl.lIlIlIlIlIIlIIlIIllIIIIIl();
-        String string = this.get(this.lIlIlIlIlIIlIIlIIllIIIIIl, new Object[0]).replace("", " ").trim();
+    public void drawComponent(float mouseX, float mouseY, boolean bl) {
+        AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(this.x, this.y, this.width, this.height, 4.0f, 1621271202, 1621271202, this.lIllIlIIIlIIIIIIIlllIlIll.lIlIlIlIlIIlIIlIIllIIIIIl(this.llIlIIIllIIlIllIllIllllIl || bl && this.mouseInside(mouseX, mouseY)));
+        float f3 = this.IlllIIIIIIlllIlIIlllIlIIl.getHeight();
+        String string = this.get(this.lIlIlIlIlIIlIIlIIllIIIIIl).replace("", " ").trim();
         this.IlllIIIIIIlllIlIIlllIlIIl.IlllIIIIIIlllIlIIlllIlIIl(string, this.x + this.width / 2.0f + 1.0f, this.y + this.height / 2.0f - f3, 0x20000000);
         this.IlllIIIIIIlllIlIIlllIlIIl.IlllIIIIIIlllIlIIlllIlIIl(string, this.x + this.width / 2.0f, this.y + this.height / 2.0f - f3 - 1.0f, -1);
     }
@@ -61,4 +60,3 @@ extends UIComponent {
         this.llIlIIIllIIlIllIllIllllIl = bl;
     }
 }
- 

@@ -3,7 +3,6 @@ package com.moonsworth.lunar.client.blog;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.moonsworth.lunar.LunarClient;
-import com.moonsworth.lunar.client.blog.BlogCache;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -31,7 +30,7 @@ public class BlogCollector implements Runnable {
             jsonObject.getAsJsonArray("blogPosts").forEach(jsonElement -> {
                 JsonObject postObject = jsonElement.getAsJsonObject();
                 BlogCache blogCache = new BlogCache(postObject.get("title").getAsString(), postObject.get("image").getAsString(), postObject.get("link").getAsString());
-                LunarClient.IIllIlIllIlIllIllIllIllII().IIlllIllIlIllIllIIllIlIIl().llIlllIIIllllIIlllIllIIIl().add(blogCache);
+                LunarClient.getInstance().IIlllIllIlIllIllIIllIlIIl().llIlllIIIllllIIlllIllIIIl().add(blogCache);
             });
         } catch (IOException iOException) {
             iOException.printStackTrace();

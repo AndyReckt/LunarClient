@@ -3,33 +3,73 @@ package com.moonsworth.lunar.client.registry;
 import com.google.common.collect.Sets;
 import com.google.gson.JsonObject;
 import com.moonsworth.lunar.LunarClient;
-import com.moonsworth.lunar.client.feature.Feature;
 import com.moonsworth.lunar.client.feature.hud.ConfigurableFeature;
 import com.moonsworth.lunar.client.feature.hud.IntergratedServerInterface;
+import com.moonsworth.lunar.client.feature.type.animations.AnimationsMod;
+import com.moonsworth.lunar.client.feature.type.armor.ArmorStatusMod;
 import com.moonsworth.lunar.client.feature.type.autotext.AutoTextMod;
+import com.moonsworth.lunar.client.feature.type.blockoutline.BlockOutlineMod;
 import com.moonsworth.lunar.client.feature.type.blur.MenuBlurMod;
+import com.moonsworth.lunar.client.feature.type.bossbar.BossBarMod;
+import com.moonsworth.lunar.client.feature.type.chat.ChatMod;
+import com.moonsworth.lunar.client.feature.type.clock.ClockMod;
+import com.moonsworth.lunar.client.feature.type.combo.ComboMod;
+import com.moonsworth.lunar.client.feature.type.coodowns.CooldownsMod;
+import com.moonsworth.lunar.client.feature.type.coords.CoordinatesMod;
 import com.moonsworth.lunar.client.feature.type.cps.CPSMod;
 import com.moonsworth.lunar.client.feature.type.crosshair.CrosshairMod;
+import com.moonsworth.lunar.client.feature.type.dirhud.DirectionHudMod;
+import com.moonsworth.lunar.client.feature.type.doycounter.DayCounterMod;
+import com.moonsworth.lunar.client.feature.type.fov.FOVMod;
 import com.moonsworth.lunar.client.feature.type.fps.FPSMod;
+import com.moonsworth.lunar.client.feature.type.freelook.FreelookMod;
+import com.moonsworth.lunar.client.feature.type.hitbox.HitboxMod;
+import com.moonsworth.lunar.client.feature.type.hypixel.HypixelMod;
+import com.moonsworth.lunar.client.feature.type.itemphysics.ItemPhysicsMod;
+import com.moonsworth.lunar.client.feature.type.items2d.Items2DMod;
+import com.moonsworth.lunar.client.feature.type.itemtacker.ItemTrackerMod;
 import com.moonsworth.lunar.client.feature.type.keystrokes.KeyStrokesMod;
+import com.moonsworth.lunar.client.feature.type.memory.MemoryMod;
+import com.moonsworth.lunar.client.feature.type.motionblur.MotionBlurMod;
+import com.moonsworth.lunar.client.feature.type.mumblelink.MumbleLinkMod;
+import com.moonsworth.lunar.client.feature.type.netgraph.NetGraphMod;
+import com.moonsworth.lunar.client.feature.type.nick.NickHiderMod;
+import com.moonsworth.lunar.client.feature.type.particles.ParticleMultiplierMod;
 import com.moonsworth.lunar.client.feature.type.ping.PingMod;
+import com.moonsworth.lunar.client.feature.type.potioncounter.PotionCounterMod;
+import com.moonsworth.lunar.client.feature.type.potioneffects.PotionEffectsMod;
+import com.moonsworth.lunar.client.feature.type.range.RangeMod;
 import com.moonsworth.lunar.client.feature.type.replaymod.ReplayMod;
+import com.moonsworth.lunar.client.feature.type.resourcedisplay.ResourceDisplayMod;
+import com.moonsworth.lunar.client.feature.type.saturation.SaturationMod;
+import com.moonsworth.lunar.client.feature.type.sba.SkyBlockAddonsMod;
+import com.moonsworth.lunar.client.feature.type.scoreboard.ScoreboardMod;
+import com.moonsworth.lunar.client.feature.type.screenshot.ScreenshotMod;
+import com.moonsworth.lunar.client.feature.type.serveraddress.ServerAddressMod;
+import com.moonsworth.lunar.client.feature.type.shinypots.ShinyPotsMod;
+import com.moonsworth.lunar.client.feature.type.stopwatch.StopwatchMod;
+import com.moonsworth.lunar.client.feature.type.teamview.TeamViewMod;
+import com.moonsworth.lunar.client.feature.type.timechanger.TimeChangerMod;
+import com.moonsworth.lunar.client.feature.type.togglesneak.ToggleSneakMod;
+import com.moonsworth.lunar.client.feature.type.tooltips.ScrollableTooltipsMod;
+import com.moonsworth.lunar.client.feature.type.uhc.UHCOverlayMod;
 import com.moonsworth.lunar.client.feature.type.waypoints.WaypointsMod;
-import com.moonsworth.lunar.client.json.file.DefaultJson;
+import com.moonsworth.lunar.client.feature.type.worldedit.WorldEditCUIMod;
+import com.moonsworth.lunar.client.feature.type.zoom.ZoomMod;
+import com.moonsworth.lunar.client.json.file.JsonFile;
 import com.moonsworth.lunar.client.json.file.ItemSetLoader;
 import com.moonsworth.lunar.client.ref.Ref;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-public class ModuleManager
-extends ItemSetLoader<ConfigurableFeature>
-implements DefaultJson {
+public class ModuleManager extends ItemSetLoader<ConfigurableFeature> implements JsonFile {
     public AnimationsMod lIlIlIlIlIIlIIlIIllIIIIIl;
     public FOVMod IlllIIIIIIlllIlIIlllIlIIl;
     public KeyStrokesMod lIllIlIIIlIIIIIIIlllIlIll;
-    public AutoTextMod llIlllIIIllllIIlllIllIIIl;
+    public AutoTextMod autoTextMod;
     public WaypointsMod llllIIlIIlIIlIIllIIlIIllI;
     public BlockOutlineMod IlIlIlllllIlIIlIlIlllIlIl;
     public ParticleMultiplierMod llIIIIIIIllIIllIlIllIIIIl;
@@ -56,95 +96,64 @@ implements DefaultJson {
 
     @Override
     public Set<ConfigurableFeature> lIlIlIlIlIIlIIlIIllIIIIIl() {
-        ConfigurableFeature[] configurableFeatureArray = new ConfigurableFeature[51];
-
-        this.IIlIllIlllllllIIlIIIllIIl = new ReplayMod();
-        configurableFeatureArray[0] = this.IIlIllIlllllllIIlIIIllIIl;
-        this.lIlIlIlIlIIlIIlIIllIIIIIl = new AnimationsMod();
-        configurableFeatureArray[1] = this.lIlIlIlIlIIlIIlIIllIIIIIl;
-        configurableFeatureArray[2] = new FPSMod();
-        configurableFeatureArray[3] = new CPSMod();
-        this.IllIllIIIllIIIlIlIlIIIIll = new SkyBlockAddonsMod();
-        configurableFeatureArray[4] = this.IllIllIIIllIIIlIlIlIIIIll;
-        this.llIIlIlIIIllIlIlIlIIlIIll = new ToggleSneakMod();
-        configurableFeatureArray[5] = this.llIIlIlIIIllIlIlIlIIlIIll;
-        this.llllIlIllllIlIlIIIllIlIlI = new ZoomMod();
-        configurableFeatureArray[6] = this.llllIlIllllIlIlIIIllIlIlI;
-        configurableFeatureArray[7] = new HypixelMod();
-        this.IllllllllllIlIIIlllIlllll = new ArmorStatusMod();
-        configurableFeatureArray[8] = this.IllllllllllIlIIIlllIlllll;
-        this.lIllIlIIIlIIIIIIIlllIlIll = new KeyStrokesMod();
-        configurableFeatureArray[9] = this.lIllIlIIIlIIIIIIIlllIlIll;
-        configurableFeatureArray[10] = new CoordinatesMod();
-        configurableFeatureArray[11] = new DayCounterMod();
-        this.llIlIIIllIIlIllIllIllllIl = new CrosshairMod();
-        configurableFeatureArray[12] = this.llIlIIIllIIlIllIllIllllIl;
-        this.lIIIllIllIIllIlllIlIIlllI = new PotionEffectsMod();
-        configurableFeatureArray[13] = this.lIIIllIllIIllIlllIlIIlllI;
-        configurableFeatureArray[14] = new DirectionHudMod();
-        this.llllIIlIIlIIlIIllIIlIIllI = new WaypointsMod();
-        configurableFeatureArray[15] = this.llllIIlIIlIIlIIllIIlIIllI;
-        configurableFeatureArray[16] = new ScoreboardMod();
-        configurableFeatureArray[17] = new PotionCounterMod();
-        configurableFeatureArray[18] = new PingMod();
-        this.IllIIIlllIIIlIlllIlIIlIII = new MotionBlurMod();
-        configurableFeatureArray[19] = this.IllIIIlllIIIlIlllIlIIlIII;
-        this.llIIIlIllIIIIlIIIlIlIllIl = new ChatMod();
-        configurableFeatureArray[20] = this.llIIIlIllIIIIlIIIlIlIllIl;
-        this.IIlIllIlIIllIIlIlIllllllI = new ScrollableTooltipsMod();
-        configurableFeatureArray[21] = this.IIlIllIlIIllIIlIlIllllllI;
-        configurableFeatureArray[22] = new UHCOverlayMod();
-        this.llIIIIIIIllIIllIlIllIIIIl = new ParticleMultiplierMod();
-        configurableFeatureArray[23] = this.llIIIIIIIllIIllIlIllIIIIl;
-        this.llIllIlIllIlllIllIIIIllII = new NickHiderMod();
-        configurableFeatureArray[24] = this.llIllIlIllIlllIllIIIIllII;
-        this.lIIlIlllIlIlIIIlllIIlIIII = new CooldownsMod();
-        configurableFeatureArray[25] = this.lIIlIlllIlIlIIIlllIIlIIII;
-        configurableFeatureArray[26] = new WorldEditCUIMod();
-        configurableFeatureArray[27] = new ClockMod();
-        configurableFeatureArray[28] = new StopwatchMod();
-        configurableFeatureArray[29] = new MemoryMod();
-        configurableFeatureArray[30] = new ComboMod();
-        configurableFeatureArray[31] = new RangeMod();
-        configurableFeatureArray[32] = new TimeChangerMod();
-        configurableFeatureArray[33] = new ServerAddressMod();
-        configurableFeatureArray[34] = new SaturationMod();
-        this.lllllIllIllIllllIlIllllII = new ItemPhysicsMod();
-        configurableFeatureArray[35] = this.lllllIllIllIllllIlIllllII;
-        configurableFeatureArray[36] = new ItemTrackerMod();
-        this.IlllllIlIIIlIIlIIllIIlIll = new ShinyPotsMod();
-        configurableFeatureArray[37] = this.IlllllIlIIIlIIlIIllIIlIll;
-        this.IlIlIlllllIlIIlIlIlllIlIl = new BlockOutlineMod();
-        configurableFeatureArray[38] = this.IlIlIlllllIlIIlIlIlllIlIl;
-        this.lIlIIIIIIlIIIllllIllIIlII = new ScreenshotMod();
-        configurableFeatureArray[39] = this.lIlIIIIIIlIIIllllIllIIlII;
-        this.IlllIIIIIIlllIlIIlllIlIIl = new FOVMod();
-        configurableFeatureArray[40] = this.IlllIIIIIIlllIlIIlllIlIIl;
-        this.llIlllIIIllllIIlllIllIIIl = new AutoTextMod();
-        configurableFeatureArray[41] = this.llIlllIIIllllIIlllIllIIIl;
-        configurableFeatureArray[42] = new NetGraphMod();
-        configurableFeatureArray[43] = new MumbleLinkMod();
-        this.llIIIlllIIlllIllllIlIllIl = new Items2DMod();
-        configurableFeatureArray[44] = this.llIIIlllIIlllIllllIlIllIl;
-        this.lIIIlllIIIIllllIlIIIlIIll = new BossBarMod();
-        configurableFeatureArray[45] = this.lIIIlllIIIIllllIlIIIlIIll;
-        this.lllIIIIIlllIIlIllIIlIIIlI = new FreelookMod();
-        configurableFeatureArray[46] = this.lllIIIIIlllIIlIllIIlIIIlI;
-        configurableFeatureArray[47] = new TeamViewMod();
-        configurableFeatureArray[48] = new ResourceDisplayMod();
-        this.lllllIllIlIIlIIlIIIlllIlI = new MenuBlurMod();
-        configurableFeatureArray[49] = this.lllllIllIlIIlIIlIIIlllIlI;
-        this.IlIllIIlIIlIIIllIllllIIll = new HitboxMod();
-        configurableFeatureArray[50] = this.IlIllIIlIIlIIIllIllllIIll;
-        LinkedHashSet linkedHashSet = this.lIlIlIlIlIIlIIlIIllIIIIIl(configurableFeatureArray);
-        return linkedHashSet;
+        return this.lIlIlIlIlIIlIIlIIllIIIIIl(
+                   this.IIlIllIlllllllIIlIIIllIIl = new ReplayMod(),
+                   this.lIlIlIlIlIIlIIlIIllIIIIIl = new AnimationsMod(),
+                   new FPSMod(),
+                   new CPSMod(),
+                   this.IllIllIIIllIIIlIlIlIIIIll = new SkyBlockAddonsMod(),
+                   this.llIIlIlIIIllIlIlIlIIlIIll = new ToggleSneakMod(),
+                   this.llllIlIllllIlIlIIIllIlIlI = new ZoomMod(),
+                   new HypixelMod(),
+                   this.IllllllllllIlIIIlllIlllll = new ArmorStatusMod(),
+                   this.lIllIlIIIlIIIIIIIlllIlIll = new KeyStrokesMod(),
+                   new CoordinatesMod(),
+                   new DayCounterMod(),
+                   this.llIlIIIllIIlIllIllIllllIl = new CrosshairMod(),
+                   this.lIIIllIllIIllIlllIlIIlllI = new PotionEffectsMod(),
+                   new DirectionHudMod(),
+                   this.llllIIlIIlIIlIIllIIlIIllI = new WaypointsMod(),
+                   new ScoreboardMod(),
+                   new PotionCounterMod(),
+                   new PingMod(),
+                   this.IllIIIlllIIIlIlllIlIIlIII = new MotionBlurMod(),
+                   this.llIIIlIllIIIIlIIIlIlIllIl = new ChatMod(),
+                   this.IIlIllIlIIllIIlIlIllllllI = new ScrollableTooltipsMod(),
+                   new UHCOverlayMod(),
+                   this.llIIIIIIIllIIllIlIllIIIIl = new ParticleMultiplierMod(),
+                   this.llIllIlIllIlllIllIIIIllII = new NickHiderMod(),
+                   this.lIIlIlllIlIlIIIlllIIlIIII = new CooldownsMod(),
+                   new WorldEditCUIMod(),
+                   new ClockMod(),
+                   new StopwatchMod(),
+                   new MemoryMod(),
+                   new ComboMod(),
+                   new RangeMod(),
+                   new TimeChangerMod(),
+                   new ServerAddressMod(),
+                   new SaturationMod(),
+                   this.lllllIllIllIllllIlIllllII = new ItemPhysicsMod(),
+                   new ItemTrackerMod(),
+                   this.IlllllIlIIIlIIlIIllIIlIll = new ShinyPotsMod(),
+                   this.IlIlIlllllIlIIlIlIlllIlIl = new BlockOutlineMod(),
+                   this.lIlIIIIIIlIIIllllIllIIlII = new ScreenshotMod(),
+                   this.IlllIIIIIIlllIlIIlllIlIIl = new FOVMod(),
+                   this.autoTextMod = new AutoTextMod(),
+                   new NetGraphMod(),
+                   new MumbleLinkMod(),
+                   this.llIIIlllIIlllIllllIlIllIl = new Items2DMod(),
+                   this.lIIIlllIIIIllllIlIIIlIIll = new BossBarMod(),
+                   this.lllIIIIIlllIIlIllIIlIIIlI = new FreelookMod(),
+                   new TeamViewMod(),
+                   new ResourceDisplayMod(),
+                   this.lllllIllIlIIlIIlIIIlllIlI = new MenuBlurMod(),
+                   this.IlIllIIlIIlIIIllIllllIIll = new HitboxMod()
+               );
     }
 
-    public LinkedHashSet lIlIlIlIlIIlIIlIIllIIIIIl(ConfigurableFeature... configurableFeatureArray) {
+    public LinkedHashSet<ConfigurableFeature> lIlIlIlIlIIlIIlIIllIIIIIl(ConfigurableFeature... configurableFeatureArray) {
         LinkedHashSet<ConfigurableFeature> linkedHashSet = Sets.newLinkedHashSet();
-        for (ConfigurableFeature configurableFeature : configurableFeatureArray) {
-            linkedHashSet.add(configurableFeature);
-        }
+        linkedHashSet.addAll(Arrays.asList(configurableFeatureArray));
         return linkedHashSet;
     }
 
@@ -157,7 +166,7 @@ implements DefaultJson {
     public void b_() {
         super.b_();
         for (ConfigurableFeature configurableFeature : this.llIlllIIIllllIIlllIllIIIl()) {
-            configurableFeature.a_();
+            configurableFeature.setupNameFilter();
             if (!configurableFeature.lIlIIIIIIlIIIllllIllIIlII() || configurableFeature instanceof IntergratedServerInterface) continue;
             configurableFeature.lIllIlIIIlIIIIIIIlllIlIll();
         }
@@ -166,32 +175,30 @@ implements DefaultJson {
 
     @Override
     public File IlIlIlllllIlIIlIlIlllIlIl() {
-        return new File(LunarClient.IIllIlIllIlIllIllIllIllII().IlIlIlllllIlIIlIlIlllIlIl() + File.separator + Ref.IlllIIIIIIlllIlIIlllIlIIl().lIlIlIIIIIIllIlIIIIllIIII().llllIIlIIlIIlIIllIIlIIllI().IlllIIIIIIlllIlIIlllIlIIl(), this.llllIIlIIlIIlIIllIIlIIllI());
+        return new File(LunarClient.getInstance().IlIlIlllllIlIIlIlIlllIlIl() + File.separator + Ref.getLC().lIlIlIIIIIIllIlIIIIllIIII().getSelectedProfile().getName(), this.llllIIlIIlIIlIIllIIlIIllI());
     }
 
     @Override
-    public void IlllIIIIIIlllIlIIlllIlIIl(JsonObject jsonObject) {
+    public void read(JsonObject jsonObject) {
         for (ConfigurableFeature configurableFeature : this.llIlllIIIllllIIlllIllIIIl()) {
             try {
-                JsonObject jsonObject2 = jsonObject.has(configurableFeature.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl()) && !jsonObject.get(configurableFeature.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl()).isJsonNull() ? jsonObject.getAsJsonObject(configurableFeature.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl()) : new JsonObject();
-                configurableFeature.IlllIIIIIIlllIlIIlllIlIIl(jsonObject2);
-            }
-            catch (Exception exception) {
+                JsonObject jsonObject2 = jsonObject.has(configurableFeature.getDetails().getId()) && !jsonObject.get(configurableFeature.getDetails().getId()).isJsonNull() ? jsonObject.getAsJsonObject(configurableFeature.getDetails().getId()) : new JsonObject();
+                configurableFeature.read(jsonObject2);
+            } catch (Exception exception) {
                 exception.printStackTrace();
             }
         }
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(JsonObject jsonObject) {
+    public void write(JsonObject jsonObject) {
         for (ConfigurableFeature configurableFeature : this.llIlllIIIllllIIlllIllIIIl()) {
             try {
                 JsonObject jsonObject2 = new JsonObject();
-                configurableFeature.lIlIlIlIlIIlIIlIIllIIIIIl(jsonObject2);
+                configurableFeature.write(jsonObject2);
                 if (jsonObject2.entrySet().isEmpty()) continue;
-                jsonObject.add(configurableFeature.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl(), (JsonElement)jsonObject2);
-            }
-            catch (Exception exception) {
+                jsonObject.add(configurableFeature.getDetails().getId(), jsonObject2);
+            } catch (Exception exception) {
                 exception.printStackTrace();
             }
         }
@@ -215,7 +222,7 @@ implements DefaultJson {
     }
 
     public AutoTextMod lllllIllIllIllllIlIllllII() {
-        return this.llIlllIIIllllIIlllIllIIIl;
+        return this.autoTextMod;
     }
 
     public WaypointsMod lllIIIIIlllIIlIllIIlIIIlI() {
@@ -314,4 +321,3 @@ implements DefaultJson {
         return this.IIlIllIlllllllIIlIIIllIIl;
     }
 }
- 

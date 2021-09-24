@@ -17,11 +17,10 @@ import com.moonsworth.lunar.client.event.type.hud.RenderNameEvent;
 import com.moonsworth.lunar.client.event.type.input.KeyPressEvent;
 import com.moonsworth.lunar.client.event.type.network.ServerDisconnectEvent;
 import com.moonsworth.lunar.client.ref.Ref;
-import com.moonsworth.lunar.client.setting.KeyBind;
 import com.moonsworth.lunar.client.setting.LunarKeybindSetting;
 import com.moonsworth.lunar.client.ui.screen.AbstractUIScreen;
-import com.moonsworth.lunar.client.ui.screen.BooleanCallbackSetting;
-import com.moonsworth.lunar.client.ui.screen.type.mainmenu.MainMenuLoginUIScreen;
+import com.moonsworth.lunar.client.ui.screen.UIScreenCloseException;
+import com.moonsworth.lunar.client.ui.screen.type.mainmenu.login.MainMenuLoginUIScreen;
 import com.moonsworth.lunar.client.ui.screen.type.mainmenu.MainMenuUIScreen;
 import com.moonsworth.lunar.client.ui.screen.type.overlay.FriendsUIScreen;
 
@@ -29,27 +28,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class UIEventHandler
-implements EventHandler {
+public class UIEventHandler implements EventHandler {
     public long lIlIlIlIlIIlIIlIIllIIIIIl;
     public boolean IlllIIIIIIlllIlIIlllIlIIl;
-    public final List<KeyBindingBridge> lIllIlIIIlIIIIIIIlllIlIll = ImmutableList.of(Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getGameSettings().bridge$keyBindForward(), Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getGameSettings().bridge$keyBindLeft(), Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getGameSettings().bridge$keyBindRight(), Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getGameSettings().bridge$keyBindBack(), Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getGameSettings().bridge$keyBindSprint(), Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getGameSettings().bridge$keyBindSneak(), Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getGameSettings().bridge$keyBindJump());
+    public final List<KeyBindingBridge> lIllIlIIIlIIIIIIIlllIlIll = ImmutableList.of(Ref.getMinecraft().bridge$getGameSettings().bridge$keyBindForward(), Ref.getMinecraft().bridge$getGameSettings().bridge$keyBindLeft(), Ref.getMinecraft().bridge$getGameSettings().bridge$keyBindRight(), Ref.getMinecraft().bridge$getGameSettings().bridge$keyBindBack(), Ref.getMinecraft().bridge$getGameSettings().bridge$keyBindSprint(), Ref.getMinecraft().bridge$getGameSettings().bridge$keyBindSneak(), Ref.getMinecraft().bridge$getGameSettings().bridge$keyBindJump());
     public long llIlllIIIllllIIlllIllIIIl;
     public static long llllIIlIIlIIlIIllIIlIIllI;
 
     public UIEventHandler() {
         this.lIlIlIlIlIIlIIlIIllIIIIIl(ServerDisconnectEvent.class, this::lIlIlIlIlIIlIIlIIllIIIIIl);
         this.lIlIlIlIlIIlIIlIIllIIIIIl(GuiOpenEvent.class, this::lIlIlIlIlIIlIIlIIllIIIIIl);
-        this.lIlIlIlIlIIlIIlIIllIIIIIl(CloseCustomScreenEvent.class, this::lIlIlIlIlIIlIIlIIllIIIIIl);
+        this.lIlIlIlIlIIlIIlIIllIIIIIl(CloseCustomScreenEvent.class, this::onClose);
         this.lIlIlIlIlIIlIIlIIllIIIIIl(GuiPostOpenEvent.class, this::lIlIlIlIlIIlIIlIIllIIIIIl);
         this.lIlIlIlIlIIlIIlIIllIIIIIl(KeyPressEvent.class, this::lIlIlIlIlIIlIIlIIllIIIIIl);
         this.lIlIlIlIlIIlIIlIIllIIIIIl(GuiResizeEvent.class, this::lIlIlIlIlIIlIIlIIllIIIIIl);
         this.lIlIlIlIlIIlIIlIIllIIIIIl(GuiCloseEvent.class, this::lIlIlIlIlIIlIIlIIllIIIIIl);
         this.lIlIlIlIlIIlIIlIIllIIIIIl(RenderCrosshairEvent.class, this::lIlIlIlIlIIlIIlIIllIIIIIl);
         this.lIlIlIlIlIIlIIlIIllIIIIIl(RenderNameEvent.class, renderNameEvent -> {
-            if (!Ref.IlllIIIIIIlllIlIIlllIlIIl().lllIIIIIlllIIlIllIIlIIIlI().llIIIIIIIllIIllIlIllIIIIl().llIlIIIllIIlIllIllIllllIl()) {
+            if (!Ref.getLC().lllIIIIIlllIIlIllIIlIIIlI().llIIIIIIIllIIllIlIllIIIIl().isNametagsEnabled()) {
                 renderNameEvent.setCancelled(true);
-                renderNameEvent.lIlIlIlIlIIlIIlIIllIIIIIl(new ArrayList());
+                renderNameEvent.lIlIlIlIlIIlIIlIIllIIIIIl(new ArrayList<>());
                 renderNameEvent.lIlIlIlIlIIlIIlIIllIIIIIl("");
             }
         });
@@ -57,21 +55,21 @@ implements EventHandler {
     }
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(ServerDisconnectEvent serverDisconnectEvent) {
-        if (Bridge.IlllIIIIIIlllIlIIlllIlIIl() == MinecraftVersion.lIlIlIlIlIIlIIlIIllIIIIIl) {
+        if (Bridge.getMinecraftVersion() == MinecraftVersion.lIlIlIlIlIIlIIlIIllIIIIIl) {
             return;
         }
-        Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getGuiIngame().bridge$resetTitleTimer();
+        Ref.getMinecraft().bridge$getGuiIngame().bridge$resetTitleTimer();
     }
 
-    public boolean lIlIlIlIlIIlIIlIIllIIIIIl(AbstractUIScreen abstractUIScreen) {
-        return abstractUIScreen.llIIIlIllIIIIlIIIlIlIllIl().stream().filter(uIComponent -> uIComponent instanceof BooleanCallbackSetting).anyMatch(uIComponent -> ((BooleanCallbackSetting)((Object)uIComponent)).c_());
+    public boolean canClose(AbstractUIScreen abstractUIScreen) {
+        return abstractUIScreen.llIIIlIllIIIIlIIIlIlIllIl().stream().filter(uIComponent -> uIComponent instanceof UIScreenCloseException).anyMatch(uIComponent -> ((UIScreenCloseException) uIComponent).shouldCancel());
     }
 
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(CloseCustomScreenEvent closeCustomScreenEvent) {
-        if (!(closeCustomScreenEvent.lIlIlIlIlIIlIIlIIllIIIIIl() instanceof AbstractUIScreen)) {
+    public void onClose(CloseCustomScreenEvent closeCustomScreenEvent) {
+        if (!(closeCustomScreenEvent.getCustomScreen() instanceof AbstractUIScreen)) {
             return;
         }
-        if (this.lIlIlIlIlIIlIIlIIllIIIIIl((AbstractUIScreen)closeCustomScreenEvent.lIlIlIlIlIIlIIlIIllIIIIIl())) {
+        if (this.canClose((AbstractUIScreen)closeCustomScreenEvent.getCustomScreen())) {
             closeCustomScreenEvent.setCancelled(true);
         }
     }
@@ -88,60 +86,59 @@ implements EventHandler {
             llllIIlIIlIIlIIllIIlIIllI = System.nanoTime();
         }
         if (guiCloseEvent.IlllIIIIIIlllIlIIlllIlIIl() != null && guiCloseEvent.lIlIlIlIlIIlIIlIIllIIIIIl() instanceof WrappedGuiScreenBridge && ((WrappedGuiScreenBridge)guiCloseEvent.lIlIlIlIlIIlIIlIIllIIIIIl()).getCustomScreen().IlIlIlllllIlIIlIlIlllIlIl()) {
-            Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getGameSettings().bridge$unpressAllKeys();
+            Ref.getMinecraft().bridge$getGameSettings().bridge$unpressAllKeys();
         }
     }
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(RenderCrosshairEvent renderCrosshairEvent) {
-        if (Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getCurrentScreen() instanceof WrappedGuiScreenBridge && !((Boolean) LunarClient.IIllIlIllIlIllIllIllIllII().lllllIllIllIllllIlIllllII().IIlIllIlIIllIIlIlIllllllI().llIIIlllIIlllIllllIlIllIl().llIlllIIIllllIIlllIllIIIl()).booleanValue()) {
-            renderCrosshairEvent.lIlIlIlIlIIlIIlIIllIIIIIl(EventWithResult.EventStateResult.IlllIIIIIIlllIlIIlllIlIIl);
+        if (Ref.getMinecraft().bridge$getCurrentScreen() instanceof WrappedGuiScreenBridge && !LunarClient.getInstance().lllllIllIllIllllIlIllllII().IIlIllIlIIllIIlIlIllllllI().llIIIlllIIlllIllllIlIllIl().llIlllIIIllllIIlllIllIIIl()) {
+            renderCrosshairEvent.lIlIlIlIlIIlIIlIIllIIIIIl(EventWithResult.EventStateResult.DENY);
         }
     }
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(KeyPressEvent keyPressEvent) {
         if (keyPressEvent.IlllIIIIIIlllIlIIlllIlIIl() == KeyState.DOWN) {
-            LunarKeybindSetting lunarKeybindSetting = Ref.IlllIIIIIIlllIlIIlllIlIIl().lllIIIIIlllIIlIllIIlIIIlI().llIIIIIIIllIIllIlIllIIIIl().lllIIIIIlllIIlIllIIlIIIlI();
-            if (!(!this.lIllIlIIIlIIIIIIIlllIlIll() || UIEventHandler.lIlIlIlIlIIlIIlIIllIIIIIl() || ((Boolean)Ref.IlllIIIIIIlllIlIIlllIlIIl().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().IllllllllllIlIIIlllIlllll().llIlllIIIllllIIlllIllIIIl()).booleanValue() || !lunarKeybindSetting.IlllIIIIIIlllIlIIlllIlIIl() || ((KeyBind)lunarKeybindSetting.llIlllIIIllllIIlllIllIIIl()).lIllIlIIIlIIIIIIIlllIlIll() || ((KeyBind)lunarKeybindSetting.llIlllIIIllllIIlllIllIIIl()).lIlIlIlIlIIlIIlIIllIIIIIl() || ((KeyBind)lunarKeybindSetting.llIlllIIIllllIIlllIllIIIl()).IlllIIIIIIlllIlIIlllIlIIl())) {
+            LunarKeybindSetting lunarKeybindSetting = Ref.getLC().lllIIIIIlllIIlIllIIlIIIlI().llIIIIIIIllIIllIlIllIIIIl().getFriendMenuBind();
+            if (!(!this.lIllIlIIIlIIIIIIIlllIlIll() || UIEventHandler.lIlIlIlIlIIlIIlIIllIIIIIl() || Ref.getLC().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().IllllllllllIlIIIlllIlllll().llIlllIIIllllIIlllIllIIIl() || !lunarKeybindSetting.IlllIIIIIIlllIlIIlllIlIIl() || lunarKeybindSetting.llIlllIIIllllIIlllIllIIIl().lIllIlIIIlIIIIIIIlllIlIll() || lunarKeybindSetting.llIlllIIIllllIIlllIllIIIl().lIlIlIlIlIIlIIlIIllIIIIIl() || lunarKeybindSetting.llIlllIIIllllIIlllIllIIIl().IlllIIIIIIlllIlIIlllIlIIl())) {
                 keyPressEvent.cancel();
                 this.IlllIIIIIIlllIlIIlllIlIIl();
                 return;
             }
-            if (((KeyBind)lunarKeybindSetting.llIlllIIIllllIIlllIllIIIl()).IlllIIIIIIlllIlIIlllIlIIl() && keyPressEvent.lIlIlIlIlIIlIIlIIllIIIIIl() == KeyType.IlIlIllIIllllIllllllIIlIl || ((KeyBind)lunarKeybindSetting.llIlllIIIllllIIlllIllIIIl()).lIlIlIlIlIIlIIlIIllIIIIIl() && keyPressEvent.lIlIlIlIlIIlIIlIIllIIIIIl() == KeyType.llIIIIllIlIIlIlIIlllIllIl || ((KeyBind)lunarKeybindSetting.llIlllIIIllllIIlllIllIIIl()).lIllIlIIIlIIIIIIIlllIlIll() && keyPressEvent.lIlIlIlIlIIlIIlIIllIIIIIl() == KeyType.llIllIIIIlIIIIIIlllIllIlI) {
+            if (lunarKeybindSetting.llIlllIIIllllIIlllIllIIIl().IlllIIIIIIlllIlIIlllIlIIl() && keyPressEvent.lIlIlIlIlIIlIIlIIllIIIIIl() == KeyType.KEY_LSHIFT || lunarKeybindSetting.llIlllIIIllllIIlllIllIIIl().lIlIlIlIlIIlIIlIIllIIIIIl() && keyPressEvent.lIlIlIlIlIIlIIlIIllIIIIIl() == KeyType.KEY_LMENU || lunarKeybindSetting.llIlllIIIllllIIlllIllIIIl().lIllIlIIIlIIIIIIIlllIlIll() && keyPressEvent.lIlIlIlIlIIlIIlIIllIIIIIl() == KeyType.KEY_LCONTROL) {
                 this.lIlIlIlIlIIlIIlIIllIIIIIl = System.nanoTime();
-            } else if (!((Boolean)Ref.IlllIIIIIIlllIlIIlllIlIIl().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().IllllllllllIlIIIlllIlllll().llIlllIIIllllIIlllIllIIIl()).booleanValue() && lunarKeybindSetting.IlllIIIIIIlllIlIIlllIlIIl() && this.lIlIlIlIlIIlIIlIIllIIIIIl != 0L && (Bridge.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl(KeyType.IlIlIllIIllllIllllllIIlIl) || Bridge.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl(KeyType.llIIIIllIlIIlIlIIlllIllIl) || AbstractUIScreen.IIlIllIlIIllIIlIlIllllllI()) && System.nanoTime() - this.lIlIlIlIlIIlIIlIIllIIIIIl <= TimeUnit.MILLISECONDS.toNanos(500L)) {
+            } else if (!Ref.getLC().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().IllllllllllIlIIIlllIlllll().llIlllIIIllllIIlllIllIIIl() && lunarKeybindSetting.IlllIIIIIIlllIlIIlllIlIIl() && this.lIlIlIlIlIIlIIlIIllIIIIIl != 0L && (Bridge.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl(KeyType.KEY_LSHIFT) || Bridge.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl(KeyType.KEY_LMENU) || AbstractUIScreen.IIlIllIlIIllIIlIlIllllllI()) && System.nanoTime() - this.lIlIlIlIlIIlIIlIIllIIIIIl <= TimeUnit.MILLISECONDS.toNanos(500L)) {
                 this.IlllIIIIIIlllIlIIlllIlIIl();
                 keyPressEvent.cancel();
                 return;
             }
         }
-        if (Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getCurrentScreen() instanceof WrappedGuiScreenBridge && ((WrappedGuiScreenBridge)Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getCurrentScreen()).getCustomScreen().IlIlIlllllIlIIlIlIlllIlIl()) {
+        if (Ref.getMinecraft().bridge$getCurrentScreen() instanceof WrappedGuiScreenBridge && ((WrappedGuiScreenBridge)Ref.getMinecraft().bridge$getCurrentScreen()).getCustomScreen().IlIlIlllllIlIIlIlIlllIlIl()) {
             for (KeyBindingBridge keyBindingBridge : this.lIllIlIIIlIIIIIIIlllIlIll) {
                 if (keyPressEvent.lIlIlIlIlIIlIIlIIllIIIIIl() != keyBindingBridge.bridge$getKey()) continue;
                 boolean bl = Bridge.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl(keyPressEvent.lIlIlIlIlIIlIIlIIllIIIIIl());
-                if (!bl && keyPressEvent.lIlIlIlIlIIlIIlIIllIIIIIl() == Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getGameSettings().bridge$keyBindSprint().bridge$getKey()) {
-                    Ref.IlIlIlllllIlIIlIlIlllIlIl().bridge$setSprinting(false);
+                if (!bl && keyPressEvent.lIlIlIlIlIIlIIlIIllIIIIIl() == Ref.getMinecraft().bridge$getGameSettings().bridge$keyBindSprint().bridge$getKey()) {
+                    Ref.getPlayer().bridge$setSprinting(false);
                 }
                 keyBindingBridge.bridge$setKeyBindState(bl);
             }
-            return;
         }
     }
 
     public void IlllIIIIIIlllIlIIlllIlIIl() {
-        if (Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getCurrentScreen() instanceof GuiAchievementsBridge) {
+        if (Ref.getMinecraft().bridge$getCurrentScreen() instanceof GuiAchievementsBridge) {
             return;
         }
-        if (Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getCurrentScreen() != null && Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getCurrentScreen().lIlIlIlIlIIlIIlIIllIIIIIl(FriendsUIScreen.class) && System.nanoTime() - this.llIlllIIIllllIIlllIllIIIl > TimeUnit.MILLISECONDS.toNanos(250L)) {
-            Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$displayScreen(FriendsUIScreen.llIIIIIIIllIIllIlIllIIIIl().llIlIIIllIIlIllIllIllllIl());
+        if (Ref.getMinecraft().bridge$getCurrentScreen() != null && Ref.getMinecraft().bridge$getCurrentScreen().lIlIlIlIlIIlIIlIIllIIIIIl(FriendsUIScreen.class) && System.nanoTime() - this.llIlllIIIllllIIlllIllIIIl > TimeUnit.MILLISECONDS.toNanos(250L)) {
+            Ref.getMinecraft().bridge$displayScreen(FriendsUIScreen.llIIIIIIIllIIllIlIllIIIIl().llIlIIIllIIlIllIllIllllIl());
             this.llIlllIIIllllIIlllIllIIIl = 0L;
         } else {
-            Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$displayScreen(Bridge.llIlllIIIllllIIlllIllIIIl().initCustomScreen(FriendsUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getCurrentScreen())));
+            Ref.getMinecraft().bridge$displayScreen(Bridge.getInstance().initCustomScreen(FriendsUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(Ref.getMinecraft().bridge$getCurrentScreen())));
             this.llIlllIIIllllIIlllIllIIIl = System.nanoTime();
         }
     }
 
     public boolean lIllIlIIIlIIIIIIIlllIlIll() {
-        GuiScreenBridge guiScreenBridge = Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getCurrentScreen();
+        GuiScreenBridge guiScreenBridge = Ref.getMinecraft().bridge$getCurrentScreen();
         if (guiScreenBridge == null) {
             return true;
         }
@@ -150,7 +147,7 @@ implements EventHandler {
         }
         if (guiScreenBridge instanceof WrappedGuiScreenBridge) {
             CustomScreen customScreen = ((WrappedGuiScreenBridge)guiScreenBridge).getCustomScreen();
-            return !(customScreen instanceof AbstractUIScreen) || !this.lIlIlIlIlIIlIIlIIllIIIIIl((AbstractUIScreen)customScreen);
+            return !(customScreen instanceof AbstractUIScreen) || !this.canClose((AbstractUIScreen)customScreen);
         }
         return true;
     }
@@ -159,22 +156,22 @@ implements EventHandler {
         if (guiPostOpenEvent.lIlIlIlIlIIlIIlIIllIIIIIl() instanceof WrappedGuiScreenBridge && ((WrappedGuiScreenBridge)guiPostOpenEvent.lIlIlIlIlIIlIIlIIllIIIIIl()).getCustomScreen().IlIlIlllllIlIIlIlIlllIlIl()) {
             for (KeyBindingBridge keyBindingBridge : this.lIllIlIIIlIIIIIIIlllIlIll) {
                 if (!Bridge.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl(keyBindingBridge.bridge$getKey())) continue;
-                Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getGameSettings().bridge$setKeyBindState(keyBindingBridge.bridge$getKey(), true);
+                Ref.getMinecraft().bridge$getGameSettings().bridge$setKeyBindState(keyBindingBridge.bridge$getKey(), true);
             }
         }
     }
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(GuiOpenEvent guiOpenEvent) {
-        if (Ref.llIIIIIIIllIIllIlIllIIIIl() == null && !Ref.IlllIIIIIIlllIlIIlllIlIIl().llIlIIIllIIlIllIllIllllIl().llIIIlllIIlllIllllIlIllIl()) {
-            guiOpenEvent.lIlIlIlIlIIlIIlIIllIIIIIl(Bridge.llIlllIIIllllIIlllIllIIIl().initCustomScreen(new MainMenuLoginUIScreen()));
+        if (Ref.getWorld() == null && !Ref.getLC().llIlIIIllIIlIllIllIllllIl().llIIIlllIIlllIllllIlIllIl()) {
+            guiOpenEvent.lIlIlIlIlIIlIIlIIllIIIIIl(Bridge.getInstance().initCustomScreen(new MainMenuLoginUIScreen()));
             return;
         }
         if (guiOpenEvent.lIlIlIlIlIIlIIlIIllIIIIIl() != null) {
             if (guiOpenEvent.lIlIlIlIlIIlIIlIIllIIIIIl() instanceof GuiMainMenuBridge) {
-                guiOpenEvent.lIlIlIlIlIIlIIlIIllIIIIIl(Bridge.llIlllIIIllllIIlllIllIIIl().initCustomScreen(new MainMenuUIScreen()));
+                guiOpenEvent.lIlIlIlIlIIlIIlIIllIIIIIl(Bridge.getInstance().initCustomScreen(new MainMenuUIScreen()));
             }
-        } else if (Ref.llIIIIIIIllIIllIlIllIIIIl() == null) {
-            guiOpenEvent.lIlIlIlIlIIlIIlIIllIIIIIl(Bridge.llIlllIIIllllIIlllIllIIIl().initCustomScreen(new MainMenuUIScreen()));
+        } else if (Ref.getWorld() == null) {
+            guiOpenEvent.lIlIlIlIlIIlIIlIIllIIIIIl(Bridge.getInstance().initCustomScreen(new MainMenuUIScreen()));
         }
     }
 
@@ -183,8 +180,8 @@ implements EventHandler {
             return;
         }
         if (guiResizeEvent.IlllIIIIIIlllIlIIlllIlIIl().lIlIlIlIlIIlIIlIIllIIIIIl(GuiIngameMenuBridge.class)) {
-            if (this.IlllIIIIIIlllIlIIlllIlIIl && Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getGameSettings().bridge$getChatScale() == 0.0f) {
-                Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getGameSettings().bridge$setOptionFloatValue(25, 1.0f);
+            if (this.IlllIIIIIIlllIlIIlllIlIIl && Ref.getMinecraft().bridge$getGameSettings().bridge$getChatScale() == 0.0f) {
+                Ref.getMinecraft().bridge$getGameSettings().bridge$setOptionFloatValue(25, 1.0f);
             }
             this.IlllIIIIIIlllIlIIlllIlIIl = false;
         }

@@ -11,7 +11,7 @@ import java.util.Set;
 
 public final class LCPacketStaffModStatus extends LCPacket {
 
-    @Getter private Set<String> enabled;
+    @Getter private final Set<String> enabled;
 
     public LCPacketStaffModStatus() {
         this.enabled = new HashSet<>();

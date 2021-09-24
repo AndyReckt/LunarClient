@@ -6,8 +6,7 @@ import io.netty.channel.Channel;
 
 import javax.crypto.SecretKey;
 
-public class EnableEncryptionEvent
-extends Event {
+public class EnableEncryptionEvent extends Event {
     public final NetworkManagerBridge lIlIlIlIlIIlIIlIIllIIIIIl;
     public final Channel IlllIIIIIIlllIlIIlllIlIIl;
     public final SecretKey lIllIlIIIlIIIIIIIlllIlIll;
@@ -30,4 +29,3 @@ extends Event {
         this.lIllIlIIIlIIIIIIIlllIlIll = secretKey;
     }
 }
- 

@@ -8,7 +8,7 @@ import com.moonsworth.lunar.client.feature.type.waypoints.Waypoint;
 import com.moonsworth.lunar.client.registry.FontRegistry;
 import com.moonsworth.lunar.client.ui.component.AbstractListUIComponent;
 import com.moonsworth.lunar.client.ui.component.UIComponent;
-import com.moonsworth.lunar.client.ui.component.type.setting.IIlIllIlIIllIIlIlIllllllI;
+import com.moonsworth.lunar.client.ui.component.type.setting.ScrollbarUIComponent;
 import com.moonsworth.lunar.client.ui.screen.AbstractUIScreen;
 import org.lwjgl.opengl.GL11;
 
@@ -16,46 +16,45 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class WaypointsListUIComponent
-extends AbstractListUIComponent {
-    public List<WaypointUIComponent> lIlIlIlIlIIlIIlIIllIIIIIl;
-    public IIlIllIlIIllIIlIlIllllllI IlllIIIIIIlllIlIIlllIlIIl = new IIlIllIlIIllIIlIlIllllllI(this);
+public class WaypointsListUIComponent extends AbstractListUIComponent {
+    public List<WaypointUIComponent> waypoints;
+    public ScrollbarUIComponent scrollbar = new ScrollbarUIComponent(this);
 
     public WaypointsListUIComponent(UIComponent parent) {
         super(parent);
-        this.lIlIlIlIlIIlIIlIIllIIIIIl((float f, float f2, int n) -> {
-            for (WaypointUIComponent waypointUIComponent : this.lIlIlIlIlIIlIIlIIllIIIIIl) {
-                if (!waypointUIComponent.IlllIIIIIIlllIlIIlllIlIIl(f, f2 - this.IlllIIIIIIlllIlIIlllIlIIl.lIllIlIIIlIIIIIIIlllIlIll())) continue;
-                return waypointUIComponent.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, n);
+        this.onMouseClick((float f, float f2, int n) -> {
+            for (WaypointUIComponent waypointUIComponent : this.waypoints) {
+                if (!waypointUIComponent.mouseInside(f, f2 - this.scrollbar.getYOffset())) continue;
+                return waypointUIComponent.onMouseClicked(f, f2, n);
             }
-            return this.IlllIIIIIIlllIlIIlllIlIIl.IlllIIIIIIlllIlIIlllIlIIl(f, f2) && this.IlllIIIIIIlllIlIIlllIlIIl.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, n);
+            return this.scrollbar.mouseInside(f, f2) && this.scrollbar.onMouseClicked(f, f2, n);
         });
         ArrayList<WaypointUIComponent> arrayList = new ArrayList<WaypointUIComponent>();
-        for (Waypoint waypoint : this.lIlIIIIIIlIIIllllIllIIlII.llIllIlIllIlllIllIIIIllII().llIlllIIIllllIIlllIllIIIl()) {
+        for (Waypoint waypoint : this.lc.llIllIlIllIlllIllIIIIllII().llIlllIIIllllIIlllIllIIIl()) {
             if (!waypoint.lIlIlIlIlIIlIIlIIllIIIIIl()) continue;
             arrayList.add(new WaypointUIComponent(this, waypoint));
         }
-        this.lIlIlIlIlIIlIIlIIllIIIIIl = Collections.synchronizedList(arrayList);
+        this.waypoints = Collections.synchronizedList(arrayList);
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2, float f3, float f4) {
-        super.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, f3, f4);
+    public void setPositionAndSize(float x, float y, float width, float height) {
+        super.setPositionAndSize(x, y, width, height);
         float f5 = 0.0f;
         int n = 0;
         int n2 = 0;
         float f6 = 20.0f;
         float f7 = 182.0f;
-        for (WaypointUIComponent waypointUIComponent : this.lIlIlIlIlIIlIIlIIllIIIIIl) {
+        for (WaypointUIComponent waypointUIComponent : this.waypoints) {
             if (n == 2) {
                 n = 0;
                 ++n2;
             }
-            waypointUIComponent.lIlIlIlIlIIlIIlIIllIIIIIl(f + (f7 + 8.0f) * (float)n, f2 + 2.0f + (f6 + 8.0f) * (float)n2, f7, f6);
+            waypointUIComponent.setPositionAndSize(x + (f7 + 8.0f) * (float)n, y + 2.0f + (f6 + 8.0f) * (float)n2, f7, f6);
             ++n;
         }
-        this.IlllIIIIIIlllIlIIlllIlIIl.lIlIlIlIlIIlIIlIIllIIIIIl(f + f3 - 6.0f, f2, 4.0f, f4 - 20.0f);
-        this.IlllIIIIIIlllIlIIlllIlIIl.IlIlIlllllIlIIlIlIlllIlIl(n2 == 0 ? f6 + 4.0f : 4.0f + f6 + (f6 + 8.0f) * (float)n2);
+        this.scrollbar.setPositionAndSize(x + width - 6.0f, y, 4.0f, height - 20.0f);
+        this.scrollbar.setContentHeight(n2 == 0 ? f6 + 4.0f : 4.0f + f6 + (f6 + 8.0f) * (float)n2);
     }
 
     @Override
@@ -64,59 +63,58 @@ extends AbstractListUIComponent {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2, boolean bl) {
+    public void drawComponent(float mouseX, float mouseY, boolean bl) {
         Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$pushMatrix();
-        if (!this.lIlIlIlIlIIlIIlIIllIIIIIl.isEmpty()) {
+        if (!this.waypoints.isEmpty()) {
             Object object;
-            GL11.glEnable((int)3089);
+            GL11.glEnable(3089);
             float f3 = 0.0f;
-            if (this.lllIIIIIlllIIlIllIIlIIIlI.bridge$getCurrentScreen() instanceof WrappedGuiScreenBridge) {
-                WrappedGuiScreenBridge var5 = (WrappedGuiScreenBridge)this.lllIIIIIlllIIlIllIIlIIIlI.bridge$getCurrentScreen();
+            if (this.mc.bridge$getCurrentScreen() instanceof WrappedGuiScreenBridge) {
+                WrappedGuiScreenBridge var5 = (WrappedGuiScreenBridge)this.mc.bridge$getCurrentScreen();
                 if (var5.getCustomScreen() instanceof AbstractUIScreen) {
                     AbstractUIScreen var6 = (AbstractUIScreen)var5.getCustomScreen();
                     f3 = var6.lllllIllIlIIlIIlIIIlllIlI();
                 }
             }
             AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl((int)(this.x - 2.0f), (int)this.y, (int)(this.x + this.width + 2.0f), (int)(this.y + this.height + 5.0f), (float)((int)((float)AbstractUIScreen.llllIlIllllIlIlIIIllIlIlI().llllIIlIIlIIlIIllIIlIIllI() * AbstractUIScreen.lIIlIlllIlIlIIIlllIIlIIII())), (int)f3);
-            this.IlllIIIIIIlllIlIIlllIlIIl.IlllIIIIIIlllIlIIlllIlIIl(f, f2, bl);
-            for (I18nBridge i18nBridge : this.lIlIlIlIlIIlIIlIIllIIIIIl) {
+            this.scrollbar.onDraw(mouseX, mouseY, bl);
+            for (I18nBridge i18nBridge : this.waypoints) {
                 boolean bl2;
-                boolean bl3 = ((UIComponent)i18nBridge).lIlIIIIIIlIIIllllIllIIlII() + ((UIComponent)i18nBridge).IllIllIIIllIIIlIlIlIIIIll() + this.IlllIIIIIIlllIlIIlllIlIIl.lIllIlIIIlIIIIIIIlllIlIll() < this.IlllIIIIIIlllIlIIlllIlIIl.lIlIIIIIIlIIIllllIllIIlII();
-                boolean bl4 = bl2 = ((UIComponent)i18nBridge).lIlIIIIIIlIIIllllIllIIlII() + this.IlllIIIIIIlllIlIIlllIlIIl.lIllIlIIIlIIIIIIIlllIlIll() > this.IlllIIIIIIlllIlIIlllIlIIl.lIlIIIIIIlIIIllllIllIIlII() + this.IlllIIIIIIlllIlIIlllIlIIl.IllIllIIIllIIIlIlIlIIIIll();
-                if (!(((UIComponent)i18nBridge).lllIIIIIlllIIlIllIIlIIIlI() >= this.x) || bl3 || bl2) continue;
-                ((UIComponent)i18nBridge).lIlIlIlIlIIlIIlIIllIIIIIl(f, f2 - this.IlllIIIIIIlllIlIIlllIlIIl.lIllIlIIIlIIIIIIIlllIlIll(), bl && !this.IlllIIIIIIlllIlIIlllIlIIl.lIIIllIllIIllIlllIlIIlllI());
+                boolean bl3 = ((UIComponent)i18nBridge).getY() + ((UIComponent)i18nBridge).getHeight() + this.scrollbar.getYOffset() < this.scrollbar.getY();
+                boolean bl4 = bl2 = ((UIComponent)i18nBridge).getY() + this.scrollbar.getYOffset() > this.scrollbar.getY() + this.scrollbar.getHeight();
+                if (!(((UIComponent)i18nBridge).getX() >= this.x) || bl3 || bl2) continue;
+                ((UIComponent)i18nBridge).drawComponent(mouseX, mouseY - this.scrollbar.getYOffset(), bl && !this.scrollbar.lIIIllIllIIllIlllIlIIlllI());
             }
-            this.IlllIIIIIIlllIlIIlllIlIIl.llllIIlIIlIIlIIllIIlIIllI(f, f2, bl);
-            GL11.glDisable((int)3089);
+            this.scrollbar.llllIIlIIlIIlIIllIIlIIllI(mouseX, mouseY, bl);
+            GL11.glDisable(3089);
         } else {
-            FontRegistry.IlllIIIIIIlllIlIIlllIlIIl.IlllIIIIIIlllIlIIlllIlIIl(this.get("noWaypointsSet", new Object[0]), this.x + this.width / 2.0f, this.y + 30.0f, -1342177281);
+            FontRegistry.IlllIIIIIIlllIlIIlllIlIIl.IlllIIIIIIlllIlIIlllIlIIl(this.get("noWaypointsSet"), this.x + this.width / 2.0f, this.y + 30.0f, -1342177281);
         }
         Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$popMatrix();
-        super.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, bl);
+        super.drawComponent(mouseX, mouseY, bl);
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(char c, KeyType keyType) {
-        super.lIlIlIlIlIIlIIlIIllIIIIIl(c, keyType);
+    public void onKeyTyped(char c, KeyType keyType) {
+        super.onKeyTyped(c, keyType);
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(int n) {
-        this.IlllIIIIIIlllIlIIlllIlIIl.lIlIlIlIlIIlIIlIIllIIIIIl(n);
-        super.lIlIlIlIlIIlIIlIIllIIIIIl(n);
+    public void handleMouseScrollDelta(int n) {
+        this.scrollbar.handleMouseScrollDelta(n);
+        super.handleMouseScrollDelta(n);
     }
 
     @Override
-    public void IlllIIIIIIlllIlIIlllIlIIl() {
-        super.IlllIIIIIIlllIlIIlllIlIIl();
+    public void onGuiClosed() {
+        super.onGuiClosed();
     }
 
     public List llllIIlIIlIIlIIllIIlIIllI() {
-        return this.lIlIlIlIlIIlIIlIIllIIIIIl;
+        return this.waypoints;
     }
 
-    public IIlIllIlIIllIIlIlIllllllI llIIIIIIIllIIllIlIllIIIIl() {
-        return this.IlllIIIIIIlllIlIIlllIlIIl;
+    public ScrollbarUIComponent llIIIIIIIllIIllIlIllIIIIl() {
+        return this.scrollbar;
     }
 }
- 

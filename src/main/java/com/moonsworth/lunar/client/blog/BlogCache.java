@@ -12,28 +12,27 @@ import java.io.File;
 public class BlogCache {
     public static final File lIlIlIlIlIIlIIlIIllIIIIIl = new File(new File(new File(System.getProperty("user.home"), ".lunarclient"), "game-cache"), "blog-post-images");
     public final String IlllIIIIIIlllIlIIlllIlIIl;
-    public final String lIllIlIIIlIIIIIIIlllIlIll;
-    public final String llIlllIIIllllIIlllIllIIIl;
+    public final String imageURL;
+    public final String blogLink;
     public ResourceLocationBridge llllIIlIIlIIlIIllIIlIIllI;
 
-    public BlogCache(String string, String string2, String string3) {
+    public BlogCache(String string, String imageURL, String blogLink) {
         this.IlllIIIIIIlllIlIIlllIlIIl = string;
-        this.lIllIlIIIlIIIIIIIlllIlIll = string2;
-        this.llIlllIIIllllIIlllIllIIIl = string3;
+        this.imageURL = imageURL;
+        this.blogLink = blogLink;
     }
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl() {
         try {
             lIlIlIlIlIIlIIlIIllIIIIIl.mkdirs();
-        }
-        catch (Exception exception) {
+        } catch (Exception exception) {
             // empty catch block
         }
-        String string = Hashing.md5().hashString(this.lIllIlIIIlIIIIIIIlllIlIll, Charsets.UTF_8).toString();
+        String string = Hashing.md5().hashString(this.imageURL, Charsets.UTF_8).toString();
         File file = new File(lIlIlIlIlIIlIIlIIllIIIIIl, string);
-        this.llllIIlIIlIIlIIllIIlIIllI = Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation("lunar", string);
-        ThreadDownloadImageDataBridge threadDownloadImageDataBridge = Bridge.llIlllIIIllllIIlllIllIIIl().initThreadDownloadImageData(file, this.lIllIlIIIlIIIIIIIlllIlIll, Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation("lunar", "backgrounds/post-default-403x171.png"));
-        Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getTextureManager().bridge$loadTexture(this.llllIIlIIlIIlIIllIIlIIllI, threadDownloadImageDataBridge);
+        this.llllIIlIIlIIlIIllIIlIIllI = Bridge.getInstance().initResourceLocation("lunar", string);
+        ThreadDownloadImageDataBridge threadDownloadImageDataBridge = Bridge.getInstance().initThreadDownloadImageData(file, this.imageURL, Bridge.getInstance().initResourceLocation("lunar", "backgrounds/post-default-403x171.png"));
+        Ref.getMinecraft().bridge$getTextureManager().bridge$loadTexture(this.llllIIlIIlIIlIIllIIlIIllI, threadDownloadImageDataBridge);
     }
 
     public String IlllIIIIIIlllIlIIlllIlIIl() {
@@ -41,11 +40,11 @@ public class BlogCache {
     }
 
     public String lIllIlIIIlIIIIIIIlllIlIll() {
-        return this.lIllIlIIIlIIIIIIIlllIlIll;
+        return this.imageURL;
     }
 
     public String llIlllIIIllllIIlllIllIIIl() {
-        return this.llIlllIIIllllIIlllIllIIIl;
+        return this.blogLink;
     }
 
     public ResourceLocationBridge llllIIlIIlIIlIIllIIlIIllI() {

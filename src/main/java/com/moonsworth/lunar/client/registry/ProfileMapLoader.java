@@ -1,6 +1,7 @@
 package com.moonsworth.lunar.client.registry;
 
 import com.moonsworth.lunar.client.event.EventHandler;
+import com.moonsworth.lunar.client.event.type.network.NetHandlerConnectionStateUpdateEvent;
 import com.moonsworth.lunar.client.feature.type.voice.VoiceModHandler;
 import com.moonsworth.lunar.client.json.file.ItemMapLoader;
 
@@ -8,9 +9,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class ProfileMapLoader
-extends ItemMapLoader<UUID, Object>
-implements EventHandler {
+public class ProfileMapLoader extends ItemMapLoader<UUID, Object> implements EventHandler {
     public VoiceModHandler lIlIlIlIlIIlIIlIIllIIIIIl;
 
     public ProfileMapLoader() {
@@ -23,8 +22,8 @@ implements EventHandler {
     }
 
     @Override
-    public Map lIlIlIlIlIIlIIlIIllIIIIIl() {
-        return new ConcurrentHashMap();
+    public Map<UUID, Object> lIlIlIlIlIIlIIlIIllIIIIIl() {
+        return new ConcurrentHashMap<>();
     }
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(UUID uUID) {
@@ -42,4 +41,3 @@ implements EventHandler {
         this.lIlIlIlIlIIlIIlIIllIIIIIl = profileManager;
     }
 }
- 

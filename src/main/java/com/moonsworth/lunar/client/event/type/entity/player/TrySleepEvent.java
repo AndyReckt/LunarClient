@@ -4,7 +4,7 @@ import com.moonsworth.lunar.bridge.minecraft.client.entity.player.EntityPlayerBr
 import com.moonsworth.lunar.bridge.minecraft.util.BlockPosBridge;
 
 public class TrySleepEvent
-extends PlayerEvent {
+    extends PlayerEvent {
     public Result lIlIlIlIlIIlIIlIIllIIIIIl;
     public final BlockPosBridge IlllIIIIIIlllIlIIlllIlIIl;
 
@@ -25,13 +25,13 @@ extends PlayerEvent {
         this.lIlIlIlIlIIlIIlIIllIIIIIl = result;
     }
 
-    public static enum Result {
+    public enum Result {
         OK,
         NOT_POSSIBLE_HERE,
         NOT_POSSIBLE_NOW,
         TOO_FAR_AWAY,
         OTHER_PROBLEM,
-        NOT_SAFE;
+        NOT_SAFE
 
     }
 }

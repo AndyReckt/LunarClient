@@ -1,20 +1,8 @@
-/*
- * Decompiled with CFR 0.150.
- * 
- * Could not load the following classes:
- *  lunar.G.EntityBridge
- *  lunar.G.EntityLivingBaseBridge
- *  lunar.L.EntityPlayerBridge
- *  lunar.a.Bridge
- *  lunar.aH.PreRenderPlayerEvent
- */
 package mchorse.emoticons.client;
 
-import lunar.G.EntityBridge;
-import lunar.G.EntityLivingBaseBridge;
-import lunar.L.EntityPlayerBridge;
-import lunar.a.Bridge;
-import lunar.aH.PreRenderPlayerEvent;
+import com.moonsworth.lunar.bridge.minecraft.client.entity.player.EntityPlayerBridge;
+import com.moonsworth.lunar.client.bridge.Bridge;
+import com.moonsworth.lunar.client.event.type.entity.player.PreRenderPlayerEvent;
 import mchorse.emoticons.capabilities.cosmetic.Cosmetic;
 import mchorse.emoticons.capabilities.cosmetic.ICosmetic;
 
@@ -24,13 +12,13 @@ public class EntityModelHandler {
         if (entityPlayerBridge.bridge$isSpectator() || entityPlayerBridge.bridge$isInvisible()) {
             return;
         }
-        ICosmetic iCosmetic = Cosmetic.get((EntityBridge)entityPlayerBridge);
+        ICosmetic iCosmetic = Cosmetic.get(entityPlayerBridge);
         if (iCosmetic != null && iCosmetic.getEmote() != null) {
-            if (Bridge.IlllIIIIIIlllIlIIlllIlIIl().lIlIlIlIlIIlIIlIIllIIIIIl()) {
+            if (Bridge.getMinecraftVersion().lIlIlIlIlIIlIIlIIllIIIIIl()) {
                 preRenderPlayerEvent.setCancelled(true);
-                preRenderPlayerEvent.lIlIlIlIlIIlIIlIIllIIIIIl(iCosmetic.render((EntityLivingBaseBridge)preRenderPlayerEvent.lIlIlIlIlIIlIIlIIllIIIIIl(), preRenderPlayerEvent.llIIIIIIIllIIllIlIllIIIIl(), preRenderPlayerEvent.IlllIIIIIIlllIlIIlllIlIIl(), preRenderPlayerEvent.lIllIlIIIlIIIIIIIlllIlIll(), preRenderPlayerEvent.llIlllIIIllllIIlllIllIIIl(), preRenderPlayerEvent.llllIIlIIlIIlIIllIIlIIllI(), preRenderPlayerEvent.IlIlIlllllIlIIlIlIlllIlIl()));
+                preRenderPlayerEvent.lIlIlIlIlIIlIIlIIllIIIIIl(iCosmetic.render(preRenderPlayerEvent.lIlIlIlIlIIlIIlIIllIIIIIl(), preRenderPlayerEvent.llIIIIIIIllIIllIlIllIIIIl(), preRenderPlayerEvent.IlllIIIIIIlllIlIIlllIlIIl(), preRenderPlayerEvent.lIllIlIIIlIIIIIIIlllIlIll(), preRenderPlayerEvent.llIlllIIIllllIIlllIllIIIl(), preRenderPlayerEvent.llllIIlIIlIIlIIllIIlIIllI(), preRenderPlayerEvent.IlIlIlllllIlIIlIlIlllIlIl()));
             } else {
-                preRenderPlayerEvent.setCancelled(iCosmetic.render((EntityLivingBaseBridge)entityPlayerBridge, preRenderPlayerEvent.IlllIIIIIIlllIlIIlllIlIIl(), preRenderPlayerEvent.lIllIlIIIlIIIIIIIlllIlIll(), preRenderPlayerEvent.llIlllIIIllllIIlllIllIIIl(), preRenderPlayerEvent.llllIIlIIlIIlIIllIIlIIllI()));
+                preRenderPlayerEvent.setCancelled(iCosmetic.render(entityPlayerBridge, preRenderPlayerEvent.IlllIIIIIIlllIlIIlllIlIIl(), preRenderPlayerEvent.lIllIlIIIlIIIIIIIlllIlIll(), preRenderPlayerEvent.llIlllIIIllllIIlllIllIIIl(), preRenderPlayerEvent.llllIIlIIlIIlIIllIIlIIllI()));
             }
         }
     }

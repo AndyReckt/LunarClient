@@ -1,10 +1,9 @@
 package com.moonsworth.lunar.bridge.minecraft.scoreboard;
 
 public interface ScoreObjectiveBridge {
-    public ScoreboardBridge bridge$getScoreboard();
+    ScoreboardBridge bridge$getScoreboard();
 
-    public String bridge$getDisplayName();
+    String bridge$getDisplayName();
 
-    public void bridge$setDisplayName(String var1);
+    void bridge$setDisplayName(String var1);
 }
- 

@@ -33,7 +33,7 @@ public enum EnumChatColor {
     llIllIlIllIlllIllIIIIllII('m', true),
     IllllllllllIlIIIlllIlllll('n', true),
     lllllIllIlIIlIIlIIIlllIlI('o', true),
-    IllIIIlllIIIlIlllIlIIlIII('r');
+    RESET('r');
 
     public static final Map<String, EnumChatColor> IIlIllIlIIllIIlIlIllllllI = new HashMap<>();
     public static final Pattern lIIIlllIIIIllllIlIIIlIIll = Pattern.compile("(?i)§[0-9A-FK-OR]");
@@ -70,7 +70,7 @@ public enum EnumChatColor {
     }
 
     public boolean lIllIlIIIlIIIIIIIlllIlIll() {
-        return !this.llllIlIllllIlIlIIIllIlIlI && this != IllIIIlllIIIlIlllIlIIlIII;
+        return !this.llllIlIllllIlIlIIIllIlIlI && this != RESET;
     }
 
     public String llIlllIIIllllIIlllIllIIIl() {

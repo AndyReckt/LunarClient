@@ -5,7 +5,7 @@ import com.moonsworth.lunar.bridge.minecraft.client.entity.player.EntityPlayerBr
 import com.moonsworth.lunar.client.event.CancellableEvent;
 
 public class PlayerEvent
-extends CancellableEvent {
+    extends CancellableEvent {
     public final EntityPlayerBridge lIlIlIlIlIIlIIlIIllIIIIIl;
 
     public EntityPlayerBridge lIlIlIlIlIIlIIlIIllIIIIIl() {
@@ -17,7 +17,7 @@ extends CancellableEvent {
     }
 
     public static class CollisionEvent
-    extends PlayerEvent {
+        extends PlayerEvent {
         public final EntityItemBridge lIlIlIlIlIIlIIlIIllIIIIIl;
 
         public CollisionEvent(EntityPlayerBridge entityPlayerBridge, EntityItemBridge entityItemBridge) {

@@ -4,27 +4,27 @@ import com.moonsworth.lunar.bridge.minecraft.client.MinecraftBridge;
 import com.moonsworth.lunar.bridge.lunar.input.KeyType;
 
 public interface CustomScreen {
-    public int lIlIlIlIlIIlIIlIIllIIIIIl();
+    int lIlIlIlIlIIlIIlIIllIIIIIl();
 
-    public int IlllIIIIIIlllIlIIlllIlIIl();
+    int mouseReleased();
 
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(int var1, int var2, float var3);
+    void drawScreen(int var1, int var2, float var3);
 
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(MinecraftBridge var1, int var2, int var3);
+    void setWorldAndResolution(MinecraftBridge var1, int var2, int var3);
 
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(int var1, int var2, int var3);
+    void mouseClicked(int var1, int var2, int var3);
 
-    public void IlllIIIIIIlllIlIIlllIlIIl(int var1, int var2, int var3);
+    void mouseReleased(int var1, int var2, int var3);
 
-    public void lIllIlIIIlIIIIIIIlllIlIll();
+    void onGuiClosed();
 
-    public void llIlllIIIllllIIlllIllIIIl();
+    void updateScreen();
 
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(char var1, KeyType var2);
+    void keyTyped(char var1, KeyType var2);
 
-    public void llllIIlIIlIIlIIllIIlIIllI();
+    void llllIIlIIlIIlIIllIIlIIllI();
 
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(int var1);
+    void handleMouseScrollDelta(int var1);
 
-    public boolean IlIlIlllllIlIIlIlIlllIlIl();
+    boolean IlIlIlllllIlIIlIlIlllIlIl();
 }

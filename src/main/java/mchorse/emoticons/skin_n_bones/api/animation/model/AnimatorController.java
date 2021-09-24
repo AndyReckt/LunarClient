@@ -1,42 +1,3 @@
-/*
- * Decompiled with CFR 0.150.
- * 
- * Could not load the following classes:
- *  javax.vecmath.Matrix4f
- *  javax.vecmath.Tuple4f
- *  javax.vecmath.Vector4f
- *  lunar.D.BuiltInModelBridge
- *  lunar.G.EntityBridge
- *  lunar.G.EntityLivingBaseBridge
- *  lunar.G.llIIIIIIIllIIllIlIllIIIIl
- *  lunar.L.EntityPlayerBridge
- *  lunar.Q.ItemArmorBridge
- *  lunar.Q.ItemBridge
- *  lunar.Q.ItemStackBridge
- *  lunar.R.RenderUtilBridge
- *  lunar.a.Bridge
- *  lunar.a.MinecraftVersion
- *  lunar.af.ResourceLocationBridge
- *  lunar.at.CosmeticManagerLayer
- *  lunar.c.MatrixStackBridge
- *  lunar.cO.HeadCustomLayer
- *  lunar.dc.Ref
- *  lunar.de.lIlIlIlIlIIlIIlIIllIIIIIl
- *  lunar.de.lIllIlIIIlIIIIIIIlllIlIll
- *  lunar.h.MinecraftBridge
- *  lunar.l.ModelPlayerBridge
- *  lunar.p.AbstractClientPlayerBridge
- *  lunar.q.GlStateManagerBridge
- *  lunar.q.ItemRendererBridge
- *  lunar.q.RendererLivingEntityBridge
- *  lunar.q.lIlIlIlIlIIlIIlIIllIIIIIl
- *  lunar.r.ItemCameraTransformsBridge$lIlIlIlIlIIlIIlIIllIIIIIl
- *  lunar.u.RenderItemBridge
- *  lunar.v.LayerCapeBridge
- *  lunar.w.RenderPlayerBridge
- *  org.lwjgl.BufferUtils
- *  org.lwjgl.opengl.GL11
- */
 package mchorse.emoticons.skin_n_bones.api.animation.model;
 
 import java.nio.FloatBuffer;
@@ -47,7 +8,6 @@ import javax.vecmath.Tuple4f;
 import javax.vecmath.Vector4f;
 
 import com.moonsworth.lunar.bridge.current.MatrixStackBridge;
-import com.moonsworth.lunar.bridge.current.lIllIlIIIlIIIIIIIlllIlIll;
 import com.moonsworth.lunar.bridge.lunar.RenderUtilBridge;
 import com.moonsworth.lunar.bridge.minecraft.client.MinecraftBridge;
 import com.moonsworth.lunar.bridge.minecraft.client.entity.AbstractClientPlayerBridge;
@@ -61,16 +21,16 @@ import com.moonsworth.lunar.bridge.minecraft.client.renderer.ItemRendererBridge;
 import com.moonsworth.lunar.bridge.minecraft.client.renderer.block.model.ItemCameraTransformsBridge;
 import com.moonsworth.lunar.bridge.minecraft.client.renderer.entity.RenderItemBridge;
 import com.moonsworth.lunar.bridge.minecraft.client.renderer.entity.RenderPlayerBridge;
-import com.moonsworth.lunar.bridge.minecraft.client.renderer.entity.RendererLivingEntityBridge;
 import com.moonsworth.lunar.bridge.minecraft.client.renderer.entity.UnknownRenderEntityBridge;
 import com.moonsworth.lunar.bridge.minecraft.client.renderer.entity.layers.LayerCapeBridge;
-import com.moonsworth.lunar.bridge.minecraft.client.resources.model.BuiltInModelBridge;
+import com.moonsworth.lunar.bridge.minecraft.client.resources.model.IBakedModelBridge;
 import com.moonsworth.lunar.bridge.minecraft.item.ItemArmorBridge;
 import com.moonsworth.lunar.bridge.minecraft.item.ItemBridge;
 import com.moonsworth.lunar.bridge.minecraft.item.ItemStackBridge;
 import com.moonsworth.lunar.bridge.minecraft.util.ResourceLocationBridge;
 import com.moonsworth.lunar.client.bridge.Bridge;
 import com.moonsworth.lunar.client.bridge.MinecraftVersion;
+import com.moonsworth.lunar.client.cosmetic.de.IlllIIIIIIlllIlIIlllIlIIl;
 import com.moonsworth.lunar.client.cosmetic.de.lIlIlIlIlIIlIIlIIllIIIIIl;
 import com.moonsworth.lunar.client.cosmetic.layer.CosmeticManagerLayer;
 import com.moonsworth.lunar.client.cosmetic.type.HeadCustomLayer;
@@ -79,19 +39,14 @@ import mchorse.emoticons.common.EntityEquipmentSlot;
 import mchorse.emoticons.skin_n_bones.api.animation.Animation;
 import mchorse.emoticons.skin_n_bones.api.animation.AnimationManager;
 import mchorse.emoticons.skin_n_bones.api.animation.AnimationMesh;
-import mchorse.emoticons.skin_n_bones.api.animation.model.ActionPlayback;
-import mchorse.emoticons.skin_n_bones.api.animation.model.Animator;
-import mchorse.emoticons.skin_n_bones.api.animation.model.AnimatorConfig;
-import mchorse.emoticons.skin_n_bones.api.animation.model.IAnimator;
-import mchorse.emoticons.skin_n_bones.api.animation.model.IAnimatorFactory;
 import mchorse.emoticons.skin_n_bones.api.bobj.BOBJArmature;
 import mchorse.emoticons.skin_n_bones.api.bobj.BOBJBone;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
 
 public class AnimatorController {
-    public static final ResourceLocationBridge EMPTY_LOCATION = Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation("lunar:empty");
-    public static final FloatBuffer matrix = BufferUtils.createFloatBuffer((int)16);
+    public static final ResourceLocationBridge EMPTY_LOCATION = Bridge.getInstance().initResourceLocation("lunar:empty");
+    public static final FloatBuffer matrix = BufferUtils.createFloatBuffer(16);
     public static final float[] buffer = new float[16];
     public static final IAnimatorFactory DEFAULT_FACTORY = Animator::new;
     public IAnimatorFactory factory = DEFAULT_FACTORY;
@@ -116,10 +71,10 @@ public class AnimatorController {
     public Vector4f calcPosition(EntityLivingBaseBridge entityLivingBaseBridge, BOBJBone bOBJBone, float f, float f2, float f3, float f4) {
         float f5 = (float)Math.PI;
         this.result.set(f, f2, f3, 1.0f);
-        bOBJBone.mat.transform((Tuple4f)this.result);
+        bOBJBone.mat.transform(this.result);
         this.rotate.setIdentity();
         this.rotate.rotY((180.0f - entityLivingBaseBridge.bridge$getRenderYawOffset() + 180.0f) / 180.0f * (float)Math.PI);
-        this.rotate.transform((Tuple4f)this.result);
+        this.rotate.transform(this.result);
         this.result.scale(0.9375f);
         float f6 = (float)(entityLivingBaseBridge.bridge$lastTickX() + (entityLivingBaseBridge.bridge$getPosX() - entityLivingBaseBridge.bridge$lastTickX()) * (double)f4);
         float f7 = (float)(entityLivingBaseBridge.bridge$lastTickY() + (entityLivingBaseBridge.bridge$getPosY() - entityLivingBaseBridge.bridge$lastTickY()) * (double)f4);
@@ -127,7 +82,7 @@ public class AnimatorController {
         this.result.x += f6;
         this.result.y += f7;
         this.result.z += f8;
-        if (Bridge.IlllIIIIIIlllIlIIlllIlIIl() == MinecraftVersion.lIlIlIlIlIIlIIlIIllIIIIIl && entityLivingBaseBridge == Ref.IlIlIlllllIlIIlIlIlllIlIl()) {
+        if (Bridge.getMinecraftVersion() == MinecraftVersion.lIlIlIlIlIIlIIlIIllIIIIIl && entityLivingBaseBridge == Ref.getPlayer()) {
             this.result.y -= 1.62f;
         }
         return this.result;
@@ -151,8 +106,8 @@ public class AnimatorController {
         RenderUtilBridge renderUtilBridge = Bridge.IlllllIlIIIlIIlIIllIIlIll();
         if (this.animation != null && this.animation.meshes.size() > 0) {
             EntityPlayerBridge playerBridge;
-            if (Bridge.IlllIIIIIIlllIlIIlllIlIIl() == MinecraftVersion.lIlIlIlIlIIlIIlIIllIIIIIl && entityLivingBaseBridge == Ref.IlIlIlllllIlIIlIlIlllIlIl()) {
-                d2 -= (double)1.62f;
+            if (Bridge.getMinecraftVersion() == MinecraftVersion.lIlIlIlIlIIlIIlIIllIIIIIl && entityLivingBaseBridge == Ref.getPlayer()) {
+                d2 -= 1.62f;
             }
             glStateManagerBridge.bridge$disableCull();
             glStateManagerBridge.bridge$enableAlpha();
@@ -171,23 +126,23 @@ public class AnimatorController {
             }
             float f4 = this.userConfig.scale;
             GL11.glPushMatrix();
-            GL11.glTranslated((double)d, (double)d2, (double)d3);
-            GL11.glScalef((float)f4, (float)f4, (float)f4);
+            GL11.glTranslated(d, d2, d3);
+            GL11.glScalef(f4, f4, f4);
             if (entityLivingBaseBridge.bridge$isPlayerSleeping()) {
                 playerBridge = (EntityPlayerBridge)entityLivingBaseBridge;
                 glStateManagerBridge.bridge$rotate(playerBridge.bridge$getBedOrientationInDegrees(), 0.0f, 1.0f, 0.0f);
                 glStateManagerBridge.bridge$rotate(270.0f, 0.0f, 1.0f, 0.0f);
             } else {
-                GL11.glRotatef((float)(180.0f - (f3 - 180.0f)), (float)0.0f, (float)1.0f, (float)0.0f);
+                GL11.glRotatef(180.0f - (f3 - 180.0f), 0.0f, 1.0f, 0.0f);
             }
-            this.renderAnimation(entityLivingBaseBridge, (AnimationMesh)this.animation.meshes.get(0), f3, f2);
+            this.renderAnimation(entityLivingBaseBridge, this.animation.meshes.get(0), f3, f2);
             GL11.glPopMatrix();
             glStateManagerBridge.bridge$enableCull();
         }
     }
 
-    public List renderModern(EntityLivingBaseBridge entityLivingBaseBridge, com.moonsworth.lunar.client.cosmetic.de.lIllIlIIIlIIIIIIIlllIlIll lIllIlIIIlIIIIIIIlllIlIll2, MatrixStackBridge matrixStackBridge, double d, double d2, double d3, float f, int n) {
-        ArrayList arrayList = new ArrayList();
+    public List<IlllIIIIIIlllIlIIlllIlIIl> renderModern(EntityLivingBaseBridge entityLivingBaseBridge, com.moonsworth.lunar.client.cosmetic.de.lIllIlIIIlIIIIIIIlllIlIll lIllIlIIIlIIIIIIIlllIlIll2, MatrixStackBridge matrixStackBridge, double d, double d2, double d3, float f, int n) {
+        ArrayList<IlllIIIIIIlllIlIIlllIlIIl> arrayList = new ArrayList<>();
         if (this.animation != null && this.animation.meshes.size() > 0) {
             float f2 = entityLivingBaseBridge.bridge$getPrevRenderYawOffset() + (entityLivingBaseBridge.bridge$getRenderYawOffset() - entityLivingBaseBridge.bridge$getPrevRenderYawOffset()) * f;
             if (entityLivingBaseBridge.bridge$isRiding()) {
@@ -207,18 +162,18 @@ public class AnimatorController {
             matrixStackBridge.lIlIlIlIlIIlIIlIIllIIIIIl(f3, f3, f3);
             matrixStackBridge.IlllIIIIIIlllIlIIlllIlIIl(0.0f, 180.0f - (f2 - 180.0f), 0.0f);
             lIllIlIIIlIIIIIIIlllIlIll2.lIlIlIlIlIIlIIlIIllIIIIIl(matrixStackBridge);
-            arrayList.addAll(this.renderAnimationModern(entityLivingBaseBridge, (AnimationMesh)this.animation.meshes.get(0), matrixStackBridge, f2, f, n));
+            arrayList.addAll(this.renderAnimationModern(entityLivingBaseBridge, this.animation.meshes.get(0), matrixStackBridge, f2, f, n));
         }
         return arrayList;
     }
 
-    public List renderAnimationModern(EntityLivingBaseBridge entityLivingBaseBridge, AnimationMesh animationMesh, MatrixStackBridge matrixStackBridge, float f, float f2, int n) {
+    public List<IlllIIIIIIlllIlIIlllIlIIl> renderAnimationModern(EntityLivingBaseBridge entityLivingBaseBridge, AnimationMesh animationMesh, MatrixStackBridge matrixStackBridge, float f, float f2, int n) {
         BOBJArmature bOBJArmature = animationMesh.armature;
         this.setupBoneMatrices(entityLivingBaseBridge, bOBJArmature, f, f2);
         for (AnimationMesh animationMesh2 : this.animation.meshes) {
             animationMesh2.updateMesh(true);
         }
-        List list = this.animation.renderPasses(this.userConfig.meshes, n);
+        List<IlllIIIIIIlllIlIIlllIlIIl> list = this.animation.renderPasses(this.userConfig.meshes, n);
         Bridge.llllIIlIIlIIlIIllIIlIIllI().IlllIIIIIIlllIlIIlllIlIIl().ifPresent(llIIlIlIIIllIlIlIlIIlIIll2 -> {
             ModelPlayerBridge modelPlayerBridge = ((RenderPlayerBridge)Bridge.llllIIlIIlIIlIIllIIlIIllI().bridge$getRenderManager().bridge$getSkinMap().get(((AbstractClientPlayerBridge)entityLivingBaseBridge).bridge$getSkinType())).bridge$getMainModel();
             lIlIlIlIlIIlIIlIIllIIIIIl.IlllIIIIIIlllIlIIlllIlIIl.lIlIlIlIlIIlIIlIIllIIIIIl((AbstractClientPlayerBridge)entityLivingBaseBridge, modelPlayerBridge, n, llIIlIlIIIllIlIlIlIIlIIll2.lIllIlIIIlIIIIIIIlllIlIll(), matrixStackBridge, f2, 0.0f);
@@ -227,7 +182,7 @@ public class AnimatorController {
             if (rendererLivingEntityBridge.bridge$canRenderName(entityLivingBaseBridge)) {
                 lIlIlIlIlIIlIIlIIllIIIIIl.lIllIlIIIlIIIIIIIlllIlIll.lIlIlIlIlIIlIIlIIllIIIIIl((AbstractClientPlayerBridge)entityLivingBaseBridge, modelPlayerBridge, n, llIIlIlIIIllIlIlIlIIlIIll2.lIllIlIIIlIIIIIIIlllIlIll(), matrixStackBridge, f2, f);
             }
-            this.renderHeadModern(entityLivingBaseBridge, (BOBJBone)bOBJArmature.bones.get(this.userConfig.head), matrixStackBridge, llIIlIlIIIllIlIlIlIIlIIll2.lIllIlIIIlIIIIIIIlllIlIll(), n);
+            this.renderHeadModern(entityLivingBaseBridge, bOBJArmature.bones.get(this.userConfig.head), matrixStackBridge, llIIlIlIIIllIlIlIlIIlIIll2.lIllIlIIIlIIIIIIIlllIlIll(), n);
         });
         return list;
     }
@@ -248,17 +203,17 @@ public class AnimatorController {
         glStateManagerBridge.bridge$disableRescaleNormal();
         bl = Bridge.lllllIllIlIIlIIlIIIlllIlI().bridge$setBrightness(entityLivingBaseBridge, f2);
         glStateManagerBridge.bridge$pushMatrix();
-        LayerCapeBridge layerCapeBridge = Ref.IlllIIIIIIlllIlIIlllIlIIl().IIlIllIlIIllIIlIlIllllllI().IIlIllIlllllllIIlIIIllIIl();
+        LayerCapeBridge layerCapeBridge = Ref.getLC().IIlIllIlIIllIIlIlIllllllI().IIlIllIlllllllIIlIIIllIIl();
         if (layerCapeBridge != null) {
             layerCapeBridge.bridge$render((AbstractClientPlayerBridge)entityLivingBaseBridge, 0.0f, 0.0f, f2, 0.0f, 0.0f, 0.0f, 0.0f);
         }
         glStateManagerBridge.bridge$popMatrix();
         glStateManagerBridge.bridge$pushMatrix();
-        if (Bridge.IlllIIIIIIlllIlIIlllIlIIl() == MinecraftVersion.lIlIlIlIlIIlIIlIIllIIIIIl) {
-            Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getRenderManager().bridge$defaultPlayerRenderer().lIlIlIlIlIIlIIlIIllIIIIIl((AbstractClientPlayerBridge)entityLivingBaseBridge, f2);
+        if (Bridge.getMinecraftVersion() == MinecraftVersion.lIlIlIlIlIIlIIlIIllIIIIIl) {
+            Ref.getMinecraft().bridge$getRenderManager().bridge$defaultPlayerRenderer().lIlIlIlIlIIlIIlIIllIIIIIl((AbstractClientPlayerBridge)entityLivingBaseBridge, f2);
         } else {
-            HeadCustomLayer headCustomLayer = Ref.IlllIIIIIIlllIlIIlllIlIIl().IIlIllIlIIllIIlIlIllllllI().lIlIIIIIIlIIIllllIllIIlII();
-            CosmeticManagerLayer cosmeticManagerLayer = Ref.IlllIIIIIIlllIlIIlllIlIIl().IIlIllIlIIllIIlIlIllllllI().llIlIIIllIIlIllIllIllllIl();
+            HeadCustomLayer headCustomLayer = Ref.getLC().IIlIllIlIIllIIlIlIllllllI().lIlIIIIIIlIIIllllIllIIlII();
+            CosmeticManagerLayer cosmeticManagerLayer = Ref.getLC().IIlIllIlIIllIIlIlIllllllI().llIlIIIllIIlIllIllIllllIl();
             if (headCustomLayer != null && entityLivingBaseBridge instanceof AbstractClientPlayerBridge) {
                 ModelPlayerBridge modelPlayerBridge = ((RenderPlayerBridge)Bridge.llllIIlIIlIIlIIllIIlIIllI().bridge$getRenderManager().bridge$getSkinMap().get(((AbstractClientPlayerBridge)entityLivingBaseBridge).bridge$getSkinType())).bridge$getMainModel();
                 headCustomLayer.lIlIlIlIlIIlIIlIIllIIIIIl((AbstractClientPlayerBridge)entityLivingBaseBridge, modelPlayerBridge, 0.0f, 0.0f, f2, 0.0f, 0.0f, 0.0f, 0.0f);
@@ -268,7 +223,7 @@ public class AnimatorController {
         if (bl) {
             Bridge.lllllIllIlIIlIIlIIIlllIlI().bridge$unsetBrightness();
         }
-        this.renderHead(entityLivingBaseBridge, (BOBJBone)bOBJArmature.bones.get(this.userConfig.head));
+        this.renderHead(entityLivingBaseBridge, bOBJArmature.bones.get(this.userConfig.head));
     }
 
     public void setupBoneMatrices(EntityLivingBaseBridge entityLivingBaseBridge, BOBJArmature bOBJArmature, float f, float f2) {
@@ -282,7 +237,7 @@ public class AnimatorController {
     }
 
     public void setupBoneTransformations(EntityLivingBaseBridge entityLivingBaseBridge, BOBJArmature bOBJArmature, float f, float f2) {
-        BOBJBone bOBJBone = (BOBJBone)bOBJArmature.bones.get(this.userConfig.head);
+        BOBJBone bOBJBone = bOBJArmature.bones.get(this.userConfig.head);
         if (bOBJBone != null) {
             float f3 = entityLivingBaseBridge.bridge$getPrevRotationYawHead() + (entityLivingBaseBridge.bridge$getRotationYawHead() - entityLivingBaseBridge.bridge$getPrevRotationYawHead()) * f2;
             float f4 = (float)(entityLivingBaseBridge.bridge$getPreviousRotationPitch() + (entityLivingBaseBridge.bridge$getRotationPitch() - entityLivingBaseBridge.bridge$getPreviousRotationPitch()) * (double)f2);
@@ -295,7 +250,7 @@ public class AnimatorController {
         }
     }
 
-    public void renderHeadModern(EntityLivingBaseBridge entityLivingBaseBridge, BOBJBone bOBJBone, MatrixStackBridge matrixStackBridge, lIlIlIlIlIIlIIlIIllIIIIIl lIlIlIlIlIIlIIlIIllIIIIIl2, int n) {
+    public void renderHeadModern(EntityLivingBaseBridge entityLivingBaseBridge, BOBJBone bOBJBone, MatrixStackBridge matrixStackBridge, com.moonsworth.lunar.bridge.minecraft.client.renderer.lIlIlIlIlIIlIIlIIllIIIIIl lIlIlIlIlIIlIIlIIllIIIIIl2, int n) {
         ItemBridge itemBridge;
         ItemStackBridge itemStackBridge = entityLivingBaseBridge.bridge$getEquipmentInSlot(EntityEquipmentSlot.HEAD.ordinal());
         if (itemStackBridge != null && !itemStackBridge.bridge$isEmpty() && bOBJBone != null && !((itemBridge = itemStackBridge.bridge$getItem()) instanceof ItemArmorBridge)) {
@@ -304,7 +259,7 @@ public class AnimatorController {
             float f = 0.625f;
             if (itemBridge.bridge$isItemSkull()) {
                 f = 1.1875f;
-                matrixStackBridge.lIlIlIlIlIIlIIlIIllIIIIIl(0.0, (double)0.595f, 0.0);
+                matrixStackBridge.lIlIlIlIlIIlIIlIIllIIIIIl(0.0, 0.595f, 0.0);
             } else {
                 matrixStackBridge.lIlIlIlIlIIlIIlIIllIIIIIl(0.0, 0.25, 0.0);
                 matrixStackBridge.IlllIIIIIIlllIlIIlllIlIIl(0.0f, 180.0f, 0.0f);
@@ -313,7 +268,7 @@ public class AnimatorController {
             ItemRendererBridge itemRendererBridge = Bridge.llllIIlIIlIIlIIllIIlIIllI().bridge$getItemRenderer();
             RenderItemBridge renderItemBridge = Bridge.llllIIlIIlIIlIIllIIlIIllI().bridge$getRenderItem();
             renderItemBridge.bridge$getItemModelShaper().ifPresent(itemModelMesherBridge -> {
-                BuiltInModelBridge builtInModelBridge = itemModelMesherBridge.bridge$getItemModel(itemStackBridge);
+                IBakedModelBridge builtInModelBridge = itemModelMesherBridge.bridge$getItemModel(itemStackBridge);
                 itemRendererBridge.lIlIlIlIlIIlIIlIIllIIIIIl(itemStackBridge, ItemCameraTransformsBridge.lIlIlIlIlIIlIIlIIllIIIIIl.IlIlIlllllIlIIlIlIlllIlIl, true, matrixStackBridge, lIlIlIlIlIIlIIlIIllIIIIIl2, n, NO_OVERLAY, builtInModelBridge);
             });
             matrixStackBridge.IlllIIIIIIlllIlIIlllIlIIl();
@@ -328,11 +283,11 @@ public class AnimatorController {
             float f;
             glStateManagerBridge.bridge$pushMatrix();
             this.setupMatrix(bOBJBone);
-            float f2 = f = Bridge.IlllIIIIIIlllIlIIlllIlIIl() == MinecraftVersion.lIlIlIlIlIIlIIlIIllIIIIIl ? 1.0625f : 0.625f;
+            float f2 = f = Bridge.getMinecraftVersion() == MinecraftVersion.lIlIlIlIlIIlIIlIIllIIIIIl ? 1.0625f : 0.625f;
             if (itemBridge != Bridge.llIlIIIllIIlIllIllIllllIl().bridge$skull()) {
                 glStateManagerBridge.bridge$rotate(180.0f, 0.0f, 1.0f, 0.0f);
             }
-            if (Bridge.IlllIIIIIIlllIlIIlllIlIIl().ordinal() >= MinecraftVersion.lIllIlIIIlIIIIIIIlllIlIll.ordinal()) {
+            if (Bridge.getMinecraftVersion().ordinal() >= MinecraftVersion.lIllIlIIIlIIIIIIIlllIlIll.ordinal()) {
                 if (itemBridge == Bridge.llIlIIIllIIlIllIllIllllIl().bridge$skull()) {
                     f = 1.1875f;
                     glStateManagerBridge.bridge$translate(0.0f, 0.585f, 0.0f);
@@ -345,7 +300,7 @@ public class AnimatorController {
                 }
                 glStateManagerBridge.bridge$translate(0.0f, 0.25f, 0.0f);
             }
-            glStateManagerBridge.bridge$scale((double)f, (double)f, (double)f);
+            glStateManagerBridge.bridge$scale(f, f, f);
             this.mc.bridge$getItemRenderer().bridge$renderItem(entityLivingBaseBridge, itemStackBridge, ItemCameraTransformsBridge.lIlIlIlIlIIlIIlIIllIIIIIl.IlIlIlllllIlIIlIlIlllIlIl);
             glStateManagerBridge.bridge$popMatrix();
         }

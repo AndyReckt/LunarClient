@@ -8,35 +8,35 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface ThirdPartyMod {
-    public String lIlIlIlIlIIlIIlIIllIIIIIl();
+    String lIlIlIlIlIIlIIlIIllIIIIIl();
 
-    public String IlllIIIIIIlllIlIIlllIlIIl() default "";
+String IlllIIIIIIlllIlIIlllIlIIl() default "";
 
-    public String lIllIlIIIlIIIIIIIlllIlIll() default "";
+String lIllIlIIIlIIIIIIIlllIlIll() default "";
 
-    public String llIlllIIIllllIIlllIllIIIl() default "";
+String llIlllIIIllllIIlllIllIIIl() default "";
 
-    public boolean llllIIlIIlIIlIIllIIlIIllI() default false;
+boolean llllIIlIIlIIlIIllIIlIIllI() default false;
 
-    public boolean IlIlIlllllIlIIlIlIlllIlIl() default false;
+boolean IlIlIlllllIlIIlIlIlllIlIl() default false;
 
-    public boolean llIIIIIIIllIIllIlIllIIIIl() default false;
+boolean llIIIIIIIllIIllIlIllIIIIl() default false;
 
-    public String lIIIllIllIIllIlllIlIIlllI() default "";
+String lIIIllIllIIllIlllIlIIlllI() default "";
 
-    public String IlllllIlIIIlIIlIIllIIlIll() default "";
+String IlllllIlIIIlIIlIIllIIlIll() default "";
 
-    public String llIIlIlIIIllIlIlIlIIlIIll() default "";
+String llIIlIlIIIllIlIlIlIIlIIll() default "";
 
-    public String llIIIlllIIlllIllllIlIllIl() default "";
+String llIIIlllIIlllIllllIlIllIl() default "";
 
-    public String lllllIllIllIllllIlIllllII() default "java";
+String lllllIllIllIllllIlIllllII() default "java";
 
-    public String lllIIIIIlllIIlIllIIlIIIlI() default "";
+String lllIIIIIlllIIlIllIIlIIIlI() default "";
 
-    public boolean lIlIIIIIIlIIIllllIllIIlII() default false;
+boolean lIlIIIIIIlIIIllllIllIIlII() default false;
 
-    public String llIlIIIllIIlIllIllIllllIl() default "";
+String llIlIIIllIIlIllIllIllllIl() default "";
 
-    public String IllIllIIIllIIIlIlIlIIIIll() default "";
+String IllIllIIIllIIIlIlIlIIIIll() default "";
 }

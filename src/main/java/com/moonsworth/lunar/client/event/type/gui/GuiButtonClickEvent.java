@@ -5,7 +5,7 @@ import com.moonsworth.lunar.bridge.minecraft.client.gui.GuiScreenBridge;
 import com.moonsworth.lunar.client.event.CancellableEvent;
 
 public class GuiButtonClickEvent
-extends CancellableEvent {
+    extends CancellableEvent {
     public final GuiScreenBridge lIlIlIlIlIIlIIlIIllIIIIIl;
     public final GuiButtonBridge IlllIIIIIIlllIlIIlllIlIIl;
 

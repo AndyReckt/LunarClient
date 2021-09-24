@@ -1,9 +1,5 @@
-/*
- * Decompiled with CFR 0.150.
- */
 package mchorse.emoticons;
 
-import mchorse.emoticons.ClientProxy;
 import mchorse.emoticons.common.emotes.Emotes;
 
 public final class Emoticons {

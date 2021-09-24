@@ -9,9 +9,9 @@ import com.moonsworth.lunar.bridge.minecraft.world.biome.WorldChunkManagerBridge
  * @since 10/07/2021 14:13
  */
 public interface ChunkBridge {
-    public BiomeGenBaseBridge bridge$getBiome(Vector3i var1, WorldChunkManagerBridge var2);
+    BiomeGenBaseBridge bridge$getBiome(Vector3i var1, WorldChunkManagerBridge var2);
 
-    public int bridge$getX();
+    int bridge$getX();
 
-    public int bridge$getZ();
+    int bridge$getZ();
 }

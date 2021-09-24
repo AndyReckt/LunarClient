@@ -15,7 +15,7 @@ import com.moonsworth.lunar.client.ui.ease.SinusoidalEase;
 import com.moonsworth.lunar.client.ui.screen.AbstractUIScreen;
 import com.moonsworth.lunar.client.util.ColorUtil;
 import com.moonsworth.lunar.client.websocket.AssetsWebSocket;
-import com.moonsworth.lunar.client.websocket.FriendProfile;
+import com.moonsworth.lunar.client.profile.FriendProfile;
 import com.moonsworth.lunar.client.websocket.WebSocketState;
 import org.lwjgl.opengl.GL11;
 
@@ -40,10 +40,10 @@ public class FriendsUIScreen extends AbstractUIScreen {
     public FriendsUIScreen() {
         this.lIllIlIIIlIIIIIIIlllIlIll = new QuadraticEase(100L);
         this.lIllIlIIIlIIIIIIIlllIlIll.lIllIlIIIlIIIIIIIlllIlIll();
-        GL11.glTexParameteri((int)3553, (int)10241, (int)9729);
-        GL11.glTexParameteri((int)3553, (int)10240, (int)9729);
-        GL11.glTexParameteri((int)3553, (int)10242, (int)10496);
-        GL11.glTexParameteri((int)3553, (int)10243, (int)10496);
+        GL11.glTexParameteri(3553, 10241, 9729);
+        GL11.glTexParameteri(3553, 10240, 9729);
+        GL11.glTexParameteri(3553, 10242, 10496);
+        GL11.glTexParameteri(3553, 10243, 10496);
     }
 
     public static FriendsUIScreen llIIIIIIIllIIllIlIllIIIIl() {
@@ -78,7 +78,7 @@ public class FriendsUIScreen extends AbstractUIScreen {
 
     @Override
     public void llIIIlllIIlllIllllIlIllIl() {
-        this.llIlllIIIllllIIlllIllIIIl.lIlIlIlIlIIlIIlIIllIIIIIl(-130.0f, 0.0f, 130.0f, this.lllllIllIlIIlIIlIIIlllIlI());
+        this.llIlllIIIllllIIlllIllIIIl.setPositionAndSize(-130.0f, 0.0f, 130.0f, this.lllllIllIlIIlIIlIIIlllIlI());
     }
 
     @Override
@@ -89,19 +89,19 @@ public class FriendsUIScreen extends AbstractUIScreen {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(MinecraftBridge minecraftBridge, int n, int n2) {
+    public void setWorldAndResolution(MinecraftBridge minecraftBridge, int n, int n2) {
         if (this.IlllIIIIIIlllIlIIlllIlIIl != null) {
             this.IlllIIIIIIlllIlIIlllIlIIl.bridge$setWorldAndResolution(minecraftBridge, n, n2);
         }
-        super.lIlIlIlIlIIlIIlIIllIIIIIl(minecraftBridge, n, n2);
+        super.setWorldAndResolution(minecraftBridge, n, n2);
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(int n, int n2, float f) {
+    public void drawScreen(int n, int n2, float f) {
         if (this.IlllIIIIIIlllIlIIlllIlIIl != null) {
             this.IlllIIIIIIlllIlIIlllIlIIl.bridge$drawScreen(0, 0, f);
         }
-        if (!Ref.getAssetsWebsocket().isPresent() || ((AssetsWebSocket)Ref.getAssetsWebsocket().get()).lIlIlIlIlIIlIIlIIllIIIIIl() != WebSocketState.READY) {
+        if (!Ref.getAssetsWebsocket().isPresent() || Ref.getAssetsWebsocket().get().lIlIlIlIlIIlIIlIIllIIIIIl() != WebSocketState.READY) {
             float f2 = FriendsUIScreen.lIIlIlllIlIlIIIlllIIlIIII();
             Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$pushMatrix();
             Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$scale(f2, f2, f2);
@@ -114,22 +114,22 @@ public class FriendsUIScreen extends AbstractUIScreen {
                 this.llIlIIIllIIlIllIllIllllIl.lIlIlIlIlIIlIIlIIllIIIIIl(400L);
                 this.llIlIIIllIIlIllIllIllllIl.llIlllIIIllllIIlllIllIIIl();
             }
-            FontRegistry.IllIllIIIllIIIlIlIlIIIIll().IlllIIIIIIlllIlIIlllIlIIl(this.get("connecting", new Object[0]), this.IllllllllllIlIIIlllIlllll() / 2.0f, this.lllllIllIlIIlIIlIIIlllIlI() / 2.0f - 10.0f, -1);
-            AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl((double)(this.IllllllllllIlIIIlllIlllll() / 2.0f - 10.0f), (double)(this.lllllIllIlIIlIIlIIIlllIlI() / 2.0f + 10.0f), 2.0, ColorUtil.lIlIlIlIlIIlIIlIIllIIIIIl(0.8f, 0.8f, 0.8f, 1.0f * this.lllIIIIIlllIIlIllIIlIIIlI.IlllllIlIIIlIIlIIllIIlIll()));
-            AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl((double)(this.IllllllllllIlIIIlllIlllll() / 2.0f), (double)(this.lllllIllIlIIlIIlIIIlllIlI() / 2.0f + 10.0f), 2.0, ColorUtil.lIlIlIlIlIIlIIlIIllIIIIIl(0.8f, 0.8f, 0.8f, 1.0f * this.lIlIIIIIIlIIIllllIllIIlII.IlllllIlIIIlIIlIIllIIlIll()));
-            AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl((double)(this.IllllllllllIlIIIlllIlllll() / 2.0f + 10.0f), (double)(this.lllllIllIlIIlIIlIIIlllIlI() / 2.0f + 10.0f), 2.0, ColorUtil.lIlIlIlIlIIlIIlIIllIIIIIl(0.8f, 0.8f, 0.8f, 1.0f * this.llIlIIIllIIlIllIllIllllIl.IlllllIlIIIlIIlIIllIIlIll()));
+            FontRegistry.IllIllIIIllIIIlIlIlIIIIll().IlllIIIIIIlllIlIIlllIlIIl(this.get("connecting"), this.IllllllllllIlIIIlllIlllll() / 2.0f, this.lllllIllIlIIlIIlIIIlllIlI() / 2.0f - 10.0f, -1);
+            AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(this.IllllllllllIlIIIlllIlllll() / 2.0f - 10.0f, this.lllllIllIlIIlIIlIIIlllIlI() / 2.0f + 10.0f, 2.0, ColorUtil.lIlIlIlIlIIlIIlIIllIIIIIl(0.8f, 0.8f, 0.8f, 1.0f * this.lllIIIIIlllIIlIllIIlIIIlI.getProgress()));
+            AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(this.IllllllllllIlIIIlllIlllll() / 2.0f, this.lllllIllIlIIlIIlIIIlllIlI() / 2.0f + 10.0f, 2.0, ColorUtil.lIlIlIlIlIIlIIlIIllIIIIIl(0.8f, 0.8f, 0.8f, 1.0f * this.lIlIIIIIIlIIIllllIllIIlII.getProgress()));
+            AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(this.IllllllllllIlIIIlllIlllll() / 2.0f + 10.0f, this.lllllIllIlIIlIIlIIIlllIlI() / 2.0f + 10.0f, 2.0, ColorUtil.lIlIlIlIlIIlIIlIIllIIIIIl(0.8f, 0.8f, 0.8f, 1.0f * this.llIlIIIllIIlIllIllIllllIl.getProgress()));
             Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$popMatrix();
             return;
         }
-        super.lIlIlIlIlIIlIIlIIllIIIIIl(n, n2, f);
+        super.drawScreen(n, n2, f);
     }
 
     @Override
     public void lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2) {
         if (this.lIllIlIIIlIIIIIIIlllIlIll.lIIIllIllIIllIlllIlIIlllI()) {
-            this.llIlllIIIllllIIlllIllIIIl.lIlIlIlIlIIlIIlIIllIIIIIl(-130.0f + 130.0f * this.lIllIlIIIlIIIIIIIlllIlIll.IlllllIlIIIlIIlIIllIIlIll(), 0.0f, 130.0f, this.lllllIllIlIIlIIlIIIlllIlI());
-        } else if (this.llIlllIIIllllIIlllIllIIIl.lllIIIIIlllIIlIllIIlIIIlI() != 0.0f) {
-            this.llIlllIIIllllIIlllIllIIIl.lIlIlIlIlIIlIIlIIllIIIIIl(0.0f, 0.0f, 130.0f, this.lllllIllIlIIlIIlIIIlllIlI());
+            this.llIlllIIIllllIIlllIllIIIl.setPositionAndSize(-130.0f + 130.0f * this.lIllIlIIIlIIIIIIIlllIlIll.getProgress(), 0.0f, 130.0f, this.lllllIllIlIIlIIlIIIlllIlI());
+        } else if (this.llIlllIIIllllIIlllIllIIIl.getX() != 0.0f) {
+            this.llIlllIIIllllIIlllIllIIIl.setPositionAndSize(0.0f, 0.0f, 130.0f, this.lllllIllIlIIlIIlIIIlllIlI());
         }
     }
 
@@ -143,23 +143,23 @@ public class FriendsUIScreen extends AbstractUIScreen {
 
     @Override
     public void IlllIIIIIIlllIlIIlllIlIIl(char c, KeyType keyType) {
-        if (keyType == KeyType.IllIIlllIllIlllllIlIllIll) {
+        if (keyType == KeyType.KEY_F1) {
             Ref.getAssetsWebsocket().ifPresent(assetsWebSocket -> {
                 if (!assetsWebSocket.IlllIIIIIIlllIlIIlllIlIIl()) {
                     return;
                 }
                 if (this.lllllIllIllIllllIlIllllII == null) {
                     this.lllllIllIllIllllIlIllllII = new ConsoleUIComponent(this);
-                    this.llIIlIlIIIllIlIlIlIIlIIll.add(this.lllllIllIllIllllIlIllllII);
-                    this.lllllIllIllIllllIlIllllII.lIlIlIlIlIIlIIlIIllIIIIIl((float f, float f2, int n) -> true);
-                    this.lllllIllIllIllllIlIllllII.lIlIlIlIlIIlIIlIIllIIIIIl(160.0f, 50.0f, ConsoleUIComponent.lIlIlIlIlIIlIIlIIllIIIIIl, 300.0f);
+                    this.components.add(this.lllllIllIllIllllIlIllllII);
+                    this.lllllIllIllIllllIlIllllII.onMouseClick((float f, float f2, int n) -> true);
+                    this.lllllIllIllIllllIlIllllII.setPositionAndSize(160.0f, 50.0f, ConsoleUIComponent.lIlIlIlIlIIlIIlIIllIIIIIl, 300.0f);
                 } else {
                     this.lllIIIIIlllIIlIllIIlIIIlI();
                 }
             });
         }
-        if (keyType == KeyType.lIIIlIllllIIlIIlIIlIIIIlI) {
-            Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$displayScreen(this.IlllIIIIIIlllIlIIlllIlIIl);
+        if (keyType == KeyType.KEY_ESCAPE) {
+            Ref.getMinecraft().bridge$displayScreen(this.IlllIIIIIIlllIlIIlllIlIIl);
         }
     }
 
@@ -167,9 +167,9 @@ public class FriendsUIScreen extends AbstractUIScreen {
      * WARNING - Removed try catching itself - possible behaviour change.
      */
     public void lllIIIIIlllIIlIllIIlIIIlI() {
-        List list = this.llIIlIlIIIllIlIlIlIIlIIll;
+        List list = this.components;
         synchronized (list) {
-            this.llIIlIlIIIllIlIlIlIIlIIll.removeIf(uIComponent -> uIComponent instanceof ConsoleUIComponent);
+            this.components.removeIf(uIComponent -> uIComponent instanceof ConsoleUIComponent);
             this.lllllIllIllIllllIlIllllII = null;
         }
     }
@@ -180,7 +180,7 @@ public class FriendsUIScreen extends AbstractUIScreen {
     }
 
     public MessageListUIComponent IlIllIIlIIlIIIllIllllIIll() {
-        for (UIComponent uIComponent : this.llIIlIlIIIllIlIlIlIIlIIll) {
+        for (UIComponent uIComponent : this.components) {
             if (!(uIComponent instanceof MessageListUIComponent)) continue;
             return (MessageListUIComponent)uIComponent;
         }
@@ -193,11 +193,11 @@ public class FriendsUIScreen extends AbstractUIScreen {
     public void lIlIlIlIlIIlIIlIIllIIIIIl(FriendProfile websocketProfile) {
         MessageListUIComponent messageListUIComponent = this.IlIllIIlIIlIIIllIllllIIll();
         if (messageListUIComponent == null) {
-            List list = this.llIIlIlIIIllIlIlIlIIlIIll;
+            List list = this.components;
             synchronized (list) {
                 messageListUIComponent = new MessageListUIComponent(this);
-                this.llIIlIlIIIllIlIlIlIIlIIll.add(messageListUIComponent);
-                messageListUIComponent.lIlIlIlIlIIlIIlIIllIIIIIl(this.llIlllIIIllllIIlllIllIIIl.lllIIIIIlllIIlIllIIlIIIlI() + this.llIlllIIIllllIIlllIllIIIl.llIlIIIllIIlIllIllIllllIl() + 10.0f, 30.0f, 215.0f, 134.0f);
+                this.components.add(messageListUIComponent);
+                messageListUIComponent.setPositionAndSize(this.llIlllIIIllllIIlllIllIIIl.getX() + this.llIlllIIIllllIIlllIllIIIl.getWidth() + 10.0f, 30.0f, 215.0f, 134.0f);
             }
         }
         messageListUIComponent.lIlIlIlIlIIlIIlIIllIIIIIl(websocketProfile);

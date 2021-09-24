@@ -1,39 +1,25 @@
-/*
- * Decompiled with CFR 0.150.
- * 
- * Could not load the following classes:
- *  com.google.common.collect.Maps
- *  lunar.G.EntityBridge
- *  lunar.G.EntityLivingBaseBridge
- *  lunar.Q.ItemArmorBridge
- *  lunar.Q.ItemStackBridge
- *  lunar.a.Bridge
- *  lunar.af.ResourceLocationBridge
- *  lunar.c.MatrixStackBridge
- *  lunar.de.lIllIlIIIlIIIIIIIlllIlIll
- */
 package mchorse.emoticons.api.animation.model;
 
 import com.google.common.collect.Maps;
 import java.util.List;
 import java.util.Map;
-import lunar.G.EntityBridge;
-import lunar.G.EntityLivingBaseBridge;
-import lunar.Q.ItemArmorBridge;
-import lunar.Q.ItemStackBridge;
-import lunar.a.Bridge;
-import lunar.af.ResourceLocationBridge;
-import lunar.c.MatrixStackBridge;
-import lunar.de.lIllIlIIIlIIIIIIIlllIlIll;
+
+import com.moonsworth.lunar.bridge.current.MatrixStackBridge;
+import com.moonsworth.lunar.bridge.minecraft.client.entity.EntityBridge;
+import com.moonsworth.lunar.bridge.minecraft.client.entity.EntityLivingBaseBridge;
+import com.moonsworth.lunar.bridge.minecraft.item.ItemArmorBridge;
+import com.moonsworth.lunar.bridge.minecraft.item.ItemStackBridge;
+import com.moonsworth.lunar.bridge.minecraft.util.ResourceLocationBridge;
+import com.moonsworth.lunar.client.bridge.Bridge;
+import com.moonsworth.lunar.client.cosmetic.de.lIllIlIIIlIIIIIIIlllIlIll;
 import mchorse.emoticons.common.EntityEquipmentSlot;
 import mchorse.emoticons.skin_n_bones.api.animation.AnimationMesh;
 import mchorse.emoticons.skin_n_bones.api.animation.AnimationMeshConfig;
 import mchorse.emoticons.skin_n_bones.api.animation.model.AnimatorController;
 
-public class AnimatorEmoticonsController
-extends AnimatorController {
-    public static final Map ARMOR_TEXTURE_RES_MAP = Maps.newHashMap();
-    public ItemStackBridge itemSlot = Bridge.llIlllIIIllllIIlllIllIIIl().initEmptyItemStack();
+public class AnimatorEmoticonsController extends AnimatorController {
+    public static final Map<String, ResourceLocationBridge> ARMOR_TEXTURE_RES_MAP = Maps.newHashMap();
+    public ItemStackBridge itemSlot = Bridge.getInstance().initEmptyItemStack();
     public float itemSlotScale = 0.0f;
 
     public AnimatorEmoticonsController(String string) {
@@ -53,10 +39,10 @@ extends AnimatorController {
     }
 
     public void updateArmor(EntityLivingBaseBridge entityLivingBaseBridge) {
-        AnimationMeshConfig animationMeshConfig = (AnimationMeshConfig)this.userConfig.meshes.get("armor_helmet");
-        AnimationMeshConfig animationMeshConfig2 = (AnimationMeshConfig)this.userConfig.meshes.get("armor_chest");
-        AnimationMeshConfig animationMeshConfig3 = (AnimationMeshConfig)this.userConfig.meshes.get("armor_leggings");
-        AnimationMeshConfig animationMeshConfig4 = (AnimationMeshConfig)this.userConfig.meshes.get("armor_feet");
+        AnimationMeshConfig animationMeshConfig = this.userConfig.meshes.get("armor_helmet");
+        AnimationMeshConfig animationMeshConfig2 = this.userConfig.meshes.get("armor_chest");
+        AnimationMeshConfig animationMeshConfig3 = this.userConfig.meshes.get("armor_leggings");
+        AnimationMeshConfig animationMeshConfig4 = this.userConfig.meshes.get("armor_feet");
         if (animationMeshConfig != null) {
             this.updateArmorSlot(animationMeshConfig, entityLivingBaseBridge, EntityEquipmentSlot.HEAD);
         }
@@ -76,7 +62,7 @@ extends AnimatorController {
         if (itemStackBridge != null && itemStackBridge.bridge$getItem() instanceof ItemArmorBridge) {
             ItemArmorBridge itemArmorBridge = (ItemArmorBridge)itemStackBridge.bridge$getItem();
             animationMeshConfig.visible = true;
-            animationMeshConfig.texture = this.getArmorResource((EntityBridge)entityLivingBaseBridge, itemStackBridge, entityEquipmentSlot, null);
+            animationMeshConfig.texture = this.getArmorResource(entityLivingBaseBridge, itemStackBridge, entityEquipmentSlot, null);
             animationMeshConfig.color = 10511680;
             if (itemArmorBridge.bridge$hasColor(itemStackBridge)) {
                 animationMeshConfig.color = itemArmorBridge.bridge$getColor(itemStackBridge);
@@ -88,26 +74,21 @@ extends AnimatorController {
     }
 
     public ResourceLocationBridge getArmorResource(EntityBridge entityBridge, ItemStackBridge itemStackBridge, EntityEquipmentSlot entityEquipmentSlot, String string) {
-        ItemArmorBridge itemArmorBridge = (ItemArmorBridge)itemStackBridge.bridge$getItem();
-        String string2 = itemArmorBridge.bridge$getArmorMaterial().lIlIlIlIlIIlIIlIIllIIIIIl();
-        String string3 = "minecraft";
-        int n = string2.indexOf(58);
-        if (n != -1) {
-            string3 = string2.substring(0, n);
-            string2 = string2.substring(n + 1);
+        ItemArmorBridge var5 = (ItemArmorBridge)itemStackBridge.bridge$getItem();
+        String var6 = var5.bridge$getArmorMaterial().lIlIlIlIlIIlIIlIIllIIIIIl();
+        String var7 = "minecraft";
+        int var8 = var6.indexOf(58);
+        if (var8 != -1) {
+            var7 = var6.substring(0, var8);
+            var6 = var6.substring(var8 + 1);
         }
-        Object[] arrobject = new Object[4];
-        arrobject[0] = string3;
-        arrobject[1] = string2;
-        arrobject[2] = this.isLegSlot(entityEquipmentSlot) ? 2 : 1;
-        arrobject[3] = string == null ? "" : String.format("_%s", string);
-        String string4 = String.format("%s:textures/models/armor/%s_layer_%d%s.png", arrobject);
-        ResourceLocationBridge resourceLocationBridge = (ResourceLocationBridge)ARMOR_TEXTURE_RES_MAP.get(string4);
-        if (resourceLocationBridge == null) {
-            resourceLocationBridge = Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation(string4);
-            ARMOR_TEXTURE_RES_MAP.put(string4, resourceLocationBridge);
+        String var9 = String.format("%s:textures/models/armor/%s_layer_%d%s.png", var7, var6, this.isLegSlot(entityEquipmentSlot) ? 2 : 1, string == null ? "" : String.format("_%s", string));
+        ResourceLocationBridge var10 = ARMOR_TEXTURE_RES_MAP.get(var9);
+        if (var10 == null) {
+            var10 = Bridge.getInstance().initResourceLocation(var9);
+            ARMOR_TEXTURE_RES_MAP.put(var9, var10);
         }
-        return resourceLocationBridge;
+        return var10;
     }
 
     public boolean isLegSlot(EntityEquipmentSlot entityEquipmentSlot) {

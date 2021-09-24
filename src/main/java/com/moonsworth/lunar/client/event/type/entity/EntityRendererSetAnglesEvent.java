@@ -3,7 +3,7 @@ package com.moonsworth.lunar.client.event.type.entity;
 import com.moonsworth.lunar.client.event.CancellableEvent;
 
 public class EntityRendererSetAnglesEvent
-extends CancellableEvent {
+    extends CancellableEvent {
     public float lIlIlIlIlIIlIIlIIllIIIIIl;
     public float IlllIIIIIIlllIlIIlllIlIIl;
 

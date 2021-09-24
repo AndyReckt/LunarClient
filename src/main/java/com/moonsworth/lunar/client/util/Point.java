@@ -1,11 +1,11 @@
 package com.moonsworth.lunar.client.util;
 
 public class Point {
-    public float lIlIlIlIlIIlIIlIIllIIIIIl;
-    public float IlllIIIIIIlllIlIIlllIlIIl;
+    public float x;
+    public float y;
 
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2) {
-        this.lIlIlIlIlIIlIIlIIllIIIIIl = f;
-        this.IlllIIIIIIlllIlIIlllIlIIl = f2;
+    public void set(float x, float y) {
+        this.x = x;
+        this.y = y;
     }
 }

@@ -3,8 +3,7 @@ package com.moonsworth.lunar.client.event.type.world;
 import com.moonsworth.lunar.client.event.Event;
 import com.moonsworth.lunar.client.event.state.EventState;
 
-public class RenderTickEvent
-extends Event {
+public class RenderTickEvent extends Event {
     public final EventState lIlIlIlIlIIlIIlIIllIIIIIl;
     public final float IlllIIIIIIlllIlIIlllIlIIl;
 

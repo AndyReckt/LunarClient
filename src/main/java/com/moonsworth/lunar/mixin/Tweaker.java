@@ -16,8 +16,8 @@ import java.util.List;
  */
 public class Tweaker implements ITweaker {
 
-    private ArrayList<String> args = new ArrayList<>();
-    private boolean isRunningOptifine = false;
+    private final ArrayList<String> args = new ArrayList<>();
+    private final boolean isRunningOptifine = false;
 
     @Override public void acceptOptions(List<String> args, File gameDir, File assetsDir, String profile) {
         this.args.addAll(args);
@@ -46,7 +46,7 @@ public class Tweaker implements ITweaker {
     }
 
     @Override public String[] getLaunchArguments() {
-        return isRunningOptifine ? new String[0] : args.toArray(new String[]{});
+        return isRunningOptifine ? new String[0] : args.toArray(new String[] {});
     }
 
     private void addArg(String label, Object value) {

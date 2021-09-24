@@ -6,23 +6,21 @@ import com.moonsworth.lunar.client.bridge.Bridge;
 import com.moonsworth.lunar.client.feature.Feature;
 import com.moonsworth.lunar.client.registry.FontRegistry;
 import com.moonsworth.lunar.client.ui.component.UIComponent;
-import com.moonsworth.lunar.client.ui.component.type.overlay.ClientSettingsParentUIComponent;
 import com.moonsworth.lunar.client.ui.ease.ColorEase;
 import com.moonsworth.lunar.client.ui.screen.AbstractUIScreen;
 
 public class OptionsSpacedButtonUIComponent
-extends UIComponent {
+    extends UIComponent {
     public final ColorEase lIlIlIlIlIIlIIlIIllIIIIIl = new ColorEase(0x20FFFFFF, 0x50FFFFFF);
-    public static final ResourceLocationBridge IlllIIIIIIlllIlIIlllIlIIl = Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation("lunar", "icons/mainmenu/cog-20x20.png");
+    public static final ResourceLocationBridge IlllIIIIIIlllIlIIlllIlIIl = Bridge.getInstance().initResourceLocation("lunar", "icons/mainmenu/cog-20x20.png");
 
     public OptionsSpacedButtonUIComponent(UIComponent uIComponent, ClientSettingsParentUIComponent clientSettingsParentUIComponent, Feature feature) {
         super(uIComponent);
-        this.lIlIlIlIlIIlIIlIIllIIIIIl((float f, float f2, int n) -> {
+        this.onMouseClick((float f, float f2, int n) -> {
             try {
                 clientSettingsParentUIComponent.lIlIlIlIlIIlIIlIIllIIIIIl(new FeatureSettingsUIComponent(clientSettingsParentUIComponent, feature));
                 clientSettingsParentUIComponent.IlllIIIIIIlllIlIIlllIlIIl(0);
-            }
-            catch (Exception exception) {
+            } catch (Exception exception) {
                 exception.printStackTrace();
             }
             return true;
@@ -30,12 +28,12 @@ extends UIComponent {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl() {
+    public void onUpdateScreen() {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2, boolean bl) {
-        AbstractUIScreen.lIllIlIIIlIIIIIIIlllIlIll(this.x, this.y, this.width, this.height, this.lIlIlIlIlIIlIIlIIllIIIIIl.lIlIlIlIlIIlIIlIIllIIIIIl(bl && this.IlllIIIIIIlllIlIIlllIlIIl(f, f2)));
+    public void drawComponent(float mouseX, float mouseY, boolean bl) {
+        AbstractUIScreen.lIllIlIIIlIIIIIIIlllIlIll(this.x, this.y, this.width, this.height, this.lIlIlIlIlIIlIIlIIllIIIIIl.lIlIlIlIlIIlIIlIIllIIIIIl(bl && this.mouseInside(mouseX, mouseY)));
         AbstractUIScreen.lIllIlIIIlIIIIIIIlllIlIll(this.x, this.y + 1.0f, 1.0f, this.height - 2.0f, 0x20FFFFFF);
         AbstractUIScreen.lIllIlIIIlIIIIIIIlllIlIll(this.x + this.width - 1.0f, this.y + 1.0f, 1.0f, this.height - 2.0f, 0x20FFFFFF);
         AbstractUIScreen.lIllIlIIIlIIIIIIIlllIlIll(this.x + this.width - 21.0f, this.y + 1.0f, 1.0f, this.height - 2.0f, 0x20FFFFFF);
@@ -47,11 +45,10 @@ extends UIComponent {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(char c, KeyType keyType) {
+    public void onKeyTyped(char c, KeyType keyType) {
     }
 
     @Override
-    public void IlllIIIIIIlllIlIIlllIlIIl() {
+    public void onGuiClosed() {
     }
 }
- 

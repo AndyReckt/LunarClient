@@ -4,7 +4,7 @@ import com.moonsworth.lunar.bridge.minecraft.client.resources.AbstractResourcePa
 import com.moonsworth.lunar.client.event.Event;
 
 public class SwapPackEvent
-extends Event {
+    extends Event {
     public final AbstractResourcePackBridge lIlIlIlIlIIlIIlIIllIIIIIl;
 
     public AbstractResourcePackBridge lIlIlIlIlIIlIIlIIllIIIIIl() {

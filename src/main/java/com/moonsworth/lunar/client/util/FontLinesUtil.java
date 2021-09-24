@@ -25,11 +25,11 @@ public final class FontLinesUtil {
                 arrayList.addAll(FontLinesUtil.lIlIlIlIlIIlIIlIIllIIIIIl(string2, f, false));
                 continue;
             }
-            arrayList.add(stringBuilder.toString().charAt(stringBuilder.length() - 1) == ' ' ? stringBuilder.toString().substring(0, stringBuilder.toString().length() - 1) : stringBuilder.toString());
+            arrayList.add(stringBuilder.toString().charAt(stringBuilder.length() - 1) == ' ' ? stringBuilder.substring(0, stringBuilder.toString().length() - 1) : stringBuilder.toString());
             f2 = FontRegistry.llIIlIlIIIllIlIlIlIIlIIll().IlllIIIIIIlllIlIIlllIlIIl(string2) + 1;
             stringBuilder = new StringBuilder(string2).append(" ");
         }
-        arrayList.add(stringBuilder.toString().charAt(stringBuilder.length() - 1) == ' ' ? stringBuilder.toString().substring(0, stringBuilder.toString().length() - 1) : stringBuilder.toString());
+        arrayList.add(stringBuilder.toString().charAt(stringBuilder.length() - 1) == ' ' ? stringBuilder.substring(0, stringBuilder.toString().length() - 1) : stringBuilder.toString());
         return arrayList;
     }
 

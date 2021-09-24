@@ -1,21 +1,21 @@
 package com.moonsworth.lunar.bridge.minecraft.client.multiplayer;
 
 public interface ServerDataBridge {
-    public String bridge$serverIP();
+    String bridge$serverIP();
 
-    public long bridge$getPingToServer();
+    long bridge$getPingToServer();
 
-    public boolean getSupportsLunar();
+    boolean getSupportsLunar();
 
-    public void setSupportsLunar(boolean var1);
+    void setSupportsLunar(boolean var1);
 
-    public boolean getCheckedLunar();
+    boolean getCheckedLunar();
 
-    public void setCheckedLunar(boolean var1);
+    void setCheckedLunar(boolean var1);
 
-    public String getLunarServer();
+    String getLunarServer();
 
-    public void setLunarServer(String var1);
+    void setLunarServer(String var1);
 
-    public String bridge$getBase64Icon();
+    String bridge$getBase64Icon();
 }

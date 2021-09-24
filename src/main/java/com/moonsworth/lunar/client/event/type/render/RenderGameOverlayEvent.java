@@ -2,8 +2,7 @@ package com.moonsworth.lunar.client.event.type.render;
 
 import com.moonsworth.lunar.client.event.Event;
 
-public class RenderGameOverlayEvent
-extends Event {
+public class RenderGameOverlayEvent extends Event {
     public final double lIlIlIlIlIIlIIlIIllIIIIIl;
     public final double IlllIIIIIIlllIlIIlllIlIIl;
 
@@ -20,4 +19,3 @@ extends Event {
         return this.IlllIIIIIIlllIlIIlllIlIIl;
     }
 }
- 

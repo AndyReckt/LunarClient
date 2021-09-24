@@ -114,4 +114,3 @@ public class SimpleHudModSize {
         this.IlIlIlllllIlIIlIlIlllIlIl = n6;
     }
 }
- 

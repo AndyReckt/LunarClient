@@ -5,7 +5,7 @@ package com.moonsworth.lunar.bridge.minecraft.util;
  * @since 10/07/2021 14:23
  */
 public interface ResourceLocationBridge {
-    public String bridge$getDomain();
+    String bridge$getDomain();
 
-    public String bridge$getPath();
+    String bridge$getPath();
 }

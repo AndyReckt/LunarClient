@@ -5,13 +5,11 @@ import com.moonsworth.lunar.bridge.minecraft.util.ResourceLocationBridge;
 import com.moonsworth.lunar.client.ref.Ref;
 import com.moonsworth.lunar.client.registry.FontRegistry;
 import com.moonsworth.lunar.client.registry.PlayerHeadManager;
-import com.moonsworth.lunar.client.setting.KeyBind;
 import com.moonsworth.lunar.client.setting.LunarKeybindSetting;
 import com.moonsworth.lunar.client.ui.screen.AbstractUIScreen;
 import com.moonsworth.lunar.client.websocket.Status;
 
-public class OverlayNotification
-extends Notification {
+public class OverlayNotification extends Notification {
     public final String lIIIllIllIIllIlllIlIIlllI;
 
     public OverlayNotification(String string, String string2) {
@@ -28,7 +26,7 @@ extends Notification {
 
     @Override
     public void lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2) {
-        if (Ref.IlllIIIIIIlllIlIIlllIlIIl().llllIIlIIlIIlIIllIIlIIllI().llIllIlIllIlllIllIIIIllII() == Status.lIllIlIIIlIIIIIIIlllIlIll) {
+        if (Ref.getLC().llllIIlIIlIIlIIllIIlIIllI().llIllIlIllIlllIllIIIIllII() == Status.BUSY) {
             return;
         }
         super.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2);
@@ -37,7 +35,7 @@ extends Notification {
 
     @Override
     public void IlllIIIIIIlllIlIIlllIlIIl(float f, float f2) {
-        LunarKeybindSetting lunarKeybindSetting = LunarClient.IIllIlIllIlIllIllIllIllII().lllIIIIIlllIIlIllIIlIIIlI().llIIIIIIIllIIllIlIllIIIIl().lllIIIIIlllIIlIllIIlIIIlI();
+        LunarKeybindSetting lunarKeybindSetting = LunarClient.getInstance().lllIIIIIlllIIlIllIIlIIIlI().llIIIIIIIllIIllIlIllIIIIl().getFriendMenuBind();
         boolean bl = lunarKeybindSetting.llIlllIIIllllIIlllIllIIIl().lIlIlIlIlIIlIIlIIllIIIIIl() || lunarKeybindSetting.llIlllIIIllllIIlllIllIIIl().IlllIIIIIIlllIlIIlllIlIIl() || lunarKeybindSetting.llIlllIIIllllIIlllIllIIIl().lIllIlIIIlIIIIIIIlllIlIll();
         AbstractUIScreen.lIllIlIIIlIIIIIIIlllIlIll(f + 5.0f, f2 + this.llIIIIIIIllIIllIlIllIIIIl() - 12.0f, this.IlIlIlllllIlIIlIlIlllIlIl() - 12.0f, 0.5f, 0x40FFFFFF);
         float f3 = FontRegistry.IlllllIlIIIlIIlIIllIIlIll().lIlIlIlIlIIlIIlIIllIIIIIl("Press ", f + 5.0f, f2 + this.llIIIIIIIllIIllIlIllIIIIl() - 10.0f, 0x75FFFFFF);
@@ -70,4 +68,3 @@ extends Notification {
         return PlayerHeadManager.lIlIlIlIlIIlIIlIIllIIIIIl(this.lIIIllIllIIllIlllIlIIlllI);
     }
 }
- 

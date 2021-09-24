@@ -5,7 +5,7 @@ import com.moonsworth.lunar.client.event.Event;
 import com.moonsworth.lunar.client.event.state.EventState;
 
 public class GuiResizeEvent
-extends Event {
+    extends Event {
     public final EventState lIlIlIlIlIIlIIlIIllIIIIIl;
     public final GuiScreenBridge IlllIIIIIIlllIlIIlllIlIIl;
 

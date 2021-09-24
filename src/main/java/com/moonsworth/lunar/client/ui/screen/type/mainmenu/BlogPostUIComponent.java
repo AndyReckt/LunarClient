@@ -12,7 +12,7 @@ import com.moonsworth.lunar.client.util.MathHelperUtil;
 import org.lwjgl.opengl.GL11;
 
 public class BlogPostUIComponent
-extends UIComponent {
+    extends UIComponent {
     public final BlogCache IlllIIIIIIlllIlIIlllIlIIl;
     public final QuadraticEase lIllIlIIIlIIIIIIIlllIlIll = new QuadraticEase(1500L);
     public final QuadraticEase llIlIIIllIIlIllIllIllllIl = new QuadraticEase(1500L);
@@ -27,30 +27,30 @@ extends UIComponent {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl() {
+    public void onUpdateScreen() {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2, boolean bl) {
+    public void drawComponent(float mouseX, float mouseY, boolean bl) {
         if (this.IlllIIIIIIlllIlIIlllIlIIl.llllIIlIIlIIlIIllIIlIIllI() != null) {
             float f3 = 1.0f;
             if (this.lIllIlIIIlIIIIIIIlllIlIll.lIIIllIllIIllIlllIlIIlllI()) {
-                f3 = 1.0f * this.lIllIlIIIlIIIIIIIlllIlIll.IlllllIlIIIlIIlIIllIIlIll();
+                f3 = 1.0f * this.lIllIlIIIlIIIIIIIlllIlIll.getProgress();
             }
             if (this.llIlIIIllIIlIllIllIllllIl.lIIIllIllIIllIlllIlIIlllI()) {
-                f3 = 1.0f - 1.0f * this.llIlIIIllIIlIllIllIllllIl.IlllllIlIIIlIIlIIllIIlIll();
+                f3 = 1.0f - 1.0f * this.llIlIIIllIIlIllIllIllllIl.getProgress();
             }
-            f3 = (float) MathHelperUtil.lIlIlIlIlIIlIIlIIllIIIIIl((double)f3, 0.0, 1.0);
+            f3 = (float) MathHelperUtil.lIlIlIlIlIIlIIlIIllIIIIIl(f3, 0.0, 1.0);
             if (!(this.llIlIIIllIIlIllIllIllllIl.lIIIllIllIIllIlllIlIIlllI() || this.lIllIlIIIlIIIIIIIlllIlIll.lIIIllIllIIllIlllIlIIlllI() || this.lIlIlIlIlIIlIIlIIllIIIIIl)) {
                 return;
             }
             Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$color(1.0f, 1.0f, 1.0f, 1.0f * f3);
             Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$pushMatrix();
-            GL11.glEnable((int)3089);
+            GL11.glEnable(3089);
             AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl((int)this.x, (int)this.y, (int)(this.x + this.width), (int)(this.y + this.height), (float)((int)((float)AbstractUIScreen.llllIlIllllIlIlIIIllIlIlI().llllIIlIIlIIlIIllIIlIIllI() * AbstractUIScreen.lIIlIlllIlIlIIIlllIIlIIII())), (int)this.IllIllIIIllIIIlIlIlIIIIll.lllllIllIlIIlIIlIIIlllIlI());
-            float f4 = 1.0f + ColorUtil.llIIIIIIIllIIllIlIllIIIIl(this.IIlIllIlllllllIIlIIIllIIl.lIlIlIlIlIIlIIlIIllIIIIIl(this.IlllIIIIIIlllIlIIlllIlIIl(f, f2))) / 10.0f;
+            float f4 = 1.0f + ColorUtil.llIIIIIIIllIIllIlIllIIIIl(this.IIlIllIlllllllIIlIIIllIIl.lIlIlIlIlIIlIIlIIllIIIIIl(this.mouseInside(mouseX, mouseY))) / 10.0f;
             AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(this.IlllIIIIIIlllIlIIlllIlIIl.llllIIlIIlIIlIIllIIlIIllI(), this.x - this.width / 2.0f * f4 + this.width / 2.0f - 0.5f, this.y - this.height / 2.0f * f4 + this.height / 2.0f - 0.5f, this.width * f4 + 0.5f, this.height * f4 + 0.5f);
-            GL11.glDisable((int)3089);
+            GL11.glDisable(3089);
             Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$popMatrix();
             Bridge.IlllllIlIIIlIIlIIllIIlIll().bridge$drawGradientRect((int)this.x, (int)this.y, (int)(this.x + this.width), (int)(this.y + this.height), ColorUtil.lIlIlIlIlIIlIIlIIllIIIIIl(-1880956190, f3), 0, 0.0f);
             AbstractUIScreen.lIllIlIIIlIIIIIIIlllIlIll(this.x - 1.5f, this.y - 1.5f, this.width + 2.5f, this.height + 2.5f, 4.0f, ColorUtil.lIlIlIlIlIIlIIlIIllIIIIIl(1076176165, f3));
@@ -61,11 +61,11 @@ extends UIComponent {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(char c, KeyType keyType) {
+    public void onKeyTyped(char c, KeyType keyType) {
     }
 
     @Override
-    public void IlllIIIIIIlllIlIIlllIlIIl() {
+    public void onGuiClosed() {
     }
 
     public BlogCache lIllIlIIIlIIIIIIIlllIlIll() {

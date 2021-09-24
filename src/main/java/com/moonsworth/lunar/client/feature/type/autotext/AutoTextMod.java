@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 public class AutoTextMod
-extends ConfigurableFeature {
+    extends ConfigurableFeature {
     public List<HKTextSetting> llllIIlIIlIIlIIllIIlIIllI;
     public HKTextSetting IlIlIlllllIlIIlIlIlllIlIl;
     public HKTextSetting llIIIIIIIllIIllIlIllIIIIl;
@@ -38,7 +38,7 @@ extends ConfigurableFeature {
     public AutoTextMod() {
         super(false);
         this.lIlIlIlIlIIlIIlIIllIIIIIl(TickEvent.class, tickEvent -> {
-            if (Ref.IlIlIlllllIlIIlIlIlllIlIl() != null && Ref.IlIlIlllllIlIIlIlIlllIlIl().bridge$isBlocking()) {
+            if (Ref.getPlayer() != null && Ref.getPlayer().bridge$isBlocking()) {
                 this.lIIIlllIIIIllllIlIIIlIIll = System.currentTimeMillis();
             }
         });
@@ -69,29 +69,29 @@ extends ConfigurableFeature {
     }
 
     @Override
-    public FeatureDetails llIIIIIIIllIIllIlIllIIIIl() {
-        return new FeatureDetails("textHotKey", ImmutableList.of(ModuleCategory.lIlIlIlIlIIlIIlIIllIIIIIl, ModuleCategory.llllIIlIIlIIlIIllIIlIIllI), new String[0]);
+    public FeatureDetails initDetails() {
+        return new FeatureDetails("textHotKey", ImmutableList.of(ModuleCategory.ALL, ModuleCategory.MECHANIC));
     }
 
     public HKTextSetting IlllIIIIIIlllIlIIlllIlIIl(int n) {
-        HKTextSetting hKTextSetting = new HKTextSetting(this, n + "_hk", "/Command", KeyType.lIlIlIlIlIIlIIlIIllIIIIIl);
+        HKTextSetting hKTextSetting = new HKTextSetting(this, n + "_hk", "/Command", KeyType.KEY_NONE);
         hKTextSetting.lIllIlIIIlIIIIIIIlllIlIll().lIlIlIlIlIIlIIlIIllIIIIIl(true).lIlIlIlIlIIlIIlIIllIIIIIl(() -> {
-            if (Ref.IlIlIlllllIlIIlIlIlllIlIl() != null && (Ref.IlIlIlllllIlIIlIlIlllIlIl().bridge$isUsingItem() || Ref.IlIlIlllllIlIIlIlIlllIlIl().bridge$isBlocking() || System.currentTimeMillis() - this.lIIIlllIIIIllllIlIIIlIIll < 100L)) {
+            if (Ref.getPlayer() != null && (Ref.getPlayer().bridge$isUsingItem() || Ref.getPlayer().bridge$isBlocking() || System.currentTimeMillis() - this.lIIIlllIIIIllllIlIIIlIIll < 100L)) {
                 return;
             }
-            if (((String)hKTextSetting.llIlllIIIllllIIlllIllIIIl()).equalsIgnoreCase("/Command")) {
+            if (hKTextSetting.llIlllIIIllllIIlllIllIIIl().equalsIgnoreCase("/Command")) {
                 return;
             }
             if (this.IIlIllIlIIllIIlIlIllllllI.containsKey(hKTextSetting) && System.currentTimeMillis() - (Long)this.IIlIllIlIIllIIlIlIllllllI.get(hKTextSetting) < 1000L) {
                 this.IllIIIlllIIIlIlllIlIIlIII.put(hKTextSetting, this.IllIIIlllIIIlIlllIlIIlIII.getOrDefault(hKTextSetting, 0) + 1);
-                if ((Integer)this.IllIIIlllIIIlIlllIlIIlIII.get(hKTextSetting) > 2) {
+                if (this.IllIIIlllIIIlIlllIlIIlIII.get(hKTextSetting) > 2) {
                     return;
                 }
             } else {
                 this.IllIIIlllIIIlIlllIlIIlIII.remove(hKTextSetting);
             }
             this.IIlIllIlIIllIIlIlIllllllI.put(hKTextSetting, System.currentTimeMillis());
-            Ref.IlIlIlllllIlIIlIlIlllIlIl().bridge$sendChatMessage((String)hKTextSetting.llIlllIIIllllIIlllIllIIIl());
+            Ref.getPlayer().bridge$sendChatMessage(hKTextSetting.llIlllIIIllllIIlllIllIIIl());
         });
         return hKTextSetting;
     }

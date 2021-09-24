@@ -1,6 +1,6 @@
 /*
  * Decompiled with CFR 0.150.
- * 
+ *
  * Could not load the following classes:
  *  com.google.common.base.Objects
  *  lunar.af.ResourceLocationBridge
@@ -10,12 +10,12 @@ package mchorse.mclib.utils.resources;
 import com.google.common.base.Objects;
 import java.util.ArrayList;
 import java.util.List;
-import lunar.af.ResourceLocationBridge;
-import mchorse.mclib.utils.resources.RLUtils;
+
+import com.moonsworth.lunar.bridge.minecraft.util.ResourceLocationBridge;
 
 public class MultiResourceLocation
-implements ResourceLocationBridge {
-    public List children = new ArrayList();
+    implements ResourceLocationBridge {
+    public List<ResourceLocationBridge> children = new ArrayList<>();
 
     public MultiResourceLocation(String string) {
         this.children.add(RLUtils.create(string));
@@ -26,11 +26,11 @@ implements ResourceLocationBridge {
     }
 
     public String bridge$getDomain() {
-        return this.children.isEmpty() ? "" : ((ResourceLocationBridge)this.children.get(0)).bridge$getDomain();
+        return this.children.isEmpty() ? "" : this.children.get(0).bridge$getDomain();
     }
 
     public String bridge$getPath() {
-        return this.children.isEmpty() ? "" : ((ResourceLocationBridge)this.children.get(0)).bridge$getPath();
+        return this.children.isEmpty() ? "" : this.children.get(0).bridge$getPath();
     }
 
     public String toString() {

@@ -1,6 +1,6 @@
 /*
  * Decompiled with CFR 0.150.
- * 
+ *
  * Could not load the following classes:
  *  javax.vecmath.Matrix4f
  *  javax.vecmath.Vector2f
@@ -45,7 +45,7 @@ public class BOBJLoader {
         }
     }
 
-    public static List readAllLines(InputStream inputStream) {
+    public static List<String> readAllLines(InputStream inputStream) {
         ArrayList<String> arrayList = new ArrayList<String>();
         try {
             String string;
@@ -54,15 +54,14 @@ public class BOBJLoader {
                 arrayList.add(string);
             }
             bufferedReader.close();
-        }
-        catch (Exception exception) {
+        } catch (Exception exception) {
             exception.printStackTrace();
         }
         return arrayList;
     }
 
     public static BOBJData readData(InputStream inputStream) {
-        List list = BOBJLoader.readAllLines(inputStream);
+        List<String> list = BOBJLoader.readAllLines(inputStream);
         ArrayList<Vertex> arrayList = new ArrayList<Vertex>();
         ArrayList<Vector2f> arrayList2 = new ArrayList<Vector2f>();
         ArrayList<Vector3f> arrayList3 = new ArrayList<Vector3f>();
@@ -141,13 +140,13 @@ public class BOBJLoader {
                 continue;
             }
             if (string2.equals("arm_ik") && arrstring.length >= 2) {
-                BOBJBone bOBJBone2 = (BOBJBone)bOBJArmature.bones.get(arrstring[1]);
+                BOBJBone bOBJBone2 = bOBJArmature.bones.get(arrstring[1]);
                 if (bOBJBone == null) {
                     System.out.println("Found IK modifier in BOBJ, but bone " + arrstring[1] + " doesn't exist...");
                     continue;
                 }
                 int n2 = arrstring.length >= 3 ? Integer.parseInt(arrstring[2]) : 1;
-                boolean bl = arrstring.length >= 4 ? arrstring[3].equals("true") : false;
+                boolean bl = arrstring.length >= 4 && arrstring[3].equals("true");
                 bOBJBone.addModifier(new BOBJBoneModifier(bOBJBone2, n2, bl));
                 continue;
             }
@@ -175,12 +174,12 @@ public class BOBJLoader {
         return new BOBJData(arrayList, arrayList2, arrayList3, arrayList4, hashMap, hashMap2);
     }
 
-    public static Map loadMeshes(BOBJData bOBJData) {
+    public static Map<String, BOBJLoader.CompiledData> loadMeshes(BOBJData bOBJData) {
         HashMap<String, CompiledData> hashMap = new HashMap<String, CompiledData>();
         for (BOBJMesh bOBJMesh : bOBJData.meshes) {
             Object object2;
-            ArrayList arrayList = new ArrayList();
-            List list = bOBJMesh.faces;
+            ArrayList<Integer> arrayList = new ArrayList<>();
+            List<Face> list = bOBJMesh.faces;
             int[] arrn = new int[list.size() * 3 * 4];
             float[] arrf = new float[list.size() * 3 * 4];
             float[] arrf2 = new float[list.size() * 3 * 4];
@@ -189,14 +188,14 @@ public class BOBJLoader {
             Arrays.fill(arrn, -1);
             Arrays.fill(arrf, -1.0f);
             int n = 0;
-            for (Object object2 : list) {
-                for (IndexGroup indexGroup : ((Face)object2).idxGroups) {
+            for (Face face : list) {
+                for (IndexGroup indexGroup : face.idxGroups) {
                     BOBJLoader.processFaceVertex(n, indexGroup, bOBJMesh, bOBJData, arrayList, arrf2, arrf3, arrf4, arrf, arrn);
                     ++n;
                 }
             }
             Integer[] arrinteger = arrayList.toArray(new Integer[0]);
-            object2 = ArrayUtils.toPrimitive((Integer[])arrinteger);
+            object2 = ArrayUtils.toPrimitive(arrinteger);
             hashMap.put(bOBJMesh.name, new CompiledData(arrf2, arrf3, arrf4, arrf, arrn, (int[])object2, bOBJMesh));
         }
         return hashMap;
@@ -205,23 +204,23 @@ public class BOBJLoader {
     public static CompiledData loadMesh(BOBJData bOBJData) {
         Object object4;
         Object object22;
-        ArrayList arrayList = new ArrayList();
-        ArrayList arrayList2 = new ArrayList();
-        for (Object object22 : bOBJData.meshes) {
-            arrayList2.addAll(((BOBJMesh)object22).faces);
+        ArrayList<Integer> arrayList = new ArrayList();
+        ArrayList<Face> arrayList2 = new ArrayList();
+        for (BOBJMesh mesh : bOBJData.meshes) {
+            arrayList2.addAll(mesh.faces);
         }
         Object object3 = new float[arrayList2.size() * 3 * 4];
         object22 = new float[arrayList2.size() * 3 * 2];
         float[] arrf = new float[arrayList2.size() * 3 * 3];
         int n = 0;
-        for (Object object4 : arrayList2) {
-            for (IndexGroup indexGroup : ((Face)object4).idxGroups) {
+        for (Object face : arrayList2) {
+            for (IndexGroup indexGroup : ((Face)face).idxGroups) {
                 BOBJLoader.processFaceVertex(n, indexGroup, null, bOBJData, arrayList, (float[])object3, (float[])object22, arrf, null, null);
                 ++n;
             }
         }
         Integer[] arrinteger = arrayList.toArray(new Integer[0]);
-        object4 = ArrayUtils.toPrimitive((Integer[])arrinteger);
+        object4 = ArrayUtils.toPrimitive(arrinteger);
         return new CompiledData((float[])object3, (float[])object22, arrf, null, null, (int[])object4, null);
     }
 
@@ -237,23 +236,23 @@ public class BOBJLoader {
             if (bOBJMesh != null) {
                 int n2 = Math.min(vertex.weights.size(), 4);
                 for (int i = 0; i < n2; ++i) {
-                    Weight weight = (Weight)vertex.weights.get(i);
-                    BOBJBone bOBJBone = (BOBJBone)bOBJMesh.armature.bones.get(weight.name);
+                    Weight weight = vertex.weights.get(i);
+                    BOBJBone bOBJBone = bOBJMesh.armature.bones.get(weight.name);
                     arrf4[n * 4 + i] = bOBJBone == null ? 0.0f : weight.factor;
                     arrn[n * 4 + i] = bOBJBone == null ? -1 : bOBJBone.index;
                 }
             }
         }
         if (indexGroup.idxTextCoord >= 0) {
-            vertex = (Vector2f)bOBJData.textures.get(indexGroup.idxTextCoord);
-            arrf2[n * 2] = ((Vector2f)vertex).x;
-            arrf2[n * 2 + 1] = 1.0f - ((Vector2f)vertex).y;
+            Vector2f vector2f = (Vector2f)bOBJData.textures.get(indexGroup.idxTextCoord);
+            arrf2[n * 2] = vector2f.x;
+            arrf2[n * 2 + 1] = 1.0f - vector2f.y;
         }
         if (indexGroup.idxVecNormal >= 0) {
-            vertex = (Vector3f)bOBJData.normals.get(indexGroup.idxVecNormal);
-            arrf3[n * 3] = ((Vector3f)vertex).x;
-            arrf3[n * 3 + 1] = ((Vector3f)vertex).y;
-            arrf3[n * 3 + 2] = ((Vector3f)vertex).z;
+            Vector3f vector3f = bOBJData.normals.get(indexGroup.idxVecNormal);
+            arrf3[n * 3] = vector3f.x;
+            arrf3[n * 3 + 1] = vector3f.y;
+            arrf3[n * 3 + 2] = vector3f.z;
         }
     }
 
@@ -280,12 +279,12 @@ public class BOBJLoader {
     public static class BOBJData {
         public List vertices;
         public List textures;
-        public List normals;
-        public List meshes;
+        public List<Vector3f> normals;
+        public List<BOBJMesh> meshes;
         public Map actions;
         public Map armatures;
 
-        public BOBJData(List list, List list2, List list3, List list4, Map map, Map map2) {
+        public BOBJData(List list, List list2, List list3, List<BOBJMesh> list4, Map map, Map map2) {
             this.vertices = list;
             this.textures = list2;
             this.normals = list3;
@@ -323,7 +322,7 @@ public class BOBJLoader {
         public float x;
         public float y;
         public float z;
-        public List weights = new ArrayList();
+        public List<Weight> weights = new ArrayList<>();
 
         public Vertex(float f, float f2, float f3) {
             this.x = f;
@@ -332,9 +331,9 @@ public class BOBJLoader {
         }
 
         public void eliminateTinyWeights() {
-            Iterator iterator = this.weights.iterator();
+            Iterator<Weight> iterator = this.weights.iterator();
             while (iterator.hasNext()) {
-                Weight weight = (Weight)iterator.next();
+                Weight weight = iterator.next();
                 if (!((double)weight.factor < 0.05)) continue;
                 iterator.remove();
             }
@@ -344,7 +343,7 @@ public class BOBJLoader {
                     f += weight.factor;
                 }
                 if (f < 1.0f) {
-                    ((Weight)this.weights.get((int)(this.weights.size() - 1))).factor += 1.0f - f;
+                    this.weights.get(this.weights.size() - 1).factor += 1.0f - f;
                 }
             }
         }
@@ -407,7 +406,7 @@ public class BOBJLoader {
 
     public static class BOBJMesh {
         public String name;
-        public List faces = new ArrayList();
+        public List<Face> faces = new ArrayList<>();
         public String armatureName;
         public BOBJArmature armature;
 

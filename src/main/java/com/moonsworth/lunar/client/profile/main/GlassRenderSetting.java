@@ -14,11 +14,10 @@ public enum GlassRenderSetting implements IEnumSetting {
     }
 
     public String toString() {
-        return this.get(this.llIlllIIIllllIIlllIllIIIl, new Object[0]);
+        return this.get(this.llIlllIIIllllIIlllIllIIIl);
     }
 
     GlassRenderSetting(String var3) {
         this.llIlllIIIllllIIlllIllIIIl = var3;
     }
 }
- 

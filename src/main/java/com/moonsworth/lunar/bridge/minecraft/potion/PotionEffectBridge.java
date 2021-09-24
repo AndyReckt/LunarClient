@@ -1,17 +1,16 @@
 package com.moonsworth.lunar.bridge.minecraft.potion;
 
 public interface PotionEffectBridge {
-    public boolean bridge$getIsPotionDurationMax();
+    boolean bridge$getIsPotionDurationMax();
 
-    public int bridge$getPotionID();
+    int bridge$getPotionID();
 
-    public float bridge$getDuration();
+    float bridge$getDuration();
 
-    public int bridge$getAmplifier();
+    int bridge$getAmplifier();
 
-    public String bridge$getEffectName();
+    String bridge$getEffectName();
 
-    default public void lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2) {
+default void lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2) {
     }
 }
- 

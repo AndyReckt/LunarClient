@@ -3,12 +3,11 @@ package com.moonsworth.lunar.bridge.minecraft.util;
 import com.mojang.authlib.GameProfile;
 
 public interface SessionBridge {
-    public String bridge$getPlayerID();
+    String bridge$getPlayerID();
 
-    public String bridge$getUsername();
+    String bridge$getUsername();
 
-    public String bridge$getToken();
+    String bridge$getToken();
 
-    public GameProfile bridge$getProfile();
+    GameProfile bridge$getProfile();
 }
- 

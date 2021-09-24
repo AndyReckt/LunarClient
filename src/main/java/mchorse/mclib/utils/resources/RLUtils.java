@@ -1,6 +1,6 @@
 /*
  * Decompiled with CFR 0.150.
- * 
+ *
  * Could not load the following classes:
  *  com.google.gson.JsonArray
  *  com.google.gson.JsonElement
@@ -15,23 +15,22 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonNull;
 import com.google.gson.JsonPrimitive;
-import lunar.a.Bridge;
-import lunar.af.ResourceLocationBridge;
-import mchorse.mclib.utils.resources.MultiResourceLocation;
+import com.moonsworth.lunar.bridge.minecraft.util.ResourceLocationBridge;
+import com.moonsworth.lunar.client.bridge.Bridge;
 
 public class RLUtils {
     public static ResourceLocationBridge create(String string) {
         if (string.startsWith("blockbuster.actors:")) {
             string = "b.a" + string.substring(18);
         }
-        return Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation(string);
+        return Bridge.getInstance().initResourceLocation(string);
     }
 
     public static ResourceLocationBridge create(String string, String string2) {
         if (string.equals("blockbuster.actors")) {
             string = "b.a";
         }
-        return Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation(string, string2);
+        return Bridge.getInstance().initResourceLocation(string, string2);
     }
 
     public static ResourceLocationBridge create() {
@@ -61,7 +60,7 @@ public class RLUtils {
             MultiResourceLocation multiResourceLocation = (MultiResourceLocation)resourceLocationBridge;
             JsonArray jsonArray = new JsonArray();
             for (ResourceLocationBridge resourceLocationBridge2 : multiResourceLocation.children) {
-                jsonArray.add((JsonElement)new JsonPrimitive(resourceLocationBridge2.toString()));
+                jsonArray.add(new JsonPrimitive(resourceLocationBridge2.toString()));
             }
             return jsonArray;
         }

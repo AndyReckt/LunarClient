@@ -21,21 +21,21 @@ public class HKTextSetting extends AbstractSetting<String> {
     }
 
     @Override
-    public AbstractDescritiveSettingUIComponent lIlIlIlIlIIlIIlIIllIIIIIl(UIComponent uIComponent) {
+    public AbstractDescritiveSettingUIComponent getUIComponent(UIComponent uIComponent) {
         return new HKTextSettingUIComponent(this, uIComponent);
     }
 
     @Override
-    public void IlllIIIIIIlllIlIIlllIlIIl(JsonObject jsonObject) {
+    public void read(JsonObject jsonObject) {
         if (!jsonObject.has(this.lIIlIlllIlIlIIIlllIIlIIII()) || jsonObject.get(this.lIIlIlllIlIlIIIlllIIlIIII()).isJsonNull()) {
             return;
         }
         JsonObject jsonObject2 = jsonObject.getAsJsonObject(this.lIIlIlllIlIlIIIlllIIlIIII());
-        this.IlllIIIIIIlllIlIIlllIlIIl.IlllIIIIIIlllIlIIlllIlIIl(jsonObject2);
+        this.IlllIIIIIIlllIlIIlllIlIIl.read(jsonObject2);
         if (jsonObject2.has("text") && !jsonObject2.get("text").isJsonNull()) {
             this.lIlIlIlIlIIlIIlIIllIIIIIl(jsonObject2.get("text").getAsString());
         } else {
-            this.lIlIlIlIlIIlIIlIIllIIIIIl((String)this.IIlIllIlllllllIIlIIIllIIl());
+            this.lIlIlIlIlIIlIIlIIllIIIIIl(this.IIlIllIlllllllIIlIIIllIIl());
         }
     }
 
@@ -45,19 +45,17 @@ public class HKTextSetting extends AbstractSetting<String> {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(JsonObject jsonObject) {
+    public void write(JsonObject jsonObject) {
         JsonObject jsonObject2 = new JsonObject();
-        if (!((String)this.IllIllIIIllIIIlIlIlIIIIll()).equalsIgnoreCase((String)this.IIlIllIlllllllIIlIIIllIIl())) {
-            jsonObject2.addProperty("text", (String)this.IllIllIIIllIIIlIlIlIIIIll());
+        if (!this.IllIllIIIllIIIlIlIlIIIIll().equalsIgnoreCase(this.IIlIllIlllllllIIlIIIllIIl())) {
+            jsonObject2.addProperty("text", this.IllIllIIIllIIIlIlIlIIIIll());
         }
-        this.IlllIIIIIIlllIlIIlllIlIIl.lIlIlIlIlIIlIIlIIllIIIIIl(jsonObject2);
+        this.IlllIIIIIIlllIlIIlllIlIIl.write(jsonObject2);
         if (!jsonObject2.entrySet().isEmpty()) {
             jsonObject.add(this.lIIlIlllIlIlIIIlllIIlIIII(), jsonObject2);
         }
     }
 
-    // todo figure out why this override is invalid.
-    //@Override
     public boolean IlllIIIIIIlllIlIIlllIlIIl() {
         return this.lIlIlIlIlIIlIIlIIllIIIIIl;
     }

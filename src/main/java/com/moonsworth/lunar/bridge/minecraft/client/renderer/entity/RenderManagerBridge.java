@@ -9,41 +9,41 @@ import com.moonsworth.lunar.bridge.minecraft.world.WorldBridge;
 import java.util.Map;
 
 public interface RenderManagerBridge {
-    public double getRenderPosX();
+    double getRenderPosX();
 
-    public double getRenderPosY();
+    double getRenderPosY();
 
-    public double getRenderPosZ();
+    double getRenderPosZ();
 
-    public double getPlayerViewX();
+    double getPlayerViewX();
 
-    public double getPlayerViewY();
+    double getPlayerViewY();
 
-    public double bridge$viewerPosX();
+    double bridge$viewerPosX();
 
-    public double bridge$viewerPosY();
+    double bridge$viewerPosY();
 
-    public double bridge$viewerPosZ();
+    double bridge$viewerPosZ();
 
-    public RenderPlayerBridge bridge$defaultPlayerRenderer();
+    RenderPlayerBridge bridge$defaultPlayerRenderer();
 
-    public Map bridge$getSkinMap();
+    Map bridge$getSkinMap();
 
-    public void bridge$setTextureManager(TextureManagerBridge var1);
+    void bridge$setTextureManager(TextureManagerBridge var1);
 
-    public void bridge$setLivingEntity(EntityLivingBaseBridge var1);
+    void bridge$setLivingEntity(EntityLivingBaseBridge var1);
 
-    public void bridge$setOptions(GameSettingsBridge var1);
+    void bridge$setOptions(GameSettingsBridge var1);
 
-    public void bridge$setRenderShadow(boolean var1);
+    void bridge$setRenderShadow(boolean var1);
 
-    public void bridge$setPlayerViewY(float var1);
+    void bridge$setPlayerViewY(float var1);
 
-    public void bridge$renderEntityWithPosYaw(EntityBridge var1, double var2, double var4, double var6, float var8, float var9);
+    void bridge$renderEntityWithPosYaw(EntityBridge var1, double var2, double var4, double var6, float var8, float var9);
 
-    public void bridge$setDebugBoundingBox(boolean var1);
+    void bridge$setDebugBoundingBox(boolean var1);
 
-    public boolean bridge$showDebugBoundingBox();
+    boolean bridge$showDebugBoundingBox();
 
-    public void bridge$prepare(WorldBridge var1, EntityBridge var2);
+    void bridge$prepare(WorldBridge var1, EntityBridge var2);
 }

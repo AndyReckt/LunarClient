@@ -22,7 +22,7 @@ public abstract class LCPacket {
     private static final Map<Integer, Class> idToClass = new HashMap<>();
 
     static {
-	// server
+        // server
         addPacket(0, LCPacketClientVoice.class);
         addPacket(16, LCPacketVoice.class);
         addPacket(1, LCPacketVoiceChannelSwitch.class);

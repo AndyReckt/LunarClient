@@ -25,7 +25,7 @@ public enum MinecraftVersion {
         return this == lIlIlIlIlIIlIIlIIllIIIIIl || this == IlllIIIIIIlllIlIIlllIlIIl;
     }
 
-    public boolean llllIIlIIlIIlIIllIIlIIllI() {
+    public boolean isLatestVersion() {
         return this.ordinal() == values().length - 1;
     }
 

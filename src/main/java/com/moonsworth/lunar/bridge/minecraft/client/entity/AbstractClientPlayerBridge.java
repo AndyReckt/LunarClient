@@ -8,11 +8,11 @@ import com.moonsworth.lunar.bridge.minecraft.util.ResourceLocationBridge;
  * @since 10/07/2021 14:10
  */
 public interface AbstractClientPlayerBridge extends EntityPlayerBridge {
-    public void bridge$setLocationOfCape(ResourceLocationBridge var1);
+    void bridge$setLocationOfCape(ResourceLocationBridge var1);
 
-    public void bridge$setLocationOfCapeOverride(ResourceLocationBridge var1);
+    void bridge$setLocationOfCapeOverride(ResourceLocationBridge var1);
 
-    public String bridge$getSkinType();
+    String bridge$getSkinType();
 
-    public ResourceLocationBridge bridge$getLocationSkin();
+    ResourceLocationBridge bridge$getLocationSkin();
 }

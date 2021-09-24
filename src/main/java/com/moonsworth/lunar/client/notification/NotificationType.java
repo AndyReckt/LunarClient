@@ -16,11 +16,10 @@ public enum NotificationType {
 
     NotificationType(final String s, final int n, final String s2) {
         this.nameProxy = s;
-        this.llllIIlIIlIIlIIllIIlIIllI = Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation("lunar", "icons/notifications/" + s2 + "-24x24.png");
+        this.llllIIlIIlIIlIIllIIlIIllI = Bridge.getInstance().initResourceLocation("lunar", "icons/notifications/" + s2 + "-24x24.png");
     }
 
     public ResourceLocationBridge lIlIlIlIlIIlIIlIIllIIIIIl() {
         return this.llllIIlIIlIIlIIllIIlIIllI;
     }
 }
- 

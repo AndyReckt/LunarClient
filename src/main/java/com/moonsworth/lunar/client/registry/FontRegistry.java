@@ -119,11 +119,11 @@ public class FontRegistry extends ItemSetLoader<LCFontRenderer> {
     }
 
     static {
-        IllIllIIIllIIIlIlIlIIIIll = Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation("lunar", "fonts/roboto-bold.ttf");
-        IIlIllIlllllllIIlIIIllIIl = Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation("lunar", "fonts/roboto-medium.ttf");
-        lIIlIlllIlIlIIIlllIIlIIII = Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation("lunar", "fonts/roboto-light.ttf");
-        llIllIlIllIlllIllIIIIllII = Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation("lunar", "fonts/raleway-extrabold.ttf");
-        IllllllllllIlIIIlllIlllll = Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation("lunar", "fonts/raleway-light.ttf");
+        IllIllIIIllIIIlIlIlIIIIll = Bridge.getInstance().initResourceLocation("lunar", "fonts/roboto-bold.ttf");
+        IIlIllIlllllllIIlIIIllIIl = Bridge.getInstance().initResourceLocation("lunar", "fonts/roboto-medium.ttf");
+        lIIlIlllIlIlIIIlllIIlIIII = Bridge.getInstance().initResourceLocation("lunar", "fonts/roboto-light.ttf");
+        llIllIlIllIlllIllIIIIllII = Bridge.getInstance().initResourceLocation("lunar", "fonts/raleway-extrabold.ttf");
+        IllllllllllIlIIIlllIlllll = Bridge.getInstance().initResourceLocation("lunar", "fonts/raleway-light.ttf");
     }
 
 }

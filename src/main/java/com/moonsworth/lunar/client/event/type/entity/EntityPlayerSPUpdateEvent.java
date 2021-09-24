@@ -4,7 +4,7 @@ import com.moonsworth.lunar.bridge.minecraft.client.entity.EntityPlayerSPBridge;
 import com.moonsworth.lunar.client.event.CancellableEvent;
 
 public class EntityPlayerSPUpdateEvent
-extends CancellableEvent {
+    extends CancellableEvent {
     public final Runnable lIlIlIlIlIIlIIlIIllIIIIIl;
     public final EntityPlayerSPBridge IlllIIIIIIlllIlIIlllIlIIl;
     public int lIllIlIIIlIIIIIIIlllIlIll;

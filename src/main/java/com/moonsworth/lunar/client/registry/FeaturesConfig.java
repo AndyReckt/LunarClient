@@ -3,15 +3,16 @@ package com.moonsworth.lunar.client.registry;
 import com.google.common.collect.ImmutableSet;
 import com.google.gson.JsonObject;
 import com.moonsworth.lunar.client.feature.Feature;
+import com.moonsworth.lunar.client.feature.type.borders.BordersMod;
+import com.moonsworth.lunar.client.feature.type.hologram.HologramsMod;
 import com.moonsworth.lunar.client.feature.type.nameplates.CustomNameplateMod;
-import com.moonsworth.lunar.client.json.file.DefaultJson;
+import com.moonsworth.lunar.client.feature.type.title.TitlesMod;
+import com.moonsworth.lunar.client.json.file.JsonFile;
 import com.moonsworth.lunar.client.json.file.ItemSetLoader;
 
 import java.util.Set;
 
-public class FeaturesConfig
-extends ItemSetLoader<Feature>
-implements DefaultJson {
+public class FeaturesConfig extends ItemSetLoader<Feature> implements JsonFile {
     public CustomNameplateMod lIlIlIlIlIIlIIlIIllIIIIIl;
 
     @Override
@@ -36,26 +37,24 @@ implements DefaultJson {
     }
 
     @Override
-    public void IlllIIIIIIlllIlIIlllIlIIl(JsonObject jsonObject) {
+    public void read(JsonObject jsonObject) {
         for (Feature feature : this.llIlllIIIllllIIlllIllIIIl()) {
             try {
-                JsonObject jsonObject2 = jsonObject.has(feature.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl()) && !jsonObject.get(feature.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl()).isJsonNull() ? jsonObject.getAsJsonObject(feature.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl()) : new JsonObject();
-                feature.IlllIIIIIIlllIlIIlllIlIIl(jsonObject2);
-            }
-            catch (Exception exception) {}
+                JsonObject jsonObject2 = jsonObject.has(feature.getDetails().getId()) && !jsonObject.get(feature.getDetails().getId()).isJsonNull() ? jsonObject.getAsJsonObject(feature.getDetails().getId()) : new JsonObject();
+                feature.read(jsonObject2);
+            } catch (Exception exception) {}
         }
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(JsonObject jsonObject) {
+    public void write(JsonObject jsonObject) {
         for (Feature feature : this.llIlllIIIllllIIlllIllIIIl()) {
             try {
                 JsonObject jsonObject2 = new JsonObject();
-                feature.lIlIlIlIlIIlIIlIIllIIIIIl(jsonObject2);
+                feature.write(jsonObject2);
                 if (jsonObject2.entrySet().isEmpty()) continue;
-                jsonObject.add(feature.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl(), (JsonElement)jsonObject2);
-            }
-            catch (Exception exception) {}
+                jsonObject.add(feature.getDetails().getId(), jsonObject2);
+            } catch (Exception exception) {}
         }
     }
 
@@ -68,4 +67,3 @@ implements DefaultJson {
         return this.lIlIlIlIlIIlIIlIIllIIIIIl;
     }
 }
- 

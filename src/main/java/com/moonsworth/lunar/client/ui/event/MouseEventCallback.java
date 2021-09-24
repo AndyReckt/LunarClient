@@ -6,5 +6,5 @@ package com.moonsworth.lunar.client.ui.event;
  */
 @FunctionalInterface
 public interface MouseEventCallback {
-    public boolean accept(float var1, float var2, int var3);
+    boolean accept(float mouseX, float mouseY, int button);
 }

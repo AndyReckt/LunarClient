@@ -1,9 +1,9 @@
 package com.moonsworth.lunar.bridge.minecraft.client.renderer.block.model;
 
 public interface ItemCameraTransformsBridge {
-    public void bridge$applyTransform(lIlIlIlIlIIlIIlIIllIIIIIl var1);
+    void bridge$applyTransform(lIlIlIlIlIIlIIlIIllIIIIIl var1);
 
-    public static enum lIlIlIlIlIIlIIlIIllIIIIIl {
+    enum lIlIlIlIlIIlIIlIIllIIIIIl {
 
         lIlIlIlIlIIlIIlIIllIIIIIl, // NONE
         IlllIIIIIIlllIlIIlllIlIIl, // THIRD_PERSON_LEFT_HAND
@@ -22,23 +22,23 @@ public interface ItemCameraTransformsBridge {
         public int IlllIIIIIIlllIlIIlllIlIIl() {
             int n;
             switch (this) {
-                case lIlIlIlIlIIlIIlIIllIIIIIl: {
-                    n = 0;
-                    break;
-                }
-                case IlllIIIIIIlllIlIIlllIlIIl: 
-                case lIllIlIIIlIIIIIIIlllIlIll: {
-                    n = 1;
-                    break;
-                }
-                case llIlllIIIllllIIlllIllIIIl: 
-                case llllIIlIIlIIlIIllIIlIIllI: {
-                    n = 2;
-                    break;
-                }
-                default: {
-                    n = this.ordinal() - 2;
-                }
+            case lIlIlIlIlIIlIIlIIllIIIIIl: {
+                n = 0;
+                break;
+            }
+            case IlllIIIIIIlllIlIIlllIlIIl:
+            case lIllIlIIIlIIIIIIIlllIlIll: {
+                n = 1;
+                break;
+            }
+            case llIlllIIIllllIIlllIllIIIl:
+            case llllIIlIIlIIlIIllIIlIIllI: {
+                n = 2;
+                break;
+            }
+            default: {
+                n = this.ordinal() - 2;
+            }
             }
             return n;
         }

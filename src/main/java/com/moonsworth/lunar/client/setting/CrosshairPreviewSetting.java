@@ -7,7 +7,7 @@ import com.moonsworth.lunar.client.ui.component.type.setting.AbstractDescritiveS
 import com.moonsworth.lunar.client.ui.component.type.setting.CrosshairPreviewUIComponent;
 
 public class CrosshairPreviewSetting
-extends AbstractSetting {
+    extends AbstractSetting {
     public final CrosshairMod lIlIlIlIlIIlIIlIIllIIIIIl;
 
     public CrosshairPreviewSetting(CrosshairMod crosshairMod) {
@@ -20,15 +20,15 @@ extends AbstractSetting {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(JsonObject jsonObject) {
+    public void write(JsonObject jsonObject) {
     }
 
     @Override
-    public void IlllIIIIIIlllIlIIlllIlIIl(JsonObject jsonObject) {
+    public void read(JsonObject jsonObject) {
     }
 
     @Override
-    public AbstractDescritiveSettingUIComponent lIlIlIlIlIIlIIlIIllIIIIIl(UIComponent uIComponent) {
+    public AbstractDescritiveSettingUIComponent getUIComponent(UIComponent uIComponent) {
         return new CrosshairPreviewUIComponent(this, uIComponent);
     }
 

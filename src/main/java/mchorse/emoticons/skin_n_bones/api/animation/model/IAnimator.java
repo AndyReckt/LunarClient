@@ -1,6 +1,6 @@
 /*
  * Decompiled with CFR 0.150.
- * 
+ *
  * Could not load the following classes:
  *  lunar.G.EntityLivingBaseBridge
  */
@@ -11,12 +11,12 @@ import mchorse.emoticons.skin_n_bones.api.animation.model.ActionPlayback;
 import mchorse.emoticons.skin_n_bones.api.bobj.BOBJArmature;
 
 public interface IAnimator {
-    public void refresh();
+    void refresh();
 
-    public void setEmote(ActionPlayback var1);
+    void setEmote(ActionPlayback var1);
 
-    public void update(EntityLivingBaseBridge var1);
+    void update(EntityLivingBaseBridge var1);
 
-    public void applyActions(BOBJArmature var1, float var2);
+    void applyActions(BOBJArmature var1, float var2);
 }
 

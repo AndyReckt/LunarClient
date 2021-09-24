@@ -1,18 +1,18 @@
 package com.moonsworth.lunar.client.websocket;
 
 public enum Status {
-    lIlIlIlIlIIlIIlIIllIIIIIl("Online"),
-    IlllIIIIIIlllIlIIlllIlIIl("Away"),
-    lIllIlIIIlIIIIIIIlllIlIll("Busy"),
-    llIlllIIIllllIIlllIllIIIl("Offline");
+    ONLINE("Online"),
+    AWAY("Away"),
+    BUSY("Busy"),
+    OFFLINE("Offline");
 
-    public final String llllIIlIIlIIlIIllIIlIIllI;
+    public final String label;
 
-    Status(String var3) {
-        this.llllIIlIIlIIlIIllIIlIIllI = var3;
+    Status(final String label) {
+        this.label = label;
     }
 
     public String lIlIlIlIlIIlIIlIIllIIIIIl() {
-        return this.llllIIlIIlIIlIIllIIlIIllI;
+        return this.label;
     }
 }

@@ -1,7 +1,6 @@
 package com.moonsworth.lunar.client.setting;
 
-public enum KeyBindType implements IEnumSetting
-{
+public enum KeyBindType implements IEnumSetting {
     HOLD,
     TOGGLE;
 
@@ -12,7 +11,6 @@ public enum KeyBindType implements IEnumSetting
 
     @Override
     public String toString() {
-        return this.get(this.lIlIlIlIlIIlIIlIIllIIIIIl().toLowerCase(), new Object[0]);
+        return this.get(this.lIlIlIlIlIIlIIlIIllIIIIIl().toLowerCase());
     }
 }
- 

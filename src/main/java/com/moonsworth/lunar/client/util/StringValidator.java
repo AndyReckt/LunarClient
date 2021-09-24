@@ -3,7 +3,7 @@ package com.moonsworth.lunar.client.util;
 public class StringValidator {
 
     // todo
-    public static final char[] lIlIlIlIlIIlIIlIIllIIIIIl = new char[]{};
+    public static final char[] lIlIlIlIlIIlIIlIIllIIIIIl = new char[] {};
 
     public static boolean lIlIlIlIlIIlIIlIIllIIIIIl(char c) {
         return c != '§' && c >= ' ' && c != '';

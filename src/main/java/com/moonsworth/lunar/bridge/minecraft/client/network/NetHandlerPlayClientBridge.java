@@ -7,15 +7,15 @@ import java.util.List;
  * @since 10/07/2021 14:18
  */
 public interface NetHandlerPlayClientBridge extends INetHandlerBridge {
-    public void bridge$addToSendQueue(PacketBridge var1);
+    void bridge$addToSendQueue(PacketBridge var1);
 
-    public String bridge$getRegisterPacketName();
+    String bridge$getRegisterPacketName();
 
-    public String bridge$getLCChannelName();
+    String bridge$getLCChannelName();
 
-    public void bridge$quit();
+    void bridge$quit();
 
-    public NetworkManagerBridge bridge$getNetworkManager();
+    NetworkManagerBridge bridge$getNetworkManager();
 
-    public List bridge$getPlayerInfoMap();
+    List<NetworkPlayerInfoBridge> bridge$getPlayerInfoMap();
 }

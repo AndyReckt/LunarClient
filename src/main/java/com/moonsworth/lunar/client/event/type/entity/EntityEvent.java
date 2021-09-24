@@ -4,7 +4,7 @@ import com.moonsworth.lunar.bridge.minecraft.client.entity.EntityBridge;
 import com.moonsworth.lunar.client.event.Event;
 
 public class EntityEvent
-extends Event {
+    extends Event {
     public EntityBridge lIlIlIlIlIIlIIlIIllIIIIIl;
 
     public EntityEvent(EntityBridge entityBridge) {
@@ -12,7 +12,7 @@ extends Event {
     }
 
     public static class EntityAddEvent
-    extends EntityEvent {
+        extends EntityEvent {
         public int IlllIIIIIIlllIlIIlllIlIIl;
         public int lIllIlIIIlIIIIIIIlllIlIll;
 

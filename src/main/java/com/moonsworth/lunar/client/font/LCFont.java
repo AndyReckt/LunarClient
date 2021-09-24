@@ -28,10 +28,9 @@ public class LCFont {
     public LCFont(ResourceLocationBridge resourceLocationBridge, float f) {
         Font font;
         try {
-            InputStream inputStream = Ref.lIlIlIlIlIIlIIlIIllIIIIIl() == null || Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getResourceManager() == null ? Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getMcDefaultResourcePack().bridge$getInputStream(resourceLocationBridge) : Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getResourceManager().bridge$getResource(resourceLocationBridge).bridge$getInputStream();
+            InputStream inputStream = Ref.getMinecraft() == null || Ref.getMinecraft().bridge$getResourceManager() == null ? Ref.getMinecraft().bridge$getMcDefaultResourcePack().bridge$getInputStream(resourceLocationBridge) : Ref.getMinecraft().bridge$getResourceManager().bridge$getResource(resourceLocationBridge).bridge$getInputStream();
             font = Font.createFont(0, inputStream).deriveFont(f);
-        }
-        catch (Exception exception) {
+        } catch (Exception exception) {
             font = new Font("Arial", 0, (int)f);
         }
         this.IlllIIIIIIlllIlIIlllIlIIl = font;
@@ -89,12 +88,11 @@ public class LCFont {
     }
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(CharData[] charDataArray, char c, float f, float f2, int n) {
-        TessellatorBridge tessellatorBridge = Bridge.llIlllIIIllllIIlllIllIIIl().initTessellator();
+        TessellatorBridge tessellatorBridge = Bridge.getInstance().initTessellator();
         tessellatorBridge.bridge$begin(4, true, false);
         try {
             this.lIlIlIlIlIIlIIlIIllIIIIIl(tessellatorBridge, f, f2, charDataArray[c].lIlIlIlIlIIlIIlIIllIIIIIl, charDataArray[c].IlllIIIIIIlllIlIIlllIlIIl, charDataArray[c].lIllIlIIIlIIIIIIIlllIlIll, charDataArray[c].llIlllIIIllllIIlllIllIIIl, charDataArray[c].lIlIlIlIlIIlIIlIIllIIIIIl, charDataArray[c].IlllIIIIIIlllIlIIlllIlIIl);
-        }
-        catch (Exception exception) {
+        } catch (Exception exception) {
             exception.printStackTrace();
         }
         tessellatorBridge.bridge$end();
@@ -114,10 +112,10 @@ public class LCFont {
     }
 
     public int lIlIlIlIlIIlIIlIIllIIIIIl(String string) {
-        return this.lIlIlIlIlIIlIIlIIllIIIIIl();
+        return this.getHeight();
     }
 
-    public int lIlIlIlIlIIlIIlIIllIIIIIl() {
+    public int getHeight() {
         return (this.llllIIlIIlIIlIIllIIlIIllI - 8) / 2;
     }
 

@@ -12,7 +12,7 @@ import com.moonsworth.lunar.client.bridge.MinecraftVersion;
 import com.moonsworth.lunar.client.event.EventHandler;
 import com.moonsworth.lunar.client.event.type.hud.EventRenderGlint;
 import com.moonsworth.lunar.client.event.type.world.TickEvent;
-import com.moonsworth.lunar.client.json.file.DefaultJson;
+import com.moonsworth.lunar.client.json.file.JsonFile;
 import com.moonsworth.lunar.client.json.file.ItemSetLoader;
 import com.moonsworth.lunar.client.ref.Ref;
 import com.moonsworth.lunar.client.setting.*;
@@ -24,19 +24,19 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class PerformanceConfig extends ItemSetLoader<AbstractSetting<?>> implements EventHandler, DefaultJson {
+public class PerformanceConfig extends ItemSetLoader<AbstractSetting<?>> implements EventHandler, JsonFile {
     public float lIlIlIlIlIIlIIlIIllIIIIIl;
-    public EnumSetting IlllIIIIIIlllIlIIlllIlIIl;
+    public EnumSetting<PerformanceConfig.GlintOption> IlllIIIIIIlllIlIIlllIlIIl;
     public BooleanSetting lIllIlIIIlIIIIIIIlllIlIll;
-    public EnumSetting llIlllIIIllllIIlllIllIIIl;
-    public EnumSetting llllIIlIIlIIlIIllIIlIIllI;
-    public EnumSetting IlIlIlllllIlIIlIlIlllIlIl;
+    public EnumSetting<PerformanceConfig.ChunkLoading> llIlllIIIllllIIlllIllIIIl;
+    public EnumSetting<EntityRenderer> llllIIlIIlIIlIIllIIlIIllI;
+    public EnumSetting<EntityRenderer> IlIlIlllllIlIIlIlIlllIlIl;
     public BooleanSetting llIIIIIIIllIIllIlIllIIIIl;
-    public EnumSetting lIIIllIllIIllIlllIlIIlllI;
+    public EnumSetting<Where> lIIIllIllIIllIlllIlIIlllI;
     public BooleanSetting IlllllIlIIIlIIlIIllIIlIll;
     public BooleanSetting llIIlIlIIIllIlIlIlIIlIIll;
-    public final Map llIIIlllIIlllIllllIlIllIl = new ConcurrentHashMap();
-    public final Map lllllIllIllIllllIlIllllII = new ConcurrentHashMap();
+    public final Map<EntityBridge, Double> llIIIlllIIlllIllllIlIllIl = new ConcurrentHashMap<>();
+    public final Map<TileEntityBridge, Double> lllllIllIllIllllIlIllllII = new ConcurrentHashMap<>();
     public int lllIIIIIlllIIlIllIIlIIIlI;
 
     public PerformanceConfig() {
@@ -44,58 +44,66 @@ public class PerformanceConfig extends ItemSetLoader<AbstractSetting<?>> impleme
         this.lIlIlIlIlIIlIIlIIllIIIIIl(TickEvent.class, this::lIlIlIlIlIIlIIlIIllIIIIIl);
     }
 
-    public Set lIlIlIlIlIIlIIlIIllIIIIIl() {
-        return ImmutableSet.of(new SettingLabel("generalOptions"), this.lIIIllIllIIllIlllIlIIlllI = new EnumSetting("hide_endportals", EnderPortalOptions.lIllIlIIIlIIIIIIIlllIlIll), this.lIllIlIIIlIIIIIIIlllIlIll = new BooleanSetting("skip_lighting", true), this.IlllIIIIIIlllIlIIlllIlIIl = new EnumSetting("glint", PerformanceConfig.IlllIIIIIIlllIlIIlllIlIIl.lIlIlIlIlIIlIIlIIllIIIIIl), this.llIlllIIIllllIIlllIllIIIl = new EnumSetting("lazy_chunk_loading", PerformanceConfig.llIlllIIIllllIIlllIllIIIl.llIlllIIIllllIIlllIllIIIl), new SettingLabel("entityOptions"), new AbstractSetting[]{this.llIIIIIIIllIIllIlIllIIIIl = new BooleanSetting("entity_shadow", true), this.llllIIlIIlIIlIIllIIlIIllI = new EnumSetting("entity_render", PerformanceConfig.lIlIlIlIlIIlIIlIIllIIIIIl.lIllIlIIIlIIIIIIIlllIlIll), this.IlIlIlllllIlIIlIlIlllIlIl = new EnumSetting("b_entity_render", PerformanceConfig.lIlIlIlIlIIlIIlIIllIIIIIl.lIllIlIIIlIIIIIIIlllIlIll), this.IlllllIlIIIlIIlIIllIIlIll = new BooleanSetting("ground_arrows", true), this.llIIlIlIIIllIlIlIlIIlIIll = new BooleanSetting("stuck_arrows", true)});
+    public Set<AbstractSetting<?>> lIlIlIlIlIIlIIlIIllIIIIIl() {
+        return ImmutableSet.of(
+                   new SettingLabel("generalOptions"),
+                   this.lIIIllIllIIllIlllIlIIlllI = new EnumSetting<>("hide_endportals", Where.lIllIlIIIlIIIIIIIlllIlIll),
+                   this.lIllIlIIIlIIIIIIIlllIlIll = new BooleanSetting("skip_lighting", true),
+                   this.IlllIIIIIIlllIlIIlllIlIIl = new EnumSetting<>("glint", PerformanceConfig.GlintOption.lIlIlIlIlIIlIIlIIllIIIIIl),
+                   this.llIlllIIIllllIIlllIllIIIl = new EnumSetting<>("lazy_chunk_loading", PerformanceConfig.ChunkLoading.llIlllIIIllllIIlllIllIIIl),
+                   new SettingLabel("entityOptions"),
+                   this.llIIIIIIIllIIllIlIllIIIIl = new BooleanSetting("entity_shadow", true),
+                   this.llllIIlIIlIIlIIllIIlIIllI = new EnumSetting<>("entity_render", EntityRenderer.lIllIlIIIlIIIIIIIlllIlIll),
+                   this.IlIlIlllllIlIIlIlIlllIlIl = new EnumSetting<>("b_entity_render", EntityRenderer.lIllIlIIIlIIIIIIIlllIlIll),
+                   this.IlllllIlIIIlIIlIIllIIlIll = new BooleanSetting("ground_arrows", true),
+                   this.llIIlIlIIIllIlIlIlIIlIIll = new BooleanSetting("stuck_arrows", true));
     }
 
     public File IlIlIlllllIlIIlIlIlllIlIl() {
-        return new File(LunarClient.IIllIlIllIlIllIllIllIllII().IlIlIlllllIlIIlIlIlllIlIl() + File.separator + Ref.IlllIIIIIIlllIlIIlllIlIIl().lIlIlIIIIIIllIlIIIIllIIII().llllIIlIIlIIlIIllIIlIIllI().IlllIIIIIIlllIlIIlllIlIIl(), this.llllIIlIIlIIlIIllIIlIIllI());
+        return new File(LunarClient.getInstance().IlIlIlllllIlIIlIlIlllIlIl() + File.separator + Ref.getLC().lIlIlIIIIIIllIlIIIIllIIII().getSelectedProfile().getName(), this.llllIIlIIlIIlIIllIIlIIllI());
     }
 
-    public boolean lIlIlIlIlIIlIIlIIllIIIIIl(EntityBridge var1) {
-        if (var1 != Ref.IlIlIlllllIlIIlIlIlllIlIl() && !(var1 instanceof EntityPlayerBridge)) {
-            if (Bridge.IlllIIIIIIlllIlIIlllIlIIl() == MinecraftVersion.lIlIlIlIlIIlIIlIIllIIIIIl && (var1 instanceof lIIIllIllIIllIlllIlIIlllI || var1 instanceof lunar.G.lIllIlIIIlIIIIIIIlllIlIll)) {
-                return true;
-            } else {
-                Double var2 = (Double)this.llIIIlllIIlllIllllIlIllIl.get(var1);
-                if (var2 == null) {
-                    var2 = Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getRenderViewEntity().lIlIlIlIlIIlIIlIIllIIIIIl(var1);
-                    this.llIIIlllIIlllIllllIlIllIl.put(var1, var2);
-                }
-
-                return !(var2 > (double)(((PerformanceConfig.lIlIlIlIlIIlIIlIIllIIIIIl)this.llllIIlIIlIIlIIllIIlIIllI.llIlllIIIllllIIlllIllIIIl()).IlllIIIIIIlllIlIIlllIlIIl() * ((PerformanceConfig.lIlIlIlIlIIlIIlIIllIIIIIl)this.llllIIlIIlIIlIIllIIlIIllI.llIlllIIIllllIIlllIllIIIl()).IlllIIIIIIlllIlIIlllIlIIl()));
-            }
-        } else {
+    public boolean lIlIlIlIlIIlIIlIIllIIIIIl(EntityBridge entityBridge) {
+        if (entityBridge == Ref.getPlayer() || entityBridge instanceof EntityPlayerBridge) {
             return true;
         }
+        if (Bridge.getMinecraftVersion() == MinecraftVersion.lIlIlIlIlIIlIIlIIllIIIIIl && (entityBridge instanceof com.moonsworth.lunar.bridge.minecraft.client.entity.lIIIllIllIIllIlllIlIIlllI || entityBridge instanceof com.moonsworth.lunar.bridge.minecraft.client.entity.lIllIlIIIlIIIIIIIlllIlIll)) {
+            return true;
+        }
+        Double d = this.llIIIlllIIlllIllllIlIllIl.get(entityBridge);
+        if (d == null) {
+            d = Ref.getMinecraft().bridge$getRenderViewEntity().lIlIlIlIlIIlIIlIIllIIIIIl(entityBridge);
+            this.llIIIlllIIlllIllllIlIllIl.put(entityBridge, d);
+        }
+        return !(d > (double) (((EntityRenderer) this.llllIIlIIlIIlIIllIIlIIllI.llIlllIIIllllIIlllIllIIIl()).IlllIIIIIIlllIlIIlllIlIIl() * ((EntityRenderer) this.llllIIlIIlIIlIIllIIlIIllI.llIlllIIIllllIIlllIllIIIl()).IlllIIIIIIlllIlIIlllIlIIl()));
     }
 
     public boolean lIlIlIlIlIIlIIlIIllIIIIIl(EntityBridge var1, double var2, double var4, double var6) {
         if (var1 == null) {
             return true;
         } else {
-            Double var8 = (Double)this.llIIIlllIIlllIllllIlIllIl.get(var1);
+            Double var8 = this.llIIIlllIIlllIllllIlIllIl.get(var1);
             if (var8 == null) {
-                var8 = Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getRenderViewEntity().lIlIlIlIlIIlIIlIIllIIIIIl(var1);
+                var8 = Ref.getMinecraft().bridge$getRenderViewEntity().lIlIlIlIlIIlIIlIIllIIIIIl(var1);
                 this.llIIIlllIIlllIllllIlIllIl.put(var1, var8);
             }
 
-            return !(var8 > (double)(((PerformanceConfig.lIlIlIlIlIIlIIlIIllIIIIIl)this.llllIIlIIlIIlIIllIIlIIllI.llIlllIIIllllIIlllIllIIIl()).IlllIIIIIIlllIlIIlllIlIIl() * ((PerformanceConfig.lIlIlIlIlIIlIIlIIllIIIIIl)this.llllIIlIIlIIlIIllIIlIIllI.llIlllIIIllllIIlllIllIIIl()).IlllIIIIIIlllIlIIlllIlIIl()));
+            return !(var8 > (double) (((EntityRenderer) this.llllIIlIIlIIlIIllIIlIIllI.llIlllIIIllllIIlllIllIIIl()).IlllIIIIIIlllIlIIlllIlIIl() * ((EntityRenderer) this.llllIIlIIlIIlIIllIIlIIllI.llIlllIIIllllIIlllIllIIIl()).IlllIIIIIIlllIlIIlllIlIIl()));
         }
     }
 
     public boolean lIlIlIlIlIIlIIlIIllIIIIIl(TileEntityBridge var1) {
         Vec3iBridge var2 = var1.bridge$getPos();
-        if (var1.bridge$getBlockType() == Bridge.IllIllIIIllIIIlIlIlIIIIll().bridge$end_portal() && (this.lIIIllIllIIllIlllIlIIlllI.llIlllIIIllllIIlllIllIIIl() == lunar.bF.lIlIlIlIlIIlIIlIIllIIIIIl.lIlIlIlIlIIlIIlIIllIIIIIl || this.lIIIllIllIIllIlllIlIIlllI.llIlllIIIllllIIlllIllIIIl() == lunar.bF.lIlIlIlIlIIlIIlIIllIIIIIl.IlllIIIIIIlllIlIIlllIlIIl && FriendStatusUtil.lIllIlIIIlIIIIIIIlllIlIll("Skyblock"))) {
+        if (var1.bridge$getBlockType() == Bridge.IllIllIIIllIIIlIlIlIIIIll().bridge$end_portal() && (this.lIIIllIllIIllIlllIlIIlllI.llIlllIIIllllIIlllIllIIIl() == Where.lIlIlIlIlIIlIIlIIllIIIIIl || this.lIIIllIllIIllIlllIlIIlllI.llIlllIIIllllIIlllIllIIIl() == Where.IlllIIIIIIlllIlIIlllIlIIl && FriendStatusUtil.lIllIlIIIlIIIIIIIlllIlIll("Skyblock"))) {
             return false;
         } else {
-            Double var3 = (Double)this.lllllIllIllIllllIlIllllII.get(var1);
+            Double var3 = this.lllllIllIllIllllIlIllllII.get(var1);
             if (var3 == null) {
-                var3 = Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getRenderViewEntity().lIlIlIlIlIIlIIlIIllIIIIIl((double)var2.bridge$getX(), (double)var2.bridge$getY(), (double)var2.bridge$getZ());
+                var3 = Ref.getMinecraft().bridge$getRenderViewEntity().lIlIlIlIlIIlIIlIIllIIIIIl(var2.bridge$getX(), var2.bridge$getY(), var2.bridge$getZ());
                 this.lllllIllIllIllllIlIllllII.put(var1, var3);
             }
 
-            return !(var3 > (double)(((PerformanceConfig.lIlIlIlIlIIlIIlIIllIIIIIl)this.IlIlIlllllIlIIlIlIlllIlIl.llIlllIIIllllIIlllIllIIIl()).IlllIIIIIIlllIlIIlllIlIIl() * ((PerformanceConfig.lIlIlIlIlIIlIIlIIllIIIIIl)this.IlIlIlllllIlIIlIlIlllIlIl.llIlllIIIllllIIlllIllIIIl()).IlllIIIIIIlllIlIIlllIlIIl()));
+            return !(var3 > (double) (((EntityRenderer) this.IlIlIlllllIlIIlIlIlllIlIl.llIlllIIIllllIIlllIllIIIl()).IlllIIIIIIlllIlIIlllIlIIl() * ((EntityRenderer) this.IlIlIlllllIlIIlIlIlllIlIl.llIlllIIIllllIIlllIllIIIl()).IlllIIIIIIlllIlIIlllIlIIl()));
         }
     }
 
@@ -113,7 +121,7 @@ public class PerformanceConfig extends ItemSetLoader<AbstractSetting<?>> impleme
         super.b_();
         this.lIllIlIIIlIIIIIIIlllIlIll.IlllIIIIIIlllIlIIlllIlIIl((var1) -> {
             float var2 = var1 ? 100.0F : this.lIlIlIlIlIIlIIlIIllIIIIIl;
-            Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getGameSettings().bridge$setGamma(var2);
+            Ref.getMinecraft().bridge$getGameSettings().bridge$setGamma(var2);
         });
     }
 
@@ -132,24 +140,21 @@ public class PerformanceConfig extends ItemSetLoader<AbstractSetting<?>> impleme
         return "performance.json";
     }
 
-    public void IlllIIIIIIlllIlIIlllIlIIl(JsonObject var1) {
-        Iterator<AbstractSetting<?>> var2 = this.llIlllIIIllllIIlllIllIIIl().iterator();
+    public void read(JsonObject var1) {
 
-        while(var2.hasNext()) {
-            AbstractSetting<?> var3 = var2.next();
-
+        for (AbstractSetting<?> var3 : this.llIlllIIIllllIIlllIllIIIl()) {
             try {
-                var3.IlllIIIIIIlllIlIIlllIlIIl(var1);
+                var3.read(var1);
             } catch (Exception var5) {
             }
         }
 
         if (var1.has("gammaFromFile") && !var1.get("gammaFromFile").isJsonNull()) {
             this.lIlIlIlIlIIlIIlIIllIIIIIl = var1.get("gammaFromFile").getAsFloat();
-            if (!(Boolean)this.lIllIlIIIlIIIIIIIlllIlIll.llIlllIIIllllIIlllIllIIIl()) {
-                Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getGameSettings().bridge$setGamma(this.lIlIlIlIlIIlIIlIIllIIIIIl);
+            if (!(Boolean) this.lIllIlIIIlIIIIIIIlllIlIll.llIlllIIIllllIIlllIllIIIl()) {
+                Ref.getMinecraft().bridge$getGameSettings().bridge$setGamma(this.lIlIlIlIlIIlIIlIIllIIIIIl);
             } else {
-                Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getGameSettings().bridge$setGamma(100.0F);
+                Ref.getMinecraft().bridge$getGameSettings().bridge$setGamma(100.0F);
             }
         } else {
             this.lIlIlIlIlIIlIIlIIllIIIIIl = 1.0F;
@@ -157,14 +162,14 @@ public class PerformanceConfig extends ItemSetLoader<AbstractSetting<?>> impleme
 
     }
 
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(JsonObject var1) {
+    public void write(JsonObject var1) {
         Iterator var2 = this.llIlllIIIllllIIlllIllIIIl().iterator();
 
-        while(var2.hasNext()) {
-            AbstractSetting var3 = (AbstractSetting)var2.next();
+        while (var2.hasNext()) {
+            AbstractSetting var3 = (AbstractSetting) var2.next();
 
             try {
-                var3.lIlIlIlIlIIlIIlIIllIIIIIl(var1);
+                var3.write(var1);
             } catch (Exception var5) {
             }
         }
@@ -228,7 +233,7 @@ public class PerformanceConfig extends ItemSetLoader<AbstractSetting<?>> impleme
         return this.lIIIllIllIIllIlllIlIIlllI;
     }
 
-    public static enum lIllIlIIIlIIIIIIIlllIlIll implements IEnumSetting {
+    public enum lIllIlIIIlIIIIIIIlllIlIll implements IEnumSetting {
         lIlIlIlIlIIlIIlIIllIIIIIl("no_arrows"),
         IlllIIIIIIlllIlIIlllIlIIl("all_arrows"),
         lIllIlIIIlIIIIIIIlllIlIll("cant_pickup_arrows");
@@ -240,7 +245,7 @@ public class PerformanceConfig extends ItemSetLoader<AbstractSetting<?>> impleme
         }
 
         public String toString() {
-            return this.get(this.llIlllIIIllllIIlllIllIIIl, new Object[0]);
+            return this.get(this.llIlllIIIllllIIlllIllIIIl);
         }
 
         lIllIlIIIlIIIIIIIlllIlIll(String var3) {
@@ -248,7 +253,7 @@ public class PerformanceConfig extends ItemSetLoader<AbstractSetting<?>> impleme
         }
     }
 
-    public static enum lIlIlIlIlIIlIIlIIllIIIIIl implements IEnumSetting {
+    public enum EntityRenderer implements IEnumSetting {
         lIlIlIlIlIIlIIlIIllIIIIIl("off_van", 256.0F),
         IlllIIIIIIlllIlIIlllIlIIl("high", 100.0F),
         lIllIlIIIlIIIIIIIlllIlIll("medium", 48.0F),
@@ -263,10 +268,10 @@ public class PerformanceConfig extends ItemSetLoader<AbstractSetting<?>> impleme
         }
 
         public String toString() {
-            return this.get(this.IlIlIlllllIlIIlIlIlllIlIl, new Object[0]);
+            return this.get(this.IlIlIlllllIlIIlIlIlllIlIl);
         }
 
-        lIlIlIlIlIIlIIlIIllIIIIIl(String var3, float var4) {
+        EntityRenderer(String var3, float var4) {
             this.IlIlIlllllIlIIlIlIlllIlIl = var3;
             this.llIIIIIIIllIIllIlIllIIIIl = var4;
         }
@@ -276,7 +281,7 @@ public class PerformanceConfig extends ItemSetLoader<AbstractSetting<?>> impleme
         }
     }
 
-    public static enum llIlllIIIllllIIlllIllIIIl implements IEnumSetting {
+    public enum ChunkLoading implements IEnumSetting {
         lIlIlIlIlIIlIIlIIllIIIIIl("off_van", 1),
         IlllIIIIIIlllIlIIlllIlIIl("highest", 2),
         lIllIlIIIlIIIIIIIlllIlIll("high", 5),
@@ -292,10 +297,10 @@ public class PerformanceConfig extends ItemSetLoader<AbstractSetting<?>> impleme
         }
 
         public String toString() {
-            return this.get(this.llIIIIIIIllIIllIlIllIIIIl, new Object[0]);
+            return this.get(this.llIIIIIIIllIIllIlIllIIIIl);
         }
 
-        llIlllIIIllllIIlllIllIIIl(String var3, int var4) {
+        ChunkLoading(String var3, int var4) {
             this.llIIIIIIIllIIllIlIllIIIIl = var3;
             this.lIIIllIllIIllIlllIlIIlllI = var4;
         }
@@ -305,7 +310,7 @@ public class PerformanceConfig extends ItemSetLoader<AbstractSetting<?>> impleme
         }
     }
 
-    public static enum GlintOption implements IEnumSetting {
+    public enum GlintOption implements IEnumSetting {
         lIlIlIlIlIIlIIlIIllIIIIIl("all"),
         IlllIIIIIIlllIlIIlllIlIIl("inventoryOnly"),
         lIllIlIIIlIIIIIIIlllIlIll("none");
@@ -317,7 +322,7 @@ public class PerformanceConfig extends ItemSetLoader<AbstractSetting<?>> impleme
         }
 
         public String toString() {
-            return this.get(this.llIlllIIIllllIIlllIllIIIl, new Object[0]);
+            return this.get(this.llIlllIIIllllIIlllIllIIIl);
         }
 
         GlintOption(String var3) {

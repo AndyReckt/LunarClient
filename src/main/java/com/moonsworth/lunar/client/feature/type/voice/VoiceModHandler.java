@@ -1,6 +1,6 @@
 package com.moonsworth.lunar.client.feature.type.voice;
 
-import com.moonsworth.lunar.client.websocket.FriendProfile;
+import com.moonsworth.lunar.client.profile.FriendProfile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,4 +70,3 @@ public class VoiceModHandler {
         return this.lIllIlIIIlIIIIIIIlllIlIll;
     }
 }
- 

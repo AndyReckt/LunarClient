@@ -1,8 +1,8 @@
 package com.moonsworth.lunar.client.account;
 
 public enum AccountType {
-    lIlIlIlIlIIlIIlIIllIIIIIl("Mojang"),
-    IlllIIIIIIlllIlIIlllIlIIl("Xbox");
+    MOJANG("Mojang"),
+    XBOX("Xbox");
 
     public final String lIllIlIIIlIIIIIIIlllIlIll;
 

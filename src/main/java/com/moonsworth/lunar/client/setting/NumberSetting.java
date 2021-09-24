@@ -13,7 +13,7 @@ import java.util.function.BooleanSupplier;
 public class NumberSetting extends AbstractSetting<Number> {
     public final Number lIlIlIlIlIIlIIlIIllIIIIIl;
     public final Number IlllIIIIIIlllIlIIlllIlIIl;
-    public final int lIllIlIIIlIIIIIIIlllIlIll;
+    public final int increment;
 
     public NumberSetting(String string, Number number, Number number2, Number number3) {
         this(string, number, number2, number3, 0);
@@ -27,7 +27,7 @@ public class NumberSetting extends AbstractSetting<Number> {
         super(string + "_nr", number, booleanSupplier);
         this.lIlIlIlIlIIlIIlIIllIIIIIl = number2;
         this.IlllIIIIIIlllIlIIlllIlIIl = number3;
-        this.lIllIlIIIlIIIIIIIlllIlIll = n;
+        this.increment = n;
     }
 
     @Override
@@ -43,11 +43,11 @@ public class NumberSetting extends AbstractSetting<Number> {
         int n = ((Comparable) number).compareTo(this.lIlIlIlIlIIlIIlIIllIIIIIl);
         int n2 = ((Comparable) number).compareTo(this.IlllIIIIIIlllIlIIlllIlIIl);
         if (n >= 0 && n2 <= 0) {
-            if (this.lIllIlIIIlIIIIIIIlllIlIll != 0 && number instanceof Float) {
-                String string = String.valueOf((float)Math.round(number.floatValue() * (float)this.lIllIlIIIlIIIIIIIlllIlIll) / (float)this.lIllIlIIIlIIIIIIIlllIlIll);
+            if (this.increment != 0 && number instanceof Float) {
+                String string = String.valueOf((float)Math.round(number.floatValue() * (float)this.increment) / (float)this.increment);
                 float f = this.IlllIIIIIIlllIlIIlllIlIIl(Double.parseDouble(string)).floatValue();
                 if (!number.toString().equals(string)) {
-                    super.lIlIlIlIlIIlIIlIIllIIIIIl(Float.valueOf(f));
+                    super.lIlIlIlIlIIlIIlIIllIIIIIl(f);
                 } else {
                     super.lIlIlIlIlIIlIIlIIllIIIIIl(number);
                 }
@@ -59,12 +59,11 @@ public class NumberSetting extends AbstractSetting<Number> {
 
     public Number IlllIIIIIIlllIlIIlllIlIIl(Double d) {
         Class<?> clazz = (this.IllIllIIIllIIIlIlIlIIIIll()).getClass();
-        Number number = clazz == Integer.class ? (Number)d.intValue() : clazz == Float.class ? Float.valueOf(d.floatValue()) : clazz == Byte.class ? (Number)d.byteValue() : clazz == Long.class ? (Number)d.longValue() : clazz == Short.class ? (Number)d.shortValue() : (Number)d;
-        return number;
+        return clazz == Integer.class ? (Number)d.intValue() : clazz == Float.class ? Float.valueOf(d.floatValue()) : clazz == Byte.class ? (Number)d.byteValue() : clazz == Long.class ? (Number)d.longValue() : clazz == Short.class ? (Number)d.shortValue() : (Number)d;
     }
 
     @Override
-    public AbstractDescritiveSettingUIComponent lIlIlIlIlIIlIIlIIllIIIIIl(UIComponent uIComponent) {
+    public AbstractDescritiveSettingUIComponent<Number> getUIComponent(UIComponent uIComponent) {
         return new NumberSettingUIComponent(this, uIComponent);
     }
 

@@ -28,7 +28,7 @@ public class HatCosmetic extends AbstractCosmetic {
     public Type IllllllllllIlIIIlllIlllll = Type.HAT;
 
     public HatCosmetic(String string, ModelMesh modelMesh) {
-        this(string, false, new CosmeticRotationHelper[0]);
+        this(string, false);
         this.IllIllIIIllIIIlIlIlIIIIll = modelMesh;
     }
 
@@ -79,11 +79,10 @@ public class HatCosmetic extends AbstractCosmetic {
         return this.lIIlIlllIlIlIIIlllIIlIIII();
     }
 
-    public static enum Type {
+    public enum Type {
         HAT,
         BANDANNA,
-        MASK;
+        MASK
 
     }
 }
- 

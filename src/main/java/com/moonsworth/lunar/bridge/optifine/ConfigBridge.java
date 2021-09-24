@@ -1,35 +1,35 @@
 package com.moonsworth.lunar.bridge.optifine;
 
 public interface ConfigBridge {
-    public boolean hasDynamicFov();
+    boolean hasDynamicFov();
 
-    public boolean hasSmoothBiomes();
+    boolean hasSmoothBiomes();
 
-    public boolean hasCustomColors();
+    boolean hasCustomColors();
 
-    public boolean hasCustomSky();
+    boolean hasCustomSky();
 
-    public boolean hasCustomFonts();
+    boolean hasCustomFonts();
 
-    public boolean hasCustomItems();
+    boolean hasCustomItems();
 
-    public boolean hasShowCapes();
+    boolean hasShowCapes();
 
-    public boolean hasConnectedTextures();
+    boolean hasConnectedTextures();
 
-    public boolean hasNaturalTextures();
+    boolean hasNaturalTextures();
 
-    public boolean hasConnectedTexturesFancy();
+    boolean hasConnectedTexturesFancy();
 
-    public boolean hasFastRender();
+    boolean hasFastRender();
 
-    public boolean hasTranslucentBlocksFancy();
+    boolean hasTranslucentBlocksFancy();
 
-    public boolean hasShaders();
+    boolean hasShaders();
 
-    public void setFastRender(boolean var1);
+    void setFastRender(boolean var1);
 
-    public boolean isZooming();
+    boolean isZooming();
 
-    public void setZooming(boolean var1);
+    void setZooming(boolean var1);
 }

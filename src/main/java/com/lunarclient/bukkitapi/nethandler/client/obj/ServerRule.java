@@ -41,8 +41,8 @@ public enum ServerRule {
      */
     LEGACY_COMBAT("legacyCombat", Boolean.class);
 
-    @Getter private String id;
-    @Getter private Class type;
+    @Getter private final String id;
+    @Getter private final Class type;
 
     ServerRule(String id, Class type) {
         this.id = id;

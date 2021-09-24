@@ -33,7 +33,7 @@ public class BooleanSetting extends AbstractSetting<Boolean> {
     }
 
     public boolean lIlIlIlIlIIlIIlIIllIIIIIl() {
-        return (Boolean)this.lIlIlIlIlIIlIIlIIllIIIIIl.llIlllIIIllllIIlllIllIIIl() != false && (Boolean)this.llIlllIIIllllIIlllIllIIIl() != false;
+        return this.lIlIlIlIlIIlIIlIIllIIIIIl.llIlllIIIllllIIlllIllIIIl() && this.llIlllIIIllllIIlllIllIIIl();
     }
 
     @Override
@@ -42,15 +42,15 @@ public class BooleanSetting extends AbstractSetting<Boolean> {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(JsonObject jsonObject) {
-        if (((Boolean)this.IllIllIIIllIIIlIlIlIIIIll()).equals(this.IIlIllIlllllllIIlIIIllIIl())) {
+    public void write(JsonObject jsonObject) {
+        if (this.IllIllIIIllIIIlIlIlIIIIll().equals(this.IIlIllIlllllllIIlIIIllIIl())) {
             return;
         }
-        jsonObject.addProperty(this.lIIlIlllIlIlIIIlllIIlIIII(), (Boolean)this.IllIllIIIllIIIlIlIlIIIIll());
+        jsonObject.addProperty(this.lIIlIlllIlIlIIIlllIIlIIII(), this.IllIllIIIllIIIlIlIlIIIIll());
     }
 
     @Override
-    public void IlllIIIIIIlllIlIIlllIlIIl(JsonObject jsonObject) {
+    public void read(JsonObject jsonObject) {
         if (!jsonObject.has(this.lIIlIlllIlIlIIIlllIIlIIII()) || jsonObject.get(this.lIIlIlllIlIlIIIlllIIlIIII()).isJsonNull()) {
             this.lIlIlIlIlIIlIIlIIllIIIIIl(this.IIlIllIlllllllIIlIIIllIIl());
             return;
@@ -59,7 +59,7 @@ public class BooleanSetting extends AbstractSetting<Boolean> {
     }
 
     @Override
-    public AbstractDescritiveSettingUIComponent lIlIlIlIlIIlIIlIIllIIIIIl(UIComponent uIComponent) {
+    public AbstractDescritiveSettingUIComponent getUIComponent(UIComponent uIComponent) {
         return new BooleanSettingUIComponent(this, uIComponent);
     }
 

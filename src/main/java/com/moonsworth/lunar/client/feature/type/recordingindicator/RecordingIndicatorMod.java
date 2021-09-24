@@ -7,7 +7,7 @@ import com.moonsworth.lunar.client.bridge.Bridge;
 import com.moonsworth.lunar.client.event.type.render.RenderGameOverlayEvent;
 import com.moonsworth.lunar.client.feature.FeatureDetails;
 import com.moonsworth.lunar.client.feature.hud.AbstractFeatureContainerChild;
-import com.moonsworth.lunar.client.feature.hud.Anchor;
+import com.moonsworth.lunar.client.feature.hud.HudModPosition;
 import com.moonsworth.lunar.client.feature.hud.ConfigurableFeature;
 import com.moonsworth.lunar.client.feature.hud.ModuleCategory;
 import com.moonsworth.lunar.client.feature.type.replaymod.ReplayMod;
@@ -17,16 +17,16 @@ import com.moonsworth.lunar.client.setting.BooleanSetting;
 import java.util.List;
 
 public class RecordingIndicatorMod
-extends AbstractFeatureContainerChild {
+    extends AbstractFeatureContainerChild {
     public BooleanSetting lllIIIIIlllIIlIllIIlIIIlI;
 
     public RecordingIndicatorMod(ConfigurableFeature configurableFeature) {
-        super(configurableFeature, true, Anchor.TOP_LEFT);
+        super(configurableFeature, true, HudModPosition.TOP_LEFT);
     }
 
     @Override
     public void IlllIIIIIIlllIlIIlllIlIIl(RenderGameOverlayEvent renderGameOverlayEvent, float f, float f2) {
-        String string = LunarClient.IIllIlIllIlIllIllIllIllII().lIlIIlIlllIIlIIIlIlIlIllI().lIlIlIlIlIIlIIlIIllIIIIIl(ImmutableList.of("replaymod"), "replaymod.gui.recording", new Object[0]);
+        String string = LunarClient.getInstance().lIlIIlIlllIIlIIIlIlIlIllI().lIlIlIlIlIIlIIlIIllIIIIIl(ImmutableList.of("replaymod"), "replaymod.gui.recording");
         this.lIlIlIlIlIIlIIlIIllIIIIIl(string, f, f2);
     }
 
@@ -34,7 +34,7 @@ extends AbstractFeatureContainerChild {
     public void lIlIlIlIlIIlIIlIIllIIIIIl(RenderGameOverlayEvent renderGameOverlayEvent, float f, float f2) {
         ReplayMod replayMod = (ReplayMod)this.IlIllIIlIIlIIIllIllllIIll();
         if (replayMod.lIllllIllIIlIIlIIIlIIIlII().isRecording() && replayMod.lIllllIllIIlIIlIIIlIIIlII().showRecordingIndicator()) {
-            String string = replayMod.lIllllIllIIlIIlIIIlIIIlII().isPaused() ? LunarClient.IIllIlIllIlIllIllIllIllII().lIlIIlIlllIIlIIIlIlIlIllI().lIlIlIlIlIIlIIlIIllIIIIIl(ImmutableList.of("replaymod"), "replaymod.gui.paused", new Object[0]) : LunarClient.IIllIlIllIlIllIllIllIllII().lIlIIlIlllIIlIIIlIlIlIllI().lIlIlIlIlIIlIIlIIllIIIIIl(ImmutableList.of("replaymod"), "replaymod.gui.recording", new Object[0]);
+            String string = replayMod.lIllllIllIIlIIlIIIlIIIlII().isPaused() ? LunarClient.getInstance().lIlIIlIlllIIlIIIlIlIlIllI().lIlIlIlIlIIlIIlIIllIIIIIl(ImmutableList.of("replaymod"), "replaymod.gui.paused") : LunarClient.getInstance().lIlIIlIlllIIlIIIlIlIlIllI().lIlIlIlIlIIlIIlIIllIIIIIl(ImmutableList.of("replaymod"), "replaymod.gui.recording");
             this.lIlIlIlIlIIlIIlIIllIIIIIl(string, f, f2);
         } else {
             this.IlllIIIIIIlllIlIIlllIlIIl(24.0f, 24.0f);
@@ -43,10 +43,10 @@ extends AbstractFeatureContainerChild {
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(String string, float f, float f2) {
         ReplayMod replayMod = (ReplayMod)this.IlIllIIlIIlIIIllIllllIIll();
-        FontRendererBridge fontRendererBridge = Ref.IlllllIlIIIlIIlIIllIIlIll();
-        fontRendererBridge.bridge$drawString(string.toUpperCase(), f + 20.0f, f2 + 8.0f - (float)fontRendererBridge.lIlIlIlIlIIlIIlIIllIIIIIl() / 2.0f, -1, (Boolean)this.lllIIIIIlllIIlIllIIlIIIlI.llIlllIIIllllIIlllIllIIIl());
+        FontRendererBridge fontRendererBridge = Ref.getFontRenderer();
+        fontRendererBridge.bridge$drawString(string.toUpperCase(), f + 20.0f, f2 + 8.0f - (float)fontRendererBridge.lIlIlIlIlIIlIIlIIllIIIIIl() / 2.0f, -1, this.lllIIIIIlllIIlIllIIlIIIlI.llIlllIIIllllIIlllIllIIIl());
         Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$color(1.0f, 1.0f, 1.0f, 1.0f);
-        Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getTextureManager().bridge$bindTexture(replayMod.lIllllIllIIlIIlIIIlIIIlII().getReplayModTexture());
+        Ref.getMinecraft().bridge$getTextureManager().bridge$bindTexture(replayMod.lIllllIllIIlIIlIIIlIIIlII().getReplayModTexture());
         int n = replayMod.lIllllIllIIlIIlIIIlIIIlII().getTextureSize();
         Bridge.IlllllIlIIIlIIlIIllIIlIll().bridge$drawModalRectWithCustomSizedTexture((int)f, (int)f2, 58.0f, 20.0f, 16, 16, n, n);
         this.IlllIIIIIIlllIlIIlllIlIIl(24.0f + fontRendererBridge.bridge$getStringWidth(string), fontRendererBridge.lIlIlIlIlIIlIIlIIllIIIIIl() + 6);
@@ -63,8 +63,7 @@ extends AbstractFeatureContainerChild {
     }
 
     @Override
-    public FeatureDetails llIIIIIIIllIIllIlIllIIIIl() {
-        return new FeatureDetails("recording_indicator", ImmutableList.of(ModuleCategory.lIlIlIlIlIIlIIlIIllIIIIIl, ModuleCategory.lIllIlIIIlIIIIIIIlllIlIll), new String[0]);
+    public FeatureDetails initDetails() {
+        return new FeatureDetails("recording_indicator", ImmutableList.of(ModuleCategory.ALL, ModuleCategory.HUD));
     }
 }
- 

@@ -1,6 +1,6 @@
 /*
  * Decompiled with CFR 0.150.
- * 
+ *
  * Could not load the following classes:
  *  javax.vecmath.Matrix4f
  */
@@ -18,9 +18,9 @@ import mchorse.emoticons.skin_n_bones.api.bobj.BOBJBone;
 public class BOBJArmature {
     public String name;
     public String action = "";
-    public Map<String, BOBJBone> bones = new HashMap();
+    public Map<String, BOBJBone> bones = new HashMap<>();
     public List<BOBJBone> orderedBones = new ArrayList<>();
-    public List ikBones = new ArrayList();
+    public List<BOBJBone> ikBones = new ArrayList<>();
     public Matrix4f[] matrices;
     public boolean initialized;
 
@@ -35,13 +35,13 @@ public class BOBJArmature {
 
     public void initArmature() {
         if (!this.initialized) {
-            ArrayList<BOBJBone> arrayList = new ArrayList<BOBJBone>();
+            ArrayList<BOBJBone> arrayList = new ArrayList<>();
             for (BOBJBone bOBJBone : this.bones.values()) {
                 if (bOBJBone.hasModifiers()) {
                     arrayList.add(bOBJBone);
                 }
                 if (!bOBJBone.parent.isEmpty()) {
-                    bOBJBone.parentBone = (BOBJBone)this.bones.get(bOBJBone.parent);
+                    bOBJBone.parentBone = this.bones.get(bOBJBone.parent);
                     bOBJBone.relBoneMat.set(bOBJBone.parentBone.boneMat);
                     bOBJBone.relBoneMat.invert();
                     bOBJBone.relBoneMat.mul(bOBJBone.boneMat);

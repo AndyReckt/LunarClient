@@ -1,18 +1,17 @@
 package com.moonsworth.lunar.bridge.minecraft.util;
 
 public interface Vec3Bridge {
-    public double bridge$xCoord();
+    double bridge$xCoord();
 
-    public double bridge$yCoord();
+    double bridge$yCoord();
 
-    public double bridge$zCoord();
+    double bridge$zCoord();
 
-    public double bridge$lengthVector();
+    double bridge$lengthVector();
 
-    public double bridge$dotProduct(Vec3Bridge var1);
+    double bridge$dotProduct(Vec3Bridge var1);
 
-    public Vec3Bridge bridge$normalize();
+    Vec3Bridge bridge$normalize();
 
-    public Vec3Bridge bridge$crossProduct(Vec3Bridge var1);
+    Vec3Bridge bridge$crossProduct(Vec3Bridge var1);
 }
- 

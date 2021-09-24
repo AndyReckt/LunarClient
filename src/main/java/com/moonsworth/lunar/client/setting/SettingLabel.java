@@ -11,12 +11,12 @@ public class SettingLabel extends AbstractSetting<String> {
     }
 
     public String IlllIIIIIIlllIlIIlllIlIIl() {
-        return this.get((String)super.llIlllIIIllllIIlllIllIIIl(), new Object[0]);
+        return this.get(super.llIlllIIIllllIIlllIllIIIl());
     }
 
     @Override
     public String f_() {
-        return this.get((String)super.llIlllIIIllllIIlllIllIIIl(), new Object[0]);
+        return this.get(super.llIlllIIIllllIIlllIllIIIl());
     }
 
     public String lIlIlIlIlIIlIIlIIllIIIIIl(Object ... objectArray) {
@@ -24,16 +24,16 @@ public class SettingLabel extends AbstractSetting<String> {
     }
 
     @Override
-    public AbstractDescritiveSettingUIComponent lIlIlIlIlIIlIIlIIllIIIIIl(UIComponent uIComponent) {
+    public AbstractDescritiveSettingUIComponent getUIComponent(UIComponent uIComponent) {
         return new llIlIIIllIIlIllIllIllllIl(this, uIComponent);
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(JsonObject jsonObject) {
+    public void write(JsonObject jsonObject) {
     }
 
     @Override
-    public void IlllIIIIIIlllIlIIlllIlIIl(JsonObject jsonObject) {
+    public void read(JsonObject jsonObject) {
     }
 
     @Override
@@ -47,4 +47,3 @@ public class SettingLabel extends AbstractSetting<String> {
         return this.IlllIIIIIIlllIlIIlllIlIIl();
     }
 }
- 

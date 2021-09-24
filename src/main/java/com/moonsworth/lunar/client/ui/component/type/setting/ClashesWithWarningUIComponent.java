@@ -9,9 +9,8 @@ import com.moonsworth.lunar.client.ui.screen.AbstractUIScreen;
 
 import java.util.List;
 
-public abstract class ClashesWithWarningUIComponent
-extends AbstractDescritiveSettingUIComponent {
-    public IlllIIIIIIlllIlIIlllIlIIl lIlIlIlIlIIlIIlIIllIIIIIl;
+public abstract class ClashesWithWarningUIComponent extends AbstractDescritiveSettingUIComponent {
+    public DefaultButtonUIComponent lIlIlIlIlIIlIIlIIllIIIIIl;
 
     public ClashesWithWarningUIComponent(AbstractSetting abstractSetting, UIComponent uIComponent) {
         super(abstractSetting, uIComponent);
@@ -19,10 +18,10 @@ extends AbstractDescritiveSettingUIComponent {
 
     public void llIlllIIIllllIIlllIllIIIl(float f, float f2) {
         List list = null;
-        if (this.IlllIIIIIIlllIlIIlllIlIIl instanceof BindableSetting && this.IlllIIIIIIlllIlIIlllIlIIl.llIlllIIIllllIIlllIllIIIl().equals("NONE") || this.IlllIIIIIIlllIlIIlllIlIIl instanceof LunarKeybindSetting && ((KeyBind)this.IlllIIIIIIlllIlIIlllIlIIl.llIlllIIIllllIIlllIllIIIl()).llIlllIIIllllIIlllIllIIIl().equals((Object)KeyType.lIlIlIlIlIIlIIlIIllIIIIIl) || this.IlllIIIIIIlllIlIIlllIlIIl instanceof HKTextSetting && ((KeyBind)((HKTextSetting)this.IlllIIIIIIlllIlIIlllIlIIl).lIllIlIIIlIIIIIIIlllIlIll().llIlllIIIllllIIlllIllIIIl()).equals(KeyType.lIlIlIlIlIIlIIlIIllIIIIIl)) {
+        if (this.setting instanceof BindableSetting && this.setting.llIlllIIIllllIIlllIllIIIl().equals("NONE") || this.setting instanceof LunarKeybindSetting && ((KeyBind)this.setting.llIlllIIIllllIIlllIllIIIl()).llIlllIIIllllIIlllIllIIIl().equals(KeyType.KEY_NONE) || this.setting instanceof HKTextSetting && ((HKTextSetting)this.setting).lIllIlIIIlIIIIIIIlllIlIll().llIlllIIIllllIIlllIllIIIl().equals(KeyType.KEY_NONE)) {
             return;
         }
-        List list2 = this.IlllIIIIIIlllIlIIlllIlIIl instanceof AbstractFeatureSetting ? ((AbstractFeatureSetting)this.IlllIIIIIIlllIlIIlllIlIIl).llIIIIIIIllIIllIlIllIIIIl() : (list = this.IlllIIIIIIlllIlIIlllIlIIl instanceof HKTextSetting ? ((HKTextSetting)this.IlllIIIIIIlllIlIIlllIlIIl).lIllIlIIIlIIIIIIIlllIlIll().llIIIIIIIllIIllIlIllIIIIl() : null);
+        List list2 = this.setting instanceof AbstractFeatureSetting ? ((AbstractFeatureSetting)this.setting).llIIIIIIIllIIllIlIllIIIIl() : (list = this.setting instanceof HKTextSetting ? ((HKTextSetting)this.setting).lIllIlIIIlIIIIIIIlllIlIll().llIIIIIIIllIIllIlIllIIIIl() : null);
         if (list != null && !list.isEmpty()) {
             String string = this.get("clashesWith", EnumChatColor.lllIIIIIlllIIlIllIIlIIIlI + list.toString());
             float f3 = FontRegistry.lIIIllIllIIllIlllIlIIlllI().IlllIIIIIIlllIlIIlllIlIIl(string);
@@ -31,8 +30,7 @@ extends AbstractDescritiveSettingUIComponent {
         }
     }
 
-    public IlllIIIIIIlllIlIIlllIlIIl llllIIlIIlIIlIIllIIlIIllI() {
+    public DefaultButtonUIComponent llllIIlIIlIIlIIllIIlIIllI() {
         return this.lIlIlIlIlIIlIIlIIllIIIIIl;
     }
 }
- 

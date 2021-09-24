@@ -6,7 +6,7 @@ import com.moonsworth.lunar.client.event.Event;
 import com.moonsworth.lunar.client.event.state.EventState;
 
 public class ModelBipedRenderEvent
-extends Event {
+    extends Event {
     public final EventState lIlIlIlIlIIlIIlIIllIIIIIl;
     public final AbstractClientPlayerBridge IlllIIIIIIlllIlIIlllIlIIl;
     public final ModelBipedBridge lIllIlIIIlIIIIIIIlllIlIll;

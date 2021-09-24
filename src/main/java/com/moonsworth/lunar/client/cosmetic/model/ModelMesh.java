@@ -1,5 +1,7 @@
 package com.moonsworth.lunar.client.cosmetic.model;
 
+import com.moonsworth.lunar.bridge.current.MatrixStackBridge;
+import com.moonsworth.lunar.client.cosmetic.de.lIllIlIIIlIIIIIIIlllIlIll;
 import mchorse.emoticons.skin_n_bones.api.bobj.BOBJLoader;
 
 import java.util.ArrayList;
@@ -13,7 +15,7 @@ public class ModelMesh {
     public float llllIIlIIlIIlIIllIIlIIllI;
     public float IlIlIlllllIlIIlIlIlllIlIl;
     public BOBJLoader.BOBJData llIIIIIIIllIIllIlIllIIIIl;
-    public List lIIIllIllIIllIlllIlIIlllI;
+    public List<Model> lIIIllIllIIllIlllIlIIlllI;
 
     public ModelMesh(BOBJLoader.BOBJData bOBJData) {
         this.llIIIIIIIllIIllIlIllIIIIl = bOBJData;
@@ -22,14 +24,14 @@ public class ModelMesh {
     }
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl() {
-        BOBJLoader.loadMeshes(this.llIIIIIIIllIIllIlIllIIIIl).values().forEach(compiledData -> this.lIIIllIllIIllIlllIlIIlllI.add(new Model(this, (BOBJLoader.CompiledData)compiledData)));
+        BOBJLoader.loadMeshes(this.llIIIIIIIllIIllIlIllIIIIl).values().forEach(compiledData -> this.lIIIllIllIIllIlllIlIIlllI.add(new Model(this, compiledData)));
     }
 
     public void IlllIIIIIIlllIlIIlllIlIIl() {
         this.lIIIllIllIIllIlllIlIIlllI.forEach(Model::lIlIlIlIlIIlIIlIIllIIIIIl);
     }
 
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(lIllIlIIIlIIIIIIIlllIlIll lIllIlIIIlIIIIIIIlllIlIll2, MatrixStackBridge matrixStackBridge, int n) {
+    public void lIlIlIlIlIIlIIlIIllIIIIIl(com.moonsworth.lunar.bridge.current.lIllIlIIIlIIIIIIIlllIlIll lIllIlIIIlIIIIIIIlllIlIll2, MatrixStackBridge matrixStackBridge, int n) {
         this.lIIIllIllIIllIlllIlIIlllI.forEach(model -> model.lIlIlIlIlIIlIIlIIllIIIIIl(lIllIlIIIlIIIIIIIlllIlIll2, matrixStackBridge.llIlllIIIllllIIlllIllIIIl(), n));
     }
 
@@ -37,4 +39,3 @@ public class ModelMesh {
         this.lIIIllIllIIllIlllIlIIlllI.forEach(model -> model.lIlIlIlIlIIlIIlIIllIIIIIl(n, n2));
     }
 }
- 

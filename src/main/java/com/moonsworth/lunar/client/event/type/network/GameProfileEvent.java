@@ -4,7 +4,7 @@ import com.mojang.authlib.GameProfile;
 import com.moonsworth.lunar.client.event.Event;
 
 public class GameProfileEvent
-extends Event {
+    extends Event {
     public final GameProfile lIlIlIlIlIIlIIlIIllIIIIIl;
 
     public GameProfile lIlIlIlIlIIlIIlIIllIIIIIl() {
@@ -16,17 +16,16 @@ extends Event {
     }
 
     public static class IlllIIIIIIlllIlIIlllIlIIl
-    extends GameProfileEvent {
+        extends GameProfileEvent {
         public IlllIIIIIIlllIlIIlllIlIIl(GameProfile gameProfile) {
             super(gameProfile);
         }
     }
 
     public static class lIlIlIlIlIIlIIlIIllIIIIIl
-    extends GameProfileEvent {
+        extends GameProfileEvent {
         public lIlIlIlIlIIlIIlIIllIIIIIl(GameProfile gameProfile) {
             super(gameProfile);
         }
     }
 }
- 

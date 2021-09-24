@@ -9,4 +9,3 @@ public class NullUtil {
         return object != null ? object : Preconditions.checkNotNull(object2);
     }
 }
- 

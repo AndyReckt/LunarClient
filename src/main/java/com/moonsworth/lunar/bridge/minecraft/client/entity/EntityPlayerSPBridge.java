@@ -10,71 +10,70 @@ import java.util.Optional;
  * @since 10/07/2021 14:10
  */
 public interface EntityPlayerSPBridge extends AbstractClientPlayerBridge {
-    public NetHandlerPlayClientBridge bridge$getSendQueue();
+    NetHandlerPlayClientBridge bridge$getSendQueue();
 
-    default public void lIlIlIlIlIIlIIlIIllIIIIIl(String string, float f, float f2) {
+    default void lIlIlIlIlIIlIIlIIllIIIIIl(String string, float f, float f2) {
         this.bridge$getWorld().bridge$playSound(this.bridge$getPosX(), this.bridge$getPosX(), this.bridge$getPosZ(), string, f, f2, false);
     }
 
-    public Optional<String> bridge$getClientBrand();
+    Optional<String> bridge$getClientBrand();
 
-    public void bridge$sendChatMessage(String var1);
+    void bridge$sendChatMessage(String var1);
 
-    public MovementInputBridge bridge$getMovementInput();
+    MovementInputBridge bridge$getMovementInput();
 
-    public void bridge$onCriticalHit(EntityBridge var1);
+    void bridge$onCriticalHit(EntityBridge var1);
 
-    public void bridge$setMovementInput(MovementInputBridge var1);
+    void bridge$setMovementInput(MovementInputBridge var1);
 
-    @Override
-    public boolean bridge$isSprinting();
+    @Override boolean bridge$isSprinting();
 
-    public void bridge$setSprinting(boolean var1);
+    void bridge$setSprinting(boolean var1);
 
-    public boolean bridge$isRidingHorse();
+    boolean bridge$isRidingHorse();
 
-    public void bridge$playPortalSound();
+    void bridge$playPortalSound();
 
-    public void bridge$sendRidingJumpPacket();
+    void bridge$sendRidingJumpPacket();
 
-    public int bridge$getSprintingTicksLeft();
+    int bridge$getSprintingTicksLeft();
 
-    public void bridge$setSprintingTicksLeft(int var1);
+    void bridge$setSprintingTicksLeft(int var1);
 
-    public int bridge$getSprintToggleTimer();
+    int bridge$getSprintToggleTimer();
 
-    public void bridge$setSprintToggleTimer(int var1);
+    void bridge$setSprintToggleTimer(int var1);
 
-    public float bridge$getPrevTimeInPortal();
+    float bridge$getPrevTimeInPortal();
 
-    public void bridge$setPrevTimeInPortal(float var1);
+    void bridge$setPrevTimeInPortal(float var1);
 
-    public float bridge$getTimeInPortal();
+    float bridge$getTimeInPortal();
 
-    public void bridge$setTimeInPortal(float var1);
+    void bridge$setTimeInPortal(float var1);
 
-    public void bridge$setInPortal(boolean var1);
+    void bridge$setInPortal(boolean var1);
 
-    public int bridge$getTimeUntilPortal();
+    int bridge$getTimeUntilPortal();
 
-    public void bridge$setTimeUntilPortal(int var1);
+    void bridge$setTimeUntilPortal(int var1);
 
-    public void bridge$pushOutOfBlocks(double var1, double var3, double var5);
+    void bridge$pushOutOfBlocks(double var1, double var3, double var5);
 
-    public void bridge$sendPlayerAbilities();
+    void bridge$sendPlayerAbilities();
 
-    public void bridge$setHorseJumpPowerCounter(int var1);
+    void bridge$setHorseJumpPowerCounter(int var1);
 
-    public int bridge$getHorseJumpPowerCounter();
+    int bridge$getHorseJumpPowerCounter();
 
-    public void bridge$setHorseJumpPower(float var1);
+    void bridge$setHorseJumpPower(float var1);
 
-    public float bridge$getHorseJumpPower();
+    float bridge$getHorseJumpPower();
 
-    default public float lIlIlIlIlIIlIIlIIllIIIIIl() {
+    default float lIlIlIlIlIIlIIlIIllIIIIIl() {
         return 0.0f;
     }
 
-    default public void lIlIlIlIlIIlIIlIIllIIIIIl(float f) {
+    default void lIlIlIlIlIIlIIlIIllIIIIIl(float f) {
     }
 }

@@ -33,6 +33,7 @@ public class AnimatorHeldItemConfig {
         this.rotateZ = interpolation.interpolate(animatorHeldItemConfig.rotateZ, animatorHeldItemConfig2.rotateZ, f);
     }
 
+    @Override
     public AnimatorHeldItemConfig clone() {
         AnimatorHeldItemConfig animatorHeldItemConfig = new AnimatorHeldItemConfig(this.boneName);
         animatorHeldItemConfig.x = this.x;
@@ -47,6 +48,7 @@ public class AnimatorHeldItemConfig {
         return animatorHeldItemConfig;
     }
 
+    @Override
     public boolean equals(Object object) {
         if (object instanceof AnimatorHeldItemConfig) {
             AnimatorHeldItemConfig animatorHeldItemConfig = (AnimatorHeldItemConfig)object;

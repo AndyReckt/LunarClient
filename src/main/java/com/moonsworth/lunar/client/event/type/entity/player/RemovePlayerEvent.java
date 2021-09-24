@@ -4,7 +4,7 @@ import com.moonsworth.lunar.bridge.minecraft.client.entity.player.EntityPlayerBr
 import com.moonsworth.lunar.client.event.Event;
 
 public class RemovePlayerEvent
-extends Event {
+    extends Event {
     public EntityPlayerBridge lIlIlIlIlIIlIIlIIllIIIIIl;
 
     public RemovePlayerEvent(EntityPlayerBridge entityPlayerBridge) {

@@ -10,9 +10,8 @@ import org.apache.commons.lang3.text.WordUtils;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-public class NotificationManager
-extends ItemSetLoader {
-    public final NotificationUIScreen lIlIlIlIlIIlIIlIIllIIIIIl = new NotificationUIScreen();
+public class NotificationManager extends ItemSetLoader {
+    public final NotificationRenderer lIlIlIlIlIIlIIlIIllIIIIIl = new NotificationRenderer();
 
     @Override
     public Set lIlIlIlIlIIlIIlIIllIIIIIl() {
@@ -22,7 +21,7 @@ extends ItemSetLoader {
     @Override
     public void b_() {
         super.b_();
-        LunarClient.IIllIlIllIlIllIllIllIllII().lIIlllIIIIIlllIIIlIlIlllI().lIlIlIlIlIIlIIlIIllIIIIIl(this.lIlIlIlIlIIlIIlIIllIIIIIl);
+        LunarClient.getInstance().lIIlllIIIIIlllIIIlIlIlllI().lIlIlIlIlIIlIIlIIllIIIIIl(this.lIlIlIlIlIIlIIlIIllIIIIIl);
     }
 
     public Notification lIlIlIlIlIIlIIlIIllIIIIIl(String string, String string2) {
@@ -46,7 +45,7 @@ extends ItemSetLoader {
     }
 
     public Notification lIlIlIlIlIIlIIlIIllIIIIIl(NotificationType notificationType, String string) {
-        return this.lIlIlIlIlIIlIIlIIllIIIIIl(new Notification(notificationType.lIlIlIlIlIIlIIlIIllIIIIIl(), (Object) EnumChatColor.lIIlIlllIlIlIIIlllIIlIIII + WordUtils.capitalize(notificationType.name().toLowerCase()) + ": " + (Object)((Object)EnumChatColor.IllIIIlllIIIlIlllIlIIlIII) + string));
+        return this.lIlIlIlIlIIlIIlIIllIIIIIl(new Notification(notificationType.lIlIlIlIlIIlIIlIIllIIIIIl(), EnumChatColor.lIIlIlllIlIlIIIlllIIlIIII + WordUtils.capitalize(notificationType.name().toLowerCase()) + ": " + EnumChatColor.RESET + string));
     }
 
     public Notification IlllIIIIIIlllIlIIlllIlIIl(String string, String string2) {

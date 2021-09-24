@@ -3,8 +3,7 @@ package com.moonsworth.lunar.client.event.type.world;
 import com.moonsworth.lunar.bridge.minecraft.world.chunk.ChunkBridge;
 import com.moonsworth.lunar.client.event.Event;
 
-public class ChunkEvent
-extends Event {
+public class ChunkEvent extends Event {
     public ChunkBridge lIlIlIlIlIIlIIlIIllIIIIIl;
 
     public ChunkEvent(ChunkBridge chunkBridge) {
@@ -16,7 +15,7 @@ extends Event {
     }
 
     public static class ChunkLoadEvent
-    extends ChunkEvent {
+        extends ChunkEvent {
         public ChunkLoadEvent(ChunkBridge chunkBridge) {
             super(chunkBridge);
         }

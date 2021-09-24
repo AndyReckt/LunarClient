@@ -15,7 +15,7 @@ public class WapointRendererBase {
             f2 /= f4;
             f3 /= f4;
         }
-        GL11.glNormal3f((float)f, (float)f2, (float)f3);
+        GL11.glNormal3f(f, f2, f3);
     }
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(int n) {
@@ -52,7 +52,7 @@ public class WapointRendererBase {
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2) {
         if (this.lIllIlIIIlIIIIIIIlllIlIll) {
-            GL11.glTexCoord2f((float)f, (float)f2);
+            GL11.glTexCoord2f(f, f2);
         }
     }
 
@@ -64,4 +64,3 @@ public class WapointRendererBase {
         return (float)Math.cos(f);
     }
 }
- 

@@ -6,7 +6,7 @@ import com.moonsworth.lunar.bridge.minecraft.client.renderer.EntityRendererBridg
 import com.moonsworth.lunar.client.event.CancellableEvent;
 
 public class EntityRendererEvent
-extends CancellableEvent {
+    extends CancellableEvent {
     public final EntityRendererBridge lIlIlIlIlIIlIIlIIllIIIIIl;
     public final EntityBridge IlllIIIIIIlllIlIIlllIlIIl;
     public final BlockBridge lIllIlIIIlIIIIIIIlllIlIll;
@@ -36,7 +36,7 @@ extends CancellableEvent {
     }
 
     public static class IlllIIIIIIlllIlIIlllIlIIl
-    extends EntityRendererEvent {
+        extends EntityRendererEvent {
         public float lIlIlIlIlIIlIIlIIllIIIIIl;
 
         public IlllIIIIIIlllIlIIlllIlIIl(EntityRendererBridge entityRendererBridge, EntityBridge entityBridge, BlockBridge blockBridge, double d, float f) {
@@ -54,7 +54,7 @@ extends CancellableEvent {
     }
 
     public static class lIlIlIlIlIIlIIlIIllIIIIIl
-    extends EntityRendererEvent {
+        extends EntityRendererEvent {
         public float lIlIlIlIlIIlIIlIIllIIIIIl;
         public float IlllIIIIIIlllIlIIlllIlIIl;
         public float lIllIlIIIlIIIIIIIlllIlIll;
@@ -92,7 +92,7 @@ extends CancellableEvent {
     }
 
     public static class lIllIlIIIlIIIIIIIlllIlIll
-    extends EntityRendererEvent {
+        extends EntityRendererEvent {
         public float lIlIlIlIlIIlIIlIIllIIIIIl;
         public float IlllIIIIIIlllIlIIlllIlIIl;
         public float lIllIlIIIlIIIIIIIlllIlIll;
@@ -130,7 +130,7 @@ extends CancellableEvent {
     }
 
     public static class llllIIlIIlIIlIIllIIlIIllI
-    extends EntityRendererEvent {
+        extends EntityRendererEvent {
         public final int lIlIlIlIlIIlIIlIIllIIIIIl;
         public final float IlllIIIIIIlllIlIIlllIlIIl;
 
@@ -150,7 +150,7 @@ extends CancellableEvent {
     }
 
     public static class llIlllIIIllllIIlllIllIIIl
-    extends EntityRendererEvent {
+        extends EntityRendererEvent {
         public float lIlIlIlIlIIlIIlIIllIIIIIl;
 
         public llIlllIIIllllIIlllIllIIIl(EntityRendererBridge entityRendererBridge, EntityBridge entityBridge, BlockBridge blockBridge, double d, float f) {
@@ -167,4 +167,3 @@ extends CancellableEvent {
         }
     }
 }
- 

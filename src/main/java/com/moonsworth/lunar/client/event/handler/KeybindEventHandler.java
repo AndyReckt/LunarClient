@@ -12,8 +12,7 @@ import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KeybindEventHandler
-implements EventHandler {
+public class KeybindEventHandler implements EventHandler {
     public static final List<AbstractFeatureSetting<?>> lIlIlIlIlIIlIIlIIllIIIIIl = new ArrayList();
 
     public KeybindEventHandler() {
@@ -42,7 +41,7 @@ implements EventHandler {
     }
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(KeyType keyType, AbstractFeatureSetting abstractFeatureSetting, boolean bl) {
-        if (!abstractFeatureSetting.g_().equals((Object)keyType)) {
+        if (!abstractFeatureSetting.g_().equals(keyType)) {
             return;
         }
         if (abstractFeatureSetting.lllIIIIIlllIIlIllIIlIIIlI() != null && !abstractFeatureSetting.lllIIIIIlllIIlIllIIlIIIlI().IlllIIIIIIlllIlIIlllIlIIl()) {

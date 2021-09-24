@@ -7,8 +7,8 @@ import com.moonsworth.lunar.bridge.minecraft.util.EnumChatColor;
  * @since 10/07/2021 14:17
  */
 public interface ScorePlayerTeamBridge {
-    public EnumChatColor bridge$getChatFormat();
+    EnumChatColor bridge$getChatFormat();
 
-    public String bridge$formatString(String var1);
+    String bridge$formatString(String var1);
 }
 

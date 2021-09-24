@@ -7,7 +7,7 @@ import com.moonsworth.lunar.client.event.Event;
 import java.util.List;
 
 public class ItemTooltipEvent
-extends Event {
+    extends Event {
     public final EntityPlayerBridge lIlIlIlIlIIlIIlIIllIIIIIl;
     public final ItemStackBridge IlllIIIIIIlllIlIIlllIlIIl;
     public final List lIllIlIIIlIIIIIIIlllIlIll;

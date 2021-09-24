@@ -3,7 +3,7 @@ package com.moonsworth.lunar.client.feature;
 import java.util.function.Predicate;
 
 public abstract class lIlIlIlIlIIlIIlIIllIIIIIl
-extends Feature {
+    extends Feature {
     public Object llllIIlIIlIIlIIllIIlIIllI;
 
     public lIlIlIlIlIIlIIlIIllIIIIIl(Object object, boolean bl) {

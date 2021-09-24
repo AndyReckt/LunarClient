@@ -3,45 +3,44 @@ package com.moonsworth.lunar.client.feature.type.replaymod;
 import com.moonsworth.lunar.bridge.minecraft.client.gui.GuiScreenBridge;
 import com.moonsworth.lunar.bridge.minecraft.client.settings.KeyBindingBridge;
 import com.moonsworth.lunar.bridge.minecraft.util.ResourceLocationBridge;
-import com.moonsworth.lunar.client.websocket.assets.AbstractWebSocketPacket;
+import com.moonsworth.lunar.client.websocket.packet.AbstractWebSocketPacket;
 
 import java.util.Set;
 
 public interface IReplayModWrapper {
-    public void handleMainMenuButton();
+    void handleMainMenuButton();
 
-    public boolean isViewingReplay();
+    boolean isViewingReplay();
 
-    public boolean isStopped();
+    boolean isStopped();
 
-    public boolean isPaused();
+    boolean isPaused();
 
-    public boolean isRecording();
+    boolean isRecording();
 
-    public boolean showRecordingIndicator();
+    boolean showRecordingIndicator();
 
-    public ResourceLocationBridge getReplayModTexture();
+    ResourceLocationBridge getReplayModTexture();
 
-    public int getTextureSize();
+    int getTextureSize();
 
-    public void onEnable();
+    void onEnable();
 
-    public void onDisable();
+    void onDisable();
 
-    public void handleAssetPacket(AbstractWebSocketPacket var1);
+    void handleAssetPacket(AbstractWebSocketPacket var1);
 
-    public boolean shouldRenderBrand(GuiScreenBridge var1);
+    boolean shouldRenderBrand(GuiScreenBridge var1);
 
-    public Set<KeyBindingBridge> getKeyBindings();
+    Set<KeyBindingBridge> getKeyBindings();
 
-    public void startRecording();
+    void startRecording();
 
-    public void stopRecording();
+    void stopRecording();
 
-    public void pauseRecording();
+    void pauseRecording();
 
-    public void resumeRecording();
+    void resumeRecording();
 
-    public void noRecover();
+    void noRecover();
 }
- 

@@ -21,12 +21,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class FeatureContainerUIComponent
-extends AbstractDescritiveSettingUIComponent {
-    public static final ResourceLocationBridge lIlIlIlIlIIlIIlIIllIIIIIl = Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation("lunar", "icons/settings/cog-16x16.png");
+public class FeatureContainerUIComponent extends AbstractDescritiveSettingUIComponent {
+    public static final ResourceLocationBridge lIlIlIlIlIIlIIlIIllIIIIIl = Bridge.getInstance().initResourceLocation("lunar", "icons/settings/cog-16x16.png");
     public final AbstractFeatureContainerChild llIlIIIllIIlIllIllIllllIl;
     public final AbstractEase IllIllIIIllIIIlIlIlIIIIll;
-    public final ExponentialEase IIlIllIlllllllIIlIIIllIIl;
+    public final ExponentialEase ease;
     public boolean lIIlIlllIlIlIIIlllIIlIIII;
     public float llIllIlIllIlllIllIIIIllII;
     public final List<AbstractDescritiveSettingUIComponent> IllllllllllIlIIIlllIlllll = new ArrayList();
@@ -34,24 +33,24 @@ extends AbstractDescritiveSettingUIComponent {
     public FeatureContainerUIComponent(AbstractFeatureContainerChild abstractFeatureContainerChild, UIComponent uIComponent) {
         super(abstractFeatureContainerChild.llIIIlllIIlllIllllIlIllIl(), uIComponent);
         this.llIlIIIllIIlIllIllIllllIl = abstractFeatureContainerChild;
-        this.IIlIllIlllllllIIlIIIllIIl = new ExponentialEase(100L);
-        this.IIlIllIlllllllIIlIIIllIIl.lIllIlIIIlIIIIIIIlllIlIll();
-        this.IllIllIIIllIIIlIlIlIIIIll = new LinearEase(abstractFeatureContainerChild == Ref.IlllIIIIIIlllIlIIlllIlIIl().lllllIllIllIllllIlIllllII().lIIIlllIIIIllllIlIIIlIIll().IIlllIIIIIIIIIIllllIlIIlI() ? 1500L : 4000L);
+        this.ease = new ExponentialEase(100L);
+        this.ease.lIllIlIIIlIIIIIIIlllIlIll();
+        this.IllIllIIIllIIIlIlIlIIIIll = new LinearEase(abstractFeatureContainerChild == Ref.getLC().lllllIllIllIllllIlIllllII().lIIIlllIIIIllllIlIIIlIIll().IIlllIIIIIIIIIIllllIlIIlI() ? 1500L : 4000L);
         this.IllIllIIIllIIIlIlIlIIIIll.llIlllIIIllllIIlllIllIIIl();
         for (AbstractSetting abstractSetting : this.llIlIIIllIIlIllIllIllllIl.lllIIIIIlllIIlIllIIlIIIlI()) {
-            if (Debug.DebugHelper.lIlIlIlIlIIlIIlIIllIIIIIl(abstractSetting, this.llIlIIIllIIlIllIllIllllIl) && !Ref.llIlllIIIllllIIlllIllIIIl()) continue;
-            this.IllllllllllIlIIIlllIlllll.add(abstractSetting.lIlIlIlIlIIlIIlIIllIIIIIl(this));
+            if (Debug.DebugHelper.lIlIlIlIlIIlIIlIIllIIIIIl(abstractSetting, this.llIlIIIllIIlIllIllIllllIl) && !Ref.isConnectedToWebSocket()) continue;
+            this.IllllllllllIlIIIlllIlllll.add(abstractSetting.getUIComponent(this));
         }
-        this.lIlIlIlIlIIlIIlIIllIIIIIl((float f, float f2, int n) -> {
+        this.onMouseClick((float f, float f2, int n) -> {
             if (f < this.x + 32.0f && f2 < this.y + 20.0f) {
-                this.IIlIllIlllllllIIlIIIllIIl.lIllIlIIIlIIIIIIIlllIlIll();
-                this.IlllIIIIIIlllIlIIlllIlIIl.lIlIlIlIlIIlIIlIIllIIIIIl(((BooleanSetting)this.IlllIIIIIIlllIlIIlllIlIIl).llIlllIIIllllIIlllIllIIIl() == false);
+                this.ease.lIllIlIIIlIIIIIIIlllIlIll();
+                this.setting.lIlIlIlIlIIlIIlIIllIIIIIl(((BooleanSetting)this.setting).llIlllIIIllllIIlllIllIIIl() == false);
             } else if (f2 < this.y + 20.0f) {
                 this.lIIlIlllIlIlIIIlllIIlIIII = !this.lIIlIlllIlIlIIIlllIIlIIII;
             } else {
                 for (AbstractDescritiveSettingUIComponent abstractDescritiveSettingUIComponent : this.IllllllllllIlIIIlllIlllll) {
-                    if (!abstractDescritiveSettingUIComponent.IlllIIIIIIlllIlIIlllIlIIl(f, f2)) continue;
-                    return abstractDescritiveSettingUIComponent.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, n);
+                    if (!abstractDescritiveSettingUIComponent.mouseInside(f, f2)) continue;
+                    return abstractDescritiveSettingUIComponent.onMouseClicked(f, f2, n);
                 }
             }
             return true;
@@ -59,8 +58,8 @@ extends AbstractDescritiveSettingUIComponent {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2, float f3) {
-        super.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, f3, this.IllIllIIIllIIIlIlIlIIIIll());
+    public void resoze(float f, float f2, float f3) {
+        super.setPositionAndSize(f, f2, f3, this.getHeight());
         Set<AbstractSetting> hashSet = new HashSet<>();
         Set<AbstractSetting> hashSet2 = new HashSet<>();
         f3 -= 30.0f;
@@ -89,10 +88,10 @@ extends AbstractDescritiveSettingUIComponent {
                 f5 += f4;
                 f4 = 0.0f;
             }
-            if (abstractDescritiveSettingUIComponent.IllIllIIIllIIIlIlIlIIIIll() > f4) {
-                f4 = abstractDescritiveSettingUIComponent.IllIllIIIllIIIlIlIlIIIIll();
+            if (abstractDescritiveSettingUIComponent.getHeight() > f4) {
+                f4 = abstractDescritiveSettingUIComponent.getHeight();
             }
-            abstractDescritiveSettingUIComponent.lIlIlIlIlIIlIIlIIllIIIIIl(f + 4.0f + (float)n * (f3 / 2.0f), f5 + 4.0f, f6);
+            abstractDescritiveSettingUIComponent.resoze(f + 4.0f + (float)n * (f3 / 2.0f), f5 + 4.0f, f6);
             if (!bl) {
                 f5 += f4;
                 f4 = 0.0f;
@@ -107,7 +106,7 @@ extends AbstractDescritiveSettingUIComponent {
     }
 
     @Override
-    public float IllIllIIIllIIIlIlIlIIIIll() {
+    public float getHeight() {
         return this.llIIIIIIIllIIllIlIllIIIIl().llIllIlIllIlllIllIIIIllII().getAsBoolean() ? 0.0f : (this.lIIlIlllIlIlIIIlllIIlIIII ? 22.0f + this.llIllIlIllIlllIllIIIIllII : 18.0f);
     }
 
@@ -117,11 +116,12 @@ extends AbstractDescritiveSettingUIComponent {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl() {
+    public void onUpdateScreen() {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2, boolean bl) {
+    public void drawComponent(float mouseX, float mouseY, boolean bl) {
+
         boolean bl2;
         float f3 = 34.0f;
         if (this.llIlIIIllIIlIllIllIllllIl.llIIIlIllIIIIlIIIlIlIllIl() != null) {
@@ -129,18 +129,18 @@ extends AbstractDescritiveSettingUIComponent {
             AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(this.llIlIIIllIIlIllIllIllllIl.llIIIlIllIIIIlIIIlIlIllIl(), this.x + f3, this.y + 5.0f, 10.0f, 10.0f);
             f3 += 12.0f;
         }
-        FontRegistry.llIIIIIIIllIIllIlIllIIIIl().lIlIlIlIlIIlIIlIIllIIIIIl(this.llIlIIIllIIlIllIllIllllIl.llIIlIlIIIllIlIlIlIIlIIll().get("name"), this.x + f3, this.y + 4.5f, -4079426);
+        FontRegistry.llIIIIIIIllIIllIlIllIIIIl().lIlIlIlIlIIlIIlIIllIIIIIl(this.llIlIIIllIIlIllIllIllllIl.getDetails().get("name"), this.x + f3, this.y + 4.5f, -4079426);
         float f4 = 0.0f;
-        AbstractUIScreen.IlllIIIIIIlllIlIIlllIlIIl(this.x + f4, this.y + 5.0f, 30.0f, 10.0f, 5.0f, bl && this.IlllIIIIIIlllIlIIlllIlIIl(f, f2) && f2 < this.y + 20.0f && f < this.x + 34.0f ? 1088611042 : 0x20E2E2E2, true, true, true, true);
+        AbstractUIScreen.IlllIIIIIIlllIlIIlllIlIIl(this.x + f4, this.y + 5.0f, 30.0f, 10.0f, 5.0f, bl && this.mouseInside(mouseX, mouseY) && mouseY < this.y + 20.0f && mouseX < this.x + 34.0f ? 1088611042 : 0x20E2E2E2, true, true, true, true);
         AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(this.x + f4 + 1.0f, this.y + 6.0f, 28.0f, 8.0f, 2.5f, 0x35FFFFFF, true, true, true, true);
-        boolean bl3 = ((BooleanSetting)this.IlllIIIIIIlllIlIIlllIlIIl).llIlllIIIllllIIlllIllIIIl();
+        boolean bl3 = ((BooleanSetting)this.setting).llIlllIIIllllIIlllIllIIIl();
         float f5 = 10.0f;
         Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$color(1.0f, 1.0f, 1.0f, 1.0f);
-        float f6 = bl3 ? this.IIlIllIlllllllIIlIIIllIIl.IlllllIlIIIlIIlIIllIIlIll() : 1.0f - this.IIlIllIlllllllIIlIIIllIIl.IlllllIlIIIlIIlIIllIIlIll();
+        float f6 = bl3 ? this.ease.getProgress() : 1.0f - this.ease.getProgress();
         AbstractUIScreen.IlllIIIIIIlllIlIIlllIlIIl(this.x + f4 + f5 * f6, this.y + 5.0f, 20.0f, 10.0f, 5.0f, bl3 ? -1356212614 : -1344396974, true, true, true, true);
         AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(this.x + f4 + 1.0f + f5 * f6, this.y + 6.0f, 18.0f, 8.0f, 2.5f, 0x35FFFFFF, true, true, true, true);
-        FontRegistry.lIlIIIIIIlIIIllllIllIIlII().IlllIIIIIIlllIlIIlllIlIIl(((BooleanSetting)this.IlllIIIIIIlllIlIIlllIlIIl).llIlllIIIllllIIlllIllIIIl() != false ? "ON" : "OFF", this.x + f4 + f5 * f6 + 10.0f, this.y + 6.0f, -1);
-        boolean bl4 = bl2 = bl && this.IlllIIIIIIlllIlIIlllIlIIl(f, f2) && f2 < this.y + 20.0f && f > this.x + 34.0f;
+        FontRegistry.lIlIIIIIIlIIIllllIllIIlII().IlllIIIIIIlllIlIIlllIlIIl(((BooleanSetting)this.setting).llIlllIIIllllIIlllIllIIIl() != false ? "ON" : "OFF", this.x + f4 + f5 * f6 + 10.0f, this.y + 6.0f, -1);
+        boolean bl4 = bl2 = bl && this.mouseInside(mouseX, mouseY) && mouseY < this.y + 20.0f && mouseX > this.x + 34.0f;
         if (bl2 && !this.IllIllIIIllIIIlIlIlIIIIll.lIIIllIllIIllIlllIlIIlllI()) {
             this.IllIllIIIllIIIlIlIlIIIIll.lIllIlIIIlIIIIIIIlllIlIll();
         } else if (!bl2 && this.IllIllIIIllIIIlIlIlIIIIll.lIIIllIllIIllIlllIlIIlllI()) {
@@ -148,16 +148,16 @@ extends AbstractDescritiveSettingUIComponent {
         }
         Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$pushMatrix();
         Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$translate(this.x + this.width - 11.0f, this.y + 10.0f, 1.0f);
-        Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$rotate(360.0f * this.IllIllIIIllIIIlIlIlIIIIll.IlllllIlIIIlIIlIIllIIlIll(), 0.0f, 0.0f, 1.0f);
+        Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$rotate(360.0f * this.IllIllIIIllIIIlIlIlIIIIll.getProgress(), 0.0f, 0.0f, 1.0f);
         Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$color(1.0f, 1.0f, 1.0f, bl2 ? 1.0f : 0.6f);
         AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(lIlIlIlIlIIlIIlIIllIIIIIl, -4.0f, -4.0f, 8.0f, 8.0f);
         Bridge.llIIIIIIIllIIllIlIllIIIIl().bridge$popMatrix();
         if (this.lIIlIlllIlIlIIIlllIIlIIII) {
             AbstractUIScreen.IlllllIlIIIlIIlIIllIIlIll(this.x, this.y + 19.0f, this.width - 2.0f, this.llIllIlIllIlllIllIIIIllII, 6.0f, 0x20B0B0B0);
             for (AbstractDescritiveSettingUIComponent abstractDescritiveSettingUIComponent : this.IllllllllllIlIIIlllIlllll) {
-                abstractDescritiveSettingUIComponent.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, abstractDescritiveSettingUIComponent.IlllIIIIIIlllIlIIlllIlIIl(f, f2));
-                if (!abstractDescritiveSettingUIComponent.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2)) continue;
-                abstractDescritiveSettingUIComponent.lIllIlIIIlIIIIIIIlllIlIll(f, f2);
+                abstractDescritiveSettingUIComponent.drawComponent(mouseX, mouseY, abstractDescritiveSettingUIComponent.mouseInside(mouseX, mouseY));
+                if (!abstractDescritiveSettingUIComponent.lIlIlIlIlIIlIIlIIllIIIIIl(mouseX, mouseY)) continue;
+                abstractDescritiveSettingUIComponent.lIllIlIIIlIIIIIIIlllIlIll(mouseX, mouseY);
             }
         }
     }
@@ -169,7 +169,7 @@ extends AbstractDescritiveSettingUIComponent {
 
     @Override
     public void lIllIlIIIlIIIIIIIlllIlIll(float f, float f2) {
-        String string = this.llIlIIIllIIlIllIllIllllIl.llIIlIlIIIllIlIlIlIIlIIll().get("description");
+        String string = this.llIlIIIllIIlIllIllIllllIl.getDetails().get("description");
         if (string != null && !string.equals("description") && !string.equals("")) {
             List<String> list = FontRegistry.lIlIIIIIIlIIIllllIllIIlII().lIllIlIIIlIIIIIIIlllIlIll(string, 150.0);
             float f3 = list.size() > 1 ? 150.0f : (float)FontRegistry.lIIIllIllIIllIlllIlIIlllI().IlllIIIIIIlllIlIIlllIlIIl(string);
@@ -183,11 +183,11 @@ extends AbstractDescritiveSettingUIComponent {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(char c, KeyType keyType) {
+    public void onKeyTyped(char c, KeyType keyType) {
     }
 
     @Override
-    public void IlllIIIIIIlllIlIIlllIlIIl() {
+    public void onGuiClosed() {
     }
 
     public AbstractFeatureContainerChild llIlllIIIllllIIlllIllIIIl() {
@@ -198,4 +198,3 @@ extends AbstractDescritiveSettingUIComponent {
         this.lIIlIlllIlIlIIIlllIIlIIII = bl;
     }
 }
- 

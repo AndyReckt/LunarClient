@@ -4,28 +4,26 @@ import com.moonsworth.lunar.client.threading.executor.LunarExecutorService;
 import com.moonsworth.lunar.client.threading.executor.MinecraftEventExecutor;
 
 public class LunarExecutors {
-    public static final LunarExecutorService lIlIlIlIlIIlIIlIIllIIIIIl = new LunarExecutorService();
-    public static final MinecraftEventExecutor IlllIIIIIIlllIlIIlllIlIIl = new MinecraftEventExecutor();
+    public static final LunarExecutorService lunarExecutor = new LunarExecutorService();
+    public static final MinecraftEventExecutor minecraftExecutor = new MinecraftEventExecutor();
 
-    public static MinecraftEventExecutor lIlIlIlIlIIlIIlIIllIIIIIl() {
-        return IlllIIIIIIlllIlIIlllIlIIl;
+    public static MinecraftEventExecutor getMinecraftExecutor() {
+        return minecraftExecutor;
     }
 
-    public static LunarExecutorService IlllIIIIIIlllIlIIlllIlIIl() {
-        return lIlIlIlIlIIlIIlIIllIIIIIl;
+    public static LunarExecutorService getLunarExecutor() {
+        return lunarExecutor;
     }
 
-    public static Runnable lIlIlIlIlIIlIIlIIllIIIIIl(Runnable var0) {
-        return new LunarExecutors.ThrowingExecutor(var0);
+    public static Runnable run(Runnable runnable) {
+        return new LunarExecutors.ThrowingExecutor(runnable);
     }
 
     public static final class ThrowingExecutor implements Runnable {
         public final Runnable lIlIlIlIlIIlIIlIIllIIIIIl;
-
         public ThrowingExecutor(Runnable var1) {
             this.lIlIlIlIlIIlIIlIIllIIIIIl = var1;
         }
-
         public void run() {
             try {
                 this.lIlIlIlIlIIlIIlIIllIIIIIl.run();
@@ -33,11 +31,6 @@ public class LunarExecutors {
                 var2.printStackTrace();
             }
 
-        }
-
-        // $FF: synthetic method
-        public ThrowingExecutor(Runnable var1, Object var2) {
-            this(var1);
         }
     }
 }

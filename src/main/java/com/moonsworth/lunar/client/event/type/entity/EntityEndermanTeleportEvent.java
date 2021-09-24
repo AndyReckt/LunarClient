@@ -3,7 +3,7 @@ package com.moonsworth.lunar.client.event.type.entity;
 import com.moonsworth.lunar.client.event.CancellableEvent;
 
 public class EntityEndermanTeleportEvent
-extends CancellableEvent {
+    extends CancellableEvent {
     public double lIlIlIlIlIIlIIlIIllIIIIIl;
     public double IlllIIIIIIlllIlIIlllIlIIl;
     public double lIllIlIIIlIIIIIIIlllIlIll;

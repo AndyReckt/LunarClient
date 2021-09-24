@@ -18,6 +18,7 @@ import com.moonsworth.lunar.bridge.minecraft.client.renderer.ThreadDownloadImage
 import com.moonsworth.lunar.bridge.minecraft.client.renderer.texture.*;
 import com.moonsworth.lunar.bridge.minecraft.client.settings.GameSettingsBridge;
 import com.moonsworth.lunar.bridge.minecraft.client.settings.KeyBindingBridge;
+import com.moonsworth.lunar.bridge.minecraft.entity.boss.BossStatusBridge;
 import com.moonsworth.lunar.bridge.minecraft.item.ItemBridge;
 import com.moonsworth.lunar.bridge.minecraft.item.ItemStackBridge;
 import com.moonsworth.lunar.bridge.minecraft.scoreboard.ScoreObjectiveBridge;
@@ -39,95 +40,95 @@ import java.util.List;
  * @since 10/07/2021 16:00
  */
 public interface IBridge {
-    public void enable();
+    void enable();
 
-    public void lateInit();
+    void lateInit();
 
-    public MinecraftVersion getMinecraftVersion();
+    MinecraftVersion getMinecraftVersion();
 
-    public ResourceLocationBridge initResourceLocation(String var1, String var2);
+    ResourceLocationBridge initResourceLocation(String var1, String var2);
 
-    public ResourceLocationBridge initResourceLocation(String var1);
+    ResourceLocationBridge initResourceLocation(String var1);
 
-    public KeyBindingBridge initKeyBinding(String var1, int var2, String var3);
+    KeyBindingBridge initKeyBinding(String var1, int var2, String var3);
 
-    public ChatComponentTextBridge initChatText(String var1);
+    ChatComponentTextBridge initChatText(String var1);
 
-    public ThreadDownloadImageDataBridge initThreadDownloadImageData(File var1, String var2, ResourceLocationBridge var3);
+    ThreadDownloadImageDataBridge initThreadDownloadImageData(File var1, String var2, ResourceLocationBridge var3);
 
-    public SessionBridge initSession(String var1, String var2, String var3, String var4);
+    SessionBridge initSession(String var1, String var2, String var3, String var4);
 
-    public WrappedGuiScreenBridge initCustomScreen(CustomScreen var1);
+    WrappedGuiScreenBridge initCustomScreen(CustomScreen var1);
 
-    public TessellatorBridge initTessellator();
+    TessellatorBridge initTessellator();
 
-    public LoadableTickingTexture initAsyncTexture(ResourceLocationBridge var1);
+    LoadableTickingTexture initAsyncTexture(ResourceLocationBridge var1);
 
-    public DynamicTextureBridge initDynamicTexture(int var1, int var2);
+    DynamicTextureBridge initDynamicTexture(int var1, int var2);
 
-    public DynamicTextureBridge initDynamicTexture(BufferedImage var1);
+    DynamicTextureBridge initDynamicTexture(BufferedImage var1);
 
-    public PacketBufferBridge initPacketBuffer(ByteBuf var1);
+    PacketBufferBridge initPacketBuffer(ByteBuf var1);
 
-    public C17PacketCustomPayloadBridge initCustomPayload(String var1, PacketBufferBridge var2);
+    C17PacketCustomPayloadBridge initCustomPayload(String var1, PacketBufferBridge var2);
 
-    public Vec3Bridge initVec3d(double var1, double var3, double var5);
+    Vec3Bridge initVec3d(double var1, double var3, double var5);
 
-    public BlockBridge bridge$getBlockFromItem(ItemBridge var1);
+    BlockBridge bridge$getBlockFromItem(ItemBridge var1);
 
-    public OldServerPingerBridge initOldServerPinger();
+    OldServerPingerBridge initOldServerPinger();
 
-    public GuiSelectWorldBridge initGuiSelectWorld(@Nullable GuiScreenBridge var1);
+    GuiSelectWorldBridge initGuiSelectWorld(@Nullable GuiScreenBridge var1);
 
-    public GuiMultiplayerBridge initGuiMultiplayer(@Nullable GuiScreenBridge var1);
+    GuiMultiplayerBridge initGuiMultiplayer(@Nullable GuiScreenBridge var1);
 
-    public GuiOptionsBridge initGuiOptions(@Nullable GuiScreenBridge var1);
+    GuiOptionsBridge initGuiOptions(@Nullable GuiScreenBridge var1);
 
-    public GuiLanguageBridge initLanguage(@Nullable GuiScreenBridge var1);
+    GuiLanguageBridge initLanguage(@Nullable GuiScreenBridge var1);
 
-    public GuiScreenBridge initRealms(@Nullable GuiScreenBridge var1);
+    GuiScreenBridge initRealms(@Nullable GuiScreenBridge var1);
 
-    public GuiConfirmOpenLinkBridge initOpenLink(@Nullable GuiScreenBridge var1, String var2, URI var3, int var4, boolean var5);
+    GuiConfirmOpenLinkBridge initOpenLink(@Nullable GuiScreenBridge var1, String var2, URI var3, int var4, boolean var5);
 
-    public ClickEventBridge initChatClickEvent(ClickEventAction var1, String var2);
+    ClickEventBridge initChatClickEvent(ClickEventAction var1, String var2);
 
-    public HoverEventBridge initChatHoverEvent(HoverEventAction var1, IChatComponentBridge var2);
+    HoverEventBridge initChatHoverEvent(HoverEventAction var1, IChatComponentBridge var2);
 
-    public ItemStackBridge initItemStack(ItemBridge var1);
+    ItemStackBridge initItemStack(ItemBridge var1);
 
-    public ItemStackBridge initItemStack(BlockBridge var1);
+    ItemStackBridge initItemStack(BlockBridge var1);
 
-    public ItemStackBridge initEmptyItemStack();
+    ItemStackBridge initEmptyItemStack();
 
-    public List getBossStatus();
+    List<BossStatusBridge> getBossStatus();
 
-    public ScoreboardBridge initScoreboard();
+    ScoreboardBridge initScoreboard();
 
-    public ScoreObjectiveBridge initDummyScoreObjective(ScoreboardBridge var1, String var2);
+    ScoreObjectiveBridge initDummyScoreObjective(ScoreboardBridge var1, String var2);
 
-    public AxisAlignedBBBridge initAABB(double var1, int var3, double var4, double var6, int var8, double var9);
+    AxisAlignedBBBridge initAABB(double var1, int var3, double var4, double var6, int var8, double var9);
 
-    public LunarBorder initLCBorder(String var1, String var2, int var3);
+    LunarBorder initLCBorder(String var1, String var2, int var3);
 
-    public AbstractTextureBridge initCustomTexture(CustomTextureBridge var1);
+    AbstractTextureBridge initCustomTexture(CustomTextureBridge var1);
 
-    public AbstractTextureBridge initTickingTexture(TickingTexture var1);
+    AbstractTextureBridge initTickingTexture(TickingTexture var1);
 
-    public EntityPlayerSPBridge initDummyPlayer();
+    EntityPlayerSPBridge initDummyPlayer();
 
-    public MovementInputBridge initMovementInput(GameSettingsBridge var1);
+    MovementInputBridge initMovementInput(GameSettingsBridge var1);
 
-    public ServerDataBridge initServerData(String var1, String var2, boolean var3);
+    ServerDataBridge initServerData(String var1, String var2, boolean var3);
 
-    public GeometryTessellator getGeometryTessellator();
+    GeometryTessellator getGeometryTessellator();
 
-    public ModelCloak initModelCloak(int var1);
+    ModelCloak initModelCloak(int var1);
 
-    public ModelCloak initModelCloak(int var1, int var2, int var3);
+    ModelCloak initModelCloak(int var1, int var2, int var3);
 
     // todo idk if this is sneakythrows lol
     @SneakyThrows
-    default public BufferedImage lIlIlIlIlIIlIIlIIllIIIIIl(InputStream inputStream) {
+default BufferedImage lIlIlIlIlIIlIIlIIllIIIIIl(InputStream inputStream) {
         return ImageIO.read(inputStream);
     }
 }

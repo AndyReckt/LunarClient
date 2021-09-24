@@ -2,7 +2,7 @@ package com.moonsworth.lunar.client.feature.hud.simple;
 
 import com.google.common.collect.ImmutableList;
 import com.moonsworth.lunar.client.event.type.render.RenderGameOverlayEvent;
-import com.moonsworth.lunar.client.feature.hud.Anchor;
+import com.moonsworth.lunar.client.feature.hud.HudModPosition;
 import com.moonsworth.lunar.client.feature.hud.DraggableHudMod;
 import com.moonsworth.lunar.client.feature.hud.ModuleCategory;
 import com.moonsworth.lunar.client.ref.Ref;
@@ -11,8 +11,7 @@ import com.moonsworth.lunar.client.setting.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class SimpleHudMod
-extends DraggableHudMod {
+public abstract class SimpleHudMod extends DraggableHudMod {
     public BooleanSetting lllIIIIIlllIIlIllIIlIIIlI;
     public NumberSetting lIlIIIIIIlIIIllllIllIIlII;
     public NumberSetting llIlIIIllIIlIllIllIllllIl;
@@ -23,18 +22,18 @@ extends DraggableHudMod {
     public ColorSetting IllllllllllIlIIIlllIlllll;
     public NumberSetting lllllIllIlIIlIIlIIIlllIlI;
 
-    public SimpleHudMod(boolean bl, Anchor anchor) {
-        super(bl, anchor);
+    public SimpleHudMod(boolean bl, HudModPosition hudModPosition) {
+        super(bl, hudModPosition);
         this.IlllIIIIIIlllIlIIlllIlIIl(this.lIlIIIIIIlIIIllllIllIIlII.llIlllIIIllllIIlllIllIIIl().intValue(), this.llIlIIIllIIlIllIllIllllIl.llIlllIIIllllIIlllIllIIIl().intValue());
-        if (this.llIIlIlIIIllIlIlIlIIlIIll().IlllIIIIIIlllIlIIlllIlIIl() != null) {
+        if (this.getDetails().getCategories() != null) {
             ArrayList<ModuleCategory> arrayList = new ArrayList<>();
-            arrayList.addAll(this.llIIlIlIIIllIlIlIlIIlIIll().IlllIIIIIIlllIlIIlllIlIIl());
-            if (!arrayList.contains(ModuleCategory.lIllIlIIIlIIIIIIIlllIlIll)) {
-                arrayList.add(ModuleCategory.lIllIlIIIlIIIIIIIlllIlIll);
+            arrayList.addAll(this.getDetails().getCategories());
+            if (!arrayList.contains(ModuleCategory.HUD)) {
+                arrayList.add(ModuleCategory.HUD);
             }
-            this.llIIlIlIIIllIlIlIlIIlIIll().IlllIIIIIIlllIlIIlllIlIIl(ImmutableList.copyOf(arrayList));
+            this.getDetails().IlllIIIIIIlllIlIIlllIlIIl(ImmutableList.copyOf(arrayList));
         } else {
-            this.llIIlIlIIIllIlIlIlIIlIIll().IlllIIIIIIlllIlIIlllIlIIl(ImmutableList.of(ModuleCategory.lIlIlIlIlIIlIIlIIllIIIIIl, ModuleCategory.lIllIlIIIlIIIIIIIlllIlIll));
+            this.getDetails().IlllIIIIIIlllIlIIlllIlIIl(ImmutableList.of(ModuleCategory.ALL, ModuleCategory.HUD));
         }
     }
 
@@ -42,8 +41,8 @@ extends DraggableHudMod {
         return new ArrayList();
     }
 
-    public List IIIIIIIIIIIIIIIllllIIlIIl() {
-        return new ArrayList();
+    public List<AbstractSetting<?>> IIIIIIIIIIIIIIIllllIIlIIl() {
+        return new ArrayList<>();
     }
 
     public boolean llIIIIllIlIIlIlIIlllIllIl() {
@@ -71,12 +70,12 @@ extends DraggableHudMod {
             return;
         }
         if (this.IIIIlIllIllIlIIIIIlIlIlIl()) {
-            this.IlllIIIIIIlllIlIIlllIlIIl(Ref.IlllllIlIIIlIIlIIllIIlIll().bridge$getStringWidth(string) + 8.0f, this.llIlIIIllIIlIllIllIllllIl.llIlllIIIllllIIlllIllIIIl().intValue());
+            this.IlllIIIIIIlllIlIIlllIlIIl(Ref.getFontRenderer().bridge$getStringWidth(string) + 8.0f, this.llIlIIIllIIlIllIllIllllIl.llIlllIIIllllIIlllIllIIIl().intValue());
         } else {
             this.IlllIIIIIIlllIlIIlllIlIIl(this.lIlIIIIIIlIIIllllIllIIlII.llIlllIIIllllIIlllIllIIIl().intValue(), this.llIlIIIllIIlIllIllIllllIl.llIlllIIIllllIIlllIllIIIl().intValue());
         }
         float f3 = this.llIIIIIIIllIIllIlIllIIIIl / 2.0f;
-        float f4 = this.lIIIllIllIIllIlllIlIIlllI / 1.88f - (float) Ref.IlllllIlIIIlIIlIIllIIlIll().lIlIlIlIlIIlIIlIIllIIIIIl() / 2.0f + 0.5f;
+        float f4 = this.lIIIllIllIIllIlllIlIIlllI / 1.88f - (float) Ref.getFontRenderer().lIlIlIlIlIIlIIlIIllIIIIIl() / 2.0f + 0.5f;
         if (this.lllIIIIIlllIIlIllIIlIIIlI.llIlllIIIllllIIlllIllIIIl().booleanValue()) {
             this.llIllIlIllIlllIllIIIIllII.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, this.llIIIIIIIllIIllIlIllIIIIl, this.lIIIllIllIIllIlllIlIIlllI);
             if (this.IllIllIIIllIIIlIlIlIIIIll.llIlllIIIllllIIlllIllIIIl().booleanValue()) {
@@ -111,8 +110,8 @@ extends DraggableHudMod {
 
     @Override
     public List IlIlIlllllIlIIlIlIlllIlIl() {
-        ArrayList<AbstractSetting> arrayList = new ArrayList<>();
-        List list = this.IIIIIIIIIIIIIIIllllIIlIIl();
+        ArrayList<AbstractSetting<?>> arrayList = new ArrayList<>();
+        List<AbstractSetting<?>> list = this.IIIIIIIIIIIIIIIllllIIlIIl();
         if (!list.isEmpty()) {
             arrayList.add(new SettingLabel("settings"));
             arrayList.addAll(list);

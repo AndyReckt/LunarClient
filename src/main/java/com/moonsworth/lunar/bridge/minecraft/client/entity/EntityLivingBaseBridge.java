@@ -12,65 +12,65 @@ import java.util.Optional;
  * @since 10/07/2021 14:11
  */
 public interface EntityLivingBaseBridge extends EntityBridge {
-    public Optional bridge$getLastAttacker();
+    Optional bridge$getLastAttacker();
 
-    public int bridge$getLastAttackerTime();
+    int bridge$getLastAttackerTime();
 
-    public int bridge$getHurtTime();
+    int bridge$getHurtTime();
 
-    public int bridge$getDeathTime();
+    int bridge$getDeathTime();
 
-    public boolean bridge$isPotionActive(PotionBridge var1);
+    boolean bridge$isPotionActive(PotionBridge var1);
 
-    public PotionEffectBridge bridge$getActivePotionEffect(PotionBridge var1);
+    PotionEffectBridge bridge$getActivePotionEffect(PotionBridge var1);
 
-    public List bridge$getActivePotionEffects();
+    List bridge$getActivePotionEffects();
 
-    public boolean bridge$isOnLadder();
+    boolean bridge$isOnLadder();
 
-    public boolean bridge$isInWater();
+    boolean bridge$isInWater();
 
-    public void bridge$swingItem0();
+    void bridge$swingItem0();
 
-    public float bridge$getRenderYawOffset();
+    float bridge$getRenderYawOffset();
 
-    public float bridge$getPreviousRotationYawOffset();
+    float bridge$getPreviousRotationYawOffset();
 
-    public void bridge$setRenderYawOffset(float var1);
+    void bridge$setRenderYawOffset(float var1);
 
-    public float bridge$getRotationYawHead();
+    float bridge$getRotationYawHead();
 
-    public void bridge$setRotationYawHead(float var1);
+    void bridge$setRotationYawHead(float var1);
 
-    public float bridge$getPrevRotationYawHead();
+    float bridge$getPrevRotationYawHead();
 
-    public void bridge$setPrevRotationYawHead(float var1);
+    void bridge$setPrevRotationYawHead(float var1);
 
-    public float bridge$getPrevRenderYawOffset();
+    float bridge$getPrevRenderYawOffset();
 
-    public void IlllIIIIIIlllIlIIlllIlIIl(float var1);
+    void IlllIIIIIIlllIlIIlllIlIIl(float var1);
 
-    public ItemStackBridge bridge$getEquipmentInSlot(int var1);
+    ItemStackBridge bridge$getEquipmentInSlot(int var1);
 
-    public float bridge$getHealth();
+    float bridge$getHealth();
 
-    public boolean bridge$isPlayerSleeping();
+    boolean bridge$isPlayerSleeping();
 
-    public float bridge$getMoveForward();
+    float bridge$getMoveForward();
 
-    public ItemStackBridge bridge$getHeldItem();
+    ItemStackBridge bridge$getHeldItem();
 
-    public boolean bridge$shouldAlwaysRenderNametag();
+    boolean bridge$shouldAlwaysRenderNametag();
 
-    public void bridge$setAlwaysRenderNameTag(boolean var1);
+    void bridge$setAlwaysRenderNameTag(boolean var1);
 
-    public String bridge$getDisplayName();
+    String bridge$getDisplayName();
 
-    default public boolean IlllIIIIIIlllIlIIlllIlIIl() {
+default boolean IlllIIIIIIlllIlIIlllIlIIl() {
         return false;
     }
 
-    default public boolean lIllIlIIIlIIIIIIIlllIlIll() {
+default boolean lIllIlIIIlIIIIIIIlllIlIll() {
         return false;
     }
 }

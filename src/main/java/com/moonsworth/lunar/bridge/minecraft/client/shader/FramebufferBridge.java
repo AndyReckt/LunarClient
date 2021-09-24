@@ -1,14 +1,13 @@
 package com.moonsworth.lunar.bridge.minecraft.client.shader;
 
 public interface FramebufferBridge {
-    public int bridge$framebufferWidth();
+    int bridge$framebufferWidth();
 
-    public int bridge$framebufferHeight();
+    int bridge$framebufferHeight();
 
-    public int bridge$framebufferTextureWidth();
+    int bridge$framebufferTextureWidth();
 
-    public int bridge$framebufferTextureHeight();
+    int bridge$framebufferTextureHeight();
 
-    public int bridge$getFramebufferTexture();
+    int bridge$getFramebufferTexture();
 }
- 

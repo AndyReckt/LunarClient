@@ -6,13 +6,13 @@ import com.moonsworth.lunar.bridge.minecraft.util.ResourceLocationBridge;
 import java.io.InputStream;
 
 public interface SimpleResourceBridge {
-    public ResourceLocationBridge bridge$getResourceLocation();
+    ResourceLocationBridge bridge$getResourceLocation();
 
-    public InputStream bridge$getInputStream();
+    InputStream bridge$getInputStream();
 
-    public boolean bridge$hasMetadata();
+    boolean bridge$hasMetadata();
 
-    public IMetadataSectionBridge bridge$getMetadata(String var1);
+    IMetadataSectionBridge bridge$getMetadata(String var1);
 
-    public String bridge$getResourcePackName();
+    String bridge$getResourcePackName();
 }

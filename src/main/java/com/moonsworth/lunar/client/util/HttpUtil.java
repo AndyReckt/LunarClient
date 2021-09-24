@@ -6,6 +6,7 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
 import lombok.SneakyThrows;
 import org.apache.commons.io.IOUtils;
+import org.json.JSONObject;
 
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
@@ -23,8 +24,7 @@ public final class HttpUtil {
             } else {
                 HttpUtil.lIlIlIlIlIIlIIlIIllIIIIIl(string, map, HttpUtil.lIlIlIlIlIIlIIlIIllIIIIIl(map2), consumer);
             }
-        }
-        catch (Exception exception) {
+        } catch (Exception exception) {
             exception.printStackTrace();
         }
     }
@@ -43,15 +43,13 @@ public final class HttpUtil {
                 try {
                     JsonParser jsonParser = new JsonParser();
                     jsonObject = jsonParser.parse(string2).getAsJsonObject();
-                }
-                catch (JsonParseException jsonParseException) {
+                } catch (JsonParseException jsonParseException) {
                     jsonParseException.printStackTrace();
                 }
                 if (jsonObject != null) {
                     consumer.accept(jsonObject);
                 }
-            }
-            catch (Exception exception) {
+            } catch (Exception exception) {
                 exception.printStackTrace();
                 consumer.accept(null);
             }
@@ -78,23 +76,20 @@ public final class HttpUtil {
                 try {
                     JsonParser jsonParser = new JsonParser();
                     jsonObject = jsonParser.parse(string3).getAsJsonObject();
-                }
-                catch (JsonParseException jsonParseException) {
+                } catch (JsonParseException jsonParseException) {
                     jsonParseException.printStackTrace();
                 }
                 if (jsonObject != null) {
                     consumer.accept(jsonObject);
                 }
-            }
-            catch (Exception exception) {
+            } catch (Exception exception) {
                 exception.printStackTrace();
             }
         }).start();
     }
 
     public static String lIlIlIlIlIIlIIlIIllIIIIIl(Map map) {
-        throw new UnsupportedOperationException("aaa");
-        //return new JSONObject(map).toString();
+        return new JSONObject(map).toString();
     }
 
     // todo check @SneakyThrows usage here.
@@ -116,4 +111,3 @@ public final class HttpUtil {
         throw new UnsupportedOperationException("This is a utility class and cannot be instantiated");
     }
 }
- 

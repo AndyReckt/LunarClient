@@ -1,12 +1,12 @@
 /*
  * Decompiled with CFR 0.150.
- * 
+ *
  * Could not load the following classes:
  *  lunar.a.Bridge
  */
 package mchorse.emoticons.skin_n_bones.api.bobj;
 
-import lunar.a.Bridge;
+import com.moonsworth.lunar.client.bridge.Bridge;
 import mchorse.mclib.utils.Interpolations;
 
 public class BOBJKeyframe {
@@ -18,19 +18,19 @@ public class BOBJKeyframe {
     public float rightX;
     public float rightY;
 
-    public static BOBJKeyframe parse(String[] arrstring) {
-        if (arrstring.length == 8) {
-            float f = Float.parseFloat(arrstring[4]);
-            float f2 = Float.parseFloat(arrstring[5]);
-            float f3 = Float.parseFloat(arrstring[6]);
-            float f4 = Float.parseFloat(arrstring[7]);
-            return new BOBJKeyframe(Integer.parseInt(arrstring[1]), Float.parseFloat(arrstring[2]), arrstring[3], f, f2, f3, f4);
+    public static BOBJKeyframe parse(String[] floats) {
+        if (floats.length == 8) {
+            float f = Float.parseFloat(floats[4]);
+            float f2 = Float.parseFloat(floats[5]);
+            float f3 = Float.parseFloat(floats[6]);
+            float f4 = Float.parseFloat(floats[7]);
+            return new BOBJKeyframe(Integer.parseInt(floats[1]), Float.parseFloat(floats[2]), floats[3], f, f2, f3, f4);
         }
-        if (arrstring.length == 4) {
-            return new BOBJKeyframe(Integer.parseInt(arrstring[1]), Float.parseFloat(arrstring[2]), arrstring[3]);
+        if (floats.length == 4) {
+            return new BOBJKeyframe(Integer.parseInt(floats[1]), Float.parseFloat(floats[2]), floats[3]);
         }
-        if (arrstring.length == 3) {
-            return new BOBJKeyframe(Integer.parseInt(arrstring[1]), Float.parseFloat(arrstring[2]));
+        if (floats.length == 3) {
+            return new BOBJKeyframe(Integer.parseInt(floats[1]), Float.parseFloat(floats[2]));
         }
         return null;
     }
@@ -71,15 +71,14 @@ public class BOBJKeyframe {
         return this.interpolation.interpolate(this, f, bOBJKeyframe);
     }
 
-    public static enum Interpolation {
+    public enum Interpolation {
         CONSTANT{
 
             @Override
             public float interpolate(BOBJKeyframe bOBJKeyframe, float f, BOBJKeyframe bOBJKeyframe2) {
                 return bOBJKeyframe.value;
             }
-        }
-        ,
+        },
         LINEAR{
 
             @Override
@@ -120,20 +119,10 @@ public class BOBJKeyframe {
          * WARNING - Possible parameter corruption
          * WARNING - void declaration
          */
-        public Interpolation() {
+        Interpolation() {
         }
 
         public abstract float interpolate(BOBJKeyframe var1, float var2, BOBJKeyframe var3);
-
-        /*
-         * WARNING - Possible parameter corruption
-         * WARNING - void declaration
-         */
-        public /* synthetic */ Interpolation(1 varnull) {
-            this((String)var1_-1, (int)var2_1);
-            void var2_1;
-            void var1_-1;
-        }
     }
 }
 

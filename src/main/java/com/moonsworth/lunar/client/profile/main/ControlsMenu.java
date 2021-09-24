@@ -5,7 +5,7 @@ import com.google.gson.JsonObject;
 import com.moonsworth.lunar.LunarClient;
 import com.moonsworth.lunar.bridge.lunar.input.KeyType;
 import com.moonsworth.lunar.client.bridge.Bridge;
-import com.moonsworth.lunar.client.json.file.DefaultJson;
+import com.moonsworth.lunar.client.json.file.JsonFile;
 import com.moonsworth.lunar.client.json.file.ItemSetLoader;
 import com.moonsworth.lunar.client.ref.Ref;
 import com.moonsworth.lunar.client.setting.AbstractSetting;
@@ -18,45 +18,47 @@ import com.moonsworth.lunar.client.ui.screen.type.emotes.EmotesRadialMenuUIScree
 import com.moonsworth.lunar.client.ui.screen.type.movement.MovementUI;
 import com.moonsworth.lunar.client.websocket.AssetsWebSocket;
 import com.moonsworth.lunar.client.websocket.WebSocketState;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.File;
 import java.util.Set;
 
-public class ControlsMenu
-extends ItemSetLoader<AbstractSetting<?>>
-implements DefaultJson {
-    public BindableSetting lIlIlIlIlIIlIIlIIllIIIIIl;
-    public BindableSetting IlllIIIIIIlllIlIIlllIlIIl;
-    public BindableSetting lIllIlIIIlIIIIIIIlllIlIll;
-    public LunarKeybindSetting llIlllIIIllllIIlllIllIIIl;
-    public LunarKeybindSetting llllIIlIIlIIlIIllIIlIIllI;
-    public LunarKeybindSetting IlIlIlllllIlIIlIlIlllIlIl;
-    public boolean llIIIIIIIllIIllIlIllIIIIl = true;
+@Getter
+public class ControlsMenu extends ItemSetLoader<AbstractSetting<?>> implements JsonFile {
+    public BindableSetting modMenuBind;
+    public BindableSetting waypointsBind;
+    public BindableSetting emoteBind;
+    public LunarKeybindSetting dropStackBind;
+    public LunarKeybindSetting friendMenuBind;
+    public LunarKeybindSetting nametagsBind;
+    @Setter
+    public boolean nametagsEnabled = true;
 
     public ControlsMenu() {
-        this.lIlIlIlIlIIlIIlIIllIIIIIl.lIlIlIlIlIIlIIlIIllIIIIIl(() -> Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$displayScreen(Bridge.llIlllIIIllllIIlllIllIIIl().initCustomScreen(new MovementUI()))).lIlIlIlIlIIlIIlIIllIIIIIl(true).IlllIIIIIIlllIlIIlllIlIIl(true);
-        this.lIllIlIIIlIIIIIIIlllIlIll.IlllIIIIIIlllIlIIlllIlIIl(true).lIlIlIlIlIIlIIlIIllIIIIIl(true).lIlIlIlIlIIlIIlIIllIIIIIl(() -> {
-            if (Ref.IlllIIIIIIlllIlIIlllIlIIl().lllllIllIllIllllIlIllllII().lIlIIlIlllIIlIIIlIlIlIllI().IlIllIIlIIlIIIllIllllIIll()) {
+        this.modMenuBind.lIlIlIlIlIIlIIlIIllIIIIIl(() -> Ref.getMinecraft().bridge$displayScreen(Bridge.getInstance().initCustomScreen(new MovementUI()))).lIlIlIlIlIIlIIlIIllIIIIIl(true).IlllIIIIIIlllIlIIlllIlIIl(true);
+        this.emoteBind.IlllIIIIIIlllIlIIlllIlIIl(true).lIlIlIlIlIIlIIlIIllIIIIIl(true).lIlIlIlIlIIlIIlIIllIIIIIl(() -> {
+            if (Ref.getLC().lllllIllIllIllllIlIllllII().lIlIIlIlllIIlIIIlIlIlIllI().IlIllIIlIIlIIIllIllllIIll()) {
                 return;
             }
-            if (!Ref.getAssetsWebsocket().isPresent() || ((AssetsWebSocket)Ref.getAssetsWebsocket().get()).lIlIlIlIlIIlIIlIIllIIIIIl() != WebSocketState.READY) {
+            if (!Ref.getAssetsWebsocket().isPresent() || Ref.getAssetsWebsocket().get().lIlIlIlIlIIlIIlIIllIIIIIl() != WebSocketState.READY) {
                 return;
             }
-            if (Bridge.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl(KeyType.IIlllIllIIlllllIllllllIII)) {
+            if (Bridge.llIIlIlIIIllIlIlIlIIlIIll().lIlIlIlIlIIlIIlIIllIIIIIl(KeyType.KEY_F3)) {
                 return;
             }
-            Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$displayScreen(Bridge.llIlllIIIllllIIlllIllIIIl().initCustomScreen(new EmotesRadialMenuUIScreen(this.lIllIlIIIlIIIIIIIlllIlIll.g_())));
+            Ref.getMinecraft().bridge$displayScreen(Bridge.getInstance().initCustomScreen(new EmotesRadialMenuUIScreen(this.emoteBind.g_())));
         });
-        this.IlIlIlllllIlIIlIlIlllIlIl.IlllIIIIIIlllIlIIlllIlIIl(true).lIlIlIlIlIIlIIlIIllIIIIIl(true).lIlIlIlIlIIlIIlIIllIIIIIl(() -> {
-            if (Ref.llIIIIIIIllIIllIlIllIIIIl() != null) {
-                Ref.IlllIIIIIIlllIlIIlllIlIIl().lllIIIIIlllIIlIllIIlIIIlI().llIIIIIIIllIIllIlIllIIIIl().lIlIlIlIlIIlIIlIIllIIIIIl(!Ref.IlllIIIIIIlllIlIIlllIlIIl().lllIIIIIlllIIlIllIIlIIIlI().llIIIIIIIllIIllIlIllIIIIl().llIlIIIllIIlIllIllIllllIl());
-                Ref.lIlIlIlIlIIlIIlIIllIIIIIl("Nametags are " + (Ref.IlllIIIIIIlllIlIIlllIlIIl().lllIIIIIlllIIlIllIIlIIIlI().llIIIIIIIllIIllIlIllIIIIl().llIlIIIllIIlIllIllIllllIl() ? "now" : "no longer") + " enabled.");
+        this.nametagsBind.IlllIIIIIIlllIlIIlllIlIIl(true).lIlIlIlIlIIlIIlIIllIIIIIl(true).lIlIlIlIlIIlIIlIIllIIIIIl(() -> {
+            if (Ref.getWorld() != null) {
+                Ref.getLC().lllIIIIIlllIIlIllIIlIIIlI().llIIIIIIIllIIllIlIllIIIIl().setNametagsEnabled(!Ref.getLC().lllIIIIIlllIIlIllIIlIIIlI().llIIIIIIIllIIllIlIllIIIIl().isNametagsEnabled());
+                Ref.lIlIlIlIlIIlIIlIIllIIIIIl("Nametags are " + (Ref.getLC().lllIIIIIlllIIlIllIIlIIIlI().llIIIIIIIllIIllIlIllIIIIl().isNametagsEnabled() ? "now" : "no longer") + " enabled.");
             }
         });
-        this.IlllIIIIIIlllIlIIlllIlIIl.lIlIlIlIlIIlIIlIIllIIIIIl(() -> {
-            if (Ref.llIIIIIIIllIIllIlIllIIIIl() != null) {
-                SettingsUIScreen settingsUIScreen = new SettingsUIScreen(Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getCurrentScreen());
-                Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$displayScreen(Bridge.llIlllIIIllllIIlllIllIIIl().initCustomScreen(settingsUIScreen));
+        this.waypointsBind.lIlIlIlIlIIlIIlIIllIIIIIl(() -> {
+            if (Ref.getWorld() != null) {
+                SettingsUIScreen settingsUIScreen = new SettingsUIScreen(Ref.getMinecraft().bridge$getCurrentScreen());
+                Ref.getMinecraft().bridge$displayScreen(Bridge.getInstance().initCustomScreen(settingsUIScreen));
                 settingsUIScreen.llIIIIIIIllIIllIlIllIIIIl().lIlIlIlIlIIlIIlIIllIIIIIl(new WaypointsListUIComponent(settingsUIScreen.llIIIIIIIllIIllIlIllIIIIl()));
                 settingsUIScreen.llIlllIIIllllIIlllIllIIIl(2);
             }
@@ -65,13 +67,13 @@ implements DefaultJson {
 
     @Override
     public Set<AbstractSetting<?>> lIlIlIlIlIIlIIlIIllIIIIIl() {
-        this.lIlIlIlIlIIlIIlIIllIIIIIl = new BindableSetting("mod_menu", KeyType.IlIIIlIlIlIlIlIllIIllIIlI);
-        this.IlllIIIIIIlllIlIIlllIlIIl = new BindableSetting("waypoints", KeyType.lIIIlllIIIIllllIlIIIlIIll);
-        this.lIllIlIIIlIIIIIIIlllIlIll = new BindableSetting("emote", KeyType.lllIIIIIlllIIlIllIIlIIIlI);
-        this.llIlllIIIllllIIlllIllIIIl = new LunarKeybindSetting("dropStack", KeyType.llIllIIIIlIIIIIIlllIllIlI, false);
-        this.llllIIlIIlIIlIIllIIlIIllI = new LunarKeybindSetting("friendMenuKey", new KeyBind(false, true, false, KeyType.IllIlIIllIIlllIIllIlIlIII));
-        this.IlIlIlllllIlIIlIlIlllIlIl = new LunarKeybindSetting("toggleNametags", KeyType.lIlIlIlIlIIlIIlIIllIIIIIl);
-        return ImmutableSet.of(this.lIlIlIlIlIIlIIlIIllIIIIIl, this.IlllIIIIIIlllIlIIlllIlIIl, this.lIllIlIIIlIIIIIIIlllIlIll, this.llIlllIIIllllIIlllIllIIIl, this.llllIIlIIlIIlIIllIIlIIllI, this.IlIlIlllllIlIIlIlIlllIlIl, Ref.IlllIIIIIIlllIlIIlllIlIIl().lllllIllIllIllllIlIllllII().lllIIIIIlllIIlIllIIlIIIlI().IlIllIIlIIlIIIllIllllIIll());
+        this.modMenuBind = new BindableSetting("mod_menu", KeyType.KEY_RSHIFT);
+        this.waypointsBind = new BindableSetting("waypoints", KeyType.KEY_M);
+        this.emoteBind = new BindableSetting("emote", KeyType.KEY_B);
+        this.dropStackBind = new LunarKeybindSetting("dropStack", KeyType.KEY_LCONTROL, false);
+        this.friendMenuBind = new LunarKeybindSetting("friendMenuKey", new KeyBind(false, true, false, KeyType.KEY_TAB));
+        this.nametagsBind = new LunarKeybindSetting("toggleNametags", KeyType.KEY_NONE);
+        return ImmutableSet.of(this.modMenuBind, this.waypointsBind, this.emoteBind, this.dropStackBind, this.friendMenuBind, this.nametagsBind, Ref.getLC().lllllIllIllIllllIlIllllII().lllIIIIIlllIIlIllIIlIIIlI().IlIllIIlIIlIIIllIllllIIll());
     }
 
     @Override
@@ -82,7 +84,7 @@ implements DefaultJson {
 
     @Override
     public File IlIlIlllllIlIIlIlIlllIlIl() {
-        return new File(LunarClient.IIllIlIllIlIllIllIllIllII().IlIlIlllllIlIIlIlIlllIlIl() + File.separator + Ref.IlllIIIIIIlllIlIIlllIlIIl().lIlIlIIIIIIllIlIIIIllIIII().llllIIlIIlIIlIIllIIlIIllI().IlllIIIIIIlllIlIIlllIlIIl(), this.llllIIlIIlIIlIIllIIlIIllI());
+        return new File(LunarClient.getInstance().IlIlIlllllIlIIlIlIlllIlIl() + File.separator + Ref.getLC().lIlIlIIIIIIllIlIIIIllIIII().getSelectedProfile().getName(), this.llllIIlIIlIIlIIllIIlIIllI());
     }
 
     @Override
@@ -91,22 +93,20 @@ implements DefaultJson {
     }
 
     @Override
-    public void IlllIIIIIIlllIlIIlllIlIIl(JsonObject jsonObject) {
-        for (AbstractSetting abstractSetting : this.llIlllIIIllllIIlllIllIIIl()) {
+    public void read(JsonObject jsonObject) {
+        for (AbstractSetting<?> abstractSetting : this.llIlllIIIllllIIlllIllIIIl()) {
             try {
-                abstractSetting.IlllIIIIIIlllIlIIlllIlIIl(jsonObject);
-            }
-            catch (Exception exception) {}
+                abstractSetting.read(jsonObject);
+            } catch (Exception ignored) {}
         }
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(JsonObject jsonObject) {
-        for (AbstractSetting abstractSetting : this.llIlllIIIllllIIlllIllIIIl()) {
+    public void write(JsonObject jsonObject) {
+        for (AbstractSetting<?> abstractSetting : this.llIlllIIIllllIIlllIllIIIl()) {
             try {
-                abstractSetting.lIlIlIlIlIIlIIlIIllIIIIIl(jsonObject);
-            }
-            catch (Exception exception) {}
+                abstractSetting.write(jsonObject);
+            } catch (Exception ignored) {}
         }
     }
 
@@ -114,37 +114,4 @@ implements DefaultJson {
     public void lIllIlIIIlIIIIIIIlllIlIll() {
         this.save();
     }
-
-    public BindableSetting IlllllIlIIIlIIlIIllIIlIll() {
-        return this.lIlIlIlIlIIlIIlIIllIIIIIl;
-    }
-
-    public BindableSetting llIIlIlIIIllIlIlIlIIlIIll() {
-        return this.IlllIIIIIIlllIlIIlllIlIIl;
-    }
-
-    public BindableSetting llIIIlllIIlllIllllIlIllIl() {
-        return this.lIllIlIIIlIIIIIIIlllIlIll;
-    }
-
-    public LunarKeybindSetting lllllIllIllIllllIlIllllII() {
-        return this.llIlllIIIllllIIlllIllIIIl;
-    }
-
-    public LunarKeybindSetting lllIIIIIlllIIlIllIIlIIIlI() {
-        return this.llllIIlIIlIIlIIllIIlIIllI;
-    }
-
-    public LunarKeybindSetting lIlIIIIIIlIIIllllIllIIlII() {
-        return this.IlIlIlllllIlIIlIlIlllIlIl;
-    }
-
-    public boolean llIlIIIllIIlIllIllIllllIl() {
-        return this.llIIIIIIIllIIllIlIllIIIIl;
-    }
-
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(boolean bl) {
-        this.llIIIIIIIllIIllIlIllIIIIl = bl;
-    }
 }
- 

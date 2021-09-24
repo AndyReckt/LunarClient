@@ -7,15 +7,13 @@ import com.moonsworth.lunar.client.event.type.gui.GuiOpenEvent;
 import com.moonsworth.lunar.client.ref.Ref;
 import com.moonsworth.lunar.client.ui.screen.type.mainmenu.MainMenuUIScreen;
 
-public class MainMenuRedirectListener
-implements EventHandler {
+public class MainMenuRedirectListener implements EventHandler {
     public MainMenuRedirectListener() {
-        EventBus.lIlIlIlIlIIlIIlIIllIIIIIl().lIlIlIlIlIIlIIlIIllIIIIIl(GuiOpenEvent.class, guiOpenEvent -> {
-            if (guiOpenEvent.lIlIlIlIlIIlIIlIIllIIIIIl() == null && Ref.llIIIIIIIllIIllIlIllIIIIl() == null) {
+        EventBus.getInstance().register(GuiOpenEvent.class, guiOpenEvent -> {
+            if (guiOpenEvent.lIlIlIlIlIIlIIlIIllIIIIIl() == null && Ref.getWorld() == null) {
                 guiOpenEvent.setCancelled(true);
-                Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$displayScreen(Bridge.llIlllIIIllllIIlllIllIIIl().initCustomScreen(new MainMenuUIScreen()));
+                Ref.getMinecraft().bridge$displayScreen(Bridge.getInstance().initCustomScreen(new MainMenuUIScreen()));
             }
         });
     }
 }
- 

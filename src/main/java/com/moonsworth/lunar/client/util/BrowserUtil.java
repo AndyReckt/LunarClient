@@ -11,8 +11,7 @@ public final class BrowserUtil {
             try {
                 desktop.browse(uRI);
                 return true;
-            }
-            catch (Exception exception) {
+            } catch (Exception exception) {
                 exception.printStackTrace();
             }
         }
@@ -22,8 +21,7 @@ public final class BrowserUtil {
     public static boolean lIlIlIlIlIIlIIlIIllIIIIIl(String string) {
         try {
             return BrowserUtil.lIlIlIlIlIIlIIlIIllIIIIIl(new URI(string));
-        }
-        catch (Exception exception) {
+        } catch (Exception exception) {
             exception.printStackTrace();
             return false;
         }

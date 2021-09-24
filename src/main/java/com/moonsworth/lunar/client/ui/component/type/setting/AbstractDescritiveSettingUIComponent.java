@@ -12,31 +12,30 @@ import java.util.List;
  * @author Decencies
  * @since 10/07/2021 15:49
  */
-public abstract class AbstractDescritiveSettingUIComponent extends UIComponent {
+public abstract class AbstractDescritiveSettingUIComponent<T> extends UIComponent {
 
-    public AbstractSetting IlllIIIIIIlllIlIIlllIlIIl;
-    public String lIllIlIIIlIIIIIIIlllIlIll;
+    public AbstractSetting<T> setting;
+    public String label;
 
-    public AbstractDescritiveSettingUIComponent(AbstractSetting abstractSetting, UIComponent uIComponent) {
+    public AbstractDescritiveSettingUIComponent(AbstractSetting<T> abstractSetting, UIComponent uIComponent) {
         super(uIComponent);
-        this.IlllIIIIIIlllIlIIlllIlIIl = abstractSetting;
-        this.lIllIlIIIlIIIIIIIlllIlIll = abstractSetting.f_().toUpperCase().replace("", " ").trim();
+        this.setting = abstractSetting;
+        this.label = abstractSetting.f_().toUpperCase().replace("", " ").trim();
     }
 
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2, float f3) {
-        super.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, f3, this.IllIllIIIllIIIlIlIlIIIIll());
+    public void resoze(float f, float f2, float f3) {
+        super.setPositionAndSize(f, f2, f3, this.getHeight());
     }
 
     @Override
-    public abstract float IllIllIIIllIIIlIlIlIIIIll();
+    public abstract float getHeight();
 
-    //@Override
     public abstract boolean lIllIlIIIlIIIIIIIlllIlIll();
 
     public void lIllIlIIIlIIIIIIIlllIlIll(float f, float f2) {
-        String string = this.IlllIIIIIIlllIlIIlllIlIIl instanceof IIlIllIlllllllIIlIIIllIIl ? ((IIlIllIlllllllIIlIIIllIIl)this.IlllIIIIIIlllIlIIlllIlIIl).llllIIlIIlIIlIIllIIlIIllI() : this.IlllIIIIIIlllIlIIlllIlIIl.lIIlIlllIlIlIIIlllIIlIIII();
+        String string = this.setting instanceof IIlIllIlllllllIIlIIIllIIl ? ((IIlIllIlllllllIIlIIIllIIl)this.setting).llllIIlIIlIIlIIllIIlIIllI() : this.setting.lIIlIlllIlIlIIIlllIIlIIII();
         String string2 = string + "Description";
-        String string3 = this.IlllIIIIIIlllIlIIlllIlIIl.get(string2, new Object[0]);
+        String string3 = this.setting.get(string2);
         if (!string3.equals(string2)) {
             List<String> list = FontRegistry.lIlIIIIIIlIIIllllIllIIlII().lIllIlIIIlIIIIIIIlllIlIll(string3, 150.0);
             float f3 = list.size() > 1 ? 150.0f : (float)FontRegistry.lIIIllIllIIllIlllIlIIlllI().IlllIIIIIIlllIlIIlllIlIIl(string3);
@@ -50,11 +49,11 @@ public abstract class AbstractDescritiveSettingUIComponent extends UIComponent {
     }
 
     public boolean lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2) {
-        return this.IlllIIIIIIlllIlIIlllIlIIl(f, f2);
+        return this.mouseInside(f, f2);
     }
 
     public AbstractSetting llIIIIIIIllIIllIlIllIIIIl() {
-        return this.IlllIIIIIIlllIlIIlllIlIIl;
+        return this.setting;
     }
 
 }

@@ -10,8 +10,8 @@ import java.util.function.Consumer;
  */
 public interface EventHandler {
 
-    default <T extends Event> void lIlIlIlIlIIlIIlIIllIIIIIl(Class<T> clazz, Consumer<T> consumer) {
-        EventBus.lIlIlIlIlIIlIIlIIllIIIIIl().lIlIlIlIlIIlIIlIIllIIIIIl(clazz, consumer);
+default <T extends Event> void lIlIlIlIlIIlIIlIIllIIIIIl(Class<T> clazz, Consumer<T> consumer) {
+        EventBus.getInstance().register(clazz, consumer);
     }
 
 }

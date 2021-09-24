@@ -5,9 +5,8 @@ import com.moonsworth.lunar.bridge.minecraft.client.entity.player.EntityPlayerBr
 import com.moonsworth.lunar.client.event.Event;
 import com.moonsworth.lunar.client.ref.Ref;
 
-public class EventPreAttackEntity
-extends Event {
-    public EntityPlayerBridge lIlIlIlIlIIlIIlIIllIIIIIl = Ref.IlIlIlllllIlIIlIlIlllIlIl();
+public class EventPreAttackEntity extends Event {
+    public EntityPlayerBridge lIlIlIlIlIIlIIlIIllIIIIIl = Ref.getPlayer();
     public final EntityBridge IlllIIIIIIlllIlIIlllIlIIl;
     public final double lIllIlIIIlIIIIIIIlllIlIll;
 

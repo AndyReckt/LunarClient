@@ -1,12 +1,3 @@
-/*
- * Decompiled with CFR 0.150.
- * 
- * Could not load the following classes:
- *  com.google.gson.JsonDeserializationContext
- *  com.google.gson.JsonDeserializer
- *  com.google.gson.JsonElement
- *  com.google.gson.JsonObject
- */
 package mchorse.emoticons.skin_n_bones.api.animation.json;
 
 import com.google.gson.JsonDeserializationContext;
@@ -17,7 +8,7 @@ import java.lang.reflect.Type;
 import mchorse.emoticons.skin_n_bones.api.animation.model.ActionConfig;
 
 public class ActionConfigAdapter
-implements JsonDeserializer {
+    implements JsonDeserializer<ActionConfig> {
     public ActionConfig deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) {
         ActionConfig actionConfig = new ActionConfig();
         if (jsonElement.isJsonObject()) {

@@ -22,55 +22,55 @@ public abstract class UIComponent implements I18nBridge {
     public float y;
     public float width;
     public float height;
-    public boolean lIlIlIlIlIIlIIlIIllIIIIIl = false;
-    public final UIComponent lIIIllIllIIllIlllIlIIlllI;
-    public MouseEventCallback IlllllIlIIIlIIlIIllIIlIll;
+    public boolean initialized = false;
+    public final UIComponent parent;
+    public MouseEventCallback onMouseClick;
     public MouseEventCallback llIIlIlIIIllIlIlIlIIlIIll;
-    public MouseEventCallback llIIIlllIIlllIllllIlIllIl;
-    public BooleanSupplier lllllIllIllIllllIlIllllII = () -> true;
-    public final MinecraftBridge lllIIIIIlllIIlIllIIlIIIlI = Ref.lIlIlIlIlIIlIIlIIllIIIIIl();
-    public final LunarClient lIlIIIIIIlIIIllllIllIIlII = LunarClient.IIllIlIllIlIllIllIllIllII();
+    public MouseEventCallback onMouseRelease;
+    public BooleanSupplier visible = () -> true;
+    public final MinecraftBridge mc = Ref.getMinecraft();
+    public final LunarClient lc = LunarClient.getInstance();
 
-    public boolean IlllIIIIIIlllIlIIlllIlIIl(float f, float f2) {
-        return f > this.x && f < this.x + this.width && f2 > this.y && f2 < this.y + this.height;
+    public boolean mouseInside(float mouseX, float mouseY) {
+        return mouseX > this.x && mouseX < this.x + this.width && mouseY > this.y && mouseY < this.y + this.height;
     }
 
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2, float f3, float f4) {
-        this.x = f;
-        this.y = f2;
-        this.width = f3;
-        this.height = f4;
-        this.lIlIlIlIlIIlIIlIIllIIIIIl = true;
+    public void setPositionAndSize(float x, float y, float width, float height) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        this.initialized = true;
     }
 
-    public abstract void lIlIlIlIlIIlIIlIIllIIIIIl();
+    public abstract void onUpdateScreen();
 
-    public abstract void lIlIlIlIlIIlIIlIIllIIIIIl(float var1, float var2, boolean var3);
+    public abstract void drawComponent(float mouseX, float mouseY, boolean var3);
 
-    public abstract void lIlIlIlIlIIlIIlIIllIIIIIl(char var1, KeyType var2);
+    public abstract void onKeyTyped(char var1, KeyType var2);
 
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(int n) {
+    public void handleMouseScrollDelta(int n) {
     }
 
-    public abstract void IlllIIIIIIlllIlIIlllIlIIl();
+    public abstract void onGuiClosed();
 
-    public boolean lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2, int n) {
-        return this.IlllllIlIIIlIIlIIllIIlIll != null && this.lllllIllIllIllllIlIllllII.getAsBoolean() && this.IlllllIlIIIlIIlIIllIIlIll.accept(f, f2, n);
+    public boolean onMouseClicked(float mouseX, float mouseY, int mouseButton) {
+        return this.onMouseClick != null && this.visible.getAsBoolean() && this.onMouseClick.accept(mouseX, mouseY, mouseButton);
     }
 
-    public boolean lIllIlIIIlIIIIIIIlllIlIll(float f, float f2, int n) {
-        return this.llIIIlllIIlllIllllIlIllIl != null && this.lllllIllIllIllllIlIllllII.getAsBoolean() && this.llIIIlllIIlllIllllIlIllIl.accept(f, f2, n);
+    public boolean onMouseReleased(float mouseX, float mouseY, int mouseButton) {
+        return this.onMouseRelease != null && this.visible.getAsBoolean() && this.onMouseRelease.accept(mouseX, mouseY, mouseButton);
     }
 
-    public boolean IlllIIIIIIlllIlIIlllIlIIl(float f, float f2, int n) {
-        return this.llIIlIlIIIllIlIlIlIIlIIll != null && this.lllllIllIllIllllIlIllllII.getAsBoolean() && this.llIIlIlIIIllIlIlIlIIlIIll.accept(f, f2, n);
+    public boolean IlllIIIIIIlllIlIIlllIlIIl(float mouseX, float mouseY, int mouseButton) {
+        return this.llIIlIlIIIllIlIlIlIIlIIll != null && this.visible.getAsBoolean() && this.llIIlIlIIIllIlIlIlIIlIIll.accept(mouseX, mouseY, mouseButton);
     }
 
     public void IlIlIlllllIlIIlIlIlllIlIl() {
     }
 
     public Optional llIIIlllIIlllIllllIlIllIl() {
-        return Optional.ofNullable(this.lIIIllIllIIllIlllIlIIlllI);
+        return Optional.ofNullable(this.parent);
     }
 
     @Override
@@ -78,60 +78,60 @@ public abstract class UIComponent implements I18nBridge {
         return "gui.components";
     }
 
-    public boolean lllllIllIllIllllIlIllllII() {
-        return this.lllllIllIllIllllIlIllllII.getAsBoolean();
+    public boolean isVisible() {
+        return this.visible.getAsBoolean();
     }
 
-    public void IlllIIIIIIlllIlIIlllIlIIl(float f) {
+    public void setX(float f) {
         this.x = f;
     }
 
-    public void lIllIlIIIlIIIIIIIlllIlIll(float f) {
+    public void setY(float f) {
         this.y = f;
     }
 
-    public void llIlllIIIllllIIlllIllIIIl(float f) {
+    public void setWidth(float f) {
         this.width = f;
     }
 
-    public void llllIIlIIlIIlIIllIIlIIllI(float f) {
+    public void setHeight(float f) {
         this.height = f;
     }
 
-    public float lllIIIIIlllIIlIllIIlIIIlI() {
+    public float getX() {
         return this.x;
     }
 
-    public float lIlIIIIIIlIIIllllIllIIlII() {
+    public float getY() {
         return this.y;
     }
 
-    public float llIlIIIllIIlIllIllIllllIl() {
+    public float getWidth() {
         return this.width;
     }
 
-    public float IllIllIIIllIIIlIlIlIIIIll() {
+    public float getHeight() {
         return this.height;
     }
 
-    public boolean IIlIllIlllllllIIlIIIllIIl() {
-        return this.lIlIlIlIlIIlIIlIIllIIIIIl;
+    public boolean isInitialized() {
+        return this.initialized;
     }
 
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(MouseEventCallback mouseEventCallback) {
-        this.IlllllIlIIIlIIlIIllIIlIll = mouseEventCallback;
+    public void onMouseClick(MouseEventCallback mouseEventCallback) {
+        this.onMouseClick = mouseEventCallback;
     }
 
     public void IlllIIIIIIlllIlIIlllIlIIl(MouseEventCallback mouseEventCallback) {
         this.llIIlIlIIIllIlIlIlIIlIIll = mouseEventCallback;
     }
 
-    public void lIllIlIIIlIIIIIIIlllIlIll(MouseEventCallback mouseEventCallback) {
-        this.llIIIlllIIlllIllllIlIllIl = mouseEventCallback;
+    public void onMouseRelease(MouseEventCallback mouseEventCallback) {
+        this.onMouseRelease = mouseEventCallback;
     }
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(BooleanSupplier booleanSupplier) {
-        this.lllllIllIllIllllIlIllllII = booleanSupplier;
+        this.visible = booleanSupplier;
     }
 
 }

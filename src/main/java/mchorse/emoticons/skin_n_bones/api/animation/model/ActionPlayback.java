@@ -108,7 +108,7 @@ public class ActionPlayback {
 
     public void apply(BOBJArmature bOBJArmature, float f) {
         for (BOBJGroup bOBJGroup : this.action.groups.values()) {
-            BOBJBone bOBJBone = (BOBJBone)bOBJArmature.bones.get(bOBJGroup.name);
+            BOBJBone bOBJBone = bOBJArmature.bones.get(bOBJGroup.name);
             if (bOBJBone == null) continue;
             bOBJGroup.apply(bOBJBone, this.getTick(f));
         }
@@ -116,7 +116,7 @@ public class ActionPlayback {
 
     public void applyInactive(BOBJArmature bOBJArmature, float f, float f2) {
         for (BOBJGroup bOBJGroup : this.action.groups.values()) {
-            BOBJBone bOBJBone = (BOBJBone)bOBJArmature.bones.get(bOBJGroup.name);
+            BOBJBone bOBJBone = bOBJArmature.bones.get(bOBJGroup.name);
             if (bOBJBone == null) continue;
             bOBJGroup.applyInterpolate(bOBJBone, this.ticks, f2);
         }

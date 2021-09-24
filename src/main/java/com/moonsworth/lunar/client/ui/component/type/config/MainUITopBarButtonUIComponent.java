@@ -7,12 +7,11 @@ import com.moonsworth.lunar.client.ui.component.UIComponent;
 import com.moonsworth.lunar.client.ui.ease.ColorEase;
 import com.moonsworth.lunar.client.ui.screen.AbstractUIScreen;
 
-public class MainUITopBarButtonUIComponent
-extends UIComponent {
+public class MainUITopBarButtonUIComponent extends UIComponent {
     public String lIlIlIlIlIIlIIlIIllIIIIIl;
-    public final LCFontRenderer IlllIIIIIIlllIlIIlllIlIIl;
-    public ColorEase lIllIlIIIlIIIIIIIlllIlIll = new ColorEase(540752699, 0x20FFFFFF);
-    public boolean llIlIIIllIIlIllIllIllllIl;
+    public final LCFontRenderer fontRenderer;
+    public ColorEase ease = new ColorEase(540752699, 0x20FFFFFF);
+    public boolean selected;
     public float IllIllIIIllIIIlIlIlIIIIll;
 
     public MainUITopBarButtonUIComponent(UIComponent uIComponent, String string) {
@@ -22,12 +21,12 @@ extends UIComponent {
     public MainUITopBarButtonUIComponent(UIComponent uIComponent, String string, LCFontRenderer lCFontRenderer) {
         super(uIComponent);
         this.lIlIlIlIlIIlIIlIIllIIIIIl = string;
-        this.IlllIIIIIIlllIlIIlllIlIIl = lCFontRenderer;
-        this.width = (float)lCFontRenderer.IlllIIIIIIlllIlIIlllIlIIl(this.get(this.lIlIlIlIlIIlIIlIIllIIIIIl, new Object[0]).replace("", " ").trim()) + 16.0f;
+        this.fontRenderer = lCFontRenderer;
+        this.width = (float)lCFontRenderer.IlllIIIIIIlllIlIIlllIlIIl(this.get(this.lIlIlIlIlIIlIIlIIllIIIIIl).replace("", " ").trim()) + 16.0f;
     }
 
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2) {
-        super.lIlIlIlIlIIlIIlIIllIIIIIl(f, f2, (float)this.IlllIIIIIIlllIlIIlllIlIIl.IlllIIIIIIlllIlIIlllIlIIl(this.get(this.lIlIlIlIlIIlIIlIIllIIIIIl, new Object[0]).replace("", " ").trim()) + 16.0f, 16.0f);
+    public void setPosition(float f, float f2) {
+        super.setPositionAndSize(f, f2, (float)this.fontRenderer.IlllIIIIIIlllIlIIlllIlIIl(this.get(this.lIlIlIlIlIIlIIlIIllIIIIIl).replace("", " ").trim()) + 16.0f, 16.0f);
     }
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(String string) {
@@ -35,36 +34,35 @@ extends UIComponent {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl() {
+    public void onUpdateScreen() {
     }
 
     @Override
-    public void IlllIIIIIIlllIlIIlllIlIIl() {
+    public void onGuiClosed() {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(char c, KeyType keyType) {
+    public void onKeyTyped(char c, KeyType keyType) {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2, boolean bl) {
-        AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(this.x, this.y, this.width, this.height, 4.0f, 0, 0x20A2A2A2, this.lIllIlIIIlIIIIIIIlllIlIll.lIlIlIlIlIIlIIlIIllIIIIIl(this.llIlIIIllIIlIllIllIllllIl || bl && this.IlllIIIIIIlllIlIIlllIlIIl(f, f2)));
-        float f3 = this.IlllIIIIIIlllIlIIlllIlIIl.lIlIlIlIlIIlIIlIIllIIIIIl();
-        String string = this.get(this.lIlIlIlIlIIlIIlIIllIIIIIl, new Object[0]).replace("", " ").trim();
-        this.IlllIIIIIIlllIlIIlllIlIIl.IlllIIIIIIlllIlIIlllIlIIl(string, this.x + this.width / 2.0f + 1.0f, this.y + this.height / 2.0f - f3 + 1.0f - this.IllIllIIIllIIIlIlIlIIIIll, 0x20000000);
-        this.IlllIIIIIIlllIlIIlllIlIIl.IlllIIIIIIlllIlIIlllIlIIl(string, this.x + this.width / 2.0f, this.y + this.height / 2.0f - f3 - this.IllIllIIIllIIIlIlIlIIIIll, this.IlllIIIIIIlllIlIIlllIlIIl(f, f2) && bl ? -4275267 : -1765882947);
+    public void drawComponent(float mouseX, float mouseY, boolean bl) {
+        AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(this.x, this.y, this.width, this.height, 4.0f, 0, 0x20A2A2A2, this.ease.lIlIlIlIlIIlIIlIIllIIIIIl(this.selected || bl && this.mouseInside(mouseX, mouseY)));
+        float f3 = this.fontRenderer.getHeight();
+        String string = this.get(this.lIlIlIlIlIIlIIlIIllIIIIIl).replace("", " ").trim();
+        this.fontRenderer.IlllIIIIIIlllIlIIlllIlIIl(string, this.x + this.width / 2.0f + 1.0f, this.y + this.height / 2.0f - f3 + 1.0f - this.IllIllIIIllIIIlIlIlIIIIll, 0x20000000);
+        this.fontRenderer.IlllIIIIIIlllIlIIlllIlIIl(string, this.x + this.width / 2.0f, this.y + this.height / 2.0f - f3 - this.IllIllIIIllIIIlIlIlIIIIll, this.mouseInside(mouseX, mouseY) && bl ? -4275267 : -1765882947);
     }
 
     public String llIlllIIIllllIIlllIllIIIl() {
         return this.lIlIlIlIlIIlIIlIIllIIIIIl;
     }
 
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(boolean bl) {
-        this.llIlIIIllIIlIllIllIllllIl = bl;
+    public void setSelected(boolean bl) {
+        this.selected = bl;
     }
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(float f) {
         this.IllIllIIIllIIIlIlIlIIIIll = f;
     }
 }
- 

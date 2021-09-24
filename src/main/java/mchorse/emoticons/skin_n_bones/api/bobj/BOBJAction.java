@@ -9,7 +9,7 @@ import mchorse.emoticons.skin_n_bones.api.bobj.BOBJGroup;
 
 public class BOBJAction {
     public String name;
-    public Map groups = new HashMap();
+    public Map<String, BOBJGroup> groups = new HashMap();
 
     public BOBJAction(String string) {
         this.name = string;

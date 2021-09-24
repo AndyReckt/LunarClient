@@ -1,30 +1,30 @@
 package com.moonsworth.lunar.client.cosmetic.part;
 
 import com.moonsworth.lunar.bridge.minecraft.util.ResourceLocationBridge;
+import com.moonsworth.lunar.client.cosmetic.model.ModelMesh;
 
 import java.util.Collection;
 
 public interface lIllIlIIIlIIIIIIIlllIlIll {
-    public AbstractCosmetic lIIIllIllIIllIlllIlIIlllI();
+    AbstractCosmetic lIIIllIllIIllIlllIlIIlllI();
 
-    public AbstractCosmetic lllllIllIllIllllIlIllllII();
+    AbstractCosmetic lllllIllIllIllllIlIllllII();
 
-    public ModelMesh lIlIIIIIIlIIIllllIllIIlII();
+    ModelMesh lIlIIIIIIlIIIllllIllIIlII();
 
-    public boolean llllIIlIIlIIlIIllIIlIIllI();
+    boolean llllIIlIIlIIlIIllIIlIIllI();
 
-    public String IlIlIlllllIlIIlIlIlllIlIl();
+    String IlIlIlllllIlIIlIlIlllIlIl();
 
-    public ResourceLocationBridge IlllIIIIIIlllIlIIlllIlIIl();
+    ResourceLocationBridge IlllIIIIIIlllIlIIlllIlIIl();
 
-    public ResourceLocationBridge lIlIlIlIlIIlIIlIIllIIIIIl();
+    ResourceLocationBridge lIlIlIlIlIIlIIlIIllIIIIIl();
 
-    public boolean IlllllIlIIIlIIlIIllIIlIll();
+    boolean IlllllIlIIIlIIlIIllIIlIll();
 
-    public boolean llIIIIIIIllIIllIlIllIIIIl();
+    boolean llIIIIIIIllIIllIlIllIIIIl();
 
-    public BodyPart llIIlIlIIIllIlIlIlIIlIIll();
+    BodyPart llIIlIlIIIllIlIlIlIIlIIll();
 
-    public Collection llIIIlllIIlllIllllIlIllIl();
+    Collection llIIIlllIIlllIllllIlIllIl();
 }
- 

@@ -4,7 +4,7 @@ import com.moonsworth.lunar.bridge.minecraft.client.renderer.RenderGlobalBridge;
 import com.moonsworth.lunar.client.event.Event;
 
 public class ProfilerEndStartSectionEvent
-extends Event {
+    extends Event {
     public final RenderGlobalBridge lIlIlIlIlIIlIIlIIllIIIIIl;
     public final float IlllIIIIIIlllIlIIlllIlIIl;
 

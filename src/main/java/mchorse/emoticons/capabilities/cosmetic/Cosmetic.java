@@ -1,24 +1,6 @@
-/*
- * Decompiled with CFR 0.150.
- * 
- * Could not load the following classes:
- *  javax.vecmath.Vector4f
- *  lunar.G.EntityBridge
- *  lunar.G.EntityLivingBaseBridge
- *  lunar.L.EntityPlayerBridge
- *  lunar.a.Bridge
- *  lunar.c.MatrixStackBridge
- *  lunar.dc.Ref
- *  lunar.de.lIllIlIIIlIIIIIIIlllIlIll
- *  lunar.p.AbstractClientPlayerBridge
- *  lunar.p.EntityPlayerSPBridge
- *  lunar.q.RendererLivingEntityBridge
- *  lunar.u.RenderManagerBridge
- */
 package mchorse.emoticons.capabilities.cosmetic;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import javax.vecmath.Vector4f;
@@ -31,24 +13,17 @@ import com.moonsworth.lunar.bridge.minecraft.client.entity.EntityLivingBaseBridg
 import com.moonsworth.lunar.bridge.minecraft.client.entity.EntityPlayerSPBridge;
 import com.moonsworth.lunar.bridge.minecraft.client.entity.player.EntityPlayerBridge;
 import com.moonsworth.lunar.bridge.minecraft.client.renderer.entity.RenderManagerBridge;
-import com.moonsworth.lunar.bridge.minecraft.client.renderer.entity.RendererLivingEntityBridge;
 import com.moonsworth.lunar.bridge.minecraft.client.renderer.entity.UnknownRenderEntityBridge;
 import com.moonsworth.lunar.client.bridge.Bridge;
 import com.moonsworth.lunar.client.cosmetic.de.lIllIlIIIlIIIIIIIlllIlIll;
 import com.moonsworth.lunar.client.ref.Ref;
 import mchorse.emoticons.api.animation.model.AnimatorEmoticonsController;
-import mchorse.emoticons.capabilities.cosmetic.ICosmetic;
 import mchorse.emoticons.common.emotes.Emote;
-import mchorse.emoticons.skin_n_bones.api.animation.AnimationMesh;
-import mchorse.emoticons.skin_n_bones.api.animation.AnimationMeshConfig;
 import mchorse.emoticons.skin_n_bones.api.animation.model.ActionConfig;
 import mchorse.emoticons.skin_n_bones.api.animation.model.ActionPlayback;
 import mchorse.emoticons.skin_n_bones.api.bobj.BOBJArmature;
-import mchorse.emoticons.skin_n_bones.api.bobj.BOBJBone;
-import net.minecraft.client.Minecraft;
 
-public class Cosmetic
-implements ICosmetic {
+public class Cosmetic implements ICosmetic {
     public AnimatorEmoticonsController animator;
     public ActionPlayback emoteAction;
     public Emote emote;
@@ -57,7 +32,7 @@ implements ICosmetic {
     public double lastX;
     public double lastY;
     public double lastZ;
-    public static final Map<UUID, ICosmetic> cache = new HashMap();
+    public static final Map<UUID, ICosmetic> cache = new HashMap<>();
 
     public static ICosmetic get(EntityBridge entityBridge) {
         return Cosmetic.get(entityBridge.bridge$getUniqueID());
@@ -71,7 +46,7 @@ implements ICosmetic {
         if (!cache.containsKey(entityPlayerBridge.bridge$getUniqueID())) {
             return;
         }
-        ((ICosmetic)cache.get(entityPlayerBridge.bridge$getUniqueID())).update((EntityLivingBaseBridge)entityPlayerBridge);
+        cache.get(entityPlayerBridge.bridge$getUniqueID()).update(entityPlayerBridge);
     }
 
     @Override
@@ -112,10 +87,7 @@ implements ICosmetic {
         } else {
             if (this.emote != null) {
                 double d;
-                boolean bl = false;
-                if ((this.emote.stopOnMove() || entityLivingBaseBridge.bridge$isRiding() || entityLivingBaseBridge.lIllIlIIIlIIIIIIIlllIlIll() || entityLivingBaseBridge.IlllIIIIIIlllIlIIlllIlIIl()) && (d = Math.abs(entityLivingBaseBridge.bridge$getPosX() - this.lastX + (entityLivingBaseBridge.bridge$getPosY() - this.lastY) + (entityLivingBaseBridge.bridge$getPosZ() - this.lastZ))) > 0.015) {
-                    bl = true;
-                }
+                boolean bl = (this.emote.stopOnMove() || entityLivingBaseBridge.bridge$isRiding() || entityLivingBaseBridge.lIllIlIIIlIIIIIIIlllIlIll() || entityLivingBaseBridge.IlllIIIIIIlllIlIIlllIlIIl()) && (d = Math.abs(entityLivingBaseBridge.bridge$getPosX() - this.lastX + (entityLivingBaseBridge.bridge$getPosY() - this.lastY) + (entityLivingBaseBridge.bridge$getPosZ() - this.lastZ))) > 0.015;
                 if (((EntityPlayerBridge)entityLivingBaseBridge).bridge$isUsingItem()) {
                     bl = true;
                 }
@@ -123,7 +95,7 @@ implements ICosmetic {
                     bl = true;
                 }
                 if (bl || this.emote.limitsLoops() && this.loopsDone() > this.emote.loops() || !this.emote.looping && this.emoteTimer >= this.emote.duration) {
-                    Ref.IlllIIIIIIlllIlIIlllIlIIl().lIIlIlllIlIlIIIlllIIlIIII().lIlIlIlIlIIlIIlIIllIIIIIl((EntityPlayerBridge)entityLivingBaseBridge, false);
+                    Ref.getLC().lIIlIlllIlIlIIIlllIIlIIII().lIlIlIlIlIIlIIlIIllIIIIIl((EntityPlayerBridge)entityLivingBaseBridge, false);
                 }
             }
             this.lastX = entityLivingBaseBridge.bridge$getPosX();
@@ -143,10 +115,7 @@ implements ICosmetic {
         if (this.mode != ICosmetic.CosmeticMode.SERVER) {
             if (this.emote != null) {
                 double d;
-                boolean bl = false;
-                if ((this.emote.stopOnMove() || entityLivingBaseBridge.bridge$isRiding() || entityLivingBaseBridge.lIllIlIIIlIIIIIIIlllIlIll() || entityLivingBaseBridge.IlllIIIIIIlllIlIIlllIlIIl()) && (d = Math.abs(entityLivingBaseBridge.bridge$getPosX() - this.lastX + (entityLivingBaseBridge.bridge$getPosY() - this.lastY) + (entityLivingBaseBridge.bridge$getPosZ() - this.lastZ))) > 0.015) {
-                    bl = true;
-                }
+                boolean bl = (this.emote.stopOnMove() || entityLivingBaseBridge.bridge$isRiding() || entityLivingBaseBridge.lIllIlIIIlIIIIIIIlllIlIll() || entityLivingBaseBridge.IlllIIIIIIlllIlIIlllIlIIl()) && (d = Math.abs(entityLivingBaseBridge.bridge$getPosX() - this.lastX + (entityLivingBaseBridge.bridge$getPosY() - this.lastY) + (entityLivingBaseBridge.bridge$getPosZ() - this.lastZ))) > 0.015;
                 if (((EntityPlayerBridge)entityLivingBaseBridge).bridge$isUsingItem()) {
                     bl = true;
                 }
@@ -154,7 +123,7 @@ implements ICosmetic {
                     bl = true;
                 }
                 if (bl || this.emote.limitsLoops() && this.loopsDone() > this.emote.loops() || !this.emote.looping && this.emoteTimer >= this.emote.duration) {
-                    Ref.IlllIIIIIIlllIlIIlllIlIIl().lIIlIlllIlIlIIIlllIIlIIII().lIlIlIlIlIIlIIlIIllIIIIIl((EntityPlayerBridge)entityLivingBaseBridge, false);
+                    Ref.getLC().lIIlIlllIlIlIIIlllIIlIIII().lIlIlIlIlIIlIIlIIllIIIIIl((EntityPlayerBridge)entityLivingBaseBridge, false);
                 }
             }
             this.lastX = entityLivingBaseBridge.bridge$getPosX();
@@ -173,7 +142,7 @@ implements ICosmetic {
         if (this.emote != null) {
             this.emote.stopAnimation(this.animator);
             this.emote = null;
-            Ref.IlllIIIIIIlllIlIIlllIlIIl().lIIlIlllIlIlIIIlllIIlIIII().lIlIlIlIlIIlIIlIIllIIIIIl((EntityPlayerBridge)entityLivingBaseBridge, false, false);
+            Ref.getLC().lIIlIlllIlIlIIIlllIIlIIII().lIlIlIlIlIIlIIlIIllIIIIIl((EntityPlayerBridge)entityLivingBaseBridge, false, false);
         }
     }
 
@@ -197,7 +166,7 @@ implements ICosmetic {
 
     @Override
     public boolean shouldRender(EntityLivingBaseBridge entityLivingBaseBridge) {
-        return this.animator != null && this.emote != null && Ref.IlllIIIIIIlllIlIIlllIlIIl().lIIlIlllIlIlIIIlllIIlIIII().lIlIlIlIlIIlIIlIIllIIIIIl((EntityPlayerBridge)entityLivingBaseBridge);
+        return this.animator != null && this.emote != null && Ref.getLC().lIIlIlllIlIlIIIlllIIlIIII().lIlIlIlIlIIlIIlIIllIIIIIl((EntityPlayerBridge)entityLivingBaseBridge);
     }
 
     @Override
@@ -208,19 +177,19 @@ implements ICosmetic {
         }
         if (bl = this.shouldRender(entityLivingBaseBridge)) {
             String string;
-            Object object;
+            AbstractClientPlayerBridge object;
             if (entityLivingBaseBridge instanceof AbstractClientPlayerBridge) {
                 object = (AbstractClientPlayerBridge)entityLivingBaseBridge;
-                string = ((AbstractClientPlayerBridge)object).bridge$getSkinType() + "";
+                string = object.bridge$getSkinType() + "";
                 if (!string.equals(this.animator.animationName)) {
                     this.animator.animationName = string;
                     this.animator.animation = null;
                     this.animator.fetchAnimation();
                 }
-                ((AnimationMeshConfig)this.animator.userConfig.meshes.get((Object)"body")).texture = ((AbstractClientPlayerBridge)object).bridge$getLocationSkin();
+                this.animator.userConfig.meshes.get("body").texture = object.bridge$getLocationSkin();
             }
             this.animator.render(entityLivingBaseBridge, d, d2, d3, 0.0f, f);
-            BOBJArmature armature = ((AnimationMesh)this.animator.animation.meshes.get((int)0)).armature;
+            BOBJArmature armature = this.animator.animation.meshes.get(0).armature;
             MinecraftBridge mc = Bridge.llllIIlIIlIIlIIllIIlIIllI();
             UnknownRenderEntityBridge rendererLivingEntityBridge = Bridge.lllllIllIlIIlIIlIIIlllIlI();
             if (rendererLivingEntityBridge.bridge$canRenderName(entityLivingBaseBridge)) {
@@ -229,15 +198,15 @@ implements ICosmetic {
                 float f2 = vector4f.x - (float)renderManagerBridge.bridge$viewerPosX();
                 float f3 = vector4f.y - (float)renderManagerBridge.bridge$viewerPosY() + 0.7f;
                 float f4 = vector4f.z - (float)renderManagerBridge.bridge$viewerPosZ();
-                if (Ref.IlllIIIIIIlllIlIIlllIlIIl().lIIlIIIIIIlIIlIIllIlIIlII().IlllllIlIIIlIIlIIllIIlIll().IlllIIIIIIlllIlIIlllIlIIl() && Ref.IlllIIIIIIlllIlIIlllIlIIl().llIIIlIllIIIIlIIIlIlIllIl().llIlllIIIllllIIlllIllIIIl().containsKey(entityLivingBaseBridge.bridge$getUniqueID())) {
-                    Bridge.IlllllIlIIIlIIlIIllIIlIll().bridge$drawNameplates(Ref.IlllllIlIIIlIIlIIllIIlIll(), (List)Ref.IlllIIIIIIlllIlIIlllIlIIl().llIIIlIllIIIIlIIIlIlIllIl().llIlllIIIllllIIlllIllIIIl().get(entityLivingBaseBridge.bridge$getUniqueID()), (double)f2, (double)f3, (double)f4, -0.3f, false, true, (EntityBridge)entityLivingBaseBridge);
+                if (Ref.getLC().lIIlIIIIIIlIIlIIllIlIIlII().IlllllIlIIIlIIlIIllIIlIll().IlllIIIIIIlllIlIIlllIlIIl() && Ref.getLC().llIIIlIllIIIIlIIIlIlIllIl().llIlllIIIllllIIlllIllIIIl().containsKey(entityLivingBaseBridge.bridge$getUniqueID())) {
+                    Bridge.IlllllIlIIIlIIlIIllIIlIll().bridge$drawNameplates(Ref.getFontRenderer(), Ref.getLC().llIIIlIllIIIIlIIIlIlIllIl().llIlllIIIllllIIlllIllIIIl().get(entityLivingBaseBridge.bridge$getUniqueID()), f2, f3, f4, -0.3f, false, true, entityLivingBaseBridge);
                 } else {
-                    Bridge.IlllllIlIIIlIIlIIllIIlIll().bridge$drawNameplate(Ref.IlllllIlIIIlIIlIIllIIlIll(), entityLivingBaseBridge.bridge$getDisplayName(), (double)f2, (double)f3, (double)f4, -0.3f, false, true, (EntityBridge)entityLivingBaseBridge);
+                    Bridge.IlllllIlIIIlIIlIIllIIlIll().bridge$drawNameplate(Ref.getFontRenderer(), entityLivingBaseBridge.bridge$getDisplayName(), f2, f3, f4, -0.3f, false, true, entityLivingBaseBridge);
                 }
             }
             if (this.emote != null && !mc.bridge$isGamePaused() && this.emoteAction != null) {
                 int n = (int)this.emoteAction.getTick(f);
-                this.emote.progressAnimation(entityLivingBaseBridge, (BOBJArmature)armature, this.animator, n, f);
+                this.emote.progressAnimation(entityLivingBaseBridge, armature, this.animator, n, f);
             }
         }
         return bl;
@@ -255,20 +224,20 @@ implements ICosmetic {
             AbstractClientPlayerBridge object;
             if (entityLivingBaseBridge instanceof AbstractClientPlayerBridge) {
                 object = (AbstractClientPlayerBridge)entityLivingBaseBridge;
-                string = ((AbstractClientPlayerBridge)object).bridge$getSkinType() + "";
+                string = object.bridge$getSkinType() + "";
                 if (!string.equals(this.animator.animationName)) {
                     this.animator.animationName = string;
                     this.animator.animation = null;
                     this.animator.fetchAnimation();
                 }
-                ((AnimationMeshConfig)this.animator.userConfig.meshes.get((Object)"body")).texture = (object).bridge$getLocationSkin();
+                this.animator.userConfig.meshes.get("body").texture = (object).bridge$getLocationSkin();
             }
             lIllIlIIIlIIIIIIIlllIlIll2.lIlIlIlIlIIlIIlIIllIIIIIl(this.animator.renderModern(entityLivingBaseBridge, lIllIlIIIlIIIIIIIlllIlIll2, matrixStackBridge, d, d2, d3, f, n));
-            BOBJArmature armature = ((AnimationMesh)this.animator.animation.meshes.get((int)0)).armature;
+            BOBJArmature armature = this.animator.animation.meshes.get(0).armature;
             MinecraftBridge mc = Bridge.llllIIlIIlIIlIIllIIlIIllI();
             if (this.emote != null && !mc.bridge$isGamePaused() && this.emoteAction != null) {
                 int n2 = (int)this.emoteAction.getTick(f);
-                this.emote.progressAnimation(entityLivingBaseBridge, (BOBJArmature)armature, this.animator, n2, f);
+                this.emote.progressAnimation(entityLivingBaseBridge, armature, this.animator, n2, f);
             }
         }
         return lIllIlIIIlIIIIIIIlllIlIll2;

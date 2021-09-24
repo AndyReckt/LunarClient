@@ -3,53 +3,53 @@ package com.moonsworth.lunar.bridge.minecraft.init;
 import com.moonsworth.lunar.bridge.minecraft.item.ItemBridge;
 
 public interface ItemsBridge {
-    public ItemBridge bridge$carrotOnAStick();
+    ItemBridge bridge$carrotOnAStick();
 
-    public ItemBridge bridge$fishingRod();
+    ItemBridge bridge$fishingRod();
 
-    public ItemBridge bridge$nameTag();
+    ItemBridge bridge$nameTag();
 
-    public ItemBridge bridge$lead();
+    ItemBridge bridge$lead();
 
-    public ItemBridge bridge$skull();
+    ItemBridge bridge$skull();
 
-    public ItemBridge bridge$blazeRod();
+    ItemBridge bridge$blazeRod();
 
-    public ItemBridge bridge$bow();
+    ItemBridge bridge$bow();
 
-    public ItemBridge bridge$potionItem();
+    ItemBridge bridge$potionItem();
 
-    public ItemBridge bridge$stick();
+    ItemBridge bridge$stick();
 
-    public ItemBridge bridge$arrow();
+    ItemBridge bridge$arrow();
 
-    public ItemBridge bridge$diamond_helmet();
+    ItemBridge bridge$diamond_helmet();
 
-    public ItemBridge bridge$diamond_chestplate();
+    ItemBridge bridge$diamond_chestplate();
 
-    public ItemBridge bridge$diamond_leggings();
+    ItemBridge bridge$diamond_leggings();
 
-    public ItemBridge bridge$diamond_boots();
+    ItemBridge bridge$diamond_boots();
 
-    public ItemBridge bridge$diamond_sword();
+    ItemBridge bridge$diamond_sword();
 
-    public ItemBridge bridge$green_dye();
+    ItemBridge bridge$green_dye();
 
-    default public ItemBridge bridge$golden_sword() {
+default ItemBridge bridge$golden_sword() {
         return this.bridge$getItem("golden_sword");
     }
 
-    default public ItemBridge bridge$enderpearl() {
+default ItemBridge bridge$enderpearl() {
         return this.bridge$getItem("enderpearl");
     }
 
-    public ItemBridge bridge$getItem(int var1);
+    ItemBridge bridge$getItem(int var1);
 
-    public ItemBridge bridge$getItem(String var1);
+    ItemBridge bridge$getItem(String var1);
 
-    public int bridge$getItemID(ItemBridge var1);
+    int bridge$getItemID(ItemBridge var1);
 
-    public ItemBridge bridge$enchanted_book();
+    ItemBridge bridge$enchanted_book();
 
-    public ItemBridge bridge$air();
+    ItemBridge bridge$air();
 }

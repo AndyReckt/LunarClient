@@ -1,18 +1,17 @@
 package com.moonsworth.lunar.bridge.minecraft.client.entity.player;
 
 public interface PlayerCapabilitiesBridge {
-    public boolean bridge$isFlying();
+    boolean bridge$isFlying();
 
-    public void bridge$setFlying(boolean var1);
+    void bridge$setFlying(boolean var1);
 
-    public boolean bridge$isCreativeMode();
+    boolean bridge$isCreativeMode();
 
-    public float bridge$getFlySpeed();
+    float bridge$getFlySpeed();
 
-    public void bridge$setFlySpeed(float var1);
+    void bridge$setFlySpeed(float var1);
 
-    public float bridge$getWalkSpeed();
+    float bridge$getWalkSpeed();
 
-    public boolean bridge$isAllowFlying();
+    boolean bridge$isAllowFlying();
 }
- 

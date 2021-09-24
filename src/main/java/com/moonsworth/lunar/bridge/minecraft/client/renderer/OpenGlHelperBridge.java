@@ -1,23 +1,23 @@
 package com.moonsworth.lunar.bridge.minecraft.client.renderer;
 
 public interface OpenGlHelperBridge {
-    public boolean bridge$isFramebufferEnabled();
+    boolean bridge$isFramebufferEnabled();
 
-    public void bridge$glBlendFunc(int var1, int var2, int var3, int var4);
+    void bridge$glBlendFunc(int var1, int var2, int var3, int var4);
 
-    public void bridge$setLightmapTextureCoords(int var1, float var2, float var3);
+    void bridge$setLightmapTextureCoords(int var1, float var2, float var3);
 
-    public int bridge$lightmapTexUnit();
+    int bridge$lightmapTexUnit();
 
-    public int bridge$defaultTexUnit();
+    int bridge$defaultTexUnit();
 
-    public float bridge$lastBrightnessX();
+    float bridge$lastBrightnessX();
 
-    public float bridge$lastBrightnessY();
+    float bridge$lastBrightnessY();
 
-    public String bridge$getCPU();
+    String bridge$getCPU();
 
-    public void bridge$enableLightMap();
+    void bridge$enableLightMap();
 
-    public void bridge$disableLightMap();
+    void bridge$disableLightMap();
 }

@@ -1,6 +1,3 @@
-/*
- * Decompiled with CFR 0.150.
- */
 package mchorse.emoticons.common.emotes;
 
 import java.util.HashMap;
@@ -77,7 +74,7 @@ public class Emotes {
         Emotes.register(new Emote("shrug", 50, false));
         Emotes.register(new Emote("t_pose", 80, true));
         Emotes.register(new Emote("thinking", 100, true));
-        Emotes.register(new Emote("twerk", 14, true){
+        Emotes.register(new Emote("twerk", 14, true) {
 
             @Override
             public boolean renderCape() {

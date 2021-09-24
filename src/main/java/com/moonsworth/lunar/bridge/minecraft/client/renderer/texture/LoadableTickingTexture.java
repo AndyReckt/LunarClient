@@ -5,9 +5,9 @@ import com.moonsworth.lunar.bridge.minecraft.client.resources.IResourceManagerBr
 import java.io.IOException;
 
 public interface LoadableTickingTexture
-extends AbstractTextureBridge,
-TickingTexture {
-    public static final LoadableTickingTexture lIlIlIlIlIIlIIlIIllIIIIIl = new LoadableTickingTexture(){
+    extends AbstractTextureBridge,
+    TickingTexture {
+    LoadableTickingTexture lIlIlIlIlIIlIIlIIllIIIIIl = new LoadableTickingTexture() {
 
         @Override
         public boolean bridge$ready() {
@@ -40,5 +40,5 @@ TickingTexture {
         }
     };
 
-    public boolean bridge$ready();
+    boolean bridge$ready();
 }

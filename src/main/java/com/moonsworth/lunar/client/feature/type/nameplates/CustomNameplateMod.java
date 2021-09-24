@@ -11,15 +11,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CustomNameplateMod
-extends Feature {
+public class CustomNameplateMod extends Feature {
     public CustomNameplateMod() {
         super(true);
         this.lIlIlIlIlIIlIIlIIllIIIIIl(RenderNameEvent.class, this::lIlIlIlIlIIlIIlIIllIIIIIl);
     }
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(RenderNameEvent renderNameEvent) {
-        List<String> list = this.llIlllIIIllllIIlllIllIIIl.llIIIlIllIIIIlIIIlIlIllIl().llIlllIIIllllIIlllIllIIIl().get(renderNameEvent.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getUniqueID());
+        List<String> list = this.lc.llIIIlIllIIIIlIIIlIlIllIl().llIlllIIIllllIIlllIllIIIl().get(renderNameEvent.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getUniqueID());
         if (list != null) {
             renderNameEvent.IlIlIlllllIlIIlIlIlllIlIl().clear();
             renderNameEvent.IlIlIlllllIlIIlIlIlllIlIl().addAll(list.stream().map(NameLine::new).collect(Collectors.toCollection(LinkedList::new)));
@@ -36,8 +35,7 @@ extends Feature {
     }
 
     @Override
-    public FeatureDetails llIIIIIIIllIIllIlIllIIIIl() {
-        return new FeatureDetails("custom_nameplate", ImmutableList.of(ModuleCategory.llIlllIIIllllIIlllIllIIIl), new String[0]);
+    public FeatureDetails initDetails() {
+        return new FeatureDetails("custom_nameplate", ImmutableList.of(ModuleCategory.SERVER));
     }
 }
- 

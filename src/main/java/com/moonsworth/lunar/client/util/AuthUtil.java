@@ -12,11 +12,11 @@ import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
 import com.mojang.authlib.yggdrasil.YggdrasilUserAuthentication;
 import com.moonsworth.lunar.client.account.Account;
 import com.moonsworth.lunar.client.account.MicrosoftAccount;
-import com.moonsworth.lunar.client.account.MinecraftProfile;
+import com.moonsworth.lunar.client.account.MinecraftProfileJson;
 import com.moonsworth.lunar.client.javafx.MicrosoftAuthApp;
 import com.moonsworth.lunar.client.logger.LunarLogger;
 import com.moonsworth.lunar.client.ref.Ref;
-import com.moonsworth.lunar.client.ui.screen.type.mainmenu.MainMenuLoginUIScreen;
+import com.moonsworth.lunar.client.ui.screen.type.mainmenu.login.MainMenuLoginUIScreen;
 import org.apache.commons.codec.binary.Base64;
 
 import java.io.Serializable;
@@ -26,7 +26,7 @@ import java.time.Instant;
 import java.util.UUID;
 
 public final class AuthUtil {
-    public static YggdrasilUserAuthentication lIlIlIlIlIIlIIlIIllIIIIIl;
+    public static YggdrasilUserAuthentication SERVICE;
     public static final String IlllIIIIIIlllIlIIlllIlIIl = "00000000402b5328";
     public static final String lIllIlIIIlIIIIIIIlllIlIll = "https://login.live.com/oauth20_authorize.srf?client_id=00000000402b5328&response_type=code&scope=service%3A%3Auser.auth.xboxlive.com%3A%3AMBI_SSL&redirect_uri=https%3A%2F%2Flogin.live.com%2Foauth20_desktop.srf";
     public static final String llIlllIIIllllIIlllIllIIIl = "https://login.live.com/oauth20_desktop.srf";
@@ -43,14 +43,14 @@ public final class AuthUtil {
     }
 
     public static void lIlIlIlIlIIlIIlIIllIIIIIl(Account account) {
-        if (account.lllIIIIIlllIIlIllIIlIIIlI() == null) {
+        if (account.getRefreshToken() == null) {
             AuthUtil.lIlIlIlIlIIlIIlIIllIIIIIl();
             return;
         }
-        ImmutableMap<String, String> immutableMap = ImmutableMap.of("client_id", IlllIIIIIIlllIlIIlllIlIIl, "refresh_token", account.lllIIIIIlllIIlIllIIlIIIlI(), "grant_type", "refresh_token", "redirect_uri", llIlllIIIllllIIlllIllIIIl);
+        ImmutableMap<String, String> immutableMap = ImmutableMap.of("client_id", IlllIIIIIIlllIlIIlllIlIIl, "refresh_token", account.getRefreshToken(), "grant_type", "refresh_token", "redirect_uri", llIlllIIIllllIIlllIllIIIl);
         ImmutableMap<String, String> immutableMap2 = ImmutableMap.of("Content-Type", "application/x-www-form-urlencoded");
         HttpUtil.lIlIlIlIlIIlIIlIIllIIIIIl(IlIlIlllllIlIIlIlIlllIlIl, immutableMap2, immutableMap, false, jsonObject -> {
-            account.llllIIlIIlIIlIIllIIlIIllI(jsonObject.get("refresh_token").getAsString());
+            account.setRefreshToken(jsonObject.get("refresh_token").getAsString());
             AuthUtil.lIlIlIlIlIIlIIlIIllIIIIIl(jsonObject.get("access_token").getAsString(), account);
         });
     }
@@ -60,7 +60,7 @@ public final class AuthUtil {
         ImmutableMap<String, String> immutableMap2 = ImmutableMap.of("Content-Type", "application/x-www-form-urlencoded");
         HttpUtil.lIlIlIlIlIIlIIlIIllIIIIIl(IlIlIlllllIlIIlIlIlllIlIl, immutableMap2, immutableMap, false, jsonObject -> {
             MicrosoftAccount microsoftAccount = new MicrosoftAccount(UUID.randomUUID().toString().replace("-", ""));
-            microsoftAccount.llllIIlIIlIIlIIllIIlIIllI(jsonObject.get("refresh_token").getAsString());
+            microsoftAccount.setRefreshToken(jsonObject.get("refresh_token").getAsString());
             AuthUtil.lIlIlIlIlIIlIIlIIllIIIIIl(jsonObject.get("access_token").getAsString(), microsoftAccount);
         });
     }
@@ -91,11 +91,11 @@ public final class AuthUtil {
         ImmutableMap<String, String> immutableMap2 = ImmutableMap.of("Content-Type", "application/json", "Accept", "application/json");
         HttpUtil.lIlIlIlIlIIlIIlIIllIIIIIl(IlllllIlIIIlIIlIIllIIlIll, immutableMap2, immutableMap, true, jsonObject -> {
             String string = jsonObject.get("access_token").getAsString();
-            account.lIlIlIlIlIIlIIlIIllIIIIIl(string);
-            account.lIlIlIlIlIIlIIlIIllIIIIIl(Instant.now().plusSeconds(jsonObject.get("expires_in").getAsInt()));
+            account.setAccessToken(string);
+            account.setAccessTokenExpiresAt(Instant.now().plusSeconds(jsonObject.get("expires_in").getAsInt()));
             JsonObject jsonObject2 = AuthUtil.IlllIIIIIIlllIlIIlllIlIIl(string);
             if (jsonObject2.has("xuid")) {
-                account.lIllIlIIIlIIIIIIIlllIlIll(jsonObject2.get("xuid").getAsString());
+                account.setRemoteId(jsonObject2.get("xuid").getAsString());
             }
             AuthUtil.IlllIIIIIIlllIlIIlllIlIIl(account, string);
         });
@@ -114,16 +114,16 @@ public final class AuthUtil {
     public static void lIllIlIIIlIIIIIIIlllIlIll(Account account, String bearer) {
         ImmutableMap<String, String> immutableMap = ImmutableMap.of("Authorization", "Bearer " + bearer);
         HttpUtil.lIlIlIlIlIIlIIlIIllIIIIIl(llIIIlllIIlllIllllIlIllIl, immutableMap, (jsonObject) -> {
-            String string = jsonObject.get("name").getAsString();
-            String string2 = jsonObject.get("id").getAsString();
-            String string3 = AuthUtil.lIllIlIIIlIIIIIIIlllIlIll(string2);
-            MinecraftProfile minecraftProfile = new MinecraftProfile(string2, string);
-            account.lIlIlIlIlIIlIIlIIllIIIIIl(minecraftProfile);
-            account.llIlllIIIllllIIlllIllIIIl(string);
-            Ref.IlllIIIIIIlllIlIIlllIlIIl().llIlIIIllIIlIllIllIllllIl().IlllIIIIIIlllIlIIlllIlIIl(account);
-            Ref.IlllIIIIIIlllIlIIlllIlIIl().llIlIIIllIIlIllIllIllllIl().lIllIlIIIlIIIIIIIlllIlIll(account);
+            String name = jsonObject.get("name").getAsString();
+            String id = jsonObject.get("id").getAsString();
+            //String string3 = AuthUtil.lIllIlIIIlIIIIIIIlllIlIll(id);
+            MinecraftProfileJson minecraftProfileJson = new MinecraftProfileJson(id, name);
+            account.setProfile(minecraftProfileJson);
+            account.setUsername(name);
+            Ref.getLC().llIlIIIllIIlIllIllIllllIl().IlllIIIIIIlllIlIIlllIlIIl(account);
+            Ref.getLC().llIlIIIllIIlIllIllIllllIl().lIllIlIIIlIIIIIIIlllIlIll(account);
             if (Ref.llIIIlllIIlllIllllIlIllIl() == MainMenuLoginUIScreen.class) {
-                Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$displayScreen(null);
+                Ref.getMinecraft().bridge$displayScreen(null);
             }
         });
     }
@@ -138,8 +138,7 @@ public final class AuthUtil {
                 if (jsonElement.isJsonObject()) {
                     jsonObject = (JsonObject)jsonElement;
                 }
-            }
-            catch (Exception exception) {
+            } catch (Exception exception) {
                 return jsonObject;
             }
         }
@@ -154,27 +153,24 @@ public final class AuthUtil {
     }
 
     public static void llIlllIIIllllIIlllIllIIIl(String string) {
-        boolean bl;
-        boolean bl2 = bl = lIlIlIlIlIIlIIlIIllIIIIIl == null;
+        boolean bl = SERVICE == null;
         if (!bl) {
-            YggdrasilAuthenticationService yggdrasilAuthenticationService = lIlIlIlIlIIlIIlIIllIIIIIl.getAuthenticationService();
+            YggdrasilAuthenticationService yggdrasilAuthenticationService = SERVICE.getAuthenticationService();
             try {
                 bl = !yggdrasilAuthenticationService.getClientToken().equals(string);
-            }
-            catch (NoSuchMethodError noSuchMethodError) {
+            } catch (NoSuchMethodError noSuchMethodError) {
                 try {
                     Field field = yggdrasilAuthenticationService.getClass().getField("mojangClientToken");
                     String string2 = (String)field.get(yggdrasilAuthenticationService);
                     bl = !string2.equals(string);
-                }
-                catch (IllegalAccessException | NoSuchFieldException reflectiveOperationException) {
+                } catch (IllegalAccessException | NoSuchFieldException reflectiveOperationException) {
                     reflectiveOperationException.printStackTrace();
                 }
             }
         }
         if (bl) {
-            lIlIlIlIlIIlIIlIIllIIIIIl = (YggdrasilUserAuthentication)new YggdrasilAuthenticationService(Proxy.NO_PROXY, string).createUserAuthentication(Agent.MINECRAFT);
-            LunarLogger.IlllIIIIIIlllIlIIlllIlIIl("Accounts", (Object)("Initialized authentication service with client token " + string), new Object[0]);
+            SERVICE = (YggdrasilUserAuthentication)new YggdrasilAuthenticationService(Proxy.NO_PROXY, string).createUserAuthentication(Agent.MINECRAFT);
+            LunarLogger.info("Accounts", "Initialized authentication service with client token " + string);
         }
     }
 
@@ -182,4 +178,3 @@ public final class AuthUtil {
         throw new UnsupportedOperationException("This is a utility class and cannot be instantiated");
     }
 }
- 

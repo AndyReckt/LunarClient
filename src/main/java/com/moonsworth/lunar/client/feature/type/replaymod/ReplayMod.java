@@ -7,22 +7,21 @@ import com.moonsworth.lunar.bridge.minecraft.client.settings.KeyBindingBridge;
 import com.moonsworth.lunar.bridge.minecraft.util.ResourceLocationBridge;
 import com.moonsworth.lunar.client.bridge.Bridge;
 import com.moonsworth.lunar.client.bridge.MinecraftVersion;
-import com.moonsworth.lunar.client.feature.Feature;
 import com.moonsworth.lunar.client.feature.FeatureDetails;
 import com.moonsworth.lunar.client.feature.hud.ConfigurableFeature;
 import com.moonsworth.lunar.client.feature.hud.ModuleCategory;
 import com.moonsworth.lunar.client.feature.type.recordingindicator.RecordingIndicatorMod;
 import com.moonsworth.lunar.client.ref.Ref;
 import com.moonsworth.lunar.client.setting.*;
-import com.moonsworth.lunar.client.ui.component.type.setting.lllllIIIIlIlllIllIIIlIIlI;
+import com.moonsworth.lunar.client.ui.component.type.setting.TextSetting;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ReplayMod
-extends ConfigurableFeature {
-    public static final ResourceLocationBridge llllIIlIIlIIlIIllIIlIIllI = Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation("lunar", "replaymod/gui_lunar.png");
-    public static final ResourceLocationBridge IlIlIlllllIlIIlIlIlllIlIl = Bridge.llIlllIIIllllIIlllIllIIIl().initResourceLocation("lunar", "replaymod/gui_replaymod_lunar.png");
+    extends ConfigurableFeature {
+    public static final ResourceLocationBridge llllIIlIIlIIlIIllIIlIIllI = Bridge.getInstance().initResourceLocation("lunar", "replaymod/gui_lunar.png");
+    public static final ResourceLocationBridge IlIlIlllllIlIIlIlIlllIlIl = Bridge.getInstance().initResourceLocation("lunar", "replaymod/gui_replaymod_lunar.png");
     public IReplayModWrapper llIIIIIIIllIIllIlIllIIIIl;
     public JsonObject lIIIllIllIIllIlllIlIIlllI = new JsonObject();
     public RecordingIndicatorMod IlllllIlIIIlIIlIIllIIlIll;
@@ -32,7 +31,7 @@ extends ConfigurableFeature {
 
     public ReplayMod() {
         super(false);
-        for (KeyBindingBridge keyBindingBridge : Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getGameSettings().bridge$getKeyBindings()) {
+        for (KeyBindingBridge keyBindingBridge : Ref.getMinecraft().bridge$getGameSettings().bridge$getKeyBindings()) {
             if (!keyBindingBridge.bridge$getCategory().equals("replaymod.title")) continue;
             this.lIIIllIllIIllIlllIlIIlllI.addProperty(keyBindingBridge.bridge$getKeyDescription(), Bridge.llIIlIlIIIllIlIlIlIIlIIll().lIllIlIIIlIIIIIIIlllIlIll(keyBindingBridge.bridge$getKey()));
         }
@@ -75,13 +74,13 @@ extends ConfigurableFeature {
     @Override
     public List IlIlIlllllIlIIlIlIlllIlIl() {
         List<AbstractSetting> arrayList = new ArrayList<>();
-        arrayList.add(new BooleanSetting("indicator", true, () -> true).IlllIIIIIIlllIlIIlllIlIIl((bl) -> this.IlllllIlIIIlIIlIIllIIlIll.IlllIIIIIIlllIlIIlllIlIIl((boolean)bl)));
+        arrayList.add(new BooleanSetting("indicator", true, () -> true).IlllIIIIIIlllIlIIlllIlIIl((bl) -> this.IlllllIlIIIlIIlIIllIIlIll.IlllIIIIIIlllIlIIlllIlIIl(bl)));
         arrayList.add(new BooleanSetting("autoPostProcess", true, () -> true));
         arrayList.add(new BooleanSetting("showServerIPs", true, () -> true));
-        arrayList.add(new lllllIIIIlIlllIllIIIlIIlI("camera", "replaymod.camera.classic", () -> true));
+        arrayList.add(new TextSetting("camera", "replaymod.camera.classic", () -> true));
         arrayList.add(new BooleanSetting("autosync", true, () -> true));
         arrayList.add(new NumberSetting("timelineLength", 1800, 1500, 2100, 0, () -> true));
-        arrayList.add(new lllllIIIIlIlllIllIIIlIIlI("interpolator", "replaymod.gui.editkeyframe.interpolator.catmull.name", () -> true));
+        arrayList.add(new TextSetting("interpolator", "replaymod.gui.editkeyframe.interpolator.catmull.name", () -> true));
         arrayList.add(new BooleanSetting("askForOpenEye", false, () -> true));
         arrayList.add(new BooleanSetting("skipPostRenderGui", false, () -> true));
         arrayList.add(new BooleanSetting("skipPostRenderGui", false, () -> true));
@@ -91,13 +90,13 @@ extends ConfigurableFeature {
         arrayList.add(this.llIIlIlIIIllIlIlIlIIlIIll);
         arrayList.add(new SettingLabel("general"));
         arrayList.add(new BooleanSetting("notifications", true));
-        arrayList.add(new lllllIIIIlIlllIllIIIlIIlI("recordingPath", "./replay_recordings/"));
-        arrayList.add(new lllllIIIIlIlllIllIIIlIIlI("cachePath", "./.replay_cache/"));
-        arrayList.add(new lllllIIIIlIlllIllIIIlIIlI("renderPath", "./replay_videos/"));
+        arrayList.add(new TextSetting("recordingPath", "./replay_recordings/"));
+        arrayList.add(new TextSetting("cachePath", "./.replay_cache/"));
+        arrayList.add(new TextSetting("renderPath", "./replay_videos/"));
         arrayList.add(new SettingLabel("recording"));
-        this.llIIIlllIIlllIllllIlIllIl = new LunarKeybindSetting(this, "startStop", KeyType.IlIllIIlIIlIIIllIllllIIll);
+        this.llIIIlllIIlllIllllIlIllIl = new LunarKeybindSetting(this, "startStop", KeyType.KEY_P);
         arrayList.add(this.llIIIlllIIlllIllllIlIllIl);
-        this.lllIIIIIlllIIlIllIIlIIIlI = new LunarKeybindSetting(this, "pauseResume", KeyType.llllIlIllllIlIlIIIllIlIlI);
+        this.lllIIIIIlllIIlIllIIlIIIlI = new LunarKeybindSetting(this, "pauseResume", KeyType.KEY_O);
         arrayList.add(this.lllIIIIIlllIIlIllIIlIIIlI);
         arrayList.add(new BooleanSetting("recordSingleplayer", true));
         arrayList.add(new BooleanSetting("recordServer", true));
@@ -120,32 +119,32 @@ extends ConfigurableFeature {
     }
 
     @Override
-    public FeatureDetails llIIIIIIIllIIllIlIllIIIIl() {
-        return new FeatureDetails("replaymod", ImmutableList.of(ModuleCategory.lIlIlIlIlIIlIIlIIllIIIIIl, ModuleCategory.llllIIlIIlIIlIIllIIlIIllI, ModuleCategory.IlllIIIIIIlllIlIIlllIlIIl), ImmutableList.of(MinecraftVersion.IlllIIIIIIlllIlIIlllIlIIl), "CrushedPixel", "johni0702");
+    public FeatureDetails initDetails() {
+        return new FeatureDetails("replaymod", ImmutableList.of(ModuleCategory.ALL, ModuleCategory.MECHANIC, ModuleCategory.NEW), ImmutableList.of(MinecraftVersion.IlllIIIIIIlllIlIIlllIlIIl), "CrushedPixel", "johni0702");
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(JsonObject jsonObject) {
+    public void write(JsonObject jsonObject) {
         this.lIIIllIllIIllIlllIlIIlllI = new JsonObject();
-        for (KeyBindingBridge keyBindingBridge : Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getGameSettings().bridge$getKeyBindings()) {
+        for (KeyBindingBridge keyBindingBridge : Ref.getMinecraft().bridge$getGameSettings().bridge$getKeyBindings()) {
             if (!keyBindingBridge.bridge$getCategory().equals("replaymod.title")) continue;
             this.lIIIllIllIIllIlllIlIIlllI.addProperty(keyBindingBridge.bridge$getKeyDescription(), Bridge.llIIlIlIIIllIlIlIlIIlIIll().lIllIlIIIlIIIIIIIlllIlIll(keyBindingBridge.bridge$getKey()));
         }
         jsonObject.add("keybinds", this.lIIIllIllIIllIlllIlIIlllI);
-        super.lIlIlIlIlIIlIIlIIllIIIIIl(jsonObject);
+        super.write(jsonObject);
     }
 
     @Override
-    public void IlllIIIIIIlllIlIIlllIlIIl(JsonObject jsonObject) {
+    public void read(JsonObject jsonObject) {
         this.lIIIllIllIIllIlllIlIIlllI = new JsonObject();
         if (jsonObject.isJsonObject() && jsonObject.has("keybinds")) {
             this.lIIIllIllIIllIlllIlIIlllI = jsonObject.get("keybinds").getAsJsonObject();
         }
-        super.IlllIIIIIIlllIlIIlllIlIIl(jsonObject);
+        super.read(jsonObject);
     }
 
     public boolean IlIllIIlIIlIIIllIllllIIll() {
-        return this.llIIlIlIIIllIlIlIlIIlIIll() != null && this.llIIIIIIIllIIllIlIllIIIIl != null && this.llIIlIlIIIllIlIlIlIIlIIll().lIllIlIIIlIIIIIIIlllIlIll() && this.llIIIIIIIllIIllIlIllIIIIl.isViewingReplay();
+        return this.getDetails() != null && this.llIIIIIIIllIIllIlIllIIIIl != null && this.getDetails().isEnabledOnCurrentVersion() && this.llIIIIIIIllIIllIlIllIIIIl.isViewingReplay();
     }
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(IReplayModWrapper iReplayModWrapper) {
@@ -172,4 +171,3 @@ extends ConfigurableFeature {
         return this.lllIIIIIlllIIlIllIIlIIIlI;
     }
 }
- 

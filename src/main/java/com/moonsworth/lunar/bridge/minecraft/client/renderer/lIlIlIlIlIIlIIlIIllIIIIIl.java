@@ -6,5 +6,5 @@ import java.util.Optional;
 
 @Current
 public interface lIlIlIlIlIIlIIlIIllIIIIIl {
-    public Optional lIlIlIlIlIIlIIlIIllIIIIIl(lIlIIIIIIlIIIllllIllIIlII var1);
+    Optional lIlIlIlIlIIlIIlIIllIIIIIl(lIlIIIIIIlIIIllllIllIIlII var1);
 }

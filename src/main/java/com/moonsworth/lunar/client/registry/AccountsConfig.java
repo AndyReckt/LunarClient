@@ -4,12 +4,12 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.moonsworth.lunar.LunarClient;
 import com.moonsworth.lunar.client.account.Account;
-import com.moonsworth.lunar.client.account.AccountManager;
+import com.moonsworth.lunar.client.account.MojangAccount;
 import com.moonsworth.lunar.client.account.AccountType;
 import com.moonsworth.lunar.client.account.MicrosoftAccount;
 import com.moonsworth.lunar.client.event.EventHandler;
 import com.moonsworth.lunar.client.json.file.ItemMapLoader;
-import com.moonsworth.lunar.client.json.file.DefaultJson;
+import com.moonsworth.lunar.client.json.file.JsonFile;
 import com.moonsworth.lunar.client.logger.LunarLogger;
 import com.moonsworth.lunar.client.ref.Ref;
 import com.moonsworth.lunar.client.util.AuthUtil;
@@ -18,13 +18,10 @@ import java.io.File;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class AccountsConfig
-extends ItemMapLoader<Object, Account>
-implements EventHandler,
-        DefaultJson {
-    public String lIlIlIlIlIIlIIlIIllIIIIIl;
+public class AccountsConfig extends ItemMapLoader<String, Account> implements EventHandler, JsonFile {
+    public String mojangClientToken;
     public String IlllIIIIIIlllIlIIlllIlIIl;
-    public MicrosoftAccountsConfig lIllIlIIIlIIIIIIIlllIlIll;
+    public MicrosoftAccountsRegistry lIllIlIIIlIIIIIIIlllIlIll;
 
     public Account IlllllIlIIIlIIlIIllIIlIll() {
         if (this.IlllIIIIIIlllIlIIlllIlIIl == null) {
@@ -34,13 +31,13 @@ implements EventHandler,
     }
 
     @Override
-    public Map lIlIlIlIlIIlIIlIIllIIIIIl() {
-        return new ConcurrentHashMap();
+    public Map<String, Account> lIlIlIlIlIIlIIlIIllIIIIIl() {
+        return new ConcurrentHashMap<>();
     }
 
     @Override
     public File IlIlIlllllIlIIlIlIlllIlIl() {
-        return new File(Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getMcDataDir(), this.llllIIlIIlIIlIIllIIlIIllI());
+        return new File(Ref.getMinecraft().bridge$getMcDataDir(), this.llllIIlIIlIIlIIllIIlIIllI());
     }
 
     @Override
@@ -52,7 +49,7 @@ implements EventHandler,
     public void b_() {
         super.b_();
         this.load();
-        this.lIllIlIIIlIIIIIIIlllIlIll = new MicrosoftAccountsConfig();
+        this.lIllIlIIIlIIIIIIIlllIlIll = new MicrosoftAccountsRegistry();
         this.lIllIlIIIlIIIIIIIlllIlIll.load();
         if (this.IlllIIIIIIlllIlIIlllIlIIl != null) {
             AccountsConfig.lIlIlIlIlIIlIIlIIllIIIIIl("Logging into account %s ", this.IlllIIIIIIlllIlIIlllIlIIl);
@@ -63,30 +60,30 @@ implements EventHandler,
     }
 
     @Override
-    public void IlllIIIIIIlllIlIIlllIlIIl(JsonObject jsonObject) {
+    public void read(JsonObject jsonObject) {
         if (jsonObject.has("mojangClientToken")) {
-            this.lIlIlIlIlIIlIIlIIllIIIIIl = jsonObject.get("mojangClientToken").getAsString();
+            this.mojangClientToken = jsonObject.get("mojangClientToken").getAsString();
         }
-        String string = "";
+        String activeAccountLocalId = "";
         if (jsonObject.has("activeAccountLocalId")) {
-            string = jsonObject.get("activeAccountLocalId").getAsString();
+            activeAccountLocalId = jsonObject.get("activeAccountLocalId").getAsString();
         }
-        JsonObject jsonObject2 = jsonObject.get("accounts").getAsJsonObject();
-        for (Map.Entry<String, JsonElement> entry : jsonObject2.entrySet()) {
+        JsonObject accountsObject = jsonObject.get("accounts").getAsJsonObject();
+        for (Map.Entry<String, JsonElement> entry : accountsObject.entrySet()) {
             Account account;
             AccountsConfig.lIlIlIlIlIIlIIlIIllIIIIIl("Attempting to load account [%s]", entry.getKey());
-            JsonObject jsonObject3 = entry.getValue().getAsJsonObject();
-            AccountType accountType = AccountType.valueOf(jsonObject3.get("type").getAsString().toUpperCase());
-            if (accountType == AccountType.IlllIIIIIIlllIlIIlllIlIIl) {
+            JsonObject accountObject = entry.getValue().getAsJsonObject();
+            AccountType accountType = AccountType.valueOf(accountObject.get("type").getAsString().toUpperCase());
+            if (accountType == AccountType.XBOX) {
                 account = new MicrosoftAccount(entry.getKey());
-            } else if (accountType == AccountType.lIlIlIlIlIIlIIlIIllIIIIIl) {
-                account = new AccountManager(entry.getKey());
+            } else if (accountType == AccountType.MOJANG) {
+                account = new MojangAccount(entry.getKey());
             } else {
                 throw new IllegalArgumentException("Unknown type for " + accountType.name());
             }
-            account.IlllIIIIIIlllIlIIlllIlIIl(jsonObject3);
-            AccountsConfig.lIlIlIlIlIIlIIlIIllIIIIIl("Loaded content for [%s] Token IAT", account.llIIIlllIIlllIllllIlIllIl(), account.lIllIlIIIlIIIIIIIlllIlIll());
-            Account account2 = this.llIlllIIIllllIIlllIllIIIl().get(account.llIIIlllIIlllIllllIlIllIl());
+            account.read(accountObject);
+            AccountsConfig.lIlIlIlIlIIlIIlIIllIIIIIl("Loaded content for [%s] Token IAT", account.getUsername(), account.lIllIlIIIlIIIIIIIlllIlIll());
+            Account account2 = this.llIlllIIIllllIIlllIllIIIl().get(account.getUsername());
             if (account2 != null) {
                 if (!account.IlllIIIIIIlllIlIIlllIlIIl()) {
                     AccountsConfig.lIlIlIlIlIIlIIlIIllIIIIIl("Account was skipped due to double account which is invalid.", new Object[0]);
@@ -96,17 +93,17 @@ implements EventHandler,
                     AccountsConfig.lIlIlIlIlIIlIIlIIllIIIIIl("Double Account, getting the newer one so we're skipping this one.", new Object[0]);
                     continue;
                 }
-                this.llIlllIIIllllIIlllIllIIIl().remove(account.llIIIlllIIlllIllllIlIllIl());
-                if (this.IlllIIIIIIlllIlIIlllIlIIl.equals(account.llIIIlllIIlllIllllIlIllIl())) {
-                    this.IlllIIIIIIlllIlIIlllIlIIl = account.llIIIlllIIlllIllllIlIllIl();
-                    string = entry.getKey();
+                this.llIlllIIIllllIIlllIllIIIl().remove(account.getUsername());
+                if (this.IlllIIIIIIlllIlIIlllIlIIl.equals(account.getUsername())) {
+                    this.IlllIIIIIIlllIlIIlllIlIIl = account.getUsername();
+                    activeAccountLocalId = entry.getKey();
                 }
                 AccountsConfig.lIlIlIlIlIIlIIlIIllIIIIIl("Removing old account.", new Object[0]);
                 AccountsConfig.lIlIlIlIlIIlIIlIIllIIIIIl("Duplicate account found!", new Object[0]);
             }
-            this.llIlllIIIllllIIlllIllIIIl().put(account.llIIIlllIIlllIllllIlIllIl(), account);
-            if (!string.equals(entry.getKey()) && (account2 == null || !account2.llIIIIIIIllIIllIlIllIIIIl().equals(entry.getKey()))) continue;
-            this.IlllIIIIIIlllIlIIlllIlIIl = account.llIIIlllIIlllIllllIlIllIl();
+            this.llIlllIIIllllIIlllIllIIIl().put(account.getUsername(), account);
+            if (!activeAccountLocalId.equals(entry.getKey()) && (account2 == null || !account2.getLocalId().equals(entry.getKey()))) continue;
+            this.IlllIIIIIIlllIlIIlllIlIIl = account.getUsername();
         }
     }
 
@@ -117,36 +114,36 @@ implements EventHandler,
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(JsonObject jsonObject) {
-        jsonObject.addProperty("mojangClientToken", this.lIlIlIlIlIIlIIlIIllIIIIIl);
+    public void write(JsonObject jsonObject) {
+        jsonObject.addProperty("mojangClientToken", this.mojangClientToken);
         if (this.IlllIIIIIIlllIlIIlllIlIIl != null) {
-            jsonObject.addProperty("activeAccountLocalId", this.IlllllIlIIIlIIlIIllIIlIll().llIIIIIIIllIIllIlIllIIIIl());
+            jsonObject.addProperty("activeAccountLocalId", this.IlllllIlIIIlIIlIIllIIlIll().getLocalId());
         }
         JsonObject jsonObject2 = new JsonObject();
         jsonObject.add("accounts", jsonObject2);
         for (Account account : this.llIlllIIIllllIIlllIllIIIl().values()) {
-            account.lIlIlIlIlIIlIIlIIllIIIIIl(jsonObject2);
+            account.write(jsonObject2);
         }
     }
 
     public boolean lIlIlIlIlIIlIIlIIllIIIIIl(Account account) {
-        this.llIlllIIIllllIIlllIllIIIl().remove(account.llIIIlllIIlllIllllIlIllIl());
+        this.llIlllIIIllllIIlllIllIIIl().remove(account.getUsername());
         this.save();
         return true;
     }
 
     public boolean IlllIIIIIIlllIlIIlllIlIIl(Account account) {
-        this.llIlllIIIllllIIlllIllIIIl().put(account.llIIIlllIIlllIllllIlIllIl(), account);
+        this.llIlllIIIllllIIlllIllIIIl().put(account.getUsername(), account);
         this.save();
         return true;
     }
 
     public boolean lIllIlIIIlIIIIIIIlllIlIll(Account account) {
-        if (account == null || account.llllIIlIIlIIlIIllIIlIIllI() == null) {
+        if (account == null || account.getAccessToken() == null) {
             return false;
         }
         String string = this.IlllIIIIIIlllIlIIlllIlIIl;
-        this.IlllIIIIIIlllIlIIlllIlIIl = account.llIIIlllIIlllIllllIlIllIl();
+        this.IlllIIIIIIlllIlIIlllIlIIl = account.getUsername();
         if (account.lIlIlIlIlIIlIIlIIllIIIIIl()) {
             AccountsConfig.lIlIlIlIlIIlIIlIIllIIIIIl("Able to login %s", this.IlllIIIIIIlllIlIIlllIlIIl);
             return true;
@@ -157,32 +154,31 @@ implements EventHandler,
     }
 
     public boolean llIIlIlIIIllIlIlIlIIlIIll() {
-        return LunarClient.IIllIlIllIlIllIllIllIllII().llIlIIIllIIlIllIllIllllIl().IlllllIlIIIlIIlIIllIIlIll() != null && LunarClient.IIllIlIllIlIllIllIllIllII().llIlIIIllIIlIllIllIllllIl().IlllllIlIIIlIIlIIllIIlIll().llllIIlIIlIIlIIllIIlIIllI() != null && this.IlllllIlIIIlIIlIIllIIlIll().IlllIIIIIIlllIlIIlllIlIIl();
+        return LunarClient.getInstance().llIlIIIllIIlIllIllIllllIl().IlllllIlIIIlIIlIIllIIlIll() != null && LunarClient.getInstance().llIlIIIllIIlIllIllIllllIl().IlllllIlIIIlIIlIIllIIlIll().getAccessToken() != null && this.IlllllIlIIIlIIlIIllIIlIll().IlllIIIIIIlllIlIIlllIlIIl();
     }
 
     public boolean llIIIlllIIlllIllllIlIllIl() {
-        return this.IlllIIIIIIlllIlIIlllIlIIl != null && this.IlllllIlIIIlIIlIIllIIlIll() != null && (this.IlllllIlIIIlIIlIIllIIlIll().llIIlIlIIIllIlIlIlIIlIIll() == AccountType.IlllIIIIIIlllIlIIlllIlIIl || AuthUtil.lIlIlIlIlIIlIIlIIllIIIIIl != null && AuthUtil.lIlIlIlIlIIlIIlIIllIIIIIl.canPlayOnline());
+        return this.IlllIIIIIIlllIlIIlllIlIIl != null && this.IlllllIlIIIlIIlIIllIIlIll() != null && (this.IlllllIlIIIlIIlIIllIIlIll().getType() == AccountType.XBOX || AuthUtil.SERVICE != null && AuthUtil.SERVICE.canPlayOnline());
     }
 
     public static void lIlIlIlIlIIlIIlIIllIIIIIl(Object object, Object ... objectArray) {
-        LunarLogger.IlllIIIIIIlllIlIIlllIlIIl("Accounts", object, objectArray);
+        LunarLogger.info("Accounts", object, objectArray);
     }
 
     @Override
-    public Map<Object, Account> llIlllIIIllllIIlllIllIIIl() {
+    public Map<String, Account> llIlllIIIllllIIlllIllIIIl() {
         return super.llIlllIIIllllIIlllIllIIIl();
     }
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(String string) {
-        this.lIlIlIlIlIIlIIlIIllIIIIIl = string;
+        this.mojangClientToken = string;
     }
 
     public String lllllIllIllIllllIlIllllII() {
-        return this.lIlIlIlIlIIlIIlIIllIIIIIl;
+        return this.mojangClientToken;
     }
 
     public void IlllIIIIIIlllIlIIlllIlIIl(String string) {
         this.IlllIIIIIIlllIlIIlllIlIIl = string;
     }
 }
- 

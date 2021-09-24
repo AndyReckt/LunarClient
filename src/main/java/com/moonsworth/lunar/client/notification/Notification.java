@@ -49,7 +49,7 @@ public class Notification {
         float f = this.IlllIIIIIIlllIlIIlllIlIIl() ? 22.0f : 6.0f;
         float f2 = 200.0f - f - 8.0f;
         this.llllIIlIIlIIlIIllIIlIIllI = FontRegistry.llIlIIIllIIlIllIllIllllIl().lIllIlIIIlIIIIIIIlllIlIll(string2, f2);
-        this.lIlIlIlIlIIlIIlIIllIIIIIl((NotificationPosition) Ref.IlllIIIIIIlllIlIIlllIlIIl().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().lllllIllIllIllllIlIllllII().llIlllIIIllllIIlllIllIIIl());
+        this.lIlIlIlIlIIlIIlIIllIIIIIl((NotificationPosition) Ref.getLC().lllIIIIIlllIIlIllIIlIIIlI().llllIIlIIlIIlIIllIIlIIllI().lllllIllIllIllllIlIllllII().llIlllIIIllllIIlllIllIIIl());
         this.IllIIIlllIIIlIlllIlIIlIII();
         this.lIlIlIlIlIIlIIlIIllIIIIIl();
     }
@@ -86,9 +86,9 @@ public class Notification {
         }
         if (this.IlllllIlIIIlIIlIIllIIlIll.lIIIllIllIIllIlllIlIIlllI()) {
             if (this.lIIIllIllIIllIlllIlIIlllI() <= 250L) {
-                return this.IlllllIlIIIlIIlIIllIIlIll.IlllllIlIIIlIIlIIllIIlIll() * (10.0f + this.IlIlIlllllIlIIlIlIlllIlIl);
+                return this.IlllllIlIIIlIIlIIllIIlIll.getProgress() * (10.0f + this.IlIlIlllllIlIIlIlIlllIlIl);
             }
-            return 10.0f + this.IlIlIlllllIlIIlIlIlllIlIl - this.IlllllIlIIIlIIlIIllIIlIll.IlllllIlIIIlIIlIIllIIlIll() * (10.0f + this.IlIlIlllllIlIIlIlIlllIlIl);
+            return 10.0f + this.IlIlIlllllIlIIlIlIlllIlIl - this.IlllllIlIIIlIIlIIllIIlIll.getProgress() * (10.0f + this.IlIlIlllllIlIIlIlIlllIlIl);
         }
         return 0.0f;
     }
@@ -224,4 +224,3 @@ public class Notification {
         this.lIIlIlllIlIlIIIlllIIlIIII = n;
     }
 }
- 

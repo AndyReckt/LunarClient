@@ -8,6 +8,7 @@ import com.moonsworth.lunar.client.cosmetic.type.HatCosmetic;
 import com.moonsworth.lunar.client.util.CosmeticRotationHelper;
 
 public class HeadwearCosmeticBuilder {
+
     public static final BiMap<EntityPlayerBridge, HatCosmetic> lIlIlIlIlIIlIIlIIllIIIIIl = ((ImmutableBiMap.Builder) ImmutableBiMap.builder().put("panda", new HatCosmetic("panda", true, CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl(new Vector3f(0.0f, 0.1f, 0.0f))))).put("frog", new HatCosmetic("frog", false, CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl(new Vector3f(0.0f, 0.1f, 0.0f)))).put("pig", new HatCosmetic("pig", false, CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl(new Vector3f(0.0f, 0.1f, 0.0f)))).put("koala", new HatCosmetic("koala", false, CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl(new Vector3f(0.0f, 0.15f, 0.0f)))).put("lion", new HatCosmetic("lion", false, CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl(new Vector3f(0.0f, 0.135f, 0.0f)))).put("penguin", new HatCosmetic("penguin", false, CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl(new Vector3f(0.0475f, 0.125f, 0.0f)), CosmeticRotationHelper.IlllIIIIIIlllIlIIlllIlIIl(new Vector3f(1.035f, 1.035f, 1.035f)))).put("bandanna", new HatCosmetic("bandanna", false, CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl(new Vector3f(0.0f, -0.4f, 0.0f)), CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl(180.0f, 0.0f, 1.0f, 0.0f)).lIIlIlllIlIlIIIlllIIlIIII().lIlIlIlIlIIlIIlIIllIIIIIl(HatCosmetic.Type.BANDANNA)).put("fox", new HatCosmetic("fox", false, CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl(new Vector3f(0.0f, -0.4f, 0.0f)))).put("dog", new HatCosmetic("dog", false, CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl(new Vector3f(0.0f, -0.4f, 0.0f)), CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl(180.0f, 1.0f, 0.0f, 0.0f), CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl(90.0f, 0.0f, 1.0f, 0.0f), CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl(new Vector3f(0.01f, 0.0f, 0.0f)))).put("bunnyears", new HatCosmetic("bunnyears", false, CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl(90.0f, 0.0f, 1.0f, 0.0f), CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl((entityPlayerBridge) -> {
         if (entityPlayerBridge != null) {
             return new Vector3f(0.0f, -0.2825f, 0.0f);
@@ -23,7 +24,7 @@ public class HeadwearCosmeticBuilder {
             return new Vector3f(1.25f, 1.25f, 1.25f);
         }
         return null;
-    })).lIIlIlllIlIlIIIlllIIlIIII().IllIllIIIllIIIlIlIlIIIIll().lIlIlIlIlIIlIIlIIllIIIIIl(new String[]{"any"}).lIlIlIlIlIIlIIlIIllIIIIIl("beard_stpatrick").lIlIlIlIlIIlIIlIIllIIIIIl("dragon").lIlIlIlIlIIlIIlIIllIIIIIl("beard")).lIlIlIlIlIIlIIlIIllIIIIIl(HatCosmetic.Type.MASK)).put("dragon", new HatCosmetic("dragon", false, CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl(90.0f, 0.0f, 1.0f, 0.0f), CosmeticRotationHelper.IlllIIIIIIlllIlIIlllIlIIl((abstractClientPlayerBridge) -> {
+    })).lIIlIlllIlIlIIIlllIIlIIII().IllIllIIIllIIIlIlIlIIIIll().lIlIlIlIlIIlIIlIIllIIIIIl(new String[] {"any"}).lIlIlIlIlIIlIIlIIllIIIIIl("beard_stpatrick").lIlIlIlIlIIlIIlIIllIIIIIl("dragon").lIlIlIlIlIIlIIlIIllIIIIIl("beard")).lIlIlIlIlIIlIIlIIllIIIIIl(HatCosmetic.Type.MASK)).put("dragon", new HatCosmetic("dragon", false, CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl(90.0f, 0.0f, 1.0f, 0.0f), CosmeticRotationHelper.IlllIIIIIIlllIlIIlllIlIIl((abstractClientPlayerBridge) -> {
         if (abstractClientPlayerBridge == null) {
             return new Vector3f(0.85f, 0.85f, 0.85f);
         }
@@ -173,7 +174,7 @@ public class HeadwearCosmeticBuilder {
             return new Vector3f(0.95f, 0.95f, 0.95f);
         }
         return null;
-    })).lIlIlIlIlIIlIIlIIllIIIIIl(new String[]{"any"}).lIlIlIlIlIIlIIlIIllIIIIIl("beard_stpatrick").lIlIlIlIlIIlIIlIIllIIIIIl("halloween_mask").lIlIlIlIlIIlIIlIIllIIIIIl("mask").lIlIlIlIlIIlIIlIIllIIIIIl("dragon")).IllIllIIIllIIIlIlIlIIIIll()).put("bee", new HatCosmetic("bee", false, CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl(90.0f, 0.0f, 1.0f, 0.0f), CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl((entityPlayerBridge) -> {
+    })).lIlIlIlIlIIlIIlIIllIIIIIl(new String[] {"any"}).lIlIlIlIlIIlIIlIIllIIIIIl("beard_stpatrick").lIlIlIlIlIIlIIlIIllIIIIIl("halloween_mask").lIlIlIlIlIIlIIlIIllIIIIIl("mask").lIlIlIlIlIIlIIlIIllIIIIIl("dragon")).IllIllIIIllIIIlIlIlIIIIll()).put("bee", new HatCosmetic("bee", false, CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl(90.0f, 0.0f, 1.0f, 0.0f), CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl((entityPlayerBridge) -> {
         if (entityPlayerBridge == null) {
             return new Vector3f(0.0f, -0.15f, 0.0f);
         }
@@ -203,7 +204,7 @@ public class HeadwearCosmeticBuilder {
             return new Vector3f(0.0f, -0.275f, 0.0f);
         }
         return new Vector3f(0.0f, -0.35f, 0.0f);
-    })).lIlIlIlIlIIlIIlIIllIIIIIl(new String[]{"beard"})).put("chimney", new HatCosmetic("chimney", false, CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl(90.0f, 0.0f, 1.0f, 0.0f), CosmeticRotationHelper.IlllIIIIIIlllIlIIlllIlIIl((abstractClientPlayerBridge) -> {
+    })).lIlIlIlIlIIlIIlIIllIIIIIl(new String[] {"beard"})).put("chimney", new HatCosmetic("chimney", false, CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl(90.0f, 0.0f, 1.0f, 0.0f), CosmeticRotationHelper.IlllIIIIIIlllIlIIlllIlIIl((abstractClientPlayerBridge) -> {
         if (abstractClientPlayerBridge == null) {
             return new Vector3f(0.8f, 0.8f, 0.8f);
         }
@@ -243,7 +244,7 @@ public class HeadwearCosmeticBuilder {
             return new Vector3f(0.0f, 0.6f, 0.0f);
         }
         return new Vector3f(0.0f, 0.425f, 0.0f);
-    })).lIIlIlllIlIlIIIlllIIlIIII().lIlIlIlIlIIlIIlIIllIIIIIl(new String[]{"bandanna"})).put("cat_ears", new HatCosmetic("cat_ears", false, CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl(90.0f, 0.0f, 1.0f, 0.0f), CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl((entityPlayerBridge) -> {
+    })).lIIlIlllIlIlIIIlllIIlIIII().lIlIlIlIlIIlIIlIIllIIIIIl(new String[] {"bandanna"})).put("cat_ears", new HatCosmetic("cat_ears", false, CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl(90.0f, 0.0f, 1.0f, 0.0f), CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl((entityPlayerBridge) -> {
         if (entityPlayerBridge != null) {
             return new Vector3f(0.0f, -0.4f, 0.0f);
         }
@@ -283,7 +284,7 @@ public class HeadwearCosmeticBuilder {
             return new Vector3f(0.0f, -0.4f, 0.0f);
         }
         return new Vector3f(0.0f, 0.125f, 0.2f);
-    })).lIlIlIlIlIIlIIlIIllIIIIIl(new String[]{"any"}).lIlIlIlIlIIlIIlIIllIIIIIl("mask").lIlIlIlIlIIlIIlIIllIIIIIl("beard").lIlIlIlIlIIlIIlIIllIIIIIl("halloween_mask").lIlIlIlIlIIlIIlIIllIIIIIl("dragon")).IllIllIIIllIIIlIlIlIIIIll()).put("potofgold", new HatCosmetic("potofgold", false, CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl(90.0f, 0.0f, 1.0f, 0.0f), CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl((entityPlayerBridge) -> {
+    })).lIlIlIlIlIIlIIlIIllIIIIIl(new String[] {"any"}).lIlIlIlIlIIlIIlIIllIIIIIl("mask").lIlIlIlIlIIlIIlIIllIIIIIl("beard").lIlIlIlIlIIlIIlIIllIIIIIl("halloween_mask").lIlIlIlIlIIlIIlIIllIIIIIl("dragon")).IllIllIIIllIIIlIlIlIIIIll()).put("potofgold", new HatCosmetic("potofgold", false, CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl(90.0f, 0.0f, 1.0f, 0.0f), CosmeticRotationHelper.lIlIlIlIlIIlIIlIIllIIIIIl((entityPlayerBridge) -> {
         if (entityPlayerBridge == null) {
             return new Vector3f(0.0f, -0.35f, 0.0f);
         }
@@ -320,4 +321,3 @@ public class HeadwearCosmeticBuilder {
         return new Vector3f(0.0f, -0.5f, 0.0f);
     }))).build();
 }
- 

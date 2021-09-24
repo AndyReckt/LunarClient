@@ -1,10 +1,11 @@
 package com.moonsworth.lunar.bridge.minecraft.client.entity.player;
 
+import com.moonsworth.lunar.bridge.minecraft.item.ItemStackBridge;
+
 import java.util.List;
 
 public interface InventoryPlayerBridge {
-    public List bridge$getMainInventory();
+    List<ItemStackBridge> bridge$getMainInventory();
 
-    public List bridge$getArmorInventory();
+    List bridge$getArmorInventory();
 }
- 

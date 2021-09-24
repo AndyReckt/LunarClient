@@ -5,4 +5,7 @@ package com.moonsworth.lunar.bridge.minecraft.client.event;
  * @since 10/07/2021 16:33
  */
 public enum ClickEventAction {
+    RUN_COMMAND,
+    OPEN_FILE
 }
+

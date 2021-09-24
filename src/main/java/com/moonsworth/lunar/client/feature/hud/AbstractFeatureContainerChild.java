@@ -3,8 +3,8 @@ package com.moonsworth.lunar.client.feature.hud;
 public abstract class AbstractFeatureContainerChild extends DraggableHudMod {
     public final ConfigurableFeature lllIIIIIlllIIlIllIIlIIIlI;
 
-    public AbstractFeatureContainerChild(ConfigurableFeature configurableFeature, boolean bl, Anchor anchor) {
-        super(bl, anchor);
+    public AbstractFeatureContainerChild(ConfigurableFeature configurableFeature, boolean bl, HudModPosition hudModPosition) {
+        super(bl, hudModPosition);
         this.lllIIIIIlllIIlIllIIlIIIlI = configurableFeature;
     }
 

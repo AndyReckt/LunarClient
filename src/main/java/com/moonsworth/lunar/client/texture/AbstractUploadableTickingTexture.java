@@ -16,9 +16,7 @@ import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
-public abstract class AbstractUploadableTickingTexture
-extends AbstractTickingTexture
-implements LoadableTickingTexture {
+public abstract class AbstractUploadableTickingTexture extends AbstractTickingTexture implements LoadableTickingTexture {
     public static final int maxTextureSize = 0x400000;
     public static final ScheduledExecutorService executor = Executors.newScheduledThreadPool(4);
     public static final IntBuffer dataBuffer = ByteBuffer.allocateDirect(0x1000000).order(ByteOrder.nativeOrder()).asIntBuffer();
@@ -28,7 +26,7 @@ implements LoadableTickingTexture {
     public boolean blur;
     public int textureWidth;
     public int textureHeight;
-    public Map dataMap;
+    public Map<Integer, int[]> dataMap;
     public final ResourceLocationBridge textureLocation;
 
     public AbstractUploadableTickingTexture(ResourceLocationBridge resourceLocationBridge) {
@@ -80,15 +78,15 @@ implements LoadableTickingTexture {
     }
 
     public boolean hasTexture() {
-        return Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getTextureManager().bridge$getTextureMap().containsKey(this.textureLocation);
+        return Ref.getMinecraft().bridge$getTextureManager().bridge$getTextureMap().containsKey(this.textureLocation);
     }
 
     public void addTexture() {
-        Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getTextureManager().bridge$getTextureMap().put(this.textureLocation, this);
+        Ref.getMinecraft().bridge$getTextureManager().bridge$getTextureMap().put(this.textureLocation, this);
     }
 
     public void removeTexture() {
-        Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getTextureManager().bridge$getTextureMap().remove(this.textureLocation);
+        Ref.getMinecraft().bridge$getTextureManager().bridge$getTextureMap().remove(this.textureLocation);
     }
 
     @Override
@@ -101,7 +99,7 @@ implements LoadableTickingTexture {
     }
 
     public static int getMaxTextureSize() {
-        return 0x400000;
+        return maxTextureSize;
     }
 
     public void setClamp(boolean bl) {
@@ -124,4 +122,3 @@ implements LoadableTickingTexture {
         return this.dataMap;
     }
 }
- 

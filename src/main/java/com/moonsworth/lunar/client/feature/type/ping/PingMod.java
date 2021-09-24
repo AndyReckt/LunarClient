@@ -5,26 +5,25 @@ import com.moonsworth.lunar.bridge.minecraft.client.network.OldServerPingerBridg
 import com.moonsworth.lunar.client.bridge.Bridge;
 import com.moonsworth.lunar.client.event.type.world.TickEvent;
 import com.moonsworth.lunar.client.feature.FeatureDetails;
-import com.moonsworth.lunar.client.feature.hud.Anchor;
+import com.moonsworth.lunar.client.feature.hud.HudModPosition;
 import com.moonsworth.lunar.client.feature.hud.simple.SimpleHudMod;
 import com.moonsworth.lunar.client.feature.hud.simple.SimpleHudModSize;
 import com.moonsworth.lunar.client.ref.Ref;
 import com.moonsworth.lunar.client.threading.LunarExecutors;
 
 import java.net.UnknownHostException;
-import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 public class PingMod
-extends SimpleHudMod {
+    extends SimpleHudMod {
     public long IllIIIlllIIIlIlllIlIIlIII;
     public long IIlIllIlIIllIIlIlIllllllI = -1L;
-    public OldServerPingerBridge lIIIlllIIIIllllIlIIIlIIll = Bridge.llIlllIIIllllIIlllIllIIIl().initOldServerPinger();
+    public OldServerPingerBridge lIIIlllIIIIllllIlIIIlIIll = Bridge.getInstance().initOldServerPinger();
 
     public PingMod() {
-        super(false, Anchor.TOP_LEFT);
+        super(false, HudModPosition.TOP_LEFT);
         this.lIlIlIlIlIIlIIlIIllIIIIIl(TickEvent.class, tickEvent -> {
-            ServerDataBridge serverDataBridge = Ref.lIlIlIlIlIIlIIlIIllIIIIIl().bridge$getCurrentServerData();
+            ServerDataBridge serverDataBridge = Ref.getMinecraft().bridge$getCurrentServerData();
             this.lIlIlIlIlIIlIIlIIllIIIIIl(serverDataBridge);
             if (serverDataBridge != null && serverDataBridge.bridge$getPingToServer() > 0L) {
                 this.IIlIllIlIIllIIlIlIllllllI = serverDataBridge.bridge$getPingToServer();
@@ -39,11 +38,10 @@ extends SimpleHudMod {
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(ServerDataBridge serverDataBridge) {
         if (serverDataBridge != null && System.currentTimeMillis() - this.IllIIIlllIIIlIlllIlIIlIII >= TimeUnit.SECONDS.toMillis(15L)) {
-            LunarExecutors.IlllIIIIIIlllIlIIlllIlIIl().execute(() -> {
+            LunarExecutors.getLunarExecutor().execute(() -> {
                 try {
                     this.lIIIlllIIIIllllIlIIIlIIll.bridge$ping(serverDataBridge);
-                }
-                catch (UnknownHostException unknownHostException) {
+                } catch (UnknownHostException unknownHostException) {
                     // empty catch block
                 }
             });
@@ -67,7 +65,7 @@ extends SimpleHudMod {
     }
 
     @Override
-    public FeatureDetails llIIIIIIIllIIllIlIllIIIIl() {
+    public FeatureDetails initDetails() {
         return new FeatureDetails("ping");
     }
 }

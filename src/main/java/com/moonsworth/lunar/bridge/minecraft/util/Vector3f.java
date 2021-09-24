@@ -25,15 +25,15 @@ public class Vector3f {
         return new Quaternion(this, f, false);
     }
 
-    public float lIlIlIlIlIIlIIlIIllIIIIIl() {
+    public float getX() {
         return this.llIIIIIIIllIIllIlIllIIIIl;
     }
 
-    public float IlllIIIIIIlllIlIIlllIlIIl() {
+    public float getY() {
         return this.lIIIllIllIIllIlllIlIIlllI;
     }
 
-    public float lIllIlIIIlIIIIIIIlllIlIll() {
+    public float getZ() {
         return this.IlllllIlIIIlIIlIIllIIlIll;
     }
 
@@ -60,13 +60,13 @@ public class Vector3f {
         if (!vector3f.lIlIlIlIlIIlIIlIIllIIIIIl(this)) {
             return false;
         }
-        if (Float.compare(this.lIlIlIlIlIIlIIlIIllIIIIIl(), vector3f.lIlIlIlIlIIlIIlIIllIIIIIl()) != 0) {
+        if (Float.compare(this.getX(), vector3f.getX()) != 0) {
             return false;
         }
-        if (Float.compare(this.IlllIIIIIIlllIlIIlllIlIIl(), vector3f.IlllIIIIIIlllIlIIlllIlIIl()) != 0) {
+        if (Float.compare(this.getY(), vector3f.getY()) != 0) {
             return false;
         }
-        return Float.compare(this.lIllIlIIIlIIIIIIIlllIlIll(), vector3f.lIllIlIIIlIIIIIIIlllIlIll()) == 0;
+        return Float.compare(this.getZ(), vector3f.getZ()) == 0;
     }
 
     public boolean lIlIlIlIlIIlIIlIIllIIIIIl(Object object) {
@@ -76,14 +76,14 @@ public class Vector3f {
     public int hashCode() {
         int n = 59;
         int n2 = 1;
-        n2 = n2 * 59 + Float.floatToIntBits(this.lIlIlIlIlIIlIIlIIllIIIIIl());
-        n2 = n2 * 59 + Float.floatToIntBits(this.IlllIIIIIIlllIlIIlllIlIIl());
-        n2 = n2 * 59 + Float.floatToIntBits(this.lIllIlIIIlIIIIIIIlllIlIll());
+        n2 = n2 * 59 + Float.floatToIntBits(this.getX());
+        n2 = n2 * 59 + Float.floatToIntBits(this.getY());
+        n2 = n2 * 59 + Float.floatToIntBits(this.getZ());
         return n2;
     }
 
     public String toString() {
-        return "Vector3f(x=" + this.lIlIlIlIlIIlIIlIIllIIIIIl() + ", y=" + this.IlllIIIIIIlllIlIIlllIlIIl() + ", z=" + this.lIllIlIIIlIIIIIIIlllIlIll() + ")";
+        return "Vector3f(x=" + this.getX() + ", y=" + this.getY() + ", z=" + this.getZ() + ")";
     }
 
     public Vector3f() {

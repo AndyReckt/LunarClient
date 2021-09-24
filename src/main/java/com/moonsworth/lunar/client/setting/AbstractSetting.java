@@ -20,21 +20,21 @@ import java.util.function.Predicate;
 public abstract class AbstractSetting<T> implements I18nBridge, Json {
 
     public T value;
-    public T IlllIIIIIIlllIlIIlllIlIIl;
-    public String lIllIlIIIlIIIIIIIlllIlIll;
+    public T defaultValue;
+    public String name;
     public BooleanSupplier llIlllIIIllllIIlllIllIIIl;
     public List<Consumer<T>> llllIIlIIlIIlIIllIIlIIllI = new CopyOnWriteArrayList<>();
     public T IlIlIlllllIlIIlIlIlllIlIl;
 
     public AbstractSetting(String name, T value) {
-        this.lIllIlIIIlIIIIIIIlllIlIll = name;
-        this.value = this.IlllIIIIIIlllIlIIlllIlIIl = value;
+        this.name = name;
+        this.value = this.defaultValue = value;
         this.llIlllIIIllllIIlllIllIIIl = () -> false;
     }
 
     public AbstractSetting(String name, T value, BooleanSupplier booleanSupplier) {
-        this.lIllIlIIIlIIIIIIIlllIlIll = name;
-        this.value = this.IlllIIIIIIlllIlIIlllIlIIl = value;
+        this.name = name;
+        this.value = this.defaultValue = value;
         this.llIlllIIIllllIIlllIllIIIl = booleanSupplier;
     }
 
@@ -60,11 +60,11 @@ public abstract class AbstractSetting<T> implements I18nBridge, Json {
     public void lIlIlIlIlIIlIIlIIllIIIIIl(T newValue) {
         if (!Objects.equals(this.value, newValue)) {
             this.value = newValue;
-            for (Consumer consumer : this.llllIIlIIlIIlIIllIIlIIllI) {
+            for (Consumer<T> consumer : this.llllIIlIIlIIlIIllIIlIIllI) {
                 consumer.accept(newValue);
             }
-            if (Ref.llIIIIIIIllIIllIlIllIIIIl() != null) {
-                //Ref.IlllIIIIIIlllIlIIlllIlIIl().lllIIIIIlllIIlIllIIlIIIlI().lIlIlIlIlIIlIIlIIllIIIIIl(this);
+            if (Ref.getWorld() != null) {
+                Ref.getLC().lllIIIIIlllIIlIllIIlIIIlI().lIlIlIlIlIIlIIlIIllIIIIIl(this);
             }
         }
     }
@@ -80,27 +80,27 @@ public abstract class AbstractSetting<T> implements I18nBridge, Json {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(JsonObject jsonObject) {
-        if (this.value.equals(this.IlllIIIIIIlllIlIIlllIlIIl)) {
+    public void write(JsonObject jsonObject) {
+        if (this.value.equals(this.defaultValue)) {
             return;
         }
-        jsonObject.addProperty(this.lIllIlIIIlIIIIIIIlllIlIll, this.value.toString());
+        jsonObject.addProperty(this.name, this.value.toString());
     }
 
     @Override
-    public void IlllIIIIIIlllIlIIlllIlIIl(JsonObject jsonObject) {
-        if (!jsonObject.has(this.lIllIlIIIlIIIIIIIlllIlIll) || jsonObject.get(this.lIllIlIIIlIIIIIIIlllIlIll).isJsonNull()) {
-            this.lIlIlIlIlIIlIIlIIllIIIIIl(this.IlllIIIIIIlllIlIIlllIlIIl);
+    public void read(JsonObject jsonObject) {
+        if (!jsonObject.has(this.name) || jsonObject.get(this.name).isJsonNull()) {
+            this.lIlIlIlIlIIlIIlIIllIIIIIl(this.defaultValue);
             return;
         }
-        this.lIlIlIlIlIIlIIlIIllIIIIIl(jsonObject.get(this.lIllIlIIIlIIIIIIIlllIlIll).getAsString());
+        this.lIlIlIlIlIIlIIlIIllIIIIIl(jsonObject.get(this.name).getAsString());
     }
 
     public void d_() {
-        this.lIlIlIlIlIIlIIlIIllIIIIIl(this.IlllIIIIIIlllIlIIlllIlIIl);
+        this.lIlIlIlIlIIlIIlIIllIIIIIl(this.defaultValue);
     }
 
-    public abstract AbstractDescritiveSettingUIComponent lIlIlIlIlIIlIIlIIllIIIIIl(UIComponent var1);
+    public abstract AbstractDescritiveSettingUIComponent getUIComponent(UIComponent var1);
 
     @Override
     public String getLanguagePath() {
@@ -108,7 +108,7 @@ public abstract class AbstractSetting<T> implements I18nBridge, Json {
     }
 
     public String f_() {
-        return this.get(this.lIllIlIIIlIIIIIIIlllIlIll);
+        return this.get(this.name);
     }
 
     public T IllIllIIIllIIIlIlIlIIIIll() {
@@ -116,11 +116,11 @@ public abstract class AbstractSetting<T> implements I18nBridge, Json {
     }
 
     public T IIlIllIlllllllIIlIIIllIIl() {
-        return this.IlllIIIIIIlllIlIIlllIlIIl;
+        return this.defaultValue;
     }
 
     public String lIIlIlllIlIlIIIlllIIlIIII() {
-        return this.lIllIlIIIlIIIIIIIlllIlIll;
+        return this.name;
     }
 
     public BooleanSupplier llIllIlIllIlllIllIIIIllII() {

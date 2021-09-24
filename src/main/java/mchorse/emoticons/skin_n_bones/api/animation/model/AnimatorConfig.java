@@ -16,11 +16,11 @@ public class AnimatorConfig {
     public float scaleGui = 1.0f;
     public float scaleItems = 1.0f;
     public boolean renderHeldItems = true;
-    public Map<Integer, AnimatorHeldItemConfig> leftHands = new HashMap();
-    public Map<Integer, AnimatorHeldItemConfig> rightHands = new HashMap();
+    public Map<String, AnimatorHeldItemConfig> leftHands = new HashMap<>();
+    public Map<String, AnimatorHeldItemConfig> rightHands = new HashMap<>();
     public String head = "head";
     public AnimatorActionsConfig actions = new AnimatorActionsConfig();
-    public Map<Integer, AnimationMeshConfig> meshes = new HashMap();
+    public Map<String, AnimationMeshConfig> meshes = new HashMap<>();
 
     public void copy(AnimatorConfig animatorConfig) {
         this.name = animatorConfig.name;
@@ -34,13 +34,13 @@ public class AnimatorConfig {
         this.leftHands.clear();
         this.rightHands.clear();
         this.meshes.clear();
-        for (Map.Entry<Integer, AnimatorHeldItemConfig> entry : animatorConfig.leftHands.entrySet()) {
+        for (Map.Entry<String, AnimatorHeldItemConfig> entry : animatorConfig.leftHands.entrySet()) {
             this.leftHands.put(entry.getKey(), entry.getValue().clone());
         }
-        for (Map.Entry<Integer, AnimatorHeldItemConfig>  entry : animatorConfig.rightHands.entrySet()) {
+        for (Map.Entry<String, AnimatorHeldItemConfig>  entry : animatorConfig.rightHands.entrySet()) {
             this.rightHands.put(entry.getKey(), entry.getValue().clone());
         }
-        for (Map.Entry<Integer, AnimationMeshConfig>  entry : animatorConfig.meshes.entrySet()) {
+        for (Map.Entry<String, AnimationMeshConfig>  entry : animatorConfig.meshes.entrySet()) {
             this.meshes.put(entry.getKey(), entry.getValue().clone());
         }
     }

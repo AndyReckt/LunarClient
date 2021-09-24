@@ -4,8 +4,7 @@ import com.moonsworth.lunar.bridge.minecraft.client.entity.player.EntityPlayerBr
 import com.moonsworth.lunar.bridge.minecraft.item.ItemStackBridge;
 import com.moonsworth.lunar.client.event.CancellableEvent;
 
-public class ItemRightClickEvent
-extends CancellableEvent {
+public class ItemRightClickEvent extends CancellableEvent {
     public ItemStackBridge lIlIlIlIlIIlIIlIIllIIIIIl;
     public EntityPlayerBridge IlllIIIIIIlllIlIIlllIlIIl;
 

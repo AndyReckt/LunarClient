@@ -1,13 +1,3 @@
-/*
- * Decompiled with CFR 0.150.
- * 
- * Could not load the following classes:
- *  lunar.a.Bridge
- *  lunar.c.lIllIlIIIlIIIIIIIlllIlIll
- *  lunar.de.IlllIIIIIIlllIlIIlllIlIIl
- *  lunar.h.MinecraftBridge
- *  org.lwjgl.opengl.GL15
- */
 package mchorse.emoticons.skin_n_bones.api.animation;
 
 import java.util.ArrayList;
@@ -16,8 +6,7 @@ import java.util.Map;
 
 import com.moonsworth.lunar.bridge.minecraft.client.MinecraftBridge;
 import com.moonsworth.lunar.client.bridge.Bridge;
-import mchorse.emoticons.skin_n_bones.api.animation.AnimationMesh;
-import mchorse.emoticons.skin_n_bones.api.animation.AnimationMeshConfig;
+import com.moonsworth.lunar.client.cosmetic.de.IlllIIIIIIlllIlIIlllIlIIl;
 import mchorse.emoticons.skin_n_bones.api.animation.model.ActionConfig;
 import mchorse.emoticons.skin_n_bones.api.animation.model.ActionPlayback;
 import mchorse.emoticons.skin_n_bones.api.bobj.BOBJAction;
@@ -49,7 +38,7 @@ public class Animation {
     }
 
     public ActionPlayback createAction(ActionPlayback actionPlayback, ActionConfig actionConfig, boolean bl, int n) {
-        BOBJAction bOBJAction = (BOBJAction)this.data.actions.get(actionConfig.name);
+        BOBJAction bOBJAction = (BOBJAction) this.data.actions.get(actionConfig.name);
         if (bOBJAction == null) {
             return null;
         }
@@ -62,11 +51,11 @@ public class Animation {
     }
 
     public void init() {
-        Map map = BOBJLoader.loadMeshes(this.data);
-        for (Map.Entry entry : map.entrySet()) {
-            String string = (String)entry.getKey();
-            BOBJLoader.CompiledData compiledData = (BOBJLoader.CompiledData)entry.getValue();
-            AnimationMesh animationMesh = new AnimationMesh(this, (String)entry.getKey(), compiledData);
+        Map<String, BOBJLoader.CompiledData> map = BOBJLoader.loadMeshes(this.data);
+        for (Map.Entry<String, BOBJLoader.CompiledData> entry : map.entrySet()) {
+            String string = entry.getKey();
+            BOBJLoader.CompiledData compiledData = entry.getValue();
+            AnimationMesh animationMesh = new AnimationMesh(this, entry.getKey(), compiledData);
             animationMesh.texture = RLUtils.create("s_b", this.name + "/textures/" + string + "/default.png");
             this.meshes.add(animationMesh);
         }
@@ -81,16 +70,25 @@ public class Animation {
 
     public void render(Map map) {
         for (AnimationMesh animationMesh : this.meshes) {
-            animationMesh.render(this.mc, map == null ? null : (AnimationMeshConfig)map.get(animationMesh.name));
+            animationMesh.render(this.mc, map == null ? null : (AnimationMeshConfig) map.get(animationMesh.name));
         }
-        GL15.glBindBuffer((int)34962, (int)0);
-        GL15.glBindBuffer((int)34963, (int)0);
+        GL15.glBindBuffer(34962, 0);
+        GL15.glBindBuffer(34963, 0);
     }
 
-    public List renderPasses(Map map, int n) {
-        ArrayList<IlllIIIIIIlllIlIIlllIlIIl> arrayList = new ArrayList<IlllIIIIIIlllIlIIlllIlIIl>();
+    public List<IlllIIIIIIlllIlIIlllIlIIl> renderPasses(Map<String, AnimationMeshConfig> map, int n) {
+        ArrayList<IlllIIIIIIlllIlIIlllIlIIl> arrayList = new ArrayList<>();
         for (AnimationMesh animationMesh : this.meshes) {
-            arrayList.add(new IlllIIIIIIlllIlIIlllIlIIl(animationMesh.getTexture((AnimationMeshConfig)map.get(animationMesh.name)), (matrixStackBridge, lIllIlIIIlIIIIIIIlllIlIll2) -> animationMesh.render(this.mc, map == null ? null : (AnimationMeshConfig)map.get(animationMesh.name), (lIllIlIIIlIIIIIIIlllIlIll)lIllIlIIIlIIIIIIIlllIlIll2, matrixStackBridge.llIlllIIIllllIIlllIllIIIl(), n), true));
+            arrayList.add(new IlllIIIIIIlllIlIIlllIlIIl
+                          (animationMesh.getTexture(map.get(animationMesh.name)),
+                           (matrixStackBridge, lIllIlIIIlIIIIIIIlllIlIll2) ->
+                           animationMesh.render(
+                               this.mc, map.get(animationMesh.name),
+                               lIllIlIIIlIIIIIIIlllIlIll2,
+                               matrixStackBridge.llIlllIIIllllIIlllIllIIIl(), n
+                           ), true
+                          )
+                         );
         }
         return arrayList;
     }

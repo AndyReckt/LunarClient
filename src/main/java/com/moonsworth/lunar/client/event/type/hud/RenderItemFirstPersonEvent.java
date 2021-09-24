@@ -4,7 +4,7 @@ import com.moonsworth.lunar.bridge.minecraft.item.ItemBridge;
 import com.moonsworth.lunar.client.event.Event;
 
 public class RenderItemFirstPersonEvent
-extends Event {
+    extends Event {
     public final ItemBridge lIlIlIlIlIIlIIlIIllIIIIIl;
 
     public RenderItemFirstPersonEvent(ItemBridge itemBridge) {

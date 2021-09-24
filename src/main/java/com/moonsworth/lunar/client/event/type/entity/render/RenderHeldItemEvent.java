@@ -5,7 +5,7 @@ import com.moonsworth.lunar.bridge.minecraft.item.ItemStackBridge;
 import com.moonsworth.lunar.client.event.Event;
 
 public class RenderHeldItemEvent
-extends Event {
+    extends Event {
     public final EntityBridge lIlIlIlIlIIlIIlIIllIIIIIl;
     public final ItemStackBridge IlllIIIIIIlllIlIIlllIlIIl;
 

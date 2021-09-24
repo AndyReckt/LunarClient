@@ -1,11 +1,11 @@
 package com.moonsworth.lunar.bridge.minecraft.client.renderer.vertex;
 
 public interface DefaultVertexFormatsBridge {
-    public VertexFormatBridge bridge$position_tex_normal();
+    VertexFormatBridge bridge$position_tex_normal();
 
-    public VertexFormatBridge bridge$block();
+    VertexFormatBridge bridge$block();
 
-    public VertexFormatBridge bridge$position_tex();
+    VertexFormatBridge bridge$position_tex();
 
-    public VertexFormatBridge bridge$position_color();
+    VertexFormatBridge bridge$position_color();
 }

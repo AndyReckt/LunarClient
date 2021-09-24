@@ -2,11 +2,11 @@ package com.moonsworth.lunar.client.event.type.entity.player;
 
 import com.moonsworth.lunar.bridge.current.MatrixStackBridge;
 import com.moonsworth.lunar.bridge.minecraft.client.entity.player.EntityPlayerBridge;
+import com.moonsworth.lunar.client.cosmetic.de.lIllIlIIIlIIIIIIIlllIlIll;
 import com.moonsworth.lunar.client.event.CancellableEvent;
 import lombok.NonNull;
 
-public class PreRenderPlayerEvent
-extends CancellableEvent {
+public class PreRenderPlayerEvent extends CancellableEvent {
     @NonNull
     public final EntityPlayerBridge lIlIlIlIlIIlIIlIIllIIIIIl;
     @NonNull
@@ -19,7 +19,7 @@ extends CancellableEvent {
     public float llllIIlIIlIIlIIllIIlIIllI;
     public int IlIlIlllllIlIIlIlIlllIlIl;
     public MatrixStackBridge llIIIIIIIllIIllIlIllIIIIl;
-    public lIllIlIIIlIIIIIIIlllIlIll lIIIllIllIIllIlllIlIIlllI;
+    public com.moonsworth.lunar.client.cosmetic.de.lIllIlIIIlIIIIIIIlllIlIll lIIIllIllIIllIlllIlIIlllI;
 
     public PreRenderPlayerEvent(@NonNull EntityPlayerBridge entityPlayerBridge, @NonNull double d, @NonNull double d2, @NonNull double d3, @NonNull float f, int n, MatrixStackBridge matrixStackBridge, lIllIlIIIlIIIIIIIlllIlIll lIllIlIIIlIIIIIIIlllIlIll2) {
         if (entityPlayerBridge == null) {

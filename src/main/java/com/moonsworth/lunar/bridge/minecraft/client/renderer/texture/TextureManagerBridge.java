@@ -10,17 +10,17 @@ import java.util.Map;
  * @since 10/07/2021 14:25
  */
 public interface TextureManagerBridge extends IResourceManagerReloadListenerBridge {
-    public boolean bridge$loadTexture(ResourceLocationBridge var1, AbstractTextureBridge var2);
+    boolean bridge$loadTexture(ResourceLocationBridge var1, AbstractTextureBridge var2);
 
-    public void bridge$bindTexture(ResourceLocationBridge var1);
+    void bridge$bindTexture(ResourceLocationBridge var1);
 
-    public void bridge$deleteTexture(ResourceLocationBridge var1);
+    void bridge$deleteTexture(ResourceLocationBridge var1);
 
-    public AbstractTextureBridge bridge$getTexture(ResourceLocationBridge var1);
+    AbstractTextureBridge bridge$getTexture(ResourceLocationBridge var1);
 
-    public ResourceLocationBridge bridge$getDynamicTextureLocation(String var1, DynamicTextureBridge var2);
+    ResourceLocationBridge bridge$getDynamicTextureLocation(String var1, DynamicTextureBridge var2);
 
-    public void bridge$loadTickableTexture(ResourceLocationBridge var1, AbstractTextureBridge var2);
+    void bridge$loadTickableTexture(ResourceLocationBridge var1, AbstractTextureBridge var2);
 
-    public Map bridge$getTextureMap();
+    Map<ResourceLocationBridge, Object> bridge$getTextureMap();
 }

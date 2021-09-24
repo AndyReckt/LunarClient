@@ -8,14 +8,13 @@ import com.moonsworth.lunar.bridge.minecraft.client.renderer.entity.layers.Layer
 import java.util.List;
 
 public interface RendererLivingEntityBridge {
-    default public void lIlIlIlIlIIlIIlIIllIIIIIl(CustomLayer customLayer) {
+default void lIlIlIlIlIIlIIlIIllIIIIIl(CustomLayer customLayer) {
         this.bridge$addLayer(customLayer, false);
     }
 
-    public void bridge$addLayer(CustomLayer var1, boolean var2);
+    void bridge$addLayer(CustomLayer var1, boolean var2);
 
-    public LayerCapeBridge bridge$getLayerCape();
+    LayerCapeBridge bridge$getLayerCape();
 
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(FontRendererBridge var1, List var2, double var3, double var5, double var7, float var9, boolean var10, boolean var11, EntityBridge var12);
+    void lIlIlIlIlIIlIIlIIllIIIIIl(FontRendererBridge var1, List var2, double var3, double var5, double var7, float var9, boolean var10, boolean var11, EntityBridge var12);
 }
- 

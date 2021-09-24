@@ -4,7 +4,7 @@ import com.moonsworth.lunar.bridge.minecraft.client.entity.EntityLivingBaseBridg
 import com.moonsworth.lunar.client.event.CancellableEvent;
 
 public class EntityDeathEvent
-extends CancellableEvent {
+    extends CancellableEvent {
     public EntityLivingBaseBridge lIlIlIlIlIIlIIlIIllIIIIIl;
 
     public EntityDeathEvent(EntityLivingBaseBridge entityLivingBaseBridge) {

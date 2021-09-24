@@ -7,13 +7,12 @@ import com.moonsworth.lunar.client.ui.component.UIComponent;
 import com.moonsworth.lunar.client.ui.ease.ColorEase;
 import com.moonsworth.lunar.client.ui.screen.AbstractUIScreen;
 
-public class llIIlIlIIIllIlIlIlIIlIIll
-extends UIComponent {
-    public String lIlIlIlIlIIlIIlIIllIIIIIl;
-    public final LCFontRenderer IlllIIIIIIlllIlIIlllIlIIl;
-    public ColorEase lIllIlIIIlIIIIIIIlllIlIll = new ColorEase(-15627600, -12346181);
+public class llIIlIlIIIllIlIlIlIIlIIll extends UIComponent {
+    public String spacedText;
+    public final LCFontRenderer fontRenderer;
+    public ColorEase ease = new ColorEase(-15627600, -12346181);
     public int llIlIIIllIIlIllIllIllllIl = -12346181;
-    public boolean IllIllIIIllIIIlIlIlIIIIll;
+    public boolean hoverOverride;
 
     public llIIlIlIIIllIlIlIlIIlIIll(UIComponent uIComponent, String string) {
         this(uIComponent, string, FontRegistry.lllIIIIIlllIIlIllIIlIIIlI());
@@ -21,47 +20,47 @@ extends UIComponent {
 
     public llIIlIlIIIllIlIlIlIIlIIll(UIComponent uIComponent, String string, LCFontRenderer lCFontRenderer) {
         super(uIComponent);
-        this.lIlIlIlIlIIlIIlIIllIIIIIl = string.replace("", " ").trim();
-        this.IlllIIIIIIlllIlIIlllIlIIl = lCFontRenderer;
+        this.spacedText = string.replace("", " ").trim();
+        this.fontRenderer = lCFontRenderer;
     }
 
     public void lIlIlIlIlIIlIIlIIllIIIIIl(String string) {
-        this.lIlIlIlIlIIlIIlIIllIIIIIl = string.replace("", " ").trim();
+        this.spacedText = string.replace("", " ").trim();
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl() {
+    public void onUpdateScreen() {
     }
 
     @Override
-    public void IlllIIIIIIlllIlIIlllIlIIl() {
+    public void onGuiClosed() {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(char c, KeyType keyType) {
+    public void onKeyTyped(char c, KeyType keyType) {
     }
 
     @Override
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(float f, float f2, boolean bl) {
-        AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(this.x, this.y, this.width, this.height, 5.0f, 0, this.llIlIIIllIIlIllIllIllllIl, this.lIllIlIIIlIIIIIIIlllIlIll.lIlIlIlIlIIlIIlIIllIIIIIl(this.IllIllIIIllIIIlIlIlIIIIll || bl && this.IlllIIIIIIlllIlIIlllIlIIl(f, f2)));
-        float f3 = this.IlllIIIIIIlllIlIIlllIlIIl.lIlIlIlIlIIlIIlIIllIIIIIl();
-        this.IlllIIIIIIlllIlIIlllIlIIl.IlllIIIIIIlllIlIIlllIlIIl(this.lIlIlIlIlIIlIIlIIllIIIIIl, this.x + this.width / 2.0f + 1.0f, this.y + this.height / 2.0f - f3, 0x20000000);
-        this.IlllIIIIIIlllIlIIlllIlIIl.IlllIIIIIIlllIlIIlllIlIIl(this.lIlIlIlIlIIlIIlIIllIIIIIl, this.x + this.width / 2.0f, this.y + this.height / 2.0f - f3, -4275267);
+    public void drawComponent(float mouseX, float mouseY, boolean bl) {
+        AbstractUIScreen.lIlIlIlIlIIlIIlIIllIIIIIl(this.x, this.y, this.width, this.height, 5.0f, 0, this.llIlIIIllIIlIllIllIllllIl, this.ease.lIlIlIlIlIIlIIlIIllIIIIIl(this.hoverOverride || bl && this.mouseInside(mouseX, mouseY)));
+        float f3 = this.fontRenderer.getHeight();
+        this.fontRenderer.IlllIIIIIIlllIlIIlllIlIIl(this.spacedText, this.x + this.width / 2.0f + 1.0f, this.y + this.height / 2.0f - f3, 0x20000000);
+        this.fontRenderer.IlllIIIIIIlllIlIIlllIlIIl(this.spacedText, this.x + this.width / 2.0f, this.y + this.height / 2.0f - f3, -4275267);
     }
 
-    public String lIllIlIIIlIIIIIIIlllIlIll() {
-        return this.lIlIlIlIlIIlIIlIIllIIIIIl;
+    public String getSpacedText() {
+        return this.spacedText;
     }
 
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(ColorEase colorEase) {
-        this.lIllIlIIIlIIIIIIIlllIlIll = colorEase;
+    public void setEase(ColorEase colorEase) {
+        this.ease = colorEase;
     }
 
     public void IlllIIIIIIlllIlIIlllIlIIl(int n) {
         this.llIlIIIllIIlIllIllIllllIl = n;
     }
 
-    public void lIlIlIlIlIIlIIlIIllIIIIIl(boolean bl) {
-        this.IllIllIIIllIIIlIlIlIIIIll = bl;
+    public void setHoverOverride(boolean bl) {
+        this.hoverOverride = bl;
     }
 }

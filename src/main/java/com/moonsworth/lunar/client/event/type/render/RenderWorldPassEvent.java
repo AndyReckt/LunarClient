@@ -2,8 +2,7 @@ package com.moonsworth.lunar.client.event.type.render;
 
 import com.moonsworth.lunar.client.event.Event;
 
-public class RenderWorldPassEvent
-extends Event {
+public class RenderWorldPassEvent extends Event {
     public float lIlIlIlIlIIlIIlIIllIIIIIl;
 
     public float lIlIlIlIlIIlIIlIIllIIIIIl() {
@@ -14,4 +13,3 @@ extends Event {
         this.lIlIlIlIlIIlIIlIIllIIIIIl = f;
     }
 }
- 

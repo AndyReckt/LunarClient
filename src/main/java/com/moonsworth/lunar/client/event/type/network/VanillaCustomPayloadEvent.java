@@ -3,7 +3,7 @@ package com.moonsworth.lunar.client.event.type.network;
 import com.moonsworth.lunar.client.event.Event;
 
 public class VanillaCustomPayloadEvent
-extends Event {
+    extends Event {
     public final String lIlIlIlIlIIlIIlIIllIIIIIl;
 
     public VanillaCustomPayloadEvent(String string) {
@@ -14,4 +14,3 @@ extends Event {
         return this.lIlIlIlIlIIlIIlIIllIIIIIl;
     }
 }
- 
